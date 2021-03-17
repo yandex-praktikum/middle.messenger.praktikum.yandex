@@ -34,5 +34,5 @@ jobs:
       run: bash tests-second-floor/1_sprint/check_port.sh
     - name: Check routing
       run: node tests-second-floor/1_sprint/check_routing.js
-    - name: Check linters
-      run: npm -s i --prefix tests-second-floor/1_sprint && node tests-second-floor/1_sprint/check_lint.js
+#    - name: Check linters
+#     run: npm -s i --prefix tests-second-floor/1_sprint && node tests-second-floor/1_sprint/check_lint.js
