@@ -26,6 +26,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
+    - name: Check pull request link
+      run: bash tests-second-floor/1_sprint/check_github_link.sh
     - name: Check npm run start existence
       run: bash tests-second-floor/1_sprint/check_start.sh
     - name: Check Parcel in start script
