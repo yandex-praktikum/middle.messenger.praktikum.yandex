@@ -1,0 +1,65 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  sprint_1:
+    if: ${{github.head_ref == 'sprint_1'}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - name: Set up GitHub Actions
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Get testing lib
+      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
+    - name: Check npm run start existence
+      run: bash tests-second-floor/sprint_1/check_start.sh
+    - name: Check Parcel in start script
+      run: bash tests-second-floor/sprint_1/check_parcel.sh
+    - name: Check PORT 3000
+      run: bash tests-second-floor/sprint_1/check_port.sh
+    - name: Check routing
+      run: node tests-second-floor/sprint_1/check_routing.js
+      
+  sprint_2:
+    if: ${{github.head_ref == 'sprint_2'}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - name: Set up GitHub Actions
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Get testing lib
+      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
+    - name: Check npm run start existence
+      run: bash tests-second-floor/sprint_1/check_start.sh
+    - name: Check Parcel in start script
+      run: bash tests-second-floor/sprint_1/check_parcel.sh
+    - name: Check PORT 3000
+      run: bash tests-second-floor/sprint_1/check_port.sh
+    - name: Check routing
+      run: node tests-second-floor/sprint_1/check_routing.js
+      # sprint 2 checks
+    - name: Check typescript in package.json
+      run: node tests-second-floor/sprint_2/check_node.js
+    - name: Check tsconfig required rules
+      run: node tests-second-floor/sprint_2/check_tsconfig.js
+    - name: Check eslint
+      run: bash tests-second-floor/sprint_2/check_eslint.sh
+    - name: Check stylelint
+      run: bash tests-second-floor/sprint_2/check_stylelint.sh
