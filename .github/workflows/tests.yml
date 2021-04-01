@@ -60,6 +60,6 @@ jobs:
     - name: Check tsconfig required rules
       run: node tests-second-floor/sprint_2/check_tsconfig.js
     - name: Check eslint
-      run: node tests-second-floor/sprint_2/check_eslint.js
+      run: bash tests-second-floor/sprint_2/check_eslint.sh
     - name: Check stylelint
-      run: node tests-second-floor/sprint_2/check_stylelint.js
+      run: bash tests-second-floor/sprint_2/check_stylelint.sh
