@@ -63,3 +63,39 @@ jobs:
       run: node tests-second-floor/sprint_2/check_eslint.js
     - name: Check stylelint
       run: node tests-second-floor/sprint_2/check_stylelint.js
+      
+  sprint_3:
+    if: ${{github.head_ref == 'sprint_3'}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - name: Set up GitHub Actions
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Get testing lib
+      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
+    - name: Run the tests
+      run: bash tests-second-floor/sprint_3/run.sh
+      
+  sprint_4:
+    if: ${{github.head_ref == 'sprint_4'}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - name: Set up GitHub Actions
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Get testing lib
+      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
+    - name: Run the tests
+      run: bash tests-second-floor/sprint_4/run.sh
