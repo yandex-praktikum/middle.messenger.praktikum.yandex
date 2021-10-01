@@ -73,8 +73,6 @@ jobs:
       run: node tests-second-floor/sprint_2/check_eslint.js
     - name: Check stylelint
       run: node tests-second-floor/sprint_2/check_stylelint.js
-    - name: Check UI
-      run: bash tests-second-floor/sprint_2/ui_test.sh
       
   sprint_3:
     if: ${{github.head_ref == 'sprint_3'}}
