@@ -54,7 +54,7 @@ jobs:
       if: ${{github.event.repository.private}}
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
-    - name: Check dist and node_modules are not in .gitignore
+    - name: Check dist and node_modules .gitignore
       run: bash tests-second-floor/sprint_1/check_gitignore.sh
     - name: Check npm run start existence
       run: bash tests-second-floor/sprint_1/check_start.sh
