@@ -1,0 +1,37 @@
+.login-form {
+  display: flex;
+  position: relative;
+  top: 50%;
+  text-align: center;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  background-color: $color-default-white;
+  border-radius: 30px;
+  flex-direction: column;
+  margin: 0;
+  padding: 50px 30px 30px 30px;
+  min-height: 450px;
+  min-width: 340px;
+
+  @include vp-767 {
+    min-width: 100%;
+  }
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex-grow: 1;
+}
+
+.login-form__buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.login-form__button {
+  margin-bottom: 14px;
+}
+

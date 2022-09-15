@@ -1,0 +1,23 @@
+.btn {
+  background-color: $color-tory-blue;
+  padding: 12px 70px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: $color-default-white;
+  border: unset;
+  cursor: pointer;
+  transition: opacity, 0.3s ease;
+
+  @media (hover: hover), screen and (min-width: 0) {
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+}
+
+.btn--large {
+  max-width: 280px;
+}

@@ -1,0 +1,21 @@
+-
+  const errorBlock500 = {
+    title: '500',
+    errorText: 'Мы уже фиксим',
+    linkText: 'Назад к чатам',
+    link: 'index.pug',
+  }
+
+  const errorBlock404 = {
+    title: '404',
+    errorText: 'Не туда попали',
+    linkText: 'Назад к чатам',
+    link: 'index.pug',
+  }
+
+
+mixin error-block(data)
+  .error-block
+    h1.title.title--big!=data.title
+    p.error-block__text!=data.errorText
+    a(href=data.link).link.link--blue!=data.linkText

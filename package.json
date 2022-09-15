@@ -1,0 +1,40 @@
+{
+  "name": "praktikum-1-test",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "autoprefixer": "^10.4.8",
+    "editorconfig": "^0.15.3",
+    "eslint": "^8.21.0",
+    "parcel": "^2.7.0",
+    "parcel-reporter-static-files-copy": "^1.4.0",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.16",
+    "postcss-modules": "^4.3.1",
+    "process": "^0.11.10",
+    "pug": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "sass": "^1.54.3",
+    "stylelint": "^14.9.1"
+  },
+  "scripts": {
+    "clean:output": "rimraf build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run clean:output && parcel src/pug/pages/index.pug --open --port 3000 --dist-dir build --no-source-maps",
+    "build": "npm run clean:output && parcel build src/pug/pages/index.pug --dist-dir build --no-source-maps --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daiver500/praktikum-1-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daiver500/praktikum-1-test/issues"
+  },
+  "homepage": "https://github.com/Daiver500/praktikum-1-test#readme"
+}

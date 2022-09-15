@@ -1,0 +1,36 @@
+.search-input label {
+  position: relative;
+}
+
+.search-input label::before {
+  position: absolute;
+  content: '';
+  background-image: url("../../static/img/svg/icon-loop.svg");
+  width: 20px;
+  height: 20px;
+  right: 8px;
+  background-repeat: no-repeat;
+  top: -2px;
+  left: 36%;
+
+  @include vp-1023 {
+    top: -3px;
+    left: 33%;
+  }
+}
+
+.search-input input {
+  border-radius: 5px;
+  min-width: 100%;
+  background-color: $color-whisper;
+  border: none;
+  outline: none;
+  padding: 5px;
+  min-height: 32px;
+}
+
+.search-input input::placeholder {
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+}

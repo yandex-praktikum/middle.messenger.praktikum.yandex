@@ -1,0 +1,32 @@
+// Colors
+
+$color-default-black:               #000000;
+$color-default-white:               #ffffff;
+$color-transparent:                 rgba(255, 255, 255, 0);
+$color-tory-blue:                   #3369f3;
+$color-nero:                        #1e1e1e;
+$color-red-orange:                  #ff2f2f;
+$color-nobel:                       #999999;
+$color-green:                       #008000;
+$color-whisper:                     #e5e5e5;
+$color-whisper-1:                   #eaeaea;
+$color-solitude:                    #e4edfd;
+$color-snow:                        #fbfbfb;
+$color-red:                         #ff0000;
+$color-white-smoke:                 #efefef;
+
+// fonts
+$ff-inter:                          "Inter", "Arial", sans-serif;
+
+// Animation
+
+$tf-default:                        ease;
+$tf-in:                             ease-in;
+$trans-default:                     0.3s $tf-default;
+$trans-in-default:                  0.3s $tf-in;
+
+// Viewports
+
+$vp-768:                            768px;
+$vp-1024:                           1024px;
+$vp-1280:                           1280px;

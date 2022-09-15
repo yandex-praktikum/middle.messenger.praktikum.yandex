@@ -1,0 +1,14 @@
+.plug-message {
+  color: $color-nobel;
+  font-size: 12px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-height: 100%;
+}
+
+.plug-message p {
+  margin: 0;
+}

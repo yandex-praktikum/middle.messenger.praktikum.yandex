@@ -1,0 +1,151 @@
+-
+  const chatData = [
+
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+        isActive: true,
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+      {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+     {
+        name: "Alex",
+        text: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        src: './img/avatar.jpg',
+        srcset: './img/avatar@2x.jpg',
+        width: '47',
+        height: '47',
+        alt: 'аватар',
+        time: '2016-11-18T09:54',
+        timeText: '09:54',
+        number: '2',
+      },
+    ]
+
+
+  const chatLinkProfile = {
+    linkText: 'Профиль',
+    link: 'profile-page.pug',
+  }
+
+  const chatLinkBack = {
+    linkText: 'Назад',
+    link: 'index.pug'
+  }
+
+mixin chat-block(data)
+  .chat-block
+
+    .chat-block__list
+
+      .chat-block__link-wrapper
+        +link(chatLinkBack).link--grey.chat-block__link-back
+        +link(chatLinkProfile).link--grey.chat-block__link-profile
+
+
+      .chat-block__search-wrapper
+       +search-input({
+          inputType: 'text',
+          inputPlaceholder: 'Поиск',
+        })
+
+      ul.chat-list
+        each item in chatData
+          +chat-item(item)(class=item.isActive ? "is-active" : null)
+
+
+    .chat-block__chat
+      +plug-message(plugMessage)
+
+
+

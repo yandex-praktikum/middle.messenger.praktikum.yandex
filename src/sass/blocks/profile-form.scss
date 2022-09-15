@@ -1,0 +1,73 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 510px;
+
+  @include vp-767 {
+    min-width: 290px;
+  }
+}
+
+.profile-form--unactive form {
+  pointer-events: none;
+}
+
+.profile-form .form-input__label {
+  opacity: 1;
+  font-size: 13px;
+  line-height: 13px;
+  color: $color-nero;
+  top: 5px;
+}
+
+.profile-form .form-input input {
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 21px;
+  min-height: 23px;
+  border-bottom: 1px solid $color-whisper-1;
+  transition: border-color, 0.3s ease;
+
+  @media (hover: hover), screen and (min-width: 0) {
+    &:hover,
+    &:focus {
+      border-color: $color-tory-blue;
+    }
+  }
+}
+
+.profile-form .form-input input::placeholder {
+  color: $color-nobel;
+  text-align: right;
+}
+
+.profile-form__buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-top: 60px;
+}
+
+.profile-form__button {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-form__link:not(:last-child) {
+  margin-bottom: 21px;
+}
+
+.profile-form__name-wrapper {
+  align-self: center;
+}
+
+.profile-form__name-wrapper {
+  margin-bottom: 60px;
+}
+
+.profile-form__name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0;
+}

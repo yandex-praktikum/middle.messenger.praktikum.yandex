@@ -1,0 +1,16 @@
+
+mixin profile-block(data)
+  .profile-block(class!=attributes.class)
+    .profile-block__back
+      if (data === profileFormButtonBackToChat)
+        +button(data).profile-block__button
+          image(src="./img/svg/icon-arrow-back.svg", width="11px", height="10px", alt="кнопка назад")
+      if (data === profileFormButtonBackToProfile)
+        +button(data).profile-block__button
+          image(src="./img/svg/icon-arrow-back.svg", width="11px", height="10px", alt="кнопка назад")
+    .profile-block__info
+      if block
+        block
+
+
+

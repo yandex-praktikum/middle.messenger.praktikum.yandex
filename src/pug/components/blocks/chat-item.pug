@@ -1,0 +1,12 @@
+mixin chat-item(data)
+  li.chat-item(class!=attributes.class)
+    .chat-item__avatar-wrapper
+      image.chat-item__avatar(src=data.src srcset=data.srcset, width=data.width, height=data.height, alt=data.alt)
+    .chat-item__name-wrapper
+      p.chat-item__name!=data.name
+      p.chat-item__text!=data.text
+    .chat-item__date-wrapper
+      time.chat-item__time(datetime=data.time)!=data.timeText
+      .chat-item__number-wrapper
+        p.chat-item__number!=data.number
+

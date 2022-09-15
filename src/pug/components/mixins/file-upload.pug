@@ -1,0 +1,6 @@
+mixin file-upload(data)
+  .file-upload(class!=attributes.class)
+    label.file-upload__inner
+      image.file-upload__image(src=data.src srcset=data.srcset, width=data.width, height=data.height, alt=data.alt)
+      p.file-upload__text!=data.textAvatar
+      input(type="file" id="file-upload-input").visually-hidden

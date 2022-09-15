@@ -1,0 +1,60 @@
+.form-input {
+  position: relative;
+}
+
+.form-input,
+.form-input input {
+  min-width: 100%;
+}
+
+.form-input input {
+  min-height: 37px;
+  margin-bottom: 32px;
+  border: none;
+  border-bottom: 1px solid $color-tory-blue;
+  font-size: 13px;
+  line-height: 13px;
+  color: $color-nero;
+  outline: none;
+  transition: border-color, 0.3s ease;
+
+  @media (hover: hover), screen and (min-width: 0) {
+    &:hover,
+    &:focus {
+      border-color: $color-green;
+    }
+  }
+}
+
+.form-input input::placeholder {
+  color: $color-nobel;
+}
+
+.form-input.is-focused .form-input__label {
+  opacity: 1;
+}
+
+.form-input__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 9px;
+  line-height: 9px;
+  opacity: 0;
+  transition: opacity, 0.3s ease;
+  color: $color-nobel;
+  left: 2px;
+}
+
+.form-input__error {
+  margin: 0;
+  text-align: left;
+  display: none;
+  position: relative;
+  bottom: 30px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 8px;
+  color: $color-red-orange;
+}
+

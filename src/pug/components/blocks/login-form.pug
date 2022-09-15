@@ -1,0 +1,85 @@
+-
+  const loginFormData = {
+    title: 'Вход',
+    buttonText: 'Авторизироваться',
+    linkText: 'Нет аккаунта?',
+    link: 'registration.pug',
+    buttonLink: 'chat-page.pug',
+  }
+
+  const regFormData = {
+    title: 'Регистрация',
+    buttonText: 'Зарегистрироваться',
+    linkText: 'Войти',
+    link: 'index.pug',
+    buttonLink: '',
+  }
+
+
+mixin login-form(data)
+  .login-form(class!=attributes.class)
+    h1.title!=data.title
+    form
+
+      if (data === loginFormData)
+        +form-input({
+          inputLabel: 'Логин',
+          inputType: 'text',
+          inputError: 'Неверный логин',
+          inputPlaceholder: 'Логин',
+        })
+        +form-input({
+          inputLabel: 'Пароль',
+          inputType: 'password',
+          inputError: 'Неверный пароль',
+          inputPlaceholder: 'Пароль',
+        })
+
+      if (data === regFormData)
+        +form-input({
+          inputLabel: 'Почта',
+          inputType: 'email',
+          inputPlaceholder: 'Почта',
+        })
+        +form-input({
+          inputLabel: 'Логин',
+          inputType: 'text',
+          inputPlaceholder: 'Логин',
+        })
+        +form-input({
+          inputLabel: 'Имя',
+          inputType: 'text',
+          inputPlaceholder: 'Имя',
+        })
+        +form-input({
+          inputLabel: 'Фамилия',
+          inputType: 'text',
+          inputPlaceholder: 'Фамилия',
+        })
+        +form-input({
+          inputLabel: 'Телефон',
+          inputType: 'tel',
+          inputPlaceholder: 'Телефон',
+        })
+        +form-input({
+          inputLabel: 'Пароль',
+          inputType: '',
+          inputPlaceholder: 'Пароль',
+        }).form-input--password
+        +form-input({
+          inputLabel: 'Пароль (еще раз)',
+          inputType: '',
+          inputPlaceholder: 'Пароль (еще раз)',
+          inputError: 'Пароли не совпадают'
+        }).form-input--password
+
+      .login-form__buttons-wrapper
+        if (data === loginFormData)
+          +button(loginFormData).login-form__button
+          +link(loginFormData).login-form__link
+        if (data === regFormData)
+          +button(regFormData).login-form__button
+          +link(regFormData).login-form__link
+
+
+

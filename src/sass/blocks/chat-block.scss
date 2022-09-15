@@ -1,0 +1,68 @@
+.chat-block {
+  display: grid;
+  min-width: 100%;
+  min-height: 720px;
+  grid-template-columns: 24.2% 75.8%;
+  background-color: $color-default-white;
+
+  @include vp-1023 {
+    grid-template-columns: 33% 67%;
+  }
+
+  @include vp-767 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.chat-block__list {
+  overflow-y: scroll;
+  max-height: 720px;
+  padding-top: 21px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-right: 1px solid $color-whisper;
+}
+
+.chat-block__list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.chat-block__chat {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.chat-block__link-wrapper,
+.chat-block__search-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.chat-block__link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 23px;
+}
+
+.chat-block__search-wrapper {
+  margin-bottom: 27px;
+}
+
+.chat-block__link-profile {
+  padding-right: 12px;
+  position: relative;
+}
+
+.chat-block__link-profile::before {
+  position: absolute;
+  content: '';
+  background-image: url("../../static/img/svg/icon-arrow-right.svg");
+  width: 8px;
+  height: 10px;
+  right: -2px;
+  background-repeat: no-repeat;
+}

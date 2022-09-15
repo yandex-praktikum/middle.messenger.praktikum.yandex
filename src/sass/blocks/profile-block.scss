@@ -1,0 +1,55 @@
+.profile-block {
+  display: grid;
+  min-width: 100%;
+  min-height: 720px;
+  grid-template-columns: 4.9% 95.1%;
+  background-color: $color-default-white;
+
+  @include vp-767 {
+    grid-template-columns: 10% 90%;
+  }
+}
+
+.profile-block__back {
+  background-color: $color-snow;
+  border-right: 1px solid $color-whisper-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-block__button {
+  padding: 9px;
+  border-radius: 15px;
+}
+
+.profile-block__button img {
+  width: 13px;
+  height: 12px;
+}
+
+.profile-block__info {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
+  align-items: center;
+}
+
+
+.profile-block--password .profile-form__buttons-wrapper,
+.profile-block--change  .profile-form__buttons-wrapper {
+  align-items: center;
+}
+
+.profile-block--password .profile-form__name,
+.profile-block--change  .profile-form__name {
+  opacity: 0;
+}
+
+.profile-block--password .file-upload,
+.profile-block--change  .file-upload {
+  pointer-events: none;
+}
+
+

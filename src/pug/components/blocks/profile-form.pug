@@ -1,0 +1,100 @@
+-
+
+  const profileFormImageTextData = {
+    src: './img/load-avatar.png',
+    srcset: './img/load-avatar@2x.png',
+    width: '40',
+    height: '40',
+    alt: 'загрузка аватара',
+    name: 'Иван',
+    textAvatar: 'Поменять аватар',
+  }
+
+
+    const profileLinks = [
+     {
+      linkText: 'Изменить данные',
+      link: 'profile-change.pug',
+     },
+     {
+      linkText: 'Изменить пароль',
+      link: 'profile-password.pug',
+    },
+    {
+      linkText: 'Выйти',
+      link: 'index.pug',
+      isActive: true
+    }
+    ]
+
+    const profileChangeLink =
+     {
+      buttonText: 'Сохранить',
+      buttonLink: '#',
+     }
+
+
+mixin profile-form(data)
+  .profile-form(class!=attributes.class)
+    +file-upload(profileFormImageTextData)
+    .profile-form__name-wrapper
+      p.profile-form__name!=profileFormImageTextData.name
+    form
+      if (data === profileLinks || data === profileChangeLink)
+        +form-input({
+          inputLabel: 'Почта',
+          inputType: 'email',
+          inputPlaceholder: 'pochta@yandex.ru',
+        })
+        +form-input({
+          inputLabel: 'Логин',
+          inputType: 'text',
+          inputPlaceholder: 'ivanivanov',
+        })
+        +form-input({
+          inputLabel: 'Имя',
+          inputType: 'text',
+          inputPlaceholder: 'Иван',
+        })
+        +form-input({
+          inputLabel: 'Фамилия',
+          inputType: 'text',
+          inputPlaceholder: 'Иванов',
+        })
+        +form-input({
+          inputLabel: 'Имя в чате',
+          inputType: 'text',
+          inputPlaceholder: 'Иван',
+        })
+        +form-input({
+          inputLabel: 'Телефон',
+          inputType: 'tel',
+          inputPlaceholder: '+7 (909) 967 30 30',
+        })
+      if (data === profilePassword)
+        +form-input({
+          inputLabel: 'Старый пароль',
+          inputType: 'password',
+          inputPlaceholder: '********',
+          inputError: 'Пароль не верный',
+        }).form-input--old-password
+        +form-input({
+          inputLabel: 'Новый пароль',
+          inputType: 'password',
+          inputPlaceholder: '********',
+        }).form-input--new-password
+        +form-input({
+          inputLabel: 'Новый пароль еще раз',
+          inputType: 'password',
+          inputPlaceholder: '*******',
+          inputError: 'Пароли не совпадают'
+        }).form-input--new-password
+
+    .profile-form__buttons-wrapper
+      if (data === profileLinks)
+        each item in profileLinks
+         +link(item).profile-form__link(class=item.isActive ? "link--red" : null)
+      if (data === profileChangeLink || data === profilePassword)
+         +button(profileChangeLink).btn--large.profile-form__button.profile-form__button-save
+
+

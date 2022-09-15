@@ -1,0 +1,24 @@
+include ../components/components
+
+doctype html
+
+html(lang="ru")
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="description", content="login-form")
+    link(rel="preload", href="../../../static/fonts/inter-regular.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="../../../static/fonts/inter-medium.woff2", as="font", crossorigin="anonymous")
+    link(rel="stylesheet", href="../../sass/style.scss")
+
+
+  body
+    main
+      .container.container--login
+        +login-form(loginFormData).login-form--enter
+        a(href="404-page.pug")
+        a(href="500-page.pug")
+
+    script(type="module" src="../../js/app.js")

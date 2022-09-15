@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+
+  @include vp-1023 {
+    padding: 0 16px;
+  }
+
+  @include vp-767 {
+    padding: 0 8px;
+  }
+}
+
+.container--login {
+  max-width: 400px;
+  padding: 0 30px;
+
+  @include vp-767 {
+    padding: 0;
+  }
+}
+
+.container--profile {
+  max-width: 550px;
+  min-height: 720px;
+  padding: 0 20px;
+
+  @include vp-767 {
+    padding: 0;
+  }
+}
+
