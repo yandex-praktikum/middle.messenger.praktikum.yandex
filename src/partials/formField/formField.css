@@ -1,0 +1,16 @@
+.form_field{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 230px;
+    height: 60px;
+}
+
+.horizontal {
+    flex-direction: row;
+    justify-content: space-between;
+    height:35px;
+}
+
+

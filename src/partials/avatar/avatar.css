@@ -1,0 +1,21 @@
+.avatar {
+    width: 36px;
+    height: 36px;
+    background-size:36px;
+    background: url(/static/icons/employee.png) no-repeat center;
+    border: 2px solid #DBE1EB;
+    border-radius: 10px;
+}
+
+.avatar_s {
+    width: 40px;
+    height: 40px;
+    background-size:40px;
+}
+
+.avatar_m {
+    width: 100px;
+    height: 100px;
+    background-size:100px;
+}
+

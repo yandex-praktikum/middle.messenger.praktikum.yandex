@@ -1,0 +1,11 @@
+.message_feed__message_window {
+    width: 100%;
+    height:90%;
+    display:flex;
+    flex-direction:column;
+    row-gap: 5px;
+    align-items: center;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #D2EEEB 0%, rgba(255, 255, 255, 0) 100%);
+}
+

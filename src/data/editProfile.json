@@ -1,0 +1,80 @@
+{
+            "contentClass":"edit_profile__main__content",
+            "contentVar": "edit-profile/editProfileContent/editProfileContent",
+            "loginField": {
+                "formFieldClass":"login__field horizontal",
+                "headingClass":"heading_m",
+                "headingText":"login",
+                "inputClass":"edit_profile_form__login_input short",
+                "inputType":"text",
+                "inputName":"login",
+                "inputValue":"@user"
+           },
+           "avatarClass":"avatar avatar_m",
+           "emailField": {
+                "formFieldClass":"email__field horizontal",
+                "headingClass":"heading_m",
+                "headingText":"e-mail",
+                "inputClass":"edit_profile_form__email_input short",
+                "inputType":"email",
+                "inputName":"email",
+                "inputValue":"user@mail.com",
+                "readOnly":""
+           },
+            "phoneField": {
+                "formFieldClass":"phone__field horizontal",
+                "headingClass":"heading_m",
+                "headingText":"#phone",
+                "inputClass":"edit_profile_form__phone_input short",
+                "inputType":"tel",
+                "inputName":"phone",
+                "inputValue":"+7 999 999 99 99",
+                "readOnly":""
+            },
+            "chatNameField": {
+                "formFieldClass":"chat_name__field horizontal",
+                "headingClass":"heading_m",
+                "headingText":"name in chat",
+                "inputClass":"edit_profile_form__chat_name_input short",
+                "inputType":"text",
+                "inputName":"display_name",
+                "inputValue":"Alex",
+                "readOnly":""
+            },
+        
+            "firstNameField": {
+                "formFieldClass":"first_name__field  horizontal",
+                "headingClass":"heading_m",
+                "headingText":"first name",
+                "inputClass":"edit_profile_form__first_name_input short",
+                "inputType":"text",
+                "inputName":"first_name",
+                "inputValue":"Alex",
+                "readOnly":""
+            },
+            "lastNameField": {
+                "formFieldClass":"last_name__field horizontal",
+                "headingClass":"heading_m",
+                "headingText":"last name",
+                "inputClass":"edit_profile_form__last_name_input short",
+                "inputType":"text",
+                "inputName":"second_name",
+                "inputValue":"Smith",
+                "readOnly":""
+            },
+            "saveButton": {
+                "buttonClass": "save_button",
+                "buttonText": "save",
+                "link":"../profile/profile.hbs"
+            },
+          
+           "userName":{
+            "headingClass":"heading_l",
+            "headingText": "Alex"
+           },
+           "backToLink":{
+            "linkClass":"link_s back_link",
+            "link":"../profile/profile.hbs",
+            "linkText": "back to profile"
+           }
+        }

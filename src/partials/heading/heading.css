@@ -1,0 +1,31 @@
+.heading {
+  font-family: var(--main-font);
+  font-style: normal;
+  color: #000000;
+}
+
+.heading_s {
+  font-size: 15px;
+  line-height: 20px;
+}
+.heading_l {
+  font-size: 25px;
+  line-height: 31px;
+}
+
+.heading_m {
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.heading_xl {
+
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 59px;
+
+}
+.service_heading {
+  color:white;
+}
+

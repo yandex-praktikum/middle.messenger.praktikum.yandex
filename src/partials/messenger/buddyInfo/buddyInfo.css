@@ -1,0 +1,7 @@
+.chat_bar__buddy_info {
+    width: 202px;
+    height: 41px;
+    display:flex;
+    align-items:center;
+    column-gap:5px;
+}

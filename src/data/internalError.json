@@ -1,0 +1,15 @@
+{
+    "serviceBackLink":{
+        "linkClass":"link_m service_back_link",
+        "link":"../messenger/messenger.hbs",
+        "linkText": "back to typing"
+    },
+    "servicePageHeading": {
+        "headingClass":"heading_xl service_heading",
+        "headingText": "So sorry...Fixing in process"
+    },
+    "errorNumber": {
+        "headingClass":"heading_xl service_heading",
+        "headingText": "500"
+    }  
+}

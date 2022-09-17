@@ -1,0 +1,39 @@
+.chat_item__last_message_status {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30px;
+    height: 40px;
+}
+.chat_item__last_message_time {
+    font-family: var(--main-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+}
+.chat_item__new_message_counter {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 15px;
+}
+
+.new_message_counter {
+    font-family: var(--main-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 9px;
+}
+
+
+.new_message_icon {
+    width:20px;
+    height:13px;
+    background: url(/static/icons/email.png) no-repeat center;
+    background-size:15px;
+}

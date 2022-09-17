@@ -1,0 +1,30 @@
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload p,
+.image-upload p:hover
+{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    font-family: var(--main-font);
+    font-style: normal;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
+        
+}
+.image-upload p{
+    opacity: 0;    
+}
+.image-upload p:hover
+{
+    color: #ffffff;
+    background-color: darkslategrey;
+    opacity: 30;    
+}
+
+
+

@@ -1,0 +1,53 @@
+{
+        "contentClass":"messenger__main__content",
+        "contentVar": "messenger/messengerContent/messengerContent",
+        "chatItems": [
+            {
+                "avatarClass":"avatar avatar_s",
+                "buddyNameText":"Rashid","messageText":"Say hello",
+                "lastMessageTime":"13:23","newMessageCounter":1
+            }
+        ],
+        "avatarClass":"avatar avatar_s",
+        "buttonClass":"button button_s",
+        "link":"#",
+        "linkClass":"link",
+        "buddyNameText":"Rashid",
+        "messages":[
+            {"sender":"You","messageText":"Helloddff","delivered":true,"messageTime":"13:23"},
+            {"sender":"Buddy","messageText":"Say hello","delivered":true,"messageTime":"13:23"},
+            {"sender":"You","messageText":"Helloddff","delivered":false,"messageTime":"13:23"}
+        ],
+        "sendButton":{
+            "buttonClass": "button_s send_button",
+            "link":"../500/500.hbs"
+        },
+        "attachButton": {
+           "buttonClass": "button_s attach_button",
+            "link":"../500/500.hbs"
+        },
+        "messageInput": {
+            "inputClass":"sender_form__message_input",
+            "inputType":"text",
+            "inputName":"message"
+        },
+        "searchInput": {
+            "inputClass":"messenger__search_input",
+            "inputType":"text",
+            "inputName":"search_input",
+            "placeholder":"search buddy"
+        },
+        "newBuddyButton": {
+            "buttonClass": "button_s new_buddy_button",
+            "link":"../404/404.hbs"
+        },
+        "removeBuddyButton": {
+            "buttonClass": "button_s remove_buddy_button",
+            "link":"../404/404.hbs"
+        }
+        ,
+        "settingsButton": {
+            "buttonClass": "button_s settings_button",
+            "link":"../profile/profile.hbs"
+        }
+}

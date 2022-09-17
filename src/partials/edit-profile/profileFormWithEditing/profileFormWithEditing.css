@@ -1,0 +1,7 @@
+.edit_profile__profile_form_with_editing {
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}

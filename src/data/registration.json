@@ -1,0 +1,79 @@
+{
+     "contentClass":"registration__main__content",
+     "contentVar": "registration/registrationContent/registrationContent",
+
+    "emailField": {
+         "formFieldClass":"email__field",
+         "headingClass":"heading_m",
+         "headingText":"e-mail",
+         "inputClass":"registration_form__email_input",
+         "inputType":"email",
+         "inputName":"email"
+    },
+     "phoneField": {
+     "formFieldClass":"phone__field",
+     "headingClass":"heading_m",
+     "headingText":"#phone",
+     "inputClass":"registration_form__phone_input",
+     "inputType":"tel",
+     "inputName":"phone"
+     },
+     "firstNameField": {
+         "formFieldClass":"first_name__field",
+         "headingClass":"heading_m",
+         "headingText":"first name",
+         "inputClass":"registration_form__first_name_input",
+         "inputType":"text",
+         "inputName":"first_name"
+     },
+     "lastNameField": {
+         "formFieldClass":"last_name__field",
+         "headingClass":"heading_m",
+         "headingText":"last name",
+         "inputClass":"registration_form__last_name_input",
+         "inputType":"text",
+         "inputName":"second_name"
+     },
+     "passwordAgainField": {
+         "formFieldClass":"password__again__field",
+         "headingClass":"heading_m",
+         "headingText":"password again",
+         "inputClass":"registration_form__password_again_input",
+         "inputType":"password",
+         "inputName":"password"
+     },
+    "loginField": {
+         "formFieldClass":"login__field",
+         "headingClass":"heading_m",
+         "headingText":"login",
+         "inputClass":"login_form__login_input",
+         "inputType":"text",
+         "inputName":"login_input"
+    },
+    "passwordField": {
+         "formFieldClass":"password__field",
+         "headingClass":"heading_m",
+         "headingText":"password",
+         "inputClass":"login_form__password_input",
+         "inputType":"password",
+         "inputName":"password"
+    },
+    "registrationButton": {
+    "buttonClass": "registration_button",
+     "buttonText": "sing up",
+     "link":"../login/index.hbs"
+    },
+    "loginLink":{
+     "linkClass":"link_m",
+     "link":"../login/index.hbs",
+     "linkText": "sing in"
+    },
+    "registrationHeading":{
+     "headingClass":"heading_l",
+     "headingText": "sing up"
+    },
+    "logoHeading": {
+     "headingClass":"heading_m",
+     "headingText": "_homer"
+    }
+}

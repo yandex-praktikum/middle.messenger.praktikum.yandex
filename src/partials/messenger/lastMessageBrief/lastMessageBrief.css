@@ -1,0 +1,7 @@
+.chat_item__last_message_brief {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    height: 39px;
+    width: 111px;
+}

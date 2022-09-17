@@ -1,0 +1,81 @@
+@import './reset.css';
+@import './fonts.css';
+
+/* common components */
+@import '../layouts/desktop.css';
+@import '../partials/avatar/avatar.css';
+@import '../partials/button/button.css';
+@import '../partials/content/content.css';
+@import '../partials/heading/heading.css';
+@import '../partials/input/input.css';
+@import '../partials/link/link.css';
+@import '../partials/logo/logo.css';
+@import '../partials/formField/formField.css';
+@import '../partials/servicePage/servicePage.css';
+
+/* login components */
+@import '../partials/login/loginButton/loginButton.css';
+@import '../partials/login/loginField/loginField.css';
+@import '../partials/login/loginForm/loginForm.css';
+@import '../partials/login/loginContent/loginContent.css';
+@import '../partials/login/passwordField/passwordField.css';
+
+/* messenger components */
+@import '../partials/messenger/messageFeed/messageFeed.css';
+@import '../partials/messenger/buddyInfo/buddyInfo.css';
+@import '../partials/messenger/buddyName/buddyName.css';
+@import '../partials/messenger/buddyName/buddyName.css';
+@import '../partials/messenger/chatItem/chatItem.css';
+@import '../partials/messenger/chatBar/chatBar.css';
+@import '../partials/messenger/chatList/chatList.css';
+@import '../partials/messenger/lastMessageBrief/lastMessageBrief.css';
+@import '../partials/messenger/lastMessageStatus/lastMessageStatus.css';
+@import '../partials/messenger/message/message.css';
+@import '../partials/messenger/messageRow/messageRow.css';
+@import '../partials/messenger/messageText/messageText.css';
+@import '../partials/messenger/messageTextBrief/messageTextBrief.css';
+@import '../partials/messenger/messageTime/messageTime.css';
+@import '../partials/messenger/messageWindow/messageWindow.css';
+@import '../partials/messenger/attachButton/attachButton.css';
+@import '../partials/messenger/messageInput/messageInput.css';
+@import '../partials/messenger/newBuddyButton/newBuddyButton.css';
+@import '../partials/messenger/removeBuddyButton/removeBuddyButton.css';
+@import '../partials/messenger/searchInput/searchInput.css';
+@import '../partials/messenger/sendButton/sendButton.css';
+@import '../partials/messenger/settingsButton/settingsButton.css';
+@import '../partials/messenger/senderForm/senderForm.css';
+@import '../partials/messenger/messageFeed/messageFeed.css';
+@import '../partials/messenger/messengerContent/messengerContent.css';
+
+
+/* registration components */
+@import '../partials/registration/emailField/emailField.css';
+@import '../partials/registration/firstNameField/firstNameField.css';
+@import '../partials/registration/lastNameField/lastNameField.css';
+@import '../partials/registration/passwordAgainField/passwordAgainField.css';
+@import '../partials/registration/phoneField/phoneField.css';
+@import '../partials/registration/registrationButton/registrationButton.css';
+@import '../partials/registration/registrationContent/registrationContent.css';
+@import '../partials/registration/registrationForm/registrationForm.css';
+
+/* profile components */
+@import '../partials/profile/profileContent/profileContent.css';  
+@import '../partials/profile/chatNameField/chatNameField.css';  
+@import '../partials/profile/profileFormWithoutEditing/profileFormWithoutEditing.css';  
+
+/* edit-profile components */
+@import '../partials/edit-profile/editProfileContent/editProfileContent.css';  
+@import '../partials/edit-profile/saveButton/saveButton.css';  
+@import '../partials/edit-profile/profileFormWithEditing/profileFormWithEditing.css';
+@import '../partials/edit-profile/backToLink/backToLink.css';
+@import '../partials/uploadAvatar/uploadAvatar.css';
+
+/* edit-password components */
+@import '../partials/edit-password/editPasswordContent/editPasswordContent.css';  
+@import '../partials/edit-password/editPasswordForm/editPasswordForm.css';  
+@import '../partials/edit-password/newPasswordField/newPasswordField.css';  
+@import '../partials/edit-password/oldPasswordField/oldPasswordField.css';  
+
+:root {
+    --main-font:'Noto Sans Mono';
+}

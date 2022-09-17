@@ -1,0 +1,15 @@
+{
+    "serviceBackLink":{
+        "linkClass":"link_m service_back_link",
+        "link":"../messenger/messenger.hbs",
+        "linkText": "back to typing"
+    },
+    "servicePageHeading": {
+        "headingClass":"heading_xl service_heading",
+        "headingText": "Oops! Address is not existing"
+    },
+    "errorNumber": {
+        "headingClass":"heading_xl service_heading",
+        "headingText": "404"
+    }  
+}

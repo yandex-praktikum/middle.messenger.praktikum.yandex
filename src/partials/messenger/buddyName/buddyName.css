@@ -1,0 +1,9 @@
+.buddy_name {
+    height: 20px;
+    width: 111px;
+    font-family: var(--main-font);;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 21px;
+}

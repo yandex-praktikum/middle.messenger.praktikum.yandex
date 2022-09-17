@@ -1,0 +1,23 @@
+.input{
+    height: 20px;
+    width: 80%;
+    background: #EDEEE4;
+    border: 1px solid #9CADBD;
+    border-radius: 10px;
+    padding: 10px;
+}
+.input,
+.input::placeholder {
+    font-family: var(--main-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #767272;
+}
+
+.short {
+    width:60%;
+}
+

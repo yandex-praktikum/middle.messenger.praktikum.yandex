@@ -1,0 +1,39 @@
+{
+    "contentClass":"login__main__content",
+    "contentVar": "login/loginContent/loginContent",
+   "loginField": {
+        "formFieldClass":"login__field",
+        "headingClass":"heading_m",
+        "headingText":"login",
+        "inputClass":"login_form__login_input",
+        "inputType":"text",
+        "inputName":"login"
+   },
+   "passwordField": {
+        "formFieldClass":"password__field",
+        "headingClass":"heading_m",
+        "headingText":"password",
+        "inputClass":"login_form__password_input",
+        "inputType":"password",
+        "inputName":"password"
+   },
+   "loginButton": {
+    "buttonClass": "login_button",
+    "buttonText": "sing in",
+    "link":"../messenger/messenger.hbs"
+   },
+   "registrationLink":{
+    "linkClass":"link_m",
+    "link":"../registration/registration.hbs",
+    "linkText": "sing up"
+   },
+   "loginHeading":{
+    "headingClass":"heading_l",
+    "headingText": "sing in"
+   },
+   "logoHeading": {
+    "headingClass":"heading_m",
+    "headingText": "_homer"
+   }
+ 
+}

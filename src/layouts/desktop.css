@@ -1,0 +1,29 @@
+body {
+    width:100vw;
+    height: 100vh;
+    background: url(/static/background/background.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrapper {
+    margin: 0 auto;
+    width:80%;
+    height:100%;
+    max-width:1024px;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+}
+
+.main {
+    width:100%;
+    height:95%;
+    min-height:500px;
+    display:inherit;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
+

@@ -1,0 +1,25 @@
+.link:active,
+.link:hover,  
+.link {
+  text-decoration: none;
+  color: #000000;
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 400;
+  display:block;
+}
+
+.link_m {
+
+  font-size: 25px;
+  line-height: 31px;
+}
+
+.link_s {
+  font-size: 17px;
+  line-height: 22px;
+}
+
+.service_back_link {
+  color:white
+}

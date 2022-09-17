@@ -1,0 +1,23 @@
+.message {
+    max-width: 50%;
+    min-height: 25px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.mine_message {
+    background: #E8E0C3;
+    text-align:right;
+}
+
+.buddy_message {
+    background: #C3E8C9;
+    text-align:left;
+}
+
+.delivered {
+    box-shadow: 0px 4px 4px rgba(85, 222, 20, 0.6);
+}
+.undelivered {
+    box-shadow: 0px 4px 4px #3895C7;
+}

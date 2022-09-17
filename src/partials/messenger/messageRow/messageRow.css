@@ -1,0 +1,16 @@
+.message_window__message_row {
+    width: 100%;
+    height: auto;
+    display:flex;
+    align-items:center;
+    padding: 5px;
+}
+
+.mine_row {
+    justify-content: right;
+}
+
+.buddy_row {
+    justify-content: left;
+}
+
