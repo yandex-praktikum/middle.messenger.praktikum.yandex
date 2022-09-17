@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/pages/login/index.hbs --no-cache",
     "build": "parcel build ./src/pages/login/index.hbs --dist-dir ./dist/ --no-source-maps",
-    "start": "parcel build ./src/pages/login/index.hbs --dist-dir ./dist/ --no-source-maps && server.js"
+    "start": "parcel build ./src/pages/login/index.hbs --dist-dir ./dist/ --no-source-maps && node server.js"
   },
   "repository": {
     "type": "git",
