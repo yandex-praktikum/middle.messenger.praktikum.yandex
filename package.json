@@ -2,11 +2,15 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": ">=12"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/pages/login/index.hbs --no-cache",
     "build": "parcel build ./src/pages/login/index.hbs --dist-dir ./dist/ --no-source-maps",
-    "start": "parcel ./src/pages/login/index.hbs --open --port 3000 --dist-dir ./dist/ --no-source-maps"
+    "start": "parcel build ./src/pages/login/index.hbs --dist-dir ./dist/ --no-source-maps && server.js"
   },
   "repository": {
     "type": "git",
