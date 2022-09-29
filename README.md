@@ -3,7 +3,7 @@
 **Описание**  
 ...  
 [Прототип в Figma](https://www.figma.com/file/Q9deLsYNOyxQYDvkhhnaS4/Chat?node-id=10%3A2)  
-[Развёрнутый сайт в Netlify](https://transcendent-pavlova-5eb7f1.netlify.app)  
+[Развёрнутый сайт в Netlify](https://chic-beijinho-596b6d.netlify.app)  
 Реализованные шаблоны несколько отличаются от прототипа, так как в процессе реализации шаблонов (и стилей к ним) цветовая схема и некоторые элементы были изменены.
 
 **Запуск:**  
