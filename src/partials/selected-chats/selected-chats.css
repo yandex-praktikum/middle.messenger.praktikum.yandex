@@ -8,12 +8,13 @@
     border: 2px solid transparent;
     border-radius: 50%;
     user-select: none;
-    transition: transform 0.1ms linear;
+    transform: scale(1);
+    transition: transform 0.1s linear;
     cursor: pointer;
 
     &:hover {
       transform: scale(1.1);
-      transition: transform 0.1ms linear;
+      transition: transform 0.1s linear;
     }
   }
 
