@@ -1,0 +1,18 @@
+[
+	{
+		"online": false,
+		"avatarSrc": "../assets/images/avatars/alyona.png"
+	},
+	{
+		"online": false,
+		"avatarSrc": "../assets/images/avatars/pavel.png"
+	},
+	{
+		"online": false,
+		"avatarSrc": "../assets/images/avatars/lidia.png"
+	},
+	{
+		"online": true,
+		"avatarSrc": "../assets/images/avatars/sergei.png"
+	}
+]

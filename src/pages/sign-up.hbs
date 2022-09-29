@@ -1,0 +1,54 @@
+{{!< desktop }}
+
+<div class="sign-up">
+  <div class="sign-up__title">Регистрация</div>
+
+  <form name="form" action="" method="get" class="sign-up__form">
+    <div class="sign-up__input_wrapper">
+      <label for="login" class="sign-up__description">Логин</label>
+      <input name="login" type="text" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="first_name" class="sign-up__description">Имя</label>
+      <input name="first_name" type="text" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="second_name" class="sign-up__description">Фамилия</label>
+      <input name="second_name" type="text" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="display_name" class="sign-up__description">Отображаемое имя</label>
+      <input name="display_name" type="text" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="phone" class="sign-up__description">Номер телефона</label>
+      <input name="phone" type="tel" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="email" class="sign-up__description">Почта</label>
+      <input name="email" type="email" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper">
+      <label for="password" class="sign-up__description">Пароль</label>
+      <input name="password" type="password" class="sign-up__input input" />
+    </div>
+
+    <div class="sign-up__input_wrapper ">
+      <label for="password_again" class="sign-up__description">Пароль (повторно)</label>
+      <input
+        name="password_again"
+        type="password"
+        class="sign-up__input input"
+      />
+    </div>
+  </form>
+
+  <a href="chat.hbs" class="sign-up__link button-link">Зарегистрироваться</a>
+  <a href="sign-in.hbs" class="sign-up__link button-link">Войти</a>
+</div>

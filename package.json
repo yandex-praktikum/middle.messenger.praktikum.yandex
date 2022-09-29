@@ -1,0 +1,27 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "0.0.1",
+  "description": "simple chat",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/pages/*.hbs --port 3000 --no-cache",
+    "build": "parcel build src/pages/*.hbs",
+    "start": "npm run build && node server.js"
+  },
+  "author": "Александр К.",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "parcel": "^2.7.0",
+    "postcss": "^8.4.16",
+    "postcss-import": "^15.0.0",
+    "postcss-nested": "^5.0.6",
+    "postcss-simple-vars": "^7.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

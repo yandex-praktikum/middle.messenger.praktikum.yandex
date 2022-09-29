@@ -1,0 +1,32 @@
+.post-board {
+  display: flex;
+  flex-direction: row;
+
+  &__button_attach:active,
+  &__button_emoji:active,
+  &__button_send:active {
+    transform: scale(0.9);
+  }
+
+  &__button_attach {
+    background-image: url("../assets/images/icons/paper-clip.svg");
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  &__button_emoji {
+    background-image: url("../assets/images/icons/emoji.svg");
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  &__button_send {
+    border: 2px solid transparent;
+    background-image: url("../assets/images/icons/send.svg");
+  }
+
+  &__input {
+    width: 100%;
+    margin-left: 10px;
+  }
+}

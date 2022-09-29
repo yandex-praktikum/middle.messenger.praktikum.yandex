@@ -1,0 +1,25 @@
+{{!< desktop }}
+
+<div class="sign-in">
+  <div class="sign-in__title">Вход</div>
+  <div class="sign-in__warning">неверный логин или пароль</div>
+
+  <form name="form" action="./index.hbs" method="get" class="sign-in__form">
+    <div class="sign-in__wrapper_user">
+      <label for="login" class="sign-in__icon_user svg"></label>
+      <input
+        name="login"
+        type="text"
+        class="sign-in__input sign-in__input_margin_bottom input"
+      />
+    </div>
+
+    <div class="sign-in__wrapper_password">
+      <label for="password" class="sign-in__icon_password svg"></label>
+      <input name="password" type="password" class="sign-in__input input" />
+    </div>
+  </form>
+
+  <a href="chat.hbs" class="sign-in__link button-link">Войти</a>
+  <a href="sign-up.hbs" class="sign-in__link button-link">Зарегистрироваться</a>
+</div>

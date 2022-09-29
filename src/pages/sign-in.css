@@ -1,0 +1,60 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  gap: 10px;
+  background: $initial_background;
+  user-select: none;
+
+  &__title,
+  &__link {
+    width: 400px;
+  }
+
+  &__title {
+    font-size: $title_font-size;
+    text-align: center;
+    color: $input_color;
+  }
+
+  &__warning {
+    margin-top: -10px;
+    font-size: $description_font-size;
+    color: hsl(0, 70%, 50%);
+  }
+
+  &__wrapper_user {
+    display: flex;
+    padding-top: 10px;
+    border-top: 2px solid $line_color;
+  }
+
+  &__wrapper_password {
+    display: flex;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $line_color;
+  }
+
+  &__input {
+    width: 350px;
+  }
+
+  &__input_margin_bottom {
+    margin-bottom: 10px;
+  }
+
+  &__icon_user {
+    background-image: url("../assets/images/icons/user.svg");
+  }
+
+  &__icon_password {
+    background-image: url("../assets/images/icons/lock.svg");
+  }
+}

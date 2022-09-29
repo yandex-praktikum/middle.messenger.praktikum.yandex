@@ -1,0 +1,78 @@
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 10px;
+  margin-right: 10px;
+  background: $user-card_background;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-shadow: $user-card_box-shadow;
+  cursor: pointer;
+  gap: 10px;
+
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &:hover {
+    border: 2px solid $user-card_border-color;
+  }
+
+  &__avatar {
+    width: 70px;
+    height: 70px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 290px;
+    height: 70px;
+    gap: 2px;
+
+    &_display-name {
+      color: $display-name_color;
+      font-size: $text_font-size;
+    }
+
+    &_last-message {
+      height: 40px;
+      font-size: $description_font-size;
+      color: $last-message_color;
+      overflow: hidden;
+    }
+  }
+
+  &__overall-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 50px;
+    color: $overall-info_color;
+    font-size: $description_font-size;
+    gap: 5px;
+    user-select: none;
+
+    &_time {
+      display: flex;
+      align-items: center;
+      padding: 0 4px 0 4px;
+      background: $overall-info_background;
+      border-radius: 10px;
+    }
+
+    &_messages-number {
+      padding: 0 4px 0 4px;
+      background: $overall-info_background;
+      border-radius: 10px;
+    }
+  }
+}

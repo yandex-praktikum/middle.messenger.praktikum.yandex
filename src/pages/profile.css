@@ -1,0 +1,69 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: $initial_background;
+  user-select: none;
+
+  &__avatar {
+    width: 250px;
+    height: 250px;
+    font-size: $text_font-size;
+    background-image: url("../assets/images/avatars/owner.png");
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__avatar:hover {
+    filter: grayscale(100%);
+  }
+
+  &__avatar:hover:before {
+    content: "Изменить фотографию";
+  }
+
+  &__buttons-wrapper,
+  &__input_wrapper {
+    width: 400px;
+  }
+
+  &__warning {
+    font-size: $description_font-size;
+    color: hsl(0, 70%, 50%);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__input_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__description {
+    color: $input_color;
+    font-size: $description_font-size;
+    margin: 0 0 2px 8px;
+  }
+
+  &__input_wrapper_last {
+    border-bottom: 2px solid $line_color;
+    margin-bottom: 10px;
+    padding-bottom: 11px;
+  }
+
+  &__margin_top {
+    margin-top: 10px;
+  }
+}

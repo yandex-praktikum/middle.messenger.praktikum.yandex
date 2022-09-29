@@ -1,0 +1,19 @@
+<div class="selected-chats">
+  {{#each selected}}
+    {{#if avatarSrc}}
+      {{#if online}}
+        <img
+          class="selected-chats__avatar online"
+          src="{{{avatarSrc}}}"
+          alt="avatar"
+        />
+      {{else}}
+        <img
+          class="selected-chats__avatar offline"
+          src="{{{avatarSrc}}}"
+          alt="avatar"
+        />
+      {{/if}}
+    {{/if}}
+  {{/each}}
+</div>

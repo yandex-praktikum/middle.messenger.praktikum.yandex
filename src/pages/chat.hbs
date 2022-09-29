@@ -1,0 +1,21 @@
+{{!< desktop }}
+
+<main class="chat">
+	{{> users-board/users-board }}
+
+	<div class="chat__line"></div>
+
+	<div class="chat__chat-wrapper">
+		<div class="chat__selected-chats"> {{> selected-chats/selected-chats }} </div>
+
+		<div class="chat__chat-box scrollbar">
+			<div class="chat-box">
+				{{> chat-box/chat-box users.[0001] }}
+			</div>
+		</div>
+
+		<div class="chat__post-board">
+			{{> post-board/post-board }}
+		</div>
+	</div>
+</main>

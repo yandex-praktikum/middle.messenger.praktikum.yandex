@@ -1,0 +1,56 @@
+<div class="user-card">
+  {{#if avatarSrc}}
+    {{#if online}}
+      <img
+        class="user-card__avatar online"
+        src="{{{avatarSrc}}}"
+        alt="avatar"
+      />
+    {{else}}
+      <img
+        class="user-card__avatar offline"
+        src="{{{avatarSrc}}}"
+        alt="avatar"
+      />
+    {{/if}}
+  {{else}}
+    {{#if online}}
+      <img
+        class="user-card__avatar online"
+        src="../assets/images/avatars/empty.svg"
+        alt="avatar"
+      />
+    {{else}}
+      <img
+        class="user-card__avatar offline"
+        src="../assets/images/avatars/empty.svg"
+        alt="avatar"
+      />
+    {{/if}}
+  {{/if}}
+
+  <div class="user-card__user-info">
+    <div class="user-card__user-info_display-name">
+      {{{displayName}}}
+    </div>
+
+    {{#if lastMessage}}
+      <div class="user-card__user-info_last-message">
+        {{lastMessage}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="user-card__overall-info">
+    {{#if activeTime}}
+      <div class="user-card__overall-info_time">
+        {{{activeTime}}}
+      </div>
+    {{/if}}
+    {{#if receivedMessages}}
+      <div class="user-card__overall-info_messages-number">
+        {{receivedMessages}}
+      </div>
+    {{/if}}
+  </div>
+</div>

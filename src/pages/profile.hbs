@@ -1,0 +1,50 @@
+{{!< desktop }}
+
+<div class="profile">
+  <button name="avatar" class="profile__avatar"></button>
+
+  <form name="form" action="" method="get" class="profile__form">
+    <div class="profile__input_wrapper">
+      <label for="login" class="profile__description">Логин</label>
+      <input name="login" type="text" class="profile__input input" />
+    </div>
+
+    <div class="profile__input_wrapper">
+      <label for="first_name" class="profile__description">Имя</label>
+      <input name="first_name" type="text" class="profile__input input" />
+    </div>
+
+    <div class="profile__input_wrapper">
+      <label for="second_name" class="profile__description">Фамилия</label>
+      <input name="second_name" type="text" class="profile__input input" />
+    </div>
+
+    <div class="profile__input_wrapper">
+      <label for="display_name" class="profile__description">Отображаемое имя</label>
+      <input name="display_name" type="text" class="profile__input input" />
+    </div>
+
+    <div class="profile__input_wrapper">
+      <label for="phone" class="profile__description">Номер телефона</label>
+      <input name="phone" type="tel" class="profile__input input" />
+    </div>
+
+    <div class="profile__input_wrapper profile__input_wrapper_last">
+      <label for="email" class="profile__description">Почта</label>
+      <input name="email" type="email" class="profile__input input" />
+    </div>
+
+  </form>
+
+  <div class="profile__buttons-wrapper">
+    <a href="chat.hbs" class="button-link profile__margin_top">
+      Сохранить изменения
+    </a>
+    <a href="change-password.hbs" class="button-link profile__margin_top">
+      Изменить пароль
+    </a>
+    <a href="chat.hbs" class="button-link profile__margin_top">
+      Вернуться назад
+    </a>
+  </div>
+</div>

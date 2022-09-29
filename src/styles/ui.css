@@ -1,0 +1,75 @@
+.button-link {
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  font-family: "GolosTextWebRegular";
+  font-size: $text_font-size;
+  text-align: center;
+  text-decoration: none;
+  color: $input_color;
+  background: $scrollbar-thumb_background;
+  box-shadow: $box-shadow-1, $box-shadow-2, $box-shadow-3;
+  border-radius: 12px;
+  border-style: none;
+  appearance: button;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: $box-shadow-4, $box-shadow-5, $box-shadow-6;
+  }
+
+  &:focus {
+    outline: 1px solid red;
+    outline-style: solid;
+  }
+}
+
+.input {
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  font-family: "GolosTextWebRegular";
+  font-size: $text_font-size;
+  color: $input_color;
+  background: $input_background;
+  border-style: none;
+  border-radius: 12px;
+  box-shadow: $input_box-shadow;
+
+  &::selection {
+    background: hsl(303, 50%, 70%);
+    color: hsl(303, 10%, 15%);
+  }
+
+  &:focus {
+    outline: 1px solid hsl(303, 80%, 40%);
+  }
+}
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 25px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $scrollbar-track_background;
+    border: 11.5px solid $chat_background;
+    border-radius: 120px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scrollbar-thumb_background;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    border-radius: 120px;
+    box-shadow: $box-shadow-1, $box-shadow-2;
+  }
+}
+
+.svg {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  background-size: cover;
+  border-style: none;
+}

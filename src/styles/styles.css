@@ -1,0 +1,113 @@
+/* Переменные */
+@import "./variables.css";
+
+/* Пользовательский интерфейс */
+@import "./ui.css";
+
+/* Страницы */
+@import "../pages/change-password.css";
+@import "../pages/chat.css";
+@import "../pages/profile.css";
+@import "../pages/sign-in.css";
+@import "../pages/sign-up.css";
+
+/* Компоненты */
+@import "../partials/chat-box/chat-box.css";
+@import "../partials/message-box/message-box.css";
+@import "../partials/post-board/post-board.css";
+@import "../partials/selected-chats/selected-chats.css";
+@import "../partials/user-card/user-card.css";
+@import "../partials/users-board/users-board.css";
+
+/* Шрифт ParaType (http://www.paratype.com)*/
+@font-face {
+  font-family: "GolosTextWebRegular";
+  src: url("../fonts/Golos-Text_Regular.woff2") format("woff2"),
+    url("../fonts/Golos-Text_Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "GolosTextWebRegular";
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: $initial_background;
+  gap: 10px;
+
+  &__link {
+    width: 400px;
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  gap: 0.4vh;
+  background: $initial_background;
+  user-select: none;
+
+  &__name {
+    color: $input_color;
+    font-size: 2.58vw;
+    font-weight: bold;
+  }
+
+  &__description {
+    color: $input_color;
+  }
+
+  &__description,
+  &__link {
+    font-size: 2.04vw;
+    text-align: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: hsl(180, 55%, 45%);
+  }
+}
+
+.online {
+  background: $online_background;
+}
+
+.offline {
+  background: $offline_background;
+}
+
+.flex-align_right {
+  align-items: flex-end;
+}
+
+.taken {
+  margin-left: 8px;
+  color: $chat-message-taken_color;
+  background: $chat-message-taken_background;
+  box-shadow: $chat-message-taken_box-shadow;
+}
+
+.sended {
+  margin-right: 4px;
+  color: $chat-message-sended_color;
+  background: $chat-message-sended_background;
+  box-shadow: $chat-message-sended_box-shadow;
+}

@@ -1,0 +1,45 @@
+.users-board {
+  padding: 10px 10px 0 10px;
+  user-select: none;
+  gap: 10px;
+
+  &__control {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 90px;
+    left: 10px;
+    right: 537px;
+    height: 70px;
+    width: 527px;
+    margin: 12px 0 10px 0;
+    font-size: $text_font-size;
+    color: $last-message_color;
+    border-top: 2px solid $line_color;
+
+    &_button_change {
+      background-image: url("../assets/images/icons/search.svg");
+      cursor: pointer;
+    }
+
+    &_button_change:active {
+      transform: scale(0.9);
+    }
+
+    &_input {
+      width: 468px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    jystify-content: space-around;
+    flex-direction: column;
+    position: fixed;
+    top: 168px;
+    bottom: 10px;
+    padding: 4px 0 4px 0;
+    gap: 10px;
+    overflow: auto;
+  }
+}

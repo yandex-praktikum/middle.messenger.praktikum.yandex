@@ -1,0 +1,133 @@
+{
+  "0001": {
+    "online": false,
+    "avatarSrc": "../assets/images/avatars/lidia.png",
+    "displayName": "Лидия Дмитриева",
+    "activeTime": "12:10",
+    "receivedMessages": 0,
+    "lastMessage": "< Мы тебя дождёмся в любом случае)))",
+    "chatBox": [
+      {
+        "taken": false,
+        "time": "13:07",
+        "arrayMessages": ["Добрый день. ИД по СР2 проверена? Есть замечания?"],
+        "reaction": ""
+      },
+      {
+        "taken": true,
+        "time": "13:22",
+        "arrayMessages": [
+          "Проверена, есть замечания. Передам их по почте сегодня."
+        ],
+        "reaction": "&#128531;"
+      },
+      {
+        "taken": false,
+        "time": "13:23",
+        "arrayMessages": ["Что то серьёзное?"],
+        "reaction": ""
+      },
+      {
+        "taken": true,
+        "time": "13:23",
+        "arrayMessages": [
+          "Ничего серьёзного.",
+          "Отметки некоторых фундаментов не бьются с третьей ревизией РД."
+        ],
+        "reaction": ""
+      },
+      {
+        "taken": true,
+        "time": "13:24",
+        "arrayMessages": ["Также есть вопросы по ДК на арматуру."],
+        "reaction": ""
+      },
+      {
+        "taken": true,
+        "time": "13:25",
+        "arrayMessages": [
+          "Замечания по предписанию \"каркас фундамента операторной\" устранены?"
+        ],
+        "reaction": ""
+      },
+      {
+        "taken": false,
+        "time": "13:25",
+        "arrayMessages": ["Устранили ещё вчера. Можно закрывать."],
+        "reaction": "&#128077;&#129309;"
+      }
+    ]
+  },
+  "0002": {
+    "online": true,
+    "avatarSrc": "../assets/images/avatars/sergei.png",
+    "displayName": "Сергей Чехин (ТН)",
+    "activeTime": "недавно",
+    "receivedMessages": 0,
+    "lastMessage": "< Устранили ещё вчера. Можно закрывать."
+  },
+  "0003": {
+    "online": false,
+    "avatarSrc": "../assets/images/avatars/oleg.png",
+    "displayName": "Олег Н.",
+    "activeTime": "недавно",
+    "receivedMessages": 0,
+    "lastMessage": "> В выходные скорее всего."
+  },
+  "0004": {
+    "online": false,
+    "avatarSrc": "../assets/images/avatars/pavel.png",
+    "displayName": "Павел Беркут",
+    "activeTime": "08 сент.",
+    "receivedMessages": 0,
+    "lastMessage": "< ... неплохо. Я кстати там не был, но планирую побывать там если ..."
+  },
+  "0005": {
+    "online": true,
+    "avatarSrc": "../assets/images/avatars/nadezda.png",
+    "displayName": "Надежда (Москва)",
+    "activeTime": "Вт.",
+    "receivedMessages": 0,
+    "lastMessage": ""
+  },
+  "0006": {
+    "online": false,
+    "avatarSrc": "",
+    "displayName": "Дмитрий",
+    "activeTime": "11 сент.",
+    "receivedMessages": 5,
+    "lastMessage": "> Привет. Отгрузка в среду. Накладные в твоей почте."
+  },
+  "0007": {
+    "online": false,
+    "avatarSrc": "../assets/images/avatars/alyona.png",
+    "displayName": "Алёна Морозова",
+    "activeTime": "недавно",
+    "receivedMessages": 0,
+    "lastMessage": "< У меня аллергия. Так что мне не вариант 😬 А вообще было бы..."
+  },
+  "0008": {
+    "online": false,
+    "avatarSrc": "../assets/images/avatars/kseniya.png",
+    "displayName": "Ксения Евсеева",
+    "activeTime": "07:34",
+    "receivedMessages": 0,
+    "lastMessage": "> 😌"
+  },
+  "0009": {
+    "online": true,
+    "avatarSrc": "",
+    "displayName": "Мария Жукова",
+    "activeTime": "недавно",
+    "receivedMessages": 0,
+    "lastMessage": "< См. приложение."
+  },
+  "0010": {
+    "online": false,
+    "avatarSrc": "",
+    "displayName": "Виктор Воробьёв",
+    "activeTime": "12 авг.",
+    "receivedMessages": 0,
+    "lastMessage": "> Лады))"
+  }
+}

@@ -1,0 +1,47 @@
+.chat {
+  display: flex;
+  jystify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: $chat_background;
+  background-size: cover;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__line {
+    margin-left: 23px;
+    height: 100%;
+    border-right: 2px solid $line_color;
+  }
+
+  &__chat-wrapper {
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  &__selected-chats {
+    margin-top: 10px;
+  }
+
+  &__chat-box {
+    position: fixed;
+    top: 102px;
+    right: 0;
+    bottom: 72px;
+    left: 538px;
+    padding: 10px 0 10px 0;
+    border-top: 2px solid $line_color;
+    border-bottom: 2px solid $line_color;
+    overflow: auto;
+  }
+
+  &__post-board {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 538px;
+    padding: 10px 10px 10px 0;
+  }
+}

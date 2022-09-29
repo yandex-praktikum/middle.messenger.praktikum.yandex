@@ -1,0 +1,16 @@
+<div class="users-board">
+	<a href="profile.hbs" class="chat__link">
+		{{> "user-card/user-card" owner }}
+	</a>
+
+	<div class="users-board__control">
+		<button class="users-board__control_button_change svg"></button>
+		<input type="text" class="users-board__control_input input"/>
+	</div>
+
+	<div class="users-board__list scrollbar">
+		{{#each users}}
+			{{> "user-card/user-card" this }}
+		{{/each}}
+	</div>
+</div>
