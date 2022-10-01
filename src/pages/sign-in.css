@@ -19,7 +19,6 @@
   }
 
   &__title {
-    font-size: $title_font-size;
     text-align: center;
     color: $input_color;
   }
