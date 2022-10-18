@@ -1,0 +1,103 @@
+{{>index}}
+<main class="chat__main">
+<div class="ch__users_list">
+    <nav class="ch__div__profile">
+        <a href="/profile.hbs">profile</a>
+    </nav>
+    {{#each users}}
+        {{#if this.active}}
+        <div class="ch__contact_with_user ch__active__contact__user">
+            <div class="ch__div__img">
+                <img src="{{this.img}}" alt="img">
+            </div>
+            <div class="ch__user__and__message">
+                <span class="ch__list__user__name">{{this.name}}</span>
+                <span class="ch__last__message">{{this.lastMessage}}</span>
+            </div>
+            <div class="ch__lastTime__and__countNewMessage">
+                <div class="ch__lastTimeMessage__div">
+                    <span class="ch__last__time__message">{{this.lastTimeMessage}}</span>
+                </div>
+                <div class="ch__div__count__new__message">
+                </div>
+            </div>
+        </div>
+        {{else}}
+            {{#if this.user}}
+            <div class="ch__contact_with_user">
+                <div class="ch__div__img">
+                    <img src="{{this.img}}" alt="img">
+                </div>
+                <div class="ch__user__and__message">
+                <span class="ch__list__user__name">{{this.name}}</span>
+                <span class="ch__last__message">{{this.lastMessage}}</span>
+                </div>
+                <div class="ch__lastTime__and__countNewMessage">
+                    <div class="ch__lastTimeMessage__div">
+                        <span class="ch__last__time__message">{{this.lastTimeMessage}}</span>
+                    </div>
+                <div class="ch__div__count__new__message">
+                    <span class="ch__count__new__message">{{this.newMessage}}</span>
+                </div>
+                </div>
+            </div>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+</div>
+
+<div class="ch__div__chat">
+    <div class="ch__div__top__active__user">
+        <div class="ch__img__top__active__user">
+            <img src="#" alt="img">
+        </div>
+        <div class="ch__name__top__active__user">
+            <span class="ch__top__user__name">Karolina</span>
+        </div>
+    </div>
+
+    <div class="ch__div__messages">
+    {{#each users}}
+        {{#if this.messages}}
+            {{#each this.messages}}
+                {{#if this.img}}
+                    <div  class="ch__message_left ch__message">
+                        <span>{{this.message}}</span>
+                        <img src="{{this.img}}" alt="img" class="ch__img__chat">
+                        <span class="ch__time__message">{{this.time}}</span>
+                    </div>
+                {{else}}
+                    <div class="ch__message_left ch__message">
+                        <span>{{this.message}}</span>
+                        <span class="ch__time__message">{{this.time}}</span>
+                    </div>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    {{/each}}
+    {{#each users}}
+        {{#if this.mymessages}}
+            {{#each this.mymessages}}
+                {{#if this.img}}
+                    <div class="ch__message_right ch__message">
+                        <span>{{this.message}}</span>
+                        <img src="{{this.img}}" alt="img" class="ch__img__chat">
+                        <span class="ch__time__message">{{this.time}}</span>
+                    </div>
+                {{else}}
+                    <div class="ch__message_right ch__message">
+                        <span>{{this.message}}</span>
+                        <span class="ch__time__message">{{this.time}}</span>
+                    </div>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    {{/each}}
+    </div>
+
+    <div class="ch__div__send__message">
+        <input type="textarea" name="message" class="ch__textarea">
+        <input type="button" value="send" class="ch__send__button">
+    </div>
+</div>
+</main>

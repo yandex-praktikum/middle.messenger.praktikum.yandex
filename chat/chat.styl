@@ -1,0 +1,142 @@
+$color-1 = #343434
+$color-2 = #51b5c5
+$color-3 = #1c1c1c
+$color-4 = #38809D
+
+.chat__main
+    display flex
+    height 100%
+
+.ch__contact_with_user
+    padding 20px 0
+    width 300px
+    background-color $color-1
+    display flex
+    justify-content center
+    justify-content space-between
+    border-radius 10px
+    margin-top 10px
+    padding 0 2px
+
+.ch__div__img
+    display flex
+    align-items center
+    justify-content center
+    width 50px
+    height 50px
+    color silver
+    border-radius 50%
+
+.ch__user__and__message
+    display flex
+    flex-direction column
+    justify-content flex-start
+    flex-grow 1
+
+.ch__lastTime__and__countNewMessage
+    display flex
+    flex-direction column
+
+.ch__div__count__new__message
+    display flex
+    margin auto
+
+.ch__count__new__message
+    background-color $color-2
+    width 20px
+    height 20px
+    border-radius 50%
+    color $color-1
+    font-size 12px
+    text-align center
+    line-height 1.6
+
+.ch__last__message
+    color silver
+
+.ch__div__chat
+    display flex
+    flex-grow 1
+    font-size 20px
+    flex-direction column
+    padding 10px
+
+.ch__message_left
+    align-self flex-start
+
+.ch__message_right
+    align-self flex-end
+
+.ch__message
+    display flex
+    flex-direction column
+    background-color $color-1
+    border-radius 10px
+    padding 10px
+    color silver
+
+    +.ch__message
+        margin-top 10px
+
+.ch__time__message
+    font-size 10px
+    align-self center
+    margin-bottom -8px
+
+.ch__top__user__name
+.ch__list__user__name
+    color white
+
+.ch__last__time__message
+    color silver
+
+.ch__div__top__active__user
+    display flex
+    justify-content center
+
+.ch__img__top__active__user
+    color silver
+
+.ch__name__top__active__user
+    margin-left 5px
+
+.ch__div__messages
+    padding 10px 0px
+    display flex
+    flex-direction column
+    font-size 20px
+    flex-grow 1
+
+.ch__img__chat
+    max-width 200px
+    padding 10px
+
+.ch__active__contact__user
+    border 2px solid silver
+
+.ch__textarea
+    background-color $color-1
+    color white
+    outline none
+    border-color $color-1
+    border none
+    border-radius 10px 10px 0 0
+    flex-grow 1
+    height 50px
+
+.ch__send__button
+    background-color $color-2
+    color $color-3
+    border none
+    border-radius 0 0 10px 10px
+
+.ch__div__send__message
+    display flex
+    flex-direction column
+    padding-bottom 50px
+
+.ch__div__profile
+    text-align right
+
+    a
+        color $color-4
