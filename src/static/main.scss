@@ -1,0 +1,45 @@
+
+body {
+    
+    color: rgb(1, 1, 219);
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+}
+  
+* {
+    box-sizing: border-box;
+    font-weight: normal;
+    margin: 0;
+}
+
+nav{
+    
+    ul{
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+    }
+
+    li{
+        display: block;
+    }
+
+    a{
+        text-decoration: none;
+      
+        &:hover {
+          text-decoration: underline;
+        }
+    }   
+
+
+}
+  
+input,
+button,
+textarea,
+select {
+    margin: 0;
+    font: inherit;
+    border: none;
+}

@@ -1,0 +1,41 @@
+---
+formData:
+    fields: 
+        - 
+            label: 'First name'
+            type: 'text'
+            placeholder: 'Enter your first name'
+        - 
+            label: 'Second name'
+            type: 'text'
+            placeholder: 'Enter your second name'
+        - 
+            label: 'Login'
+            type: 'text'
+            placeholder: 'Enter your login'
+        - 
+            label: 'Email'
+            type: 'text'
+            placeholder: 'Enter your email'
+        - 
+            label: 'Password'
+            type: 'password'
+            placeholder: 'Enter your password'
+        - 
+            label: 'Repeat password'
+            type: 'password'
+            placeholder: 'Repeat your password'
+    buttons:
+        -
+            type: 'submit'
+            modifier: 'primary'
+            text: 'Sign up'
+---
+
+
+<div>
+    <div class="logo" ></div>
+    <h1 class="title">Registration</h1>
+    {{> 'form/form' formData }}
+    back to<a href="./">  main page</a>
+</div>

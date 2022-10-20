@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Sprint_1",
+ 
+  "scripts": {
+    "start": "parcel src/pages/index.hbs -p 3000",
+    "build": "parcel build src/pages/index.hbs"
+    
+
+  },
+  "engines": {
+    "node": "12.22.9"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/transformer-inline-string": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7",
+    "parcel": "^2.7.0",
+    "parcel-transformer-hbs": "^1.0.4",
+    "sass": "^1.55.0"
+  }
+}
