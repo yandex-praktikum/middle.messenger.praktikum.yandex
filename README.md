@@ -1,16 +1,19 @@
+## Описание проекта
+
+Чат для общения в реальном времени.
+
 ## Установка
 
-Устанавливаем зависимости
-npm i
-
-Для работы испольуем:
-npm run build - создает сборку
-npm run start - запускаем на порту 3000
-node server.js - запускаем на сервере, порт 4000
+- `npm install` - установка зависимостей.
+- `npm run dev` - запуск проекта в режиме разработки.
+- `npm run build` - запуск сборки проекта.
+- `npm run start` - запуск проекта на сервере.
 
 
-### Ссылка на фигму
+## Ссылка на макет в figma
+
 https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
 
-### Ссылка на netlify
+## Ссылка на netlify
+
 https://tranquil-begonia-c74af7.netlify.app

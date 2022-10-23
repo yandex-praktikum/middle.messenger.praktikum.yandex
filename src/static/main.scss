@@ -1,38 +1,53 @@
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap';
 
-body {
-    
-    color: rgb(1, 1, 219);
-    font-family: 'Inter', sans-serif;
-    background: #fff;
+:root {
+    --darkBlue: rgb(9, 9, 80);
+    --white: #d8d8e7;
 }
-  
+
 * {
     box-sizing: border-box;
     font-weight: normal;
     margin: 0;
 }
 
-nav{
-    
-    ul{
-        margin: 0 auto;
-        padding: 0;
-        list-style: none;
-    }
+body {
+    font-family: 'Poppins';
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color:  var(--darkBlue);
+}
+.container {
+    background-color:  var(--darkBlue);
+}
 
-    li{
+
+h1, h2, h3, h4, h5, h6{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+  }
+
+.menu{
+        
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    &__item {
         display: block;
-    }
+    };
+    
+    &__link {   
+        color: aqua;
+    text-decoration: none;
 
-    a{
-        text-decoration: none;
-      
         &:hover {
-          text-decoration: underline;
+            color: whitesmoke;
+            text-decoration: underline;
         }
-    }   
-
-
+    }
 }
   
 input,
