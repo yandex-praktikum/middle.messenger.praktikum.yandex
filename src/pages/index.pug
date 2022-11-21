@@ -1,0 +1,17 @@
+extends ../layout/layout.pug
+
+block styles
+    link(rel="stylesheet", href="./main.sass")
+
+block content
+    .modal
+        .title Messenger
+        form
+            .modal-bottom
+                a.nav(href="./authorization/authorization.pug") Авторизация
+                a.nav(href="./registration/registration.pug") Регистрация
+                a.nav(href="./chats/chats.pug") Выбрать Чат и Поиск
+                a.nav(href="./messages/messages.pug") Чат и Поиск
+                a.nav(href="./profile/profile.pug") Профиль
+                a.nav(href="./data-change/data-change.pug") Изменить данные
+                a.nav(href="./password-change/password-change.pug") Изменить пароль

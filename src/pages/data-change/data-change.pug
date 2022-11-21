@@ -1,0 +1,8 @@
+extends ../../layout/layout.pug
+
+block styles
+	link(rel="stylesheet" href="./data-change.sass")
+
+block content
+	include ../../components/data-change/template.pug
+	script(src="../../components/data-change/index.ts")

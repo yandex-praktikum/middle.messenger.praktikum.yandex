@@ -1,0 +1,13 @@
+extends ../../layout/layout.pug
+
+block styles
+	link(rel="stylesheet" href="./messages.sass")
+
+block content
+	.site-wrapper.left-panel
+		aside
+			include ../../components/left-panel/template.pug
+			script(src='../../components/left-panel/index.ts')
+		main
+			include ../../components/main-content/template.pug
+			script(src="../../components/main-content/index.ts")
