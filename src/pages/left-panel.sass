@@ -1,0 +1,235 @@
+@import main
+
+aside
+	width: 100%
+	height: 100vh
+	background-color: var(--chat-bg)
+	--leftheight: 102px
+	border-right: 1px solid var(--line)
+
+	header
+		display: flex
+		flex-direction: column
+		height: 100px
+		justify-content: space-between
+		align-items: center
+		padding: 10px
+		border-bottom: 1px solid var(--line)
+
+		a.profile
+			align-self: flex-end
+			justify-self: end
+			display: flex
+			align-items: center
+			color: var(--grey-text)
+			font-size: 12px
+			line-height: 12px
+		.arrow-profile
+			padding-left: 8px
+			align-self: end
+
+		.search-line
+			border-radius: 5px
+			align-self: center
+			width: 290px
+			height: 32px
+			display: grid
+			grid-template-areas: "search"
+
+			input
+				grid-area: search
+				background: rgba(70, 70, 70, 0.05)
+				border-radius: 5px
+				font-size: 14px
+				font-weight: bold
+				line-height: 1
+				height: 30px
+				padding: 0 8px 0 27px
+				z-index: 2
+
+			.search-background
+				background: var(--search)
+				grid-area: search
+				height: 30px
+				font-size: 14px
+				line-height: 1
+				display: flex
+				align-items: center
+				justify-content: center
+				z-index: 1
+
+				img
+					margin-right: 5px
+
+				span
+					opacity: 1
+
+			.search-icon
+				display: none
+				grid-area: search
+				align-self: center
+				width: 14px
+				margin-left: 10px
+				z-index: 3
+
+			input:focus,
+			input.with-text
+				& ~ .search-background
+					display: none
+				& ~ .search-icon
+					display: block
+
+.search-results
+	display: none
+	margin-top: 5px
+	overflow-y: auto
+	overscroll-behavior: contain
+	height: calc(100% - var(--leftheight) - 5px)
+
+	&.visible
+		display: block
+
+		& ~ .container
+			display: none
+
+	.search-result
+		display: grid
+		grid-template-columns: 45px 1fr 60px
+		grid-auto-rows: auto
+		grid-template-areas: "avatar author time" "avatar message counter"
+		gap: 5px 0
+		cursor: pointer
+
+		&:nth-child(4n - 3)
+			padding: 10px
+
+		&:hover, &.open
+			background-color: var(--item-bg)
+		
+		&.unread-0 .search-result__message
+			font-weight: normal
+
+		&__avatar
+			grid-area: avatar
+			@include Avatar
+
+		&__time
+			grid-area: time
+			font-size: 10px
+			line-height: 10px
+			justify-self: end
+			color: var(--grey-text)
+
+		&__author, &__message
+			padding-left: 10px
+
+		&__author
+			@include Name
+
+		&__message
+			grid-area: message
+			font-size: 12px
+			line-height: 15px
+			color: var(--grey-text)
+			font-weight: 500
+
+		&__unread-count
+			grid-area: counter
+			align-self: end
+			justify-self: end
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 20px
+			height: 20px
+			background-color: var(--blue)
+			border-radius: 50%
+			color: var(--white)
+			font-size: 11px
+			line-height: 12px
+			font-weight: 500
+
+			&.hidden
+				display: none
+
+		&__separate-line
+			background-color: var(--line)
+			height: 1px
+			margin: 5px 10px
+
+		&__wrapper:last-child .search-result__separate-line
+			display: none
+
+.container
+	margin-top: 5px
+	overflow-y: auto
+	overscroll-behavior: contain
+	height: calc(100% - var(--leftheight) - 5px)
+
+	.chat
+		display: grid
+		grid-template-columns: 45px 1fr 60px
+		grid-auto-rows: auto
+		grid-template-areas: "avatar author time" "avatar message counter"
+		gap: 5px 0
+		cursor: pointer
+
+		&:nth-child(4n - 3)
+			padding: 10px
+
+		&:hover, &.open
+			background-color: var(--item-bg)
+
+		&.unread-0 .chat__message
+			font-weight: normal
+
+		&__avatar
+			grid-area: avatar
+			@include Avatar
+
+		&__time
+			grid-area: time
+			font-size: 10px
+			line-height: 1
+			justify-self: end
+			color: var(--grey-text)
+
+		&__author, &__message
+			padding-left: 10px
+
+		&__author
+			@include Name
+
+		&__message
+			grid-area: message
+			font-size: 12px
+			line-height: 15px
+			color: var(--grey-text)
+			font-weight: 500
+
+		&__unread-count
+			grid-area: counter
+			align-self: end
+			justify-self: end
+			display: flex
+			align-items: center
+			justify-content: center
+			width: 20px
+			height: 20px
+			background-color: var(--blue)
+			border-radius: 50%
+			color: var(--white)
+			font-size: 11px
+			line-height: 12px
+			font-weight: 500
+
+			&.hidden
+				display: none
+
+		&__separate-line
+			background-color: var(--line)
+			height: 1px
+			margin: 5px 0px
+
+		&__wrapper:last-child .chat__separate-line
+			display: none

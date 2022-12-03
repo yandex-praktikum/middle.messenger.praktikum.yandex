@@ -1,0 +1,235 @@
+@import ../left-panel
+
+@mixin Dropmenu
+	border: 1px solid transparent
+	display: none
+	list-style-type: none
+	position: absolute
+	background-color: var(--white)
+	padding: 20px
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14)
+	border-radius: 12px
+	z-index: 3
+
+	&:hover
+		border: 1px solid var(--blue)
+
+	li
+		display: flex
+		align-items: center
+		font-weight: 500
+		font-size: 12px
+		line-height: 14px
+		cursor: pointer
+		padding: 5px
+		border-bottom: 1px solid transparent
+
+		&:not(:last-child)
+			margin-bottom: 5px
+
+		&:hover
+			border-bottom: 1px solid var(--blue)
+
+		img
+			margin-right: 10px
+
+.main-content
+	&__parent
+		padding: 0px 20px
+		border-radius: 10px
+		height: calc(100% - 20px)
+		display: grid
+		grid-template-columns: 100%
+		grid-template-rows: 67px 1fr 57px
+		grid-template-areas: "header" "body" "input"
+		gap: 0
+
+	&__info
+		grid-area: header
+		display: flex
+		align-items: center
+		border-bottom: 1px solid var(--line)
+		position: relative
+
+		.avatar
+			@include Avatar
+			width: 34px
+			height: 34px
+
+		.name
+			padding-left: 10px
+			@include Name
+
+		.drop-down__icon
+			width: 24px
+			height: 45px
+			margin-left: auto
+			display: flex
+			align-items: center
+			justify-content: center
+			cursor: pointer
+
+			&.open	
+				& ~ .drop-down__menu
+					display: block
+
+		.drop-down__menu
+			@include Dropmenu
+			top: calc(100% + 10px)
+			right: 0
+
+	&__input-area
+		grid-area: input
+		display: grid
+		grid-template-columns: 25px 1fr 35px
+		grid-auto-rows: auto
+		align-items: center
+		border-top: 1px solid var(--line)
+		position: relative
+
+		.attach, .send-message
+			display: flex
+			align-items: center
+			justify-content: center
+			cursor: pointer
+
+		.attach
+			height: 25px
+			filter: grayscale(100%) contrast(0)
+
+			&.open
+				filter: none
+
+				&~ .attach-menu
+					display: block
+
+		input
+			background-color: var(--search)
+			color: var(--grey-text)
+			height: 32px
+			border-radius: 30px
+			padding: 10px 20px
+			font-size: 12px
+			line-height: 12px
+			margin: 0 10px
+
+		.send-message
+			background-color: var(--blue)
+			width: 28px
+			height: 28px
+			border-radius: 50%
+
+		.attach-menu
+			@include Dropmenu
+			left: 0
+			bottom: 60px
+
+
+	&__chat
+		grid-area: body
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		overflow-y: auto
+		height: calc(100vh - 144px)
+
+		.chat__message
+			margin-bottom: 20px
+
+			&:first-child
+				margin-top: 50px
+
+			&:last-child
+				margin-bottom: 30px
+
+		.date
+			margin: 20px auto
+			color: var(--grey-text)
+			font-size: 12px
+			line-height: 12px
+			font-weight: 500
+
+		.text, .image
+			border-radius: 10px
+			display: grid
+			grid-template-columns: 100%
+			grid-template-rows: auto
+			grid-template-areas: "message"
+			max-width: 393px
+
+		.text
+			background-color: var(--message-bg)
+			padding: 10px
+
+			&.is-my-message
+				background-color: var(--my-message-bg)
+				align-self: flex-end
+				max-width: 350px
+
+		.image
+			overflow: hidden
+			grid-template-rows: 220px
+			min-height: 211px
+
+			.chat-message__status
+				transform: translate(-5px, -15px)
+
+		.chat-message__text
+			grid-area: message
+			font-size: 12px
+			line-height: 15px
+			z-index: 1
+
+		.chat-message__image
+			font-size: 0
+			grid-area: message
+			z-index: 1
+
+		.chat-message__status
+			grid-area: message
+			margin-top: 10px
+			z-index: 2
+			align-self: end
+			justify-self: end
+			display: flex
+			align-items: center
+			transform: translate(5px, 5px)
+
+			.status
+				margin-right: 7px
+				align-items: center
+				display: none
+
+				&.visible
+					display: flex
+					font-size: 10px
+
+			.chat-message__time
+				font-size: 9px
+				line-height: 11px
+				font-weight: 500
+				color: var(--grey-text)
+
+			.grey-bg
+				background-color: var(--time-bg)
+				color: var(--white)
+				padding: 1px 5px
+				border-radius: 6px
+				
+
+.chat-action-popup
+	display: none
+	background-color: rgba(0, 0, 0, 0.3)
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100vh
+	z-index: 4
+	cursor: pointer
+
+	&.open
+		display: block
+
+
+

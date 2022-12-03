@@ -4,7 +4,6 @@
 #        that is where we will look for package.json/.nvmrc/etc, not repo root!
 # “command” is your build command.
 # “publish” is the directory to publish (relative to the root of your repo).
-
+# publish = "dist"
 [build]
-  publish = "dist"
-  
+  command = "npm run start"

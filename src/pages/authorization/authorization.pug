@@ -1,0 +1,8 @@
+extends ../../layout/layout.pug
+
+block styles
+	link(rel="stylesheet", href="./authorization.sass")
+
+block content
+	include ../../components/authorization/template.pug
+	script(src="../../components/authorization/index.ts")
