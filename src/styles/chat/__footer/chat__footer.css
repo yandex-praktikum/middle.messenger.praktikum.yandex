@@ -1,0 +1,8 @@
+.chat__footer{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    color: $black-main;
+    padding: 12px 16px;
+    background: $black-main;
+}

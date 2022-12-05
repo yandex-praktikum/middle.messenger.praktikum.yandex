@@ -1,0 +1,7 @@
+.auth{
+    background: $red-light;
+    padding: 24px 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px $gray-dark;
+    width: 300px
+}
