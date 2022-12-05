@@ -1,0 +1,14 @@
+.chat-list__item{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: $gray-light;
+    margin-bottom: 8px;
+}
+.chat-list__item:hover{
+    outline: 2px solid $black-main;
+    cursor: pointer;
+}

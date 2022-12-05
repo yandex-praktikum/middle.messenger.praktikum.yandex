@@ -1,0 +1,6 @@
+.chat-list__item-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 16px;
+}

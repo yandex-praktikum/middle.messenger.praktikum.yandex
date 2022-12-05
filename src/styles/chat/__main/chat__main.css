@@ -1,0 +1,10 @@
+.chat__main{
+    width: 100%;
+    flex-grow: 1;
+    padding: 16px 24px;
+    overflow: scroll;
+    flex-basis: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}

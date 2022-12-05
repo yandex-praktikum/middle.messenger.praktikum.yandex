@@ -1,0 +1,8 @@
+.avatar__button{
+   padding: 0;
+    margin-right: 16px;
+    border-radius: 50%;
+}
+.avatar__button:hover{
+    outline: 3px solid $gray-main;
+}

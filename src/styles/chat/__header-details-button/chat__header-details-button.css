@@ -1,0 +1,7 @@
+.chat__header-details-button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: url("../asserts/images/details.svg") 100%/30px no-repeat, white;
+    margin-left: auto;
+}

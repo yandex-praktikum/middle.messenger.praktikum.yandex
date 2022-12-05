@@ -1,0 +1,6 @@
+.chat__footer-add-button{
+    width: 30px;
+    height: 30px;
+    background: url("../asserts/images/add-icon.svg")100%/30px no-repeat;
+    margin-right: 16px;
+}

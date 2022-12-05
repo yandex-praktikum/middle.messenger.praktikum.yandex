@@ -1,0 +1,5 @@
+.chat__footer-input{
+    flex-grow: 1;
+    border-radius: 20px;
+    background: $gray-light;
+}

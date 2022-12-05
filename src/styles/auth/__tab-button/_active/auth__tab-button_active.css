@@ -1,0 +1,4 @@
+.auth__tab-button_active{
+    background-color: $black-main;
+    color: $white-main;
+}

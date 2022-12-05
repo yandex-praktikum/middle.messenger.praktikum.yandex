@@ -1,0 +1,9 @@
+.chat__header{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    padding: 8px 16px;
+    background: $black-main;
+}

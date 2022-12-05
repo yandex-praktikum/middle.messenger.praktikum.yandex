@@ -1,0 +1,7 @@
+.chat-list{
+    min-width: 350px;
+    background: $red-light;
+    height: 100vh;
+    padding: 24px 16px;
+    overflow: hidden;
+}

@@ -1,0 +1,18 @@
+.chat__dialog-cursor{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    bottom: 0;
+    right: -15px;
+    background: white;
+}
+.chat__dialog-cursor:after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    bottom: 1px;
+}

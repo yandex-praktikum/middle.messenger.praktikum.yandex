@@ -1,0 +1,12 @@
+.auth__tab-button{
+    width: 50%;
+    border-radius: 16px;
+    background-color: inherit;
+
+}
+.auth__tab-button:first-child{
+    margin-right: 4px;
+}
+.auth__tab-button:last-child{
+    margin-left: 4px;
+}
