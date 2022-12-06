@@ -1,3 +1,6 @@
 <button class="avatar__button">
-    {{>'avatar' text=text}}
+    {{>"avatar" text=text}}
+    {{#if edit}}
+        <div class="avatar__edit-button fx-center">Edit</div>
+    {{/if}}
 </button>

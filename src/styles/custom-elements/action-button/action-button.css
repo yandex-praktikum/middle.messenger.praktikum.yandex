@@ -1,0 +1,11 @@
+.action-button{
+    width: 100%;
+    background-color: $black-main;
+    color: white;
+    height: 48px;
+    margin-top: 24px;
+}
+.action-button:hover{
+    background-color: $black-main;
+    box-shadow: 0 0 4px $black-main;
+}

@@ -6,3 +6,27 @@ $gray-dark: #707070;
 $red-light: #fd6e50;
 $red-main: #ff5733;
 $red-dark: #fd3b11;
+
+.mb24{
+    margin-bottom: 24px;
+}
+.mr16{
+    margin-right: 16px;
+}
+.jst-center{
+    display: flex;
+    justify-content: center;
+}
+.aln-center{
+    display: flex;
+    align-items: center;
+}
+.fx-col{
+    display: flex;
+    flex-direction: column;
+}
+.fx-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

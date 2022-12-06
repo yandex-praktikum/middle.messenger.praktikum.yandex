@@ -1,3 +1,32 @@
+.mb24 {
+  margin-bottom: 24px;
+}
+
+.mr16 {
+  margin-right: 16px;
+}
+
+.jst-center {
+  justify-content: center;
+  display: flex;
+}
+
+.aln-center {
+  align-items: center;
+  display: flex;
+}
+
+.fx-col {
+  flex-direction: column;
+  display: flex;
+}
+
+.fx-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   line-height: 1.15;
@@ -265,23 +294,7 @@ template, [hidden] {
 
 .auth {
   width: 300px;
-  background: #fd6e50;
-  border-radius: 12px;
-  padding: 24px 24px 32px;
   box-shadow: 0 0 8px #707070;
-}
-
-.auth__action-button {
-  width: 100%;
-  color: #fff;
-  height: 48px;
-  background-color: #282828;
-  margin-top: 24px;
-}
-
-.auth__action-button:hover {
-  background-color: #282828;
-  box-shadow: 0 0 4px #282828;
 }
 
 .auth__tab-button {
@@ -307,47 +320,6 @@ template, [hidden] {
   justify-content: center;
   margin-bottom: 32px;
   display: flex;
-}
-
-.form-item {
-  margin-bottom: 16px;
-}
-
-.form-item:last-child {
-  margin-bottom: 0;
-}
-
-.form-item__input {
-  width: 100%;
-  height: 40px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 8px;
-}
-
-.avatar {
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  display: flex;
-}
-
-.avatar__button {
-  border-radius: 50%;
-  margin-right: 16px;
-  padding: 0;
-}
-
-.avatar__button:hover {
-  outline: 3px solid #b8b8b8;
-}
-
-.avatar__text {
-  color: #707070;
 }
 
 .main {
@@ -447,23 +419,6 @@ template, [hidden] {
   max-width: 170px;
   font-size: 14px;
   overflow: hidden;
-}
-
-.search-bar {
-  width: 100%;
-  background: url("search.d5c47853.svg") 100% / 30px no-repeat;
-}
-
-.search-bar__input {
-  width: calc(100% - 50px);
-  height: 30px;
-}
-
-.time {
-  color: #707070;
-  font-family: Orbitron;
-  font-size: 12px;
-  font-weight: 400;
 }
 
 .chat {
@@ -571,6 +526,164 @@ template, [hidden] {
   height: 30px;
   background: url("send.087d3523.svg") 100% / 30px no-repeat;
   margin-left: 16px;
+}
+
+.profile {
+  width: 400px;
+  min-height: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-404__text {
+  font-size: 22px;
+}
+
+.page-404__button {
+  color: #f0f0f0;
+  width: 100%;
+  height: 48px;
+  text-transform: uppercase;
+  background: #282828;
+  font-size: 20px;
+}
+
+.page-404__image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.page-404__title {
+  font-family: Orbitron;
+  font-size: 100px;
+}
+
+.form-item {
+  margin-bottom: 16px;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-item__input {
+  width: 100%;
+  height: 40px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-item__input-container {
+  width: 100%;
+  flex-wrap: nowrap;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.form-item__button-container {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  display: flex;
+}
+
+.avatar__button {
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+}
+
+.avatar__button:hover {
+  outline: 3px solid #282828;
+}
+
+.avatar__edit-button {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0;
+  background: #282828;
+  border-radius: 50%;
+  font-family: Orbitron;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+}
+
+.avatar__edit-button:hover {
+  opacity: 1;
+}
+
+.avatar__text {
+  color: #707070;
+}
+
+.search-bar {
+  width: 100%;
+  background: url("search.d5c47853.svg") 100% / 30px no-repeat;
+}
+
+.search-bar__input {
+  width: calc(100% - 50px);
+  height: 30px;
+}
+
+.time {
+  color: #707070;
+  font-family: Orbitron;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.popup {
+  background: #282828e6;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.paper {
+  background: #fd6e50;
+  border-radius: 12px;
+  padding: 24px 24px 32px;
+}
+
+.action-button {
+  width: 100%;
+  color: #fff;
+  height: 48px;
+  background-color: #282828;
+  margin-top: 24px;
+}
+
+.action-button:hover {
+  background-color: #282828;
+  box-shadow: 0 0 4px #282828;
+}
+
+.icon-button {
+  background: inherit;
+  padding: 0;
+}
+
+.icon-button__image {
+  width: 30px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=signIn.ebeadb08.css.map */

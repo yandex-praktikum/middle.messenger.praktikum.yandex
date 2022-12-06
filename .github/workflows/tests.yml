@@ -8,7 +8,7 @@ on:
 
 jobs:
   sprint_1:
-    if: ${{github.head_ref == 'sprint_1'}}
+    if: ${{github.head_ref == "sprint_1"}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,7 +37,7 @@ jobs:
       run: node tests-second-floor/sprint_1/check_routing.js
       
   sprint_2:
-    if: ${{github.head_ref == 'sprint_2'}}
+    if: ${{github.head_ref == "sprint_2"}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -75,7 +75,7 @@ jobs:
       run: node tests-second-floor/sprint_2/check_stylelint.js
       
   sprint_3:
-    if: ${{github.head_ref == 'sprint_3'}}
+    if: ${{github.head_ref == "sprint_3"}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -96,7 +96,7 @@ jobs:
       run: bash tests-second-floor/sprint_3/run.sh
       
   sprint_4:
-    if: ${{github.head_ref == 'sprint_4'}}
+    if: ${{github.head_ref == "sprint_4"}}
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -9,27 +9,27 @@
 (function (modules, entry, mainEntry, parcelRequireName, globalName) {
   /* eslint-disable no-undef */
   var globalObject =
-    typeof globalThis !== 'undefined'
+    typeof globalThis !== "undefined"
       ? globalThis
-      : typeof self !== 'undefined'
+      : typeof self !== "undefined"
       ? self
-      : typeof window !== 'undefined'
+      : typeof window !== "undefined"
       ? window
-      : typeof global !== 'undefined'
+      : typeof global !== "undefined"
       ? global
       : {};
   /* eslint-enable no-undef */
 
   // Save the require from previous bundle to this closure if any
   var previousRequire =
-    typeof globalObject[parcelRequireName] === 'function' &&
+    typeof globalObject[parcelRequireName] === "function" &&
     globalObject[parcelRequireName];
 
   var cache = previousRequire.cache || {};
   // Do not use `require` to prevent Webpack from trying to bundle this call
   var nodeRequire =
-    typeof module !== 'undefined' &&
-    typeof module.require === 'function' &&
+    typeof module !== "undefined" &&
+    typeof module.require === "function" &&
     module.require.bind(module);
 
   function newRequire(name, jumped) {
@@ -39,14 +39,14 @@
         // cache jump to the current global require ie. the last bundle
         // that was added to the page.
         var currentRequire =
-          typeof globalObject[parcelRequireName] === 'function' &&
+          typeof globalObject[parcelRequireName] === "function" &&
           globalObject[parcelRequireName];
         if (!jumped && currentRequire) {
           return currentRequire(name, true);
         }
 
         // If there are other bundles on this page the require from the
-        // previous one is saved to 'previousRequire'. Repeat this as
+        // previous one is saved to "previousRequire". Repeat this as
         // many times as there are bundles until the module is found or
         // we exhaust the require chain.
         if (previousRequire) {
@@ -54,12 +54,12 @@
         }
 
         // Try the node require function if it exists.
-        if (nodeRequire && typeof name === 'string') {
+        if (nodeRequire && typeof name === "string") {
           return nodeRequire(name);
         }
 
-        var err = new Error("Cannot find module '" + name + "'");
-        err.code = 'MODULE_NOT_FOUND';
+        var err = new Error("Cannot find module "" + name + """);
+        err.code = "MODULE_NOT_FOUND";
         throw err;
       }
 
@@ -110,7 +110,7 @@
     ];
   };
 
-  Object.defineProperty(newRequire, 'root', {
+  Object.defineProperty(newRequire, "root", {
     get: function () {
       return globalObject[parcelRequireName];
     },
@@ -128,11 +128,11 @@
     var mainExports = newRequire(mainEntry);
 
     // CommonJS
-    if (typeof exports === 'object' && typeof module !== 'undefined') {
+    if (typeof exports === "object" && typeof module !== "undefined") {
       module.exports = mainExports;
 
       // RequireJS
-    } else if (typeof define === 'function' && define.amd) {
+    } else if (typeof define === "function" && define.amd) {
       define(function () {
         return mainExports;
       });
@@ -154,7 +154,7 @@ module.bundle.HMR_BUNDLE_ID = "890e741a975ef6c8";
 import type {
   HMRAsset,
   HMRMessage,
-} from '@parcel/reporter-dev-server/src/HMRServer.js';
+} from "@parcel/reporter-dev-server/src/HMRServer.js";
 interface ParcelRequire {
   (string): mixed;
   cache: {|[string]: ParcelModule|};
@@ -226,11 +226,11 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var port = getPort();
     var protocol = HMR_SECURE || location.protocol == "https:" && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? "wss" : "ws";
     var ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/"); // Web extension context
-    var extCtx = typeof chrome === "undefined" ? typeof browser === "undefined" ? null : browser : chrome; // Safari doesn't support sourceURL in error stacks.
+    var extCtx = typeof chrome === "undefined" ? typeof browser === "undefined" ? null : browser : chrome; // Safari doesn"t support sourceURL in error stacks.
     // eval may also be disabled via CSP, so do a quick check.
     var supportsSourceURL = false;
     try {
-        (0, eval)('throw new Error("test"); //# sourceURL=test.js');
+        (0, eval)("throw new Error("test"); //# sourceURL=test.js");
     } catch (err) {
         supportsSourceURL = err.stack.includes("test.js");
     } // $FlowFixMe
@@ -287,7 +287,7 @@ function removeErrorOverlay() {
 function createErrorOverlay(diagnostics) {
     var overlay = document.createElement("div");
     overlay.id = OVERLAY_ID;
-    let errorHTML = '<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">';
+    let errorHTML = "<div style="background: black; opacity: 0.85; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; font-family: Menlo, Consolas, monospace; z-index: 9999;">";
     for (let diagnostic of diagnostics){
         let stack = diagnostic.frames.length ? diagnostic.frames.reduce((p, frame)=>{
             return `${p}
@@ -343,7 +343,7 @@ var cssTimeout = null;
 function reloadCSS() {
     if (cssTimeout) return;
     cssTimeout = setTimeout(function() {
-        var links = document.querySelectorAll('link[rel="stylesheet"]');
+        var links = document.querySelectorAll("link[rel="stylesheet"]");
         for(var i = 0; i < links.length; i++){
             // $FlowFixMe[incompatible-type]
             var href = links[i].getAttribute("href");
@@ -385,7 +385,7 @@ async function hmrApplyUpdates(assets) {
     global.parcelHotUpdate = Object.create(null);
     let scriptsToRemove;
     try {
-        // If sourceURL comments aren't supported in eval, we need to load
+        // If sourceURL comments aren"t supported in eval, we need to load
         // the update from the dev server over HTTP so that stack traces
         // are correct in errors/logs. This is much slower than eval, so
         // we only do it if needed (currently just Safari).
@@ -472,7 +472,7 @@ function hmrDelete(bundle, id) {
 }
 function hmrAcceptCheck(bundle, id, depsByBundle) {
     if (hmrAcceptCheckOne(bundle, id, depsByBundle)) return true;
-     // Traverse parents breadth first. All possible ancestries must accept the HMR update, or we'll reload.
+     // Traverse parents breadth first. All possible ancestries must accept the HMR update, or we"ll reload.
     let parents = getParents(module.bundle.root, id);
     let accepted = false;
     while(parents.length > 0){
@@ -484,7 +484,7 @@ function hmrAcceptCheck(bundle, id, depsByBundle) {
             // Otherwise, queue the parents in the next level upward.
             let p = getParents(module.bundle.root, v[1]);
             if (p.length === 0) {
-                // If there are no parents, then we've reached an entry without accepting. Reload.
+                // If there are no parents, then we"ve reached an entry without accepting. Reload.
                 accepted = false;
                 break;
             }
@@ -498,7 +498,7 @@ function hmrAcceptCheckOne(bundle, id, depsByBundle) {
     if (!modules) return;
     if (depsByBundle && !depsByBundle[bundle.HMR_BUNDLE_ID]) {
         // If we reached the root bundle without finding where the asset should go,
-        // there's nothing to do. Mark as "accepted" so we don't reload the page.
+        // there"s nothing to do. Mark as "accepted" so we don"t reload the page.
         if (!bundle.parent) return true;
         return hmrAcceptCheck(bundle.parent, id, depsByBundle);
     }

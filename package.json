@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
+    "start": "parcel src/pages/index.hbs --no-cache",
     "build": "parcel build src/pages/index.hbs && server.js"
   },
   "keywords": [],
@@ -20,5 +20,8 @@
   },
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "engines" : {
+    "node" : ">=14.0.0 <15.0.0"
   }
 }
