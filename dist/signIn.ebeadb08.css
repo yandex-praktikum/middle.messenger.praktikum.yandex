@@ -559,6 +559,10 @@ template, [hidden] {
   font-size: 100px;
 }
 
+.page-404__text-container {
+  z-index: 1;
+}
+
 .form-item {
   margin-bottom: 16px;
 }
