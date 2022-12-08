@@ -2,6 +2,7 @@
 
 Чат для общения в реальном времени.
 
+
 ## Установка
 
 - `npm install` - установка зависимостей.
@@ -13,6 +14,7 @@
 ## Ссылка на макет в figma
 
 https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
+
 
 ## Ссылка на netlify
 

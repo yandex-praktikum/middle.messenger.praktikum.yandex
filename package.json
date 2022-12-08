@@ -1,29 +1,41 @@
 {
-  "name": "messenger",
+  "name": "test",
   "version": "1.0.0",
+
   "scripts": {
-    "dev": "parcel src/pages/index.pug --port 3000",
-    "build": "parcel build src/pages/index.pug",
-    "start": "node server.js"
+    "dev": "parcel src/pages/index.html  --no-cache --port 3000",
+    "build": "parcel build src/pages/index.html --no-cache",
+    "start": "npm run build && node ./server.js "
   },
+
+  "engines": {
+    "node": "18.12.1"
+  },
+
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-pug": "^2.0.0-beta.2",
-    "@parcel/transformer-sass": "^2.0.0-beta.2",
-    "@types/lodash": "^4.14.188",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "lodash": "^4.17.21",
-    "parcel": "^2.0.0-beta.2",
-    "pug": "^3.0.2",
-    "sass": "^1.56.1",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.8.4"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@parcel/transformer-sass": "2.7.0",
+    "@types/handlebars": "4.1.0",
+    "@types/uuid": "9.0.0",
+    "@typescript-eslint/eslint-plugin": "5.40.1",
+    "@typescript-eslint/parser": "5.40.1",
+    "dotenv": "16.0.3",
+    "eslint": "8.25.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "parcel": "2.0.1",
+    "parcel-plugin-handlebars": "0.4.4",
+    "parcel-reporter-static-files-copy": "1.4.0",
+    "prettier": "2.7.1",
+    "stylelint": "14.14.0",
+    "stylelint-config-standard": "29.0.0",
+    "typescript": "4.8.4",
+    "uuid": "9.0.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  },
-  "keywords": [],
-  "description": ""
+    "express": "4.18.2",
+    "handlebars": "4.7.7"
+  }
 }

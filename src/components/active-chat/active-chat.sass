@@ -1,0 +1,48 @@
+@import ../../styles/main
+
+.messages
+  &__item
+    font-size: 12px
+    font-weight: 500
+    line-height: 15px
+    padding: 11px
+    position: relative
+    max-width: 60%
+    padding-bottom: 30px
+    border-radius: 12px
+    min-width: 120px
+    margin-top: 20px
+
+  &__image
+    background: transparent
+
+  &__friend
+    align-self: flex-start
+    background-color: var(--bg)2
+    .messages__date
+      color: var(--chat-bg)
+
+  &__date
+    position: absolute
+    right: 15px
+    bottom: 5px
+
+    font-style: normal
+    font-weight: 500
+    font-size: 9px
+    line-height: 9px
+
+  &__user
+    align-self: flex-end
+    background-color: var(--item-bg)
+    .messages__date
+      color: var(--blue)
+
+    &_unreaded::before
+      content: ""
+      width: 13px
+      height: 13px
+      background-size: cover
+      position: absolute
+      left: 15px
+      bottom: 5px

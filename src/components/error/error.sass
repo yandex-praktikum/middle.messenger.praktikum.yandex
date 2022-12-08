@@ -1,0 +1,47 @@
+@import ../../styles/main
+
+.error
+  width: 100vw
+  height: 100vh
+  box-sizing: border-box
+
+  &__inner
+    width: 320px
+    min-height: 100%
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+  &__status
+    color: var(--text-default)
+
+  &__code
+    text-align: center
+    text-align: center
+    font-style: normal
+    font-weight: 900
+    font-size: 40px
+    line-height: 40px
+    margin-bottom: 20px
+
+  &__description
+    text-align: center
+    font-style: normal
+    font-weight: 500
+    font-size: 20px
+    line-height: 20px
+    margin-bottom: 70px
+
+  &__buttons
+    display: flex
+    flex-direction: column
+
+  &__btn
+    color: var(--blue)
+    cursor: pointer
+    font-style: normal
+    font-weight: 500
+    font-size: 11px
+    line-height: 11px

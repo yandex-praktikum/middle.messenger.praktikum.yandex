@@ -1,0 +1,36 @@
+@import ../../styles/main
+
+.holder
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+  position: relative
+
+  &__span
+    font-style: normal
+    font-weight: 500
+    font-size: 9px
+    line-height: 9px
+    color: var(--grey-text)
+    transform: translateY(0px)
+    transition: transform 0.3s
+    visibility: visible
+    opacity: 1
+
+    &_hidden
+      transform: translateY(20px)
+      visibility: hidden
+      opacity: 0
+      transition: transform 0.3s, visibility 0.3s, opacity 0.2s
+
+  &__input
+    font-style: normal
+    font-weight: 500
+    font-size: 13px
+    line-height: 13px
+    color: var(--text-default)
+    border-bottom: 1px solid var(--blue)
+    outline: none
+    margin-bottom: 16px
+    margin-top: 6px
+    padding-bottom: 5px
