@@ -1,6 +1,6 @@
 {{!< layout}}
 
-<div class="auth">
+<div class="paper auth">
     <div class="auth__tabs">
         <button class="auth__tab-button auth__tab-button_active">
             Sign Up
@@ -10,16 +10,18 @@
         </button>
 
     </div>
-    <div class="auth__form">
-        {{> formInput title="Name"}}
-        {{> formInput title="Surname"}}
-        {{> formInput title="Email"}}
-        {{> formInput title="Login"}}
-        {{> formInput title="Phone"}}
-        {{> formInput title="Password"}}
-    </div>
-    <button class="action-button">
-        Authorize
-    </button>
+    <form>
+        <div class="auth__form">
+            {{> formInput title="Name" name="first_name"}}
+            {{> formInput title="Surname" name="second_name"}}
+            {{> formInput title="Email" name="email"}}
+            {{> formInput title="Login" name="login"}}
+            {{> formInput title="Phone" name="phone"}}
+            {{> formInput title="Password" name="password"}}
+        </div>
+        <button class="action-button">
+            Authorize
+        </button>
+    </form>
 </div>
 

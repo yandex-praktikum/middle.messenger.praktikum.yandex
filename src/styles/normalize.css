@@ -1,3 +1,4 @@
+@import url(theme.css);
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -33,9 +34,6 @@ body {
 html *::-webkit-scrollbar {
     width: 3px;
     height: 4px;
-}
-html *::-webkit-scrollbar-track {
-    background: inherit;
 }
 html *::-webkit-scrollbar-thumb {
     background-color: $black-main;

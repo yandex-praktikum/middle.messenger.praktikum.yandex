@@ -1,7 +1,7 @@
 <div class="form-item">
-    <h6>{{title}}</h6>
+    <label class="form-item__label">{{title}}</label>
     <div class="form-item__input-container">
-        <input type="text" class="form-item__input" value="{{value}}"/>
+        <input type="text" class="form-item__input" value="{{value}}" name="{{name}}"/>
         {{#if image}}
             <div class="form-item__button-container">
                 {{> "iconButton" image=image}}

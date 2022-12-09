@@ -11,14 +11,17 @@
             Sign In
         </button>
     </div>
-    <div class="auth__form">
-        {{> "formInput" title="Login"}}
-        {{> "formInput" title="Password"}}
-    </div>
+    <form>
+        <div class="auth__form">
+            {{> "formInput" title="Login" name="first_name"}}
+            {{> "formInput" title="Password" name="password"}}
+        </div>
 
-    <button class="action-button">
-        Confirm
-    </button>
+        <button class="action-button">
+            Confirm
+        </button>
+    </form>
+
 </div>
 
 

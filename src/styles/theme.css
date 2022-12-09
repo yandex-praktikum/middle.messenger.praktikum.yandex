@@ -17,6 +17,10 @@ $red-dark: #fd3b11;
     display: flex;
     justify-content: center;
 }
+.jst-sb{
+    display: flex;
+    justify-content: space-between;
+}
 .aln-center{
     display: flex;
     align-items: center;

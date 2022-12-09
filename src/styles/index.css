@@ -1,4 +1,3 @@
-@import url(theme.css);
 @import url(normalize.css);
 @import url(../asserts/fonts/fonts.css);
 
@@ -34,6 +33,8 @@
 @import url(chat/__footer-input/chat_footer-input.css);
 @import url(chat/__footer-send-button/chat__footer-send-button.css);
 
+@import url(profile/__button/profile__button.css);
+@import url(profile/__button-icon/profile__button-icon.css);
 @import url(profile/profile.css);
 
 @import url(page-404/__text/page-404__text.css);
@@ -44,6 +45,7 @@
 
 @import url(custom-elements/form-item/form-item.css);
 @import url(custom-elements/form-item/__input/form-item__input.css);
+@import url(custom-elements/form-item/__label/form-item__label.css);
 @import url(custom-elements/form-item/__input-container/form-item__input-container.css);
 @import url(custom-elements/form-item/__button-container/form-item__button-container.css);
 @import url(custom-elements/avatar/avatar.css);

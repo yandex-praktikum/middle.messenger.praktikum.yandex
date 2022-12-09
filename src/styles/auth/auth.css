@@ -1,4 +1,5 @@
 .auth{
     box-shadow: 0 0 8px $gray-dark;
-    width: 300px
+    width: 300px;
+    margin: 24px 0;
 }

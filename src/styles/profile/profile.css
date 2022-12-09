@@ -3,4 +3,7 @@
     min-height: 300px;
     justify-content: space-between;
     align-items: center;
+    margin: 24px 0;
+    max-height: 1vh;
+    overflow-y: scroll;
 }
