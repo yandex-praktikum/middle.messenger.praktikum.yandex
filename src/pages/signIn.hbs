@@ -1,0 +1,29 @@
+{{!< layout}}
+
+
+<div class="paper auth">
+
+<div class="auth__tabs">
+        <button class="auth__tab-button">
+            Sign Up
+        </button>
+        <button class="auth__tab-button auth__tab-button_active">
+            Sign In
+        </button>
+    </div>
+    <form>
+        <div class="auth__form">
+            {{> "formInput" title="Login" name="first_name"}}
+            {{> "formInput" title="Password" name="password"}}
+        </div>
+
+        <button class="action-button">
+            Confirm
+        </button>
+    </form>
+
+</div>
+
+
+
+

@@ -1,0 +1,7 @@
+.chat-list__item-row{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}

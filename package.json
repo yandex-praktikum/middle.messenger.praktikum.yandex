@@ -1,0 +1,27 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/pages/index.hbs --no-cache --open --port 3000",
+    "build": "parcel build src/pages/index.hbs && server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "parcel": "2.8.0",
+    "postcss": "8.4.19",
+    "postcss-import": "15.0.1",
+    "postcss-modules": "4.3.1",
+    "precss": "4.0.0"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  },
+  "engines": {
+    "node": ">=14.0.0 <15.0.0"
+  }
+}

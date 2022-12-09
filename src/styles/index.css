@@ -1,0 +1,62 @@
+@import url(normalize.css);
+@import url(../asserts/fonts/fonts.css);
+
+@import url(auth/auth.css);
+@import url(auth/__tab-button/auth__tab-button.css);
+@import url(auth/__tab-button/_active/auth__tab-button_active.css);
+@import url(auth/__tabs/auth__tabs.css);
+
+@import url(main/main.css);
+
+@import url(chat-list/chat-list.css);
+@import url(chat-list/__header/chat-list__header.css);
+@import url(chat-list/__list/chat-list__list.css);
+@import url(chat-list/__item/chat-list__item.css);
+@import url(chat-list/__user-info/chat-list__user-info.css);
+@import url(chat-list/__new-chat-button/chat-list__new-chat-button.css);
+@import url(chat-list/__item-content/chat-list__item-content.css);
+@import url(chat-list/__item-count/chat-list__item-count.css);
+@import url(chat-list/__item-row/chat-list__item-row.css);
+@import url(chat-list/__item-text/chat-list__item-text.css);
+
+@import url(chat/chat.css);
+@import url(chat/__header/chat__header.css);
+@import url(chat/__header-content/chat__header-content.css);
+@import url(chat/__header-details-button/chat__header-details-button.css);
+@import url(chat/__header-title/chat__header-title.css);
+@import url(chat/__header-text/chat__header-text.css);
+@import url(chat/__main/chat__main.css);
+@import url(chat/__main-dialog/chat__main-dialog.css);
+@import url(chat/__dialog-cursor/chat__dialog-cursor.css);
+@import url(chat/__footer/chat__footer.css);
+@import url(chat/__footer-add-button/chat__footer-add-button.css);
+@import url(chat/__footer-input/chat_footer-input.css);
+@import url(chat/__footer-send-button/chat__footer-send-button.css);
+
+@import url(profile/__button/profile__button.css);
+@import url(profile/__button-icon/profile__button-icon.css);
+@import url(profile/profile.css);
+
+@import url(page-404/__text/page-404__text.css);
+@import url(page-404/__button/page-404__button.css);
+@import url(page-404/__image/page-404__image.css);
+@import url(page-404/__title/page-404__title.css);
+@import url(page-404/__text-container/page-404__text-container.css);
+
+@import url(custom-elements/form-item/form-item.css);
+@import url(custom-elements/form-item/__input/form-item__input.css);
+@import url(custom-elements/form-item/__label/form-item__label.css);
+@import url(custom-elements/form-item/__input-container/form-item__input-container.css);
+@import url(custom-elements/form-item/__button-container/form-item__button-container.css);
+@import url(custom-elements/avatar/avatar.css);
+@import url(custom-elements/avatar/__button/avatar__button.css);
+@import url(custom-elements/avatar/__edit-button/avatar__edit-button.css);
+@import url(custom-elements/avatar/__text/avatar__text.css);
+@import url(custom-elements/search-bar/search-bar.css);
+@import url(custom-elements/search-bar/__input/search-bar__input.css);
+@import url(custom-elements/time/time.css);
+@import url(custom-elements/popup/popup.css);
+@import url(custom-elements/paper/paper.css);
+@import url(custom-elements/action-button/action-button.css);
+@import url(custom-elements/icon-button/icon-button.css);
+@import url(custom-elements/icon-button/__img/icon-button__image.css);

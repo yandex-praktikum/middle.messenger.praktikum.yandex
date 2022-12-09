@@ -1,0 +1,6 @@
+.chat-list__list{
+    height: calc(100% - 138px);
+    padding: 2px 8px 2px 2px;
+    margin-right: -6px;
+    overflow: auto;
+}

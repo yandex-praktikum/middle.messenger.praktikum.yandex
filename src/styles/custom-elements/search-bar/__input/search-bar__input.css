@@ -1,0 +1,4 @@
+.search-bar__input{
+    width: calc(100% - 50px);
+    height: 30px;
+}

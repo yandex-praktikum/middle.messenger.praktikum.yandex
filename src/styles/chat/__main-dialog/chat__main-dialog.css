@@ -1,0 +1,12 @@
+.chat__main-dialog{
+    border-radius: 16px 16px 0 16px;
+    background: white;
+    margin-left: auto;
+    padding: 12px;
+    max-width: 45%;
+    position: relative;
+    margin-bottom: 12px;
+}
+.chat__main-dialog:last-child{
+    margin-bottom: 0;
+}

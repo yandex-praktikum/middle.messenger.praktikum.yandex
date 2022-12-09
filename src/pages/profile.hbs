@@ -1,0 +1,27 @@
+{{!< layout}}
+
+<div class="popup">
+    <form class="paper profile">
+        <div class="jst-sb">
+            <button class="profile__button">
+                <img alt="back" class="profile__button-icon" src="../asserts/images/arrow-left.svg"/> Back
+            </button>
+            <button class="profile__button">
+                <img alt="edit" class="profile__button-icon" src="../asserts/images/edit.svg"/> Edit
+            </button>
+        </div>
+
+        <div class="mb24 jst-center">
+            {{> "avatarButton" text="IM" edit=true}}
+        </div>
+        <div>
+            {{> "formInput" title="Avatar" name="avatar" image="../asserts/images/edit.svg"}}
+            {{> "formInput" title="Name" name="first_name" value="Ilon" image="../asserts/images/edit.svg"}}
+            {{> "formInput" title="Surname" name="second_name" value="Mask" image="../asserts/images/edit.svg"}}
+            {{> "formInput" title="Login" name="login" value="im@yndex.ru" image="../asserts/images/edit.svg"}}
+            {{> "formInput" title="Email" name="email" value="im@yndex.ru" image="../asserts/images/edit.svg"}}
+            {{> "formInput" title="Phone" name="phone" value="89111111111" image="../asserts/images/edit.svg"}}
+        </div>
+        {{> "actionButton" text="Log out"}}
+    </form>
+</div>

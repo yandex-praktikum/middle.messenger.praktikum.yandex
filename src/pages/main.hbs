@@ -1,0 +1,58 @@
+{{!< layout}}
+
+<main class="main">
+    <div class="chat-list">
+        <div class="chat-list__user-info">
+            <div class="mr16">
+                {{> "avatarButton" text="IM"}}
+            </div>
+            <h1>Ilon Mask</h1>
+            <button class="chat-list__new-chat-button"></button>
+        </div>
+        <div class="chat-list__list">
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+            {{> "main/listItem"
+                    title="Dmitriy M" time="20:00" message="Какой-то текст" count=4}}
+        </div>
+    </div>
+    <div class="chat">
+        <div class="chat__header">
+            <div class="mr16">
+                {{> "avatarButton" text="DM"}}
+            </div>
+            <div class="chat__header-content">
+                <h3 class="chat__header-title">Dmitriy M</h3>
+                <p class="chat__header-text">Was in 20:40</p>
+            </div>
+            <button class="chat__header-details-button"/>
+        </div>
+        <div class="chat__main">
+            {{> "main/dialog" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur earum eius in ipsum magnam non, omnis placeat quasi quibusdam voluptatem. Blanditiis eos fugiat inventore obcaecati odit porro sunt, totam unde?"}}
+            {{> "main/dialog" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur earum eius in ipsum magnam non, omnis placeat quasi quibusdam voluptatem. Blanditiis eos fugiat inventore obcaecati odit porro sunt, totam unde?"}}
+        </div>
+        <div class="chat__footer">
+            <button class="chat__footer-add-button"></button>
+            <input class="chat__footer-input" name="message">
+            <button class="chat__footer-send-button"></button>
+        </div>
+    </div>
+</main>

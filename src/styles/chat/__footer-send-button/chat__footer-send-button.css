@@ -1,0 +1,6 @@
+.chat__footer-send-button{
+    width: 30px;
+    height: 30px;
+    background: url("../asserts/images/send.svg")100%/30px no-repeat;
+    margin-left: 16px;
+}

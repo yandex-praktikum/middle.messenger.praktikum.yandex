@@ -1,0 +1,5 @@
+.paper{
+    background: $red-light;
+    padding: 24px 24px 32px;
+    border-radius: 12px;
+}
