@@ -1,0 +1,21 @@
+{
+    "name": "yaproj",
+    "engines": {
+        "npm": "8.15.0",
+        "node": "16.17.1"
+    },
+    "source": "./src/pages/nav/index.hbs",
+    "scripts": {
+        "dev": "parcel --open",
+        "start": "parcel build && node express",
+        "build": "parcel build --no-cache"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@anikin/parcel-transformer-handlebars": "1.0.9",
+        "express": "4.18.2",
+        "parcel": "2.8.0"
+    }
+}

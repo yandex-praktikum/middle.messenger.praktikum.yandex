@@ -1,0 +1,15 @@
+{{!< base }}
+
+<div class="cover">
+    <div class="entry">
+        {{> "entry/title" title="Регистрация" }}
+        <form class="entry__container">
+            <ul class="entry__list">
+                {{#each register_list }}
+                    {{> "entry/item" }}
+                {{/each }}
+            </ul>
+            {{> "entry/choice" btn="Зарегистрироваться" link="Войти" href="./login.hbs" }}
+        </form>
+    </div>
+</div>

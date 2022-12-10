@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Авторизация",
+        "href": "../entry/login.hbs"
+    },
+    {
+        "title": "Регистрация",
+        "href": "../entry/register.hbs"
+    },
+    {
+        "title": "Список чатов",
+        "href": "../chat/chat-list.hbs"
+    },
+    {
+        "title": "Чат",
+        "href": "../chat/chat.hbs"
+    },
+    {
+        "title": "Профиль",
+        "href": "../profile/profile.hbs"
+    },
+    {
+        "title": "Профиль изм. данные",
+        "href": "../profile/profile-edit-data.hbs"
+    },
+    {
+        "title": "Профиль изм. пароль",
+        "href": "../profile/profile-edit-password.hbs"
+    },
+    {
+        "title": "404",
+        "href": "../error/404.hbs"
+    },
+    {
+        "title": "500",
+        "href": "../error/500.hbs"
+    }
+]

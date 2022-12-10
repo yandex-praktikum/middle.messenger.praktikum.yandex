@@ -1,0 +1,24 @@
+.nav {
+    margin: 30px;
+}
+
+.nav__title {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: red;
+    user-select: none;
+}
+
+.nav__item {
+    margin-left: 30px;
+    margin-bottom: 15px;
+    list-style-type: disc;
+}
+
+.nav__link {
+    font-size: 22px;
+}
+
+.nav__link:hover {
+    text-decoration: underline;
+}

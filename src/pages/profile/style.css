@@ -1,0 +1,121 @@
+.profile {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.profile__sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 100%;
+    border-right: 1px solid #EAEAEA;
+    background-color: #FBFBFB;
+}
+
+.profile__back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.profile__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 510px;
+    min-height: 510px;
+}
+
+.profile__user-icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: #EFEFEF;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile__user-change {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+    background-color: rgb(0, 0, 0, 0.4);
+    font-size: 13px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+}
+
+.profile__user-icon:hover .profile__user-change {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile__user-name {
+    font-size: 17px;
+    text-align: center;
+}
+
+.profile__list {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 60px;
+}
+
+.profile__item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.profile__item:not(:first-child) {
+    border-top: 1px solid #EAEAEA;
+}
+
+.profile__value {
+    color: #999999;
+}
+
+.profile__edit {
+    color: #3369F3;
+}
+
+.profile__exit {
+    color: #FF0000;
+}
+
+.profile__save {
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.profile__save-btn {
+    width: 280px;
+    height: 37px;
+    font-size: 15px;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #3369F3;
+    color: #FFFFFF;
+    cursor: pointer;
+}

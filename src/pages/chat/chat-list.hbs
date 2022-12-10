@@ -1,0 +1,17 @@
+{{!< base }}
+
+<div class="chat">
+    <div class="chat__sidebar">
+        {{> "chat/chat-holder"}}
+        <ul class="chat__list">
+            {{#each chat_items}}
+                {{> "chat/chat-item"}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="chat__view">
+        <div class="chat__wrapper">
+            Выберите чат чтобы отправить сообщение
+        </div>
+    </div>
+</div>
