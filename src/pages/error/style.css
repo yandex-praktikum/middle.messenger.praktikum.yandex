@@ -18,5 +18,5 @@
 .error__back {
     display: block;
     font-size: 16px;
-    color: #3369F3;
+    color: var(--main-blue);
 }

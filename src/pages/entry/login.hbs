@@ -9,7 +9,12 @@
                     {{> "entry/item" }}
                 {{/each }}
             </ul>
-            {{> "entry/choice" btn="Авторизоваться" link="Нет аккаунта" href="./register.hbs" }}
+            <div class="entry__choice">
+                {{> "components/button/button" value="Авторизоваться" mod="entry__choice-btn" }}
+                <a class="entry__choice-link" href="./register.hbs">
+                    Нет аккаунта
+                </a>
+            </div>
         </form>
     </div>
 </div>

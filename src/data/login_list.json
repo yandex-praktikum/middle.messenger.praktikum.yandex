@@ -1,8 +1,12 @@
 [
     {
-        "title": "Логин"
+        "title": "Логин",
+        "name": "login",
+        "type": "text"
     },
     {
-        "title": "Пароль"
+        "title": "Пароль",
+        "name": "password",
+        "type": "password"
     }
 ]

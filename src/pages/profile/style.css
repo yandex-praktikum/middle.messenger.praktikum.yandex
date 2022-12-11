@@ -11,8 +11,8 @@
     left: 0;
     width: 64px;
     height: 100%;
-    border-right: 1px solid #EAEAEA;
-    background-color: #FBFBFB;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--sidebar-color);
 }
 
 .profile__back {
@@ -40,7 +40,7 @@
     margin: 0 auto;
     margin-bottom: 20px;
     border-radius: 50%;
-    background-color: #EFEFEF;
+    background-color: var(--main-lightgray);
     overflow: hidden;
     cursor: pointer;
 }
@@ -86,36 +86,23 @@
 }
 
 .profile__item:not(:first-child) {
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid var(--border-color);
 }
 
 .profile__value {
-    color: #999999;
+    color: var(--main-darkgray);
 }
 
 .profile__edit {
-    color: #3369F3;
+    color: var(--main-blue);
 }
 
 .profile__exit {
-    color: #FF0000;
+    color: var(--main-red);
 }
 
 .profile__save {
     display: block;
     margin: 0 auto;
     margin-top: 60px;
-}
-
-.profile__save-btn {
-    width: 280px;
-    height: 37px;
-    font-size: 15px;
-    text-align: center;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    background-color: #3369F3;
-    color: #FFFFFF;
-    cursor: pointer;
 }

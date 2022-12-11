@@ -5,7 +5,7 @@
 .nav__title {
     margin-bottom: 15px;
     text-transform: uppercase;
-    color: red;
+    color: var(--main-red);
     user-select: none;
 }
 

@@ -3,6 +3,16 @@
 @import "./pages/chat/style.css";
 @import "./pages/profile/style.css";
 @import "./pages/error/style.css";
+@import "./partials/components/button/style.css";
+
+:root {
+    --main-blue: #3369F3;
+    --main-red: #FF2F2F;
+    --main-darkgray: #999999;
+    --main-lightgray: #EFEFEF;
+    --border-color: #EAEAEA;
+    --sidebar-color: #FBFBFB;
+}
 
 * {
     padding: 0;

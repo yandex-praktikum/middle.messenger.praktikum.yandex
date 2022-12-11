@@ -42,7 +42,7 @@
     z-index: -1;
     transition: all 0.2s;
     pointer-events: none;
-    color: #999999;
+    color: var(--main-darkgray);
 }
 
 .entry__input {
@@ -51,7 +51,7 @@
     padding: 6px 0;
     border: none;
     outline: none;
-    border-bottom: 1px solid #3369F3;
+    border-bottom: 1px solid var(--main-blue);
     background-color: transparent;
 }
 
@@ -71,22 +71,13 @@
 }
 
 .entry__choice-btn {
-    display: block;
-    font-size: 14px;
     margin-top: 30px;
     margin-bottom: 14px;
-    padding: 12px;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    background-color: #3369F3;
-    color: #ffffff;
-    cursor: pointer;
 }
 
 .entry__choice-link {
     display: block;
     font-size: 13px;
-    color: #3369F3;
+    color: var(--main-blue);
     margin: 0 auto;
 }

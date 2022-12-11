@@ -1,23 +1,37 @@
 [
     {
-        "title": "Почта"
+        "title": "Почта",
+        "name": "email",
+        "type": "email"
     },
     {
-        "title": "Логин"
+        "title": "Логин",
+        "name": "login",
+        "type": "text"
     },
     {
-        "title": "Имя"
+        "title": "Имя",
+        "name": "first_name",
+        "type": "text"
     },
     {
-        "title": "Фамилия"
+        "title": "Фамилия",
+        "name": "second_name",
+        "type": "text"
     },
     {
-        "title": "Телефон"
+        "title": "Телефон",
+        "name": "phone",
+        "type": "text"
     },
     {
-        "title": "Пароль"
+        "title": "Пароль",
+        "name": "password",
+        "type": "password"
     },
     {
-        "title": "Пароль (ещё раз)"
+        "title": "Пароль (ещё раз)",
+        "name": "password",
+        "type": "password"
     }
 ]
