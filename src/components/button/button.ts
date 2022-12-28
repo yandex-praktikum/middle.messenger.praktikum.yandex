@@ -1,26 +1,14 @@
-import { Block, TProperties} from '../../utils/core/block';
-import { button } from './button.tmpl';
+import { Block } from '../../utils/Block';
+import { IButtonProps } from '../../utils/Interfaces';
+import template from './button.hbs';
+import './button.less';
 
-type TButton = {
-  id?: string;
-  class?: string;
-  type?: string;
-  text?: string;
-  image?: string;
-  href?: string;
-  nameInput?: string;
-  events?: Record<string, (e: Event) => void>;
-  settings?: TProperties;
-};
-
-class Button extends Block<TButton> {
-  constructor(props: TButton) {
-    super(props);
+export class Button extends Block<IButtonProps> {
+  constructor(props: IButtonProps) {
+    super({ type: 'button', ...props });
   }
 
-  render(): DocumentFragment {
-    return this.compile(button, this.props);
+  render() {
+    return this.compile(template, { ...this.props });
   }
 }
-
-export { Button, TButton };

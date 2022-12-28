@@ -1,12 +1,38 @@
----
-title: 'Профиль'
-scripts: 
-    - src: './index.ts'
-      type: module
----
+<div id="profile">
+  <div class="back_block">
+    {{{ backButton }}}
+  </div>
 
-{{#extend "layout"}}
- {{#content "main"}}
- <div class="root"></div>
- {{/content}}
-{{/extend}}
+  <div class="profile_block">
+
+    {{{ avatar }}}
+    <p class="profile-name">{{ first_name }}</p>
+
+    <div class="data main-fields">
+      {{{ fields }}}
+
+      {{#each fieldsNew}}
+      {{{this}}}
+      {{/each}}
+    </div>
+
+    <div class="profile-buttons">
+      <div class="string">
+        {{{ editButton }}}
+      </div>
+      <div class="string">
+        {{{ changePassButton }}}
+      </div>
+      <div class="string">
+        {{{ logoutButton }}}
+      </div>
+    </div>
+
+  </div>
+
+  {{{ popup }}}
+
+  {{{ editProfile }}}
+
+  {{{ changePassword }}}
+</div>

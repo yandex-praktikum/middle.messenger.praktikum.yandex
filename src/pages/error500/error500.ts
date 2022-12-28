@@ -1,19 +1,22 @@
-import { Block } from '../../utils/core/block';
-import { Error } from '../../components/error/error';
-import { errorPage500 } from './error500.tmpl';
+import { Block } from '../../utils/Block';
+import Error from '../../components/Error';
+import template from './error500.hbs';
+import './error500.less';
 
-type PageError = {
-  error500?: Error;
-};
-
-class Page500 extends Block<PageError> {
-  constructor(props: PageError) {
-    super(props);
+export class Error500 extends Block {
+  constructor() {
+    super({});
   }
 
-  render(): DocumentFragment {
-    return this.compile(errorPage500, this.props);
+  protected init(): void {
+    this.children.error = new Error({
+      number: '500',
+      text: 'We’re already fixing',
+      link: 'Back to chats ->',
+    });
+  }
+
+  render() {
+    return this.compile(template, {});
   }
 }
-
-export { Page500 };

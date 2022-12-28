@@ -1,28 +1,27 @@
-import { Block, TProperties} from '../../utils/core/block';
-import { input } from './input.tmpl';
+import { Block } from '../../utils/Block';
+import { IInput } from '../../utils/Interfaces';
+import { validate } from '../../utils/Validate';
+import template from './input.hbs';
+import './input.less';
 
-type TInput = {
-  idInput?: string;
-  classInput?: string;
-  typeInput: string;
-  nameInput: string;
-  placeHolder?: string;
-  valueInput?: string | number;
-  readonly?: boolean;
-  hidden?: boolean;
-  autocomplete?: string;
-  events?: Record<string, (e: Event) => void>;
-  settings?: TProperties;
-};
-
-class Input extends Block<TInput> {
-  constructor(props: TInput) {
-    super(props);
+export class Input extends Block {
+  constructor(props: IInput) {
+    const events = {
+      focusin: (e: Event): void => this.onFocus(e),
+      focusout: (e: Event): void => this.onBlur(e),
+    };
+    super({ ...props, events });
   }
 
-  render(): DocumentFragment {
-    return this.compile(input, this.props);
+  onFocus = (e: Event): void => {
+    validate(e, this.element!, '.input-error');
+  };
+
+  onBlur = (e: Event): void => {
+    validate(e, this.element!, '.input-error');
+  };
+
+  render() {
+    return this.compile(template, { ...this.props });
   }
 }
-
-export { Input, TInput };

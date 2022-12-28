@@ -1,19 +1,22 @@
-import { Error } from '../../components/error/error';
-import { Block } from '../../utils/core/block';
-import { errorPage404 } from './error404.tmpl';
+import { Block } from '../../utils/Block';
+import Error from '../../components/Error';
+import template from './error404.hbs';
+import './error404.less';
 
-type PageError = {
-  error404?: Error;
-};
-
-class Page404 extends Block<PageError> {
-  constructor(props: PageError) {
-    super(props);
+export class Error404 extends Block {
+  constructor() {
+    super({});
   }
 
-  render(): DocumentFragment {
-    return this.compile(errorPage404, this.props);
+  protected init(): void {
+    this.children.error = new Error({
+      number: '404',
+      text: 'This page doesn’t exist',
+      link: 'Back to chats ->',
+    });
+  }
+
+  render() {
+    return this.compile(template, { ...this.props });
   }
 }
-
-export { Page404 };

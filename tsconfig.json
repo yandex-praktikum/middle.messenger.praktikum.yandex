@@ -1,22 +1,18 @@
 {
-    "compilerOptions": 
-    {
-        "target": "es6",
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "esModuleInterop": true,
-        "sourceMap": true,
-        "strictNullChecks": true,
-        "paths": {
-            "handlebars":["./node_modules/handlebars/types/index"]
-        },
-        "lib": [
-            "dom",
-            "es2017",
-            "es2015.proxy",
-            "dom.iterable"
-          ]
-    }
-    
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2016",
+    "declaration": false,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "lib": ["ESNext", "DOM"]
 }

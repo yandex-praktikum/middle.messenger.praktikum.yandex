@@ -1,20 +1,14 @@
-import { Block } from '../../utils/core/block';
-import { errorPage } from './error.tmpl';
+import { Block } from '../../utils/Block';
+import { IError } from '../../utils/Interfaces';
+import template from './error.hbs';
+import './error.less';
 
-type TError = {
-  statusCode: number;
-  statusDescription: string;
-  button: string;
-};
-
-class Error extends Block<TError> {
-  constructor(props: TError) {
+export class Error extends Block {
+  constructor(props: IError) {
     super(props);
   }
 
-  render(): DocumentFragment {
-    return this.compile(errorPage, this.props);
+  render() {
+    return this.compile(template, { ...this.props });
   }
 }
-
-export { Error, TError };

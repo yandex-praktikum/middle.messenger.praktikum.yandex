@@ -1,0 +1,71 @@
+@import '../../styles/main.less';
+
+.button {
+  font-family: inherit;
+  width: 160px;
+  height: 45px;
+  background: @color-blue;
+  border-radius: @border-radius;
+  border: none;
+  color: #fff;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: @color-blue-hover;
+  }
+}
+
+.save-button {
+  margin: 60px auto 0;
+  background-color: @color-green;
+
+  &:hover {
+    background-color: @color-green-hover;
+  }
+}
+
+.profile-button {
+  color: @color-green;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background: none;
+  text-decoration: none;
+  width: max-content;
+
+  &:hover {
+    background-color: transparent;
+    color: @color-green-hover;
+  }
+}
+
+.red {
+  color: @color-error;
+
+  &:hover {
+    color: @color-error-hover;
+  }
+}
+
+.send {
+  color: @color-text;
+  border: none;
+  background-color: @color-purple;
+  font-size: 20px;
+  margin: 0 20px 0 20px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 16px;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: @color-purple-hover;
+  }
+}

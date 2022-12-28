@@ -1,0 +1,33 @@
+@import '../../styles/main.less';
+
+.error-block {
+  margin: 0;
+  text-align: center;
+}
+
+.error_number {
+  font-size: 60px;
+  margin: 0 0 30px;
+  color: @color-text;
+}
+
+.error_text {
+  font-size: 20px;
+  margin: 0 0 60px;
+  color: @color-text;
+}
+
+.home_link {
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+
+  :first-child {
+    color: @color-blue;
+    text-decoration: none;
+
+    &:hover {
+      color: @color-blue-hover;
+    }
+  }
+}

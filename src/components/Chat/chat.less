@@ -1,0 +1,56 @@
+@import '../../styles/main.less';
+
+.preview {
+  width: 287px;
+  height: 61px;
+  border: 1px solid @color-bg;
+  padding: 12px 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  &:hover {
+    background-color: @color-bg-hover;
+  }
+}
+
+.selected {
+  background-color: @color-bg-hover;
+}
+
+.avatar {
+  background-color: @color-bg;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.text-block {
+  margin-right: 8px;
+}
+
+.name {
+  color: @color-text;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  width: 170px;
+}
+
+.content {
+  color: @color-text-gray;
+  font-size: 12px;
+  margin: 4px 0 0;
+  width: 184px;
+  display: flex;
+}
+
+.date-block {
+  width: 35px;
+}
+
+.from {
+  margin: 0;
+  color: @color-text-yellow;
+  margin-right: 4px;
+}

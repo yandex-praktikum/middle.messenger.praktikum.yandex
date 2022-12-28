@@ -1,0 +1,22 @@
+<div class="preview {{#if isSelected }}selected{{/if}}">
+  <div class="avatar">{{ avatar }}</div>
+  <div class="text-block">
+    <p class="name">{{ title }}</p>
+    <div class="content">
+      {{#if isMine}}
+      <p class="from">Me: </p> {{/if}}<p class="message"> {{ last_message.content }}</p>
+    </div>
+
+  </div>
+
+  <div class="date-block">
+    <p class="date">{{ time }}</p>
+
+    {{#if unread_count}}
+    <div class="unread">
+      <p class="number">{{ unread_count }}</p>
+    </div>
+    {{/if}}
+
+  </div>
+</div>

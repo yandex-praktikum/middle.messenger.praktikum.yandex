@@ -1,23 +1,56 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "overrides": [
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "no-useless-escape": 0
-    }
+  "extends": "airbnb",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+
+    "max-len": [1, 100],
+    "max-params": [2, 3],
+    "quotes": ["warn", "double"],
+
+    "no-unused-vars": "off",
+    "no-restricted-exports": "off",
+    "no-undef": "off",
+    "no-param-reassign": "off",
+    "no-useless-constructor": "off",
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "no-useless-escape": "off",
+    "no-shadow": "off",
+    "no-constructor-return": "off",
+    "no-empty-function": "off",
+    "no-restricted-syntax": "off",
+    "no-prototype-builtins": "off",
+    "no-continue": "off",
+    "no-cond-assign": "off",
+    "no-constant-condition": "off",
+    "no-lonely-if": "off",
+    "no-return-assign": "off",
+    "no-else-return": "off",
+
+    "arrow-parens": "off",
+    "indent": "off",
+    "import/extensions": [1, "never"],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "off",
+    "class-methods-use-this": "off",
+    "function-paren-newline": "off",
+    "prefer-arrow-callback": "off",
+    "lines-between-class-members": "off",
+    "array-callback-return": "off",
+    "arrow-body-style": "off",
+    "operator-linebreak": "off",
+    "comma-dangle": "off",
+    "prefer-destructuring": "off",
+    "prefer-promise-reject-errors": "off",
+    "implicit-arrow-linebreak": "off",
+    "func-names": "off",
+    "max-classes-per-file": "off",
+    "prefer-const": "off",
+    "consistent-return": "off",
+    "default-case": "off"
+  }
 }

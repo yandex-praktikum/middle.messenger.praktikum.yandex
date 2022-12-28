@@ -1,0 +1,40 @@
+@import '../../styles/main.less';
+
+.text-message {
+  padding: 11px 13px;
+  background-color: @color-bg-black;
+  color: @color-text;
+  border-radius: @border-radius;
+  margin: 0 0 16px;
+  font-size: 12px;
+  max-width: 400px;
+  width: max-content;
+  padding: 11px 11px 11px 14px;
+  display: flex;
+}
+
+.from-me {
+  align-self: flex-end;
+  background-color: @color-purple;
+}
+
+.time-message {
+  font-size: 9px;
+  color: @color-text-gray;
+  margin: 0;
+  padding: 8px 6px 0px 8px;
+  align-self: flex-end;
+}
+
+.time-from-me {
+  color: @color-purple-hover;
+}
+
+.read {
+  color: @color-purple-hover;
+  padding: 8px 0 0 8px;
+  &::before {
+    content: url(../../../static/images/readed.svg);
+    margin-right: 4px;
+  }
+}

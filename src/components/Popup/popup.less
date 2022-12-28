@@ -1,0 +1,49 @@
+@import '../../styles/main.less';
+
+.popup-block {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.popup-background {
+  background-color: @color-bg-black;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+}
+
+.popup {
+  width: 280px;
+  height: 180px;
+  background-color: @color-bg-black;
+  padding: 40px 30px 36px;
+  border-radius: @border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-title {
+  margin: 0;
+  color: @color-text;
+}
+
+input[type='file' i]::-webkit-file-upload-button {
+  border-radius: @border-radius;
+  border: none;
+  font-family: inherit;
+  margin: 0 10px;
+  color: @color-blue;
+  background-color: transparent;
+}

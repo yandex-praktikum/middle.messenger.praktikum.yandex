@@ -1,24 +1,19 @@
-import { Block, TProperties} from '../../utils/core/block';
-import { message } from './message.tmpl';
-import { Button } from '../button/button';
-import { Input } from '../input/input';
+import { Block } from '../../utils/Block';
+import { IMessageProps } from '../../utils/Interfaces';
+import template from './message.hbs';
+import './message.less';
 
-type TNewMessage = {
-  sendButton: Button;
-  attachButton: Button;
-  textArea: Input;
-  events?: Record<string, (e: Event) => void>;
-  settings?: TProperties;
-};
-
-class NewMessage extends Block<TNewMessage> {
-  constructor(props: TNewMessage) {
-    super(props);
+export class Message extends Block<IMessageProps> {
+  constructor(props: IMessageProps) {
+    super({ ...props });
   }
 
-  render(): DocumentFragment {
-    return this.compile(message, this.props);
+  protected render(): DocumentFragment {
+    let time = this.props.time;
+    if (time !== undefined) {
+      time = new Date(time).toString().substring(16, 21);
+    }
+
+    return this.compile(template, { ...this.props, time });
   }
 }
-
-export { NewMessage, TNewMessage };
