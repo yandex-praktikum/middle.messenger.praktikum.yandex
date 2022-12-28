@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+//import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
 
 export class Block<P extends Record<string, any> = any> {
