@@ -3,7 +3,7 @@ import { IEditProfile } from '../../utils/Interfaces';
 import Fields from '../../components/Fields';
 import Field from '../../components/Field';
 import template from './edit-profile.hbs';
-import Button from '../../components/Button';
+import Button from '../../components/button';
 import { onSubmit } from '../../utils/OnSubmit';
 import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
