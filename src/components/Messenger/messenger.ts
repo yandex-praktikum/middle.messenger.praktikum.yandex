@@ -1,13 +1,13 @@
 import { Block } from '../../utils/Block';
 import { IMessenger } from '../../utils/Interfaces';
 import { onSubmit } from '../../utils/OnSubmit';
-import Button from '../Button';
+import Button from '../button';
 import template from './messenger.hbs';
 import MessagesController from '../../controllers/MessagesController';
 import './messenger.less';
-import Input from '../Input';
+import Input from '../input';
 import { withStore } from '../../hocs/WithStore';
-import Message from '../Message';
+import Message from '../message';
 import Close from '../Close';
 import Popup from '../Popup';
 import ChatsController from '../../controllers/ChatsController';
