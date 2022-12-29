@@ -1,7 +1,7 @@
 import './index.less';
 
 import LoginPage from './pages/Login';
-import RegistrationPage from './pages/Registration';
+import RegistrationPage from './pages/registration';
 import MessengerPage from './pages/Messenger';
 import ProfilePage from './pages/profile';
 import Error404 from './pages/error404';
