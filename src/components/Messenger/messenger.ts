@@ -12,6 +12,7 @@ import Close from '../Close';
 import Popup from '../Popup';
 import ChatsController from '../../controllers/ChatsController';
 
+
 export class MessengerBase extends Block {
   constructor(props: IMessenger) {
     super({ ...props });
@@ -169,7 +170,7 @@ export class MessengerBase extends Block {
     });
   }
 
-  protected componentDidUpdate(oldProps: IMessenger, newProps: IMessenger): boolean {
+  protected componentDidUpdate(_oldProps: IMessenger, newProps: IMessenger): boolean {
     this.children.messages = this.createMessages(newProps);
 
     return true;
@@ -186,9 +187,14 @@ export class MessengerBase extends Block {
       (chat: Record<string, number>) => chat.id === this.props.selectedChat
     );
 
+    const avatar = this.props.chats.filter(
+      (avatar: Record<string, number>) => avatar.id === this.props.selectedChat
+    )
+
     return this.compile(template, {
       ...this.props,
       title: chat[0]?.title,
+      avatar: avatar[0]?.avatar,
     });
   }
 }

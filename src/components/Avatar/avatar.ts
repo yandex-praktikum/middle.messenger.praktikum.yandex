@@ -5,8 +5,11 @@ import './avatar.less';
 
 export class Avatar extends Block {
   constructor(props: IAvatar) {
-    super(props);
+    const events = {};
+    super({ ...props, events });
+
   }
+
 
   render() {
     return this.compile(template, { ...this.props });

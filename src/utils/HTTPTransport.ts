@@ -1,3 +1,5 @@
+import { queryStringify } from "./Helpers";
+
 enum Method {
   GET = 'GET',
   POST = 'POST',
@@ -8,7 +10,7 @@ enum Method {
 
 interface IOptions {
   method: Method;
-  data?: any;
+  data?: unknown;
   headers?: Record<string, string>;
 };
 
@@ -20,36 +22,28 @@ export class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = '/'): Promise<Response> {
-    return this.request<Response>(this.endpoint + path);
+  public get<Response= void>(path = '/', data: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path + (data ? `${queryStringify(data)}` : ''));
   }
 
-  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
+  public post<Response= void>(path: string, data: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.POST,
-      data,
-    });
+      method: Method.POST, data});
   }
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+  public put<Response= void>(path: string, data: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.PUT,
-      data,
-    });
+      method: Method.PUT, data});
   }
 
-  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
+  public patch<Response= void>(path: string, data: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.PATCH,
-      data,
-    });
+      method: Method.PATCH, data});
   }
 
-  public delete<Response>(path: string, data?: unknown): Promise<Response> {
+  public delete<Response= void>(path: string, data: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
-      method: Method.DELETE,
-      data,
-    });
+      method: Method.DELETE, data});
   }
 
   private request<Response>(url: string, options: IOptions = {method: Method.GET}): Promise<Response> {
@@ -59,7 +53,7 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
 
-      xhr.onreadystatechange = (e) => {
+      xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status < 400) {
             resolve(xhr.response);
@@ -85,6 +79,7 @@ export class HTTPTransport {
       } else {
         xhr.send(data instanceof FormData ? data : JSON.stringify(data));
       }
+
     });
   }
 }

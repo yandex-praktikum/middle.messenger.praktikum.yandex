@@ -1,22 +1,23 @@
 <div class="preview {{#if isSelected }}selected{{/if}}">
-  <div class="avatar">{{ avatar }}</div>
+
+  <div class="avatar">
+    <img class="avatar-img" src="../../../static/images/ava.svg" alt="Avatar">
+  </div>
   <div class="text-block">
-    <p class="name">{{ title }}</p>
+    <span class="name">{{ title }}</span>
     <div class="content">
       {{#if isMine}}
-      <p class="from">Me: </p> {{/if}}<p class="message"> {{ last_message.content }}</p>
+        <span class="from">Me: </span>
+      {{/if}}
+      <span class="message"> {{ last_message.content }}</span>
     </div>
-
   </div>
-
   <div class="date-block">
     <p class="date">{{ time }}</p>
-
     {{#if unread_count}}
     <div class="unread">
       <p class="number">{{ unread_count }}</p>
     </div>
     {{/if}}
-
   </div>
 </div>

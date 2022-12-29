@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1965 1201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Ebene4">
+        <path d="M199.052,198.56L198.994,995.514L298.8,996.293L298.962,1096.27L398.616,1096.09L398.737,1195.16L1594.14,1195.56L1594.06,1095.56L1693.62,1095.75L1694.05,996.057L1793.33,996.555L1793.7,198.895L1693.6,198.554L1693.11,100.304L1594.49,99.066L1593.72,0L398.503,0L398.728,99.272L298.834,100.096L298.326,199.606L199.052,198.56Z" style="fill:white;"/>
+        <g transform="matrix(6.36357e-17,1.03925,-1.01695,6.22701e-17,1103.18,-326.612)">
+            <rect x="599.096" y="400.486" width="198.983" height="200.014"/>
+        </g>
+        <g transform="matrix(1.07219,0,0,1.04749,644.497,-123.506)">
+            <rect x="599.096" y="400.486" width="198.983" height="200.014"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-1.35455,-191.504)">
+            <rect x="797.772" y="600.5" width="100.277" height="195.752"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-1.35455,-191.504)">
+            <rect x="898.049" y="796.252" width="199.301" height="99.181"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-1.35455,-191.504)">
+            <rect x="1097.35" y="597.78" width="101.406" height="198.472"/>
+        </g>
+    </g>
+</svg>

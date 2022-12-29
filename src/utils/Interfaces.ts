@@ -47,6 +47,7 @@ export interface IUserInfo {
 export interface IChat {
   id: number;
   title: string;
+  avatar: string;
   unread_count: number;
   selectedChat: IChatInfo;
   last_message: Record<string, string>;
