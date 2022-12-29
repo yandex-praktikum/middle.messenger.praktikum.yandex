@@ -1,7 +1,7 @@
 //отвечает только за изменение URL и вызывает Route
 import { Route } from './Route';
 import { Block } from './Block';
-import Error404 from '../pages/Error404';
+import Error404 from '../pages/error404';
 
 class Router {
   private static __instance: Router;
