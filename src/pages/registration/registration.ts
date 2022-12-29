@@ -1,5 +1,5 @@
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import Button from '../../components/button';
+import Input from '../../components/input';
 import Link from '../../components/Link';
 import Form from '../../components/Form';
 import { Block } from '../../utils/Block';
