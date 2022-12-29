@@ -1,5 +1,5 @@
 //хранит URL и соответствующий ему блок, умеет показывать, скрывать и создавать блоки.
-import { isEqual } from './IsEqual';
+import { isEqual } from './isEqual';
 import { renderDOM } from './RenderDOM';
 import { Block } from './Block';
 
