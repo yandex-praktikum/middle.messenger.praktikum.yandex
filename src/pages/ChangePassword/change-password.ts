@@ -3,7 +3,7 @@ import { IChangePassword } from '../../utils/Interfaces';
 import Fields from '../../components/Fields';
 import Field from '../../components/Field';
 import template from './change-password.hbs';
-import Button from '../../components/Button';
+import Button from '../../components/button';
 import { onSubmit } from '../../utils/OnSubmit';
 import UserController from '../../controllers/UserController';
 import './change-password.less';
