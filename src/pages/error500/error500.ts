@@ -1,5 +1,5 @@
 import { Block } from '../../utils/Block';
-import Error from '../../components/Error';
+import Error from '../../components/error';
 import template from './error500.hbs';
 import './error500.less';
 
