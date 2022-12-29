@@ -1,11 +1,11 @@
 import './index.less';
 
 import LoginPage from './pages/Login';
-import RegistrationPage from './pages/Registration';
+import RegistrationPage from './pages/registration';
 import MessengerPage from './pages/Messenger';
-import ProfilePage from './pages/Profile';
-import Error404 from './pages/Error404';
-import Error500 from './pages/Error500';
+import ProfilePage from './pages/profile';
+import Error404 from './pages/error404';
+import Error500 from './pages/error500';
 import Router from './utils/Router';
 import AuthController from './controllers/AuthController';
 

@@ -1,6 +1,6 @@
 import { Block } from '../utils/Block';
 import { IState } from '../utils/Interfaces';
-import { isEqual } from '../utils/IsEqual';
+import { isEqual } from '../utils/isEqual';
 import store, { StoreEvents } from '../utils/Store';
 
 export function withStore(mapStateToProps: (state: IState) => any) {
