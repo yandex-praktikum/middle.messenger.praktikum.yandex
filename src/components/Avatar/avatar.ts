@@ -1,15 +1,12 @@
-import { Block } from '../../utils/Block';
-import { IAvatar } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IAvatar } from '../../utils/interfaces';
 import template from './avatar.hbs';
 import './avatar.less';
 
 export class Avatar extends Block {
   constructor(props: IAvatar) {
-    const events = {};
-    super({ ...props, events });
-
+    super(props);
   }
-
 
   render() {
     return this.compile(template, { ...this.props });

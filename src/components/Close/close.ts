@@ -1,5 +1,5 @@
-import { Block } from '../../utils/Block';
-import { IClose } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IClose } from '../../utils/interfaces'
 import template from './close.hbs';
 import './close.less';
 

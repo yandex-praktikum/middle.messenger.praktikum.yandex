@@ -1,10 +1,61 @@
-@import '../../styles/main.less';
+@import "../../styles/default_style.less";
 
 #profile {
   display: flex;
   width: 100%;
   color: @color-text;
   height: 100vh;
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: @color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &:hover {
+    .plug {
+      opacity: 1;
+    }
+  }
+}
+
+
+.profile-photo {
+  max-width: 100%;
+}
+
+.plug {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.avatar-text {
+  position: absolute;
+  font-size: 13px;
+  color: #fff;
+  width: 50px;
+  z-index: 1;
+  margin: 0;
 }
 
 .back_block {
@@ -36,21 +87,45 @@
   flex-direction: column;
   width: 510px;
   justify-content: flex-start;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.profile-button {
+  color: #000;
+  background-color: #00ff00;
+  cursor: pointer;
+  margin: 5px 0 ;
+  padding: 0;
+  text-decoration: none;
+  width: max-content;
+
+  &:hover {
+    box-shadow: 0 0 4px 2px @color-text-green;
+  }
 }
 
 .back-button {
-  font-family: inherit;
-  color: @color-text;
-  border: none;
-  background-color: @color-green;
-  font-size: 20px;
-  margin: 0 10px 0 20px;
-  cursor: pointer;
-  padding: 2px 4px;
-  border-radius: 16px;
-
+  position: relative;
+  outline: 0;
+  color: @color-text-green;
+  padding: 5px 12px;
+  background-color: #222222;
+  border: 5px solid #333333;
+  border-top-color: #737373;
+  border-left-color: #737373;
+  box-shadow: none;
+  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: box-shadow 0.2s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: box-shadow;
+  text-transform: uppercase;  
   &:hover {
-    background-color: @color-green-hover;
+    box-shadow: 0 0 4px 2px @color-text-green;
   }
 }

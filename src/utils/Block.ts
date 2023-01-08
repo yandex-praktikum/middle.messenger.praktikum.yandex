@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { EventBus } from './EventBus';
+import { EventBus } from './event-bus';
 
 export class Block<P extends Record<string, any> = any> {
   static EVENTS = {
@@ -124,6 +124,9 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
+
+    this._removeEvents();
+
     const fragment = this.render();
     const newElement = fragment.firstElementChild as HTMLElement;
 
@@ -133,6 +136,7 @@ export class Block<P extends Record<string, any> = any> {
 
     this._element = newElement;
     this._addEvents();
+
   }
 
   protected render(): DocumentFragment {
@@ -205,6 +209,15 @@ export class Block<P extends Record<string, any> = any> {
         throw new Error('Нет доступа');
       },
     });
+  }
+
+  private _removeEvents() {
+    const { events = {} } = this.props as P & {
+      events: Record<string, () => void>;
+    };
+    Object.keys(events).forEach((eventName) =>
+      this._element?.removeEventListener(eventName, events[eventName])
+    );
   }
 
   public show() {

@@ -1,5 +1,5 @@
-import { Block } from '../../utils/Block';
-import { IPopup } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IPopup } from '../../utils/interfaces'
 import template from './popup.hbs';
 import './popup.less';
 

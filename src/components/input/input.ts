@@ -1,6 +1,6 @@
-import { Block } from '../../utils/Block';
-import { IInput } from '../../utils/Interfaces';
-import { validate } from '../../utils/Validate';
+import { Block } from '../../utils/block';
+import { IInput } from '../../utils/interfaces'
+import { validate } from '../../utils/validate';
 import template from './input.hbs';
 import './input.less';
 

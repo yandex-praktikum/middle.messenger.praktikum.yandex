@@ -1,6 +1,6 @@
-import { Block } from '../../utils/Block';
-import { ILink } from '../../utils/Interfaces';
-import { withRouter } from '../../hocs/WithRouter';
+import { Block } from '../../utils/block';
+import { ILink } from '../../utils/interfaces'
+import { withRouter } from '../../hocs/with-router';
 import template from './link.hbs';
 import './link.less';
 

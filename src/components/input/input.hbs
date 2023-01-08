@@ -1,14 +1,14 @@
-<div class="{{ divClass }}">
+<div class="{{divClass}}">
   <label class="label">{{ label }}</label>
   {{#if value}}
-    <input type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" value="{{ value }}"
-    class="{{ className }}">
+  <input class="under-line {{ className }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" value="{{ value }}">
   {{else}}
-    <input type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" class="{{ className }}">
+  <input class="under-line {{ className }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}">
   {{/if}}
+
   {{#if noError}}
   <div></div>
   {{else}}
-  <span class="error input-error">{{ error }}</span>
+  <p class="error input-error">{{ error }}</p>
   {{/if}}
 </div>

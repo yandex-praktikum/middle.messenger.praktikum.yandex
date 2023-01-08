@@ -1,0 +1,6 @@
+<div class="{{ styles.chat }} {{#if isSelected }}{{ styles.chat--selected }}{{/if}}">
+  {{title}}
+  {{#if unread_count }}
+  <span class="{{ styles.chat__badge }}">{{unread_count}}</span>
+  {{/if}}
+</div>

@@ -1,6 +1,6 @@
-import { Block } from '../../utils/Block';
-import { IField } from '../../utils/Interfaces';
-import { validate } from '../../utils/Validate';
+import { Block } from '../../utils/block';
+import { IField } from '../../utils/interfaces'
+import { validate } from '../../utils/validate';
 import template from './field.hbs';
 import './field.less';
 

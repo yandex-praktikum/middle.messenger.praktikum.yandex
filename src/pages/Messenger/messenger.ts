@@ -1,16 +1,16 @@
-import { Block } from '../../utils/Block';
-import ChatsList from '../../components/ChatsList';
+import { Block } from '../../utils/block';
+import ChatsList from '../../components/chat-list';
 import template from './messenger.hbs';
-import Messenger from '../../components/Messenger';
-import AuthController from '../../controllers/AuthController';
-import ChatsController from '../../controllers/ChatsController';
-import Popup from '../../components/Popup';
-import Button from '../../components/Button';
-import Close from '../../components/Close';
-import Input from '../../components/Input';
-import { onSubmit } from '../../utils/OnSubmit';
-import Link from '../../components/Link';
 import './messenger.less';
+import Messenger from '../../components/messenger';
+import AuthController from '../../controllers/auth-controller';
+import ChatsController from '../../controllers/chat-controller';
+import Popup from '../../components/popup';
+import Button from '../../components/button';
+import Close from '../../components/close';
+import Input from '../../components/input';
+import { onSubmit } from '../../utils/on-submit';
+import Link from '../../components/link';
 
 export class MessengerPage extends Block {
   constructor() {
@@ -22,9 +22,9 @@ export class MessengerPage extends Block {
     AuthController.fetchUser();
 
     this.children.chatsList = new ChatsList({
-      isLoaded: false
+      isLoaded: false,
     });
-
+    
     this.children.messenger = new Messenger({});
     this.children.link = new Link({
       path: '/settings',
@@ -33,7 +33,7 @@ export class MessengerPage extends Block {
     });
 
     this.children.addChatButton = new Button({
-      label: 'Add chat',
+      label: 'Add new chat',
       className: 'add-chat-button',
       events: {
         click: () => {
@@ -51,11 +51,13 @@ export class MessengerPage extends Block {
           click: (e: any) => {
             e.preventDefault();
             const input: any = document.querySelector('#chatName');
+
             const chatName = input.value;
+
             onSubmit(e, 'chat-validated-input');
 
             if (chatName !== '') {
-              ChatsController.create(chatName);
+              ChatsController.createChat(chatName);
               input.value = '';
               (this.children.addChatPopup as Popup).hide();
             }
@@ -66,6 +68,7 @@ export class MessengerPage extends Block {
         events: {
           click: () => {
             const input: any = document.querySelector('#chatName');
+
             input.value = '';
             (this.children.addChatPopup as Popup).hide();
           },
@@ -76,6 +79,7 @@ export class MessengerPage extends Block {
         type: 'text',
         placeholder: 'chat name',
         name: 'chatName',
+
         className: 'chat-validated-input',
       }),
     });
@@ -87,7 +91,7 @@ export class MessengerPage extends Block {
     });
   }
 
-  render(): DocumentFragment {
+  render() {
     return this.compile(template, { ...this.props });
   }
 }

@@ -1,4 +1,4 @@
-@import '../../styles/main.less';
+@import '../../styles/default_style.less';
 
 .text-message {
   padding: 11px 13px;
@@ -8,11 +8,16 @@
   margin: 0 0 16px;
   font-size: 12px;
   max-width: 400px;
-  width: max-content;
-  padding: 11px 11px 11px 14px;
+  height: auto;
   display: flex;
+  flex-direction: column;
 }
-
+.message{
+  overflow-x: hidden;
+  word-wrap: normal;
+  width: inherit;
+  height: inherit;
+}
 .from-me {
   align-self: flex-end;
   background-color: @color-purple;

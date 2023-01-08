@@ -1,4 +1,4 @@
-import { validateExp } from './ValidateExp';
+import { validateExp } from './reg-exp';
 
 export const validate = (
   event: Event,

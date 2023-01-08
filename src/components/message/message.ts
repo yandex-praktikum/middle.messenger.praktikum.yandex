@@ -1,5 +1,5 @@
-import { Block } from '../../utils/Block';
-import { IMessageProps } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IMessageProps } from '../../utils/interfaces'
 import template from './message.hbs';
 import './message.less';
 

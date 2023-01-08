@@ -1,7 +1,6 @@
-//отвечает только за изменение URL и вызывает Route
-import { Route } from './Route';
-import { Block } from './Block';
-import Error404 from '../pages/Error404';
+import { Route } from './route';
+import { Block } from './block';
+import Error404 from '../pages/error404';
 
 class Router {
   private static __instance: Router;
@@ -28,12 +27,14 @@ class Router {
 
   public start() {
     window.onpopstate = (event: PopStateEvent) => {
+      
       const target = event.currentTarget as Window;
 
       this._onRoute(target.location.pathname);
     };
 
     this._onRoute(window.location.pathname);
+    console.log(window.location.pathname);
   }
 
   private _onRoute(pathname: string) {

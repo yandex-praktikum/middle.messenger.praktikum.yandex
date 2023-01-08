@@ -1,8 +1,7 @@
 <div class="string">
   <span class="label-profile">{{ label }}</span>
   {{#if isInput}}
-    <input type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" value="{{ value }}"
-      class="profile-input {{ className }}">
+    <input class="profile-input {{ className }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" value="{{ value }}">
     <span class="profile-input-error">{{ error }}</span>
   {{/if}}
   {{#if isData}}

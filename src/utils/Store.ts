@@ -1,7 +1,7 @@
-import { set } from './Helpers';
-import { EventBus } from './EventBus';
-import { Block } from './Block';
-import { IUser, IChatInfo, IMessage } from './Interfaces';
+import { set } from './helpers';
+import { EventBus } from './event-bus';
+import { Block } from './block';
+import { IUser, IChatInfo, IMessage } from './interfaces';
 
 export enum StoreEvents {
   Updated = 'updated'

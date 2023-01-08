@@ -1,11 +1,12 @@
 <div class="popup-block">
   <div class="popup-background"></div>
   <form class="popup" id="popup">
-    <h2 class="popup-title">{{ title }}</h2>
+    <h3 class="popup-title">{{ title }}</h3>
     {{{ close }}}
     <div class="popup-content">
       {{{ content }}}
     </div>
-    {{{ button }}}
+    <div class="buttons {{ buttonsClass }}">{{{ button }}}</div>
+    </h3>
   </form>
 </div>

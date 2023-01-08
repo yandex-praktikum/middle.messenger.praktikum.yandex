@@ -1,59 +1,45 @@
-@import '../../styles/main.less';
+@import '../../styles/default_style.less';
 
-.button {
-  font-family: inherit;
-  width: 160px;
-  height: 45px;
-  background: @color-blue;
-  border-radius: @border-radius;
-  border: none;
-  color: #fff;
-  margin: 0 auto;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.main-button{
+  z-index: 9999;
+  position: relative;
+  outline: transparent;
+  color: #000;
+  font-size: 1.25rem;
+  padding: 0.125rem 0.5rem;
+  letter-spacing: 2px;
+  background-color: @color-text-green;
+  border: 5px solid #007a00;
+  border-top-color: #caffc2;
+  border-left-color: #caffc2;
+  box-shadow: none;
+  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: box-shadow 0.2s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: box-shadow;
+  text-transform: uppercase;
 
   &:hover {
-    background-color: @color-blue-hover;
+    box-shadow: 0 0 4px 2px @color-text-green;
   }
 }
 
 .save-button {
   margin: 60px auto 0;
-  background-color: @color-green;
+  background-color: @color-text-green;
 
   &:hover {
-    background-color: @color-green-hover;
+    background-color: @color-text-green;
   }
 }
 
-.profile-button {
-  color: @color-green;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  background: none;
-  text-decoration: none;
-  width: max-content;
-
-  &:hover {
-    background-color: transparent;
-    color: @color-green-hover;
-  }
-}
-
-.red {
-  color: @color-error;
-
-  &:hover {
-    color: @color-error-hover;
-  }
-}
-
-.send {
+.test {
   color: @color-text;
   border: none;
   background-color: @color-purple;

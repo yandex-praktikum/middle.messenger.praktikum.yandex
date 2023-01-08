@@ -1,5 +1,5 @@
-import { Block } from '../../utils/Block';
-import { IForm } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IForm } from '../../utils/interfaces'
 import template from './form.hbs';
 import './form.less';
 

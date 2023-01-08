@@ -1,17 +1,16 @@
-import { Block } from '../../utils/Block';
-import { IMessenger } from '../../utils/Interfaces';
-import { onSubmit } from '../../utils/OnSubmit';
-import Button from '../Button';
+import { Block } from '../../utils/block';
+import { IMessenger } from '../../utils/interfaces';
+import { onSubmit } from '../../utils/on-submit';
+import Button from '../button';
 import template from './messenger.hbs';
-import MessagesController from '../../controllers/MessagesController';
+import MessagesController from '../../controllers/message-controller';
 import './messenger.less';
-import Input from '../Input';
-import { withStore } from '../../hocs/WithStore';
-import Message from '../Message';
-import Close from '../Close';
-import Popup from '../Popup';
-import ChatsController from '../../controllers/ChatsController';
-
+import Input from '../input';
+import { withStore } from '../../hocs/with-store';
+import Message from '../message';
+import Close from '../close';
+import Popup from '../popup';
+import ChatsController from '../../controllers/chat-controller';
 
 export class MessengerBase extends Block {
   constructor(props: IMessenger) {
@@ -25,17 +24,6 @@ export class MessengerBase extends Block {
       events: {
         click: () => {
           const settingsPopup = document.querySelector('.settings-popup');
-          (settingsPopup as HTMLElement).classList.toggle('visible');
-        },
-      },
-    });
-
-    this.children.attachButton = new Button({
-      label: '',
-      className: 'attach-button',
-      events: {
-        click: () => {
-          const settingsPopup = document.querySelector('.attach-popup');
           (settingsPopup as HTMLElement).classList.toggle('visible');
         },
       },
@@ -61,6 +49,16 @@ export class MessengerBase extends Block {
       },
     });
 
+    this.children.deleteChatButton = new Button({
+      label: 'delete chat',
+      className: 'delete-chat-button',
+      events: {
+        click: () => {
+          (this.children.deleteChatPopup as Popup).show();
+        },
+      },
+    });
+
     this.children.addUserPopup = new Popup({
       title: 'Add user to chat',
       button: new Button({
@@ -76,6 +74,7 @@ export class MessengerBase extends Block {
             if (userId !== '') {
               ChatsController.addUserToChat(this.props.selectedChat, userId);
               input.value = '';
+              console.log('here', userId);
               (this.children.addUserPopup as Popup).hide();
             }
           },
@@ -110,9 +109,8 @@ export class MessengerBase extends Block {
             const input: any = document.querySelector('#deleteUserId');
             const userId = input.value;
             onSubmit(e, 'delete-user-validated-input');
-
             if (userId !== '') {
-              ChatsController.deleteUserFromChat(
+              ChatsController.removeUserFromChat(
                 this.props.selectedChat,
                 userId
               );
@@ -140,6 +138,58 @@ export class MessengerBase extends Block {
       }),
     });
 
+    this.children.deleteChatPopup = new Popup({
+      title: 'Delete chat',
+      button: new Button({
+        label: 'Delete',
+        type: 'submit',
+        events: {
+          click: (e: any) => {
+            e.preventDefault();
+            const input: any = document.querySelector('#deleteChatId');
+            const chatId = input.value;
+            onSubmit(e, 'delete-chat-validated-input');
+
+            if (this.props.selectedChat !== '') {
+              ChatsController.deleteChat(
+                chatId
+              );
+              input.value = '';
+              this.props.selectedChat = '';
+              (this.children.deleteChatPopup as Popup).hide();
+            }
+          },
+        },
+      }),
+      close: new Close({
+        events: {
+          click: () => {
+            const input: any = document.querySelector('#deleteChatId');
+            input.value = '';
+            (this.children.deleteChatPopup as Popup).hide();
+          },
+        },
+      }),
+      content: new Input({
+        label: '',
+        type: 'text',
+        placeholder: 'chat Id',
+        name: 'deleteChatId',
+        className: 'delete-chat-validated-input',
+      }),
+    });
+
+    this.children.attachButton = new Button({
+      label: '',
+      className: 'attach-button',
+      events: {
+        click: () => {
+          const settingsPopup = document.querySelector('.attach-popup');
+          (settingsPopup as HTMLElement).classList.toggle('visible');
+        },
+      },
+    });
+
     this.children.messages = this.createMessages({ ...this.props });
 
     this.children.input = new Input({
@@ -153,7 +203,7 @@ export class MessengerBase extends Block {
     });
 
     this.children.sendButton = new Button({
-      label: '->',
+      label: '',
       type: 'submit',
       className: 'send',
       events: {

@@ -1,5 +1,5 @@
-import { Block } from '../../utils/Block';
-import Error from '../../components/Error';
+import { Block } from '../../utils/block';
+import Error from '../../components/error';
 import template from './error500.hbs';
 import './error500.less';
 
@@ -11,8 +11,8 @@ export class Error500 extends Block {
   protected init(): void {
     this.children.error = new Error({
       number: '500',
-      text: 'We’re already fixing',
-      link: 'Back to chats ->',
+      text: 'We are already fixing',
+      link: 'Back to chats',
     });
   }
 

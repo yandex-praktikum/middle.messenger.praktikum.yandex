@@ -1,11 +1,11 @@
-import { Block } from '../../utils/Block';
-import { IButtonProps } from '../../utils/Interfaces';
+import { Block } from '../../utils/block';
+import { IButtonProps } from '../../utils/interfaces';
 import template from './button.hbs';
 import './button.less';
 
-export class Button extends Block<IButtonProps> {
+export class Button extends Block {
   constructor(props: IButtonProps) {
-    super({ type: 'button', ...props });
+    super(props);
   }
 
   render() {

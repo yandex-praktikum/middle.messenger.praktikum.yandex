@@ -1,20 +1,20 @@
-import { Block } from '../../utils/Block';
-import { IProfilePageBase, IProfileInfo } from '../../utils/Interfaces';
-import Fields from '../../components/Fields';
-import Field from '../../components/Field';
+import Fields from '../../components/fields';
+import Field from '../../components/field';
+import { Block } from '../../utils/block';
+import { IProfilePageBase, IProfileInfo } from '../../utils/interfaces'
 import template from './profile.hbs';
-import Button from '../../components/Button';
-import ChangePassword from '../ChangePassword';
-import EditProfile from '../EditProfile';
-import AuthController from '../../controllers/AuthController';
-import UserController from '../../controllers/UserController';
-import { withStore } from '../../hocs/WithStore';
-import Popup from '../../components/Popup';
-import Input from '../../components/Input';
-import Avatar from '../../components/Avatar';
-import Close from '../../components/Close';
-import Link from '../../components/Link';
 import './profile.less';
+import Button from '../../components/button';
+import ChangePassword from '../change-password';
+import EditProfile from '../edit-profile';
+import AuthController from '../../controllers/auth-controller';
+import UserController from '../../controllers/user-controller';
+import { withStore } from '../../hocs/with-store';
+import Popup from '../../components/popup';
+import Input from '../../components/input';
+import Avatar from '../../components/avatar';
+import Close from '../../components/close';
+import Link from '../../components/link';
 
 export class ProfilePageBase extends Block {
   constructor(props: IProfilePageBase) {
@@ -25,17 +25,19 @@ export class ProfilePageBase extends Block {
     await AuthController.fetchUser();
   }
 
-  init() {
+  init(): void {
     this.children.backButton = new Link({
       path: '/messenger',
       text: '<-',
       className: 'back-button',
     });
+    
     this.children.avatar = new Avatar({
+      className: 'profile-avatar',
       photo:
         this.props.avatar === null
-          ? '../../../static/images/image-black.svg'
-          : `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}`,
+          ? '../../../static/images/default-ava.svg'
+          : `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
       events: {
         click: () => {
           (this.children.popup as Popup).show();
@@ -154,11 +156,14 @@ export class ProfilePageBase extends Block {
     });
   }
 
-  protected componentDidUpdate(_oldProps: IProfileInfo, newProps: IProfileInfo): boolean {
+  protected componentDidUpdate(
+    oldProps: IProfileInfo,
+    newProps: IProfileInfo
+  ): boolean {
     (this.children.avatar as Avatar).setProps({
       photo:
         newProps.avatar === null
-          ? '../../../static/icons/image-black.svg'
+          ? '../../static/images/default-ava.svg'
           : `https://ya-praktikum.tech/api/v2/resources/${this.props.avatar}`,
     });
 

@@ -1,6 +1,6 @@
-import { Block } from '../../utils/Block';
-import { IFields } from '../../utils/Interfaces';
-import { onSubmit } from '../../utils/OnSubmit';
+import { Block } from '../../utils/block';
+import { IFields } from '../../utils/interfaces'
+import { onSubmit } from '../../utils/on-submit';
 import template from './fields.hbs';
 import './fields.less';
 

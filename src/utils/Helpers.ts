@@ -7,20 +7,20 @@ export function trim(string: string, chars?: string): string {
     return string.trim();
   }
 
-  const reg = new RegExp(`[${chars}]`, "gi");
-  return string.replace(reg, "");
+  const reg = new RegExp(`[${chars}]`, 'gi');
+  return string.replace(reg, '');
 }
 
 export function queryStringify(data: any) {
-  if (typeof data !== "object") {
-    throw new Error("Data must be object");
+  if (typeof data !== 'object') {
+    throw new Error('Data must be object');
   }
 
   const keys = Object.keys(data);
   return keys.reduce(
     (result, key, index) =>
-      `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`,
-    "?"
+      `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`,
+    '?'
   );
 }
 
@@ -44,25 +44,18 @@ export function merge(lhs: Indexed, rhs: Indexed): Indexed {
   return lhs;
 }
 
-export function set(
-  object: Indexed | unknown,
-  path: string,
-  value: unknown
-): Indexed | unknown {
-  if (typeof object !== "object" || object === null) {
+export function set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
+  if (typeof object !== 'object' || object === null) {
     return object;
   }
 
-  if (typeof path !== "string") {
-    throw new Error("path must be string");
+  if (typeof path !== 'string') {
+    throw new Error('path must be string');
   }
 
-  const result = path.split(".").reduceRight<Indexed>(
-    (acc, key) => ({
+  const result = path.split('.').reduceRight<Indexed>((acc, key) => ({
       [key]: acc,
-    }),
-    value as any
-  );
+    }), value as any);
 
   return merge(object as Indexed, result);
 }

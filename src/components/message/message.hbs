@@ -1,5 +1,6 @@
-<div class="text-message {{#if isMine}}from-me{{/if}}">
-  {{ content }}
+<div class="text-message
+{{#if isMine}}from-me{{/if}}">
+<span class="message">{{ content }}</span>
   <div class="time-message {{#if isMine}}time-from-me{{/if}}">
     {{ time }}
   </div>
