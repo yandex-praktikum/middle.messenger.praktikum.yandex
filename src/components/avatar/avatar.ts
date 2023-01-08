@@ -7,7 +7,6 @@ export class Avatar extends Block {
   constructor(props: IAvatar) {
     super(props);
   }
-
   render() {
     return this.compile(template, { ...this.props });
   }
