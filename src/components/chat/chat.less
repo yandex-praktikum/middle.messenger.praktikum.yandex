@@ -1,0 +1,146 @@
+@import '../../styles/default_style.less';
+.over-all{
+  z-index: 999;
+}
+.added-chat-ID{
+  color: #ff4da0;
+  margin: 0;
+  padding-left: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 10px;
+}
+.preview {
+  width: 287px;
+  height: 61px;
+  border-top: 1px solid @color-bg;
+  padding: 12px 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+
+  &:hover {
+    background-color: @color-bg-hover;
+  }
+}
+
+.selected {
+  background-color: @color-bg-hover;
+}
+
+.avatar-wrapper{
+  background-color: @color-bg;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 47px;
+  width: 47px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: @color-border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &:hover {
+    .plug {
+      opacity: 1;
+    }
+  }
+}
+
+.profile-photo {
+  max-width: 100%;
+}
+
+.plug {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.circle {
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  opacity: 1;
+  background-color: @color-bg;
+}
+
+.avatar-text {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  width: 50px;
+  z-index: 1;
+  margin: 0;
+}
+
+.text-block {
+  margin-right: 8px;
+}
+
+.name {
+  color: @color-text;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  width: 170px;
+}
+
+.content {
+  color: @color-text-gray;
+  font-size: 12px;
+  margin: 0px 0 0;
+  width: 184px;
+  display: flex;
+  text-overflow: clip;
+}
+.message-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.date-block {
+  width: 35px;
+}
+
+.from {
+  margin: 0;
+  color: @color-text-green;
+  margin-right: 4px;
+}
+
+.popup-avatar{
+  display: flex;
+  width: 680px;
+  height: 680px;
+  background-color: @color-bg;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.popup-title {
+  margin: 0;
+}

@@ -1,0 +1,64 @@
+@import '../../styles/default_style.less';
+
+.data {
+  margin: 60px 0 0;
+  width: 510px;
+  font-size: 13px;
+  height: max-content;
+}
+
+.string {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: @color-border 1px solid;
+  width: 100%;
+  position: relative;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.profile-data {
+  color: @color-text;
+  margin: 10px 0;
+  border: none;
+  text-align: right;
+}
+
+.label-profile {
+  margin: 10px 0;
+  color: @color-label;
+}
+
+.profile-input {
+  text-align: right;
+  width: 255px;
+  margin: 0 0 -11px;
+  padding: 7px 0 17px;
+  background-color: transparent;
+  color: @color-text;
+  height: 26px;
+  font-size: 13px;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &::-webkit-input-placeholder {
+    color: @color-label;
+    opacity: 0.5;
+  }
+}
+
+.profile-input-error {
+  color: @color-error;
+  font-size: 8px;
+  margin: 0 0 11px;
+  line-height: 8px;
+  position: absolute;
+  right: 0;
+  bottom: -22px;
+  height: 8px;
+}

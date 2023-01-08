@@ -1,0 +1,10 @@
+<div class="string">
+  <span class="label-profile">{{ label }}</span>
+  {{#if isInput}}
+    <input class="profile-input {{ className }}" type="{{ type }}" name="{{ name }}" id="{{ name }}" placeholder="{{ placeholder }}" value="{{ value }}">
+    <span class="profile-input-error">{{ error }}</span>
+  {{/if}}
+  {{#if isData}}
+    <span class="profile-data">{{ data }}</span>
+  {{/if}}
+</div>
