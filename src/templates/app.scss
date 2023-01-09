@@ -7,12 +7,14 @@
 }
 
 html {
-    height: 100%;
+    height:100vh;
+    overflow: hidden;
 }
 body {
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
+    height:100vh;
+    overflow: hidden;
+    min-height: max-content;
     background-color: $bg;
 }
 
@@ -24,14 +26,15 @@ body {
     > * {
         // border: 1px solid green;
     }
-    .app__sidebar {
-    height: 100%;
+    // .app__sidebar {
+    // height: 100%;
 
-        max-width: max-content;
-    }
+    //     max-width: max-content;
+    // }
     .app__main {
-        flex-grow: 3;
-    height: 100%;
+        width: 100%;
+        // flex-grow: 3;
+    // height: 100%;
 
     }
 }

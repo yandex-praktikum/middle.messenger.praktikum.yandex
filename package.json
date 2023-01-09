@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "watch": "parcel watch src/index.html",
+    "watch": "parcel watch src/static/*.html",
     "dev-serv": "parcel src/static/*.html",
     "dev": "parcel watch src/* & node src/server.js",
     "build": "parcel build src/index.js",

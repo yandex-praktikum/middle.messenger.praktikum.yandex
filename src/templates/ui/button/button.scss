@@ -14,8 +14,18 @@
     line-height: 13px;
     text-align: center;
     transition: all 0.3s linear;
+
     &:hover {
         background-color: transparent;
+    }
+    &.btn-small {
+        padding:0;
+        width: max-content;
+        background-color: transparent;
+        border-color: transparent;
+        &:hover{
+            opacity: 0.5;
+        }
     }
     &.arrowprev,
     &.arrownext {

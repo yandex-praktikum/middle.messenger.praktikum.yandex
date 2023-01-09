@@ -1,28 +1,28 @@
 import templateApp from '../../app.hbs';
 import '../../app.scss';
 
-import './auth.scss';
 
 import templateAuth from './auth.hbs';
-
-
 import link from '../../ui/link/link';
 import button from '../../ui/button/button';
 import appForm from '../../ui/form/form.js';
 import input from '../../ui/form/input/input.js';
+import './auth.scss';
 
 
-console.log(123123);
 
 const formItems = [
     input({
         id: 'login',
+        name:'login',
         textLabel: 'Логин',
         placeholder: 'Логин',
         type: 'text',
         errorMessage: 'неверный логин'
     }),
     input({
+        id: 'password',
+        name:'password',
         textLabel: 'Пароль',
         placeholder: 'Пароль',
         type: 'password',
@@ -36,13 +36,13 @@ const formButtons = [
         id: '',
         className: '',
         onClick: alert,
-        label: 'Авторизоваться'
+        label: 'Вход'
     }),
     link({
         id: '',
         className: '',
         href: '/reg.html',
-        label: 'Нет аккаунта?'
+        label: 'Ещё не зарегистрированы?'
     })
 
 ];

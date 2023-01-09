@@ -1,3 +1,7 @@
+import templateApp from '../../app.hbs';
+import '../../app.scss';
+
+
 import templateReg from './reg.hbs';
 import link from '../../ui/link/link';
 import button from '../../ui/button/button';
@@ -9,6 +13,7 @@ import './reg.scss';
 const formItems = [
     input({
         id: 'email',
+        name:'email',
         textLabel: 'Почта',
         placeholder: 'Почта',
         type: 'email',
@@ -16,17 +21,35 @@ const formItems = [
     }),
     input({
         id: 'login',
+        name:'login',
         textLabel: 'Логин',
         placeholder: 'Логин',
         type: 'text',
         errorMessage: 'неверный логин'
     }),
     input({
-        id: 'name',
-        textLabel: 'Логин',
-        placeholder: 'Логин',
+        id: 'first_name',
+        name:'first_name',
+        textLabel: 'Имя',
+        placeholder: 'Имя',
         type: 'text',
-        errorMessage: 'неверный логин'
+        errorMessage: ''
+    }),
+    input({
+        id: 'second_name',
+        name:'second_name',
+        textLabel: 'Фамилия',
+        placeholder: 'Фамилия',
+        type: 'text',
+        errorMessage: ''
+    }),
+    input({
+        id: 'phone',
+        name:'phone',
+        textLabel: 'Телефон',
+        placeholder: 'Телефон',
+        type: 'tel',
+        errorMessage: ''
     }),
     input({
         textLabel: 'Пароль',
@@ -42,7 +65,6 @@ const formItems = [
     }),
 ]
 
-
 const formButtons = [
     button({
         id: '',
@@ -53,13 +75,13 @@ const formButtons = [
     link({
         id: '',
         className: '',
-        href: '/',
+        href: '/auth.html',
         label: 'Войти'
     })
 
 ];
 
-export default authPage = templateReg({
+export default regPage = templateReg({
     authForm: appForm({
         attr: {},
         formTitle: 'Регистрация',
@@ -68,3 +90,6 @@ export default authPage = templateReg({
         submit: alert
     })
 })
+
+
+document.body.innerHTML = templateApp({ sidebar: '', page: regPage });

@@ -9,6 +9,7 @@ export default function input({
     id = '',
     className = '',
     name = '',
+    defaultValue = '',
     type = '',
     placeholder = '',
     onChange = f => f,
@@ -26,6 +27,7 @@ export default function input({
 
 
     const errorMsqPush = (msq) => {
+        // console.log(123);
         if (!id) return;
         // const errorBlock = e.target.parentNode;
     }
@@ -33,13 +35,13 @@ export default function input({
     if (id) {
         document.body.addEventListener('change', (e) => {
             if (e.target.id == id) {
-                onChange(e);
+                // onChange(e);
             }
         });
         document.body.addEventListener('input', (e) => {
             if (e.target.id == id) {
-                onOninput(e);
-                labelVisible(e);
+                // onOninput(e);
+                // labelVisible(e);
             }
         });
     }
@@ -56,6 +58,20 @@ export default function input({
         name,
         type,
         placeholder,
-        errorMessage
+        errorMessage,
+        defaultValue,
+        test
     });
 }
+
+
+
+
+
+function test(element) {
+    console.log(element);
+}
+
+window.chatApp = {
+    test
+};
