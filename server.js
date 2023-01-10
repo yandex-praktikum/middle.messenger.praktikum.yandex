@@ -10,6 +10,6 @@ app.use(express.static("./dist/"));
 //   res.sendFile(path.join(__dirname, "dist/index.html"));
 // });
 
-app.listen(PORT, function () {
+app.listen(PORT, function () { 
   console.log(`Приложение запущено http://localhost:${PORT}`);
 });
