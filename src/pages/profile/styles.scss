@@ -1,0 +1,123 @@
+@import "../../variables";
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+  background-color: $color_blue;
+  padding: 24px 0;
+}
+.auth {
+  width: 400px;
+  border: solid 1px $color_blue2;
+  border-radius: 5px;
+  padding: 40px;
+  background-color: #ffffff;
+}
+.auth__title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.auth__text {
+  color: $color_blue2;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.auth__input-text {
+  border-bottom: solid 1px $color_gray !important;
+  border-radius: 0 !important;
+  margin-bottom: 20px;
+  &:focus {
+    border-radius: 5px !important;
+  }
+}
+.auth__error {
+  background-color: $color_red;
+  color: #ffffff;
+  padding: 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-bottom: 24px;
+}
+.auth__button {
+  margin: 32px 0 16px 0;
+}
+.auth__link {
+  text-align: center;
+  a {
+    font-size: 14px;
+    text-decoration: none;
+    color: $color_blue2;
+    &:hover {
+      color: $color_red;
+    }
+  }
+}
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+  background-color: $color_blue;
+  padding: 24px 0;
+}
+.profile {
+  position: relative;
+}
+.profile__input-text {
+  &:disabled {
+    background-color: #ffffff;
+  }
+}
+.profile__link {
+  margin-top: 16px;
+}
+.profile__sign-out {
+  a {
+    color: $color_red;
+    &:hover {
+      color: #000000;
+    }
+  }
+}
+.profile__avatar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 16px;
+  span {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #c4c4c4;
+  }
+}
+.profile__edit-avatar {
+  margin-bottom: 24px;
+}
+.profile__back {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 12px;
+  color: $color_blue2;
+  text-decoration: none;
+  &:hover {
+    color: $color_red;
+  }
+}
+.profile__button {
+  margin-bottom: 0;
+}

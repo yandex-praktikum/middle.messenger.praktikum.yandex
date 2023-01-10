@@ -1,0 +1,22 @@
+{
+  "name": "yp_messenger",
+  "version": "1.0.0",
+  "description": "Yandex practicum messenger project",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "start": "node ./server.js"
+  },
+  "keywords": [],
+  "author": "Vladislav Zobnin",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.2",
+    "express": "^4.18.2",
+    "parcel": "^2.8.2",
+    "prettier": "2.8.1"
+  },
+  "dependencies": {
+    "reset-css": "^5.0.1"
+  }
+}
