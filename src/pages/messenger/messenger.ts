@@ -3,14 +3,14 @@ import ChatsList from '../../components/chat-list';
 import template from './messenger.hbs';
 import './messenger.less';
 import Messenger from '../../components/messenger';
-import AuthController from '../../controllers/auth-controller';
-import ChatsController from '../../controllers/chat-controller';
 import Popup from '../../components/popup';
 import Button from '../../components/button';
 import Close from '../../components/close';
 import Input from '../../components/input';
 import { onSubmit } from '../../utils/on-submit';
 import Link from '../../components/link';
+import AuthController from '../../controllers/auth-controller';
+import ChatsController from '../../controllers/chat-controller';
 
 export class MessengerPage extends Block {
   constructor() {
@@ -20,6 +20,7 @@ export class MessengerPage extends Block {
   protected init(): void {
     ChatsController.fetchChats();
     AuthController.fetchUser();
+
 
     this.children.chatsList = new ChatsList({
       isLoaded: false,
@@ -57,7 +58,7 @@ export class MessengerPage extends Block {
             onSubmit(e, 'chat-validated-input');
 
             if (chatName !== '') {
-              ChatsController.createChat(chatName);
+              ChatsController.create(chatName);
               input.value = '';
               (this.children.addChatPopup as Popup).hide();
             }
@@ -79,7 +80,6 @@ export class MessengerPage extends Block {
         type: 'text',
         placeholder: 'chat name',
         name: 'chatName',
-
         className: 'chat-validated-input',
       }),
     });

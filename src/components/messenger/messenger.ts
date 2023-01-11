@@ -3,7 +3,6 @@ import { IMessenger } from '../../utils/interfaces';
 import { onSubmit } from '../../utils/on-submit';
 import Button from '../button';
 import template from './messenger.hbs';
-import MessagesController from '../../controllers/message-controller';
 import './messenger.less';
 import Input from '../input';
 import { withStore } from '../../hocs/with-store';
@@ -11,6 +10,7 @@ import Message from '../message';
 import Close from '../close';
 import Popup from '../popup';
 import ChatsController from '../../controllers/chat-controller';
+import MessagesController from '../../controllers/message-controller';
 
 export class MessengerBase extends Block {
   constructor(props: IMessenger) {
@@ -69,10 +69,12 @@ export class MessengerBase extends Block {
             e.preventDefault();
             const input: any = document.querySelector('#addUserId');
             const userId = input.value;
+            
             onSubmit(e, 'add-user-validated-input');
             console.log('userId', userId);
             if (userId !== '') {
               ChatsController.addUserToChat(this.props.selectedChat, userId);
+              
               input.value = '';
               console.log('here', userId);
               (this.children.addUserPopup as Popup).hide();
@@ -110,7 +112,7 @@ export class MessengerBase extends Block {
             const userId = input.value;
             onSubmit(e, 'delete-user-validated-input');
             if (userId !== '') {
-              ChatsController.removeUserFromChat(
+              ChatsController.deleteUserFromChat(
                 this.props.selectedChat,
                 userId
               );
@@ -147,12 +149,12 @@ export class MessengerBase extends Block {
           click: (e: any) => {
             e.preventDefault();
             const input: any = document.querySelector('#deleteChatId');
-            const chatId = input.value;
+            const id = input.value;
             onSubmit(e, 'delete-chat-validated-input');
 
             if (this.props.selectedChat !== '') {
-              ChatsController.deleteChat(
-                chatId
+              ChatsController.delete(
+                id
               );
               input.value = '';
               this.props.selectedChat = '';
@@ -238,7 +240,7 @@ export class MessengerBase extends Block {
     );
 
     const avatar = this.props.chats.filter(
-      (avatar: Record<string, number>) => avatar.id === this.props.selectedChat
+      (avatar: Record<string, number>) => avatar.chatId === this.props.selectedChat
     )
 
     return this.compile(template, {
@@ -256,7 +258,7 @@ const withSelectedChatMessages = withStore((state) => {
     return {
       messages: [],
       chats: [...(state.chats || [])],
-      selectedChat: undefined,
+      selectedChat: null,
       userId: state.user.id,
     };
   }

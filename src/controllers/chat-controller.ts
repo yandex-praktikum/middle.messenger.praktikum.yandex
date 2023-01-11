@@ -1,51 +1,58 @@
-import { ChatsAPI } from '../api/chat-api';
+import { ChatAPI } from '../api/chat-api';
 import store from '../utils/store';
 import MessagesController from './message-controller';
 
 class ChatsController {
 
-  constructor(private api: ChatsAPI) {}
+  constructor(private api: ChatAPI) {}
 
-  async createChat(ChatTitle: string) {
-    await this.api.create(ChatTitle);
+  async create(title: string) {
+    await this.api.create(title);
     await this.fetchChats();
   }
 
-  async deleteChat(chatId: string){
-    await this.api.delete(chatId);
+  async delete(id: number){
+    await this.api.delete(id);
+    store.set('selectedChat', null);
     this.fetchChats();
   }
 
   async fetchChats() {
     const chats = await this.api.read();
-
     chats.map(async (chat) => {
       const token = await this.getToken(chat.id);
-
       await MessagesController.connect(chat.id, token);
     });
-
     store.set('chats', chats);
   }
 
-  async addUserToChat(chatId: number, userId: number) {
-    this.api.addUserToChat(chatId, userId);
+  async addUserToChat(id: number, userId: number) {
+    this.api.addUsers(id, [userId]);
     await this.fetchChats();
   }
 
-  async removeUserFromChat(chatId: number, userId: number) {
-    await this.api.removeUserFromChat(chatId, userId);
+  async deleteUserFromChat(id: number, userId: number) {
+    await this.api.deleteUsers(id, [userId]);
     await this.fetchChats();
+  }
+
+  async updateAvatar(data: FormData) {
+    try {
+      await this.api.updateAvatar(data);
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
   
-  getToken(chatId: number) {
-    return this.api.getToken(chatId);
+  getToken(id: number) {
+    return this.api.getToken(id);
   }
 
-  selectChat(chatId: number | string) {
-    store.set('selectedChat', chatId);
+  selectChat(id: number | string) {
+    store.set('selectedChat', id);
+    this.fetchChats();
   }
   
 }
 
-export default new ChatsController(new ChatsAPI());;
+export default new ChatsController(new ChatAPI());;

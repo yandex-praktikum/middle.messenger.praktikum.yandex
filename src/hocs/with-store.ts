@@ -10,7 +10,7 @@ export function withStore(mapStateToProps: (state: IState) => any) {
 
     return class WithStore extends Component {
       constructor(props: any) {
-
+        
         previousState = mapStateToProps(store.getState());
 
         super({ ...props, ...previousState });

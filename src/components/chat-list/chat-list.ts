@@ -1,6 +1,6 @@
 import { Block } from '../../utils/block';
+import { IChatsListProps } from '../../utils/interfaces'
 import template from './chat-list.hbs';
-import { IChatsListProps } from '../../utils/interfaces';
 import { Chat } from '../chat/chat';
 import { withStore } from '../../hocs/with-store';
 import ChatsController from '../../controllers/chat-controller';
@@ -16,6 +16,7 @@ export class ChatsListBase extends Block<IChatsListProps> {
   }
 
   protected componentDidUpdate(oldProps: IChatsListProps, newProps: IChatsListProps): boolean {
+
     if (newProps.chats) {
       this.children.chats = this.createChats(newProps);
     }
@@ -40,7 +41,6 @@ export class ChatsListBase extends Block<IChatsListProps> {
       ...this.props,
     });
   }
-  
 }
 
 const withChats = withStore((state) => {

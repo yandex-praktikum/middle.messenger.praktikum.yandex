@@ -4,16 +4,13 @@
   </div>
   <div class="profile_block">
     <div class="profile-avatar">{{{ avatar }}}</div>
-    
     <span class="profile-name">{{ first_name }}</span>
     <div class="data main-fields">
       {{{ fields }}}
-
       {{#each fieldsNew}}
-      {{{this}}}
+        {{{this}}}
       {{/each}}
     </div>
-
     <div class="profile-buttons">
       <div class="string">
         {{{ editButton }}}
@@ -25,12 +22,8 @@
         {{{ logoutButton }}}
       </div>
     </div>
-
   </div>
-
   {{{ popup }}}
-
   {{{ editProfile }}}
-
   {{{ changePassword }}}
 </div>

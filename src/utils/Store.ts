@@ -1,14 +1,14 @@
 import { set } from './helpers';
 import { EventBus } from './event-bus';
 import { Block } from './block';
-import { IUser, IChatInfo, IMessage } from './interfaces';
+import { IUserData, IChatInfo, IMessage } from './interfaces';
 
 export enum StoreEvents {
   Updated = 'updated'
 }
 
 interface State {
-  user: IUser;
+  user: IUserData;
   chats: IChatInfo[];
   messages: Record<number, IMessage[]>;
   selectedChat?: number;
@@ -19,7 +19,6 @@ export class Store extends EventBus {
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
-
     this.emit(StoreEvents.Updated, this.getState());
   }
 
@@ -29,7 +28,6 @@ export class Store extends EventBus {
 }
 
 const store = new Store();
-
 // @ts-ignore
 window.store = store;
 
@@ -51,9 +49,7 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
           this.setProps({ ...stateProps });
         });
       }
-
     }
-
   }
 }
 

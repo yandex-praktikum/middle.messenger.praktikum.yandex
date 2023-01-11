@@ -1,7 +1,5 @@
 @import '../../styles/default_style.less';
-.over-all{
-  z-index: 999;
-}
+
 .added-chat-ID{
   color: #ff4da0;
   margin: 0;
@@ -37,7 +35,7 @@
   overflow: hidden;
 }
 
-.avatar {
+.chatsAvatar {
   border-radius: 50%;
   height: 47px;
   width: 47px;
@@ -62,7 +60,7 @@
 }
 
 .plug {
-  position: absolute;
+  position: inherit;
   text-align: center;
   display: flex;
   align-items: center;
@@ -122,25 +120,4 @@
   margin: 0;
   color: @color-text-green;
   margin-right: 4px;
-}
-
-.popup-avatar{
-  display: flex;
-  width: 680px;
-  height: 680px;
-  background-color: @color-bg;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.popup-title {
-  margin: 0;
 }

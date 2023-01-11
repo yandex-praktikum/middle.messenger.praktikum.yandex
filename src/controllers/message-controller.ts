@@ -1,36 +1,35 @@
 import WSTransport, { WSTransportEvents } from '../utils/web-socket-transport';
-import { IMessage } from '../utils/interfaces';
 import store from '../utils/store';
 import ChatsController from './chat-controller';
+import { IMessage } from '../utils/interfaces'
 
 export class MessagesController {
+  private transports: Map<number, WSTransport> = new Map();
 
-  private sockets: Map<number, WSTransport> = new Map();
-
-  async connect(chatId: number, token: string) {
-    if (this.sockets.has(chatId)) {
+  async connect(id: number, token: string) {
+    if (this.transports.has(id)) {
       return;
     }
 
     const userId = store.getState().user.id;
 
     const transport = new WSTransport(
-      `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`
+      `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`
     );
 
-    this.sockets.set(chatId, transport);
+    this.transports.set(id, transport);
 
     await transport.connect();
 
-    this.subscribe(transport, chatId);
-    this.fetchOldMessages(chatId);
+    this.subscribe(transport, id);
+    this.fetchOldMessages(id);
   }
 
-  async sendMessage(chatId: number, message: string) {
-    const transport = this.sockets.get(chatId);
+  async sendMessage(id: number, message: string) {
+    const transport = this.transports.get(id);
 
     if (!transport) {
-      throw new Error(`Chat ${chatId} is not connected`);
+      throw new Error(`Chat ${id} is not connected`);
     }
 
     transport!.send({
@@ -39,21 +38,21 @@ export class MessagesController {
     });
   }
 
-  fetchOldMessages(chatId: number) {
-    const transport = this.sockets.get(chatId);
+  fetchOldMessages(id: number) {
+    const transport = this.transports.get(id);
 
     if (!transport) {
-      throw new Error(`Chat ${chatId} is not connected`);
+      throw new Error(`Chat ${id} is not connected`);
     }
 
     transport.send({ type: 'get old', content: '0' });
   }
 
   closeAll() {
-    Object.values(this.sockets).forEach((transport) => transport.close());
+    Object.values(this.transports).forEach((transport) => transport.close());
   }
 
-  private onMessage(chatId: number, messages: IMessage | IMessage[]) {
+  private onMessage(id: number, messages: IMessage | IMessage[]) {
     let messagesToAdd: IMessage[] = [];
 
     if (Array.isArray(messages)) {
@@ -62,24 +61,26 @@ export class MessagesController {
       messagesToAdd.push(messages);
     }
 
-    const currentMessages = (store.getState().messages || {})[chatId] || [];
+    const currentMessages = (store.getState().messages || {})[id] || [];
 
     messagesToAdd = [...currentMessages, ...messagesToAdd];
 
-    store.set(`messages.${chatId}`, messagesToAdd);
+    store.set(`messages.${id}`, messagesToAdd);
     ChatsController.fetchChats();
   }
 
-  private onClose(chatId: number) {
-    this.sockets.delete(chatId);
+  private onClose(id: number) {
+    this.transports.delete(id);
   }
 
-  private subscribe(transport: WSTransport, chatId: number) {
+  private subscribe(transport: WSTransport, id: number) {
     transport.on(WSTransportEvents.Message, (message) =>
-      this.onMessage(chatId, message)
+      this.onMessage(id, message)
     );
-    transport.on(WSTransportEvents.Close, () => this.onClose(chatId));
+    transport.on(WSTransportEvents.Close, () => this.onClose(id));
   }
 }
 
-export default new MessagesController();
+const messagesController = new MessagesController();
+
+export default messagesController;

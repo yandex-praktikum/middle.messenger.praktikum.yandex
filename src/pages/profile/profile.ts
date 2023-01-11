@@ -33,7 +33,7 @@ export class ProfilePageBase extends Block {
     });
     
     this.children.avatar = new Avatar({
-      className: 'profile-avatar',
+      className: 'avatar',
       photo:
         this.props.avatar === null
           ? '../../../static/images/default-ava.svg'
@@ -44,6 +44,7 @@ export class ProfilePageBase extends Block {
         },
       },
     });
+
     this.children.fields = new Fields({
       fields: [
         new Field({
@@ -119,6 +120,7 @@ export class ProfilePageBase extends Block {
         },
       },
     });
+    
     this.children.editProfile = new EditProfile(this.props);
     this.children.changePassword = new ChangePassword(this.props);
     this.children.popup = new Popup({
@@ -156,10 +158,7 @@ export class ProfilePageBase extends Block {
     });
   }
 
-  protected componentDidUpdate(
-    oldProps: IProfileInfo,
-    newProps: IProfileInfo
-  ): boolean {
+  protected componentDidUpdate(oldProps: IProfileInfo, newProps: IProfileInfo): boolean {
     (this.children.avatar as Avatar).setProps({
       photo:
         newProps.avatar === null

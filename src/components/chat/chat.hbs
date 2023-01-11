@@ -1,19 +1,17 @@
 <div class="preview {{#if isSelected }}selected{{/if}}">
-  <div class="avatar-wrapper">{{{ avatar }}}
-    {{{ popup }}}
+  <div class="avatar-wrapper">
+    <div class="chatsAvatar">{{{ avatar }}}</div>    
   </div>
   <div class="text-block">
     <span class="name">{{ title }}</span>
-    <span class="added-chat-ID">chatID:{{ id }}</span>
+    <span class="added-chat-ID">chatID:{{{ id }}}</span>
     <div class="content">
       {{#if isMine}}
         <span class="from">Me: </span>
       {{/if}}
       <span class="message-preview"> {{ last_message.content }}</span>
     </div>
-
   </div>
-
   <div class="date-block">
     <p class="date">{{ time }}</p>
 
@@ -22,7 +20,5 @@
       <p class="number">{{ unread_count }}</p>
     </div>
     {{/if}}
-{{{ popup }}}
   </div>
-{{{ popup }}}
 </div>

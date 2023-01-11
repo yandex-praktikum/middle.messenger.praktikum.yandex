@@ -1,5 +1,5 @@
 import BaseAPI from './base-api';
-import { ISigninData, ISignupData, IUser } from '../utils/interfaces';
+import { ISigninData, ISignupData, IUserData } from '../utils/interfaces';
 
 export class AuthAPI extends BaseAPI {
   constructor() {
@@ -14,7 +14,7 @@ export class AuthAPI extends BaseAPI {
     return this.http.post('/signup', data);
   }
 
-  public read(): Promise<IUser> {
+  public read(): Promise<IUserData> {
     return this.http.get('/user');
   }
 

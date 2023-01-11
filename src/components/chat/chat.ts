@@ -1,32 +1,23 @@
 import { Block } from '../../utils/block';
+import { IChat } from '../../utils/interfaces'
 import template from './chat.hbs';
 import './chat.less';
 import { withStore } from '../../hocs/with-store';
-import { IChat } from '../../utils/interfaces';
+import Avatar from '../../components/avatar';
 import Input from '../../components/input';
 import Close from '../../components/close';
 import Popup from '../../components/popup';
 import Button from '../../components/button';
-import Avatar from '../../components/avatar';
-//import Link from '../../components/link';
-import UserController from '../../controllers/user-controller';
-import AuthController from '../../controllers/auth-controller';
-//import Fields from '../../components/fields';
-//import Field from '../../components/field';
-//import { IProfilePageBase, IProfileInfo } from '../../utils/interfaces'
+import ChatsController from '../../controllers/chat-controller';
 
-export class ChatBase extends Block {
+export class ChatBase extends Block<IChat> {
   constructor(props: IChat) {
     super(props);
   }
-
- async componentDidMount() {
-  await AuthController.fetchUser();
- }
-
+  
   init(): void {
     this.children.avatar = new Avatar({
-      className: 'avatar',
+      className: 'chatsAvatar',
       photo:
         this.props.avatar === null
           ? '../../static/images/default-ava.svg'
@@ -34,14 +25,14 @@ export class ChatBase extends Block {
           events: {
             click: () => {
 
-              (this.children.popup as Popup).show();
+              (this.children.addAvatarPopup as Popup).show();
               console.log('clicked')
             },
           },
     });
     
-    this.children.popup = new Popup({
-      className: 'popup-avatar',
+    this.children.addAvatarPopup = new Popup({
+      className: 'popup',
       title: 'Upload file',
       button: new Button({
         label: 'Change',
@@ -50,19 +41,19 @@ export class ChatBase extends Block {
           click: (e: any) => {
             e.preventDefault();
             const formData = new FormData();
-            const input: any = document.querySelector('#avatar');
+            const input: any = document.querySelector('#chatsAvatar');
+            formData.append('chatsAvatar', input?.files[0]);
 
-            formData.append('avatar', input?.files[0]);
+            ChatsController.updateAvatar(formData);
 
-            UserController.updateAvatar(formData);
-            (this.children.popup as Popup).hide();
+            (this.children.addAvatarPopup as Popup).hide();
           },
         },
       }),
       close: new Close({
         events: {
           click: () => {
-            (this.children.popup as Popup).hide();
+            (this.children.addAvatarPopup as Popup).hide();
           },
         },
       }),
@@ -70,16 +61,13 @@ export class ChatBase extends Block {
         label: '',
         type: 'file',
         placeholder: 'file',
-        name: 'avatar',
+        name: 'chatsAvatar',
         className: 'avatar-validated-input',
       }),
     });
   }
 
-  protected componentDidUpdate(
-    _oldProps: IChat,
-    newProps: IChat
-  ): boolean {
+  protected componentDidUpdate(oldProps: IChat, newProps: IChat): boolean {
     (this.children.avatar as Avatar).setProps({
       photo:
         newProps.avatar === null
@@ -91,25 +79,22 @@ export class ChatBase extends Block {
   }
 
   render() {
-    
     let time = this.props.last_message?.time;
     if (time !== undefined) {
-      time = new Date(time).toString().substring(3, 10);
+      time = new Date(time).toString().substring(4, 10);
     }
 
     return this.compile(template, {
       ...this.props,
       isSelected: this.props.id === this.props.selectedChat?.id,
       isMine: true,
-      time,
+      time
     });
-    
   }
 }
 
 export const withSelectedChat = withStore((state) => ({
   selectedChat: (state.chats || []).find(({ id }) => id === state.selectedChat),
-
 }));
 
 export const Chat = withSelectedChat(ChatBase as any);

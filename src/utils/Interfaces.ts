@@ -1,5 +1,6 @@
 import { Block } from './block';
-import { PropsWithRouter } from '../hocs/with-router';
+import { PropsWithRouter } from '../hocs/with-router'
+//import { IMessage as MessageInfo } from '../controllers/message-controller';
 
 export interface ISignupData {
   first_name?: string;
@@ -15,7 +16,7 @@ export interface ISigninData {
   password?: string;
 }
 
-export interface IUser {
+export interface IUserData {
   id: number;
   first_name: string;
   second_name: string;
@@ -25,30 +26,6 @@ export interface IUser {
   password: string;
   phone: string;
   avatar: string;
-}
-
-export interface IState {
-  user: IUser;
-  chats: IChatInfo[];
-  messages: Record<number, IMessage[]>;
-  selectedChat?: number;
-}
-
-export interface IMessage {
-  chat_id: number;
-  time: string;
-  type: string;
-  user_id: number;
-  content: string;
-  file?: {
-    id: number;
-    user_id: number;
-    path: string;
-    filename: string;
-    content_type: string;
-    content_size: number;
-    upload_date: string;
-  };
 }
 
 export interface IUserInfo {
@@ -65,6 +42,19 @@ export interface IUserInfo {
 export interface IPassword {
   oldPassword: string;
   newPassword: string;
+}
+
+export interface IChatInfo {
+  selectedChat: any;
+  id: number;
+  title: string;
+  avatar: string;
+  unread_count: number;
+  last_message: {
+    user: IUserData;
+    time: string;
+    content: string;
+  };
 }
 
 export interface IAvatar {
@@ -85,31 +75,19 @@ export interface IButtonProps {
 }
 
 export interface IChat {
-  avatar: string;
   id: number;
   title: string;
   unread_count: number;
   selectedChat: IChatInfo;
   last_message: Record<string, string>;
+  avatar: string;
   events: {
     click: () => void;
   };
 }
 
-export interface IChatInfo {
-  id: number;
-  title: string;
-  avatar: string;
-  unread_count: number;
-  last_message: {
-    user: IUser;
-    time: string;
-    content: string;
-  };
-}
-
 export interface IChatsListProps {
-  chats: IChatInfo[];
+  chats: Block[];
   isLoaded: boolean;
 }
 
@@ -194,9 +172,8 @@ export interface IMessageProps {
 }
 
 export interface IMessenger {
-  
   selectedChat?: number | undefined;
-  messages?: IMessage; //MessageInfo
+  messages?: IMessage;
   userId: number;
   photo?: string;
   className?: string;
@@ -229,6 +206,30 @@ export interface IProfilePopupContent {
   };
 }
 
+export interface IMessage {
+  chat_id: number;
+  time: string;
+  type: string;
+  user_id: number;
+  content: string;
+  file?: {
+    id: number;
+    user_id: number;
+    path: string;
+    filename: string;
+    content_type: string;
+    content_size: number;
+    upload_date: string;
+  };
+}
+
+export interface IState {
+  user: IUserData;
+  chats: IChatInfo[];
+  messages: Record<number, IMessage[]>;
+  selectedChat?: number;
+}
+
 export interface IChangePassword {
   fields: Block[];
   saveButton?: Block;
@@ -259,8 +260,6 @@ export interface IProfileInfo {
   display_name: string;
   phone: string;
 }
-
-
 
 export interface IValidateExp {
   error: string;
