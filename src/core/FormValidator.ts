@@ -4,6 +4,7 @@ enum ValidateRuleType {
     Email = "email",
     FirstName = "first_name",
     SecondName = "second_name",
+    UserName = "username",
     Phone = "phone",
 };
 
@@ -45,6 +46,7 @@ class FormValidator {
         switch (name) {
             case ValidateRuleType.FirstName:
             case ValidateRuleType.SecondName:
+            case ValidateRuleType.UserName:
                 isValid = this._validateName(field);
                 break;
             case ValidateRuleType.Login:
@@ -69,7 +71,10 @@ class FormValidator {
 
     private _validateName(field: HTMLInputElement): boolean {
         const regExp = new RegExp(/^[а-яА-ЯёЁa-zA-Z-]+$/, "g");
-        const errorEl = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const entryEr = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const profileEr = ((field.parentNode as HTMLElement).querySelector(".profile__error") as HTMLElement);
+
+        const errorEl = entryEr || profileEr;
 
         errorEl.textContent = "";
 
@@ -89,7 +94,10 @@ class FormValidator {
 
     private _validateLogin(field: HTMLInputElement): boolean {
         const regExp = new RegExp(/^[a-zA-Z0-9-_]*$/);
-        const errorEl = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const entryEr = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const profileEr = ((field.parentNode as HTMLElement).querySelector(".profile__error") as HTMLElement);
+
+        const errorEl = entryEr || profileEr;
 
         errorEl.textContent = "";
         
@@ -116,7 +124,10 @@ class FormValidator {
 
     private _validateEmail(field: HTMLInputElement): boolean {
         const regExp = new RegExp(/^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z]{2,4})+$/, "gi");
-        const errorEl = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const entryEr = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const profileEr = ((field.parentNode as HTMLElement).querySelector(".profile__error") as HTMLElement);
+
+        const errorEl = entryEr || profileEr;
 
         errorEl.textContent = "";
 
@@ -131,7 +142,10 @@ class FormValidator {
 
     private _validatePassword(field: HTMLInputElement): boolean {
         const regExp = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/);
-        const errorEl = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const entryEr = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const profileEr = ((field.parentNode as HTMLElement).querySelector(".profile__error") as HTMLElement);
+
+        const errorEl = entryEr || profileEr;
 
         errorEl.textContent = "";
 
@@ -152,7 +166,10 @@ class FormValidator {
 
     private _validatePhone(field: HTMLInputElement): boolean {
         const regExp = new RegExp(/^(\+)?(\d){10,14}/);
-        const errorEl = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const entryEr = ((field.parentNode as HTMLElement).querySelector(".entry__error") as HTMLElement);
+        const profileEr = ((field.parentNode as HTMLElement).querySelector(".profile__error") as HTMLElement);
+
+        const errorEl = entryEr || profileEr;
 
         errorEl.textContent = "";
 

@@ -1,4 +1,4 @@
-import { Block } from "../../core";
+import { Block, FormValidator } from "../../core";
 
 import { ProfileProps } from ".";
 
@@ -8,15 +8,21 @@ class ProfileEditPassword extends Block {
     private readonly ProfilePasswordList: ProfileProps[] = [
         {
             key: "Старый пароль",
-            value: "•••••••••",
+            value: "Qwer123456",
+            name: "password",
+            type: "password",
         },
         {
             key: "Новый пароль",
-            value: "•••••••••••",
+            value: "Qwerty1234567",
+            name: "password",
+            type: "password",
         },
         {
             key: "Повторите новый пароль",
-            value: "•••••••••••",
+            value: "Qwerty1234567",
+            name: "password",
+            type: "password",
         },
     ];
 
@@ -24,8 +30,15 @@ class ProfileEditPassword extends Block {
         super();
 
         this.setProps({
-            password: this.ProfilePasswordList,
+            passwords: this.ProfilePasswordList,
+            onSubmit: (event: Event) => this.onSubmit(event),
         });
+    }
+
+    onSubmit(event: Event) {
+        event.preventDefault();
+
+        new FormValidator(this.element as HTMLElement).init();
     }
 
     protected render() {
@@ -34,13 +47,15 @@ class ProfileEditPassword extends Block {
                 {{{ ProfileSidebar }}}
                 <div class="profile__container">
                     {{{ ProfileUser }}}
-                    <ul class="profile__list">
-                        {{#each this.password }}
-                            {{{ ProfileItem key=this.key value=this.value }}}
-                        {{/each }}
-                    </ul>
+                    <form>
+                        <ul class="profile__list">
+                            {{#each this.passwords }}
+                                {{{ ProfileInput key=this.key value=this.value name=this.name type=this.type }}}
+                            {{/each }}
+                        </ul>
+                    </form>
                     <a class="profile__save" href="profile">
-                        {{{ Button value="Сохранить" mod="profile__save-btn" }}}
+                        {{{ Button value="Сохранить" mod="profile__save-btn" type="submit" onClick=onSubmit }}}
                     </a>
                 </div>
             </div>
