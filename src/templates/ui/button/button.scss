@@ -12,6 +12,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
+    border-radius: 8px;
     text-align: center;
     transition: all 0.3s linear;
 
@@ -19,11 +20,12 @@
         background-color: transparent;
     }
     &.btn-small {
-        padding:0;
+        padding: 0;
         width: max-content;
         background-color: transparent;
         border-color: transparent;
-        &:hover{
+        border-radius: 0;
+        &:hover {
             opacity: 0.5;
         }
     }

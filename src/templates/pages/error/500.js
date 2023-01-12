@@ -2,9 +2,9 @@ import templateApp from '../../app.hbs';
 import '../../app.scss';
 
 
-import templateErrorPage from './error-page.hbs';
+import templateErrorPage from './error.hbs';
 import link from '../../ui/link/link';
-import './error-page.scss';
+import './error.scss';
 
 
 

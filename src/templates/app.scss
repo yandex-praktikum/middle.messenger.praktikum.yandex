@@ -7,14 +7,13 @@
 }
 
 html {
-    height:100vh;
+    height: 100vh;
     overflow: hidden;
 }
 body {
     width: 100%;
-    height:100vh;
+    height: 100%;
     overflow: hidden;
-    min-height: max-content;
     background-color: $bg;
 }
 
@@ -33,8 +32,9 @@ body {
     // }
     .app__main {
         width: 100%;
-        // flex-grow: 3;
-    // height: 100%;
+        height: 100%;
 
+        // flex-grow: 3;
+        // height: 100%;
     }
 }

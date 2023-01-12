@@ -11,54 +11,23 @@ import input from '../../ui/form/input/input.js';
 import avatar from '../../../assets/icon/avatar_default.png';
 import './profile.scss';
 
-// const exampleData = {
-//     "Почта": "pochta@yandex.ru",
-//     "Логин": "ivanivanov",
-//     "Имя": "Иван",
-//     "Фамилия": "Иванов",
-//     "Имя в чате": "Иван",
-//     "Телефон": "+7 (909) 967 30 30",
-// };
 
-const exampleData = { 
-    'email':{
-        'label':'Почта',
-        'value':'pochta@yandex.ru'
-    },
-    'login':{
-        'label':'Логин',
-        'value':'ivanivanov'
-    },
-    'first name':{
-        'label':'Имя',
-        'value':'Иван'
-    },
-    'last name':{
-        'label':'Фамилия',
-        'value':'Иванов'
-    },
-    'display_name':{
-        'label':'Имя в чате',
-        'value':'Иван'
-    },
-    'phone':{
-        'label':'Телефон',
-        'value':'+7 (909) 967 30 30'
-    },
-    
-}
+import { exampleProfileData } from '../../../../exampleData.json';
 
-const items = Object.values(exampleData).map(item => {
+
+
+
+const items = Object.values(exampleProfileData).map(item => {
     return `<span class="label">${item['label']}</span><span class="value">${item['value']}</span>`
 });
 
-const formItems = Object.keys(exampleData).map(key => {
+const formItems = Object.keys(exampleProfileData).map(key => {
     return input({
-        id:key,
-        name:key,
-        textLabel:exampleData[key]['label'],
-        type:'text',
-        defaultValue:exampleData[key]['value'],
+        id: key,
+        name: key,
+        textLabel: exampleProfileData[key]['label'],
+        type: 'text',
+        defaultValue: exampleProfileData[key]['value'],
     })
 });
 
@@ -67,7 +36,6 @@ const formButtons = [
     button({
         id: '',
         className: '',
-        onClick: alert,
         label: 'Сохранить'
     }),
     button({
@@ -80,11 +48,11 @@ const formButtons = [
 
 const profileButtonsView = `
     ${button({
-    id: '',
+    id: 'btn-edit-data',
     className: 'btn-small',
     label: 'Изменить данные'
 })}${button({
-    id: '',
+    id: 'btn-edit-pass',
     className: 'btn-small',
     label: 'Изменить пароль'
 })} ${button({
@@ -94,24 +62,21 @@ const profileButtonsView = `
 })}
     `;
 
+const backlink = link({
+    href: '/index.html',
+    className: 'btn arrowprev',
+    label: ''
+})
 
-export const profileView = templateProfile({
-    backlink: link({
-        href: '/chat.html',
-        className: 'btn arrowprev',
-        label: ''
-    }),
+const profileView = templateProfile({
+    backlink,
     avatar: avatar,
     data: list({ items }),
     buttons: profileButtonsView
 });
 
 const profileEdit = templateProfile({
-    backlink: link({
-        href: '/chat.html',
-        className: 'btn arrowprev',
-        label: ''
-    }),
+    backlink,
     avatar: avatar,
     data: appForm({
         attr: {},
@@ -123,36 +88,32 @@ const profileEdit = templateProfile({
     buttons: ''
 });
 const profilePassEdit = templateProfile({
-    backlink: link({
-        href: '/chat.html',
-        className: 'btn arrowprev',
-        label: ''
-    }),
+    backlink,
     avatar: avatar,
     data: appForm({
         attr: {},
         formTitle: 'Изменение пароля',
-        formItems:[
+        formItems: [
             input({
-                id:'oldPassword',
-                name:'oldPassword',
-                textLabel:'Старый пароль',
-                type:'password',
-                placeholder:'******'
+                id: 'oldPassword',
+                name: 'oldPassword',
+                textLabel: 'Старый пароль',
+                type: 'password',
+                placeholder: '******'
             }),
             input({
-                id:'newPassword',
-                name:'newPassword',
-                textLabel:'Новый пароль',
-                type:'password',
-                placeholder:'******'
+                id: 'newPassword',
+                name: 'newPassword',
+                textLabel: 'Новый пароль',
+                type: 'password',
+                placeholder: '******'
             }),
             input({
-                id:'newPassword2',
-                name:'newPassword2',
-                textLabel:'Повторите новый пароль',
-                type:'password',
-                placeholder:'******'
+                id: 'newPassword2',
+                name: 'newPassword2',
+                textLabel: 'Повторите новый пароль',
+                type: 'password',
+                placeholder: '******'
             })
         ],
         formButtons
@@ -163,7 +124,15 @@ const profilePassEdit = templateProfile({
 
 
 
+document.body.addEventListener('click', (e) => {
+    if (e.target.id === 'btn-edit-data') {
+        document.body.innerHTML = templateApp({ page: profileEdit });
+    } else if (e.target.id === 'btn-edit-pass') {
+        document.body.innerHTML = templateApp({ page: profilePassEdit });
+    }
+});
+
+
 
 document.body.innerHTML = templateApp({ page: profileView });
-document.body.innerHTML = templateApp({ page: profileEdit });
-document.body.innerHTML = templateApp({ page: profilePassEdit });
+
