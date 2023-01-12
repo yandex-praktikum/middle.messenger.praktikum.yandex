@@ -3,4 +3,4 @@
 
 - Команда для запуска проекта на локальном сервере: npm run start
 - Команда для сборки проекта: npm run build
-- Сайт опубликованный в сети: https://celadon-paletas-166b25.netlify.app/
+- Сайт опубликованный в сети: https://delicate-praline-c94e1a.netlify.app
