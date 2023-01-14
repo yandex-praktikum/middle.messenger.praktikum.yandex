@@ -5,6 +5,7 @@ import '../../app.scss';
 import templateChat from './chat.hbs';
 
 import { listDialog } from './listDialog/listDialog';
+import { currentDialog } from './currentDialog/currentDialog';
 
 import link from '../../ui/link/link';
 import list from '../../ui/list/list';
@@ -16,38 +17,47 @@ import './chat.scss';
 
 
 import { exampleChatData as dialogs } from '../../../../exampleData.json';
+import { formattedDate } from '../../../utils/date';
 
+let activeDialog = {};
 
+const dialogSorted = (dialogs) => {
+    dialogs.forEach((item, i) => {
+        item.dialog.sort((msg1, msg2) => formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1);
+        item.newMsg = 0;
+        item.dialog.forEach(msg => msg.new ? item.newMsg++ : '');
+        item.lastMsg = item.dialog[item.dialog.length - 1];
+    });
 
-dialogs.forEach((item, i) => {
-    item.dialog.sort((msg1, msg2) => new Date(`${msg1.date} ${msg1.time}`).getTime() > new Date(`${msg2.date} ${msg2.time}`).getTime() ? 1 : -1);
-    item.lastMsg = item.dialog[item.dialog.length - 1];
+    dialogs.sort((dialog1, dialog2) => formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1);
+}
+
+const chatView = () => templateChat({
+    currentDialog: currentDialog(activeDialog),
+    listDialog: listDialog(dialogs, activeDialog.id),
 });
 
-dialogs.sort((dialog1, dialog2) => new Date(`${dialog1.lastMsg.date} ${dialog1.lastMsg.time}`).getTime() > new Date(`${dialog2.lastMsg.date} ${dialog2.lastMsg.time}`).getTime() ? 1 : -1);
+const setActiveDialog = (dialogs, active) => {
+    for (let i = 0; i < dialogs.length; i++) {
+        const item = dialogs[i];
+        if (item.id === active) {
+            return item;
+        }
+    }
+}
+const changeCurrentDialog = (e) => {
+    const item = e.target.closest('.dialog__item');
+    if (!item) return;
+    const clickDialog = item.dataset.dialogId;
+    if (!clickDialog || (clickDialog === activeDialog)) return;
+    activeDialog = setActiveDialog(dialogs,clickDialog);
+    document.body.innerHTML = templateApp({ page: chatView });
+}
 
 
 
 
-const test = listDialog(dialogs);
-
-const profileView = templateChat({
-    currentDialog: 'current',
-    listDialog: test
-});
-
-
-
-
-// document.body.addEventListener('click', (e) => {
-//     if (e.target.id === 'btn-edit-data') {
-//         document.body.innerHTML = templateApp({ page: profileEdit });
-//     } else if (e.target.id === 'btn-edit-pass') {
-//         document.body.innerHTML = templateApp({ page: profilePassEdit });
-//     }
-// });
-
-
-
-document.body.innerHTML = templateApp({ page: profileView });
+dialogSorted(dialogs);
+document.body.innerHTML = templateApp({ page: chatView });
+document.body.addEventListener('click', changeCurrentDialog);
 

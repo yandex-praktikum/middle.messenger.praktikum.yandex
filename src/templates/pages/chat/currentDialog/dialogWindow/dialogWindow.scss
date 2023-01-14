@@ -1,0 +1,50 @@
+.dialog__window {
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .dialog__dategroup {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #999999;
+    }
+    .message {
+        position: relative;
+        width: fit-content;
+        max-width: 45%;
+        background: #252525;
+        border-radius: 10px;
+        padding: 11px ;
+        overflow: hidden;
+        .message__media {
+            img {
+                width: calc(100% + 22px);
+                margin-left: -11px;
+                margin-bottom: -27px;
+                // height: calc(100% + 31px);
+            }
+        }
+        .message__text {
+        }
+        .message__time {
+            position: relative;
+            z-index: 2;
+            float: right;
+            width: max-content;
+            text-align: right;
+            font-weight: 500;
+            font-size: 9px;
+            line-height: 9px;
+            text-align: right;
+            color: #999999;
+            background: rgba(82, 82, 82, 0.5);
+            border-radius: 30px;
+            padding: 2px 7px;
+        }
+        &.msg__out {
+            align-self: flex-end;
+        }
+    }
+}

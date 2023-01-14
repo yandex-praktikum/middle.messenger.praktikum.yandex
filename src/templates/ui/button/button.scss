@@ -16,7 +16,8 @@
     text-align: center;
     transition: all 0.3s linear;
 
-    &:hover {
+    &:hover,
+    &.acive {
         background-color: transparent;
     }
     &.btn-small {
@@ -30,7 +31,9 @@
         }
     }
     &.arrowprev,
-    &.arrownext {
+    &.arrownext,
+    &.ellipsis,
+    &.inc {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,5 +54,23 @@
         &.arrowprev::after {
             transform: rotate(180deg);
         }
+        &.ellipsis::after {
+            background-image: url("../../../assets/icon/ellipsis.svg");
+            width: 3px;
+            height: 15px;
+        }
+        &.inc{
+                background-color: transparent;
+                border-color: transparent;
+                &:hover,.active {
+                    
+                    opacity: 0.5;
+                }
+            &::after {
+                background-image: url("../../../assets/icon/inc.svg");
+                width: 32px;
+                height: 32px;
+            }
+        } 
     }
 }
