@@ -8,19 +8,12 @@ export default function form({
     formItems = [],
     formButtons = [],
     submit = f => f,
-}) {
+})  {
 
-    console.log(formTitle);
 
-    // if (attr.id) {
-    //     document.body.addEventListener('submit', (e) => {
-    //         // console.log();
-    //         if (e.target.id == attr.id) onClick(e);
-    //     });
-    // }
     return templateForm(
         {
-            ...attr, formTitle, formItems: formItems.join(''), formButtons:formButtons.join('')
+            ...attr, formTitle, formItems: formItems.join(''), formButtons: formButtons.join('')
         }
     );
 }

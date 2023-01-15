@@ -47,7 +47,7 @@ const formButtons = [
 
 ];
 
-export default authPage = templateAuth({
+export const authPage = templateAuth({
     authForm: appForm({
         attr: {},
         formTitle: 'Вход',

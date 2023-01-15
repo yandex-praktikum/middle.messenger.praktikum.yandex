@@ -12,7 +12,7 @@ import avatar from '../../../assets/icon/avatar_default.png';
 import './profile.scss';
 
 
-import { exampleProfileData } from '../../../../exampleData.json';
+import { exampleProfileData } from '../../../exampleData.json';
 
 
 

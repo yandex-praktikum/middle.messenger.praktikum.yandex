@@ -1,4 +1,5 @@
 import msgTemplate from './msg.hbs';
+import mediaExample from '../../../../../assets/img/example-media.jpg';
 
 import { formattedDate } from "../../../../../utils/date";
 
@@ -14,10 +15,9 @@ export const dialogWindow = (messages = []) => {
             currentGroupDate = item.date;
             dialog += `<div class="dialog__dategroup">${item.date}</div>`;
         }
-
-        dialog += msgTemplate(item);
+        const media = item.media ? mediaExample : '';
+        dialog += msgTemplate({...item,media} );
     });
-    console.log(dialog);
     return ` <div class="dialog__window">${dialog}</div>`
 }
 

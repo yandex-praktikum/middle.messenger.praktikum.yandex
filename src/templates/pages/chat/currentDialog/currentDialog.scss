@@ -1,6 +1,5 @@
 .current__dialog {
     .top__controls {
-        padding-top: 10px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -9,7 +8,7 @@
         background-color: #1c1c1c;
         position: sticky;
         z-index: 4;
-        top:0;
+        top: 0;
         .avatar {
             width: 34px;
             height: 34px;
@@ -33,18 +32,27 @@
     }
     .bottom__controls {
         display: flex;
-        padding-bottom: 10px;
         flex-direction: row;
         align-items: center;
+        justify-content: center;
         gap: 10px;
         position: sticky;
         background-color: #1c1c1c;
-        bottom:0;
+        bottom: 0;
         border-top: 1px solid white;
         z-index: 4;
 
-        .control__input{
+        .control__input {
             flex-grow: 1;
+            input {
+                background: #252525;
+                border: 1px solid #e72933;
+                border-radius: 30px;
+                padding: 7px 20px;
+            }
+            .error {
+                display: none;
+            }
         }
     }
 }

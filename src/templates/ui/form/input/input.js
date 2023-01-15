@@ -16,7 +16,7 @@ export default function input({
     onOninput = f => f,
     otherAttr = {},
     errorMessage = ''
-}) {
+})  {
 
     const labelVisible = (e) => {
         const label = e.target.previousElementSibling;
@@ -27,9 +27,7 @@ export default function input({
 
 
     const errorMsqPush = (msq) => {
-        // console.log(123);
         if (!id) return;
-        // const errorBlock = e.target.parentNode;
     }
 
     if (id) {
@@ -40,8 +38,8 @@ export default function input({
         });
         document.body.addEventListener('input', (e) => {
             if (e.target.id == id) {
-                // onOninput(e);
-                // labelVisible(e);
+                onOninput(e);
+                labelVisible(e);
             }
         });
     }
@@ -60,18 +58,9 @@ export default function input({
         placeholder,
         errorMessage,
         defaultValue,
-        test
     });
 }
 
 
 
 
-
-function test(element) {
-    console.log(element);
-}
-
-window.chatApp = {
-    test
-};

@@ -9,7 +9,7 @@ import './error.scss';
 
 
 
-export default errorPage = templateErrorPage({
+export const errorPage = templateErrorPage({
     title:'500',
     subtitle:'Мы уже фиксим',
     backlink:link({

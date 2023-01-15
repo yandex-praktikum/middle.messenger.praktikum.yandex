@@ -81,7 +81,7 @@ const formButtons = [
 
 ];
 
-export default regPage = templateReg({
+export const regPage = templateReg({
     authForm: appForm({
         attr: {},
         formTitle: 'Регистрация',

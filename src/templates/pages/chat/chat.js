@@ -16,7 +16,7 @@ import avatar from '../../../assets/icon/avatar_default.png';
 import './chat.scss';
 
 
-import { exampleChatData as dialogs } from '../../../../exampleData.json';
+import { exampleChatData as dialogs } from '../../../exampleData.json';
 import { formattedDate } from '../../../utils/date';
 
 let activeDialog = {};
@@ -50,8 +50,9 @@ const changeCurrentDialog = (e) => {
     if (!item) return;
     const clickDialog = item.dataset.dialogId;
     if (!clickDialog || (clickDialog === activeDialog)) return;
-    activeDialog = setActiveDialog(dialogs,clickDialog);
+    activeDialog = setActiveDialog(dialogs, clickDialog);
     document.body.innerHTML = templateApp({ page: chatView });
+    document.querySelector('.current__dialog ').scrollBy(0, document.querySelector('.current__dialog ').clientHeight);
 }
 
 

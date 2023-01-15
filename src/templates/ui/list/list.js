@@ -5,7 +5,7 @@ import './list.scss';
 
 export default function list({
     id = '', className = '', items = []
-}) {
+})  {
     let list = '';
 
     items.map(item => {

@@ -9,10 +9,7 @@ export default function button({
     href = '',
     onClick = f => f,
     otherAttr = {},
-}) {
-
-
-
+})  {
     if (id) {
         document.body.addEventListener('click', (e) => {
             if (e.target.id == id) onClick(e);

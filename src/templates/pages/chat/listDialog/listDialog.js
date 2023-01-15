@@ -3,6 +3,7 @@ import templateListItem from './listItem.hbs';
 
 import link from '../../../ui/link/link';
 import input from '../../../ui/form/input/input';
+import avatarDefault from '../../../../assets/icon/avatar_default.png';
 
 import './listDialog.scss';
 import { getDateLastMessage } from '../../../../utils/date';
@@ -16,13 +17,13 @@ export const listDialog = (data, active = 0) => {
     data.forEach(item => {
 
         dialogs += templateListItem({
-            avatar: 'https://breakthroughsolutions.com/wp-content/uploads/2017/02/testimonial-e1488049467378.png',
+            avatar: item.avatar ? item.avatar : avatarDefault,
             dialogId: item.id,
             nickname: item.nick,
             lastMessage: sliceLastMessage(item.lastMsg.text, item.lastMsg.type),
             timeLastMessage: getDateLastMessage(item.lastMsg),
             countNewMessage: item.newMsg ? `<div>${item.newMsg}</div>` : '',
-            itemClass: item.id === active ? 'active':''
+            itemClass: item.id === active ? 'active' : ''
         })
 
     });

@@ -4,6 +4,7 @@ import './templates/app.scss';
 import link from './templates/ui/link/link.js';
 
 let links = [
+    '<h1>Список страниц:</h1>',
     link({
         href: "/auth.html",
         label: "Авторизация"
@@ -31,5 +32,5 @@ let links = [
 ];
 
 
-document.body.innerHTML = templateFunction({ page: links.join('<br>') });
+document.body.innerHTML = templateFunction({ page: `<div class="page__index">${links.join('<br>')}</div>` });
 

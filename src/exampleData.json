@@ -48,26 +48,28 @@
                     "media": ""
                 },
                 {
-                    "date": "07.01.2023",
+                    "date": "14.01.2023",
                     "time": "11:00",
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
                 {
-                    "date": "09.01.2023",
-                    "time": "09:13",
+                    "date": "15.01.2023",
+                    "time": "11:13",
                     "new": false,
                     "type": "out",
+                    "read": false,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -76,11 +78,12 @@
                     "time": "11:03",
                     "new": false,
                     "type": "in",
-                    "text": "Ок",
+                    "text": "Привет",
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "003",
             "nick": "Владимир",
             "avatar": "",
@@ -107,13 +110,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2022",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -122,6 +126,7 @@
                     "time": "09:13",
                     "new": true,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -134,7 +139,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "004",
             "nick": "Илья",
             "avatar": "",
@@ -161,13 +167,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "13.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -176,6 +183,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -188,7 +196,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "005",
             "nick": "Сергей",
             "avatar": "",
@@ -215,13 +224,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -230,6 +240,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -242,7 +253,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "006",
             "nick": "Елена",
             "avatar": "",
@@ -269,13 +281,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -284,6 +297,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -296,7 +310,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "007",
             "nick": "Анна",
             "avatar": "",
@@ -323,13 +338,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -338,6 +354,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -350,7 +367,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "008",
             "nick": "Егор",
             "avatar": "",
@@ -377,13 +395,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -392,6 +411,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -404,7 +424,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "009",
             "nick": "Катя",
             "avatar": "",
@@ -430,14 +451,15 @@
                     "time": "11:00",
                     "new": false,
                     "type": "in",
-                    "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "text": "ракету они так никогда и не попали. Всего их было произведено 25 штук",
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -446,6 +468,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -458,7 +481,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "010",
             "nick": "Лена",
             "avatar": "",
@@ -485,13 +509,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -500,6 +525,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -512,7 +538,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "011",
             "nick": "Тимур",
             "avatar": "",
@@ -539,13 +566,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -554,6 +582,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -566,7 +595,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "012",
             "nick": "Василий",
             "avatar": "",
@@ -593,13 +623,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -608,6 +639,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },
@@ -620,7 +652,8 @@
                     "media": ""
                 }
             ]
-        },{
+        },
+        {
             "id": "013",
             "nick": "Владислав",
             "avatar": "",
@@ -647,13 +680,14 @@
                     "new": false,
                     "type": "in",
                     "text": "",
-                    "media": "https://funart.pro/uploads/posts/2021-04/1618347471_54-funart_pro-p-yaponskie-avto-mashini-krasivo-foto-55.jpg"
+                    "media": "example"
                 },
                 {
                     "date": "07.01.2023",
                     "time": "12:03",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Привет",
                     "media": ""
                 },
@@ -662,6 +696,7 @@
                     "time": "09:13",
                     "new": false,
                     "type": "out",
+                    "read": true,
                     "text": "Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. ",
                     "media": ""
                 },

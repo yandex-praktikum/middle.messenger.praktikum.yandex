@@ -1,17 +1,10 @@
 const weekDay = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
-
-export const sortDialogs = (dialogs) => {
-    const sordet = [...dialogs];
-}
-
-
 export const getDateLastMessage = (obj) => {
     const date = formattedDate(obj.date, obj.time);
     const currentDate = new Date();
     if (currentDate.setHours(0, 0, 0, 0) === date.setHours(0, 0, 0, 0)) return obj.time;
     if ((getWeekNumber(date) === getWeekNumber(currentDate)) && (date.getFullYear() === currentDate.getFullYear())) return weekDay[date.getDay()];
-
     return obj.date;
 }
 
@@ -39,10 +32,7 @@ export const getCurrentNumberWeek = (date) => {
 
 
 
-export const groupDateDialog = (dialog = []) => {
 
-    return {};
-}
 
 function getWeekNumber(d) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
