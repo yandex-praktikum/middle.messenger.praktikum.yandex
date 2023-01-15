@@ -4,7 +4,7 @@ https://www.figma.com/community/file/1196454541938995616
 
 # Проект в Netlify:
 
-
+https://celadon-meerkat-82a83d.netlify.app/
 
 ## Описание
 
