@@ -41,4 +41,3 @@ function getWeekNumber(d) {
     var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
     return weekNo;
 }
-

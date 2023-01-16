@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "dev": "parcel src/static/*.html",
-    "watch": "parcel watch src/static/*.html",
-    "build": "parcel build src/static/*.html",
-    "start": "parcel build src/static/*.html && node ./src/server.js"
+    "dev": "parcel static/*.html",
+    "watch": "parcel watch static/*.html",
+    "build": "parcel build static/*.html",
+    "start": "parcel build static/*.html && node ./src/server.js"
   },
   "repository": {
     "type": "git",
