@@ -70,7 +70,8 @@ const backlink = link({
 
 const profileView = templateProfile({
     backlink,
-    avatar: avatar,
+    avatarImg: avatar,
+    avatarChange: input({ type: 'file', name: 'avatar',textLabel:'Поменять аватар',labelClass:'avatar__change' }),
     data: list({ items }),
     buttons: profileButtonsView
 });

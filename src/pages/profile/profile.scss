@@ -50,6 +50,14 @@
                     text-align: center;
                     cursor: pointer;
                     transition: all 0.3s linear;
+                    .textLabel {
+                        visibility: visible;
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                    .error,input {
+                        display: none;
+                    }
                     &:hover {
                         opacity: 0.5;
                     }

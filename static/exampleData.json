@@ -8,11 +8,11 @@
             "label": "Логин",
             "value": "ivanivanov"
         },
-        "first name": {
+        "first_name": {
             "label": "Имя",
             "value": "Иван"
         },
-        "last name": {
+        "second_name": {
             "label": "Фамилия",
             "value": "Иванов"
         },
