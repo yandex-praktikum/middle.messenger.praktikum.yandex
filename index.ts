@@ -1,13 +1,13 @@
-import './index.less';
+import './src/index.less';
 
-import LoginPage from './pages/authorization';
-import RegistrationPage from './pages/registration';
-import MessengerPage from './pages/messenger';
-import ProfilePage from './pages/profile';
-import Error404 from './pages/error404';
-import Error500 from './pages/error500';
-import Router from './utils/router';
-import AuthController from './controllers/auth-controller';
+import LoginPage from './src/pages/authorization';
+import RegistrationPage from './src/pages/registration';
+import MessengerPage from './src/pages/messenger';
+import ProfilePage from './src/pages/profile';
+import Error404 from './src/pages/error404';
+import Error500 from './src/pages/error500';
+import Router from './src/utils/router';
+import AuthController from './src/controllers/auth-controller';
 
 enum Routes {
   Index = '/',

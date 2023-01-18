@@ -31,7 +31,8 @@ const store = new Store();
 // @ts-ignore
 window.store = store;
 
-export function withStore<SP>(mapStateToProps: (state: State) => SP) {
+export function withStore<SP extends Record<string, any>>(mapStateToProps: (state: State) => SP) {
+
   return function wrap<P>(Component: typeof Block<SP & P>){
 
     return class WithStore extends Component {

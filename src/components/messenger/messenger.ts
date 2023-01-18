@@ -222,7 +222,7 @@ export class MessengerBase extends Block {
     });
   }
 
-  protected componentDidUpdate(_oldProps: IMessenger, newProps: IMessenger): boolean {
+  protected componentDidUpdate(oldProps: IMessenger, newProps: IMessenger): boolean {
     this.children.messages = this.createMessages(newProps);
 
     return true;

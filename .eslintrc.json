@@ -51,6 +51,8 @@
     "max-classes-per-file": "off",
     "prefer-const": "off",
     "consistent-return": "off",
-    "default-case": "off"
+    "default-case": "off",
+    "one-var": "off",
+    "one-var-declaration-per-line": "off"
   }
 }

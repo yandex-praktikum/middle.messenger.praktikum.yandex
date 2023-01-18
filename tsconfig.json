@@ -9,10 +9,15 @@
     "strict": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noImplicitAny": true,
     "strictNullChecks": true
   },
-  "lib": ["ESNext", "DOM"]
+  "lib": ["ESNext", "DOM"],
+  "exclude": ["dist", "node_modules"],
+  "include": ["./**/*.ts"],
+  "ts-node": {
+    "files": true
+  }
 }
