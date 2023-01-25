@@ -8,14 +8,20 @@ import avatarDefault from '../../../assets/icon/avatar_default.png';
 import './listDialog.scss';
 import { getDateLastMessage } from '../../../utils/date';
 import { sliceLastMessage } from '../../../utils/text';
+import { TDialog } from '../chat';
 
-const search = input({ placeholder: 'Поиск', textLabel: '<i class="fa fa-search"></i>', type: 'search', labelClass: 'search' });
-const profileLink = link({ href: '/profile', label: 'Профиль >' })
 
-export const listDialog = (data, active = 0) => {
+
+
+const search: string = input({ placeholder: 'Поиск', textLabel: '<i class="fa fa-search"></i>', type: 'search', labelClass: 'search' });
+const profileLink: string = link({ href: '/profile', label: 'Профиль >' })
+
+
+
+
+export const listDialog = (data: Array<TDialog>, active:undefined| string | number  = 0): string => {
     let dialogs = '';
     data.forEach(item => {
-
         dialogs += templateListItem({
             avatar: item.avatar ? item.avatar : avatarDefault,
             dialogId: item.id,

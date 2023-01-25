@@ -1,9 +1,10 @@
 import templateApp from './app.hbs';
 
 import './app.scss';
-import link from './components/link/link.js';
+import link from './components/link/link';
 
-let links = [
+
+let links: Array<any> = [
     '<h1>Список страниц:</h1>',
     '<nav class="app__nav">',
     link({

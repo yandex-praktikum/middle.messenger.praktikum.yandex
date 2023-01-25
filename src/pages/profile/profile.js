@@ -6,8 +6,8 @@ import templateProfile from './profile.hbs';
 import link from '../../components/link/link';
 import list from '../../components/list/list';
 import button from '../../components/button/button';
-import appForm from '../../components/form/form.js';
-import input from '../../components/form/input/input.js';
+import appForm from '../../components/form/form';
+import input from '../../components/form/input/input';
 import avatar from '../../assets/icon/avatar_default.png';
 import './profile.scss';
 

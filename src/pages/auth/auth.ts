@@ -5,16 +5,16 @@ import '../../app.scss';
 import templateAuth from './auth.hbs';
 import link from '../../components/link/link';
 import button from '../../components/button/button';
-import appForm from '../../components/form/form.js';
-import input from '../../components/form/input/input.js';
+import appForm from '../../components/form/form';
+import input from '../../components/form/input/input';
 import './auth.scss';
 
 
 
-const formItems = [
+const formItems: Array<string> = [
     input({
         id: 'login',
-        name:'login',
+        name: 'login',
         textLabel: 'Логин',
         placeholder: 'Логин',
         type: 'text',
@@ -22,7 +22,7 @@ const formItems = [
     }),
     input({
         id: 'password',
-        name:'password',
+        name: 'password',
         textLabel: 'Пароль',
         placeholder: 'Пароль',
         type: 'password',
@@ -31,7 +31,8 @@ const formItems = [
 ]
 
 
-const formButtons = [
+
+const formButtons: Array<string> = [
     button({
         id: '',
         className: '',
@@ -47,7 +48,7 @@ const formButtons = [
 
 ];
 
-export const authPage = templateAuth({
+export const authPage: string = templateAuth({
     authForm: appForm({
         attr: {},
         formTitle: 'Вход',

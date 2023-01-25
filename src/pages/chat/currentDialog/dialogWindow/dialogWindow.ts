@@ -3,19 +3,19 @@ import mediaExample from '../../../../assets/img/example-media.jpg';
 
 
 import './dialogWindow.scss';
+import { TMessage } from '../../chat';
 
 
-export const dialogWindow = (messages = []) => {
+export const dialogWindow = (messages: Array<TMessage> = []): string => {
     let currentGroupDate = '00.00.0000';
     let dialog = '';
-
     messages.forEach((item, i) => {
         if (currentGroupDate !== item.date) {
             currentGroupDate = item.date;
             dialog += `<div class="dialog__dategroup">${item.date}</div>`;
         }
         const media = item.media ? mediaExample : '';
-        dialog += msgTemplate({...item,media} );
+        dialog += msgTemplate({ ...item, media });
     });
     return ` <div class="dialog__window">${dialog}</div>`
 }

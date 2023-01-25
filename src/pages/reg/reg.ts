@@ -5,12 +5,12 @@ import '../../app.scss';
 import templateReg from './reg.hbs';
 import link from '../../components/link/link';
 import button from '../../components/button/button';
-import appForm from '../../components/form/form.js';
-import input from '../../components/form/input/input.js';
+import appForm from '../../components/form/form';
+import input from '../../components/form/input/input';
 import './reg.scss';
 
 
-const formItems = [
+const formItems:Array<string> = [
     input({
         id: 'email',
         name:'email',
@@ -65,7 +65,7 @@ const formItems = [
     }),
 ]
 
-const formButtons = [
+const formButtons:Array<string> = [
     button({
         id: '',
         className: '',
@@ -81,7 +81,7 @@ const formButtons = [
 
 ];
 
-export const regPage = templateReg({
+export const regPage:string = templateReg({
     authForm: appForm({
         attr: {},
         formTitle: 'Регистрация',

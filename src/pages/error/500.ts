@@ -9,10 +9,10 @@ import './error.scss';
 
 
 
-export const errorPage = templateErrorPage({
-    title: '404',
-    subtitle: 'Не туда попали',
-    backlink: link({
+export const errorPage:string = templateErrorPage({
+    title:'500',
+    subtitle:'Мы уже фиксим',
+    backlink:link({
         href: '/chat.html',
         label: 'Назад к чатам'
     })
