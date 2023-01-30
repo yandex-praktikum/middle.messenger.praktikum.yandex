@@ -7,16 +7,14 @@ import link from '../../components/link/link';
 import './error.scss';
 
 
-
-
 export const errorPage:string = templateErrorPage({
     title: '404',
     subtitle: 'Не туда попали',
     backlink: link({
         href: '/chat.html',
-        label: 'Назад к чатам'
-    })
-})
+        label: 'Назад к чатам',
+    }),
+});
 
 
 document.body.innerHTML = templateApp({ sidebar: '', page: errorPage });

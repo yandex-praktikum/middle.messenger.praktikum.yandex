@@ -18,7 +18,6 @@ type TFormArg = {
 }
 
 
-
 export default function input({
     labelId = '',
     labelClass = '',
@@ -29,18 +28,17 @@ export default function input({
     defaultValue = '',
     type = '',
     placeholder = '',
-    onChange = f => f,
-    onOninput = f => f,
+    onChange = (f) => f,
+    onOninput = (f) => f,
     otherAttr = {},
-    errorMessage = ''
+    errorMessage = '',
 }: TFormArg):string {
-
     const labelVisible = (e: Event) => {
         const label = e?.target?.previousElementSibling;
         if (!label.classList.contains('textLabel')) return;
         if (!e?.target?.value) label.classList.remove('visible');
         else label.classList.add('visible');
-    }
+    };
 
 
     // const errorMsqPush = (msq) => {
@@ -62,10 +60,9 @@ export default function input({
     }
 
 
-
-
     return templateInput({
-        ...otherAttr, labelId,
+        ...otherAttr,
+        labelId,
         labelClass,
         textLabel,
         id,

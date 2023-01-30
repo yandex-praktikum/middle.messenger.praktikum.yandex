@@ -15,13 +15,11 @@ export default function form({
     formTitle = 'title',
     formItems = [],
     formButtons = [],
-    submit = f => f,
+    submit = (f) => f,
 }: TFormArg):string {
-
-
     return templateForm(
         {
-            ...attr, formTitle, formItems: formItems.join(''), formButtons: formButtons.join('')
-        }
+            ...attr, formTitle, formItems: formItems.join(''), formButtons: formButtons.join(''),
+        },
     );
 }

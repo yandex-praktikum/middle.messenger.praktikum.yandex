@@ -23,5 +23,7 @@ export default function link({
             if (e.target?.id == id) onClick(e);
         });
     }
-    return templateLink({ ...otherAttr, id, className, href, label });
+    return templateLink({
+        ...otherAttr, id, className, href, label,
+    });
 }

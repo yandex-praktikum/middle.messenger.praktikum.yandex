@@ -10,7 +10,6 @@ import input from '../../components/form/input/input';
 import './auth.scss';
 
 
-
 const formItems: Array<string> = [
     input({
         id: 'login',
@@ -18,7 +17,7 @@ const formItems: Array<string> = [
         textLabel: 'Логин',
         placeholder: 'Логин',
         type: 'text',
-        errorMessage: 'неверный логин'
+        errorMessage: 'неверный логин',
     }),
     input({
         id: 'password',
@@ -28,36 +27,34 @@ const formItems: Array<string> = [
         type: 'password',
         // errorMessage: 'ошибка'
     }),
-]
-
+];
 
 
 const formButtons: Array<string> = [
     button({
         id: '',
         className: '',
-        onClick: alert,
-        label: 'Вход'
+        label: 'Вход',
     }),
     link({
         id: '',
         className: '',
         href: '/reg.html',
-        label: 'Ещё не зарегистрированы?'
-    })
+        label: 'Ещё не зарегистрированы?',
+    }),
 
 ];
 
-export const authPage: string = templateAuth({
+const authPage: string = templateAuth({
     authForm: appForm({
         attr: {},
         formTitle: 'Вход',
         formItems,
         formButtons,
-        submit: alert
-    })
-})
-
+    }),
+});
 
 
 document.body.innerHTML = templateApp({ sidebar: '', page: authPage });
+
+export default authPage;

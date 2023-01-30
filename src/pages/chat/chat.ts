@@ -1,18 +1,27 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
 import templateApp from '../../app.hbs';
 import '../../app.scss';
-
-
 import templateChat from './chat.hbs';
-
 import { listDialog } from './listDialog/listDialog';
 import { currentDialog } from './currentDialog/currentDialog';
-
 import './chat.scss';
 
 
 import { exampleChatData as dialogs } from '../../../static/exampleData.json';
 import { formattedDate } from '../../utils/date';
 
+export type TMessage = {
+    date: string,
+    media: string,
+    new: boolean,
+    read: boolean,
+    text: string,
+    time: string,
+    type: string,
+};
 
 export type TDialog = {
     avatar: string,
@@ -23,30 +32,18 @@ export type TDialog = {
     nick: string
 }
 
-export type TMessage = {
-    date: string,
-    media: string,
-    new: boolean,
-    read: boolean,
-    text: string,
-    time: string,
-    type: string,
-}
-
-
-
-let activeDialog: TDialog | undefined = undefined;
+let activeDialog: TDialog | undefined;
 
 const dialogSorted = (dialogs: Array<TDialog>) => {
-    dialogs.forEach((item, i) => {
-        item.dialog.sort((msg1, msg2) => formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1);
+    dialogs.forEach((item) => {
+        item.dialog.sort((msg1, msg2) => (formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1));
         item.newMsg = 0;
-        item.dialog.forEach(msg => msg.new ? item.newMsg++ : '');
+        item.dialog.forEach((msg) => (msg.new ? item.newMsg++ : ''));
         item.lastMsg = item.dialog[item.dialog.length - 1];
     });
 
-    dialogs.sort((dialog1, dialog2) => formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1);
-}
+    dialogs.sort((dialog1, dialog2) => (formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1));
+};
 
 const chatView = (): void => templateChat({
     currentDialog: currentDialog(activeDialog),
@@ -61,7 +58,7 @@ const setActiveDialog = (dialogs: Array<TDialog>, active: string | number): TDia
         }
     }
     return undefined;
-}
+};
 const changeCurrentDialog = (e: Event) => {
     const item = e?.target?.closest('.dialog__item');
     if (!item) return;
@@ -73,9 +70,7 @@ const changeCurrentDialog = (e: Event) => {
     if (currentDialogElement) {
         currentDialogElement.scrollBy(0, currentDialogElement.clientHeight);
     }
-}
-
-
+};
 
 
 dialogSorted(dialogs);

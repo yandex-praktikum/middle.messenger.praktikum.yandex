@@ -13,7 +13,7 @@ export default function button({
     id = '',
     className = '',
     label = '',
-    onClick = f => f,
+    onClick = (f) => f,
     otherAttr = {},
 }: TButtonArg) {
     if (id) {
@@ -21,5 +21,7 @@ export default function button({
             if (e.target?.id == id) onClick(e);
         });
     }
-    return templateButton({ ...otherAttr, id, className, label });
+    return templateButton({
+        ...otherAttr, id, className, label,
+    });
 }

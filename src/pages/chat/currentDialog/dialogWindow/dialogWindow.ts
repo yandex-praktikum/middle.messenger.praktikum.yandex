@@ -6,10 +6,10 @@ import './dialogWindow.scss';
 import { TMessage } from '../../chat';
 
 
-export const dialogWindow = (messages: Array<TMessage> = []): string => {
+const dialogWindow = (messages: Array<TMessage> = []): string => {
     let currentGroupDate = '00.00.0000';
     let dialog = '';
-    messages.forEach((item, i) => {
+    messages.forEach((item) => {
         if (currentGroupDate !== item.date) {
             currentGroupDate = item.date;
             dialog += `<div class="dialog__dategroup">${item.date}</div>`;
@@ -17,5 +17,8 @@ export const dialogWindow = (messages: Array<TMessage> = []): string => {
         const media = item.media ? mediaExample : '';
         dialog += msgTemplate({ ...item, media });
     });
-    return ` <div class="dialog__window">${dialog}</div>`
-}
+    return ` <div class="dialog__window">${dialog}</div>`;
+};
+
+
+export default dialogWindow;

@@ -9,14 +9,14 @@ type TListArg = {
 }
 
 export default function list({
-    id = '', className = '', items = []
+    id = '', className = '', items = [],
 }: TListArg): string {
     let list = '';
 
 
-    items.map(item => {
+    items.map((item) => {
         list += templateLi({ content: item });
-    })
+    });
 
     return templateList({ childrens: list });
 }
