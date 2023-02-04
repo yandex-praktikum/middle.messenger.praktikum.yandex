@@ -46,6 +46,7 @@
     "stylelint": "^14.16.1",
     "stylelint-config-standard-scss": "^6.1.0",
     "url": "0.11.0",
-    "util": "0.12.5"
+    "util": "0.12.5",
+    "uuid": "^9.0.0"
   }
 }

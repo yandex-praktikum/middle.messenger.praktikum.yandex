@@ -1,20 +1,29 @@
-import templateApp from '../../app.hbs';
 import '../../app.scss';
 
-
 import templateErrorPage from './error.hbs';
-import link from '../../components/link/link';
+import { Link } from '../../components/link/link';
 import './error.scss';
+import ErrorPage from './error';
 
 
-export const errorPage:string = templateErrorPage({
+const error404 = new ErrorPage({
     title: '404',
     subtitle: 'Не туда попали',
-    backlink: link({
+    attr: {
+        class: 'app__error-page',
+    },
+    backlink: new Link({
+        text: 'Назад к чатам',
         href: '/chat.html',
-        label: 'Назад к чатам',
+        attr: {
+            class: 'link',
+        },
     }),
-});
+}, templateErrorPage);
 
-
-document.body.innerHTML = templateApp({ sidebar: '', page: errorPage });
+// eslint-disable-next-line no-undef
+const root = document.getElementById('app');
+if (root) {
+    root.innerHTML = '';
+    root.append(error404.getContent());
+}

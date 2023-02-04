@@ -2,7 +2,7 @@ import ctrlTopTemplate from './controlsTop.hbs';
 import ctrlBotTemplate from './controlsBottom.hbs';
 
 
-import { dialogWindow } from './dialogWindow/dialogWindow';
+import dialogWindow from './dialogWindow/dialogWindow';
 
 import avatarDefault from '../../../assets/icon/avatar_default.png';
 
@@ -14,7 +14,6 @@ import { TDialog } from '../chat';
 
 export const currentDialog = (dialog: TDialog | undefined): string => {
     if (!dialog) return '<div class="dialog_empty">Выберите чат чтобы отправить сообщение</div>';
-
     const ctrlTop = ctrlTopTemplate({
         avatar: dialog.avatar ? dialog.avatar : avatarDefault,
         nick: dialog.nick,

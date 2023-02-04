@@ -1,29 +1,26 @@
-import templateLink from './link.hbs';
+import Block, { TProps } from '../../classes/Block';
 import './link.scss';
 
-type TlinkObj = {
-    id?: string,
-    className?: string,
-    label?: string,
-    href?: string,
-    onClick?: (f: any) => void,
-    otherAttr?: {}
+
+export class Link extends Block {
+    constructor(props: TProps) {
+        super('a', props);
+    }
+
+    render() {
+        if (typeof this.props.text === 'string') return this.props.text;
+        return '';
+    }
 }
 
-export default function link({
-    id = '',
-    className = '',
-    label = '',
-    href = '',
-    onClick = (f: void): void => f,
-    otherAttr = {},
-}: TlinkObj): string {
-    if (id) {
-        document.body.addEventListener('click', (e: Event) => {
-            if (e.target?.id == id) onClick(e);
-        });
-    }
-    return templateLink({
-        ...otherAttr, id, className, href, label,
+
+export default function link(props: TProps): string {
+    const btn = new Link({
+        text: props.label ?? '',
+        attr: {
+            class: `${props.className} link`,
+            href: `${props.href}`,
+        },
     });
+    return btn.getContent()?.outerHTML;
 }

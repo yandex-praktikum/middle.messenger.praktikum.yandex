@@ -5,12 +5,13 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "default-param-last": 0,
         "max-len": [
             2,
             200
         ],
         "import/no-unresolved": "off",
-        "import/extensions":"off",
+        "import/extensions": "off",
         "indent": [
             "error",
             4

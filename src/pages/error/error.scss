@@ -1,33 +1,36 @@
-.page__error {
-  height: 100%;
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+.app {
+  &__error-page {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 
-    .contetn {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 20px;
 
-      .title {
-        color: #e72933;
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 40px;
-      }
+      .contetn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
 
-      .subtitle {
-        color: #e72933;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 20px;
-        margin-bottom: 50px;
+        .title {
+          color: #e72933;
+          font-weight: 500;
+          font-size: 40px;
+          line-height: 40px;
+        }
+
+        .subtitle {
+          color: #e72933;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 20px;
+          margin-bottom: 50px;
+        }
       }
     }
   }

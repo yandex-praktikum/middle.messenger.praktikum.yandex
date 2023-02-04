@@ -128,12 +128,12 @@ const profilePassEdit: string = templateProfile({
     buttons: '',
 });
 
-document.body.addEventListener('click', (e: Event) => {
-    if (e?.target?.id === 'btn-edit-data') {
-        document.body.innerHTML = templateApp({ page: profileEdit });
-    } else if (e?.target?.id === 'btn-edit-pass') {
-        document.body.innerHTML = templateApp({ page: profilePassEdit });
-    }
-});
+// document.body.addEventListener('click', (e: Event) => {
+//     if (e?.target?.id === 'btn-edit-data') {
+//         document.body.innerHTML = templateApp({ page: profileEdit });
+//     } else if (e?.target?.id === 'btn-edit-pass') {
+//         document.body.innerHTML = templateApp({ page: profilePassEdit });
+//     }
+// });
 
 document.body.innerHTML = templateApp({ page: profileView });

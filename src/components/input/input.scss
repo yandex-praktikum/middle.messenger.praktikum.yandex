@@ -1,10 +1,10 @@
-.form__input {
+.label {
   display: flex;
   flex-direction: column;
   position: relative;
   max-width: 100%;
 
-  .textLabel {
+  &__text {
     color: #999;
     font-weight: 500;
     font-size: 9px;
@@ -13,7 +13,7 @@
 
     &:not(.visible) {
       // opacity: 0;
-      visibility: hidden;
+      // visibility: hidden;
     }
   }
 

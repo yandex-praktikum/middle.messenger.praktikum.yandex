@@ -1,38 +1,86 @@
 /* global document, a */
-import templateApp from './app.hbs';
-
+import templateIndex from './index.hbs';
+import Block, { TProps } from './classes/Block';
+import Nav from './components/nav/nav';
 import './app.scss';
-import link from './components/link/link';
+import { Link } from './components/link/link';
+import { testInput } from './components/input/input';
+import { testForm } from './components/form/form';
 
 
-const links: Array<any> = [
-    '<h1>Список страниц:</h1>',
-    '<nav class="app__nav">',
-    link({
+class IndexPage extends Block {
+    constructor(props: TProps, templator: Function) {
+        super('main', props, templator);
+    }
+
+    componentDidUpdate(oldProps: TProps, newProps: TProps) {
+        if (oldProps.title !== newProps.title) return true;
+        return false;
+    }
+
+    render() {
+        return this.compile(this.props);
+    }
+}
+
+
+const pageList: Array<Record<string, string>> = [
+    {
         href: '/auth.html',
-        label: 'Авторизация',
-    }),
-    link({
+        text: 'Авторизация',
+    },
+    {
         href: '/reg.html',
-        label: 'Регистрация',
-    }),
-    link({
+        text: 'Регистрация',
+    },
+    {
         href: '/profile.html',
-        label: 'Профиль',
-    }),
-    link({
+        text: 'Профиль',
+    },
+    {
         href: '/chat.html',
-        label: 'Чат',
-    }),
-    link({
+        text: 'Чат',
+    },
+    {
         href: '/404.html',
-        label: '404',
-    }),
-    link({
+        text: '404',
+    },
+    {
         href: '/500.html',
-        label: '500',
-    }),
-    '</nav>',
+        text: '500',
+    },
 ];
 
-document.body.innerHTML = templateApp({ page: `<div class="page__index">${links.join('')}</div>` });
+const navs = new Nav({
+    attr: {
+        class: 'app__nav',
+    },
+    links: pageList,
+});
+
+const indexPage = new IndexPage({
+    title: 'Список страниц',
+    nav: navs,
+    attr: {
+        class: 'app__index-page',
+    },
+}, templateIndex);
+
+
+const indexPageContent = indexPage.getContent() ?? '';
+const otherNav = new Link({
+    text: '123',
+});
+
+window.navs = navs;
+window.index = indexPage;
+window.onav = otherNav;
+window.input = testInput;
+const root = document.getElementById('app');
+if (root) {
+    root.innerHTML = '';
+    root.append(testForm.getContent());
+}
+
+
+// console.log(testInput.getContent());
