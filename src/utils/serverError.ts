@@ -1,6 +1,6 @@
 import Store from "../core/Store";
 
-const setServerError = (err: any) => {
+const setServerError = (err: Record<string, unknown>) => {
     Store.setState("server-error", err.text);
 
     setTimeout(() => {

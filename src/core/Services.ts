@@ -3,6 +3,25 @@ import Store from "./Store";
 import findChatById from "../utils/findChatById";
 import setWindowToggle from "../utils/setWindowToggle";
 
+type Message = {
+    chat_id: number,
+    content: string,
+    file: any,
+    id: number,
+    is_read: boolean,
+    time: Date,
+    type: string,
+    user_id: number,
+};
+
+type MessageItem = {
+    content: string,
+    id: number,
+    time: Date,
+    type: string,
+    user_id: number,
+};
+
 class Services {
     onClick(event: Event): void {
         const element = event.target as HTMLElement;
@@ -48,7 +67,7 @@ class Services {
         }
     };
 
-    private _addNewMessageToChat(data: any): void {
+    private _addNewMessageToChat(data: MessageItem): void {
         if (data.type !== "message") return;
 
         const { messages, currentUser: { id } } = Store.getState();
@@ -62,7 +81,7 @@ class Services {
         Store.setState("messages", messageToSave);
     };
 
-    private _saveChatMessages(messages: any[]): void {
+    private _saveChatMessages(messages: Message[]): void {
         if (messages.length > 0) {
             const { currentUser: { id } } = Store.getState();
 

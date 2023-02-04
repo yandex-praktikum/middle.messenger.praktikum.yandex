@@ -1,4 +1,4 @@
-import Block from "./Block";
+import Block, { Props } from "./Block";
 
 const isEqual = (lhs: string, rhs: string) => {
     return lhs === rhs;
@@ -25,9 +25,9 @@ class Route {
     private _pathname: string;
     private _blockClass: any;
     private _block: any;
-    private _props: any;
+    private _props: Props;
 
-    constructor(pathname: string, view: string, props: any) {
+    constructor(pathname: string, view: string, props: Props) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;

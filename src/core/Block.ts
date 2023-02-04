@@ -2,6 +2,8 @@ import EventBus from "./EventBus";
 import { v4 as uuidv4 } from "uuid";
 import Handlebars from "handlebars";
 
+export type Props = Record<string, any>;
+
 class Block {
     static EVENTS = {
         INIT: "init",
@@ -12,11 +14,13 @@ class Block {
 
     public id = uuidv4();
 
-    private _element = null;
+    // @ts-ignore
+    private _element: HTMLElement;
+    // @ts-ignore
     private _meta;
     eventBus: EventBus;
-    protected props: any;
-    protected children: any;
+    protected props: Props;
+    protected children: Props;
 
     constructor(propsAndChildren = {}) {
         const { props, children } = this._getChildren(propsAndChildren);
@@ -75,11 +79,12 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
 
+    // @ts-ignore
     componentDidUpdate(oldProps: any, newProps: any) {
         return true;
     };
 
-    setProps = (nextProps: any) => {
+    setProps = (nextProps: Props) => {
         if (!nextProps) {
             return;
         }
@@ -93,14 +98,14 @@ class Block {
 
     _render() {
         const block = this.render();
-        const firstElem = block.firstElementChild;
+        const firstElem = block.firstElementChild as HTMLElement;
 
         if (this._element) {
             this._removeEvents();
-            (this._element as any).replaceWith(firstElem);
+            this._element.replaceWith(firstElem);
         }
 
-        (this._element as any) = firstElem;
+        this._element = firstElem;
         this._addEvents();
     };
 
@@ -108,23 +113,23 @@ class Block {
         return new DocumentFragment();
     };
 
-    compile(template: string, props: any) {
+    compile(template: string, props: Props) {
         Object.entries(this.children).forEach(([key, child]) => {
             if (Array.isArray(child)) {
-                props[key] = child.map((item: any) => `<div data-id="${item.id}"></div>`);
+                props[key] = child.map((item) => `<div data-id="${item.id}"></div>`);
                 return;
             }
 
-            props[key] = `<div data-id="${(child as any).id}"></div>`;
+            props[key] = `<div data-id="${child.id}"></div>`;
         });
 
         const fragment = document.createElement("template");
 
         fragment.innerHTML = Handlebars.compile(template)(props);
 
-        Object.values(this.children).forEach((child: any) => {
+        Object.values(this.children).forEach((child) => {
             if (Array.isArray(child)) {
-                child.forEach((item: any) => {
+                child.forEach((item) => {
                     const stub = fragment.content.querySelector(`[data-id="${item.id}"]`);
 
                     if (!stub) {
@@ -153,7 +158,7 @@ class Block {
         if (!events) return;
 
         Object.keys(events).forEach((eventName) => {
-            (this._element as any).addEventListener(eventName, events[eventName]);
+            this._element.addEventListener(eventName, events[eventName]);
         });
     };
 
@@ -163,23 +168,23 @@ class Block {
         if (!events) return;
 
         Object.keys(events).forEach((eventName) => {
-            (this._element as any).removeEventListener(eventName, events[eventName]);
+            this._element.removeEventListener(eventName, events[eventName]);
         })
     };
 
-    getContent() {
+    getContent(): HTMLElement | null {
         return this.element;
     };
 
-    _makePropsProxy(props: any) {
+    _makePropsProxy(props: Props) {
         const self = this;
 
         return new Proxy(props, {
-            get(target, prop) {
+            get(target: Record<string, unknown>, prop: string) {
                 const value = target[prop];
                 return typeof value === "function" ? value.bind(target) : value;
             },
-            set(target, prop, value) {
+            set(target: Record<string, unknown>, prop: string, value: unknown) {
                 target[prop] = value;
                 self.eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
                 return true;
@@ -191,11 +196,11 @@ class Block {
     };
 
     show() {
-        (this.getContent() as any).style.display = "block";
+        this.getContent()!.style.display = "block";
     };
 
     hide() {
-        (this.getContent() as any).style.display = "none";
+        this.getContent()!.style.display = "none";
     };
 };
 

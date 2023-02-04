@@ -1,3 +1,4 @@
+import { Props } from "./Block";
 import Route, { IRoute } from "./Route";
 
 class Router {
@@ -18,7 +19,7 @@ class Router {
         Router.__instance = this;
     };
 
-    use(pathname: string, block: any, props: any) {
+    use(pathname: string, block: any, props: Props) {
         const route = new Route(pathname, block, props);
 
         this.routes.push(route);
@@ -27,8 +28,8 @@ class Router {
     };
 
     start() {
-        window.onpopstate = ((event: any) => {
-            this._onRoute(event.currentTarget.location.pathname);
+        window.onpopstate = ((event: Event) => {
+            this._onRoute((event.currentTarget as Window).location.pathname);
         }).bind(this);
 
         this._onRoute(window.location.pathname);
@@ -65,7 +66,7 @@ class Router {
     };
 
     getRoute(pathname: string) {
-        return this.routes.find((route: any) => route.match(pathname));
+        return this.routes.find((route: Route) => route.match(pathname));
     }
 };
 
