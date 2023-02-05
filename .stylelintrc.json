@@ -3,5 +3,11 @@
     "ignoreFiles": [
         "dist/*",
         "**/*.ts"
-    ]
+    ],
+    "rules": {
+        "selector-class-pattern": null,
+        "indentation": null,
+        "no-duplicate-selectors": null,
+        "no-descending-specificity": null
+    }
 }

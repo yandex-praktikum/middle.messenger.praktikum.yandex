@@ -13,8 +13,8 @@
     left: 0;
     bottom: 0;
     width: 60px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
 }
 
 .profile__back-chat {
@@ -42,8 +42,8 @@
     width: 700px;
     min-height: 200px;
     padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
 }
 
 .profile__avatar {
@@ -135,7 +135,7 @@
 
 .profile__avatar-error {
     display: block;
-    margin: 0px auto 20px;
+    margin: 0 auto 20px;
     text-align: center;
     font-size: 15px;
     color: #df0000;

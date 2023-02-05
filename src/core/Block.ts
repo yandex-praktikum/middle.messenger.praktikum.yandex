@@ -33,7 +33,7 @@ class Block {
         this.eventBus.emit(Block.EVENTS.INIT);
     };
 
-    _getChildren(propsAndChildren: any) {
+    private _getChildren(propsAndChildren: any) {
         const children: any = {};
         const props: any = {};
 
@@ -50,7 +50,7 @@ class Block {
         return { children, props };
     }
 
-    _registerEvents(eventBus: EventBus) {
+    private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -61,7 +61,7 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    _componentDidMount() {
+    private _componentDidMount() {
         this.componentDidMount();
     };
 
@@ -71,7 +71,7 @@ class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
-    _componentDidUpdate(oldProps: any, newProps: any) {
+    private _componentDidUpdate(oldProps: any, newProps: any) {
         if (!this.componentDidUpdate(oldProps, newProps)) {
             return;
         }
@@ -96,7 +96,7 @@ class Block {
         return this._element;
     };
 
-    _render() {
+    private _render() {
         const block = this.render();
         const firstElem = block.firstElementChild as HTMLElement;
 
@@ -152,7 +152,7 @@ class Block {
         return fragment.content;
     };
 
-    _addEvents() {
+    private _addEvents() {
         const { events = {} } = this.props;
 
         if (!events) return;
@@ -162,7 +162,7 @@ class Block {
         });
     };
 
-    _removeEvents() {
+    private _removeEvents() {
         const { events = {} } = this.props;
 
         if (!events) return;
@@ -176,7 +176,7 @@ class Block {
         return this.element;
     };
 
-    _makePropsProxy(props: Props) {
+    private _makePropsProxy(props: Props) {
         const self = this;
 
         return new Proxy(props, {

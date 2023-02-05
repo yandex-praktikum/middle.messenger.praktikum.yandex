@@ -11,13 +11,13 @@
     display: flex;
     min-width: 1100px;
     height: 700px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
 }
 
 .chat__sidebar {
     flex-basis: 330px;
-    box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 0 0 0 rgb(0 0 0 / 10%);
     overflow: auto;
 }
 
@@ -28,10 +28,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 80px;
-    padding: 10px 0px;
-    margin: 0px 10px;
-    background-color: #ffffff;
-    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    margin: 0 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
 }
 
 .chat__profile-box {
@@ -58,7 +58,7 @@
 
 .chat__create-name {
     flex: 1;
-    padding: 0px 10px;
+    padding: 0 10px;
     background-color: #eee;
     font-size: 18px;
 }
@@ -89,16 +89,16 @@
     display: flex;
     align-items: center;
     height: 80px;
-    padding: 10px 0px;
-    margin: 0px 10px;
+    padding: 10px 0;
+    margin: 0 10px;
     overflow: hidden;
     cursor: pointer;
 }
 
 .chat__item:hover {
-    margin: 0px 10px;
-    background-color: rgba(0, 0, 0, 0.04);
-    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.05);
+    margin: 0 10px;
+    background-color: rgb(0 0 0 / 4%);
+    box-shadow: 0 0 0 5px rgb(0 0 0 / 5%);
 }
 
 .chat__item-plus {
@@ -126,12 +126,12 @@
 }
 
 .chat__item:not(:first-child) {
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 0 0 rgb(0 0 0 / 10%);
 }
 
 .chat__item:not(:first-child):hover {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px -1px 0px 5px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgb(0 0 0 / 10%);
+    box-shadow: 0 -1px 0 5px rgb(0 0 0 / 5%);
 }
 
 .chat__tools {
@@ -188,7 +188,7 @@
     right: 15px;
     padding: 10px;
     background-color: #eee;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
 }
 
 .chat__tooltip-item {
@@ -220,27 +220,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
 }
 
 .chat__message {
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 0 0 rgb(0 0 0 / 10%);
 }
 
 .chat__settings,
 .chat__message {
     height: 80px;
-    padding: 10px 0px;
-    margin: 0px 10px;
-    background-color: #ffffff;
+    padding: 10px 0;
+    margin: 0 10px;
+    background-color: #fff;
 }
 
 .chat__content {
     display: flex;
     flex-direction: column-reverse;
     height: calc(100% - 160px);
-    padding: 10px 0px;
-    margin: 0px 10px;
+    padding: 10px 0;
+    margin: 0 10px;
     overflow: auto;
 }
 
@@ -272,7 +272,7 @@
 
 .chat__content-time {
     font-size: 11px;
-    margin: 0px 5px;
+    margin: 0 5px;
 }
 
 .chat__main-cover {
@@ -293,15 +293,15 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgb(0 0 0 / 40%);
 }
 
 .chat__window-form {
     width: 500px;
     min-height: 100px;
     padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.05);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgb(255 255 255 / 5%);
 }
 
 .chat__deleteChat-form {
@@ -322,7 +322,7 @@
 
 .chat__addChatImage-error {
     display: block;
-    margin: 0px auto 20px;
+    margin: 0 auto 20px;
     text-align: center;
     font-size: 15px;
     color: #df0000;
@@ -364,7 +364,7 @@
 .chat__deleteUser-inputBtn {
     display: block;
     height: 30px;
-    padding: 0px 10px;
+    padding: 0 10px;
     outline: none;
     border: none;
     color: #000;
@@ -425,7 +425,7 @@
 
 .chat__message-btn {
     height: 40px;
-    padding: 0px 5px;
+    padding: 0 5px;
     background-color: #ddd;
     user-select: none;
     cursor: pointer;

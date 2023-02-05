@@ -1,5 +1,5 @@
 {
-    "name": "sprint_2",
+    "name": "sprint_3",
     "version": "1.0.0",
     "description": "",
     "engines": {
@@ -17,12 +17,14 @@
         "dev": "parcel src/index.html --no-source-maps --no-cache --open",
         "build": "parcel build src/index.html --no-source-maps --no-cache",
         "start": "npm run build && node express.js",
-        "test": "npx tsc --noEmit && npx eslint --config=./.eslintrc.json"
+        "eslint": "npx tsc --noEmit && npx eslint --config=./.eslintrc.json",
+        "stylelint": "npx stylelint --fix ./src/**/*.css"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "express": "4.18.2",
         "handlebars": "4.7.7",
         "uuid": "9.0.0"
     },
@@ -31,7 +33,6 @@
         "@typescript-eslint/eslint-plugin": "5.48.1",
         "@typescript-eslint/parser": "5.48.1",
         "eslint": "8.31.0",
-        "express": "4.18.2",
         "parcel": "2.8.2",
         "stylelint": "14.16.1",
         "stylelint-config-standard": "29.0.0",

@@ -25,21 +25,21 @@
     padding: 5px 10px;
     outline: none;
     border: none;
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 100%);
     font-size: 18px;
 }
 
 .form-input.form-input_error {
-    box-shadow: 0px 0px 0px 1px #df0000;
+    box-shadow: 0 0 0 1px #df0000;
 }
 
 .form-input::placeholder {
-    color: #888888;
+    color: #888;
 }
 
 .form-input:hover,
 .form-input:focus {
-    box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 0 2px rgb(0 0 0 / 100%);
 }
 
 .close {
