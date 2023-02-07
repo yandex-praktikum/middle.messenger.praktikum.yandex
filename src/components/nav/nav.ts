@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
-import Block, { TProps } from '../../classes/Block';
+import Block from '../../classes/Block';
 
 type TNav = {
-    links: [Record<string, {}>]
+    attr?: Record<string, string>,
+    links: Array<Record<string, string>>,
 }
 
 export default class Nav extends Block {

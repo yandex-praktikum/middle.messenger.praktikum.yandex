@@ -9,6 +9,17 @@
         //     "window": true,
         //     "document": true
         //   },
+        "no-param-reassign": 0,
+        "no-use-before-define": [
+            "error",
+            {
+                "functions": false,
+                "classes": false,
+                "variables": false,
+                "allowNamedExports": false
+            }
+        ],
+        "no-underscore-dangle": 0,
         "default-param-last": 0,
         "max-len": [
             2,

@@ -1,25 +1,22 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
-/* eslint-disable no-shadow */
-import '../../app.scss';
-import templateChat from './chat.hbs';
-// import { currentDialog } from './currentDialog/currentDialog';
-import './chat.scss';
-
-import avatarDefault from '../../assets/icon/avatar_default.png';
-
-import { exampleChatData as dialogs } from '../../../static/exampleData.json';
 import Block, { TProps } from '../../classes/Block';
-import { dialogSorted } from '../../utils/sorted';
 import Input from '../../components/input/input';
 import Link from '../../components/link/link';
+import Form from '../../components/form/form';
+import Button from '../../components/button/button';
+import { formattedDate } from '../../utils/date';
 import DialogsList from '../../components/dialogsList/dialogsList';
 import DialogActive from '../../components/dialog/dialogActive';
-import { Form } from '../../components/form/form';
-import { Button } from '../../components/button/button';
-import { formattedDate, getDateLastMessage } from '../../utils/date';
-import { sliceLastMessage } from '../../utils/text';
+import { exampleChatData } from '../../../static/exampleData.json';
+import avatarDefault from '../../assets/icon/avatar_default.png';
+import templateChat from './chat.hbs';
+import '../../assets/style/app.scss';
+import './chat.scss';
+import { onSubmit } from '../../utils/validation';
+
 
 export type TMessage = {
     date: string,
@@ -43,25 +40,27 @@ export type TDialog = {
 
 export default class ChatPage extends Block {
     activeDialog: TDialog | undefined;
+
     constructor(props: TProps, templator: Function) {
         super('main', props, templator);
     }
+
     static changeActiveDialog(self: ChatPage, e: Event): void {
-        const item = e?.target?.closest('.dialog__item');
+        const target = e?.target as HTMLElement;
+        const item = target.closest('.dialog__item') as HTMLElement;
         if (!item) return;
         const active = item.dataset.dialogId ?? undefined;
         const dialog = self.searchActiveDialog(active);
 
         if (!active || !dialog) return;
-        self.children['listDialog'].setProps({
-            active
+        self.children.listDialog.setProps({
+            active,
         });
-        self.children['activeDialog'].setProps({
+        self.children.activeDialog.setProps({
             ...dialog,
             messages: '',
             avatar: dialog.avatar ? dialog.avatar : avatarDefault,
         });
-
     }
 
     static sortedDialogs(dialogs: Array<TDialog> = []): Array<TDialog> | [] {
@@ -78,9 +77,10 @@ export default class ChatPage extends Block {
     }
 
 
+    // eslint-disable-next-line class-methods-use-this
     searchActiveDialog(active: string | undefined): TDialog | undefined {
-        for (let i = 0; i < dialogs.length; i++) {
-            const item = dialogs[i];
+        for (let i = 0; i < exampleChatData.length; i++) {
+            const item = exampleChatData[i];
             if (item.id === active) {
                 return item;
             }
@@ -99,7 +99,10 @@ export default class ChatPage extends Block {
                     name: 'inc',
                     attr: {
                         class: 'control__inc btn inc',
-                    }
+                    },
+                    validation: {
+                        required: false,
+                    },
                 }),
                 new Input({
                     attr: {
@@ -110,16 +113,19 @@ export default class ChatPage extends Block {
                         minlength: 1,
                     },
                     name: 'messagе',
-                    placeholder: 'Сообщение'
+                    placeholder: 'Сообщение',
                 }),
             ],
             buttons: [new Button({
                 attr: {
                     class: 'control__input btn arrownext',
                     type: 'control__submit',
-                }
+                },
             })],
-        })
+            events: {
+                submit: onSubmit,
+            },
+        });
     }
 
     render() {
@@ -135,7 +141,7 @@ const searchDialog = new Input({
     placeholder: 'Поиск',
     label: '<i class="fa fa-search"></i>',
     type: 'search',
-})
+});
 
 const profileLink = new Link({
     attr: {
@@ -143,14 +149,14 @@ const profileLink = new Link({
         class: 'link',
     },
     text: 'Профиль >',
-})
+});
 
 const dialogsList = new DialogsList({
     attr: {
         class: 'dialogs',
     },
-    dialogs: ChatPage.sortedDialogs(dialogs),
-})
+    dialogs: ChatPage.sortedDialogs(exampleChatData),
+});
 
 const activeDialogTest = new DialogActive({
     attr: {
@@ -159,11 +165,10 @@ const activeDialogTest = new DialogActive({
     newMsgForm: ChatPage.createNewMsgForm(),
     btn: new Button({
         attr: {
-            class: 'btn ellipsis'
-        }
-    })
+            class: 'btn ellipsis',
+        },
+    }),
 });
-
 
 
 const chatPage = new ChatPage({
@@ -176,8 +181,8 @@ const chatPage = new ChatPage({
     searchDialog,
     events: {
         click: ChatPage.changeActiveDialog,
-    }
-}, templateChat)
+    },
+}, templateChat);
 
 const root = document.getElementById('app');
 if (root) {

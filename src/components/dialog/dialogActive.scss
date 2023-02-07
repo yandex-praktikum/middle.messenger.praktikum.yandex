@@ -42,22 +42,27 @@
     border-top: 1px solid white;
     z-index: 4;
     padding: 12px 0;
+
     .new-msg-send-form {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       gap: 10px;
+
       h2 {
         display: none;
       }
+
       .form__items {
         display: flex;
         flex-grow: 1;
-        gap:10px;
+        gap: 10px;
+
         .control__inc input {
           display: none;
         }
+
         .control__input {
           flex-grow: 1;
 
@@ -91,6 +96,4 @@
     text-align: center;
     color: #999;
   }
-
-  
 }

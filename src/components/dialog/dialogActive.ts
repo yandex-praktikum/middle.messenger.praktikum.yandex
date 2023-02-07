@@ -1,6 +1,6 @@
-import Block, { TProps } from "../../classes/Block";
-import { TMessage } from "../../pages/chat/chat";
-import Message from "../message/message";
+import Block, { TProps } from '../../classes/Block';
+import { TMessage } from '../../pages/chat/chat';
+import Message from '../message/message';
 import templateDialogActive from './dialogActive.hbs';
 import './dialogActive.scss';
 import avatarDefault from '../../assets/icon/avatar_default.png';
@@ -27,7 +27,7 @@ export default class DialogActive extends Block {
                 btn: this.children.btn,
                 newMsgForm: this.children.newMsgForm,
                 ...children,
-            }
+            };
         }
         return true;
     }
@@ -40,25 +40,22 @@ export default class DialogActive extends Block {
         const newProps = {
             ...this.props,
             ...nextProps,
-            messages: ''
-        }
-        console.log(this._prevProps);
-
+            messages: '',
+        };
         setGroupMsgToProps(newProps);
         Object.assign(this.props, newProps);
     };
 
 
+    // eslint-disable-next-line no-undef
     render(): string | DocumentFragment {
         return this.compile(this.props);
     }
 }
 
 
-function setGroupMsgToProps(props = {}): void {
+function setGroupMsgToProps(props: TProps = {}): void {
     let currentGroupDate = '00.00.0000';
-    console.log(props);
-
     const dialog = props.dialog ?? [];
     dialog.forEach((item: TMessage) => {
         if (currentGroupDate !== item.date) {
@@ -70,7 +67,7 @@ function setGroupMsgToProps(props = {}): void {
             ...item,
             media,
             attr: {
-                class: `message msg__${item.type} ${item.text ? 'msg__text' : ''} ${item.media ? 'msg__media' : ''}`
+                class: `message msg__${item.type} ${item.text ? 'msg__text' : ''} ${item.media ? 'msg__media' : ''}`,
             },
         });
         const id = newMSG._id ?? '';

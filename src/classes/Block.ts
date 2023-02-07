@@ -1,18 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
-/* eslint-disable no-underscore-dangle */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { v4 } from 'uuid';
 import EventBus from './EventBus';
 
 export interface TProps {
     [index: string]: any,
+    // eslint-disable-next-line no-use-before-define
     children?: Record<string, Block>
 }
-// export type TProps = Record<string, unknown>;
-// export const defaultProps:TProps = {
-
-// }
-
 export default class Block {
     static EVENTS: Record<string, string> = {
         INIT: 'init',
@@ -26,7 +21,7 @@ export default class Block {
     // eslint-disable-next-line class-methods-use-this
     templator: Function | undefined;
 
-    events: {} | Record<string, Function>;
+    events: Record<string, Function> | any;
 
     _prevProps: TProps;
 
@@ -107,7 +102,8 @@ export default class Block {
         this._render();
     }
 
-    componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
         return true;
     }
 
@@ -119,7 +115,8 @@ export default class Block {
         Object.assign(this.props, nextProps);
     };
 
-    get element(): HTMLElement | Node {
+    // eslint-disable-next-line no-undef
+    get element(): HTMLElement {
         return this._element;
     }
 
@@ -137,11 +134,13 @@ export default class Block {
         this._addAttribute();
     }
 
+    // eslint-disable-next-line no-undef
     render(): DocumentFragment | string {
         return '';
     }
 
-    getContent(): HTMLElement | Node {
+    // eslint-disable-next-line no-undef
+    getContent(): HTMLElement {
         return this.element;
     }
 
@@ -184,29 +183,11 @@ export default class Block {
             this._element.removeEventListener(eventName, this.events[eventName]);
         });
     }
-    // _removeEvents(): void {
-
-    //     console.log(this.events);
-
-    //     this._element.removeEventListener('input', this.events['input']);
-    //     this._element.removeEventListener('focusin', this.events['input']);
-    //     this._element.removeEventListener('focusout', this.events['input']);
-    //     // super._removeEvents();
-    // }
-
-    // _addEvents(): void {
-    //     const { events = {} } = this.props;
-    //     if (!events) return;
-    //     Object.keys(events).forEach((eventName) => {
-    //         this._element.addEventListener(eventName, events[eventName]);
-    //     });
-    // }
-
 
     _addAttribute(): void {
         const { attr = {} } = this.props;
         Object.entries(attr).forEach(([key, value]) => {
-            this._element.setAttribute(key, value);
+            this._element.setAttribute(key, String(value));
         });
     }
 
@@ -229,7 +210,10 @@ export default class Block {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    _getChildren(propsAndChildren: TProps) {
+    _getChildren(propsAndChildren: TProps): {
+        children: Record<string, Block>,
+        propsSimple: Record<string, unknown>
+    } {
         const children: Record<string, Block> = {};
         const props: Record<string, unknown> = {};
         Object.entries(propsAndChildren).forEach(([key, value]) => {

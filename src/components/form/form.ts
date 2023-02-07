@@ -3,16 +3,11 @@ import Input from '../input/input';
 import templateForm from './form.hbs';
 import './form.scss';
 
-type TFormArg = {
-    formTitle?: string,
-    formItems?: Array<string | undefined>,
-    formButtons?: Array<string | undefined>,
-    label?: string,
-    submit?: (f: any) => void,
-    attr?: {}
-}
 
 type TFormProps = {
+    formTitle?: string,
+    attr?: Record<string, string>,
+    events?: Record<string, Function>
     items: Array<Block>,
     buttons: Array<Block>,
 }
@@ -40,19 +35,15 @@ export default class Form extends Block {
         super('form', props, templator);
     }
 
-
-
-    // _removeEvents(): void {
-    //     super._addEvents();
-    // }
     getFormData(): void {
-        const formData = {};
+        const formData: Record<string, string> = {};
 
         Object.values(this.children).forEach((child) => {
             if (child instanceof Input) {
-                formData[child.props.name] = child.currentValue;
+                formData[child.props.name] = String(child.currentValue);
             }
         });
+        // eslint-disable-next-line no-console
         console.log(formData);
     }
 
@@ -60,5 +51,3 @@ export default class Form extends Block {
         return this.compile(this.props);
     }
 }
-
-

@@ -1,18 +1,18 @@
-import templateProfile from './profile.hbs';
+/* eslint-disable no-undef */
+import Block, { TProps } from '../../classes/Block';
 import Link from '../../components/link/link';
 import List from '../../components/list/list';
 import Button from '../../components/button/button';
 import Form from '../../components/form/form';
+import templateProfile from './profile.hbs';
 import avatarImg from '../../assets/icon/avatar_default.png';
+import '../../assets/style/app.scss';
 import './profile.scss';
-import '../../app.scss';
-
-import Block, { TProps } from '../../classes/Block';
-
-
 import { exampleProfileData } from '../../../static/exampleData.json';
 import Input from '../../components/input/input';
-import { EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit } from '../../utils/validation';
+import {
+    EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit,
+} from '../../utils/validation';
 
 type TProfileElement = {
     label: string,
@@ -24,7 +24,7 @@ export default class ProfilePage extends Block {
         const props: TProps = {
             ...propsPage,
             buttons: '',
-        }
+        };
 
         const dataListArray = Object.values(data).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`) ?? [];
 
@@ -36,7 +36,7 @@ export default class ProfilePage extends Block {
                 class: 'list',
             },
             items: dataListArray,
-        })
+        });
 
         buttons.forEach((item: Button) => {
             const id = item._id ?? '';
@@ -47,23 +47,27 @@ export default class ProfilePage extends Block {
     }
 
     viewListData(): void {
-        this.children['listDataProfile'].show();
-        this.children['formDataProfile'].hide();
-        this.children['formPassProfile'].hide();
-        this._element.querySelector('.profile__buttons').style.display = '';
+        this.children.listDataProfile.show();
+        this.children.formDataProfile.hide();
+        this.children.formPassProfile.hide();
+        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        profileButtons.style.display = '';
     }
-    viewFormData(): void {
-        this.children['listDataProfile'].hide();
-        this.children['formDataProfile'].show();
-        this.children['formPassProfile'].hide();
-        this._element.querySelector('.profile__buttons').style.display = 'none';
 
+    viewFormData(): void {
+        this.children.listDataProfile.hide();
+        this.children.formDataProfile.show();
+        this.children.formPassProfile.hide();
+        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        profileButtons.style.display = 'none';
     }
+
     viewFormPassword(): void {
-        this.children['listDataProfile'].hide();
-        this.children['formDataProfile'].hide();
-        this.children['formPassProfile'].show();
-        this._element.querySelector('.profile__buttons').style.display = 'none';
+        this.children.listDataProfile.hide();
+        this.children.formDataProfile.hide();
+        this.children.formPassProfile.show();
+        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        profileButtons.style.display = 'none';
     }
 
     render() {
@@ -71,26 +75,23 @@ export default class ProfilePage extends Block {
     }
 }
 
-
-
-
 const backlink = new Link({
     attr: {
         href: '/index.html',
         class: 'btn arrowprev',
         text: '',
-    }
+    },
 });
 const avatarUpload = new Input({
     type: 'file',
     name: 'avatar',
     label: 'Поменять аватар',
     attr: {
-        class: 'avatar__change'
-    }
-})
+        class: 'avatar__change',
+    },
+});
 
-let profilePage;
+let profilePage: ProfilePage;
 
 
 const inputDefaultProps = {
@@ -99,7 +100,7 @@ const inputDefaultProps = {
     },
     type: 'text',
     error: '',
-}
+};
 const formDataProfile = new Form({
     attr: {
         class: 'app__form',
@@ -116,7 +117,7 @@ const formDataProfile = new Form({
                 mask: EMAIL_REGEX,
                 minlength: 3,
                 maxlength: 20,
-                validMsg: 'Неверный логин',
+                validMsg: 'Почта введена неверно',
             },
         }),
         new Input({
@@ -130,7 +131,7 @@ const formDataProfile = new Form({
                 mask: LOGIN_REGEX,
                 minlength: 3,
                 maxlength: 20,
-                validMsg: 'Неверный логин',
+                validMsg: 'Логин должен содержать только буквы латиницы, без спецсимволов (кроме -,_)',
             },
         }),
         new Input({
@@ -142,7 +143,7 @@ const formDataProfile = new Form({
             validation: {
                 required: true,
                 mask: FIRST_NAME_REGEX,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состаять только из букв, первая заглавная',
             },
         }),
         new Input({
@@ -154,7 +155,7 @@ const formDataProfile = new Form({
             validation: {
                 required: true,
                 mask: SECOND_NAME_REGEX,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состаять только из букв, первая заглавная',
             },
         }),
         new Input({
@@ -166,7 +167,7 @@ const formDataProfile = new Form({
             validation: {
                 required: true,
                 mask: DISPLAY_NAME_REGEX,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле не может содержать спецсимволы',
             },
         }),
         new Input({
@@ -181,7 +182,7 @@ const formDataProfile = new Form({
                 mask: PHONE_REGEX,
                 minlength: 10,
                 maxlength: 15,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состоять только из цифр и может начинаться с +',
             },
         }),
     ],
@@ -208,7 +209,7 @@ const formDataProfile = new Form({
                 click: () => {
                     profilePage.viewListData();
                 },
-            }
+            },
         }),
     ],
 });
@@ -249,7 +250,7 @@ const formPassProfile = new Form({
                 mask: PASSWORD_REGEX,
                 minlength: 8,
                 maxlength: 40,
-                validMsg: 'Неверный пароль',
+                validMsg: 'Пароль должен содержать одну заглавную букву и цифру',
             },
         }),
         new Input({
@@ -287,24 +288,20 @@ const formPassProfile = new Form({
                 click: () => {
                     profilePage.viewListData();
                 },
-            }
+            },
         }),
     ],
 });
 
 Object.values(formDataProfile.children).forEach((item: Block) => {
     if (item instanceof Input) {
-        if (exampleProfileData[item.props.name]['value']) {
+        if (exampleProfileData[item.props.name].value) {
             item.setProps({
-                value: exampleProfileData[item.props.name]['value'],
-            })
+                value: exampleProfileData[item.props.name].value,
+            });
         }
-
     }
-})
-
-
-
+});
 
 
 profilePage = new ProfilePage({
@@ -328,7 +325,7 @@ profilePage = new ProfilePage({
                 click: () => {
                     profilePage.viewFormData();
                 },
-            }
+            },
         }),
         new Button({
             attr: {
@@ -346,7 +343,7 @@ profilePage = new ProfilePage({
                 class: 'btn btn-small',
             },
             text: 'Выйти',
-        })
+        }),
     ],
 }, templateProfile);
 

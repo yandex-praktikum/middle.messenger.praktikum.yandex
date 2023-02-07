@@ -43,11 +43,12 @@ export const getCurrentNumberWeek = (date: Date): number => {
 };
 
 
-function getWeekNumber(d:Date) {
-    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+function getWeekNumber(d: Date) {
+    const date: any = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
 
-    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-    const yearStart:Date = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+    const yearStart: Date | any = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
     return weekNo;
 }

@@ -1,10 +1,10 @@
-/* global document, a */
+/* eslint-disable no-undef */
 import templateIndex from './index.hbs';
-import Block, { TProps } from './classes/Block';
-import Nav from './components/nav/nav';
-import './app.scss';
-import HTTPTransport from './classes/HTTPTransport';
-import Button from './components/button/button';
+import '../../assets/style/app.scss';
+import Block, { TProps } from '../../classes/Block';
+import HTTPTransport from '../../classes/HTTPTransport';
+import Button from '../../components/button/button';
+import Nav from '../../components/nav/nav';
 
 const testLink = 'https://jsonplaceholder.typicode.com/posts';
 const testBody = {
@@ -15,10 +15,16 @@ const testBody = {
         title: 'test',
         body: 'testBody',
         userId: 1,
-    }
+    },
 };
+
+type TIndexPage = {
+    title?: string,
+    attr?: Record<string, string>,
+    nav?: Nav,
+}
 class IndexPage extends Block {
-    constructor(props: TProps, templator: Function) {
+    constructor(props: TIndexPage, templator: Function) {
         const getTest = new Button({
             attr: {
                 class: 'btn',
@@ -28,7 +34,7 @@ class IndexPage extends Block {
                 click: () => HTTPTransport.get(testLink)
                     .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
                     .catch(console.log),
-            }
+            },
         });
 
         const postTest = new Button({
@@ -40,7 +46,7 @@ class IndexPage extends Block {
                 click: () => HTTPTransport.post(testLink, testBody)
                     .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
                     .catch(console.log),
-            }
+            },
         });
 
         const putTest = new Button({
@@ -73,10 +79,7 @@ class IndexPage extends Block {
             postTest,
             putTest,
             deleteTest,
-        }
-
-
-
+        };
 
         super('main', nextProps, templator);
     }
@@ -140,11 +143,3 @@ if (root) {
     root.innerHTML = '';
     root.append(indexPage.getContent());
 }
-HTTPTransport.get('https://jsonplaceholder.typicode.com/todos/1')
-    .then((response) => {
-        console.log(response);
-
-
-    })
-
-

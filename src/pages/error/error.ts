@@ -1,9 +1,9 @@
-import '../../app.scss';
+import '../../assets/style/app.scss';
 import './error.scss';
 
 import templateErrorPage from './error.hbs';
 import Block, { TProps } from '../../classes/Block';
-import { Link } from '../../components/link/link';
+import Link from '../../components/link/link';
 
 export default class ErrorPage extends Block {
     constructor(props: TProps, templator: Function) {
@@ -22,6 +22,7 @@ export default class ErrorPage extends Block {
 }
 let error = {};
 
+// eslint-disable-next-line no-undef
 if (window?.errorPage === 500) {
     error = {
         title: '500',

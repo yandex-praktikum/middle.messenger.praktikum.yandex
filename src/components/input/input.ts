@@ -1,5 +1,4 @@
-import Block, { TProps } from '../../classes/Block';
-import HTTPTransport from '../../classes/HTTPTransport';
+import Block from '../../classes/Block';
 import templateInput from './input.hbs';
 import './input.scss';
 
@@ -42,12 +41,17 @@ export default class Input extends Block {
                     update = true;
                 }
                 if (key === 'value') this.currentValue = newProps[key];
-            };
+            }
         });
         return update;
     }
-    setCurrentValue(self, e): void {
-        self.currentValue = e.target.value;
+
+    // eslint-disable-next-line class-methods-use-this
+    setCurrentValue(self: Input, e: Event): void {
+        // eslint-disable-next-line no-undef
+        const target = e?.target as HTMLInputElement;
+        // eslint-disable-next-line no-param-reassign
+        self.currentValue = target.value;
     }
 
     _addEvents(): void {

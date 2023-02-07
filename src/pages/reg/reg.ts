@@ -1,12 +1,22 @@
+/* eslint-disable no-undef */
 import Block, { TProps } from '../../classes/Block';
 import Input from '../../components/input/input';
 import Link from '../../components/link/link';
 import Button from '../../components/button/button';
 import Form from '../../components/form/form';
 import {
- onFocus, onBlur, onSubmit, LOGIN_REGEX, EMAIL_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX } from '../../utils/validation';
+    onFocus,
+    onBlur,
+    onSubmit,
+    LOGIN_REGEX,
+    EMAIL_REGEX,
+    FIRST_NAME_REGEX,
+    SECOND_NAME_REGEX,
+    PHONE_REGEX,
+    PASSWORD_REGEX,
+} from '../../utils/validation';
 import templateReg from './reg.hbs';
-import '../../app.scss';
+import '../../assets/style/app.scss';
 import './reg.scss';
 
 export default class RegPage extends Block {
@@ -25,7 +35,7 @@ const inputDefaultProps = {
     },
     type: 'text',
     error: '',
-}
+};
 
 const pageForm = new Form({
     formTitle: 'Регистрация',
@@ -48,9 +58,7 @@ const pageForm = new Form({
             validation: {
                 required: true,
                 mask: EMAIL_REGEX,
-                minlength: 3,
-                maxlength: 20,
-                validMsg: 'Неверный логин',
+                validMsg: 'Почта введена неверно',
             },
         }),
         new Input({
@@ -64,7 +72,7 @@ const pageForm = new Form({
                 mask: LOGIN_REGEX,
                 minlength: 3,
                 maxlength: 20,
-                validMsg: 'Неверный логин',
+                validMsg: 'Логин должен содержать только буквы латиницы, без спецсимволов (кроме -,_)',
             },
         }),
         new Input({
@@ -76,7 +84,7 @@ const pageForm = new Form({
             validation: {
                 required: true,
                 mask: FIRST_NAME_REGEX,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состаять только из букв, первая заглавная',
             },
         }),
         new Input({
@@ -88,7 +96,7 @@ const pageForm = new Form({
             validation: {
                 required: true,
                 mask: SECOND_NAME_REGEX,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состаять только из букв, первая заглавная',
             },
         }),
         new Input({
@@ -103,7 +111,7 @@ const pageForm = new Form({
                 mask: PHONE_REGEX,
                 minlength: 10,
                 maxlength: 15,
-                validMsg: 'Неверный логин',
+                validMsg: 'Поле должно состоять только из цифр и может начинаться с +',
             },
         }),
         new Input({
@@ -118,7 +126,7 @@ const pageForm = new Form({
                 mask: PASSWORD_REGEX,
                 minlength: 8,
                 maxlength: 40,
-                validMsg: 'Неверный пароль',
+                validMsg: 'Пароль должен содержать одну заглавную букву и цифру',
             },
         }),
         new Input({

@@ -1,5 +1,5 @@
 import Block from '../classes/Block';
-import { Form } from '../components/form/form';
+import Form from '../components/form/form';
 import Input, { TValidation } from '../components/input/input';
 
 export const LOGIN_REGEX: RegExp = /^[A-Za-z][A-Za-z1-9\-_]{2,19}$/;
@@ -8,9 +8,7 @@ export const EMAIL_REGEX: RegExp = /^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/
 export const PHONE_REGEX: RegExp = /^\+?\d{9,14}$/;
 export const FIRST_NAME_REGEX: RegExp = /^[A-ZА-Я]{1}[a-zа-я\-ъ]{0,254}$/;
 export const SECOND_NAME_REGEX: RegExp = /^[A-ZА-Я]{1}[a-zа-я\-ъ]{0,254}$/;
-export const DISPLAY_NAME_REGEX: RegExp = /^[A-ZА-Яa-zа-я\-ъ]{0,254}$/;
-
-
+export const DISPLAY_NAME_REGEX: RegExp = /^[1-9A-ZА-Яa-zа-я\-ъ]{0,254}$/;
 
 export function validator(validData: TValidation = {}, value: string | number, confirmValue?: string | undefined): string {
     let error = '';
@@ -37,11 +35,14 @@ export function validator(validData: TValidation = {}, value: string | number, c
 
 function getConfirmField(self: Form, component: Input): string | undefined {
     if (!component.props.validation.confirm) return undefined;
-    const confirmValue = self.getContent().querySelector(`[name=${component.props.validation.confirm}]`).value ?? '';
+    // eslint-disable-next-line no-undef
+    const confirmElement = self.getContent().querySelector(`[name=${component.props.validation.confirm}]`) as HTMLInputElement;
+    const confirmValue = confirmElement.value ?? '';
     return confirmValue;
 }
 
 function getValidData(self: Form, e: Event): [Block, string, string | undefined] | [] {
+    // eslint-disable-next-line no-undef
     const target = e?.target as HTMLInputElement;
     const value = target?.value;
     const id = target?.dataset.idc;
@@ -84,14 +85,12 @@ export function onSubmit(self: Form, e: Event): void {
     let send = true;
     Object.values(self.children).forEach((child: Block) => {
         if (child instanceof Input) {
-            const error = validator(child.props.validation, child.getContent().querySelector('input').value, getConfirmField(self, child));
+            const error = validator(child.props.validation, String(child.currentValue), getConfirmField(self, child));
             if (error) send = false;
             child.setProps({
                 error,
             });
         }
     });
-    console.log(send);
-    
     if (send) self.getFormData();
 }

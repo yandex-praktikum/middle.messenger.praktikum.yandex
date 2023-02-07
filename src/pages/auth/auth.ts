@@ -1,12 +1,18 @@
-import templateAuth from './auth.hbs';
-import Link from '../../components/link/link';
-import Button from '../../components/button/button';
-import Form from '../../components/form/form';
-import './auth.scss';
-import '../../app.scss';
 import Block, { TProps } from '../../classes/Block';
+import Form from '../../components/form/form';
 import Input from '../../components/input/input';
-import { LOGIN_REGEX, onBlur, onFocus, onSubmit } from '../../utils/validation';
+import Button from '../../components/button/button';
+import Link from '../../components/link/link';
+import templateAuth from './auth.hbs';
+import {
+    LOGIN_REGEX,
+    onBlur,
+    onFocus,
+    onSubmit,
+    PASSWORD_REGEX,
+} from '../../utils/validation';
+import '../../assets/style/app.scss';
+import './auth.scss';
 
 export default class AuthPage extends Block {
     constructor(props: TProps, templator: Function) {
@@ -44,7 +50,7 @@ const pageForm = new Form({
                 mask: LOGIN_REGEX,
                 minlength: 3,
                 maxlength: 20,
-                validMsg: 'Неверный логин',
+                validMsg: 'Логин должен содержать только буквы латиницы, без спецсимволов (кроме -,_)',
             },
             error: '',
         }),
@@ -59,6 +65,7 @@ const pageForm = new Form({
             type: 'password',
             validation: {
                 required: true,
+                mask: PASSWORD_REGEX,
                 validMsg: 'Неверный пароль',
             },
             error: '',
@@ -90,6 +97,7 @@ const authPage = new AuthPage({
     form: pageForm,
 }, templateAuth);
 
+// eslint-disable-next-line no-undef
 const root = document.getElementById('app');
 if (root) {
     root.innerHTML = '';
