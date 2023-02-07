@@ -2,16 +2,24 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-undef */
 /* eslint-disable no-shadow */
-import templateApp from '../../app.hbs';
 import '../../app.scss';
 import templateChat from './chat.hbs';
-import { listDialog } from './listDialog/listDialog';
-import { currentDialog } from './currentDialog/currentDialog';
+// import { currentDialog } from './currentDialog/currentDialog';
 import './chat.scss';
 
+import avatarDefault from '../../assets/icon/avatar_default.png';
 
 import { exampleChatData as dialogs } from '../../../static/exampleData.json';
-import { formattedDate } from '../../utils/date';
+import Block, { TProps } from '../../classes/Block';
+import { dialogSorted } from '../../utils/sorted';
+import Input from '../../components/input/input';
+import Link from '../../components/link/link';
+import DialogsList from '../../components/dialogsList/dialogsList';
+import DialogActive from '../../components/dialog/dialogActive';
+import { Form } from '../../components/form/form';
+import { Button } from '../../components/button/button';
+import { formattedDate, getDateLastMessage } from '../../utils/date';
+import { sliceLastMessage } from '../../utils/text';
 
 export type TMessage = {
     date: string,
@@ -32,47 +40,147 @@ export type TDialog = {
     nick: string
 }
 
-let activeDialog: TDialog | undefined;
 
-const dialogSorted = (dialogs: Array<TDialog>) => {
-    dialogs.forEach((item) => {
-        item.dialog.sort((msg1, msg2) => (formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1));
-        item.newMsg = 0;
-        item.dialog.forEach((msg) => (msg.new ? item.newMsg++ : ''));
-        item.lastMsg = item.dialog[item.dialog.length - 1];
-    });
+export default class ChatPage extends Block {
+    activeDialog: TDialog | undefined;
+    constructor(props: TProps, templator: Function) {
+        super('main', props, templator);
+    }
+    static changeActiveDialog(self: ChatPage, e: Event): void {
+        const item = e?.target?.closest('.dialog__item');
+        if (!item) return;
+        const active = item.dataset.dialogId ?? undefined;
+        const dialog = self.searchActiveDialog(active);
 
-    dialogs.sort((dialog1, dialog2) => (formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1));
-};
+        if (!active || !dialog) return;
+        self.children['listDialog'].setProps({
+            active
+        });
+        self.children['activeDialog'].setProps({
+            ...dialog,
+            messages: '',
+            avatar: dialog.avatar ? dialog.avatar : avatarDefault,
+        });
 
-const chatView = (): void => templateChat({
-    currentDialog: currentDialog(activeDialog),
-    listDialog: listDialog(dialogs, activeDialog?.id),
+    }
+
+    static sortedDialogs(dialogs: Array<TDialog> = []): Array<TDialog> | [] {
+        const sortedDialogs = [...dialogs] ?? [];
+        if (!sortedDialogs) return [];
+        sortedDialogs.forEach((item) => {
+            item.dialog.sort((msg1, msg2) => (formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1));
+            item.newMsg = 0;
+            item.dialog.forEach((msg) => (msg.new ? item.newMsg++ : ''));
+            item.lastMsg = item.dialog[item.dialog.length - 1];
+        });
+        sortedDialogs.sort((dialog1, dialog2) => (formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1));
+        return sortedDialogs;
+    }
+
+
+    searchActiveDialog(active: string | undefined): TDialog | undefined {
+        for (let i = 0; i < dialogs.length; i++) {
+            const item = dialogs[i];
+            if (item.id === active) {
+                return item;
+            }
+        }
+        return undefined;
+    }
+
+    static createNewMsgForm(): Form {
+        return new Form({
+            attr: {
+                class: 'new-msg-send-form',
+            },
+            items: [
+                new Input({
+                    type: 'file',
+                    name: 'inc',
+                    attr: {
+                        class: 'control__inc btn inc',
+                    }
+                }),
+                new Input({
+                    attr: {
+                        class: 'control__input',
+                    },
+                    validation: {
+                        required: true,
+                        minlength: 1,
+                    },
+                    name: 'messagе',
+                    placeholder: 'Сообщение'
+                }),
+            ],
+            buttons: [new Button({
+                attr: {
+                    class: 'control__input btn arrownext',
+                    type: 'control__submit',
+                }
+            })],
+        })
+    }
+
+    render() {
+        return this.compile(this.props);
+    }
+}
+
+
+const searchDialog = new Input({
+    attr: {
+        class: 'search form__input',
+    },
+    placeholder: 'Поиск',
+    label: '<i class="fa fa-search"></i>',
+    type: 'search',
+})
+
+const profileLink = new Link({
+    attr: {
+        href: '/profile.html',
+        class: 'link',
+    },
+    text: 'Профиль >',
+})
+
+const dialogsList = new DialogsList({
+    attr: {
+        class: 'dialogs',
+    },
+    dialogs: ChatPage.sortedDialogs(dialogs),
+})
+
+const activeDialogTest = new DialogActive({
+    attr: {
+        class: 'current__dialog',
+    },
+    newMsgForm: ChatPage.createNewMsgForm(),
+    btn: new Button({
+        attr: {
+            class: 'btn ellipsis'
+        }
+    })
 });
 
-const setActiveDialog = (dialogs: Array<TDialog>, active: string | number): TDialog | undefined => {
-    for (let i = 0; i < dialogs.length; i++) {
-        const item = dialogs[i];
-        if (item.id === active) {
-            return item;
-        }
-    }
-    return undefined;
-};
-const changeCurrentDialog = (e: Event) => {
-    const item = e?.target?.closest('.dialog__item');
-    if (!item) return;
-    const clickDialog = item.dataset.dialogId;
-    if (!clickDialog || (clickDialog === activeDialog)) return;
-    activeDialog = setActiveDialog(dialogs, clickDialog);
-    document.body.innerHTML = templateApp({ page: chatView });
-    const currentDialogElement: HTMLElement | null = document.querySelector('.current__dialog');
-    if (currentDialogElement) {
-        currentDialogElement.scrollBy(0, currentDialogElement.clientHeight);
-    }
-};
 
 
-dialogSorted(dialogs);
-document.body.innerHTML = templateApp({ page: chatView });
-document.body.addEventListener('click', changeCurrentDialog);
+const chatPage = new ChatPage({
+    attr: {
+        class: 'app__chat-page',
+    },
+    activeDialog: activeDialogTest,
+    listDialog: dialogsList,
+    profileLink,
+    searchDialog,
+    events: {
+        click: ChatPage.changeActiveDialog,
+    }
+}, templateChat)
+
+const root = document.getElementById('app');
+if (root) {
+    root.innerHTML = '';
+    root.append(chatPage.getContent());
+}

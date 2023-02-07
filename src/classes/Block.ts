@@ -4,14 +4,11 @@
 import { v4 } from 'uuid';
 import EventBus from './EventBus';
 
-// export interface TProps {
-//     [index: string]: string | unknown,
-//     attr?: Record<string, string>,
-//     events?: {
-//         [index: string]: (event: Event) => unknown
-//     },
-// }
-export type TProps = Record<string, unknown>;
+export interface TProps {
+    [index: string]: any,
+    children?: Record<string, Block>
+}
+// export type TProps = Record<string, unknown>;
 // export const defaultProps:TProps = {
 
 // }
@@ -167,6 +164,7 @@ export default class Block {
         });
     }
 
+
     // eslint-disable-next-line class-methods-use-this
     _createDocumentElement(tagName: string): HTMLElement {
         return document.createElement(tagName);
@@ -246,7 +244,7 @@ export default class Block {
 
     show(): void {
         const content = this.getContent();
-        if (content) content.style.display = 'block';
+        if (content) content.style.display = '';
     }
 
     hide(): void {

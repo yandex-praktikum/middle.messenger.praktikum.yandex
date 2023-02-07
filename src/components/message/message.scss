@@ -1,18 +1,4 @@
-.dialog__window {
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  .dialog__dategroup {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 12px;
-    text-align: center;
-    color: #999;
-  }
-
-  .message {
+.message {
     position: relative;
     width: fit-content;
     max-width: 45%;
@@ -55,7 +41,7 @@
         display: none;
         width: 9px;
         height: 4px;
-        background: url("../../../../assets/icon/read.svg") no-repeat center;
+          background: url("../../assets/icon/read.svg") no-repeat center;
       }
     }
 
@@ -68,7 +54,7 @@
           margin-right: 3px;
           width: 9px;
           height: 4px;
-          background: url("../../../../assets/icon/read.svg") no-repeat center;
+          background: url("../../assets/icon/read.svg") no-repeat center;
 
           &.read-false {
             filter: grayscale(1);
@@ -83,4 +69,3 @@
       }
     }
   }
-}

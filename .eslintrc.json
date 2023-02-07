@@ -5,6 +5,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        // "globals": {
+        //     "window": true,
+        //     "document": true
+        //   },
         "default-param-last": 0,
         "max-len": [
             2,

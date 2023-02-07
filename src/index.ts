@@ -3,14 +3,82 @@ import templateIndex from './index.hbs';
 import Block, { TProps } from './classes/Block';
 import Nav from './components/nav/nav';
 import './app.scss';
-import { Link } from './components/link/link';
-import { testInput } from './components/input/input';
-import { testForm } from './components/form/form';
+import HTTPTransport from './classes/HTTPTransport';
+import Button from './components/button/button';
 
-
+const testLink = 'https://jsonplaceholder.typicode.com/posts';
+const testBody = {
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    },
+    data: {
+        title: 'test',
+        body: 'testBody',
+        userId: 1,
+    }
+};
 class IndexPage extends Block {
     constructor(props: TProps, templator: Function) {
-        super('main', props, templator);
+        const getTest = new Button({
+            attr: {
+                class: 'btn',
+            },
+            text: 'Проверить GET',
+            events: {
+                click: () => HTTPTransport.get(testLink)
+                    .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
+                    .catch(console.log),
+            }
+        });
+
+        const postTest = new Button({
+            attr: {
+                class: 'btn',
+            },
+            text: 'Проверить POST',
+            events: {
+                click: () => HTTPTransport.post(testLink, testBody)
+                    .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
+                    .catch(console.log),
+            }
+        });
+
+        const putTest = new Button({
+            attr: {
+                class: 'btn',
+            },
+            text: 'Проверить PUT',
+            events: {
+                click: () => HTTPTransport.put(`${testLink}/1`, testBody)
+                    .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
+                    .catch(console.log),
+            },
+        });
+
+        const deleteTest = new Button({
+            attr: {
+                class: 'btn',
+            },
+            text: 'Проверить Delete',
+            events: {
+                click: () => HTTPTransport.delete(`${testLink}/1`, testBody)
+                    .then(({ response }) => console.log('Ответ:', JSON.parse(response)))
+                    .catch(console.log),
+            },
+        });
+
+        const nextProps = {
+            ...props,
+            getTest,
+            postTest,
+            putTest,
+            deleteTest,
+        }
+
+
+
+
+        super('main', nextProps, templator);
     }
 
     componentDidUpdate(oldProps: TProps, newProps: TProps) {
@@ -51,7 +119,7 @@ const pageList: Array<Record<string, string>> = [
     },
 ];
 
-const navs = new Nav({
+const nav = new Nav({
     attr: {
         class: 'app__nav',
     },
@@ -60,27 +128,23 @@ const navs = new Nav({
 
 const indexPage = new IndexPage({
     title: 'Список страниц',
-    nav: navs,
+    nav,
     attr: {
         class: 'app__index-page',
     },
 }, templateIndex);
 
 
-const indexPageContent = indexPage.getContent() ?? '';
-const otherNav = new Link({
-    text: '123',
-});
-
-window.navs = navs;
-window.index = indexPage;
-window.onav = otherNav;
-window.input = testInput;
 const root = document.getElementById('app');
 if (root) {
     root.innerHTML = '';
-    root.append(testForm.getContent());
+    root.append(indexPage.getContent());
 }
+HTTPTransport.get('https://jsonplaceholder.typicode.com/todos/1')
+    .then((response) => {
+        console.log(response);
 
 
-// console.log(testInput.getContent());
+    })
+
+

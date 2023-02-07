@@ -1,93 +1,171 @@
-import templateApp from '../../app.hbs';
-import '../../app.scss';
+import Block, { TProps } from '../../classes/Block';
+import Input from '../../components/input/input';
+import Link from '../../components/link/link';
+import Button from '../../components/button/button';
+import Form from '../../components/form/form';
+import {
+ onFocus, onBlur, onSubmit, LOGIN_REGEX, EMAIL_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX } from '../../utils/validation';
 import templateReg from './reg.hbs';
-import link from '../../components/link/link';
-import button from '../../components/button/button';
-import appForm from '../../components/form/form';
-import input from '../../components/form/input/input';
+import '../../app.scss';
 import './reg.scss';
 
+export default class RegPage extends Block {
+    constructor(props: TProps, templator: Function) {
+        super('main', props, templator);
+    }
 
-const formItems: Array<string> = [
-    input({
-        id: 'email',
-        name: 'email',
-        textLabel: 'Почта',
-        placeholder: 'Почта',
-        type: 'email',
-        errorMessage: '',
-    }),
-    input({
-        id: 'login',
-        name: 'login',
-        textLabel: 'Логин',
-        placeholder: 'Логин',
-        type: 'text',
-        errorMessage: 'неверный логин',
-    }),
-    input({
-        id: 'first_name',
-        name: 'first_name',
-        textLabel: 'Имя',
-        placeholder: 'Имя',
-        type: 'text',
-        errorMessage: '',
-    }),
-    input({
-        id: 'second_name',
-        name: 'second_name',
-        textLabel: 'Фамилия',
-        placeholder: 'Фамилия',
-        type: 'text',
-        errorMessage: '',
-    }),
-    input({
-        id: 'phone',
-        name: 'phone',
-        textLabel: 'Телефон',
-        placeholder: 'Телефон',
-        type: 'tel',
-        errorMessage: '',
-    }),
-    input({
-        textLabel: 'Пароль',
-        placeholder: 'Пароль',
-        type: 'password',
-        // errorMessage: 'ошибка'
-    }),
-    input({
-        textLabel: 'Пароль',
-        placeholder: 'Пароль',
-        type: 'password',
-        // errorMessage: 'ошибка'
-    }),
-];
+    render() {
+        return this.compile(this.props);
+    }
+}
 
-const formButtons: Array<string> = [
-    button({
-        id: '',
-        className: '',
-        onClick: alert,
-        label: 'Зарегистрироваться',
-    }),
-    link({
-        id: '',
-        className: '',
-        href: '/auth.html',
-        label: 'Войти',
-    }),
+const inputDefaultProps = {
+    attr: {
+        class: 'form__input label',
+    },
+    type: 'text',
+    error: '',
+}
 
-];
+const pageForm = new Form({
+    formTitle: 'Регистрация',
+    attr: {
+        class: 'app__form',
+        action: '',
+    },
+    events: {
+        focusin: onFocus,
+        focusout: onBlur,
+        submit: onSubmit,
+    },
+    items: [
+        new Input({
+            ...inputDefaultProps,
+            name: 'email',
+            label: 'Почта',
+            placeholder: 'Почта',
+            required: true,
+            validation: {
+                required: true,
+                mask: EMAIL_REGEX,
+                minlength: 3,
+                maxlength: 20,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'login',
+            label: 'Логин',
+            placeholder: 'Логин',
+            required: true,
+            validation: {
+                required: true,
+                mask: LOGIN_REGEX,
+                minlength: 3,
+                maxlength: 20,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'first_name',
+            label: 'Имя',
+            placeholder: 'Имя',
+            required: true,
+            validation: {
+                required: true,
+                mask: FIRST_NAME_REGEX,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'second_name',
+            label: 'Фамилия',
+            placeholder: 'Фамилия',
+            required: true,
+            validation: {
+                required: true,
+                mask: SECOND_NAME_REGEX,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'phone',
+            label: 'Телефон',
+            placeholder: 'Телефон',
+            // type: 'number',
+            required: true,
+            validation: {
+                required: true,
+                mask: PHONE_REGEX,
+                minlength: 10,
+                maxlength: 15,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'password',
+            label: 'Пароль',
+            placeholder: 'Пароль',
+            required: true,
+            type: 'password',
+            validation: {
+                required: true,
+                mask: PASSWORD_REGEX,
+                minlength: 8,
+                maxlength: 40,
+                validMsg: 'Неверный пароль',
+            },
+        }),
+        new Input({
+            attr: {
+                class: 'form__input label',
+            },
+            name: 'confirm_password',
+            label: 'Повторите пароль',
+            placeholder: 'Повторите пароль',
+            required: true,
+            type: 'password',
+            validation: {
+                required: true,
+                confirm: 'password',
+                validMsg: 'Пароли не совпадают',
+            },
+            error: '',
+        }),
+    ],
+    buttons: [
+        new Button({
+            text: 'Вход',
+            attr: {
+                type: 'submit',
+                class: 'btn',
+            },
+        }),
+        new Link({
+            text: 'Войти',
+            attr: {
+                class: 'link',
+                href: '/auth.html',
+            },
+        }),
+    ],
 
-export const regPage: string = templateReg({
-    authForm: appForm({
-        attr: {},
-        formTitle: 'Регистрация',
-        formItems,
-        formButtons,
-        submit: alert,
-    }),
 });
 
+const regPage = new RegPage({
+    attr: {
+        class: 'app__auth-page',
+    },
+    form: pageForm,
+}, templateReg);
 
-document.body.innerHTML = templateApp({ sidebar: '', page: regPage });
+const root = document.getElementById('app');
+if (root) {
+    root.innerHTML = '';
+    root.append(regPage.getContent());
+}

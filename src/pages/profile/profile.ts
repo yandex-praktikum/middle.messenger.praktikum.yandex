@@ -1,139 +1,357 @@
-import templateApp from '../../app.hbs';
+import templateProfile from './profile.hbs';
+import Link from '../../components/link/link';
+import List from '../../components/list/list';
+import Button from '../../components/button/button';
+import Form from '../../components/form/form';
+import avatarImg from '../../assets/icon/avatar_default.png';
+import './profile.scss';
 import '../../app.scss';
 
-import templateProfile from './profile.hbs';
-import link from '../../components/link/link';
-import list from '../../components/list/list';
-import button from '../../components/button/button';
-import appForm from '../../components/form/form';
-import input from '../../components/form/input/input';
-import avatar from '../../assets/icon/avatar_default.png';
-import './profile.scss';
+import Block, { TProps } from '../../classes/Block';
+
 
 import { exampleProfileData } from '../../../static/exampleData.json';
+import Input from '../../components/input/input';
+import { EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit } from '../../utils/validation';
 
 type TProfileElement = {
-  label: string,
-  value: string | number
+    label: string,
+    value: string | number
 }
-type TprofileData = {
-  email: TProfileElement,
-  login: TProfileElement,
-  first_name: TProfileElement,
-  second_name: TProfileElement,
-  display_name: TProfileElement,
-  phone: TProfileElement,
+export default class ProfilePage extends Block {
+    constructor(propsPage: TProps, templator: Function) {
+        const { buttons, data } = propsPage;
+        const props: TProps = {
+            ...propsPage,
+            buttons: '',
+        }
+
+        const dataListArray = Object.values(data).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`) ?? [];
+
+        props.formDataProfile?.hide();
+        props.formPassProfile?.hide();
+
+        props.listDataProfile = new List({
+            attr: {
+                class: 'list',
+            },
+            items: dataListArray,
+        })
+
+        buttons.forEach((item: Button) => {
+            const id = item._id ?? '';
+            props[id] = item;
+            props.buttons += `<div data-id="${id}"></div>`;
+        });
+        super('main', props, templator);
+    }
+
+    viewListData(): void {
+        this.children['listDataProfile'].show();
+        this.children['formDataProfile'].hide();
+        this.children['formPassProfile'].hide();
+        this._element.querySelector('.profile__buttons').style.display = '';
+    }
+    viewFormData(): void {
+        this.children['listDataProfile'].hide();
+        this.children['formDataProfile'].show();
+        this.children['formPassProfile'].hide();
+        this._element.querySelector('.profile__buttons').style.display = 'none';
+
+    }
+    viewFormPassword(): void {
+        this.children['listDataProfile'].hide();
+        this.children['formDataProfile'].hide();
+        this.children['formPassProfile'].show();
+        this._element.querySelector('.profile__buttons').style.display = 'none';
+    }
+
+    render() {
+        return this.compile(this.props);
+    }
 }
 
-const items = Object.values(exampleProfileData).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`);
 
-const formItems = Object.keys(exampleProfileData).map((key): string => input({
-    id: key,
-    name: key,
-    textLabel: exampleProfileData[key].label,
+
+
+const backlink = new Link({
+    attr: {
+        href: '/index.html',
+        class: 'btn arrowprev',
+        text: '',
+    }
+});
+const avatarUpload = new Input({
+    type: 'file',
+    name: 'avatar',
+    label: 'Поменять аватар',
+    attr: {
+        class: 'avatar__change'
+    }
+})
+
+let profilePage;
+
+
+const inputDefaultProps = {
+    attr: {
+        class: 'form__input label',
+    },
     type: 'text',
-    defaultValue: exampleProfileData[key].value,
-}));
-
-const formButtons: Array<string> = [
-    button({
-        id: '',
-        className: '',
-        label: 'Сохранить',
-    }),
-    button({
-        id: '',
-        className: '',
-        label: 'Отменить',
-    }),
-
-];
-
-const profileButtonsView: string = `
-    ${button({
-        id: 'btn-edit-data',
-        className: 'btn-small',
-        label: 'Изменить данные',
-    })}${button({
-    id: 'btn-edit-pass',
-    className: 'btn-small',
-    label: 'Изменить пароль',
-})} ${button({
-    id: '',
-    className: 'btn-small',
-    label: 'Выйти',
-})}
-    `;
-
-const backlink: string = link({
-    href: '/index.html',
-    className: 'btn arrowprev',
-    label: '',
+    error: '',
+}
+const formDataProfile = new Form({
+    attr: {
+        class: 'app__form',
+    },
+    items: [
+        new Input({
+            ...inputDefaultProps,
+            name: 'email',
+            label: 'Почта',
+            placeholder: 'Почта',
+            required: true,
+            validation: {
+                required: true,
+                mask: EMAIL_REGEX,
+                minlength: 3,
+                maxlength: 20,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'login',
+            label: 'Логин',
+            placeholder: 'Логин',
+            required: true,
+            validation: {
+                required: true,
+                mask: LOGIN_REGEX,
+                minlength: 3,
+                maxlength: 20,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'first_name',
+            label: 'Имя',
+            placeholder: 'Имя',
+            required: true,
+            validation: {
+                required: true,
+                mask: FIRST_NAME_REGEX,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'second_name',
+            label: 'Фамилия',
+            placeholder: 'Фамилия',
+            required: true,
+            validation: {
+                required: true,
+                mask: SECOND_NAME_REGEX,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'display_name',
+            label: 'Имя в чате',
+            placeholder: 'Имя в чате',
+            required: true,
+            validation: {
+                required: true,
+                mask: DISPLAY_NAME_REGEX,
+                validMsg: 'Неверный логин',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'phone',
+            label: 'Телефон',
+            placeholder: 'Телефон',
+            // type: 'number',
+            required: true,
+            validation: {
+                required: true,
+                mask: PHONE_REGEX,
+                minlength: 10,
+                maxlength: 15,
+                validMsg: 'Неверный логин',
+            },
+        }),
+    ],
+    events: {
+        focusin: onFocus,
+        focusout: onBlur,
+        submit: onSubmit,
+    },
+    buttons: [
+        new Button({
+            attr: {
+                class: 'btn',
+                type: 'submit',
+            },
+            text: 'Сохранить',
+        }),
+        new Button({
+            attr: {
+                class: 'btn',
+                type: 'button',
+            },
+            text: 'Отменить',
+            events: {
+                click: () => {
+                    profilePage.viewListData();
+                },
+            }
+        }),
+    ],
+});
+const formPassProfile = new Form({
+    attr: {
+        class: 'app__form',
+    },
+    events: {
+        focusin: onFocus,
+        focusout: onBlur,
+        submit: onSubmit,
+    },
+    items: [
+        new Input({
+            ...inputDefaultProps,
+            name: 'old_password',
+            label: 'Старый пароль',
+            placeholder: 'Старый пароль',
+            required: true,
+            type: 'password',
+            validation: {
+                required: true,
+                mask: PASSWORD_REGEX,
+                minlength: 8,
+                maxlength: 40,
+                validMsg: 'Неверный пароль',
+            },
+        }),
+        new Input({
+            ...inputDefaultProps,
+            name: 'password',
+            label: 'Новый пароль',
+            placeholder: 'Новый пароль',
+            required: true,
+            type: 'password',
+            validation: {
+                required: true,
+                mask: PASSWORD_REGEX,
+                minlength: 8,
+                maxlength: 40,
+                validMsg: 'Неверный пароль',
+            },
+        }),
+        new Input({
+            attr: {
+                class: 'form__input label',
+            },
+            name: 'confirm_password',
+            label: 'Повторите новый пароль',
+            placeholder: 'Повторите новый пароль',
+            required: true,
+            type: 'password',
+            validation: {
+                required: true,
+                confirm: 'password',
+                validMsg: 'Пароли не совпадают',
+            },
+            error: '',
+        }),
+    ],
+    buttons: [
+        new Button({
+            attr: {
+                class: 'btn',
+                type: 'submit',
+            },
+            text: 'Сохранить',
+        }),
+        new Button({
+            attr: {
+                class: 'btn',
+                type: 'button',
+            },
+            text: 'Отменить',
+            events: {
+                click: () => {
+                    profilePage.viewListData();
+                },
+            }
+        }),
+    ],
 });
 
-const profileView: string = templateProfile({
+Object.values(formDataProfile.children).forEach((item: Block) => {
+    if (item instanceof Input) {
+        if (exampleProfileData[item.props.name]['value']) {
+            item.setProps({
+                value: exampleProfileData[item.props.name]['value'],
+            })
+        }
+
+    }
+})
+
+
+
+
+
+profilePage = new ProfilePage({
+    type: 'view',
+    attr: {
+        class: 'app__profile-page page',
+    },
     backlink,
-    avatarImg: avatar,
-    avatarChange: input({
-        type: 'file', name: 'avatar', textLabel: 'Поменять аватар', labelClass: 'avatar__change',
-    }),
-    data: list({ items }),
-    buttons: profileButtonsView,
-});
+    avatarImg,
+    avatarUpload,
+    data: exampleProfileData,
+    formDataProfile,
+    formPassProfile,
+    buttons: [
+        new Button({
+            attr: {
+                class: 'btn btn-small',
+            },
+            text: 'Изменить данные',
+            events: {
+                click: () => {
+                    profilePage.viewFormData();
+                },
+            }
+        }),
+        new Button({
+            attr: {
+                class: 'btn btn-small',
+            },
+            text: 'Изменить пароль',
+            events: {
+                click: () => {
+                    profilePage.viewFormPassword();
+                },
+            },
+        }),
+        new Button({
+            attr: {
+                class: 'btn btn-small',
+            },
+            text: 'Выйти',
+        })
+    ],
+}, templateProfile);
 
-const profileEdit: string = templateProfile({
-    backlink,
-    avatar,
-    data: appForm({
-        attr: {},
-        formTitle: 'Изменение регистрационных данных',
-        formItems,
-        formButtons,
-
-    }),
-    buttons: '',
-});
-const profilePassEdit: string = templateProfile({
-    backlink,
-    avatar,
-    data: appForm({
-        attr: {},
-        formTitle: 'Изменение пароля',
-        formItems: [
-            input({
-                id: 'oldPassword',
-                name: 'oldPassword',
-                textLabel: 'Старый пароль',
-                type: 'password',
-                placeholder: '******',
-            }),
-            input({
-                id: 'newPassword',
-                name: 'newPassword',
-                textLabel: 'Новый пароль',
-                type: 'password',
-                placeholder: '******',
-            }),
-            input({
-                id: 'newPassword2',
-                name: 'newPassword2',
-                textLabel: 'Повторите новый пароль',
-                type: 'password',
-                placeholder: '******',
-            }),
-        ],
-        formButtons,
-
-    }),
-    buttons: '',
-});
-
-// document.body.addEventListener('click', (e: Event) => {
-//     if (e?.target?.id === 'btn-edit-data') {
-//         document.body.innerHTML = templateApp({ page: profileEdit });
-//     } else if (e?.target?.id === 'btn-edit-pass') {
-//         document.body.innerHTML = templateApp({ page: profilePassEdit });
-//     }
-// });
-
-document.body.innerHTML = templateApp({ page: profileView });
+const root = document.getElementById('app');
+if (root) {
+    root.innerHTML = '';
+    root.append(profilePage.getContent());
+}
