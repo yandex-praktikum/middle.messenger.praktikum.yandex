@@ -40,7 +40,7 @@ const inputDefaultProps = {
 const pageForm = new Form({
     formTitle: 'Регистрация',
     attr: {
-        class: 'app__form',
+        class: 'app__form form',
         action: '',
     },
     events: {
@@ -148,7 +148,7 @@ const pageForm = new Form({
     ],
     buttons: [
         new Button({
-            text: 'Вход',
+            text: 'Зарегистрировать',
             attr: {
                 type: 'submit',
                 class: 'btn',
@@ -167,7 +167,7 @@ const pageForm = new Form({
 
 const regPage = new RegPage({
     attr: {
-        class: 'app__auth-page',
+        class: 'app__reg-page',
     },
     form: pageForm,
 }, templateReg);

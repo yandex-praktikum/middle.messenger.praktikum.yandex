@@ -27,7 +27,7 @@ export default class AuthPage extends Block {
 const pageForm = new Form({
     formTitle: 'Вход',
     attr: {
-        class: 'app__form',
+        class: 'app__form form',
         action: '',
     },
     events: {

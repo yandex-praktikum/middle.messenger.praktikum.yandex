@@ -47,7 +47,7 @@ export default class ChatPage extends Block {
 
     static changeActiveDialog(self: ChatPage, e: Event): void {
         const target = e?.target as HTMLElement;
-        const item = target.closest('.dialog__item') as HTMLElement;
+        const item = target.closest('.dialogs__item') as HTMLElement;
         if (!item) return;
         const active = item.dataset.dialogId ?? undefined;
         const dialog = self.searchActiveDialog(active);
@@ -91,14 +91,14 @@ export default class ChatPage extends Block {
     static createNewMsgForm(): Form {
         return new Form({
             attr: {
-                class: 'new-msg-send-form',
+                class: 'new-msg-send-form form',
             },
             items: [
                 new Input({
                     type: 'file',
                     name: 'inc',
                     attr: {
-                        class: 'control__inc btn inc',
+                        class: 'control-inc btn inc',
                     },
                     validation: {
                         required: false,
@@ -106,7 +106,7 @@ export default class ChatPage extends Block {
                 }),
                 new Input({
                     attr: {
-                        class: 'control__input',
+                        class: 'control-input',
                     },
                     validation: {
                         required: true,
@@ -118,8 +118,8 @@ export default class ChatPage extends Block {
             ],
             buttons: [new Button({
                 attr: {
-                    class: 'control__input btn arrownext',
-                    type: 'control__submit',
+                    class: 'control-input btn arrownext',
+                    type: 'control-submit',
                 },
             })],
             events: {
@@ -160,7 +160,7 @@ const dialogsList = new DialogsList({
 
 const activeDialogTest = new DialogActive({
     attr: {
-        class: 'current__dialog',
+        class: 'current-dialog',
     },
     newMsgForm: ChatPage.createNewMsgForm(),
     btn: new Button({

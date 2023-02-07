@@ -1,5 +1,15 @@
-.current__dialog {
-  .top__controls {
+.current-dialog {
+  .dialog-empty {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .top-controls {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,12 +40,12 @@
       line-height: 13px;
     }
 
-    .control__btn {
+    .control-btn {
       margin-left: auto;
     }
   }
 
-  .bottom__controls {
+  .bottom-controls {
     position: sticky;
     background-color: #1c1c1c;
     bottom: 0;
@@ -53,17 +63,20 @@
       h2 {
         display: none;
       }
+    }
 
-      .form__items {
+    .form {
+      &__items {
         display: flex;
         flex-grow: 1;
+        margin: 0;
         gap: 10px;
 
-        .control__inc input {
+        .control-inc input {
           display: none;
         }
 
-        .control__input {
+        .control-input {
           flex-grow: 1;
 
           input {
@@ -83,13 +96,13 @@
   }
 }
 
-.dialog__window {
+.dialog-window {
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
-  .dialog__dategroup {
+  .dialog-dategroup {
     font-weight: 500;
     font-size: 12px;
     line-height: 12px;

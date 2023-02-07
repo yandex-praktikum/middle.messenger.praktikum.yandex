@@ -60,14 +60,14 @@ function setGroupMsgToProps(props: TProps = {}): void {
     dialog.forEach((item: TMessage) => {
         if (currentGroupDate !== item.date) {
             currentGroupDate = item.date;
-            props.messages += `<div class="dialog__dategroup">${item.date}</div>`;
+            props.messages += `<div class="dialog-dategroup">${item.date}</div>`;
         }
         const media = item.media ? mediaExample : '';
         const newMSG = new Message({
             ...item,
             media,
             attr: {
-                class: `message msg__${item.type} ${item.text ? 'msg__text' : ''} ${item.media ? 'msg__media' : ''}`,
+                class: `message msg-${item.type} ${item.text ? 'msg-text' : ''} ${item.media ? 'msg-media' : ''}`,
             },
         });
         const id = newMSG._id ?? '';

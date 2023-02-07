@@ -87,7 +87,7 @@ const avatarUpload = new Input({
     name: 'avatar',
     label: 'Поменять аватар',
     attr: {
-        class: 'avatar__change',
+        class: 'avatar-change',
     },
 });
 
@@ -103,7 +103,7 @@ const inputDefaultProps = {
 };
 const formDataProfile = new Form({
     attr: {
-        class: 'app__form',
+        class: 'app__form form',
     },
     items: [
         new Input({
@@ -215,7 +215,7 @@ const formDataProfile = new Form({
 });
 const formPassProfile = new Form({
     attr: {
-        class: 'app__form',
+        class: 'app__form form',
     },
     events: {
         focusin: onFocus,

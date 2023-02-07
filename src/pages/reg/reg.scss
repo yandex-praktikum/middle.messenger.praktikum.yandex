@@ -1,12 +1,15 @@
-.page__reg {
-  height: 100%;
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+.app {
+  &__reg-page {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

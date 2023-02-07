@@ -1,4 +1,4 @@
-.list__dialog {
+.list-dialog {
   padding-top: 20px;
   gap: 14px;
 
@@ -36,7 +36,7 @@
     overflow-y: auto;
     direction: rtl;
 
-    .dialog__item {
+    &__item {
       direction: ltr;
       display: grid;
       align-items: center;
@@ -75,7 +75,7 @@
         color: #fff;
       }
 
-      .last_message {
+      .last-message {
         font-weight: 500;
         font-size: 12px;
         line-height: 15px;
@@ -83,7 +83,7 @@
         overflow: hidden;
       }
 
-      .count_new_message {
+      .count-new-message {
         justify-self: end;
 
         div {
@@ -100,7 +100,7 @@
         }
       }
 
-      .time_last_message {
+      .time-last-message {
         justify-self: end;
         font-weight: 500;
         font-size: 9px;
@@ -114,16 +114,16 @@
         padding: 12px 10px;
         border-top: none;
 
-        .last_message {
+        .last-message {
           color: white;
         }
 
-        .count_new_message div {
+        .count-new-message div {
           background-color: white;
           color: #252525;
         }
 
-        .time_last_message {
+        .time-last-message {
           color: white;
         }
       }
