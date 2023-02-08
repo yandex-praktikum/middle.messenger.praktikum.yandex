@@ -9,34 +9,34 @@ export interface TProps {
     children?: Record<string, Block>
 }
 export default class Block {
-    static EVENTS: Record<string, string> = {
+    private static EVENTS: Record<string, string> = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
         FLOW_RENDER: 'flow:render',
     };
 
-    props: TProps;
+    public props: TProps;
 
     // eslint-disable-next-line class-methods-use-this
-    templator: Function | undefined;
+    public templator: Function | undefined;
 
-    events: Record<string, Function> | any;
+    public events: Record<string, Function> | any;
 
-    _prevProps: TProps;
+    private _prevProps: TProps;
 
-    children: TProps;
+    public children: TProps;
 
-    _id: string | null = null;
+    private _id: string | null = null;
 
-    _reRender: boolean;
+    private _reRender: boolean;
 
-    eventBus: () => EventBus;
+    public eventBus: () => EventBus;
 
     // eslint-disable-next-line no-undef
-    _element: HTMLElement;
+    private _element: HTMLElement;
 
-    _meta: { tagName: string, props?: TProps } | null = null;
+    private _meta: { tagName: string, props?: TProps } | null = null;
 
     constructor(tagName: string = 'div', props: TProps = {}, templator?: Function | undefined) {
         const eventBus = new EventBus();
@@ -65,49 +65,49 @@ export default class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _registerEvents(eventBus: EventBus): void {
+    private _registerEvents(eventBus: EventBus): void {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
-    _createResources(): void {
+    private _createResources(): void {
         const tagName = this._meta?.tagName;
         if (tagName) this._element = this._createDocumentElement(tagName);
         // if (typeof this.props.className === 'string') this._element.className = this.props.className;
     }
 
-    init(): void {
+    public init(): void {
         this._createResources();
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    _componentDidMount(): void {
+    private _componentDidMount(): void {
         this.componentDidMount();
         Object.values(this.children).forEach((child: Block): void => {
             child.dispatchComponentDidMount();
         });
     }
 
-    componentDidMount(): void { }
+    public componentDidMount(): void { }
 
-    dispatchComponentDidMount(): void {
+    public dispatchComponentDidMount(): void {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    _componentDidUpdate(oldProps: TProps, newProps: TProps): void {
+    private _componentDidUpdate(oldProps: TProps, newProps: TProps): void {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) return;
         this._render();
     }
 
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-    componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
+    public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
         return true;
     }
 
-    setProps = (nextProps: TProps): void => {
+    public setProps = (nextProps: TProps): void => {
         if (!nextProps) {
             return;
         }
@@ -120,7 +120,7 @@ export default class Block {
         return this._element;
     }
 
-    _render(): void {
+    private _render(): void {
         const block = this.render();
         this._element.innerHTML = '';
 
@@ -135,16 +135,16 @@ export default class Block {
     }
 
     // eslint-disable-next-line no-undef
-    render(): DocumentFragment | string {
+    public render(): DocumentFragment | string {
         return '';
     }
 
     // eslint-disable-next-line no-undef
-    getContent(): HTMLElement {
+    public getContent(): HTMLElement {
         return this.element;
     }
 
-    _makePropsProxy(props: TProps) {
+    private _makePropsProxy(props: TProps) {
         const self = this;
         return new Proxy(props, {
             get(target: TProps, prop: string) {
@@ -165,11 +165,11 @@ export default class Block {
 
 
     // eslint-disable-next-line class-methods-use-this
-    _createDocumentElement(tagName: string): HTMLElement {
+    private _createDocumentElement(tagName: string): HTMLElement {
         return document.createElement(tagName);
     }
 
-    _addEvents(): void {
+    public _addEvents(): void {
         const { events = {} } = this.props;
         Object.keys(events).forEach((eventName) => {
             this.events[eventName] = events[eventName].bind('', this);
@@ -177,21 +177,21 @@ export default class Block {
         });
     }
 
-    _removeEvents(): void {
+    public _removeEvents(): void {
         if (!this.events) return;
         Object.keys(this.events).forEach((eventName) => {
             this._element.removeEventListener(eventName, this.events[eventName]);
         });
     }
 
-    _addAttribute(): void {
+    private _addAttribute(): void {
         const { attr = {} } = this.props;
         Object.entries(attr).forEach(([key, value]) => {
             this._element.setAttribute(key, String(value));
         });
     }
 
-    compile(props: TProps): DocumentFragment {
+    public compile(props: TProps): DocumentFragment {
         const propsAndStubs = { ...props };
         Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
             propsAndStubs[key] = `<div data-id="${child?._id}"></div>`;
@@ -210,7 +210,7 @@ export default class Block {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    _getChildren(propsAndChildren: TProps): {
+    private _getChildren(propsAndChildren: TProps): {
         children: Record<string, Block>,
         propsSimple: Record<string, unknown>
     } {
@@ -226,12 +226,12 @@ export default class Block {
         return { children, propsSimple: props };
     }
 
-    show(): void {
+    public show(): void {
         const content = this.getContent();
         if (content) content.style.display = '';
     }
 
-    hide(): void {
+    public hide(): void {
         const content = this.getContent();
         if (content) content.style.display = 'none';
     }
