@@ -1,14 +1,13 @@
+{{#if text }}
+<div class="message-text">{{text}}</div>
+{{/if}}
+{{#if media }}
+<div class="message-media"><img src="{{media}}" alt="Вложение"></div>
+{{/if}}
 
-    {{#if text }}
-    <div class="message-text">{{text}}</div>
-    {{/if}}
-    {{#if media }}
-    <div class="message-media"><img src="{{media}}" alt="Вложение"></div>
-    {{/if}}
-
-    <div class="message-send">
-        <span class="read-status read-{{read}}"></span>
-        <span class="send-time">
-            {{time}}
-        </span>
-    </div>
+<div class="message-send">
+    <span class="read-status read-{{read}}"></span>
+    <span class="send-time">
+        {{time}}
+    </span>
+</div>
