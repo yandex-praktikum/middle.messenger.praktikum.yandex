@@ -29,7 +29,7 @@ export default class DialogsList extends Block {
                 nick: item.nick,
                 lastMessage: sliceLastMessage(item.lastMsg.text, item.lastMsg.type),
                 timeLastMessage: getDateLastMessage(item.lastMsg),
-                countNewMessage: String(item.newMsg),
+                countNewMessage: item.newMsg,
                 itemClass: item.id === this.props.active ? 'active' : '',
             });
         });
