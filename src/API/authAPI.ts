@@ -1,6 +1,6 @@
 import HTTPTransport from "../core/HTTPTransport";
 
-const Instance = new HTTPTransport("auth");
+const Instance = new HTTPTransport("/auth");
 
 export type RegisterData = {
     email: string,

@@ -30,7 +30,7 @@ class HTTPTransport {
     url: string;
 
     constructor(type: string) {
-        this.url = `https://ya-praktikum.tech/api/v2/${type}`;
+        this.url = `https://ya-praktikum.tech/api/v2${type}`;
     };
 
     get: HTTPMethod = (url, data, headers) => {

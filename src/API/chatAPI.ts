@@ -1,6 +1,6 @@
 import HTTPTransport from "../core/HTTPTransport";
 
-const Instance = new HTTPTransport("chats");
+const Instance = new HTTPTransport("/chats");
 
 export type ChatData = {
     title: string,

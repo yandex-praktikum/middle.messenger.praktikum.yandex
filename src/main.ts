@@ -10,6 +10,8 @@ import ProfileEditPassword from "./pages/ProfileEditPassword";
 import Error500 from "./pages/Error500";
 import Error404 from "./pages/Error404";
 
+import "./style.css";
+
 document.addEventListener("DOMContentLoaded", () => {
     Router
         .use("/", Authorization, {})

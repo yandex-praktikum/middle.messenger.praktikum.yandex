@@ -1,5 +1,5 @@
 {
-    "name": "sprint_3",
+    "name": "sprint_4",
     "version": "1.0.0",
     "description": "",
     "engines": {
@@ -14,11 +14,17 @@
         }
     },
     "scripts": {
-        "dev": "parcel src/index.html --no-source-maps --no-cache --open",
-        "build": "parcel build src/index.html --no-source-maps --no-cache",
+        "dev": "webpack serve --mode=development",
+        "build": "webpack --mode=production",
         "start": "npm run build && node express.js",
         "eslint": "npx tsc --noEmit && npx eslint --config=./.eslintrc.json",
-        "stylelint": "npx stylelint --fix ./src/**/*.css"
+        "stylelint": "npx stylelint --fix ./src/**/*.css",
+        "test": "./node_modules/.bin/mocha --require ts-node/register --require src/test.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run eslint && npm run stylelint && npm run test"
+        }
     },
     "keywords": [],
     "author": "",
@@ -29,13 +35,31 @@
         "uuid": "9.0.0"
     },
     "devDependencies": {
+        "@types/chai": "4.3.4",
+        "@types/jsdom": "21.1.0",
+        "@types/mocha": "10.0.1",
         "@types/uuid": "9.0.0",
         "@typescript-eslint/eslint-plugin": "5.48.1",
         "@typescript-eslint/parser": "5.48.1",
+        "chai": "4.3.7",
+        "css-loader": "6.7.3",
         "eslint": "8.31.0",
-        "parcel": "2.8.2",
+        "fake-xml-http-request": "2.1.2",
+        "handlebars-loader": "1.7.3",
+        "html-webpack-plugin": "5.5.0",
+        "husky": "8.0.3",
+        "jsdom": "21.1.0",
+        "jsdom-global": "3.0.2",
+        "mini-css-extract-plugin": "2.7.2",
+        "mocha": "10.2.0",
         "stylelint": "14.16.1",
         "stylelint-config-standard": "29.0.0",
-        "typescript": "4.9.4"
+        "terser-webpack-plugin": "5.3.6",
+        "ts-loader": "9.4.2",
+        "ts-node": "10.9.1",
+        "typescript": "4.9.4",
+        "webpack": "5.75.0",
+        "webpack-cli": "5.0.1",
+        "webpack-dev-server": "4.11.1"
     }
 }

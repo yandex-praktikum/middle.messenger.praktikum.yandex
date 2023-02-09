@@ -3,7 +3,7 @@ import Route, { IRoute } from "./Route";
 
 class Router {
     history!: History;
-    routes: any;
+    routes!: IRoute[];
     private _currentRoute!: IRoute | null;
     static __instance: Router | null;
 
@@ -66,7 +66,11 @@ class Router {
     };
 
     getRoute(pathname: string) {
-        return this.routes.find((route: Route) => route.match(pathname));
+        return this.routes.find((route) => route.match(pathname));
+    }
+
+    getCurrentRoute() {
+        return this._currentRoute;
     }
 };
 

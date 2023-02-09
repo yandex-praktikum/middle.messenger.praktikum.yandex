@@ -2,7 +2,7 @@ import HTTPTransport from "../core/HTTPTransport";
 
 import { RegisterData } from "./authAPI";
 
-const Instance = new HTTPTransport("user");
+const Instance = new HTTPTransport("/user");
 
 export type ChangePasswordData = {
     oldPassword: string;
