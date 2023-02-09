@@ -3,4 +3,5 @@
 
 - Команда для запуска проекта на локальном сервере: npm run start
 - Команда для сборки проекта: npm run build
-- Сайт опубликованный в сети: https://ubiquitous-crumble-86808c.netlify.app
+- Команда для запуска тестов: npm run test
+- Сайт опубликованный в сети: https://cheerful-palmier-4ec020.netlify.app
