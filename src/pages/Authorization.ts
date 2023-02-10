@@ -47,7 +47,7 @@ class Authorization extends Block {
 
     render() {
         return this.compile(`
-            <div class="entry">
+            <main class="entry">
                 <div class="entry__container">
                     <h2 class="entry__title">
                         Вход
@@ -71,7 +71,7 @@ class Authorization extends Block {
                         {{{server-error}}}
                     </div>
                 {{/if}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
