@@ -78,7 +78,7 @@ class ProfileEditData extends Block {
 
     render() {
         return this.compile(`
-            <div class="profile">
+            <main class="profile">
                 <div class="profile__container">
                     <form class="profile__form">
                         <ul class="profile__list">
@@ -96,7 +96,7 @@ class ProfileEditData extends Block {
                         </svg>
                     </a>
                 </div>
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
