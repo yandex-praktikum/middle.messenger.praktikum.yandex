@@ -16,9 +16,9 @@ class Error extends Block {
 
     render() {
         return this.compile(`
-            <div class="error">
+            <main class="error">
                 {{{errorContainer}}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
