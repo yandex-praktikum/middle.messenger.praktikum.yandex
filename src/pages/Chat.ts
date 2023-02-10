@@ -146,7 +146,7 @@ class Chat extends Block {
 
     render() {
         return this.compile(`
-            <div class="chat">
+            <main class="chat">
                 <div class="chat__container">
                     <div class="chat__sidebar">
                         <div class="chat__sidebar-head">
@@ -222,7 +222,7 @@ class Chat extends Block {
                         {{{server-error}}}
                     </div>
                 {{/if}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
