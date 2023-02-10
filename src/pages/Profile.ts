@@ -76,7 +76,7 @@ class Profile extends Block {
 
     render() {
         return this.compile(`
-            <div class="profile">
+            <main class="profile">
                 <div class="profile__container">
                     <div class="profile__avatar">
                         {{{avatarBlock}}}
@@ -110,7 +110,7 @@ class Profile extends Block {
                         </svg>
                     </a>
                 </div>
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
