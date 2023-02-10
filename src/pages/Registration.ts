@@ -67,7 +67,7 @@ class Registration extends Block {
 
     render() {
         return this.compile(`
-            <div class="entry">
+            <main class="entry">
                 <div class="entry__container">
                     <h2 class="entry__title">
                         Регистрация
@@ -91,7 +91,7 @@ class Registration extends Block {
                         {{{server-error}}}
                     </div>
                 {{/if}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
