@@ -124,6 +124,14 @@ class Validator {
     };
 
     validateForm(formClass: string) {
+        if (formClass === "chat__message") {
+            const messageField = document.querySelector(".chat__message-textarea");
+            // @ts-ignore
+            if (!messageField.value.length) {
+                return false;
+            }
+        }
+        
         let isFormValid = true;
 
         const formEl = document.querySelector(`.${formClass}`);
