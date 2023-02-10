@@ -47,7 +47,7 @@ class ProfileEditPassword extends Block {
 
     render() {
         return this.compile(`
-            <div class="profile">
+            <main class="profile">
                 <div class="profile__container">
                     <form class="profile__form">
                         <ul class="profile__list">
@@ -70,7 +70,7 @@ class ProfileEditPassword extends Block {
                         {{{server-error}}}
                     </div>
                 {{/if}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
