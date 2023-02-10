@@ -47,7 +47,7 @@ class ProfileEditAvatar extends Block {
 
     render() {
         return this.compile(`
-            <div class="profile">
+            <main class="profile">
                 <form class="profile__form">
                     <div class="profile__container">
                         <div class="profile__change-box">
@@ -74,7 +74,7 @@ class ProfileEditAvatar extends Block {
                         {{{server-error}}}
                     </div>
                 {{/if}}
-            </div>
+            </main>
         `, { ...this.props });
     };
 };
