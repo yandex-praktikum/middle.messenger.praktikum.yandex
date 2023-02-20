@@ -79,7 +79,7 @@ export function onInput(self: Form, e: Event): void {
         error,
     });
 }
-export function onSubmit(self: Form, e: Event): void {
+export function onSubmit(self: Form, e: Event, sendFunc: Function = (f:any) => f): void {
     e.preventDefault();
     if (!self.children) return;
     let send = true;
@@ -92,5 +92,8 @@ export function onSubmit(self: Form, e: Event): void {
             });
         }
     });
-    if (send) self.getFormData();
+    if (send) {
+        const sendData = self.getFormData();
+        sendFunc(sendData);
+    }
 }

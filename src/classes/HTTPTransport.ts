@@ -56,6 +56,7 @@ export default class HTTPTransport {
                     ? `${url}${queryStringify(data)}`
                     : url,
             );
+            xhr.withCredentials = true;
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
             });

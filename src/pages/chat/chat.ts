@@ -41,22 +41,36 @@ export type TDialog = {
 export default class ChatPage extends Block {
     activeDialog: TDialog | undefined;
 
-    constructor(props: TProps, templator: Function) {
-        super('main', props, templator);
+    constructor() {
+        const props = {
+            attr: {
+                class: 'app__chat-page',
+            },
+            activeDialog: activeDialogTest,
+            listDialog: dialogsList,
+            profileLink,
+            searchDialog,
+            events: {
+                click: (self, e) => {
+                    this.changeActiveDialog(e);
+                },
+            },
+        };
+        super('main', props, templateChat);
     }
 
-    static changeActiveDialog(self: ChatPage, e: Event): void {
+    changeActiveDialog(e: Event): void {
         const target = e?.target as HTMLElement;
         const item = target.closest('.dialogs__item') as HTMLElement;
         if (!item) return;
         const active = item.dataset.dialogId ?? undefined;
-        const dialog = self.searchActiveDialog(active);
+        const dialog = this.searchActiveDialog(active);
 
         if (!active || !dialog) return;
-        self.children.listDialog.setProps({
+        this.children.listDialog.setProps({
             active,
         });
-        self.children.activeDialog.setProps({
+        this.children.activeDialog.setProps({
             ...dialog,
             messages: '',
             avatar: dialog.avatar ? dialog.avatar : avatarDefault,
@@ -169,23 +183,3 @@ const activeDialogTest = new DialogActive({
         },
     }),
 });
-
-
-const chatPage = new ChatPage({
-    attr: {
-        class: 'app__chat-page',
-    },
-    activeDialog: activeDialogTest,
-    listDialog: dialogsList,
-    profileLink,
-    searchDialog,
-    events: {
-        click: ChatPage.changeActiveDialog,
-    },
-}, templateChat);
-
-const root = document.getElementById('app');
-if (root) {
-    root.innerHTML = '';
-    root.append(chatPage.getContent());
-}

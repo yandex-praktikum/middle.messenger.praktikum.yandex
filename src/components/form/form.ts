@@ -35,7 +35,7 @@ export default class Form extends Block {
         super('form', props, templator);
     }
 
-    getFormData(): void {
+    getFormData(): Record<string, string> {
         const formData: Record<string, string> = {};
 
         Object.values(this.children).forEach((child) => {
@@ -45,6 +45,7 @@ export default class Form extends Block {
         });
         // eslint-disable-next-line no-console
         console.log(formData);
+        return formData;
     }
 
     render() {

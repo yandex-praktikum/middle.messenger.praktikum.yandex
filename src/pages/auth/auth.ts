@@ -1,4 +1,4 @@
-import Block, { TProps } from '../../classes/Block';
+import Block from '../../classes/Block';
 import Form from '../../components/form/form';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button';
@@ -11,12 +11,19 @@ import {
     onSubmit,
     PASSWORD_REGEX,
 } from '../../utils/validation';
-import '../../assets/style/app.scss';
 import './auth.scss';
+import router from '../index/index';
+import Router from '../../classes/Router';
 
 export default class AuthPage extends Block {
-    constructor(props: TProps, templator: Function) {
-        super('main', props, templator);
+    constructor() {
+        const props = {
+            attr: {
+                class: 'app__auth-page',
+            },
+            form: pageForm,
+        };
+        super('main', props, templateAuth);
     }
 
     render() {
@@ -83,23 +90,10 @@ const pageForm = new Form({
             text: 'Ещё не зарегистрированы?',
             attr: {
                 class: 'link',
-                href: '/reg.html',
+                href: '/sign-up',
             },
+            spa: true,
         }),
     ],
 
 });
-
-const authPage = new AuthPage({
-    attr: {
-        class: 'app__auth-page',
-    },
-    form: pageForm,
-}, templateAuth);
-
-// eslint-disable-next-line no-undef
-const root = document.getElementById('app');
-if (root) {
-    root.innerHTML = '';
-    root.append(authPage.getContent());
-}

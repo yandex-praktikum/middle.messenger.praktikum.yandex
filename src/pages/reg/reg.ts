@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Block, { TProps } from '../../classes/Block';
+import Block from '../../classes/Block';
 import Input from '../../components/input/input';
 import Link from '../../components/link/link';
 import Button from '../../components/button/button';
@@ -18,10 +18,23 @@ import {
 import templateReg from './reg.hbs';
 import '../../assets/style/app.scss';
 import './reg.scss';
+import Router from '../../classes/Router';
+import HTTPTransport from '../../classes/HTTPTransport';
+import Store, { StoreEvents } from '../../classes/Store';
 
 export default class RegPage extends Block {
-    constructor(props: TProps, templator: Function) {
-        super('main', props, templator);
+    constructor() {
+        const props = {
+            attr: {
+                class: 'app__reg-page',
+            },
+            form: pageForm,
+        };
+        super('main', props, templateReg);
+        Store.on(StoreEvents.Updated, () => {
+            // вызываем обновление компонента, передав данные из хранилища
+            this.setProps(Store.getState());
+        });
     }
 
     render() {
@@ -46,7 +59,10 @@ const pageForm = new Form({
     events: {
         focusin: onFocus,
         focusout: onBlur,
-        submit: onSubmit,
+        submit: (self, e) => {
+            onSubmit(self, e, sendReg);
+
+        },
     },
     items: [
         new Input({
@@ -158,22 +174,10 @@ const pageForm = new Form({
             text: 'Войти',
             attr: {
                 class: 'link',
-                href: '/auth.html',
+                href: '/',
             },
+            spa: true,
         }),
     ],
 
 });
-
-const regPage = new RegPage({
-    attr: {
-        class: 'app__reg-page',
-    },
-    form: pageForm,
-}, templateReg);
-
-const root = document.getElementById('app');
-if (root) {
-    root.innerHTML = '';
-    root.append(regPage.getContent());
-}

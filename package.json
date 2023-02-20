@@ -6,7 +6,7 @@
     "dev": "parcel static/*.html",
     "watch": "parcel watch static/*.html",
     "build": "parcel build static/*.html",
-    "start": "parcel build static/*.html && node ./src/server.js"
+    "start": "parcel build static/*.html && node ./server.js"
   },
   "repository": {
     "type": "git",
