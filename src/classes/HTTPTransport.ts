@@ -28,15 +28,21 @@ function queryStringify(data: TOptionsData): string {
 }
 
 export default class HTTPTransport {
-    static get: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+    baseUrl: string = '';
 
-    static post: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl;
+    }
 
-    static put: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+    public get: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.GET }, options.timeout);
 
-    static delete: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    public post: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.POST }, options.timeout);
 
-    static request: HTTPRequest = (url = '', options = {}, timeout = 5000): Promise<unknown | void> => {
+    public put: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.PUT }, options.timeout);
+
+    public delete: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.DELETE }, options.timeout);
+
+    public request: HTTPRequest = (url = '', options = {}, timeout = 5000): Promise<unknown | void> => {
         const { headers = {}, method, data } = options;
 
         return new Promise((resolve, reject) => {
@@ -80,3 +86,4 @@ export default class HTTPTransport {
         });
     };
 }
+

@@ -1,4 +1,5 @@
 import Block, { TProps } from '../../classes/Block';
+import BaseController from '../../controlles/BaseController';
 import Input from '../input/input';
 import templateForm from './form.hbs';
 import './form.scss';
@@ -13,6 +14,8 @@ type TFormProps = {
 }
 
 export default class Form extends Block {
+    controller: null | Function;
+
     constructor(formProps: TFormProps, templator: Function = templateForm) {
         const { buttons = [], items = [], ...propsOther } = formProps;
         const props: TProps = {
@@ -33,6 +36,7 @@ export default class Form extends Block {
         });
 
         super('form', props, templator);
+        if (props.controller) this.controller = props.controller;
     }
 
     getFormData(): Record<string, string> {
@@ -45,6 +49,8 @@ export default class Form extends Block {
         });
         // eslint-disable-next-line no-console
         console.log(formData);
+        this.controller(formData);
+        
         return formData;
     }
 

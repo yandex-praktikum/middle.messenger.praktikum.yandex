@@ -20,9 +20,12 @@ import '../../assets/style/app.scss';
 import './reg.scss';
 import Router from '../../classes/Router';
 import HTTPTransport from '../../classes/HTTPTransport';
-import Store, { StoreEvents } from '../../classes/Store';
+import store, { StoreEvents } from '../../classes/Store';
+import { connect } from '../../utils/store';
+import RegApi from '../../api/AuthApi';
+import userCreateController from '../../controlles/UserCreateController';
 
-export default class RegPage extends Block {
+class RegPage extends Block {
     constructor() {
         const props = {
             attr: {
@@ -31,16 +34,14 @@ export default class RegPage extends Block {
             form: pageForm,
         };
         super('main', props, templateReg);
-        Store.on(StoreEvents.Updated, () => {
-            // вызываем обновление компонента, передав данные из хранилища
-            this.setProps(Store.getState());
-        });
     }
 
     render() {
         return this.compile(this.props);
     }
 }
+
+export default connect(RegPage);
 
 const inputDefaultProps = {
     attr: {
@@ -56,13 +57,11 @@ const pageForm = new Form({
         class: 'app__form form',
         action: '',
     },
+    controller: userCreateController.create.bind(userCreateController),
     events: {
         focusin: onFocus,
         focusout: onBlur,
-        submit: (self, e) => {
-            onSubmit(self, e, sendReg);
-
-        },
+        submit: onSubmit,
     },
     items: [
         new Input({
@@ -70,6 +69,7 @@ const pageForm = new Form({
             name: 'email',
             label: 'Почта',
             placeholder: 'Почта',
+            value: 'asdas@yandex.ru',
             required: true,
             validation: {
                 required: true,
@@ -82,6 +82,7 @@ const pageForm = new Form({
             name: 'login',
             label: 'Логин',
             placeholder: 'Логин',
+            value: 'dream',
             required: true,
             validation: {
                 required: true,
@@ -96,6 +97,7 @@ const pageForm = new Form({
             name: 'first_name',
             label: 'Имя',
             placeholder: 'Имя',
+            value: 'Pa',
             required: true,
             validation: {
                 required: true,
@@ -108,6 +110,7 @@ const pageForm = new Form({
             name: 'second_name',
             label: 'Фамилия',
             placeholder: 'Фамилия',
+            value: 'Pa',
             required: true,
             validation: {
                 required: true,
@@ -122,6 +125,7 @@ const pageForm = new Form({
             placeholder: 'Телефон',
             // type: 'number',
             required: true,
+            value: '+79991234567',
             validation: {
                 required: true,
                 mask: PHONE_REGEX,
@@ -136,6 +140,7 @@ const pageForm = new Form({
             label: 'Пароль',
             placeholder: 'Пароль',
             required: true,
+            value: '1234567A',
             type: 'password',
             validation: {
                 required: true,
@@ -152,6 +157,7 @@ const pageForm = new Form({
             name: 'confirm_password',
             label: 'Повторите пароль',
             placeholder: 'Повторите пароль',
+            value: '1234567A',
             required: true,
             type: 'password',
             validation: {
@@ -181,3 +187,4 @@ const pageForm = new Form({
     ],
 
 });
+

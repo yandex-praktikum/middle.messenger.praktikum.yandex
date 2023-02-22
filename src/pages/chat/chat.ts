@@ -16,6 +16,7 @@ import templateChat from './chat.hbs';
 import '../../assets/style/app.scss';
 import './chat.scss';
 import { onSubmit } from '../../utils/validation';
+import UserGetController from '../../controlles/UserGetController';
 
 
 export type TMessage = {

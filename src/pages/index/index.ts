@@ -1,5 +1,9 @@
 import '../../assets/style/app.scss';
-import Router from '../../classes/Router';
+import router from '../../classes/Router';
+import UserAuthController from '../../controlles/UserCreateController';
+import UserRegController from '../../controlles/UserCreateController';
+import UserGetController from '../../controlles/UserGetController';
+import { rootBlockQuery } from '../../utils/config';
 // import Store from '../../classes/Store';
 import { set } from '../../utils/object_utils';
 import AuthPage from '../auth/auth';
@@ -8,8 +12,6 @@ import { Error404Page, Error500Page } from '../error/error';
 import ProfilePage from '../profile/profile';
 import RegPage from '../reg/reg';
 import IndexPage from './temp_index';
-
-const router = new Router('#app');
 
 router
     .use('/', AuthPage)
@@ -21,6 +23,9 @@ router
     .use('/500', Error500Page)
     .start();
 
+// this.router.go('/');
+
+UserGetController.getUserInfo();
 
 // window.onload = () => {
 //     let loc = window.location.pathname;
@@ -30,7 +35,6 @@ router
 //         console.log(window.location.pathname);
 //     }
 // }
-export default router;
-
 
 // console.log(Store);
+

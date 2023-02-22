@@ -12,12 +12,15 @@ import {
     EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit,
 } from '../../utils/validation';
 import './profile.scss';
+import userLogoutController from '../../controlles/UserLogoutController';
+import { connect } from '../../utils/store';
 
 type TProfileElement = {
     label: string,
     value: string | number
 }
-export default class ProfilePage extends Block {
+
+class ProfilePage extends Block {
     constructor() {
         const formDataProfile = new Form({
             attr: {
@@ -211,15 +214,6 @@ export default class ProfilePage extends Block {
             ],
         });
 
-        Object.values(formDataProfile.children).forEach((item: Block) => {
-            if (item instanceof Input) {
-                if (exampleProfileData[item.props.name].value) {
-                    item.setProps({
-                        value: exampleProfileData[item.props.name].value,
-                    });
-                }
-            }
-        });
         const propsPage = {
             type: 'view',
             attr: {
@@ -228,7 +222,6 @@ export default class ProfilePage extends Block {
             backlink,
             avatarImg,
             avatarUpload,
-            data: exampleProfileData,
             formDataProfile,
             formPassProfile,
             buttons: [
@@ -259,6 +252,9 @@ export default class ProfilePage extends Block {
                         class: 'btn btn-small',
                     },
                     text: 'Выйти',
+                    events: {
+                        click: userLogoutController.logout.bind(userLogoutController),
+                    }
                 }),
             ],
         };
@@ -268,18 +264,18 @@ export default class ProfilePage extends Block {
             buttons: '',
         };
 
-        const dataListArray = Object.values(data).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`) ?? [];
+        // const dataListArray = Object.values(data).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`) ?? [];
 
         props.formDataProfile?.hide();
         props.formPassProfile?.hide();
 
-        props.listDataProfile = new List({
-            attr: {
-                class: 'list',
-            },
-            items: dataListArray,
-        });
-
+        // props.listDataProfile = new List({
+        //     attr: {
+        //         class: 'list',
+        //     },
+        //     items: dataListArray,
+        // });
+        props.listDataProfile = {};
         buttons.forEach((item: Button) => {
             const id = item._id ?? '';
             props[id] = item;
@@ -287,9 +283,21 @@ export default class ProfilePage extends Block {
         });
         super('main', props, templateProfile);
     }
-
+    
+    public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
+        Object.values(this.children.formDataProfile.children).forEach((item: Block) => {
+            if (item instanceof Input) {
+                if (_newProps.listDataProfile[item.props.name]) {
+                    item.setProps({
+                        value: _newProps.listDataProfile[item.props.name],
+                    });
+                }
+            }
+        });
+        return true;
+    }
     viewListData(): void {
-        this.children.listDataProfile.show();
+        // this.children.listDataProfile.show();
         this.children.formDataProfile.hide();
         this.children.formPassProfile.hide();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -297,7 +305,7 @@ export default class ProfilePage extends Block {
     }
 
     viewFormData(): void {
-        this.children.listDataProfile.hide();
+        // this.children.listDataProfile.hide();
         this.children.formDataProfile.show();
         this.children.formPassProfile.hide();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -305,7 +313,7 @@ export default class ProfilePage extends Block {
     }
 
     viewFormPassword(): void {
-        this.children.listDataProfile.hide();
+        // this.children.listDataProfile.hide();
         this.children.formDataProfile.hide();
         this.children.formPassProfile.show();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -340,3 +348,15 @@ const inputDefaultProps = {
     type: 'text',
     error: '',
 };
+
+
+export default connect(ProfilePage, getStateToProps);
+
+
+function getStateToProps(state) {
+    let props = {};
+    if (state?.user) {
+        props = { listDataProfile: state.user };
+    }
+    return props;
+}

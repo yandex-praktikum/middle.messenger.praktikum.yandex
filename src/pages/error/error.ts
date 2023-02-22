@@ -50,32 +50,3 @@ export class Error500Page extends ErrorPage {
         });
     }
 }
-
-// eslint-disable-next-line no-undef
-if (window?.errorPage === 500) {
-    error = {
-        title: '500',
-        subtitle: 'Мы уже фиксим',
-    };
-} else {
-    error = {
-        title: '404',
-        subtitle: 'не туда попали',
-    };
-}
-
-const error404 = new ErrorPage({
-    ...error,
-    attr: {
-        class: 'app__error-page',
-    },
-    backlink: new Link({
-        text: 'Назад к чатам',
-        attr: {
-            href: '/chat.html',
-            class: 'link',
-        },
-    }),
-});
-
-

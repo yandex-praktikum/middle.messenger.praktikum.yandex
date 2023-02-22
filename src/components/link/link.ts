@@ -1,5 +1,5 @@
 import Block, { TProps } from '../../classes/Block';
-import Router from '../../classes/Router';
+import router from '../../classes/Router';
 import './link.scss';
 
 export default class Link extends Block {
@@ -8,12 +8,12 @@ export default class Link extends Block {
             props = {
                 ...props,
                 events: {
-                    click: (self, e) => {
+                    click: (self: Block, e: Event) => {
                         e.preventDefault();
-                        new Router().go(self.props.attr.href);
-                    }
-                }
-            }
+                        router.go(self.props.attr.href);
+                    },
+                },
+            };
         }
         super('a', props);
     }

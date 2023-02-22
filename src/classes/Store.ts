@@ -7,7 +7,7 @@ export enum StoreEvents {
 
 class Store extends EventBus {
     private state: Record<string, unknown> = {
-        auth: false,
+        user: null,
     };
 
     public getState() {
@@ -15,8 +15,13 @@ class Store extends EventBus {
     }
 
     public set(path: string, value: unknown) {
-        set(this.state, path, value);
-        this.emit(StoreEvents.Updated);
+        try {
+            set(this.state, path, value);
+            this.emit(StoreEvents.Updated);
+        } catch (e) {
+            console.log(e);
+            
+        }
     }
 }
 export default new Store();

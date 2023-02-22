@@ -14,6 +14,7 @@ import {
 import './auth.scss';
 import router from '../index/index';
 import Router from '../../classes/Router';
+import userLoginController from '../../controlles/UserLoginController';
 
 export default class AuthPage extends Block {
     constructor() {
@@ -42,6 +43,7 @@ const pageForm = new Form({
         focusout: onBlur,
         submit: onSubmit,
     },
+    controller: userLoginController.login.bind(userLoginController),
     items: [
         new Input({
             attr: {

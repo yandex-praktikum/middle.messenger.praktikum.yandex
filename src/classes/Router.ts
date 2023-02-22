@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
+import { rootBlockQuery } from '../utils/config';
 import Block from './Block';
 import Route from './Route';
 
-export default class Router {
+class Router {
     public routes: Array<Route>;
 
     // eslint-disable-next-line no-undef
@@ -35,7 +36,7 @@ export default class Router {
         return this;
     }
 
-    start():void {
+    start(): void {
         window.onpopstate = ((event: Event) => {
             this._onRoute(event?.currentTarget?.location.pathname);
         }).bind(this);
@@ -43,7 +44,7 @@ export default class Router {
         this._onRoute(window.location.pathname);
     }
 
-    _onRoute(pathname: string):void {
+    _onRoute(pathname: string): void {
         const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute('*');
         if (!route) {
             return;
@@ -56,16 +57,16 @@ export default class Router {
         route.render();
     }
 
-    go(pathname: string):void {
+    go(pathname: string): void {
         this.history.pushState({}, '', pathname);
         this._onRoute(pathname);
     }
 
-    back():void {
+    back(): void {
         this.history.back();
     }
 
-    forward():void {
+    forward(): void {
         this.history.forward();
     }
 
@@ -73,3 +74,5 @@ export default class Router {
         return this.routes.find((route) => route.match(pathname));
     }
 }
+
+export default new Router(rootBlockQuery);
