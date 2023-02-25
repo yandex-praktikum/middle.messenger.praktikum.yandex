@@ -5,10 +5,11 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-type TOptionsData = Record<string, string | number>
+export type TOptionsData = Record<string, string | number | Array<string | number>>;
 type TOptions = {
     headers?: Record<string, string>,
-    data?: TOptionsData,
+    // eslint-disable-next-line no-undef
+    data?: TOptionsData | FormData,
     method?: string,
     timeout?: number
 }
@@ -64,6 +65,8 @@ export default class HTTPTransport {
             );
             xhr.withCredentials = true;
             Object.keys(headers).forEach((key) => {
+                console.log(key);
+
                 xhr.setRequestHeader(key, headers[key]);
             });
 
@@ -81,7 +84,8 @@ export default class HTTPTransport {
             if (isGet || !data) {
                 xhr.send();
             } else {
-                xhr.send(JSON.stringify(data));
+                const sendData = data instanceof FormData ? data : JSON.stringify(data);
+                xhr.send(sendData);
             }
         });
     };

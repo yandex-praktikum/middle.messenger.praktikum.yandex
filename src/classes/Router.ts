@@ -2,6 +2,14 @@
 import { rootBlockQuery } from '../utils/config';
 import Block from './Block';
 import Route from './Route';
+import Store from './Store';
+
+export const AUTH = '/';
+export const SIGNUP = '/sign-up';
+export const SETTINGS = '/settings';
+export const MESSENGER = '/messenger';
+export const ERROR500 = '/error-500';
+export const ERROR404 = '/error-404';
 
 class Router {
     public routes: Array<Route>;
@@ -38,6 +46,8 @@ class Router {
 
     start(): void {
         window.onpopstate = ((event: Event) => {
+            console.log(event?.currentTarget?.location.pathname);
+
             this._onRoute(event?.currentTarget?.location.pathname);
         }).bind(this);
 
@@ -45,7 +55,17 @@ class Router {
     }
 
     _onRoute(pathname: string): void {
-        const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute('*');
+        if (Store.getState().auth) {
+            if (pathname === AUTH || pathname === SIGNUP) {
+                pathname = MESSENGER;
+                this.history.pushState({}, '', MESSENGER);
+            }
+        } else if (pathname !== AUTH && pathname !== SIGNUP) {
+            pathname = AUTH;
+            this.history.pushState({}, '', AUTH);
+        }
+        
+        const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute(ERROR404);
         if (!route) {
             return;
         }
@@ -73,6 +93,8 @@ class Router {
     getRoute(pathname: string): Route | undefined {
         return this.routes.find((route) => route.match(pathname));
     }
+
+
 }
 
 export default new Router(rootBlockQuery);

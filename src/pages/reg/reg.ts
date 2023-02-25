@@ -15,15 +15,10 @@ import {
     PHONE_REGEX,
     PASSWORD_REGEX,
 } from '../../utils/validation';
-import templateReg from './reg.hbs';
-import '../../assets/style/app.scss';
-import './reg.scss';
-import Router from '../../classes/Router';
-import HTTPTransport from '../../classes/HTTPTransport';
-import store, { StoreEvents } from '../../classes/Store';
 import { connect } from '../../utils/store';
-import RegApi from '../../api/AuthApi';
-import userCreateController from '../../controlles/UserCreateController';
+import AuthController from '../../controlles/AuthController';
+import templateReg from './reg.hbs';
+import './reg.scss';
 
 class RegPage extends Block {
     constructor() {
@@ -57,7 +52,7 @@ const pageForm = new Form({
         class: 'app__form form',
         action: '',
     },
-    controller: userCreateController.create.bind(userCreateController),
+    controller: AuthController.createUser.bind(AuthController),
     events: {
         focusin: onFocus,
         focusout: onBlur,
@@ -187,4 +182,3 @@ const pageForm = new Form({
     ],
 
 });
-

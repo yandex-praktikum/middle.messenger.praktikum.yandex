@@ -1,14 +1,10 @@
-import HTTPTransport from '../classes/HTTPTransport';
+import HTTPTransport, { TOptionsData } from '../classes/HTTPTransport';
 import BaseAPI from './BaseApi';
 
 class AuthApi extends BaseAPI {
-    constructor() {
-        super();
-    }
-
     public http = new HTTPTransport(`${this.baseUrl}/auth`);
 
-    public create(data): Promise<unknown | void> {
+    public createUser(data: TOptionsData): Promise<any> {
         return this.http.post('/signup', {
             data,
             headers: {
@@ -17,7 +13,7 @@ class AuthApi extends BaseAPI {
         });
     }
 
-    public login(data): Promise<unknown | void> {
+    public login(data: TOptionsData): Promise<any> {
         return this.http.post('/signin', {
             data,
             headers: {
@@ -26,11 +22,11 @@ class AuthApi extends BaseAPI {
         });
     }
 
-    public getUser(): Promise<unknown | void> {
+    public getUser(): Promise<any> {
         return this.http.get('/user');
     }
 
-    public logout(): Promise<unknown | void> {
+    public logout(): Promise<any> {
         return this.http.post('/logout');
     }
 }

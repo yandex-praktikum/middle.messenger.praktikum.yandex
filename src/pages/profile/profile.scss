@@ -94,11 +94,16 @@
         flex-direction: column;
         width: 100%;
 
+        
         .list li {
           border-bottom: 1px solid #e72933;
           width: 100%;
           display: flex;
           justify-content: space-between;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 13px;
+          padding: 10px 0;
 
           &:last-child {
             border: transparent;

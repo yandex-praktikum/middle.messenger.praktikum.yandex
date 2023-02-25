@@ -10,14 +10,19 @@ type TlastMessage = {
     time: string,
     type: string,
 }
+const dateZeroAdd = (date: number | string): string => {
+    const string = String(date);
+    if (string.length < 2) return `0${string}`;
+    return string;
+}
 
-
-export const getDateLastMessage = (obj: TlastMessage): string => {
-    const date = formattedDate(obj.date, obj.time);
+export const getDateLastMessage = (obj: string): string => {
+    if (!obj) return '';
+    const date = new Date(obj);
     const currentDate = new Date();
-    if (currentDate.setHours(0, 0, 0, 0) === date.setHours(0, 0, 0, 0)) return obj.time;
+    if (currentDate.setHours(0, 0, 0, 0) === new Date(date).setHours(0, 0, 0, 0)) return `${dateZeroAdd(date.getHours())}:${dateZeroAdd(date.getMinutes())}`;
     if ((getWeekNumber(date) === getWeekNumber(currentDate)) && (date.getFullYear() === currentDate.getFullYear())) return weekDay[date.getDay()];
-    return obj.date;
+    return `${dateZeroAdd(date.getDate())}.${dateZeroAdd(date.getMonth() + 1)}.${date.getFullYear()}`;
 };
 
 
@@ -31,6 +36,7 @@ export const formattedDate = (inDate: string, inTime: string = '00:00'): Date =>
     const minutes: number = Number(time[1]);
     return new Date(year, month, day, hours, minutes, 0);
 };
+
 
 
 export const getCurrentNumberWeek = (date: Date): number => {

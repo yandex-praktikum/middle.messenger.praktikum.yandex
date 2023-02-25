@@ -16,6 +16,10 @@ export default class Block {
         FLOW_RENDER: 'flow:render',
     };
 
+    static getStateToProps(state) {
+        return state;
+    }
+
     public props: TProps;
 
     // eslint-disable-next-line class-methods-use-this
@@ -39,7 +43,6 @@ export default class Block {
     private _meta: { tagName: string, props?: TProps } | null = null;
 
     constructor(tagName: string = 'div', props: TProps = {}, templator?: Function | undefined) {
-       
         const eventBus = new EventBus();
         this._meta = {
             tagName,
@@ -123,7 +126,7 @@ export default class Block {
 
     private _render(): void {
         const block = this.render();
-        
+
         this._element.innerHTML = '';
 
         if (typeof block === 'string') {
@@ -131,7 +134,7 @@ export default class Block {
         } else {
             this._element.append(block);
         }
-        
+
         this._removeEvents();
         this._addEvents();
         this._addAttribute();
@@ -220,9 +223,9 @@ export default class Block {
     } {
         const children: Record<string, Block> = {};
         const props: Record<string, unknown> = {};
-        
+
         Object.entries(propsAndChildren).forEach(([key, value]) => {
-            
+
             if (value instanceof Block) {
                 children[key] = value;
             } else {

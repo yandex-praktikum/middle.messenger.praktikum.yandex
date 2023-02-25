@@ -1,14 +1,10 @@
-import HTTPTransport from '../classes/HTTPTransport';
+import HTTPTransport, { TOptionsData } from '../classes/HTTPTransport';
 import BaseAPI from './BaseApi';
 
-class ProfileApi extends BaseAPI {
-    constructor() {
-        super();
-    }
-
+class UsersApi extends BaseAPI {
     public http = new HTTPTransport(`${this.baseUrl}/user`);
 
-    public changeData(data): Promise<unknown | void> {
+    public changeData(data: TOptionsData): Promise<any> {
         return this.http.put('/profile', {
             data,
             headers: {
@@ -17,17 +13,15 @@ class ProfileApi extends BaseAPI {
         });
     }
 
-    public changeAvatar(file: FormData): Promise<unknown | void> {
-        return this.http.put('/profile', {
-            file,
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+    // eslint-disable-next-line no-undef
+    public changeAvatar(data: FormData): Promise<any> {
+        return this.http.put('/profile/avatar', {
+            data,
         });
     }
 
-    public changePassword(data): Promise<unknown | void> {
-        return this.http.put('/profile', {
+    public changePassword(data: TOptionsData): Promise<any> {
+        return this.http.put('/password', {
             data,
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -35,11 +29,11 @@ class ProfileApi extends BaseAPI {
         });
     }
 
-    public getUser(id: string | number): Promise<unknown | void> {
+    public getUser(id: string | number): Promise<any> {
         return this.http.get(`/user/${id}`);
     }
 
-    public searchUser(login: string): Promise<unknown | void> {
+    public searchUser(login: string): Promise<any> {
         return this.http.post('/search', {
             data: { login },
             headers: {
@@ -47,9 +41,5 @@ class ProfileApi extends BaseAPI {
             },
         });
     }
-
-
 }
-
-
-export default new ProfileApi();
+export default new UsersApi();

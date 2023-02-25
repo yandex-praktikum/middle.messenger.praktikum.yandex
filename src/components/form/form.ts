@@ -11,6 +11,7 @@ type TFormProps = {
     events?: Record<string, Function>
     items: Array<Block>,
     buttons: Array<Block>,
+    controller?: Function,
 }
 
 export default class Form extends Block {
@@ -50,7 +51,7 @@ export default class Form extends Block {
         // eslint-disable-next-line no-console
         console.log(formData);
         this.controller(formData);
-        
+
         return formData;
     }
 

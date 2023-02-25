@@ -7,7 +7,7 @@ export function isEqual(lhs, rhs): boolean {
 export function render(query: string, block: Block): void {
     const root = document.querySelector(query);
     if (root) {
-        // root.innerHTML = '';
+        root.innerHTML = '';
         // eslint-disable-next-line new-cap
         root.append(block.getContent());
     }

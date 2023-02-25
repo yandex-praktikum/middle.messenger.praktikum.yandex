@@ -7,7 +7,10 @@ export enum StoreEvents {
 
 class Store extends EventBus {
     private state: Record<string, unknown> = {
+        auth: false,
         user: null,
+        getPage: '/',
+        chats: [],
     };
 
     public getState() {
@@ -20,7 +23,6 @@ class Store extends EventBus {
             this.emit(StoreEvents.Updated);
         } catch (e) {
             console.log(e);
-            
         }
     }
 }

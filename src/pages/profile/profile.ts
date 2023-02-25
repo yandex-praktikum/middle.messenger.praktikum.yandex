@@ -12,8 +12,10 @@ import {
     EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit,
 } from '../../utils/validation';
 import './profile.scss';
-import userLogoutController from '../../controlles/UserLogoutController';
+import AuthController from '../../controlles/AuthController';
 import { connect } from '../../utils/store';
+import UsersController from '../../controlles/UsersController';
+import { resourcesUrl } from '../../utils/config';
 
 type TProfileElement = {
     label: string,
@@ -21,11 +23,13 @@ type TProfileElement = {
 }
 
 class ProfilePage extends Block {
+
     constructor() {
         const formDataProfile = new Form({
             attr: {
                 class: 'app__form form profile-form',
             },
+            controller: UsersController.changeData.bind(UsersController),
             items: [
                 new Input({
                     ...inputDefaultProps,
@@ -138,6 +142,7 @@ class ProfilePage extends Block {
             attr: {
                 class: 'app__form form profile-form',
             },
+            controller: UsersController.changePassword.bind(UsersController),
             events: {
                 focusin: onFocus,
                 focusout: onBlur,
@@ -146,7 +151,7 @@ class ProfilePage extends Block {
             items: [
                 new Input({
                     ...inputDefaultProps,
-                    name: 'old_password',
+                    name: 'oldPassword',
                     label: 'Старый пароль',
                     placeholder: 'Старый пароль',
                     required: true,
@@ -161,7 +166,7 @@ class ProfilePage extends Block {
                 }),
                 new Input({
                     ...inputDefaultProps,
-                    name: 'password',
+                    name: 'newPassword',
                     label: 'Новый пароль',
                     placeholder: 'Новый пароль',
                     required: true,
@@ -185,7 +190,7 @@ class ProfilePage extends Block {
                     type: 'password',
                     validation: {
                         required: true,
-                        confirm: 'password',
+                        confirm: 'newPassword',
                         validMsg: 'Пароли не совпадают',
                     },
                     error: '',
@@ -253,7 +258,7 @@ class ProfilePage extends Block {
                     },
                     text: 'Выйти',
                     events: {
-                        click: userLogoutController.logout.bind(userLogoutController),
+                        click: AuthController.logout.bind(AuthController),
                     }
                 }),
             ],
@@ -264,17 +269,11 @@ class ProfilePage extends Block {
             buttons: '',
         };
 
-        // const dataListArray = Object.values(data).map((item: TProfileElement): string => `<span class="label">${item.label}</span><span class="value">${item.value}</span>`) ?? [];
 
         props.formDataProfile?.hide();
         props.formPassProfile?.hide();
 
-        // props.listDataProfile = new List({
-        //     attr: {
-        //         class: 'list',
-        //     },
-        //     items: dataListArray,
-        // });
+
         props.listDataProfile = {};
         buttons.forEach((item: Button) => {
             const id = item._id ?? '';
@@ -283,7 +282,18 @@ class ProfilePage extends Block {
         });
         super('main', props, templateProfile);
     }
-    
+
+    static getStateToProps(state) {
+        let props = {};
+        if (state?.user) {
+            props = {
+                listDataProfile: state.user,
+                avatarImg: resourcesUrl + state.user.avatar ?? avatarImg,
+            };
+        }
+        return props;
+    }
+
     public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
         Object.values(this.children.formDataProfile.children).forEach((item: Block) => {
             if (item instanceof Input) {
@@ -294,10 +304,13 @@ class ProfilePage extends Block {
                 }
             }
         });
+        this.viewListData();
         return true;
     }
+
     viewListData(): void {
-        // this.children.listDataProfile.show();
+        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        listDataProfile.style.display = '';
         this.children.formDataProfile.hide();
         this.children.formPassProfile.hide();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -305,7 +318,8 @@ class ProfilePage extends Block {
     }
 
     viewFormData(): void {
-        // this.children.listDataProfile.hide();
+        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        listDataProfile.style.display = 'none';
         this.children.formDataProfile.show();
         this.children.formPassProfile.hide();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -313,7 +327,8 @@ class ProfilePage extends Block {
     }
 
     viewFormPassword(): void {
-        // this.children.listDataProfile.hide();
+        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        listDataProfile.style.display = 'none';
         this.children.formDataProfile.hide();
         this.children.formPassProfile.show();
         const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
@@ -327,10 +342,11 @@ class ProfilePage extends Block {
 
 const backlink = new Link({
     attr: {
-        href: '/index.html',
+        href: '/messenger',
         class: 'btn arrowprev',
         text: '',
     },
+    spa: true,
 });
 const avatarUpload = new Input({
     type: 'file',
@@ -339,6 +355,9 @@ const avatarUpload = new Input({
     attr: {
         class: 'avatar-change',
     },
+    events: {
+        change: changeAvatar,
+    }
 });
 
 const inputDefaultProps = {
@@ -350,13 +369,10 @@ const inputDefaultProps = {
 };
 
 
-export default connect(ProfilePage, getStateToProps);
+export default connect(ProfilePage);
 
-
-function getStateToProps(state) {
-    let props = {};
-    if (state?.user) {
-        props = { listDataProfile: state.user };
-    }
-    return props;
+function changeAvatar(_self: Block, e: Event) {
+    const data = new FormData();
+    data.append('avatar', e.target?.files[0]);
+    UsersController.changeAvatar(data);
 }

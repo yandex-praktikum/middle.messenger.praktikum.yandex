@@ -12,9 +12,7 @@ import {
     PASSWORD_REGEX,
 } from '../../utils/validation';
 import './auth.scss';
-import router from '../index/index';
-import Router from '../../classes/Router';
-import userLoginController from '../../controlles/UserLoginController';
+import AuthController from '../../controlles/AuthController';
 
 export default class AuthPage extends Block {
     constructor() {
@@ -43,7 +41,7 @@ const pageForm = new Form({
         focusout: onBlur,
         submit: onSubmit,
     },
-    controller: userLoginController.login.bind(userLoginController),
+    controller: AuthController.login.bind(AuthController),
     items: [
         new Input({
             attr: {

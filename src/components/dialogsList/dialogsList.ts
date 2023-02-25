@@ -5,31 +5,37 @@ import { getDateLastMessage } from '../../utils/date';
 import { sliceLastMessage } from '../../utils/text';
 import avatarDefault from '../../assets/icon/avatar_default.png';
 import './dialogList.scss';
+import Store from '../../classes/Store';
 
 type TDialogItem = {
-    avatar: string,
-    dialogId: string,
-    nick: string,
-    lastMessage: string,
-    timeLastMessage: string,
-    countNewMessage: string | number,
+    avatar: string | null,
+    id: number,
+    title: string,
+    last_message?: Record<string, string | number> | null,
+    last_message_text?: string,
+    last_message_time?: string,
+    unread_count: number,
     itemClass: string,
 }
 export default class DialogsList extends Block {
+    dialogs: Array<TDialogItem> | [] = [];
+
     constructor(props: TProps) {
         super('div', props, templateListDialogs);
     }
 
-    dialogListCompile(dialogs: Array<TDialog> = []): Array<TDialogItem> | [] {
+
+    dialogListCompile(dialogs: Array<TDialogItem> = []): Array<TDialogItem> | [] {
         const compilesDialogs: Array<TDialogItem> | undefined = [];
         dialogs.forEach((item) => {
+            const out = item?.last_message?.user.login === Store.getState()?.user?.login;
             compilesDialogs.push({
                 avatar: item.avatar ? item.avatar : avatarDefault,
-                dialogId: item.id,
-                nick: item.nick,
-                lastMessage: sliceLastMessage(item.lastMsg.text, item.lastMsg.type),
-                timeLastMessage: getDateLastMessage(item.lastMsg),
-                countNewMessage: item.newMsg,
+                id: item.id,
+                title: item.title,
+                last_message_text: sliceLastMessage(item?.last_message?.content, out) ?? '',
+                last_message_time: getDateLastMessage(item?.last_message?.time) ?? '',
+                unread_count: item.unread_count ?? 2,
                 itemClass: item.id === this.props.active ? 'active' : '',
             });
         });

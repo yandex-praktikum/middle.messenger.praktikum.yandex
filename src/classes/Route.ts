@@ -1,5 +1,6 @@
 import { isEqual, render } from "../utils/object_utils";
 import Block from "./Block";
+import Store from "./Store";
 
 
 export default class Route {
@@ -27,6 +28,7 @@ export default class Route {
 
     leave(): void {
         if (this._block) {
+            // console.log(this._block);
             this._block.hide();
         }
     }
@@ -39,11 +41,12 @@ export default class Route {
         if (!this._blockClass) {
             return;
         }
-        if (!this._block) {
-            this._block = new this._blockClass();
-            render(this._props.rootQuery, this._block);
-            return;
-        }
+        // if (!this._block) {
+        this._block = new this._blockClass();
+        render(this._props.rootQuery, this._block);
+        Store.set('', '');
+        return;
+        // }
 
         this._block.show();
     }
