@@ -11,6 +11,10 @@ class Store extends EventBus {
         user: null,
         getPage: '/',
         chats: [],
+        currentChat: {
+            chat: null,
+            messages: null,
+        }
     };
 
     public getState() {

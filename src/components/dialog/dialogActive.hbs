@@ -1,7 +1,7 @@
-{{#if messages}}
+{{#if currentChat}}
 <div class="top-controls">
     <div class="avatar"> <img src="{{avatar}}" alt="Аватар пользователя {{nick}}"> </div>
-    <div class="nick">{{nick}}</div>
+    <div class="nick">{{currentChat.title}}</div>
     <div class="control-btn">
         {{{btn}}}
     </div>

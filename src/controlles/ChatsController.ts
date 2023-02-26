@@ -1,6 +1,8 @@
 import ChatsApi from '../api/ChatsApi';
 import UsersApi from '../api/UsersApi';
 import { TOptionsData } from '../classes/HTTPTransport';
+import Store from '../classes/Store';
+import { searchObjInArray } from '../utils/object_utils';
 import BaseController from './BaseController';
 
 class ChatsController extends BaseController {
@@ -69,8 +71,6 @@ class ChatsController extends BaseController {
         } catch (e) {
             console.log(e);
         }
-
-
     }
 
     public async addNewChatUser({ display_name, login, id }) {
@@ -80,6 +80,18 @@ class ChatsController extends BaseController {
         const result = await this.addUser(newChat, id);
         this.getChats();
         return result;
+    }
+
+    public selectChat(self, e) {
+        const target = e?.target as HTMLElement;
+        const item = target.closest('.dialogs__item') as HTMLElement;
+        if (!item) return;
+        const active = item.dataset.dialogId ?? undefined;
+        const chat = searchObjInArray(Store.getState().chats, 'id', Number(active));
+        if (chat && chat?.id !== Store?.getState()?.currentChat?.chat?.id) {
+            Store.set('currentChat.chat', chat);
+            return chat?.id;
+        }
     }
 }
 

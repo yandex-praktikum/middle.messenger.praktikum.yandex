@@ -20,6 +20,7 @@ type TDialogItem = {
 export default class DialogsList extends Block {
     dialogs: Array<TDialogItem> | [] = [];
 
+
     constructor(props: TProps) {
         super('div', props, templateListDialogs);
     }
@@ -27,6 +28,7 @@ export default class DialogsList extends Block {
 
     dialogListCompile(dialogs: Array<TDialogItem> = []): Array<TDialogItem> | [] {
         const compilesDialogs: Array<TDialogItem> | undefined = [];
+        const activeDialog = Store.getState()?.currentChat?.chat?.id;
         dialogs.forEach((item) => {
             const out = item?.last_message?.user.login === Store.getState()?.user?.login;
             compilesDialogs.push({
@@ -36,13 +38,14 @@ export default class DialogsList extends Block {
                 last_message_text: sliceLastMessage(item?.last_message?.content, out) ?? '',
                 last_message_time: getDateLastMessage(item?.last_message?.time) ?? '',
                 unread_count: item.unread_count ?? 2,
-                itemClass: item.id === this.props.active ? 'active' : '',
+                itemClass: item.id == this.props.activeDialog ? 'active' : '',
             });
         });
         return compilesDialogs;
     }
 
     render() {
+        console.log('RENDER');
         const dialogs = this.dialogListCompile(this.props.dialogs);
         return this.compile({ ...this.props, dialogs });
     }

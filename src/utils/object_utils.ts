@@ -51,3 +51,13 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
     }), value as any);
     return merge(object as Indexed, result);
 }
+
+export function searchObjInArray(array: Array<Record<string, string | number>>, key: string, value: string) {
+    for (let i = 0; i < array.length; i++) {
+        const item = array[i];
+        if (item[key] === value) {
+            return { ...item };
+        }
+    }
+    return undefined;
+}

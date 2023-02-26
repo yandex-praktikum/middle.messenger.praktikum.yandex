@@ -22,8 +22,9 @@ import Store from '../../classes/Store';
 import SearchUsers from '../../components/searchUsers/searchUsers';
 import UsersController from '../../controlles/UsersController';
 import ChatsController from '../../controlles/ChatsController';
+import MessageController from '../../controlles/MessageController';
 
-const { addNewChatUser, createChat } = ChatsController;
+const { addNewChatUser, createChat, selectChat } = ChatsController;
 const { searchUsers } = UsersController;
 
 export type TMessage = {
@@ -58,13 +59,14 @@ class ChatPage extends Block {
         if (state?.chats) {
             props = {
                 dialogs: state.chats,
+                activeDialog: state.currentChat?.chat?.id,
             };
         }
         return props;
     }
 
     constructor() {
-        ChatsController.getChats();
+        // ChatsController.getChats();
         const props = {
             attr: {
                 class: 'app__chat-page',
@@ -74,14 +76,11 @@ class ChatPage extends Block {
             newChatBtn,
             profileLink,
             searchDialog,
-            events: {
-                click: (self, e) => {
-
-
-
-                    this.changeActiveDialog(e);
-                },
-            },
+            // events: {
+            //     click: (self, e) => {
+            //         this.changeActiveDialog(e);
+            //     },
+            // },
         };
         super('main', props, templateChat);
     }
@@ -110,6 +109,11 @@ class ChatPage extends Block {
             this.children.listDialog.setProps({
                 dialogs: _newProps.dialogs,
             });
+        } if (_newProps.activeDialog !== _oldProps.activeDialog) {
+            this.children.listDialog.setProps({
+                activeDialog: _newProps.activeDialog,
+            });
+
         }
         return true;
     }
@@ -127,17 +131,6 @@ class ChatPage extends Block {
     //     return sortedDialogs;
     // }
 
-
-    // eslint-disable-next-line class-methods-use-this
-    searchActiveDialog(active: string | undefined): TDialog | undefined {
-        for (let i = 0; i < exampleChatData.length; i++) {
-            const item = exampleChatData[i];
-            if (item.id === active) {
-                return item;
-            }
-        }
-        return undefined;
-    }
 
     static createNewMsgForm(): Form {
         return new Form({
@@ -217,6 +210,9 @@ const dialogsList = new DialogsList({
     attr: {
         class: 'dialogs',
     },
+    events: {
+        click: selectChat
+    }
 });
 
 const activeDialogTest = new DialogActive({
@@ -238,43 +234,11 @@ let socket;
 ChatsController.getToken().then(
     (value) => {
         console.log(Store.getState());
-        // let socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/371570/5131/${JSON.parse(value).token}`);
-        socket.addEventListener('open', () => {
-            console.log('Соединение установлено');
+        const socket = MessageController;
 
-            socket.send(JSON.stringify({
-                content: `Моё ${new Date().getTime()} сообщение миру!`,
-                type: 'message',
-            }));
-            socket.send(JSON.stringify({
-                content: '0',
-                type: 'get old',
-            }));
-        });
+        socket.connect({ userId: 371570, chatId: 5131, token: JSON.parse(value).token });
+        console.log(socket);
 
-        socket.addEventListener('close', event => {
-            if (event.wasClean) {
-                console.log('Соединение закрыто чисто');
-            } else {
-                console.log('Обрыв соединения');
-            }
+    });
+ChatsController.getChats();
 
-            console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-            console.log(event);
-        });
-
-        socket.addEventListener('message', event => {
-            console.log('Получены данные');
-            console.log(JSON.parse(event.data));
-
-        });
-
-        socket.addEventListener('error', (event) => {
-            console.log('Ошибка', event.message);
-        });
-   }
-);
-
-
-
-window.soc = socket;

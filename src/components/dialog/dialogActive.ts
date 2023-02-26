@@ -5,9 +5,23 @@ import templateDialogActive from './dialogActive.hbs';
 import './dialogActive.scss';
 import avatarDefault from '../../assets/icon/avatar_default.png';
 import mediaExample from '../../assets/img/example-media.jpg';
+import { connect } from '../../utils/store';
 
 
-export default class DialogActive extends Block {
+class DialogActive extends Block {
+    currentChat: any;
+
+    static getStateToProps(state) {
+        let props = {
+        };
+        if (state?.chats) {
+            props = {
+                currentChat: state.currentChat.chat,
+            };
+        }
+        return props;
+    }
+
     constructor(allProps: TProps) {
         const props: TProps = {
             ...allProps,
@@ -20,7 +34,11 @@ export default class DialogActive extends Block {
         super('div', props, templateDialogActive);
     }
 
+    
     componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+        console.log(oldProps);
+        console.log(newProps);
+
         if (oldProps.dialog !== newProps.dialog) {
             const children = this._getChildren(newProps).children ?? {};
             this.children = {
@@ -75,3 +93,5 @@ function setGroupMsgToProps(props: TProps = {}): void {
         props.messages += `<div data-id="${id}"></div>`;
     });
 }
+
+export default connect(DialogActive);
