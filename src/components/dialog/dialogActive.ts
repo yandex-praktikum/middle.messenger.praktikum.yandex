@@ -6,10 +6,16 @@ import './dialogActive.scss';
 import avatarDefault from '../../assets/icon/avatar_default.png';
 import mediaExample from '../../assets/img/example-media.jpg';
 import { connect } from '../../utils/store';
+import { getParseDate } from '../../utils/date';
+import Store from '../../classes/Store';
 
 
 class DialogActive extends Block {
     currentChat: any;
+
+    scroll: string | number | undefined;
+
+    _dialogWindow: null | HTMLElement = null;
 
     static getStateToProps(state) {
         let props = {
@@ -17,6 +23,7 @@ class DialogActive extends Block {
         if (state?.chats) {
             props = {
                 currentChat: state.currentChat.chat,
+                dialog: state.currentChat.messages,
             };
         }
         return props;
@@ -30,15 +37,13 @@ class DialogActive extends Block {
         };
 
         setGroupMsgToProps(props);
-
         super('div', props, templateDialogActive);
+
     }
 
-    
-    componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
-        console.log(oldProps);
-        console.log(newProps);
+    public pushNewMessage() { }
 
+    componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
         if (oldProps.dialog !== newProps.dialog) {
             const children = this._getChildren(newProps).children ?? {};
             this.children = {
@@ -67,6 +72,10 @@ class DialogActive extends Block {
 
     // eslint-disable-next-line no-undef
     render(): string | DocumentFragment {
+        const element = this.compile(this.props);
+        this._dialogWindow = element.querySelector('.dialog-window');
+        console.log(this._dialogWindow);
+
         return this.compile(this.props);
     }
 }
@@ -74,18 +83,26 @@ class DialogActive extends Block {
 
 function setGroupMsgToProps(props: TProps = {}): void {
     let currentGroupDate = '00.00.0000';
-    const dialog = props.dialog ?? [];
-    dialog.forEach((item: TMessage) => {
-        if (currentGroupDate !== item.date) {
-            currentGroupDate = item.date;
-            props.messages += `<div class="dialog-dategroup">${item.date}</div>`;
+    let dialog = [];
+    if (Array.isArray(props.dialog)) {
+        dialog = [...props.dialog];
+    }
+    const currentUserId = Store.getState()?.user?.id;
+
+    dialog.reverse().forEach((item: TMessage) => {
+        const { date, time } = getParseDate(item.time);
+        const msgType = currentUserId === item?.user_id ? 'out' : 'in';
+        if (currentGroupDate !== date) {
+            currentGroupDate = date;
+            props.messages += `<div class="dialog-dategroup">${date}</div>`;
         }
         const media = item.media ? mediaExample : '';
         const newMSG = new Message({
             ...item,
+            time,
             media,
             attr: {
-                class: `message msg-${item.type} ${item.text ? 'msg-text' : ''} ${item.media ? 'msg-media' : ''}`,
+                class: `message msg-${msgType} ${item.text ? 'msg-text' : ''} ${item.media ? 'msg-media' : ''}`,
             },
         });
         const id = newMSG._id ?? '';

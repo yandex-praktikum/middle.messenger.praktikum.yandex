@@ -22,9 +22,9 @@ import Store from '../../classes/Store';
 import SearchUsers from '../../components/searchUsers/searchUsers';
 import UsersController from '../../controlles/UsersController';
 import ChatsController from '../../controlles/ChatsController';
-import MessageController from '../../controlles/MessageController';
+import socket from '../../controlles/MessageController';
 
-const { addNewChatUser, createChat, selectChat } = ChatsController;
+const { addNewChatUser, createChat, selectChat, getToken } = ChatsController;
 const { searchUsers } = UsersController;
 
 export type TMessage = {
@@ -211,8 +211,8 @@ const dialogsList = new DialogsList({
         class: 'dialogs',
     },
     events: {
-        click: selectChat
-    }
+        click: changeChat,
+    },
 });
 
 const activeDialogTest = new DialogActive({
@@ -229,7 +229,6 @@ const activeDialogTest = new DialogActive({
 
 export default connect(ChatPage);
 
-let socket;
 
 ChatsController.getToken().then(
     (value) => {
@@ -242,3 +241,11 @@ ChatsController.getToken().then(
     });
 ChatsController.getChats();
 
+async function changeChat(self, e) {
+    socket.disconnect();
+    const chatId = selectChat(self, e);
+    const userId = Store?.getState()?.user?.id;
+    const token = await getToken(chatId);
+    if (!chatId || !token || !userId) return;
+    socket.connect({ userId, chatId, token });
+}

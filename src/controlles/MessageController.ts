@@ -60,6 +60,7 @@ class MessageController {
     }
 
     public disconnect() {
+        if (!this.socket) return;
         clearInterval(this._ping);
         this._ping = undefined;
         this.socket?.close();
@@ -88,25 +89,27 @@ class MessageController {
         this.getMessage(0);
         this._ping = setInterval(() => {
             this.socket?.send(JSON.stringify({
-                content: '',
-                type: '',
+                // content: 'НовоеНовоеНовоеНовоеНовоеНовое',
+                // type: 'message',
             }));
-        }, 20000);
+        }, 5000);
         // let i = 100;
         // this._ping = setInterval(async () => {
         // i += 20;
         // await this.getMessage(i);
         // console.log('end');
         // }, 1000);
-        // setTimeout(() => {
-        //     this.sendMessage('Самое последнее сообщение');
-        // }, 5000);
+        setTimeout(() => {
+            this.sendMessage('Самое последнее сообщение');
+        }, 5000);
+        setTimeout(() => {
+            this.sendMessage('2Самое последнее сообщение');
+        }, 7000);
     }
 
     private _handleMassage(e) {
         const data = JSON.parse(e.data);
-        console.log(e.data);
-
+        console.log(e);
         if (Array.isArray(data) && data.length) {
             if (data[0].id === 1) {
                 Store.set('currentChat.messages', data);

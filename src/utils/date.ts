@@ -58,3 +58,12 @@ function getWeekNumber(d: Date) {
     const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
     return weekNo;
 }
+
+
+export function getParseDate(dateString: string): object {
+    const date = new Date(dateString);
+    const obj = { date: '00.00.0000', time: '00:00' };
+    obj.date = `${dateZeroAdd(date.getDate())}.${dateZeroAdd(date.getMonth() + 1)}.${date.getFullYear()}`
+    obj.time = `${dateZeroAdd(date.getHours())}:${dateZeroAdd(date.getMinutes())}`;
+    return obj;
+}

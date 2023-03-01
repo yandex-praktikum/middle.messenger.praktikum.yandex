@@ -21,11 +21,11 @@ class ChatsController extends BaseController {
         }
     }
 
-    public async getToken() {
+    public async getToken(chatID) {
         try {
-            const { status, response } = await ChatsApi.getToken(5131);
+            const { status, response } = await ChatsApi.getToken(chatID);
             if (status === 200) {
-                return response;
+                return JSON.parse(response).token;
                 // this.store.set('chats', JSON.parse(response));
             } else if (status === 500) {
                 this.router.go('/500');
