@@ -53,9 +53,12 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
 }
 
 export function searchObjInArray(array: Array<Record<string, string | number>>, key: string, value: string) {
+    
+    console.log(array[0].last_message.content);
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
         if (item[key] === value) {
+            
             return { ...item };
         }
     }

@@ -55,6 +55,8 @@ class Router {
     }
 
     _onRoute(pathname: string): void {
+        console.log(Store.getState().auth);
+        
         if (Store.getState().auth) {
             if (pathname === AUTH || pathname === SIGNUP) {
                 pathname = MESSENGER;

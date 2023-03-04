@@ -152,6 +152,7 @@ export default class Block {
 
     private _makePropsProxy(props: TProps) {
         const self = this;
+        
         return new Proxy(props, {
             get(target: TProps, prop: string) {
                 const value: unknown = target[prop];
@@ -159,6 +160,7 @@ export default class Block {
             },
             set(target: TProps, prop: string, value: unknown): boolean {
                 // eslint-disable-next-line no-param-reassign
+                
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, self._prevProps, target);
                 return true;
@@ -206,7 +208,6 @@ export default class Block {
         const fragment = document.createElement('template');
         fragment.innerHTML = '';
         if (this.templator) fragment.innerHTML = this.templator(propsAndStubs);
-        // console.log(fragment);
         Object.values(this.children).forEach((child: Block) => {
             const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
 

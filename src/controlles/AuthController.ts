@@ -72,8 +72,8 @@ class AuthController extends BaseController {
         try {
             const { status, response } = await authApi.logout();
             if (status === 200) {
-                this.store.set('user', null);
-                this.store.set('auth', false);
+                this.store.setResetState();
+                // this.store.setResetState()
                 this.router.go('/');
             } else if (status === 500) {
                 this.router.go('/500');

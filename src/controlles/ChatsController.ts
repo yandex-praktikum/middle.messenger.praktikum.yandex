@@ -83,11 +83,13 @@ class ChatsController extends BaseController {
     }
 
     public selectChat(self, e) {
+        
         const target = e?.target as HTMLElement;
         const item = target.closest('.dialogs__item') as HTMLElement;
         if (!item) return;
         const active = item.dataset.dialogId ?? undefined;
         const chat = searchObjInArray(Store.getState().chats, 'id', Number(active));
+        
         if (chat && chat?.id !== Store?.getState()?.currentChat?.chat?.id) {
             Store.set('currentChat.chat', chat);
             return chat?.id;

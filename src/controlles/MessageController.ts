@@ -64,11 +64,13 @@ class MessageController {
 
     public disconnect() {
         if (!this.socket) return;
+        
+        
         clearInterval(this._ping);
         this._ping = undefined;
         this._offset = 0;
-        this.socket?.close();
         this._removeEvents();
+        this.socket?.close();
         this.socket = null;
     }
 
@@ -88,7 +90,6 @@ class MessageController {
     }
 
     private _handleOpen(e) {
-        console.log('open');
         Store.set('currentChat.messages', []);
         this.getMessage(0);
         this._ping = setInterval(() => {
@@ -121,6 +122,7 @@ class MessageController {
 
     private _handleMassage(e) {
         const data = JSON.parse(e.data);
+        
         if (Array.isArray(data) && data.length) {
             if (data[0].id === 1) {
                 Store.set('currentChat.messages', data);
@@ -147,8 +149,6 @@ class MessageController {
             type: 'get old',
         }));
         this._offset += 20;
-        console.log(this);
-
     }
 
     public sendMessage(message) {

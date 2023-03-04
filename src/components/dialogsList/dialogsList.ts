@@ -43,10 +43,14 @@ export default class DialogsList extends Block {
         });
         return compilesDialogs;
     }
-
+    public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
+        console.log(_newProps.dialogs[0]?.last_message?.content);
+        return true;
+    }
     render() {
-        console.log('RENDER');
+        
         const dialogs = this.dialogListCompile(this.props.dialogs);
+        
         return this.compile({ ...this.props, dialogs });
     }
 }

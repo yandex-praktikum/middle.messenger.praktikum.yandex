@@ -30,6 +30,7 @@ const { searchUsers } = UsersController;
 const { sendMessage, getMessage } = MessageController;
 
 export type TMessage = {
+    file: any;
     date: string,
     media: string,
     new: boolean,
@@ -69,6 +70,8 @@ class ChatPage extends Block {
 
     constructor() {
         // ChatsController.getChats();
+        // console.log('construktor');
+
         const props = {
             attr: {
                 class: 'app__chat-page',
@@ -85,6 +88,7 @@ class ChatPage extends Block {
             // },
         };
         super('main', props, templateChat);
+        ChatsController.getChats();
     }
 
     changeActiveDialog(e: Event): void {
@@ -108,10 +112,13 @@ class ChatPage extends Block {
 
     public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
         if (_newProps.dialogs !== _oldProps.dialogs) {
+            
             this.children.listDialog.setProps({
                 dialogs: _newProps.dialogs,
             });
         } if (_newProps.activeDialog !== _oldProps.activeDialog) {
+            console.log(_newProps);
+
             this.children.listDialog.setProps({
                 activeDialog: _newProps.activeDialog,
             });
@@ -241,6 +248,7 @@ export const activeDialog = new DialogActive({
             class: 'btn ellipsis',
         },
     }),
+    messages: [],
     events: {
         scroll: (self, e) => {
             if (e.target.scrollTop) return;
@@ -253,16 +261,16 @@ export const activeDialog = new DialogActive({
 export default connect(ChatPage);
 
 
-ChatsController.getToken().then(
-    (value) => {
-        console.log(Store.getState());
-        const socket = MessageController;
+// ChatsController.getToken().then(
+//     (value) => {
+//         console.log(Store.getState());
+//         const socket = MessageController;
 
-        socket.connect({ userId: 371570, chatId: 5131, token: JSON.parse(value).token });
-        console.log(socket);
+//         socket.connect({ userId: 371570, chatId: 5131, token: JSON.parse(value).token });
+//         console.log(socket);
 
-    });
-ChatsController.getChats();
+//     });
+// ChatsController.getChats();
 
 async function changeChat(self, e) {
     socket.disconnect();
