@@ -23,9 +23,11 @@ import SearchUsers from '../../components/searchUsers/searchUsers';
 import UsersController from '../../controlles/UsersController';
 import ChatsController from '../../controlles/ChatsController';
 import socket from '../../controlles/MessageController';
+import MessageController from '../../controlles/MessageController';
 
 const { addNewChatUser, createChat, selectChat, getToken } = ChatsController;
 const { searchUsers } = UsersController;
+const { sendMessage, getMessage } = MessageController;
 
 export type TMessage = {
     date: string,
@@ -71,7 +73,7 @@ class ChatPage extends Block {
             attr: {
                 class: 'app__chat-page',
             },
-            activeDialog: activeDialogTest,
+            activeDialog: activeDialog,
             listDialog: dialogsList,
             newChatBtn,
             profileLink,
@@ -137,6 +139,7 @@ class ChatPage extends Block {
             attr: {
                 class: 'new-msg-send-form form',
             },
+            controller: MessageController.sendMessage.bind(MessageController),
             items: [
                 new Input({
                     type: 'file',
@@ -167,7 +170,20 @@ class ChatPage extends Block {
                 },
             })],
             events: {
-                submit: onSubmit,
+                submit: (self, e) => {
+                    e.preventDefault();
+                    self.getFormData();
+                    Object.values(self.children).forEach((child: Block) => {
+                        if (child instanceof Input) {
+                            // const error = validator(child.props.validation, String(child.currentValue), getConfirmField(self, child));
+                            // if (error) send = false;
+                            child.setProps({
+                                value: '',
+                            });
+                        }
+                    });
+
+                },
             },
         });
     }
@@ -215,7 +231,7 @@ const dialogsList = new DialogsList({
     },
 });
 
-const activeDialogTest = new DialogActive({
+export const activeDialog = new DialogActive({
     attr: {
         class: 'current-dialog',
     },
@@ -225,6 +241,13 @@ const activeDialogTest = new DialogActive({
             class: 'btn ellipsis',
         },
     }),
+    events: {
+        scroll: (self, e) => {
+            if (e.target.scrollTop) return;
+            const callback = getMessage.bind(MessageController);
+            callback(20);
+        }
+    }
 });
 
 export default connect(ChatPage);

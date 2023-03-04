@@ -12,9 +12,10 @@ class Store extends EventBus {
         getPage: '/',
         chats: [],
         currentChat: {
+            scroll: 0,
             chat: null,
             messages: null,
-        }
+        },
     };
 
     public getState() {

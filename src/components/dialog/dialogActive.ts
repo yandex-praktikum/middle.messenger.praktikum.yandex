@@ -13,7 +13,6 @@ import Store from '../../classes/Store';
 class DialogActive extends Block {
     currentChat: any;
 
-    scroll: string | number | undefined;
 
     _dialogWindow: null | HTMLElement = null;
 
@@ -24,6 +23,7 @@ class DialogActive extends Block {
             props = {
                 currentChat: state.currentChat.chat,
                 dialog: state.currentChat.messages,
+                scroll: state.currentChat.scroll,
             };
         }
         return props;
@@ -32,6 +32,7 @@ class DialogActive extends Block {
     constructor(allProps: TProps) {
         const props: TProps = {
             ...allProps,
+            scroll: 0,
             messages: '',
             avatar: allProps.avatar ? allProps.avatar : avatarDefault,
         };
@@ -39,20 +40,47 @@ class DialogActive extends Block {
         setGroupMsgToProps(props);
         super('div', props, templateDialogActive);
 
+
+    }
+    // _addEvents() { 
+    //     this.events['scroll'] = this.test.bind(this);
+    //     this._element.addEventListener('scroll', this.events['scroll']);
+
+
+    //     super._addEvents();
+    // }
+
+    // test (e) {
+    //     if (e.target.scrollTop) return;
+    //     console.log(e.target.scrollTop);
+    // }
+    public scrollBottom() {
+        console.log(this._element);
+
+        this._element.scrollBy(0, this._element.scrollHeight + 100);
+    }
+    public scrollTop() {
+        this._element.scrollBy(0, - document.body.scrollHeight);
     }
 
-    public pushNewMessage() { }
-
     componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+
+        if (oldProps.scroll !== newProps.scroll) {
+            this.scrollBottom();
+            return false;
+        }
         if (oldProps.dialog !== newProps.dialog) {
+            console.log(oldProps.dialog);
+            console.log(newProps.dialog);
+
             const children = this._getChildren(newProps).children ?? {};
             this.children = {
                 btn: this.children.btn,
                 newMsgForm: this.children.newMsgForm,
                 ...children,
             };
+            return true;
         }
-        return true;
     }
 
     setProps = (nextProps: TProps): void => {
@@ -74,8 +102,6 @@ class DialogActive extends Block {
     render(): string | DocumentFragment {
         const element = this.compile(this.props);
         this._dialogWindow = element.querySelector('.dialog-window');
-        console.log(this._dialogWindow);
-
         return this.compile(this.props);
     }
 }

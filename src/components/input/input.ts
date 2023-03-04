@@ -43,6 +43,7 @@ export default class Input extends Block {
                 if (key === 'value') this.currentValue = newProps[key];
             }
         });
+        if (newProps)
         return update;
     }
 

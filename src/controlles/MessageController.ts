@@ -1,6 +1,8 @@
 import { wssBaseUrl } from '../utils/config';
 import EventBus from '../classes/EventBus';
 import Store from '../classes/Store';
+import dialogActive from '../components/dialog/dialogActive';
+import { activeDialog } from '../pages/chat/chat';
 
 export type wssConnectOptions = {
     userId: number | string,
@@ -24,6 +26,7 @@ class MessageController {
 
     private _ping: number | undefined;
 
+    private _offset: number = 0;
     public events: Record<string, Function> | {} = {};
 
     public baseUrl: string = wssBaseUrl;
@@ -63,6 +66,7 @@ class MessageController {
         if (!this.socket) return;
         clearInterval(this._ping);
         this._ping = undefined;
+        this._offset = 0;
         this.socket?.close();
         this._removeEvents();
         this.socket = null;
@@ -93,31 +97,42 @@ class MessageController {
                 // type: 'message',
             }));
         }, 5000);
+        // let i = 58;
+        // setInterval(() => {
+        //     this.socket?.send(JSON.stringify({
+        //         content: 'Сообщение ' + i,
+        //         type: 'message',
+        //     }));
+        //     i++;
+        // }, 2000);
         // let i = 100;
         // this._ping = setInterval(async () => {
         // i += 20;
         // await this.getMessage(i);
         // console.log('end');
         // }, 1000);
-        setTimeout(() => {
-            this.sendMessage('Самое последнее сообщение');
-        }, 5000);
-        setTimeout(() => {
-            this.sendMessage('2Самое последнее сообщение');
-        }, 7000);
+        // setTimeout(() => {
+        //     this.sendMessage('Самое последнее сообщение');
+        // }, 5000);
+        // setTimeout(() => {
+        //     this.sendMessage('2Самое последнее сообщение');
+        // }, 7000);
     }
 
     private _handleMassage(e) {
         const data = JSON.parse(e.data);
-        console.log(e);
         if (Array.isArray(data) && data.length) {
             if (data[0].id === 1) {
                 Store.set('currentChat.messages', data);
+                activeDialog.scrollBottom();
             } else {
                 Store.set('currentChat.messages', [...Store.getState().currentChat.messages, ...data]);
             }
+
         } else if (typeof data === 'object' && data?.type === 'message') {
             Store.set('currentChat.messages', [data, ...Store.getState().currentChat.messages,]);
+            activeDialog.scrollBottom();
+            this._offset += 1;
         };
     }
 
@@ -128,21 +143,24 @@ class MessageController {
 
     public getMessage(offset: number | string): void {
         this.socket?.send(JSON.stringify({
-            content: offset,
+            content: this._offset,
             type: 'get old',
         }));
+        this._offset += 20;
+        console.log(this);
+
     }
 
-    public sendMessage(message: 'string') {
+    public sendMessage(message) {
+        const content = message['messagе'];
         this.socket?.send(JSON.stringify({
-            content: message,
+            content: content,
             type: 'message',
         }));
+
     }
 
     private _handleClose(e) {
-        console.log(123);
-
         if (e.wasClean) {
             console.log('Соединение закрыто чисто');
         } else {

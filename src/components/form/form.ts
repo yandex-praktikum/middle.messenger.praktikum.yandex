@@ -48,10 +48,9 @@ export default class Form extends Block {
                 formData[child.props.name] = String(child.currentValue);
             }
         });
+        // console.log(formData);
         // eslint-disable-next-line no-console
-        console.log(formData);
         this.controller(formData);
-
         return formData;
     }
 
