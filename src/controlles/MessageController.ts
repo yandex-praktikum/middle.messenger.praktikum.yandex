@@ -3,6 +3,9 @@ import EventBus from '../classes/EventBus';
 import Store from '../classes/Store';
 import dialogActive from '../components/dialog/dialogActive';
 import { activeDialog } from '../pages/chat/chat';
+import ChatsController from './ChatsController';
+import ChatsApi from '../api/ChatsApi';
+import { searchObjInArray } from '../utils/object_utils';
 
 export type wssConnectOptions = {
     userId: number | string,
@@ -27,6 +30,10 @@ class MessageController {
     private _ping: number | undefined;
 
     private _offset: number = 0;
+
+    private _allMessage: boolean = false;
+
+
     public events: Record<string, Function> | {} = {};
 
     public baseUrl: string = wssBaseUrl;
@@ -41,10 +48,16 @@ class MessageController {
         this._handleClose = this._handleClose.bind(this);
     }
 
-    public connect(options: wssConnectOptions) {
-        this._userId = options.userId;
-        this._chatId = options.chatId;
-        this._token = options.token;
+    public async getConnectData() {
+        this._userId = Store?.getState()?.user?.id;
+        this._chatId = Store?.getState()?.currentChat?.chat?.id;
+        this._token = await this.getToken(this._chatId);
+    }
+
+    public async connect(options: wssConnectOptions) {
+
+        await this.getConnectData();
+        this._offset = 0;
         const url = `${this.baseUrl}/${this._userId}/${this._chatId}/${this._token}`;
         try {
             this.socket = new WebSocket(url);
@@ -55,6 +68,7 @@ class MessageController {
     }
 
     private _reconnect() {
+        this._allMessage = false;
         this.connect({
             userId: this._userId,
             chatId: this._chatId,
@@ -62,16 +76,29 @@ class MessageController {
         });
     }
 
-    public disconnect() {
+    public async disconnect() {
         if (!this.socket) return;
-        
-        
         clearInterval(this._ping);
+        this._allMessage = false;
         this._ping = undefined;
         this._offset = 0;
+
         this._removeEvents();
-        this.socket?.close();
+        await this.socket?.close();
         this.socket = null;
+    }
+
+    public async changeCurrentChat(id: number | undefined): void {
+        if (!id) return;
+        const chat = searchObjInArray(Store.getState().chats, 'id', Number(id));
+        if (chat && chat?.id !== Store?.getState()?.currentChat?.chat?.id) {
+            Store.set('currentChat.isLoading', true);
+            Store.set('currentChat.chat', chat);
+
+            await this.disconnect();
+            this.connect();
+            return;
+        }
     }
 
 
@@ -89,53 +116,56 @@ class MessageController {
         this.socket.removeEventListener(this.EVENTS.CLOSE, this._handleClose);
     }
 
+
+    private async getToken(chatID) {
+        try {
+            const { status, response } = await ChatsApi.getToken(chatID);
+            if (status === 200) {
+                return JSON.parse(response).token;
+                // this.store.set('chats', JSON.parse(response));
+            } else if (status === 500) {
+                this.router.go('/500');
+            } else {
+                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     private _handleOpen(e) {
         Store.set('currentChat.messages', []);
-        this.getMessage(0);
+        this.getMessage();
         this._ping = setInterval(() => {
             this.socket?.send(JSON.stringify({
-                // content: 'НовоеНовоеНовоеНовоеНовоеНовое',
-                // type: 'message',
+                content: '',
+                type: '',
             }));
-        }, 5000);
-        // let i = 58;
-        // setInterval(() => {
-        //     this.socket?.send(JSON.stringify({
-        //         content: 'Сообщение ' + i,
-        //         type: 'message',
-        //     }));
-        //     i++;
-        // }, 2000);
-        // let i = 100;
-        // this._ping = setInterval(async () => {
-        // i += 20;
-        // await this.getMessage(i);
-        // console.log('end');
-        // }, 1000);
-        // setTimeout(() => {
-        //     this.sendMessage('Самое последнее сообщение');
-        // }, 5000);
-        // setTimeout(() => {
-        //     this.sendMessage('2Самое последнее сообщение');
-        // }, 7000);
+        }, 20000);
     }
 
     private _handleMassage(e) {
+
         const data = JSON.parse(e.data);
-        
+        if (Array.isArray(data) && data.length < 20) {
+            this._allMessage = true;
+            Store.set('currentChat.isLoading', false);
+            Store.set('currentChat.isLoadingOldMsg', false);
+        }
         if (Array.isArray(data) && data.length) {
             if (data[0].id === 1) {
                 Store.set('currentChat.messages', data);
+                Store.set('currentChat.isLoading', false);
                 activeDialog.scrollBottom();
             } else {
                 Store.set('currentChat.messages', [...Store.getState().currentChat.messages, ...data]);
+                Store.set('currentChat.isLoadingOldMsg', false);
             }
-
         } else if (typeof data === 'object' && data?.type === 'message') {
             Store.set('currentChat.messages', [data, ...Store.getState().currentChat.messages,]);
             activeDialog.scrollBottom();
             this._offset += 1;
-        };
+        }
     }
 
     private _handleError(e) {
@@ -143,7 +173,13 @@ class MessageController {
         this.disconnect();
     }
 
-    public getMessage(offset: number | string): void {
+    public getMessage(): void {
+        if (this._allMessage) {
+            return;
+        }
+        if (this._offset) {
+            Store.set('currentChat.isLoadingOldMsg', true);
+        }
         this.socket?.send(JSON.stringify({
             content: this._offset,
             type: 'get old',
@@ -176,9 +212,7 @@ class MessageController {
     }
 
 
-    private close() { }
 
-    private send() { }
 }
 
 

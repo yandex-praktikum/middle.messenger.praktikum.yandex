@@ -54,6 +54,15 @@ export default class Form extends Block {
         return formData;
     }
 
+    resetForm(){
+
+        Object.values(this.children).forEach((child) => {
+            if (child instanceof Input) {
+                child.elementReser();
+            }
+        });
+    }
+
     render() {
         return this.compile(this.props);
     }

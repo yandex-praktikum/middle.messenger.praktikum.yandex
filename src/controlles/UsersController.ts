@@ -37,14 +37,8 @@ class UsersController extends BaseController {
     }
 
     public async searchUsers(self, value) {
-        console.log(self);
-        console.log(value);
-        console.log(this);
-
-
-
         if (!value) {
-            self.setProps({ items: [] })
+            self.setProps({ items: null });
             return;
         }
 

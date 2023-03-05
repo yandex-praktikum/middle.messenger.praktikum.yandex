@@ -61,138 +61,49 @@ class ChatPage extends Block {
         };
         if (state?.chats) {
             props = {
-                dialogs: state.chats,
-                activeDialog: state.currentChat?.chat?.id,
+                // activeDialog: state.currentChat?.chat?.id,
+                attr: {
+                    class: `app__chat-page ${state.currentChat?.isLoading ? 'loading' : ''} ${state.currentChat?.isLoadingOldMsg ? 'loadingOldMsg' : ''}`,
+                },
             };
         }
         return props;
     }
 
     constructor() {
-        // ChatsController.getChats();
-        // console.log('construktor');
-
         const props = {
             attr: {
                 class: 'app__chat-page',
             },
-            activeDialog: activeDialog,
-            listDialog: dialogsList,
-            newChatBtn,
+            activeDialog,
+            listDialog: new DialogsList(),
             profileLink,
+            newChatBtn,
             searchDialog,
-            // events: {
-            //     click: (self, e) => {
-            //         this.changeActiveDialog(e);
-            //     },
-            // },
+            events: {
+                click: (self, e) => {
+                    const target = e?.target as HTMLElement;
+                    const item = target.closest('.dialogs__item') as HTMLElement;
+                    if (!item) return;
+                    const active = item.dataset.dialogId ?? undefined;
+                    MessageController.changeCurrentChat(active, self);
+                },
+            },
         };
         super('main', props, templateChat);
         ChatsController.getChats();
+        // setInterval(ChatsController.getChats, 20000);
     }
 
-    changeActiveDialog(e: Event): void {
-        const target = e?.target as HTMLElement;
-        const item = target.closest('.dialogs__item') as HTMLElement;
-        if (!item) return;
-        const active = item.dataset.dialogId ?? undefined;
-        const dialog = this.searchActiveDialog(active);
 
-        if (!active || !dialog) return;
-        this.children.listDialog.setProps({
-            dialogs: [],
-            active,
-        });
-        this.children.activeDialog.setProps({
-            ...dialog,
-            messages: '',
-            avatar: dialog.avatar ? dialog.avatar : avatarDefault,
-        });
-    }
 
     public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
-        if (_newProps.dialogs !== _oldProps.dialogs) {
-            
-            this.children.listDialog.setProps({
-                dialogs: _newProps.dialogs,
-            });
-        } if (_newProps.activeDialog !== _oldProps.activeDialog) {
-            console.log(_newProps);
-
+        if (_newProps.activeDialog !== _oldProps.activeDialog) {
             this.children.listDialog.setProps({
                 activeDialog: _newProps.activeDialog,
             });
-
         }
         return true;
-    }
-
-    // static sortedDialogs(dialogs: Array<TDialog> = []): Array<TDialog> | [] {
-    //     const sortedDialogs = [...dialogs] ?? [];
-    //     if (!sortedDialogs) return [];
-    //     sortedDialogs.forEach((item) => {
-    //         item.dialog.sort((msg1, msg2) => (formattedDate(msg1.date, msg1.time).getTime() > formattedDate(msg2.date, msg2.time).getTime() ? 1 : -1));
-    //         item.newMsg = 0;
-    //         item.dialog.forEach((msg) => (msg.new ? item.newMsg++ : 0));
-    //         item.lastMsg = item.dialog[item.dialog.length - 1];
-    //     });
-    //     sortedDialogs.sort((dialog1, dialog2) => (formattedDate(dialog1.lastMsg.date, dialog1.lastMsg.time).getTime() < formattedDate(dialog2.lastMsg.date, dialog2.lastMsg.time).getTime() ? 1 : -1));
-    //     return sortedDialogs;
-    // }
-
-
-    static createNewMsgForm(): Form {
-        return new Form({
-            attr: {
-                class: 'new-msg-send-form form',
-            },
-            controller: MessageController.sendMessage.bind(MessageController),
-            items: [
-                new Input({
-                    type: 'file',
-                    name: 'inc',
-                    attr: {
-                        class: 'control-inc btn inc',
-                    },
-                    validation: {
-                        required: false,
-                    },
-                }),
-                new Input({
-                    attr: {
-                        class: 'control-input',
-                    },
-                    validation: {
-                        required: true,
-                        minlength: 1,
-                    },
-                    name: 'messagе',
-                    placeholder: 'Сообщение',
-                }),
-            ],
-            buttons: [new Button({
-                attr: {
-                    class: 'control-input btn arrownext',
-                    type: 'control-submit',
-                },
-            })],
-            events: {
-                submit: (self, e) => {
-                    e.preventDefault();
-                    self.getFormData();
-                    Object.values(self.children).forEach((child: Block) => {
-                        if (child instanceof Input) {
-                            // const error = validator(child.props.validation, String(child.currentValue), getConfirmField(self, child));
-                            // if (error) send = false;
-                            child.setProps({
-                                value: '',
-                            });
-                        }
-                    });
-
-                },
-            },
-        });
     }
 
     render() {
@@ -201,8 +112,11 @@ class ChatPage extends Block {
 }
 
 
-
 const searchDialog = new SearchUsers({
+    attr: {
+        class: 'search-block',
+    },
+    items: null,
     events: {
         change: searchUsers,
         click: addNewChatUser.bind(ChatsController),
@@ -217,6 +131,8 @@ const profileLink = new Link({
     spa: true,
     text: 'Профиль >',
 });
+
+
 const newChatBtn = new Button({
     attr: {
         class: 'btn',
@@ -224,17 +140,8 @@ const newChatBtn = new Button({
     text: 'Создать новый чат',
     events: {
         click: () => {
-            createChat(prompt('Введите название чата'));
+            createChat.bind(ChatsController)(prompt('Введите название чата'));
         },
-    },
-});
-
-const dialogsList = new DialogsList({
-    attr: {
-        class: 'dialogs',
-    },
-    events: {
-        click: changeChat,
     },
 });
 
@@ -242,41 +149,68 @@ export const activeDialog = new DialogActive({
     attr: {
         class: 'current-dialog',
     },
-    newMsgForm: ChatPage.createNewMsgForm(),
+    newMsgForm: new Form({
+        attr: {
+            class: 'new-msg-send-form form',
+        },
+        controller: MessageController.sendMessage.bind(MessageController),
+        items: [
+            new Input({
+                type: 'file',
+                name: 'inc',
+                attr: {
+                    class: 'control-inc btn inc',
+                },
+                validation: {
+                    required: false,
+                },
+            }),
+            new Input({
+                attr: {
+                    class: 'control-input',
+                },
+                validation: {
+                    required: true,
+                    minlength: 1,
+                },
+                name: 'messagе',
+                placeholder: 'Сообщение',
+            }),
+        ],
+        buttons: [new Button({
+            attr: {
+                class: 'control-input btn arrownext',
+                type: 'control-submit',
+            },
+        })],
+        events: {
+            submit: (self, e) => {
+                e.preventDefault();
+                self.getFormData();
+                self.resetForm();
+                self.getContent().focus();
+            },
+        },
+    }),
     btn: new Button({
         attr: {
-            class: 'btn ellipsis',
+            class: 'btn delete',
+        },
+        events: {
+            click: (self, e) => {
+                if (!confirm('Вы точно хотите удалить текущий чат?')) return;
+                ChatsController.deleteChats.bind(ChatsController)();
+            },
         },
     }),
     messages: [],
     events: {
         scroll: (self, e) => {
             if (e.target.scrollTop) return;
-            const callback = getMessage.bind(MessageController);
-            callback(20);
+            getMessage.bind(MessageController)();
         }
     }
 });
 
-export default connect(ChatPage);
+export default ChatPage;
 
-
-// ChatsController.getToken().then(
-//     (value) => {
-//         console.log(Store.getState());
-//         const socket = MessageController;
-
-//         socket.connect({ userId: 371570, chatId: 5131, token: JSON.parse(value).token });
-//         console.log(socket);
-
-//     });
-// ChatsController.getChats();
-
-async function changeChat(self, e) {
-    socket.disconnect();
-    const chatId = selectChat(self, e);
-    const userId = Store?.getState()?.user?.id;
-    const token = await getToken(chatId);
-    if (!chatId || !token || !userId) return;
-    socket.connect({ userId, chatId, token });
-}

@@ -32,6 +32,9 @@ export default class Input extends Block {
     }
 
     componentDidUpdate(oldProps: TInput, newProps: TInput): boolean {
+        console.log(oldProps.value);
+        console.log(newProps.value);
+
         let update = false;
         Object.keys(newProps).forEach((key) => {
             if (oldProps[key] !== newProps[key]) {
@@ -44,15 +47,22 @@ export default class Input extends Block {
             }
         });
         if (newProps)
-        return update;
+            return update;
     }
 
     // eslint-disable-next-line class-methods-use-this
     setCurrentValue(self: Input, e: Event): void {
+
         // eslint-disable-next-line no-undef
         const target = e?.target as HTMLInputElement;
         // eslint-disable-next-line no-param-reassign
         self.currentValue = target.value;
+    }
+
+    elementReser() {
+        
+        this.getContent().querySelector('input').value = '';
+        this.currentValue = '';
     }
 
     _addEvents(): void {

@@ -11,6 +11,7 @@ const initialState: Record<string, unknown> = {
     getPage: '/',
     chats: [],
     currentChat: {
+        isLoading: false,
         scroll: 0,
         chat: null,
         messages: null,
@@ -21,9 +22,12 @@ class Store extends EventBus {
     private state: Record<string, unknown> = {
         auth: false,
         user: null,
+        isLoading: false,
         getPage: '/',
         chats: [],
         currentChat: {
+            isLoading: false,
+            isLoadingOldMsg: false,
             scroll: 0,
             chat: null,
             messages: null,
@@ -36,6 +40,7 @@ class Store extends EventBus {
 
     public set(path: string, value: unknown) {
         try {
+
             set(this.state, path, value);
             this.emit(StoreEvents.Updated);
         } catch (e) {
@@ -48,9 +53,12 @@ class Store extends EventBus {
             this.state = {
                 auth: false,
                 user: null,
+                isLoading: false,
                 getPage: '/',
                 chats: [],
                 currentChat: {
+                    isLoading: false,
+                    isLoadingOldMsg: false,
                     scroll: 0,
                     chat: null,
                     messages: null,

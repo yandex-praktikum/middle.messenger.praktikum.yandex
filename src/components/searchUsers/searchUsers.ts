@@ -14,7 +14,7 @@ export default class SearchUsers extends Block {
             type: 'search',
 
         });
-        const items: never[] = [];
+        const items: never[] = null;
         props = {
             ...props,
             input,
@@ -50,15 +50,16 @@ export default class SearchUsers extends Block {
 
     render() {
         const fragment = document.createElement('template');
-        const { items = [] } = this.props;
+        const { items = null } = this.props;
         const { input } = this.children;
         fragment.content.append(input.getContent());
         const searchResultsBlock = document.createElement('div');
         searchResultsBlock.classList.add('search-results');
-        searchResultsBlock.textContent = items.length ? '' : 'По запросу ничего не найдено';
-        items.forEach(({ id, login }, key: number) => {
+        searchResultsBlock.textContent = items === null ? '' : items.length === 0 ? 'По запросу ничего не найдено' : '';
+        items?.forEach(({ login }, key: number) => {
             const itemBlock = document.createElement('div');
             itemBlock.dataset.key = String(key);
+            itemBlock.className = 'result-item';
             itemBlock.textContent = login;
             searchResultsBlock.append(itemBlock);
         });

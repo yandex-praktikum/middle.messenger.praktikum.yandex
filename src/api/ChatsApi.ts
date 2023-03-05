@@ -31,6 +31,8 @@ class ChatsApi extends BaseAPI {
     }
 
     public deleteChat(data: TOptionsData): Promise<any> {
+        console.log(data);
+        
         return this.http.delete('/', {
             data,
             headers: {

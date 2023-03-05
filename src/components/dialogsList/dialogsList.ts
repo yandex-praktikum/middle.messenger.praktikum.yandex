@@ -6,6 +6,7 @@ import { sliceLastMessage } from '../../utils/text';
 import avatarDefault from '../../assets/icon/avatar_default.png';
 import './dialogList.scss';
 import Store from '../../classes/Store';
+import { connect } from '../../utils/store';
 
 type TDialogItem = {
     avatar: string | null,
@@ -17,20 +18,35 @@ type TDialogItem = {
     unread_count: number,
     itemClass: string,
 }
-export default class DialogsList extends Block {
+class DialogsList extends Block {
     dialogs: Array<TDialogItem> | [] = [];
 
 
-    constructor(props: TProps) {
-        super('div', props, templateListDialogs);
+    constructor() {
+        super('div', {
+            attr: {
+                class: 'dialogs',
+            },
+
+        }, templateListDialogs);
     }
 
+    static getStateToProps(state) {
+        let props = {
+        };
+        if (state?.chats) {
+            props = {
+                dialogs: state.chats,
+                activeDialog: state?.currentChat?.chat?.id,
+            };
+        }
+        return props;
+    }
 
     dialogListCompile(dialogs: Array<TDialogItem> = []): Array<TDialogItem> | [] {
         const compilesDialogs: Array<TDialogItem> | undefined = [];
-        const activeDialog = Store.getState()?.currentChat?.chat?.id;
         dialogs.forEach((item) => {
-            const out = item?.last_message?.user.login === Store.getState()?.user?.login;
+            const out = item?.last_message?.user?.login === Store.getState()?.user?.login;
             compilesDialogs.push({
                 avatar: item.avatar ? item.avatar : avatarDefault,
                 id: item.id,
@@ -38,19 +54,16 @@ export default class DialogsList extends Block {
                 last_message_text: sliceLastMessage(item?.last_message?.content, out) ?? '',
                 last_message_time: getDateLastMessage(item?.last_message?.time) ?? '',
                 unread_count: item.unread_count ?? 2,
-                itemClass: item.id == this.props.activeDialog ? 'active' : '',
+                itemClass: item.id === this.props.activeDialog ? 'active' : '',
             });
         });
         return compilesDialogs;
     }
-    public componentDidUpdate(_oldProps: TProps, _newProps: TProps): boolean {
-        console.log(_newProps.dialogs[0]?.last_message?.content);
-        return true;
-    }
+
     render() {
-        
         const dialogs = this.dialogListCompile(this.props.dialogs);
-        
         return this.compile({ ...this.props, dialogs });
     }
 }
+
+export default connect(DialogsList);

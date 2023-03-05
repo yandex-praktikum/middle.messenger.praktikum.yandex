@@ -13,8 +13,9 @@ import {
 } from '../../utils/validation';
 import './auth.scss';
 import AuthController from '../../controlles/AuthController';
+import { connect } from '../../utils/store';
 
-export default class AuthPage extends Block {
+class AuthPage extends Block {
     constructor() {
         const props = {
             attr: {
@@ -24,6 +25,21 @@ export default class AuthPage extends Block {
         };
         super('main', props, templateAuth);
     }
+
+
+    static getStateToProps(state) {
+        let props = {
+        };
+        if (state?.chats) {
+            props = {
+                attr: {
+                    class: `app__auth-page ${state?.isLoading ? 'loading' : ''} ${state.currentChat?.isLoadingOldMsg ? 'loadingOldMsg' : ''}`,
+                },
+            };
+        }
+        return props;
+    }
+
 
     render() {
         return this.compile(this.props);
@@ -97,3 +113,6 @@ const pageForm = new Form({
     ],
 
 });
+
+
+export default connect(AuthPage);

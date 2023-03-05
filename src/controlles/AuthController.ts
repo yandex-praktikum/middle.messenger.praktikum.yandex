@@ -21,11 +21,14 @@ class AuthController extends BaseController {
 
     public async login(data: TOptionsData): Promise<void> {
         try {
+            this.store.set('isLoading', true);
             const { status, response } = await authApi.login(data);
             if (status === 200) {
                 this.store.set('auth', true);
                 this.router.go(MESSENGER);
                 this.getUserInfo();
+                this.store.set('isLoading', false);
+
             } else if (status === 500) {
                 this.router.go('/500');
             } else {

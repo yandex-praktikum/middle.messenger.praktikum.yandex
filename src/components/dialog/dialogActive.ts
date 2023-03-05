@@ -8,11 +8,11 @@ import mediaExample from '../../assets/img/example-media.jpg';
 import { connect } from '../../utils/store';
 import { getParseDate } from '../../utils/date';
 import Store from '../../classes/Store';
+import { isEqual } from '../../utils/object_utils';
 
 
 class DialogActive extends Block {
     currentChat: any;
-
 
     _dialogWindow: null | HTMLElement = null;
 
@@ -24,6 +24,9 @@ class DialogActive extends Block {
                 currentChat: state.currentChat.chat,
                 messages: state.currentChat.messages,
                 scroll: state.currentChat.scroll,
+                attr: {
+                    class: `current-dialog ${state.currentChat?.isLoading ? 'loading' : ''} ${state.currentChat?.isLoadingOldMsg ? 'loadingOldMsg' : ''}`,
+                },
             };
         }
         return props;
@@ -42,6 +45,7 @@ class DialogActive extends Block {
 
 
     public scrollBottom() {
+
         this._element.scrollBy(0, this._element.scrollHeight + 100);
     }
 
@@ -49,9 +53,13 @@ class DialogActive extends Block {
         this._element.scrollBy(0, - document.body.scrollHeight);
     }
 
-    // componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
-    //     return true;
-    // }
+    componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+        // if (isEqual(oldProps, newProps)) {
+        //     return false;
+        // }
+        
+        return true;
+    }
 
     public setProps = (nextProps: TProps): void => {
         if (!nextProps) {
