@@ -23,7 +23,7 @@ class DialogActive extends Block {
                 messages: state.currentChat.messages,
                 scroll: state.currentChat.scroll,
                 attr: {
-                    class: `current-dialog ${state.currentChat?.isLoading ? 'loading' : ''} ${state.currentChat?.isLoadingOldMsg ? 'loadingOldMsg' : ''}`,
+                    class: `current-dialog ${state.currentChat?.isLoading ? 'loading' : ''} ${state.currentChat?.isLoadingOldMsg ? 'loading-old-msg' : ''}`,
                 },
             };
         }

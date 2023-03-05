@@ -57,7 +57,7 @@ body {
       align-items: center;
 
       &::after {
-        animation: changeContent 0.8s linear infinite;
+        animation: change-content 0.8s linear infinite;
         display: block;
         content: "⠋";
         font-size: 80px;
@@ -68,7 +68,7 @@ body {
       }
     }
 
-    @keyframes changeContent {
+    @keyframes change-content {
       10% {
         content: "⠙";
       }
