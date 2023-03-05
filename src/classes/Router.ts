@@ -46,17 +46,14 @@ class Router {
 
     start(): void {
         window.onpopstate = ((event: Event) => {
-            console.log(event?.currentTarget?.location.pathname);
-
-            this._onRoute(event?.currentTarget?.location.pathname);
-        }).bind(this);
+            const target = event?.currentTarget as Window;
+            this._onRoute(target?.location.pathname);
+        });
 
         this._onRoute(window.location.pathname);
     }
 
     _onRoute(pathname: string): void {
-        console.log(Store.getState().auth);
-        
         if (Store.getState().auth) {
             if (pathname === AUTH || pathname === SIGNUP) {
                 pathname = MESSENGER;
@@ -66,7 +63,7 @@ class Router {
             pathname = AUTH;
             this.history.pushState({}, '', AUTH);
         }
-        
+
         const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute(ERROR404);
         if (!route) {
             return;
@@ -95,8 +92,6 @@ class Router {
     getRoute(pathname: string): Route | undefined {
         return this.routes.find((route) => route.match(pathname));
     }
-
-
 }
 
 export default new Router(rootBlockQuery);

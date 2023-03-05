@@ -96,24 +96,26 @@
   }
 
   &.loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .top-controls , .dialog-window, .bottom-controls {
-        display: none;
-      }
-      &:after {
-        animation: changeContent 0.8s linear infinite;
-        display: block;
-        content: "⠋";
-        font-size: 80px;
-      }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    .top-controls,
+    .dialog-window,
+    .bottom-controls {
+      display: none;
+    }
+
+    &::after {
+      animation: changeContent 0.8s linear infinite;
+      display: block;
+      content: "⠋";
+      font-size: 80px;
+    }
   }
-  &.loadingOldMsg {
 
-    .dialog-window{
-   
+  &.loadingOldMsg {
+    .dialog-window {
       &::before {
         animation: changeContent 0.8s linear infinite;
         display: block;
@@ -121,41 +123,46 @@
         font-size: 80px;
         text-align: center;
       }
-
     }
   }
- 
 
   @keyframes changeContent {
     10% {
       content: "⠙";
     }
+
     20% {
       content: "⠹";
     }
+
     30% {
       content: "⠸";
     }
+
     40% {
       content: "⠼";
     }
+
     50% {
       content: "⠴";
     }
+
     60% {
       content: "⠦";
     }
+
     70% {
       content: "⠧";
     }
+
     80% {
       content: "⠇";
     }
+
     90% {
       content: "⠏";
     }
   }
-
 }
 
 .dialog-window {
@@ -163,6 +170,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   .message {
     position: relative;
     width: fit-content;
@@ -222,7 +230,6 @@
           background: url("../../assets/icon/read.svg") no-repeat center;
           filter: grayscale(1);
 
-
           &.read-true {
             filter: none;
           }
@@ -236,6 +243,7 @@
       }
     }
   }
+
   .dialog-dategroup {
     font-weight: 500;
     font-size: 12px;

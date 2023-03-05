@@ -14,6 +14,7 @@ import {
 import './auth.scss';
 import AuthController from '../../controlles/AuthController';
 import { connect } from '../../utils/store';
+import { State } from '../../classes/Store';
 
 class AuthPage extends Block {
     constructor() {
@@ -27,7 +28,7 @@ class AuthPage extends Block {
     }
 
 
-    static getStateToProps(state) {
+    static getStateToProps(state: State) {
         let props = {
         };
         if (state?.chats) {

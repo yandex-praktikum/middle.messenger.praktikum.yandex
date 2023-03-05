@@ -1,11 +1,13 @@
+/* eslint-disable no-alert */
+/* eslint-disable consistent-return */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-undef */
 import { wssBaseUrl } from '../utils/config';
-import EventBus from '../classes/EventBus';
 import Store from '../classes/Store';
-import dialogActive from '../components/dialog/dialogActive';
 import { activeDialog } from '../pages/chat/chat';
-import ChatsController from './ChatsController';
 import ChatsApi from '../api/ChatsApi';
 import { searchObjInArray } from '../utils/object_utils';
+import router from '../classes/Router';
 
 export type wssConnectOptions = {
     userId: number | string,
@@ -21,9 +23,9 @@ class MessageController {
         CLOSE: 'close',
     };
 
-    private _userId: number | string;
+    private _userId: number | string | undefined;
 
-    private _chatId: number | string;
+    private _chatId: number | string | undefined;
 
     private _token: string;
 
@@ -48,14 +50,13 @@ class MessageController {
         this._handleClose = this._handleClose.bind(this);
     }
 
-    public async getConnectData() {
+    public async getConnectData(): Promise<void> {
         this._userId = Store?.getState()?.user?.id;
-        this._chatId = Store?.getState()?.currentChat?.chat?.id;
+        this._chatId = Number(Store?.getState()?.currentChat?.chat?.id);
         this._token = await this.getToken(this._chatId);
     }
 
-    public async connect(options: wssConnectOptions) {
-
+    public async connect(): Promise<void> {
         await this.getConnectData();
         this._offset = 0;
         const url = `${this.baseUrl}/${this._userId}/${this._chatId}/${this._token}`;
@@ -67,16 +68,12 @@ class MessageController {
         }
     }
 
-    private _reconnect() {
+    private _reconnect(): void {
         this._allMessage = false;
-        this.connect({
-            userId: this._userId,
-            chatId: this._chatId,
-            token: this._token,
-        });
+        this.connect();
     }
 
-    public async disconnect() {
+    public async disconnect(): Promise<void> {
         if (!this.socket) return;
         clearInterval(this._ping);
         this._allMessage = false;
@@ -88,7 +85,7 @@ class MessageController {
         this.socket = null;
     }
 
-    public async changeCurrentChat(id: number | undefined): void {
+    public async changeCurrentChat(id: number | undefined | string): Promise<void> {
         if (!id) return;
         const chat = searchObjInArray(Store.getState().chats, 'id', Number(id));
         if (chat && chat?.id !== Store?.getState()?.currentChat?.chat?.id) {
@@ -97,34 +94,32 @@ class MessageController {
 
             await this.disconnect();
             this.connect();
-            return;
         }
     }
 
 
     private _addEvents() {
-        this.socket.addEventListener(this.EVENTS.OPEN, this._handleOpen);
-        this.socket.addEventListener(this.EVENTS.MESSAGE, this._handleMassage);
-        this.socket.addEventListener(this.EVENTS.ERROR, this._handleError);
-        this.socket.addEventListener(this.EVENTS.CLOSE, this._handleClose);
+        this.socket?.addEventListener(this.EVENTS.OPEN, this._handleOpen);
+        this.socket?.addEventListener(this.EVENTS.MESSAGE, this._handleMassage);
+        this.socket?.addEventListener(this.EVENTS.ERROR, this._handleError);
+        this.socket?.addEventListener(this.EVENTS.CLOSE, this._handleClose);
     }
 
     private _removeEvents() {
-        this.socket.removeEventListener(this.EVENTS.OPEN, this._handleOpen);
-        this.socket.removeEventListener(this.EVENTS.MESSAGE, this._handleMassage);
-        this.socket.removeEventListener(this.EVENTS.ERROR, this._handleError);
-        this.socket.removeEventListener(this.EVENTS.CLOSE, this._handleClose);
+        this.socket?.removeEventListener(this.EVENTS.OPEN, this._handleOpen);
+        this.socket?.removeEventListener(this.EVENTS.MESSAGE, this._handleMassage);
+        this.socket?.removeEventListener(this.EVENTS.ERROR, this._handleError);
+        this.socket?.removeEventListener(this.EVENTS.CLOSE, this._handleClose);
     }
 
 
-    private async getToken(chatID) {
+    private async getToken(chatID: number) {
         try {
             const { status, response } = await ChatsApi.getToken(chatID);
             if (status === 200) {
                 return JSON.parse(response).token;
-                // this.store.set('chats', JSON.parse(response));
-            } else if (status === 500) {
-                this.router.go('/500');
+            } if (status === 500) {
+                router.go('/500');
             } else {
                 alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
             }
@@ -133,7 +128,7 @@ class MessageController {
         }
     }
 
-    private _handleOpen(e) {
+    private _handleOpen() {
         Store.set('currentChat.messages', []);
         this.getMessage();
         this._ping = setInterval(() => {
@@ -144,8 +139,7 @@ class MessageController {
         }, 20000);
     }
 
-    private _handleMassage(e) {
-
+    private _handleMassage(e: MessageEvent) {
         const data = JSON.parse(e.data);
         if (Array.isArray(data) && data.length < 20) {
             this._allMessage = true;
@@ -158,17 +152,19 @@ class MessageController {
                 Store.set('currentChat.isLoading', false);
                 activeDialog.scrollBottom();
             } else {
-                Store.set('currentChat.messages', [...Store.getState().currentChat.messages, ...data]);
+                const oldMessages = Store?.getState()?.currentChat?.messages ?? [];
+                Store.set('currentChat.messages', [...oldMessages, ...data]);
                 Store.set('currentChat.isLoadingOldMsg', false);
             }
         } else if (typeof data === 'object' && data?.type === 'message') {
-            Store.set('currentChat.messages', [data, ...Store.getState().currentChat.messages,]);
+            const oldMessages = Store?.getState()?.currentChat?.messages ?? [];
+            Store.set('currentChat.messages', [data, ...oldMessages]);
             activeDialog.scrollBottom();
             this._offset += 1;
         }
     }
 
-    private _handleError(e) {
+    private _handleError(e: any) {
         console.log('Ошибка', e.message);
         this.disconnect();
     }
@@ -187,16 +183,15 @@ class MessageController {
         this._offset += 20;
     }
 
-    public sendMessage(message) {
+    public sendMessage(message: Record<string, unknown>): void {
         const content = message['messagе'];
         this.socket?.send(JSON.stringify({
-            content: content,
+            content,
             type: 'message',
         }));
-
     }
 
-    private _handleClose(e) {
+    private _handleClose(e: any) {
         if (e.wasClean) {
             console.log('Соединение закрыто чисто');
         } else {
@@ -210,9 +205,6 @@ class MessageController {
             this._reconnect();
         }
     }
-
-
-
 }
 
 

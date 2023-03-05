@@ -66,12 +66,15 @@
       width: 3px;
       height: 15px;
     }
+
     &.delete {
       background-color: transparent;
       border-color: transparent;
+
       &:hover {
         opacity: 0.5;
       }
+
       &::after {
         background-image: url("../../assets/icon/delete.svg");
         background-size: contain;
@@ -79,6 +82,7 @@
         height: 100%;
       }
     }
+
     &.inc {
       background-color: transparent;
       border-color: transparent;

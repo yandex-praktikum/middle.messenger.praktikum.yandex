@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import Block, { TProps } from '../../classes/Block';
 import Input from '../input/input';
-import templateSearchUsers from './searchUsers.hbs';
 import './searchUsers.scss';
 
+
+export type TSearchItem = Record<string, string | number | null | boolean>;
 export default class SearchUsers extends Block {
     constructor(props: TProps) {
         const input = new Input({
@@ -14,53 +16,58 @@ export default class SearchUsers extends Block {
             type: 'search',
 
         });
-        const items: never[] = null;
+        const items: Array<TSearchItem> | [] | null = null;
         props = {
             ...props,
             input,
             items,
         };
-        super('div', props, templateSearchUsers);
+        super('div', props);
     }
 
     public _addEvents(): void {
         const { events = {} } = this.props;
         Object.keys(events).forEach((eventName) => {
             if (eventName === 'change') {
-                this.events[eventName] = (e) => {
-                    events[eventName](this, e.target.value ?? '');
+                this.events[eventName] = (e: Event) => {
+                    const target = e?.target as HTMLInputElement;
+                    events[eventName](this, target?.value ?? '');
                 };
             } else if (eventName === 'click') {
-                this.events[eventName] = (e) => {
-                    const elem = e.target.closest('[data-key]');
+                this.events[eventName] = (e: Event) => {
+                    const target = e?.target as HTMLInputElement;
+                    const elem = target.closest('[data-key]') as HTMLElement;
                     if (!elem) return;
-                    const key = elem?.dataset.key;
-                    if (confirm(`Вы хотите создать новый чат с пользователем ${this.props.items[key].login}`)) {
-                        events[eventName](this.props.items[key]);
-                        this.setProps({ items: [] });
-                        this.children.input.setProps({ value: '' });
-                    };
+                    const key = elem?.dataset.key ?? '';
+                    events[eventName](this.props.items[key]);
+                    this.setProps({ items: [] });
+                    this.children.input.setProps({ value: '' });
                 };
             } else {
                 this.events[eventName] = events[eventName].bind('', this);
             }
-            this._element.addEventListener(eventName, this.events[eventName]);
+            this.getContent().addEventListener(eventName, this.events[eventName]);
         });
     }
 
-    render() {
+    render(): DocumentFragment {
         const fragment = document.createElement('template');
         const { items = null } = this.props;
         const { input } = this.children;
         fragment.content.append(input.getContent());
         const searchResultsBlock = document.createElement('div');
         searchResultsBlock.classList.add('search-results');
-        searchResultsBlock.textContent = items === null ? '' : items.length === 0 ? 'По запросу ничего не найдено' : '';
-        items?.forEach(({ login }, key: number) => {
+        if (items === null || items.length) {
+            searchResultsBlock.textContent = '';
+        } else {
+            searchResultsBlock.textContent = 'По запросу ничего не найдено';
+        }
+        items?.forEach((item: TSearchItem, key: number) => {
             const itemBlock = document.createElement('div');
             itemBlock.dataset.key = String(key);
             itemBlock.className = 'result-item';
-            itemBlock.textContent = login;
+            const text = typeof item.login === 'string' ? item.login : '';
+            itemBlock.textContent = text;
             searchResultsBlock.append(itemBlock);
         });
         fragment.content.append(searchResultsBlock);

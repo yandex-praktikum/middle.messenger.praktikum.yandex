@@ -1,3 +1,9 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-undef */
+/* eslint-disable no-continue */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-plusplus */
 import Block from '../classes/Block';
 
 type PlainObject<T = any> = {
@@ -19,28 +25,27 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
     return isPlainObject(value) || isArray(value);
 }
 
-export function isEqual(lhs: PlainObject, rhs: PlainObject) {
+export function isEqual(lhs: PlainObject | string, rhs: PlainObject | string) {
     if (Object.keys(lhs).length !== Object.keys(rhs).length) {
         return false;
     }
-
-    for (const [key, value] of Object.entries(lhs)) {
-        const rightValue = rhs[key];
-        if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
-            if (isEqual(value, rightValue)) {
-                continue;
+    if (typeof rhs !== 'string') {
+        for (const [key, value] of Object.entries(lhs)) {
+            const rightValue = rhs[key];
+            if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+                if (isEqual(value, rightValue)) {
+                    continue;
+                }
+                return false;
             }
-            return false;
-        }
 
-        if (value !== rightValue) {
-            return false;
+            if (value !== rightValue) {
+                return false;
+            }
         }
     }
-
     return true;
 }
-
 
 
 export function render(query: string, block: Block): void {
@@ -50,7 +55,7 @@ export function render(query: string, block: Block): void {
         // eslint-disable-next-line new-cap
         root.append(block.getContent());
     }
-};
+}
 
 
 type Indexed<T = any> = {
@@ -91,20 +96,18 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
     return merge(object as Indexed, result);
 }
 
-export function searchObjInArray(array: Array<Record<string, string | number>>, key: string, value: string) {
-    
+export function searchObjInArray(array: Array<Record<string, string | number | unknown>>, key: string, value: string | number): Record<string, string | number> | undefined {
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
         if (item[key] === value) {
-            
             return cloneDeep(item);
         }
     }
     return undefined;
 }
 
-export function cloneDeep<T extends object = object>(obj: T) {
-    return (function _cloneDeep(item: T): T | Date | Set<unknown> | Map<unknown, unknown> | object | T[] {
+export function cloneDeep(obj: Record<string, unknown | any>): Record<string, unknown | any> {
+    return (function _cloneDeep(item: any): Record<string, unknown | any> {
         // Handle:
         // * null
         // * undefined
@@ -113,7 +116,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // * string
         // * symbol
         // * function
-        if (item === null || typeof item !== "object") {
+        if (item === null || typeof item !== 'object') {
             return item;
         }
 
@@ -126,7 +129,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // Handle:
         // * Array
         if (item instanceof Array) {
-            let copy = [];
+            const copy: any = [];
 
             item.forEach((_, i) => (copy[i] = _cloneDeep(item[i])));
 
@@ -136,9 +139,9 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // Handle:
         // * Set
         if (item instanceof Set) {
-            let copy = new Set();
+            const copy = new Set();
 
-            item.forEach(v => copy.add(_cloneDeep(v)));
+            item.forEach((v) => copy.add(_cloneDeep(v)));
 
             return copy;
         }
@@ -146,7 +149,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // Handle:
         // * Map
         if (item instanceof Map) {
-            let copy = new Map();
+            const copy = new Map();
 
             item.forEach((v, k) => copy.set(k, _cloneDeep(v)));
 
@@ -156,7 +159,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
         // Handle:
         // * Object
         if (item instanceof Object) {
-            let copy: object = {};
+            const copy: any = {};
 
             // Handle:
             // * Object.symbol

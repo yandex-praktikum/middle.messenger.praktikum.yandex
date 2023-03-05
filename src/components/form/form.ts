@@ -1,5 +1,4 @@
 import Block, { TProps } from '../../classes/Block';
-import BaseController from '../../controlles/BaseController';
 import Input from '../input/input';
 import templateForm from './form.hbs';
 import './form.scss';
@@ -48,14 +47,11 @@ export default class Form extends Block {
                 formData[child.props.name] = String(child.currentValue);
             }
         });
-        // console.log(formData);
-        // eslint-disable-next-line no-console
-        this.controller(formData);
+        if (this.controller) this.controller(formData);
         return formData;
     }
 
-    resetForm(){
-
+    resetForm() {
         Object.values(this.children).forEach((child) => {
             if (child instanceof Input) {
                 child.elementReser();

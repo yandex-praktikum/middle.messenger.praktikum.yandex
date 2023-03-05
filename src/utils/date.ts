@@ -1,20 +1,10 @@
 const weekDay: Array<string> = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
-
-type TlastMessage = {
-    date: string,
-    media: string,
-    new: boolean,
-    read: boolean,
-    text: string,
-    time: string,
-    type: string,
-}
 const dateZeroAdd = (date: number | string): string => {
     const string = String(date);
     if (string.length < 2) return `0${string}`;
     return string;
-}
+};
 
 export const getDateLastMessage = (obj: string): string => {
     if (!obj) return '';
@@ -38,7 +28,6 @@ export const formattedDate = (inDate: string, inTime: string = '00:00'): Date =>
 };
 
 
-
 export const getCurrentNumberWeek = (date: Date): number => {
     const year: number = date.getFullYear();
     const month: number = date.getMonth();
@@ -60,10 +49,10 @@ function getWeekNumber(d: Date) {
 }
 
 
-export function getParseDate(dateString: string): object {
+export function getParseDate(dateString: string | number): { date: string, time: string } {
     const date = new Date(dateString);
     const obj = { date: '00.00.0000', time: '00:00' };
-    obj.date = `${dateZeroAdd(date.getDate())}.${dateZeroAdd(date.getMonth() + 1)}.${date.getFullYear()}`
+    obj.date = `${dateZeroAdd(date.getDate())}.${dateZeroAdd(date.getMonth() + 1)}.${date.getFullYear()}`;
     obj.time = `${dateZeroAdd(date.getHours())}:${dateZeroAdd(date.getMinutes())}`;
     return obj;
 }

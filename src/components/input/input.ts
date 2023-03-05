@@ -32,9 +32,6 @@ export default class Input extends Block {
     }
 
     componentDidUpdate(oldProps: TInput, newProps: TInput): boolean {
-        console.log(oldProps.value);
-        console.log(newProps.value);
-
         let update = false;
         Object.keys(newProps).forEach((key) => {
             if (oldProps[key] !== newProps[key]) {
@@ -46,38 +43,38 @@ export default class Input extends Block {
                 if (key === 'value') this.currentValue = newProps[key];
             }
         });
-        if (newProps)
-            return update;
+        return update;
     }
 
     // eslint-disable-next-line class-methods-use-this
     setCurrentValue(self: Input, e: Event): void {
-
         // eslint-disable-next-line no-undef
         const target = e?.target as HTMLInputElement;
         // eslint-disable-next-line no-param-reassign
         self.currentValue = target.value;
     }
 
-    elementReser() {
-        
-        this.getContent().querySelector('input').value = '';
+    elementReser(): void {
+        // eslint-disable-next-line no-undef
+        const element = this.getContent().querySelector('input') as HTMLInputElement | null;
+        if (!element) return;
+        element.value = '';
         this.currentValue = '';
     }
 
     _addEvents(): void {
         this.events.setCurrentValue = this.setCurrentValue.bind('', this);
-        this._element.addEventListener('input', this.events.setCurrentValue);
+        this.getContent().addEventListener('input', this.events.setCurrentValue);
         super._addEvents();
     }
 
     _removeEvents(): void {
-        this._element.removeEventListener('input', this.events.setCurrentValue);
+        this.getContent().removeEventListener('input', this.events.setCurrentValue);
         super._removeEvents();
     }
 
     errorUpdate(): void {
-        const errorBlock = this._element.querySelector('.error') ?? '';
+        const errorBlock = this.getContent().querySelector('.error') ?? '';
         if (!errorBlock) return;
         errorBlock.textContent = this.props.error;
     }

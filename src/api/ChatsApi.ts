@@ -8,7 +8,7 @@ class ChatsApi extends BaseAPI {
         return this.http.get('/');
     }
 
-    public getToken(id: string | number): Promise<any> {
+    public getToken(id: number): Promise<any> {
         return this.http.post(`/token/${id}`);
     }
 
@@ -21,7 +21,7 @@ class ChatsApi extends BaseAPI {
         });
     }
 
-    public addUsers(chatId: number | string, users: Array<number | string>): Promise<any> {
+    public addUsers(chatId: number, users: Array<number>): Promise<any> {
         return this.http.put('/users', {
             data: { chatId, users },
             headers: {
@@ -31,8 +31,6 @@ class ChatsApi extends BaseAPI {
     }
 
     public deleteChat(data: TOptionsData): Promise<any> {
-        console.log(data);
-        
         return this.http.delete('/', {
             data,
             headers: {

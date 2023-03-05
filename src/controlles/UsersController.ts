@@ -1,4 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-alert */
 import UsersApi from '../api/UsersApi';
+import Block from '../classes/Block';
 import { TOptionsData } from '../classes/HTTPTransport';
 import BaseController from './BaseController';
 
@@ -36,17 +39,15 @@ class UsersController extends BaseController {
         }
     }
 
-    public async searchUsers(self, value) {
+    public async searchUsers(self: Block, value: string) {
         if (!value) {
             self.setProps({ items: null });
             return;
         }
-
         try {
             const { status, response } = await UsersApi.searchUser(value);
             if (status === 200) {
-                self.setProps({ items: JSON.parse(response) })
-                console.log(response);
+                self.setProps({ items: JSON.parse(response) });
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
@@ -56,6 +57,7 @@ class UsersController extends BaseController {
             console.log(e);
         }
     }
+
     // eslint-disable-next-line no-undef
     public async changeAvatar(file: FormData) {
         try {

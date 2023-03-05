@@ -1,25 +1,30 @@
 import { set } from '../utils/object_utils';
 import EventBus from './EventBus';
 
+// eslint-disable-next-line no-shadow
 export enum StoreEvents {
     Updated = 'updated',
 }
+export type Chat = Record<string, number | string | unknown>
 
-const initialState: Record<string, unknown> = {
-    auth: false,
-    user: null,
-    getPage: '/',
-    chats: [],
+// export type State = Record<string, boolean | string | object | null>;
+export type State = {
+    auth: boolean,
+    user: null | Record<string, string | number>,
+    isLoading: false,
+    getPage: string,
+    chats: Array<Chat>,
     currentChat: {
-        isLoading: false,
-        scroll: 0,
-        chat: null,
-        messages: null,
+        isLoading: boolean,
+        isLoadingOldMsg: boolean,
+        scroll: number,
+        chat: null | Chat,
+        messages: Array<Chat> | null,
     },
 };
 
 class Store extends EventBus {
-    private state: Record<string, unknown> = {
+    private state: State = {
         auth: false,
         user: null,
         isLoading: false,
@@ -34,13 +39,12 @@ class Store extends EventBus {
         },
     };
 
-    public getState() {
+    public getState(): State {
         return this.state;
     }
 
-    public set(path: string, value: unknown) {
+    public set(path: string, value: unknown): void {
         try {
-
             set(this.state, path, value);
             this.emit(StoreEvents.Updated);
         } catch (e) {
@@ -48,7 +52,7 @@ class Store extends EventBus {
         }
     }
 
-    public setResetState() {
+    public setResetState(): void {
         try {
             this.state = {
                 auth: false,
@@ -64,7 +68,6 @@ class Store extends EventBus {
                     messages: null,
                 },
             };
-
             this.emit(StoreEvents.Updated);
         } catch (e) {
             console.log(e);

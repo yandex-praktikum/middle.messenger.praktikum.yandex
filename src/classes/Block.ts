@@ -2,6 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { v4 } from 'uuid';
 import EventBus from './EventBus';
+import { State } from './Store';
 
 export interface TProps {
     [index: string]: any,
@@ -16,8 +17,8 @@ export default class Block {
         FLOW_RENDER: 'flow:render',
     };
 
-    static getStateToProps(state) {
-        return state;
+    static getStateToProps(state: State): TProps {
+        return { ...state };
     }
 
     public props: TProps;
@@ -27,13 +28,11 @@ export default class Block {
 
     public events: Record<string, Function> | any;
 
-    private _prevProps: TProps;
+    public _prevProps: TProps;
 
     public children: TProps;
 
-    private _id: string | null = null;
-
-    private _reRender: boolean;
+    public _id: string | null = null;
 
     public eventBus: () => EventBus;
 
@@ -57,8 +56,6 @@ export default class Block {
         this.templator = templator;
 
         this._id = v4();
-
-        this._reRender = false;
 
         this.props = this._makePropsProxy({ ...propsSimple, _id: this._id });
 
@@ -152,7 +149,7 @@ export default class Block {
 
     private _makePropsProxy(props: TProps) {
         const self = this;
-        
+
         return new Proxy(props, {
             get(target: TProps, prop: string) {
                 const value: unknown = target[prop];
@@ -160,7 +157,6 @@ export default class Block {
             },
             set(target: TProps, prop: string, value: unknown): boolean {
                 // eslint-disable-next-line no-param-reassign
-                
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, self._prevProps, target);
                 return true;
@@ -226,7 +222,6 @@ export default class Block {
         const props: Record<string, unknown> = {};
 
         Object.entries(propsAndChildren).forEach(([key, value]) => {
-
             if (value instanceof Block) {
                 children[key] = value;
             } else {

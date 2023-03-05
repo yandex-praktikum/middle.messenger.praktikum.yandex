@@ -1,11 +1,10 @@
-import Block from '../classes/Block';
 import store, { StoreEvents } from '../classes/Store';
 
 // eslint-disable-next-line import/prefer-default-export
-export function connect(Component: typeof Block) {
+export function connect(Component: any): any {
     // используем class expression
     return class extends Component {
-        constructor(...args) {
+        constructor(...args: any) {
             // не забываем передать все аргументы конструктора
             super(...args);
             // подписываемся на событие

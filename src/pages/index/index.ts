@@ -1,5 +1,7 @@
 import '../../assets/style/app.scss';
-import router, { AUTH, ERROR404, ERROR500, MESSENGER, SETTINGS, SIGNUP } from '../../classes/Router';
+import router, {
+    AUTH, ERROR404, ERROR500, MESSENGER, SETTINGS, SIGNUP,
+} from '../../classes/Router';
 import Store from '../../classes/Store';
 import AuthController from '../../controlles/AuthController';
 // import Store from '../../classes/Store';
@@ -10,8 +12,7 @@ import ProfilePage from '../profile/profile';
 import RegPage from '../reg/reg';
 
 export default function initApp() {
-    window.store = Store;
-    AuthController.getUserInfo().then((res) => {
+    AuthController.getUserInfo().then(() => {
         router
             .use(AUTH, AuthPage)
             .use(SIGNUP, RegPage)

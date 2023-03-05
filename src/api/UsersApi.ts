@@ -29,7 +29,7 @@ class UsersApi extends BaseAPI {
         });
     }
 
-    public getUser(id: string | number): Promise<any> {
+    public getUser(id: number): Promise<any> {
         return this.http.get(`/user/${id}`);
     }
 

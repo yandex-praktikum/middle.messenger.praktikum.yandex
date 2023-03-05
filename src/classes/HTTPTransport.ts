@@ -18,12 +18,13 @@ type HTTPRequest = (url: string, options?: TOptions, timeout?: number) => Promis
 
 // Самая простая версия. Реализовать штучку со всеми проверками им предстоит в конце спринта
 // Необязательный метод
-function queryStringify(data: TOptionsData): string {
+// eslint-disable-next-line no-undef
+function queryStringify(data: TOptionsData | FormData): string {
+    // eslint-disable-next-line no-undef
+    if (data instanceof FormData) return '';
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
     }
-
-    // Здесь достаточно и [object Object] для объекта
     const keys = Object.keys(data);
     return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
@@ -43,6 +44,7 @@ export default class HTTPTransport {
 
     public delete: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.DELETE }, options.timeout);
 
+    // eslint-disable-next-line class-methods-use-this
     public request: HTTPRequest = (url = '', options = {}, timeout = 5000): Promise<unknown | void> => {
         const { headers = {}, method, data } = options;
 
@@ -65,8 +67,6 @@ export default class HTTPTransport {
             );
             xhr.withCredentials = true;
             Object.keys(headers).forEach((key) => {
-                console.log(key);
-
                 xhr.setRequestHeader(key, headers[key]);
             });
 
@@ -84,10 +84,10 @@ export default class HTTPTransport {
             if (isGet || !data) {
                 xhr.send();
             } else {
+                // eslint-disable-next-line no-undef
                 const sendData = data instanceof FormData ? data : JSON.stringify(data);
                 xhr.send(sendData);
             }
         });
     };
 }
-

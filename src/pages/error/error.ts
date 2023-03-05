@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import '../../assets/style/app.scss';
 import './error.scss';
 
@@ -19,7 +20,7 @@ class ErrorPage extends Block {
                     class: 'link',
                 },
             }),
-        }
+        };
         super('main', props, templateErrorPage);
     }
 

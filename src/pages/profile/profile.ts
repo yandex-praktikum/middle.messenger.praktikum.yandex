@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
 import Block, { TProps } from '../../classes/Block';
 import Link from '../../components/link/link';
-import List from '../../components/list/list';
 import Button from '../../components/button/button';
 import Form from '../../components/form/form';
 import templateProfile from './profile.hbs';
 import avatarImg from '../../assets/icon/avatar_default.png';
-import { exampleProfileData } from '../../../static/exampleData.json';
 import Input from '../../components/input/input';
 import {
     EMAIL_REGEX, LOGIN_REGEX, FIRST_NAME_REGEX, SECOND_NAME_REGEX, PHONE_REGEX, PASSWORD_REGEX, DISPLAY_NAME_REGEX, onBlur, onFocus, onSubmit,
@@ -16,14 +14,10 @@ import AuthController from '../../controlles/AuthController';
 import { connect } from '../../utils/store';
 import UsersController from '../../controlles/UsersController';
 import { resourcesUrl } from '../../utils/config';
+import { State } from '../../classes/Store';
 
-type TProfileElement = {
-    label: string,
-    value: string | number
-}
 
 class ProfilePage extends Block {
-
     constructor() {
         const formDataProfile = new Form({
             attr: {
@@ -259,11 +253,11 @@ class ProfilePage extends Block {
                     text: 'Выйти',
                     events: {
                         click: AuthController.logout.bind(AuthController),
-                    }
+                    },
                 }),
             ],
         };
-        const { buttons, data } = propsPage;
+        const { buttons } = propsPage;
         const props: TProps = {
             ...propsPage,
             buttons: '',
@@ -283,7 +277,7 @@ class ProfilePage extends Block {
         super('main', props, templateProfile);
     }
 
-    static getStateToProps(state) {
+    static getStateToProps(state: State): TProps {
         let props = {};
         if (state?.user) {
             props = {
@@ -309,29 +303,29 @@ class ProfilePage extends Block {
     }
 
     viewListData(): void {
-        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        const listDataProfile = this.getContent().querySelector('.list-data-profile') as HTMLElement;
         listDataProfile.style.display = '';
         this.children.formDataProfile.hide();
         this.children.formPassProfile.hide();
-        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        const profileButtons = this.getContent().querySelector('.profile__buttons') as HTMLElement;
         profileButtons.style.display = '';
     }
 
     viewFormData(): void {
-        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        const listDataProfile = this.getContent().querySelector('.list-data-profile') as HTMLElement;
         listDataProfile.style.display = 'none';
         this.children.formDataProfile.show();
         this.children.formPassProfile.hide();
-        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        const profileButtons = this.getContent().querySelector('.profile__buttons') as HTMLElement;
         profileButtons.style.display = 'none';
     }
 
     viewFormPassword(): void {
-        const listDataProfile = this._element.querySelector('.list-data-profile') as HTMLElement;
+        const listDataProfile = this.getContent().querySelector('.list-data-profile') as HTMLElement;
         listDataProfile.style.display = 'none';
         this.children.formDataProfile.hide();
         this.children.formPassProfile.show();
-        const profileButtons = this._element.querySelector('.profile__buttons') as HTMLElement;
+        const profileButtons = this.getContent().querySelector('.profile__buttons') as HTMLElement;
         profileButtons.style.display = 'none';
     }
 
@@ -357,7 +351,7 @@ const avatarUpload = new Input({
     },
     events: {
         change: changeAvatar,
-    }
+    },
 });
 
 const inputDefaultProps = {
@@ -373,6 +367,9 @@ export default connect(ProfilePage);
 
 function changeAvatar(_self: Block, e: Event) {
     const data = new FormData();
-    data.append('avatar', e.target?.files[0]);
+    const elem = e.target as HTMLInputElement;
+    if (elem.files) {
+        data.append('avatar', elem.files[0]);
+    }
     UsersController.changeAvatar(data);
 }

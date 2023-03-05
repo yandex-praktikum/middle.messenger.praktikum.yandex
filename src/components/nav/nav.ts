@@ -8,9 +8,9 @@ type TNav = {
 
 export default class Nav extends Block {
     constructor(props: TNav) {
-        console.log(props.links);
         super('nav', props);
     }
+
     render() {
         const fragment = document.createElement('template');
         const { links = [] } = this.props;

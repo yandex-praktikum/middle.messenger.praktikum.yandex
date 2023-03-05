@@ -1,25 +1,24 @@
 import templateListDialogs from './dialogList.hbs';
 import Block, { TProps } from '../../classes/Block';
-import { TDialog } from '../../pages/chat/chat';
 import { getDateLastMessage } from '../../utils/date';
 import { sliceLastMessage } from '../../utils/text';
 import avatarDefault from '../../assets/icon/avatar_default.png';
 import './dialogList.scss';
-import Store from '../../classes/Store';
+import Store, { Chat, State } from '../../classes/Store';
 import { connect } from '../../utils/store';
 
 type TDialogItem = {
     avatar: string | null,
     id: number,
     title: string,
-    last_message?: Record<string, string | number> | null,
+    last_message?: Record<string, string | number | unknown | any> | null,
     last_message_text?: string,
     last_message_time?: string,
     unread_count: number,
     itemClass: string,
 }
 class DialogsList extends Block {
-    dialogs: Array<TDialogItem> | [] = [];
+    dialogs: Array<Chat> | [] = [];
 
 
     constructor() {
@@ -31,7 +30,7 @@ class DialogsList extends Block {
         }, templateListDialogs);
     }
 
-    static getStateToProps(state) {
+    static getStateToProps(state: State): TProps {
         let props = {
         };
         if (state?.chats) {
