@@ -1,0 +1,107 @@
+.app__profile-page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+.app__profile-page .backlink {
+  height: 100%;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 2px solid white;
+}
+.app__profile-page .profile {
+  width: 500px;
+  padding: 60px 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 60px;
+}
+.app__profile-page .profile__avatar .avatar-img {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app__profile-page .profile__avatar .avatar-img img {
+  width: 100%;
+  height: 100%;
+}
+.app__profile-page .profile__avatar .avatar-img .avatar-change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.app__profile-page .profile__avatar .avatar-img .avatar-change .text-label {
+  visibility: visible;
+  font-size: 16px;
+  line-height: 20px;
+}
+.app__profile-page .profile__avatar .avatar-img .avatar-change .error,
+.app__profile-page .profile__avatar .avatar-img .avatar-change input {
+  display: none;
+}
+.app__profile-page .profile__avatar .avatar-img .avatar-change:hover {
+  opacity: 0.5;
+}
+.app__profile-page .profile__buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.app__profile-page .profile__buttons .btn {
+  border-bottom: 1px solid #e72933;
+  width: 100%;
+  text-align: left;
+}
+.app__profile-page .profile__buttons .btn:last-child {
+  border: transparent;
+}
+.app__profile-page .profile__data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.app__profile-page .profile__data .list li {
+  border-bottom: 1px solid #e72933;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  padding: 10px 0;
+}
+.app__profile-page .profile__data .list li:last-child {
+  border: transparent;
+}
+.app__form.profile-form {
+  width: 100%;
+  background-color: transparent;
+  gap: 40px;
+}
+.app .form__items {
+  margin-bottom: 0;
+}
+.app .form__buttons {
+  align-items: center;
+}/*# sourceMappingURL=profile.css.map */

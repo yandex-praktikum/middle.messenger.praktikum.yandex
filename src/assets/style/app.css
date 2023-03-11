@@ -1,0 +1,87 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+html {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #1c1c1c;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.app__index-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.app__nav {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.app__nav a {
+  font-size: 30px;
+}
+.app__auth-page.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app__auth-page.loading::after {
+  animation: change-content 0.8s linear infinite;
+  display: block;
+  content: "⠋";
+  font-size: 80px;
+}
+.app__auth-page.loading .container {
+  display: none;
+}
+@keyframes change-content {
+  10% {
+    content: "⠙";
+  }
+  20% {
+    content: "⠹";
+  }
+  30% {
+    content: "⠸";
+  }
+  40% {
+    content: "⠼";
+  }
+  50% {
+    content: "⠴";
+  }
+  60% {
+    content: "⠦";
+  }
+  70% {
+    content: "⠧";
+  }
+  80% {
+    content: "⠇";
+  }
+  90% {
+    content: "⠏";
+  }
+}/*# sourceMappingURL=app.css.map */

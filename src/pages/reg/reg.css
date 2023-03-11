@@ -1,0 +1,12 @@
+.app__reg-page {
+  height: 100%;
+  width: 100%;
+}
+.app__reg-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=reg.css.map */

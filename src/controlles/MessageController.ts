@@ -29,7 +29,7 @@ class MessageController {
 
     private _token: string;
 
-    private _ping: number | undefined;
+    private _ping: number | undefined | any;
 
     private _offset: number = 0;
 

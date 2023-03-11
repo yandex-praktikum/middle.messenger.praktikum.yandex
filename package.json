@@ -1,13 +1,21 @@
 {
-  "name": "middle.messenger.praktikum.yandex",
+  "devDependencies": {
+    "@webpack-cli/generators": "^3.0.1",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.4",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
   "version": "1.0.0",
   "description": "---",
-  "scripts": {
-    "dev": "parcel static/*.html",
-    "watch": "parcel watch static/*.html",
-    "build": "parcel build static/*.html",
-    "start": "parcel build static/*.html && node ./server.js"
-  },
+  "name": "middle.messenger.praktikum.yandex",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dream2000i/middle.messenger.praktikum.yandex.git"
@@ -18,36 +26,14 @@
     "url": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex#readme",
-  "dependencies": {
-    "express": "4.18.2",
-    "handlebars": "4.7.7",
-    "parcel": "2.8.2",
-    "uuid": "^9.0.0"
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
-  "devDependencies": {
-    "@parcel/transformer-sass": "2.8.2",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "assert": "2.0.0",
-    "browserify-zlib": "0.2.0",
-    "buffer": "5.7.1",
-    "crypto-browserify": "3.12.0",
-    "eslint": "^8.32.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
-    "events": "3.3.0",
-    "marked": "4.2.5",
-    "parcel-transformer-hbs": "1.0.4",
-    "path-browserify": "1.0.1",
-    "process": "0.11.10",
-    "punycode": "1.4.1",
-    "querystring-es3": "0.2.1",
-    "stream-browserify": "3.0.0",
-    "stream-http": "3.2.0",
-    "stylelint": "^14.16.1",
-    "stylelint-config-standard-scss": "^6.1.0",
-    "url": "0.11.0",
-    "typescript": "^4.9.5",
-    "util": "0.12.5"
+  "dependencies": {
+    "handlebars-loader": "^1.7.3"
   }
 }
