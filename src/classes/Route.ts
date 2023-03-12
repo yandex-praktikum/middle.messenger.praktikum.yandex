@@ -25,11 +25,6 @@ export default class Route {
         }
     }
 
-    leave(): void {
-        if (this._block) {
-            this._block.hide();
-        }
-    }
 
     match(pathname: string): boolean {
         return isEqual(pathname, this._pathname);
@@ -41,6 +36,6 @@ export default class Route {
         }
         this._block = new this._blockClass();
         render(this._props.rootQuery, this._block);
-        Store.set('', '');
+        Store.updateEmit();
     }
 }

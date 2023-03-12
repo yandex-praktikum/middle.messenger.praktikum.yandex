@@ -25,12 +25,12 @@ export default class Form extends Block {
         };
 
         items.forEach((item) => {
-            const id = item._id ?? '';
+            const id = item.id ?? '';
             props[id] = item;
             props.formItems += `<div data-id="${id}"></div>`;
         });
         buttons.forEach((item) => {
-            const id = item._id ?? '';
+            const id = item.id ?? '';
             props[id] = item;
             props.formButtons += `<div data-id="${id}"></div>`;
         });

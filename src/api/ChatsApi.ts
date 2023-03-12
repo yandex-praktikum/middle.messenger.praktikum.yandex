@@ -1,18 +1,22 @@
 import HTTPTransport, { TOptionsData } from '../classes/HTTPTransport';
-import BaseAPI from './BaseApi';
+import { baseUrl } from '../utils/config';
 
-class ChatsApi extends BaseAPI {
-    public http = new HTTPTransport(`${this.baseUrl}/chats`);
+type Chats = Record<string, string|number>;
 
-    public getChats(): Promise<any> {
+class ChatsApi {
+    baseUrl: string = `${baseUrl}/chats`;
+
+    public http = new HTTPTransport(this.baseUrl);
+
+    public getChats(): Promise<Chats> {
         return this.http.get('/');
     }
 
-    public getToken(id: number): Promise<any> {
+    public getToken(id: number): Promise<Chats> {
         return this.http.post(`/token/${id}`);
     }
 
-    public createChat(title: string): Promise<any> {
+    public createChat(title: string): Promise<Chats> {
         return this.http.post('/', {
             data: { title },
             headers: {
@@ -21,7 +25,7 @@ class ChatsApi extends BaseAPI {
         });
     }
 
-    public addUsers(chatId: number, users: Array<number>): Promise<any> {
+    public addUsers(chatId: number, users: Array<number>): Promise<Chats> {
         return this.http.put('/users', {
             data: { chatId, users },
             headers: {
@@ -30,7 +34,7 @@ class ChatsApi extends BaseAPI {
         });
     }
 
-    public deleteChat(data: TOptionsData): Promise<any> {
+    public deleteChat(data: TOptionsData): Promise<Chats> {
         return this.http.delete('/', {
             data,
             headers: {
@@ -39,7 +43,7 @@ class ChatsApi extends BaseAPI {
         });
     }
 
-    public deleteUsers(data: TOptionsData): Promise<any> {
+    public deleteUsers(data: TOptionsData): Promise<Chats> {
         return this.http.delete('/users', {
             data,
             headers: {

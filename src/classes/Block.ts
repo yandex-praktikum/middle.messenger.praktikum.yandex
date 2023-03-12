@@ -28,11 +28,11 @@ export default class Block {
 
     public events: Record<string, Function> | any;
 
-    public _prevProps: TProps;
+    public prevProps: TProps;
 
     public children: TProps;
 
-    public _id: string | null = null;
+    public id: string | null = null;
 
     public eventBus: () => EventBus;
 
@@ -55,9 +55,9 @@ export default class Block {
 
         this.templator = templator;
 
-        this._id = v4();
+        this.id = v4();
 
-        this.props = this._makePropsProxy({ ...propsSimple, _id: this._id });
+        this.props = this._makePropsProxy({ ...propsSimple, _id: this.id });
 
         this.eventBus = () => eventBus;
 
@@ -112,7 +112,7 @@ export default class Block {
         if (!nextProps) {
             return;
         }
-        this._prevProps = { ...this.props };
+        this.prevProps = { ...this.props };
         Object.assign(this.props, nextProps);
     };
 
@@ -158,7 +158,7 @@ export default class Block {
             set(target: TProps, prop: string, value: unknown): boolean {
                 // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, self._prevProps, target);
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, self.prevProps, target);
                 return true;
             },
             deleteProperty() {
@@ -197,14 +197,14 @@ export default class Block {
     public compile(props: TProps): DocumentFragment {
         const propsAndStubs = { ...props };
         Object.entries(this.children).forEach(([key, child]: [string, Block]) => {
-            propsAndStubs[key] = `<div data-id="${child?._id}"></div>`;
+            propsAndStubs[key] = `<div data-id="${child?.id}"></div>`;
         });
 
         const fragment = document.createElement('template');
         fragment.innerHTML = '';
         if (this.templator) fragment.innerHTML = this.templator(propsAndStubs);
         Object.values(this.children).forEach((child: Block) => {
-            const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+            const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
 
             stub?.replaceWith(child.getContent());
         });

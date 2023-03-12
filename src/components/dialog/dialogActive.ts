@@ -61,7 +61,7 @@ class DialogActive extends Block {
         };
 
 
-        this._prevProps = { ...this.props };
+        this.prevProps = { ...this.props };
         Object.assign(this.props, newProps);
     };
 

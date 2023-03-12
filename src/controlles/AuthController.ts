@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 import authApi from '../api/AuthApi';
 import { TOptionsData } from '../classes/HTTPTransport';
-import { MESSENGER } from '../classes/Router';
+import { PathName } from '../classes/Router';
 import BaseController from './BaseController';
 
 class AuthController extends BaseController {
@@ -14,7 +14,7 @@ class AuthController extends BaseController {
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);
@@ -27,13 +27,13 @@ class AuthController extends BaseController {
             const { status, response } = await authApi.login(data);
             if (status === 200) {
                 this.store.set('auth', true);
-                this.router.go(MESSENGER);
+                this.router.go(PathName.MESSENGER);
                 this.getUserInfo();
                 this.store.set('isLoading', false);
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);
@@ -44,7 +44,7 @@ class AuthController extends BaseController {
         try {
             const { status, response } = await authApi.getUser();
             if (status === 200 && response) {
-                this.store.set('user', JSON.parse(response));
+                this.store.set('user', JSON.parse(String(response)));
                 this.store.set('auth', true);
                 return true;
             }
@@ -64,7 +64,7 @@ class AuthController extends BaseController {
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);

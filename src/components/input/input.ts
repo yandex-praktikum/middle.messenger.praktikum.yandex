@@ -80,6 +80,6 @@ export default class Input extends Block {
     }
 
     render() {
-        return this.compile({ ...this.props, data_idc: this._id });
+        return this.compile({ ...this.props, data_idc: this.id });
     }
 }

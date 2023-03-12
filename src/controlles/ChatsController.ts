@@ -13,11 +13,11 @@ class ChatsController extends BaseController {
             if (this.router?._currentRoute?._pathname !== '/messenger') return;
             const { status, response } = await ChatsApi.getChats();
             if (status === 200) {
-                Store.set('chats', JSON.parse(response));
+                Store.set('chats', JSON.parse(String(response)));
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);
@@ -29,7 +29,7 @@ class ChatsController extends BaseController {
         try {
             const { status, response } = await ChatsApi.createChat(title);
             if (status === 200) {
-                const chatId = JSON.parse(response)?.id;
+                const chatId = JSON.parse(String(response))?.id;
                 await this.getChats();
                 MessageController.changeCurrentChat(chatId);
                 return chatId;
@@ -37,7 +37,7 @@ class ChatsController extends BaseController {
                 this.router.go('/500');
                 return false;
             }
-            alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+            alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             return false;
         } catch (e) {
             console.log(e);
@@ -62,7 +62,7 @@ class ChatsController extends BaseController {
             } else if (status === 500) {
                 this.router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);
@@ -79,7 +79,7 @@ class ChatsController extends BaseController {
                 this.router.go('/500');
                 return false;
             }
-            alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+            alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             return false;
         } catch (e) {
             console.log(e);

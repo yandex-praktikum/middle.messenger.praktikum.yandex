@@ -270,7 +270,7 @@ class ProfilePage extends Block {
 
         props.listDataProfile = {};
         buttons.forEach((item: Button) => {
-            const id = item._id ?? '';
+            const id = item.id ?? '';
             props[id] = item;
             props.buttons += `<div data-id="${id}"></div>`;
         });

@@ -8,6 +8,6 @@ RUN npm install
 
 RUN npm run build
 
-CMD ["node", "server.js"]
+CMD ["node", "server.ts"]
 
 EXPOSE 3000

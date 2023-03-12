@@ -64,7 +64,7 @@ class ChatPage extends Block {
         };
         super('main', props, templateChat);
         ChatsController.getChats();
-        setInterval(ChatsController.getChats, 20000);
+        setInterval(ChatsController.getChats.bind(ChatsController), 20000);
     }
 
 

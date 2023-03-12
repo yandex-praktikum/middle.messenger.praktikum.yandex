@@ -59,17 +59,17 @@ export default class SearchUsers extends Block {
         searchResultsBlock.classList.add('search-results');
         if (items === null || items.length) {
             searchResultsBlock.textContent = '';
+            items?.forEach((item: TSearchItem, key: number) => {
+                const itemBlock = document.createElement('div');
+                itemBlock.dataset.key = String(key);
+                itemBlock.className = 'result-item';
+                const text = typeof item.login === 'string' ? item.login : '';
+                itemBlock.textContent = text;
+                searchResultsBlock.append(itemBlock);
+            });
         } else {
             searchResultsBlock.textContent = 'По запросу ничего не найдено';
         }
-        items?.forEach((item: TSearchItem, key: number) => {
-            const itemBlock = document.createElement('div');
-            itemBlock.dataset.key = String(key);
-            itemBlock.className = 'result-item';
-            const text = typeof item.login === 'string' ? item.login : '';
-            itemBlock.textContent = text;
-            searchResultsBlock.append(itemBlock);
-        });
         fragment.content.append(searchResultsBlock);
         // });
         return fragment.content;

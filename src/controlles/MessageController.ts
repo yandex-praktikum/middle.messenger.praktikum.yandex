@@ -23,13 +23,13 @@ class MessageController {
         CLOSE: 'close',
     };
 
-    private _userId: number | string | undefined;
+    private _userId?: number | string;
 
-    private _chatId: number | string | undefined;
+    private _chatId?: number | string;
 
     private _token: string;
 
-    private _ping: number | undefined | any;
+    private _ping?: number | ReturnType<typeof setTimeout>;
 
     private _offset: number = 0;
 
@@ -113,11 +113,11 @@ class MessageController {
         try {
             const { status, response } = await ChatsApi.getToken(chatID);
             if (status === 200) {
-                return JSON.parse(response).token;
+                return JSON.parse(String(response)).token;
             } if (status === 500) {
                 router.go('/500');
             } else {
-                alert(JSON.parse(response).reason ?? 'Ошибочный запрос');
+                alert(JSON.parse(String(response)).reason ?? 'Ошибочный запрос');
             }
         } catch (e) {
             console.log(e);

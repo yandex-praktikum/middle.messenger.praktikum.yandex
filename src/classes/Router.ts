@@ -4,17 +4,19 @@ import Block from './Block';
 import Route from './Route';
 import Store from './Store';
 
-export const AUTH = '/';
-export const SIGNUP = '/sign-up';
-export const SETTINGS = '/settings';
-export const MESSENGER = '/messenger';
-export const ERROR500 = '/error-500';
-export const ERROR404 = '/error-404';
+// eslint-disable-next-line no-shadow
+export enum PathName {
+    AUTH = '/',
+    SIGNUP = '/sign-up',
+    SETTINGS = '/settings',
+    MESSENGER = '/messenger',
+    ERROR500 = '/error-500',
+    ERROR404 = '/error-404',
+}
 
 class Router {
     public routes: Array<Route>;
 
-    // eslint-disable-next-line no-undef
     public history: History;
 
     public _currentRoute: Route | null;
@@ -56,25 +58,24 @@ class Router {
     }
 
     _onRoute(pathname: string): void {
+        this._currentRoute = null;
         if (this.store?.getState().auth) {
-            if (pathname === AUTH || pathname === SIGNUP) {
-                pathname = MESSENGER;
-                this.history.pushState({}, '', MESSENGER);
+            if (pathname === PathName.AUTH || pathname === PathName.SIGNUP) {
+                this._currentRoute = this.getRoute(PathName.MESSENGER) ?? null;
+                this.history.pushState({}, '', PathName.MESSENGER);
             }
-        } else if (pathname !== AUTH && pathname !== SIGNUP) {
-            pathname = AUTH;
-            this.history.pushState({}, '', AUTH);
-        }
-        const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute(ERROR404);
-        if (!route) {
-            return;
-        }
-        if (this._currentRoute && this._currentRoute !== route) {
-            this._currentRoute.leave();
+        } else if (pathname !== PathName.AUTH && pathname !== PathName.SIGNUP) {
+            this._currentRoute = this.getRoute(PathName.AUTH) ?? null;
+            this.history.pushState({}, '', PathName.AUTH);
         }
 
-        this._currentRoute = route;
-        route.render();
+        if (!this._currentRoute) {
+            this._currentRoute = this.getRoute(pathname) ?? this.getRoute(PathName.ERROR404) ?? null;
+        }
+        if (!this._currentRoute) {
+            return;
+        }
+        this._currentRoute?.render();
     }
 
     go(pathname: string): void {

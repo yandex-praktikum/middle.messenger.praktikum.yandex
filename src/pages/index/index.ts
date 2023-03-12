@@ -1,7 +1,5 @@
 import '../../assets/style/app.scss';
-import router, {
-    AUTH, ERROR404, ERROR500, MESSENGER, SETTINGS, SIGNUP,
-} from '../../classes/Router';
+import router, { PathName } from '../../classes/Router';
 import Store from '../../classes/Store';
 import AuthController from '../../controlles/AuthController';
 // import Store from '../../classes/Store';
@@ -14,12 +12,12 @@ import RegPage from '../reg/reg';
 export default function initApp() {
     AuthController.getUserInfo().then(() => {
         router
-            .use(AUTH, AuthPage)
-            .use(SIGNUP, RegPage)
-            .use(SETTINGS, ProfilePage)
-            .use(MESSENGER, ChatPage)
-            .use(ERROR404, Error404Page)
-            .use(ERROR500, Error500Page)
+            .use(PathName.AUTH, AuthPage)
+            .use(PathName.SIGNUP, RegPage)
+            .use(PathName.SETTINGS, ProfilePage)
+            .use(PathName.MESSENGER, ChatPage)
+            .use(PathName.ERROR404, Error404Page)
+            .use(PathName.ERROR500, Error500Page)
             .start();
         Store.set('getPage', '');
     });
