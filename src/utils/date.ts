@@ -15,18 +15,16 @@ export const getDateLastMessage = (obj: string): string => {
     return `${dateZeroAdd(date.getDate())}.${dateZeroAdd(date.getMonth() + 1)}.${date.getFullYear()}`;
 };
 
-
-export const formattedDate = (inDate: string, inTime: string = '00:00'): Date => {
+export const formattedDate = (inDate: string, inTime = '00:00'): Date => {
     const date: Array<string> = inDate.split('.');
     const time: Array<string> = inTime.split(':');
-    const day: number = Number(date[0]);
+    const day = Number(date[0]);
     const month: number = Number(date[1]) - 1;
-    const year: number = Number(date[2]);
-    const hours: number = Number(time[0]);
-    const minutes: number = Number(time[1]);
+    const year = Number(date[2]);
+    const hours = Number(time[0]);
+    const minutes = Number(time[1]);
     return new Date(year, month, day, hours, minutes, 0);
 };
-
 
 export const getCurrentNumberWeek = (date: Date): number => {
     const year: number = date.getFullYear();
@@ -37,7 +35,6 @@ export const getCurrentNumberWeek = (date: Date): number => {
     return week;
 };
 
-
 function getWeekNumber(d: Date) {
     const date: any = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
     // d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -47,7 +44,6 @@ function getWeekNumber(d: Date) {
     const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
     return weekNo;
 }
-
 
 export function getParseDate(dateString: string | number): { date: string, time: string } {
     const date = new Date(dateString);

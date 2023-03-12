@@ -51,7 +51,6 @@ function getValidData(self: Form, e: Event): [Block, string, string | undefined]
     return [component, value, getConfirmField(self, component)];
 }
 
-
 export function onFocus(self: Form, e: Event) {
     const [component, value = '', confirmValue] = getValidData(self, e);
     if (!component) return;

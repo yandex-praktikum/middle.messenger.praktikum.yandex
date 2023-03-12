@@ -35,13 +35,11 @@ class MessageController {
 
     private _allMessage: boolean = false;
 
-
     public events: Record<string, Function> | {} = {};
 
     public baseUrl: string = wssBaseUrl;
 
     public socket: WebSocket | null = null;
-
 
     constructor() {
         this._handleOpen = this._handleOpen.bind(this);
@@ -97,7 +95,6 @@ class MessageController {
         }
     }
 
-
     private _addEvents() {
         this.socket?.addEventListener(this.EVENTS.OPEN, this._handleOpen);
         this.socket?.addEventListener(this.EVENTS.MESSAGE, this._handleMassage);
@@ -111,7 +108,6 @@ class MessageController {
         this.socket?.removeEventListener(this.EVENTS.ERROR, this._handleError);
         this.socket?.removeEventListener(this.EVENTS.CLOSE, this._handleClose);
     }
-
 
     private async getToken(chatID: number) {
         try {
@@ -206,6 +202,5 @@ class MessageController {
         }
     }
 }
-
 
 export default new MessageController();

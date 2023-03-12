@@ -47,7 +47,6 @@ export function isEqual(lhs: PlainObject | string, rhs: PlainObject | string) {
     return true;
 }
 
-
 export function render(query: string, block: Block): void {
     const root = document.querySelector(query);
     if (root) {
@@ -56,7 +55,6 @@ export function render(query: string, block: Block): void {
         root.append(block.getContent());
     }
 }
-
 
 type Indexed<T = any> = {
     [key in string]: T;
@@ -108,14 +106,14 @@ export function searchObjInArray(array: Array<Record<string, string | number | u
 
 export function cloneDeep(obj: Record<string, unknown | any>): Record<string, unknown | any> {
     return (function _cloneDeep(item: any): Record<string, unknown | any> {
-        // Handle:
-        // * null
-        // * undefined
-        // * boolean
-        // * number
-        // * string
-        // * symbol
-        // * function
+    // Handle:
+    // * null
+    // * undefined
+    // * boolean
+    // * number
+    // * string
+    // * symbol
+    // * function
         if (item === null || typeof item !== 'object') {
             return item;
         }

@@ -2,7 +2,6 @@ import { isEqual, render } from '../utils/object_utils';
 import Block from './Block';
 import Store from './Store';
 
-
 export default class Route {
     _pathname: string;
 

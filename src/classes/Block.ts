@@ -76,7 +76,7 @@ export default class Block {
     private _createResources(): void {
         const tagName = this._meta?.tagName;
         if (tagName) this._element = this._createDocumentElement(tagName);
-        // if (typeof this.props.className === 'string') this._element.className = this.props.className;
+    // if (typeof this.props.className === 'string') this._element.className = this.props.className;
     }
 
     public init(): void {
@@ -166,7 +166,6 @@ export default class Block {
             },
         });
     }
-
 
     // eslint-disable-next-line class-methods-use-this
     private _createDocumentElement(tagName: string): HTMLElement {

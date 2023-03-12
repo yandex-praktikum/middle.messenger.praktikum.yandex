@@ -1,11 +1,13 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = "style-loader";
+
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const config = {
   entry: "./src/pages/index/index.ts",
@@ -20,6 +22,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: "index.html",
     }),
+    new ESLintPlugin(),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
