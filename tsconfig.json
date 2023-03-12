@@ -12,7 +12,7 @@
     "lib": [
       "esnext",
       "dom"
-  ]
+    ]
   },
   "files": [
     "src/pages/index/index.ts",

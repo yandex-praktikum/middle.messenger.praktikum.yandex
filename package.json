@@ -11,7 +11,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "prettier": "^2.8.4",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
@@ -39,11 +39,17 @@
   },
   "homepage": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex#readme",
   "scripts": {
+    "start": "npm run build && node ./server.js",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "prepare": "husky install",
+    "eslint": "eslint . --ext .ts ",
+    "stylelint": "stylelint './src/**/*.scss' && stylelint ./src/**/*.scss",
+    "docker-build": "docker build -t sprint_4 .",
+    "docker-start": "docker run -p 3000:3000 sprint_4"
   },
   "dependencies": {
     "eslint-config-airbnb": "^19.0.4",

@@ -1,3 +1,5 @@
 /dist
 **/*.min.js
+**/*.js
+**/*.json
 /node_modules
