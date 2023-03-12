@@ -21,6 +21,8 @@ class Router {
 
     _rootQuery: string;
 
+    store: typeof Store | undefined;
+
     // eslint-disable-next-line no-use-before-define
     static __instance: Router;
 
@@ -29,7 +31,7 @@ class Router {
             // eslint-disable-next-line no-constructor-return
             return Router.__instance;
         }
-
+        this.store = Store;
         this.routes = [];
         this.history = window.history;
         this._currentRoute = null;
@@ -54,7 +56,7 @@ class Router {
     }
 
     _onRoute(pathname: string): void {
-        if (Store.getState().auth) {
+        if (this.store?.getState().auth) {
             if (pathname === AUTH || pathname === SIGNUP) {
                 pathname = MESSENGER;
                 this.history.pushState({}, '', MESSENGER);
@@ -63,7 +65,6 @@ class Router {
             pathname = AUTH;
             this.history.pushState({}, '', AUTH);
         }
-
         const route: Route | undefined = this.getRoute(pathname) ?? this.getRoute(ERROR404);
         if (!route) {
             return;
@@ -93,5 +94,6 @@ class Router {
         return this.routes.find((route) => route.match(pathname));
     }
 }
+
 
 export default new Router(rootBlockQuery);

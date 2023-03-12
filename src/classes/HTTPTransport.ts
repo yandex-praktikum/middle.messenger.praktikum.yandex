@@ -13,7 +13,7 @@ type TOptions = {
     method?: string,
     timeout?: number
 }
-type HTTPMethod = (url: string, options?: TOptions) => Promise<unknown>
+type HTTPMethod = (url: string, options?: TOptions) => Promise<any>
 type HTTPRequest = (url: string, options?: TOptions, timeout?: number) => Promise<unknown | void>
 
 // Самая простая версия. Реализовать штучку со всеми проверками им предстоит в конце спринта
@@ -45,7 +45,7 @@ export default class HTTPTransport {
     public delete: HTTPMethod = (url = '', options = {}) => this.request(this.baseUrl + url, { ...options, method: METHODS.DELETE }, options.timeout);
 
     // eslint-disable-next-line class-methods-use-this
-    public request: HTTPRequest = (url = '', options = {}, timeout = 5000): Promise<unknown | void> => {
+    public request: HTTPRequest = (url = '', options = {}, timeout = 5000): any => {
         const { headers = {}, method, data } = options;
 
         return new Promise((resolve, reject) => {

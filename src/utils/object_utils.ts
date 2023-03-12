@@ -26,6 +26,9 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
 }
 
 export function isEqual(lhs: PlainObject | string, rhs: PlainObject | string) {
+    if (typeof rhs === 'string' && typeof rhs === 'string') {
+        return lhs === rhs;
+    }
     if (Object.keys(lhs).length !== Object.keys(rhs).length) {
         return false;
     }
@@ -106,14 +109,14 @@ export function searchObjInArray(array: Array<Record<string, string | number | u
 
 export function cloneDeep(obj: Record<string, unknown | any>): Record<string, unknown | any> {
     return (function _cloneDeep(item: any): Record<string, unknown | any> {
-    // Handle:
-    // * null
-    // * undefined
-    // * boolean
-    // * number
-    // * string
-    // * symbol
-    // * function
+        // Handle:
+        // * null
+        // * undefined
+        // * boolean
+        // * number
+        // * string
+        // * symbol
+        // * function
         if (item === null || typeof item !== 'object') {
             return item;
         }
