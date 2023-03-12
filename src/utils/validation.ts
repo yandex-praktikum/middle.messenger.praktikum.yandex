@@ -10,7 +10,7 @@ export const FIRST_NAME_REGEX: RegExp = /^[A-ZА-Я]{1}[a-zа-я\-ъ]{0,254}$/;
 export const SECOND_NAME_REGEX: RegExp = /^[A-ZА-Я]{1}[a-zа-я\-ъ]{0,254}$/;
 export const DISPLAY_NAME_REGEX: RegExp = /^[1-9A-ZА-Яa-zа-я\-ъ]{0,254}$/;
 
-export function validator(validData: TValidation = {}, value: string | number, confirmValue?: string | undefined): string {
+           export function validator(validData: TValidation = {}, value: string | number, confirmValue?: string | undefined): string {
     let error = '';
     // eslint-disable-next-line no-param-reassign
     value = String(value);
