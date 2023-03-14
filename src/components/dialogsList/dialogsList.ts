@@ -6,6 +6,7 @@ import avatarDefault from '../../assets/icon/avatar_default.png';
 import './dialogList.scss';
 import Store, { Chat, State } from '../../classes/Store';
 import { connect } from '../../utils/store';
+import { resourcesUrl } from '../../utils/config';
 
 type TDialogItem = {
     avatar: string | null,
@@ -47,7 +48,7 @@ class DialogsList extends Block {
         dialogs.forEach((item) => {
             const out = item?.last_message?.user?.login === Store.getState()?.user?.login;
             compilesDialogs.push({
-                avatar: item.avatar ? item.avatar : avatarDefault,
+                avatar: item.avatar ? resourcesUrl + item.avatar : avatarDefault,
                 id: item.id,
                 title: item.title,
                 last_message_text: sliceLastMessage(item?.last_message?.content, out) ?? '',

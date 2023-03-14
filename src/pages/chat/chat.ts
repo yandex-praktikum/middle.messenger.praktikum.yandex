@@ -18,6 +18,7 @@ import SearchUsers from '../../components/searchUsers/searchUsers';
 import UsersController from '../../controlles/UsersController';
 import ChatsController from '../../controlles/ChatsController';
 import MessageController from '../../controlles/MessageController';
+import { onSubmit } from '../../utils/validation';
 
 const { addNewChatUser, createChat } = ChatsController;
 const { searchUsers } = UsersController;
@@ -134,6 +135,7 @@ export const activeDialog = new DialogActive({
                 validation: {
                     required: true,
                     minlength: 1,
+                    maxlength: 9999,
                 },
                 name: 'messagе',
                 placeholder: 'Сообщение',
@@ -148,7 +150,7 @@ export const activeDialog = new DialogActive({
         events: {
             submit: (self: Form, e: Event) => {
                 e.preventDefault();
-                self.getFormData();
+                onSubmit(self, e);
                 self.resetForm();
                 self.getContent().focus();
             },
