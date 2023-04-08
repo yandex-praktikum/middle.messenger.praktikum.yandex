@@ -1,0 +1,64 @@
+<div class="{{class.chat}}">
+  <div class="{{class.chat-list}}">
+    <div class="{{class.link-to-profile}}">
+      <a href="#/profile">
+        Профиль
+      </a>
+    </div>
+
+    <div class="{{class.search-bar}}">
+      <input type="text" class="{{class.search-input}}" placeholder="Поиск">
+    </div>
+
+    <div class="{{class.list-wrapper}}">
+      <div class="{{class.list-body}}">
+
+        {{#each chatList}}
+        <div class="{{../class.item}}">
+          <div class="{{../class.item__avatar}}">
+            <div class="{{../class.item__avatar-icon}}">
+              {{#if imageLink}}
+                <img src="{{imageLink}}" alt="{{user.name}}">
+              {{else}}
+                <div class="{{../class.item__avatar-stub}}"></div>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="{{../class.item__details}}">
+            <div class="{{../class.item__details-top}}">
+              <span class="{{../class.item__name}}">
+                {{userName}}
+              </span>
+              <span class="{{../class.item__date}}">
+                {{chatDate}}
+              </span>
+            </div>
+
+            <div class="{{../class.item__details-bottom}}">
+              <div class="{{../class.item__message}}">
+                {{#if messagePrefix}}
+                <b class="{{../class.item__message-prefix}}">Вы: </b>
+                {{/if}}
+                <span class="{{../class.messageText}}">{{messageText}}</span>
+              </div>
+              {{#if unreadAmount}}
+              <div class="{{../class.item__unread}}">
+                {{unreadAmount}}
+              </div>
+              {{/if}}
+            </div>
+          </div>
+
+        </div>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+  <div class="{{class.chat-stub}}">
+    <div class="{{class.stub-text}}">
+      Выберите чат чтобы отправить сообщение
+    </div>
+  </div>
+</div>
