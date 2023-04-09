@@ -8,32 +8,38 @@ const data = {
   userInformation: [
     {
       title: "Почта",
-      body: "pochta@yandex.ru"
+      body: "pochta@yandex.ru",
+      name: "email"
     },
 
     {
       title: "Логин",
-      body: "ivanivanov"
+      body: "ivanivanov",
+      name: "login"
     },
 
     {
       title: "Имя",
-      body: "Иван"
+      body: "Иван",
+      name: "first_name"
     },
 
     {
       title: "Фамилия",
-      body: "Иванов"
+      body: "Иванов",
+      name: "second_name"
     },
 
     {
       title: "Имя в чате",
-      body: "Иван"
+      body: "Иван",
+      name: "display_name"
     },
 
     {
       title: "Телефон",
-      body: "+7 (909) 967 30 30"
+      body: "+7 (909) 967 30 30",
+      name: "phone"
     },
   ],
   buttonText: "Сохранить",

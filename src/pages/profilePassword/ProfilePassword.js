@@ -5,17 +5,20 @@ const data = {
   userInformation: [
     {
       title: "Старый пароль",
-      body: "*********"
+      body: "*********",
+      name: "oldPassword"
     },
 
     {
       title: "Новый пароль",
-      body: "***********"
+      body: "***********",
+      name: "newPassword"
     },
 
     {
       title: "Повторите новый пароль",
-      body: "***********"
+      body: "***********",
+      name: "newPassword"
     },
   ],
 
