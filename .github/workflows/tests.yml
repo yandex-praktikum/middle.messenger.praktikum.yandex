@@ -5,113 +5,46 @@ on:
     branches:
       - main
 
-
 jobs:
-  sprint_1:
-    if: ${{github.head_ref == 'sprint_1'}}
+  test:
+    if: ${{github.head_ref == 'sprint_1' || github.head_ref == 'sprint_2' || github.head_ref == 'sprint_3' || github.head_ref == 'sprint_4'}}
+    env:
+      SPRINT: ${{github.head_ref}}
+      TERM: xterm-256color
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
     steps:
     - name: Set up GitHub Actions
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: Сheck if the repository is private
-      run: exit 1
       if: ${{github.event.repository.private}}
-    - name: Get testing lib
-      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
-    - name: Check dist and node_modules in .gitignore
-      run: bash tests-second-floor/sprint_1/check_gitignore.sh
-    - name: Check npm run start existence
-      run: bash tests-second-floor/sprint_1/check_start.sh
-    - name: Check Parcel in start script
-      run: bash tests-second-floor/sprint_1/check_parcel.sh
-    - name: Check PORT 3000
-      run: bash tests-second-floor/sprint_1/check_port.sh
-    - name: Check routing
-      run: node tests-second-floor/sprint_1/check_routing.js
-      
-  sprint_2:
-    if: ${{github.head_ref == 'sprint_2'}}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-    - name: Set up GitHub Actions
-      uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Сheck if the repository is private
       run: exit 1
-      if: ${{github.event.repository.private}}
+    - name: Install testing libs
+      uses: mig4/setup-bats@v1
     - name: Get testing lib
-      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
-    - name: Check dist and node_modules in .gitignore
-      run: bash tests-second-floor/sprint_1/check_gitignore.sh
-    - name: Check npm run start existence
-      run: bash tests-second-floor/sprint_1/check_start.sh
-    - name: Check Parcel in start script
-      run: bash tests-second-floor/sprint_1/check_parcel.sh
-    - name: Check PORT 3000
-      run: bash tests-second-floor/sprint_1/check_port.sh
-    - name: Check routing
-      run: node tests-second-floor/sprint_1/check_routing.js
-      # sprint 2 checks
-    - name: Check typescript in package.json
-      run: node tests-second-floor/sprint_2/check_typescript.js
-    - name: Check tsconfig required rules
-      run: node tests-second-floor/sprint_2/check_tsconfig.js
-    - name: Check eslint
-      run: node tests-second-floor/sprint_2/check_eslint.js
-    - name: Check stylelint
-      run: node tests-second-floor/sprint_2/check_stylelint.js
-      
-  sprint_3:
-    if: ${{github.head_ref == 'sprint_3'}}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-    - name: Set up GitHub Actions
-      uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Сheck if the repository is private
-      run: exit 1
-      if: ${{github.event.repository.private}}
-    - name: Get testing lib
-      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
-    - name: Run the tests
-      run: bash tests-second-floor/sprint_3/run.sh
-      
-  sprint_4:
-    if: ${{github.head_ref == 'sprint_4'}}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-    - name: Set up GitHub Actions
-      uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Сheck if the repository is private
-      run: exit 1
-      if: ${{github.event.repository.private}}
-    - name: Get testing lib
-      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-second-floor.git
-    - name: Run the tests
-      run: bash tests-second-floor/sprint_4/run.sh
+      run: set -eu && git clone https://github.com/Yandex-Practicum/tests-middle-frontend.git /tmp/tests-middle-frontend
+
+    - name: Run tests (sprint_1)
+      if: ${{github.head_ref >= 'sprint_1'}}
+      run: bats --formatter pretty /tmp/tests-middle-frontend/tests/sprint_1.bats
+
+    - name: Run tests (sprint_2)
+      if: ${{github.head_ref >= 'sprint_2'}}
+      run: bats --formatter pretty /tmp/tests-middle-frontend/tests/sprint_2.bats
+
+    - name: Run tests (sprint_3)
+      if: ${{github.head_ref >= 'sprint_3'}}
+      run: bats --formatter pretty /tmp/tests-middle-frontend/tests/sprint_3.bats
+
+    - name: Run tests (sprint_4)
+      if: ${{github.head_ref >= 'sprint_4'}}
+      run: bats --formatter pretty /tmp/tests-middle-frontend/tests/sprint_4.bats
+
+    - name: Run tests (server)
+      run: bats --formatter pretty /tmp/tests-middle-frontend/tests/node_build.bats
