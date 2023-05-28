@@ -1,0 +1,9 @@
+**/*.min.js
+/node_modules
+/dist
+.parcel-cache
+express.js
+/.github
+README.md
+.eslintrc.json
+.stylelintrc.json
