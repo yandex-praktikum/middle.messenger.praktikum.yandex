@@ -1,0 +1,49 @@
+<div class="backlink">
+    {{{backlink}}}
+</div>
+<div class="content profile">
+    <div class="profile__avatar">
+        <div class="avatar-img">
+            <img src="{{{avatarImg}}}" alt="Аватар пользователя">
+            {{{avatarUpload}}}
+        </div>
+    </div>
+    <div class="profile__data">
+        <ul class="list list-data-profile">
+            <li class="list__li">
+                <span class="label">Почта</span>
+                <span class="value">{{listDataProfile.email}}</span>
+            </li>
+            <li class="list__li">
+                <span class="label">Логин</span>
+                <span class="value">{{listDataProfile.login}}</span>
+
+            </li>
+            <li class="list__li">
+                <span class="label">Имя</span>
+                <span class="value">{{listDataProfile.first_name}}</span>
+
+            </li>
+            <li class="list__li">
+                <span class="label">Фамилия</span>
+                <span class="value">{{listDataProfile.second_name}}</span>
+
+            </li>
+            <li class="list__li">
+                <span class="label">Имя в чате</span>
+                <span class="value">{{listDataProfile.display_name}}</span>
+            </li>
+            <li class="list__li">
+                <span class="label">Телефон</span>
+                <span class="value">{{listDataProfile.phone}}</span>
+            </li>
+        </ul>
+        
+        {{!-- {{{listDataProfile}}} --}}
+        {{{formDataProfile}}}
+        {{{formPassProfile}}}
+    </div>
+    <div class="profile__buttons">
+        {{{buttons}}}
+    </div>
+</div>
