@@ -1,0 +1,112 @@
+.page__profile {
+    display: flex;
+    flex-direction: row;
+
+    height: 100%;
+    .page__backlink {
+        height: 100%;
+        width: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 2px solid #ffff;
+    }
+    .page__content {
+        width: 500px;
+        padding: 60px 15px;
+        // max-width: 1200px;
+        margin: 0 auto;
+        // height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 60px;
+        .profile__avatar {
+            .avatar__img {
+                position: relative;
+                width: 130px;
+                height: 130px;
+                overflow: hidden;
+                border-radius: 50%;
+                background-color: #ffff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .avatar__change {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background-color: #000;
+                    opacity: 0;
+                    padding: 30px;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s linear;
+                    .textLabel {
+                        visibility: visible;
+                        font-size: 16px;
+                        line-height: 20px;
+                    }
+                    .error,input {
+                        display: none;
+                    }
+                    &:hover {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+        .profile__buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .btn {
+                border-bottom: 1px solid #e72933;
+                width: 100%;
+                text-align: left;
+                &:last-child {
+                    border: transparent;
+                }
+            }
+        }
+        .profile__data {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .list li {
+                border-bottom: 1px solid #e72933;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                &:last-child {
+                    border: transparent;
+                }
+            }
+            .app__form  {
+                width: 100%;
+                background-color: transparent;
+                gap:40px;
+                .form__items {
+                    margin-bottom: 0px;
+                    label {
+                        .textLabel {
+                            visibility: initial;
+                        }
+                    }
+                }
+                .form__buttons {
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
