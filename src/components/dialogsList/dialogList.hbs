@@ -1,0 +1,23 @@
+{{#each dialogs}}
+<div class="dialogs__item {{itemClass}}" data-dialog-id="{{dialogId}}">
+    <div class="avatar">
+        <img src="{{this.avatar}}" alt="Аватар пользователя {{this.nickname}}">
+    </div>
+    <div class="nickname">
+        {{this.nick}}
+    </div>
+    <div class="time-last-message">
+        {{this.timeLastMessage}}
+    </div>
+    <div class="last-message">
+        {{{this.lastMessage}}}
+    </div>
+    <div class="count-new-message">
+        {{#if this.countNewMessage}}
+        <div>
+            {{{this.countNewMessage}}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+{{/each}}

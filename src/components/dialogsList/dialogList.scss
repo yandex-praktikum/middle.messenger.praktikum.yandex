@@ -1,0 +1,146 @@
+.list-dialog {
+  padding-top: 20px;
+  gap: 14px;
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      text-align: right;
+      font-size: 12px;
+      line-height: 12px;
+      color: #e72933;
+    }
+
+    gap: 20px;
+    padding: 0 10px;
+
+    .search {
+      input {
+        background: #252525;
+        border: 1px solid #e72933;
+        border-radius: 5px;
+        padding: 6px 15px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  .dialogs {
+    height: 100%;
+
+    // margin: 0px 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    direction: rtl;
+
+    &__item {
+      direction: ltr;
+      display: grid;
+      align-items: center;
+      justify-items: start;
+      grid-template-columns: 47px auto 40px;
+      grid-template-rows: 1fr 2fr;
+      padding: 12px 0;
+      border-top: 1px solid white;
+      height: 71px;
+      margin: 0 10px;
+      cursor: pointer;
+      grid-column-gap: 10px;
+
+      .avatar {
+        width: 47px;
+        height: 47px;
+        border-radius: 50%;
+        background-color: #fff;
+        grid-row: 1/3;
+        padding: 7px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .nickname {
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 13px;
+
+        /* identical to box height, or 100% */
+
+        color: #fff;
+      }
+
+      .last-message {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+        color: #999;
+        overflow: hidden;
+      }
+
+      .count-new-message {
+        justify-self: end;
+
+        div {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #e72933;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+          font-size: 11px;
+          line-height: 12px;
+        }
+      }
+
+      .time-last-message {
+        justify-self: end;
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 13px;
+        color: #e72933;
+      }
+
+      &.active {
+        background-color: #e72933;
+        margin: 0;
+        padding: 12px 10px;
+        border-top: none;
+
+        .last-message {
+          color: white;
+        }
+
+        .count-new-message div {
+          background-color: white;
+          color: #252525;
+        }
+
+        .time-last-message {
+          color: white;
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px; /* ширина scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: white; /* цвет дорожки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #e72933; /* цвет плашки */
+      border-radius: 2px; /* закругления плашки */
+      border: 3px solid transparent; /* padding вокруг плашки */
+    }
+  }
+}

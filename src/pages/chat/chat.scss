@@ -1,0 +1,46 @@
+.app {
+  &__chat-page {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+
+    .list-dialog {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 310px;
+      border-right: 2px solid #ffff;
+    }
+
+    .current-dialog {
+      padding: 0 20px;
+      position: relative;
+
+      // max-width: 1200px;
+      margin: 0 auto;
+
+      // height: 100%;
+      display: grid;
+      grid-template-rows: 54px 1fr 54px;
+      width: calc(100% - 310px);
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 4px; /* ширина scrollbar */
+      }
+
+      &::-webkit-scrollbar-track {
+        background: white; /* цвет дорожки */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #e72933; /* цвет плашки */
+        border-radius: 2px; /* закругления плашки */
+        border: 3px solid transparent; /* padding вокруг плашки */
+      }
+    }
+  }
+}

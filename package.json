@@ -1,0 +1,53 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "dev": "parcel static/*.html",
+    "watch": "parcel watch static/*.html",
+    "build": "parcel build static/*.html",
+    "start": "parcel build static/*.html && node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dream2000i/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Pavel Pavlov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex#readme",
+  "dependencies": {
+    "express": "4.18.2",
+    "handlebars": "4.7.7",
+    "parcel": "2.8.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.8.2",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "assert": "2.0.0",
+    "browserify-zlib": "0.2.0",
+    "buffer": "5.7.1",
+    "crypto-browserify": "3.12.0",
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "events": "3.3.0",
+    "marked": "4.2.5",
+    "parcel-transformer-hbs": "1.0.4",
+    "path-browserify": "1.0.1",
+    "process": "0.11.10",
+    "punycode": "1.4.1",
+    "querystring-es3": "0.2.1",
+    "stream-browserify": "3.0.0",
+    "stream-http": "3.2.0",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "url": "0.11.0",
+    "typescript": "^4.9.5",
+    "util": "0.12.5"
+  }
+}

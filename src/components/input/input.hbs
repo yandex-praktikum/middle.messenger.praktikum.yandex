@@ -1,0 +1,15 @@
+{{#if label}}
+<span class="label__text">{{{label}}}</span>
+{{/if}}
+<input 
+name="{{name}}" 
+type="{{type}}"
+placeholder="{{placeholder}}" 
+value="{{value}}"
+data-idc="{{data_idc}}"
+{{!-- {{#if required}}
+required
+{{/if}} --}}
+>
+
+<span class="error">{{error}}</span>

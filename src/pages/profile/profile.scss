@@ -1,0 +1,126 @@
+.app {
+  &__profile-page {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+
+    .backlink {
+      height: 100%;
+      width: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 2px solid #ffff;
+    }
+
+    .profile {
+      width: 500px;
+      padding: 60px 15px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 60px;
+
+      &__avatar {
+        .avatar-img {
+          position: relative;
+          width: 130px;
+          height: 130px;
+          overflow: hidden;
+          border-radius: 50%;
+          background-color: #ffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
+          .avatar-change {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000;
+            opacity: 0;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s linear;
+
+            .text-label {
+              visibility: visible;
+              font-size: 16px;
+              line-height: 20px;
+            }
+
+            .error,
+            input {
+              display: none;
+            }
+
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .btn {
+          border-bottom: 1px solid #e72933;
+          width: 100%;
+          text-align: left;
+
+          &:last-child {
+            border: transparent;
+          }
+        }
+      }
+
+      &__data {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .list li {
+          border-bottom: 1px solid #e72933;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          &:last-child {
+            border: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+    background-color: transparent;
+    gap: 40px;
+  }
+
+  .form {
+    &__items {
+      margin-bottom: 0;
+    }
+
+    &__buttons {
+      align-items: center;
+    }
+  }
+}

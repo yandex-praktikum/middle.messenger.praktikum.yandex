@@ -1,0 +1,17 @@
+{{#if messages}}
+<div class="top-controls">
+    <div class="avatar"> <img src="{{avatar}}" alt="Аватар пользователя {{nick}}"> </div>
+    <div class="nick">{{nick}}</div>
+    <div class="control-btn">
+        {{{btn}}}
+    </div>
+</div>
+<div class="dialog-window">
+    {{{messages}}}
+</div>
+<div class="bottom-controls">
+    {{{newMsgForm}}}
+</div>
+{{else }}
+<div class="dialog-empty">Выберите чат чтобы отправить сообщение</div>
+{{/if }}
