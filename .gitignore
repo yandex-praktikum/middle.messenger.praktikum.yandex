@@ -1,0 +1,5 @@
+npmtsvite.sh
+npmtsvite_copy.sh
+
+/node_modules
+/build
