@@ -1,0 +1,71 @@
+{
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "@webpack-cli/generators": "^3.0.1",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.36.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "prettier": "^2.8.4",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "ts-jest": "^29.0.5",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "version": "1.0.0",
+  "description": "---",
+  "name": "middle.messenger.praktikum.yandex",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dream2000i/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Pavel Pavlov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Dream2000i/middle.messenger.praktikum.yandex#readme",
+  "scripts": {
+    "test": "npx jest",
+    "start": "npm run build && node ./server.ts",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve",
+    "prepare": "husky install",
+    "eslint": "eslint . --ext .ts ",
+    "stylelint": "stylelint './src/**/*.scss' && stylelint ./src/**/*.scss",
+    "docker-build": "docker build -t sprint_4 .",
+    "docker-start": "docker run -p 3000:3000 sprint_4"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "handlebars-loader": "^1.7.3",
+    "uuid": "^9.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx eslint ./src/*/*.ts",
+      "pre-push": "npm run other command",
+      "...": "..."
+    }
+  }
+}

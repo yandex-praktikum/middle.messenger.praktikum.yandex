@@ -1,0 +1,39 @@
+{{#if currentChat}}
+<div class="top-controls">
+    <div class="avatar"> <img src="{{avatar}}" alt="Аватар пользователя {{nick}}"> </div>
+    <div class="nick">{{currentChat.title}}</div>
+    <div class="control-btn">
+        {{{btn}}}
+    </div>
+</div>
+<div class="dialog-window">
+    {{#each messages}}
+    {{#if this.dateGroup}}
+    <div class="dialog-dategroup">{{this.dateGroup}}</div>
+    {{else }}
+    <div class="{{this.msgClass}}">
+        {{#if this.content }}
+        <div class="message-text">{{this.content}}</div>
+        {{/if}}
+        {{#if this.file }}
+        <div class="message-media"><img src="{{this.file}}" alt="Вложение"></div>
+        {{/if}}
+
+        <div class="message-send">
+            <span class="read-status read-{{this.is_read}}"></span>
+            <span class="send-time">
+                {{this.time}}
+            </span>
+        </div>
+    </div>
+    {{/if }}
+
+    {{/each}}
+    {{!-- {{{messages}}} --}}
+</div>
+<div class="bottom-controls">
+    {{{newMsgForm}}}
+</div>
+{{else }}
+<div class="dialog-empty">Выберите чат чтобы отправить сообщение</div>
+{{/if }}

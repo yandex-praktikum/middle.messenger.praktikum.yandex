@@ -1,0 +1,33 @@
+.app {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #252525;
+    width: 340px;
+    max-width: 100%;
+    padding: 50px 30px 30px;
+    border-radius: 12px;
+  }
+}
+
+.form {
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  &__items {
+    margin-bottom: 47px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: auto;
+    text-align: center;
+  }
+}

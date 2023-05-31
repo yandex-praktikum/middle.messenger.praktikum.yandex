@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "ES6",
+    "allowJs": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ]
+  },
+  "files": [
+    "src/pages/index/index.ts",
+    "src/index.d.ts"
+  ]
+}
