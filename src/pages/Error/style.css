@@ -1,0 +1,22 @@
+.error {
+    text-align: center;
+}
+
+.error__title {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.error__desc {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+
+.error__back {
+    display: block;
+    font-size: 16px;
+    color: var(--main-blue);
+}

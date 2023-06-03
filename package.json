@@ -1,0 +1,38 @@
+{
+    "name": "sprint_2",
+    "version": "1.0.0",
+    "description": "",
+    "engines": {
+        "node": "16.17.1",
+        "npm": "8.15.0"
+    },
+    "targets": {
+        "default": {
+            "engines": {
+                "browsers": ">= 50%"
+            }
+        }
+    },
+    "scripts": {
+        "dev": "parcel src/index.html --no-source-maps --no-cache --open",
+        "build": "parcel build src/index.html --no-source-maps --no-cache",
+        "start": "npm run build && node express.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "handlebars": "^4.7.7",
+        "nanoid": "^4.0.0"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.48.1",
+        "@typescript-eslint/parser": "^5.48.1",
+        "eslint": "^8.31.0",
+        "express": "^4.18.2",
+        "parcel": "^2.8.2",
+        "stylelint": "^14.16.1",
+        "stylelint-config-standard": "^29.0.0",
+        "typescript": "^4.9.4"
+    }
+}
