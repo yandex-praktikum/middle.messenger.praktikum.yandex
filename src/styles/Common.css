@@ -1,0 +1,47 @@
+.form-button {
+    display: block;
+    width: 210px;
+    height: 35px;
+    margin: 0 auto;
+    outline: none;
+    border: none;
+    background-color: #eee;
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.form-button:hover {
+    background-color: #eaeaea;
+}
+
+.form-button:active {
+    background-color: #e5e5e5;
+}
+
+.form-input {
+    width: 100%;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 100%);
+    font-size: 18px;
+}
+
+.form-input.form-input_error {
+    box-shadow: 0 0 0 1px #df0000;
+}
+
+.form-input::placeholder {
+    color: #888;
+}
+
+.form-input:hover,
+.form-input:focus {
+    box-shadow: 0 0 0 2px rgb(0 0 0 / 100%);
+}
+
+.close {
+    display: none;
+}
