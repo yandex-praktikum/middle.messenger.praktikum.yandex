@@ -1,0 +1,44 @@
+@import "./pages/nav/style.css";
+@import "./pages/entry/style.css";
+@import "./pages/chat/style.css";
+@import "./pages/profile/style.css";
+@import "./pages/error/style.css";
+@import "./partials/components/button/style.css";
+
+:root {
+    --main-blue: #3369F3;
+    --main-red: #FF2F2F;
+    --main-darkgray: #999999;
+    --main-lightgray: #EFEFEF;
+    --border-color: #EAEAEA;
+    --sidebar-color: #FBFBFB;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+}

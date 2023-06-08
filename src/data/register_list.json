@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Почта",
+        "name": "email",
+        "type": "email"
+    },
+    {
+        "title": "Логин",
+        "name": "login",
+        "type": "text"
+    },
+    {
+        "title": "Имя",
+        "name": "first_name",
+        "type": "text"
+    },
+    {
+        "title": "Фамилия",
+        "name": "second_name",
+        "type": "text"
+    },
+    {
+        "title": "Телефон",
+        "name": "phone",
+        "type": "text"
+    },
+    {
+        "title": "Пароль",
+        "name": "password",
+        "type": "password"
+    },
+    {
+        "title": "Пароль (ещё раз)",
+        "name": "password",
+        "type": "password"
+    }
+]
