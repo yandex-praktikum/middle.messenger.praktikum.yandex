@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "browserslist": "last 2 versions",
-
+  "engines": {
+    "node": "16.13.2"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
