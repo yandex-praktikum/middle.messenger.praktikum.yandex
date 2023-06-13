@@ -1,0 +1,33 @@
+@use 'variables' as *;
+@use 'parts';
+@use './messages/_left-panel';
+@use './messages/_right-panel';
+@import 'mixins';
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    .avatar-container-profile {
+        margin-bottom: 20px;
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+    .profile-details {
+        .detail {
+            margin-bottom: 10px;
+            strong {
+                font-weight: bold;
+            }
+            span {
+                margin-left: 5px;
+            }
+        }
+    }
+}

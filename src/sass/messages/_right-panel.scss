@@ -1,0 +1,79 @@
+@use '../variables'  as *;
+@use '../parts';
+
+// container for the message in the right pannel
+.right-panel {
+    min-height: calc(100vh - 120px);
+
+    .no-messages {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        p {
+            text-align: center;
+        }
+    }
+    .avatar-container {
+        margin: 0 20px;
+    }
+}
+
+.message-right-container { 
+	display: flex;
+	padding: 5px;
+	margin-bottom: 5px;
+	width: 70%;
+    .message-right-content {
+        flex-grow: 1;
+        border-radius: 10px;
+        padding: 15px;
+        border: 1px solid $color-light-gray;
+        margin-right: 10px;
+        .message-text {
+            font-size: 1.2em;
+        }
+    }
+}
+.content-you {
+    margin-left: auto;
+    margin-right: 0;
+    .message-right-content {
+        background-color: $background-color-light-gray;
+    }
+    
+}
+.content-reply {
+    .author {
+        color: $color-white;
+    }
+    .message-right-content {
+        background-color: $background-color-blue;
+        color: $color-white;
+    }
+    .date {
+        color: $color-white;
+    }
+}
+.new-divider {
+    width: 100%;
+    height: 0.8em;
+    border-bottom: 1px solid $color-dark-gray;
+    text-align: center;
+    margin: 20px 0 20px 0;
+    span {
+        font-size: 0.7em;
+        padding: 0 10px;
+        background-color: $background-color-white;
+    }
+}
+.spacer {
+    flex: 1;
+}
+.footer-right {
+    display: flex;
+    width: 100%;
+    height: 120px;
+    align-items: center;
+    justify-content: space-between;
+}

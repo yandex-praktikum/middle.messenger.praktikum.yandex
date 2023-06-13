@@ -1,0 +1,49 @@
+@use 'variables'  as *;
+
+form {
+	margin-top: 20px;
+}
+.form-container {
+	width: 50%;
+	margin: auto;
+	background-color: $background-color-white;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	h2 {
+		color: $color-blue;
+		margin-top: 0;
+	}
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: $background-color-blue;
+        color: $color-white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    a {
+        margin-top: 10px;
+        font-size: 12px;
+        color: $color-dark-gray;
+        text-decoration: underline;
+        cursor: pointer;
+        &:visited {
+            color: $color-dark-gray;
+        }
+        &:hover {
+            color: $color-blue;
+        }
+    }
+}

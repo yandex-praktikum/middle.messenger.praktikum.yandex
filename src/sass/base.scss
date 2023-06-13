@@ -1,0 +1,45 @@
+
+@use 'variables'  as *;
+@import 'mixins';
+
+* {
+	box-sizing: border-box !important;
+}
+body {
+	font-family: $font-family;
+	background-color: $background-color-white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+}
+a {
+	padding-bottom: 1px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	-webkit-transition: border-color 0.1s ease-in;
+	transition: border-color 0.1s ease-in;
+}
+textarea {
+	resize: none;
+	border: none;
+	outline: none;
+}
+
+.align-right {
+	text-align: right;
+}
+.float-right {
+	margin-left: auto;
+	margin-right: 0;
+}
+.pink {
+	background-color: $background-color-pink;
+}
+.blue {
+	background-color: $background-color-blue;
+}
+.hidden {
+	visibility: hidden;
+}
