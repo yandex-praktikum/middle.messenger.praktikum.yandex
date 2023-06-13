@@ -1,7 +1,7 @@
 
 import Handlebars from 'handlebars';
 
-export const AvatarContainer = ({avatar, display_name, selected, n}) => Handlebars.compile(`
+export const avatarContainerTemplate = ({avatar, display_name, selected, n}) => Handlebars.compile(`
 <div class="avatar-container {{#if selected}}blue{{else}}''{{/if}}">
     <img class="avatar" src="{{ avatar }}" alt="avatar" title="{{ display_name }}">
     <span class="name">{{ display_name }}</span>

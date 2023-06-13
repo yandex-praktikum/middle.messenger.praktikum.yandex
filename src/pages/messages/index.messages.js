@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import { template } from "./messages.tmpl.js";
 import { buttonAwesome } from "../../components/Button/index.button-comp.js";
-import { AvatarContainer } from "../../components/User/index.user-comp.js";
+import { avatarContainerTemplate } from "../../components/User/index.user-comp.js";
 import {
   messageLeft,
   messageRight,
@@ -112,7 +112,7 @@ export const showMessages = (chats, profile, name) => {
       const author = chat.messages[0].author;
       const date = chat.messages[0].date;
       const message = chat.messages[0].message;
-      const avatarContainer = AvatarContainer({
+      const avatarContainer = avatarContainerTemplate({
         avatar,
         display_name,
         selected,
@@ -161,7 +161,7 @@ export const showMessages = (chats, profile, name) => {
       })
       .join(" ");
 
-    const topAvatarContainer = AvatarContainer({
+    const topAvatarContainer = avatarContainerTemplate({
       display_name,
       avatar,
       selected: true,
