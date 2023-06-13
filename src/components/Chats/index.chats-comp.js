@@ -22,4 +22,3 @@ export const messageRight = ({author, avatar, hideAvatar, message, date}) => Han
     <img class="avatar {{#if hideAvatar}}hidden{{else}}''{{/if}}" src="{{avatar}}" alt="avatar" title="{{author}}">
 </div>
 `)({author, avatar, hideAvatar,message, date})
-
