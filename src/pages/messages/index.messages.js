@@ -6,7 +6,7 @@ import {
   messageLeft,
   messageRight,
 } from "../../components/Chats/index.chats-comp.js";
-import { findIndexByKeyValue } from "../../utils/index.utils.js";
+import { findIndexByKeyValue, parseDate} from "../../utils/index.utils.js";
 
 Handlebars.registerHelper("larger", function (v1, v2) {
   "use strict";
@@ -101,7 +101,7 @@ export const showMessages = (chats, profile, name) => {
       avatar,
       author,
       message,
-      date,
+      date: parseDate(date),
       n,
     });
 
@@ -155,9 +155,9 @@ export const showMessages = (chats, profile, name) => {
         }
         prevAuthor == author && hideAvatar;
         if (author === "You") {
-          return messageRight({ author, avatar, hideAvatar, message, date });
+          return messageRight({ author, avatar, hideAvatar, message, date: parseDate(date) });
         }
-        return messageLeft({ author, avatar, hideAvatar, message, date });
+        return messageLeft({ author, avatar, hideAvatar, message, date: parseDate(date) });
       })
       .join(" ");
 
