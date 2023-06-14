@@ -1,0 +1,28 @@
+@use 'variables'  as *;
+
+.error-container {
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 15px;
+	background-color: $background-color-blue;
+	h1 {
+		color: $color-white;
+		margin: 15vw auto 0;
+		font-size: max(2em, 10vw);
+		font-weight: 300;
+	}
+	h2 {
+		color: $color-white;
+		font-size: max(1em, 3vw);
+		font-weight: 200;
+	}
+    a {
+		color: $color-white;
+		font-weight: 400;
+		letter-spacing: -0.04em;
+		&:hover {
+			border-bottom-color: $color-white;
+		}
+	}
+}

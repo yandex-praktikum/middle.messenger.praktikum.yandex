@@ -1,0 +1,27 @@
+{
+  "name": "messenger",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "browserslist": "last 2 versions",
+  "engines": {
+    "node": "16.13.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 8080",
+    "start": "vite build; vite preview --port 3000"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "postcss-normalize": "^10.0.1",
+    "sass": "^1.63.3",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "netlify-cli": "^15.4.1"
+  }
+}

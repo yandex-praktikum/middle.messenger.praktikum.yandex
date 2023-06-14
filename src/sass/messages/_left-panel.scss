@@ -1,0 +1,18 @@
+@use '../variables'  as *;
+@use '../parts';
+@import '../mixins';
+
+// container for the message in the left pannel
+
+.message-left-container { 
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid $color-light-gray;
+	margin-bottom: 5px;
+    cursor: pointer;
+    .message-left-content {
+        .message-text {
+            font-size: 1em;
+        }
+    }    
+}

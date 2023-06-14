@@ -1,0 +1,56 @@
+@use 'variables'  as *;
+@use 'parts';
+@use './messages/_left-panel';
+@use './messages/_right-panel';
+@import 'mixins';
+
+.scroller {
+	padding: 20px;
+	overflow-y: scroll;
+}
+.scroller-container {
+	height: 100%;
+}
+
+.avatar-container {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	border-radius: 50px;
+	border: 1px solid $color-light-gray;
+	position: relative;
+	margin: 0;
+
+    .name {
+        font-size: 16px;
+    }
+    .new-count {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        border: 1px solid $color-light-gray;
+        border-radius: 30px;
+        background-color: $background-color-blue;
+        color: $color-white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border: 1px solid $color-light-gray;
+    border-radius: 50px;
+    object-fit: cover;
+    margin: 1px 10px 1px 1px;
+}
+
+.date {
+	text-align: right;
+	color: $color-gray;
+	font-size: 0.6em;
+}

@@ -1,0 +1,67 @@
+@use 'variables' as *;
+@import 'mixins';
+
+.tools-container,
+.send-message-container {
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    border: 1px solid $color-gray;
+    margin: 20px;
+    button {
+        height: 40px;
+        width: 40px;
+        border: none;
+        outline: none;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 50%;
+        cursor: pointer;
+        i {
+            font-size: 1.3em;
+            color: $color-dark-gray;
+            &:hover {
+                @include pulse(3s, linear, infinite)
+            }
+        }
+    }
+}
+
+.tools-container {
+    justify-content: flex-end;
+    border: none;
+    outline: none;
+    .search-container {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        border-radius: 40px;
+        border: 1px solid $color-gray;
+        margin-top: 0;
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 40px;
+            padding-left: 10px;
+        }
+    }
+}
+.send-message-container {
+	flex: 1;
+	border-radius: 10px;
+    border: 1px solid $color-gray;
+	padding: 10px;
+	textarea {
+		width:100%;
+		height: 2em;
+	}
+    button {
+        background-color: $color-white;
+		border: 1px solid $color-gray;
+        i {
+            color: $color-blue;
+        }
+    }
+}
