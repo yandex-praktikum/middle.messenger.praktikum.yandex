@@ -1,0 +1,32 @@
+import Block from '../../utils/Block'
+import { template } from './input.templ'
+// import styles from './styles.module.pcss';
+
+interface InputProps {
+  name: string
+  type: string
+  placeholder: string
+}
+
+export class Input extends Block<InputProps> {
+  constructor(props: InputProps) {
+    super(props)
+  }
+
+  public setValue(value: string) {
+    return ((this.element as HTMLInputElement).value = value)
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value
+  }
+
+  render() {
+    console.log('input here')
+    return this.compile(template, { ...this.props })
+  }
+}
