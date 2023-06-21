@@ -6,6 +6,9 @@ interface InputProps {
   name: string
   type: string
   placeholder: string
+  required?: boolean
+  autofocus?: boolean
+  class?: string
 }
 
 export class Input extends Block<InputProps> {
@@ -26,7 +29,6 @@ export class Input extends Block<InputProps> {
   }
 
   render() {
-    console.log('input here')
     return this.compile(template, { ...this.props })
   }
 }

@@ -1,9 +1,9 @@
 import Block from '../../utils/Block'
 import { template } from './login.tmpl'
-// import { Button } from '../../components/Button';
+import { Button } from '../../components/Buttons/buttonSubmit'
 import { Input } from '../../components/Input/input'
 // import styles from './styles.module.pcss'
-// import { Link } from '../../components/Link';
+import { Link } from '../../components/Link/link'
 // import { SignupData } from '../../api/AuthAPI'
 // import AuthController from '../../controllers/AuthController'
 
@@ -13,29 +13,35 @@ export class LoginPage extends Block {
   }
 
   init() {
-    this.children.login = new Input({
-      name: 'login',
-      type: 'text',
-      placeholder: 'Логин',
+    const inputs = [
+      {
+        name: 'login',
+        type: 'text',
+        placeholder: 'Login',
+        required: true,
+        autofocus: true,
+      },
+      {
+        name: 'password',
+        type: 'password',
+        placeholder: 'Password',
+        required: true,
+      },
+    ]
+
+    this.children.inputs = inputs.map((d) => new Input(d))
+
+    this.children.button = new Button({
+      label: 'Login',
+      events: {
+        click: () => this.onSubmit(),
+      },
     })
 
-    this.children.password = new Input({
-      name: 'password',
-      type: 'password',
-      placeholder: 'Пароль',
+    this.children.link = new Link({
+      label: 'Register new account',
+      to: '/register',
     })
-
-    // this.children.button = new Button({
-    //   label: 'Войти',
-    //   events: {
-    //     click: () => this.onSubmit()
-    //   },
-    // });
-
-    // this.children.link = new Link({
-    //   label: 'Регистрация',
-    //   to: '/register'
-    // });
   }
 
   onSubmit() {

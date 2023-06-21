@@ -2,7 +2,6 @@ import Handlebars from 'handlebars'
 import { EventBus } from './EventBus'
 import { nanoid } from 'nanoid'
 
-// Нельзя создавать экземпляр данного класса
 export default class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',

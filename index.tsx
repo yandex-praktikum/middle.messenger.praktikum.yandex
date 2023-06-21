@@ -4,7 +4,7 @@
 // import { showMessages } from "./src/pages/messages/index.messages.js";
 // import { showProfileEdit } from "./src/pages/profileEdit/index.edit.js";
 // import { showError } from "./src/pages/error/index.error.js";
-// import data from "./public/data/data.js";
+// import data from "./data/data.js";
 // const { chats, profile } = data;
 // document.addEventListener("DOMContentLoaded", () => {
 //   const root = document.getElementById("app");

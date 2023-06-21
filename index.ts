@@ -1,9 +1,12 @@
 import { LoginPage } from './src/pages/Login/index.login'
-// import { RegisterPage } from './src/pages/Register';
+import { RegisterPage } from './src/pages/Register/index.register'
 import Router from './src/utils/Router'
-// import { ProfilePage } from './src/pages/Profile';
+import { ProfilePage } from './src/pages/Profile/index.profile'
 import AuthController from './src/controllers/AuthController'
-// import { MessengerPage } from './src/pages/Messenger';
+import { MessengerPage } from './src/pages/Messenger/index.messenger'
+import { registerHandlebarsHelpers } from './src/utils/HandlebarsHelpers'
+
+registerHandlebarsHelpers()
 
 enum Routes {
   Index = '/',
@@ -14,9 +17,9 @@ enum Routes {
 
 window.addEventListener('DOMContentLoaded', async () => {
   Router.use(Routes.Index, LoginPage)
-  // .use(Routes.Register, RegisterPage)
-  // .use(Routes.Profile, ProfilePage)
-  // .use(Routes.Messenger, MessengerPage)
+  Router.use(Routes.Register, RegisterPage)
+  Router.use(Routes.Profile, ProfilePage)
+  Router.use(Routes.Messenger, MessengerPage)
 
   let isProtectedRoute = true
 
