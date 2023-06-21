@@ -55,36 +55,44 @@ export class MessengerPage extends Block {
         title: 'Search...',
         url: '',
         cl: 'search-button',
+        events: {
+          click: () => this.onSubmitAwesome('Search'),
+        },
       },
       profile: {
         icon: 'fa-regular fa-user',
         title: 'Profile',
-        url: '/profile',
-        cl: 'profile-button',
+        events: {
+          click: () => this.onSubmitAwesome('/profile'),
+        },
       },
       send: {
         icon: 'fa-regular fa-paper-plane',
         title: 'Send',
-        url: '',
-        cl: 'send-button',
+        events: {
+          click: () => this.onSubmitAwesome('Send'),
+        },
       },
       image: {
         icon: 'fa-regular fa-image',
         title: 'Attach Image',
-        url: '',
-        cl: 'image-button',
+        events: {
+          click: () => this.onSubmitAwesome('AttachImage'),
+        },
       },
       attachment: {
         icon: 'fa-solid fa-paperclip',
         title: 'Attach document',
-        url: '',
-        cl: 'attach-button',
+        events: {
+          click: () => this.onSubmitAwesome('Attach Doc'),
+        },
       },
       settings: {
         icon: 'fa-solid fa-bars',
         title: 'Settings',
-        url: '',
-        cl: 'settings-button',
+        events: {
+          click: () => this.onSubmitAwesome('/settings'),
+        },
       },
     }
     Object.entries(buttons).forEach(([key, value]) => {
@@ -113,6 +121,18 @@ export class MessengerPage extends Block {
 
     this.children.messages = new RightPanel({ data: rightPanelMessagesData })
   }
+
+  onSubmitAwesome(url: string) {
+    console.log(url)
+    // const values = Object.values(this.children)
+    //   .filter((child) => child instanceof Input)
+    //   .map((child) => [(child as Input).getName(), (child as Input).getValue()])
+
+    // const data = Object.fromEntries(values)
+
+    // AuthController.signin(data as SignupData)
+  }
+
   render() {
     // return this.compile(template, { ...this.props, styles })
     return this.compile(template, { ...this.props })

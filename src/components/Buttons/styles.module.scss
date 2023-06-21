@@ -12,17 +12,21 @@
 }
 
 .button-awesome {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+  height: 40px;
+  width: 40px;
   border: none;
+  outline: none;
+  padding: 5px;
+  margin: 5px;
   border-radius: 50%;
-  background-color: $background-color-light-gray;
-  color: $color-white;
   cursor: pointer;
-  @include pulse(3s, ease-in, infinite);
+  i {
+    font-size: 1.3em;
+    color: $color-dark-gray;
+    // &:hover {
+    //   @include pulse(3s, linear, infinite);
+    // }
+  }
 }
 
 @mixin animate($animation, $duration, $method, $times) {

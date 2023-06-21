@@ -4,6 +4,7 @@ import { template, detailTemplate } from './profile.templ.js'
 import data from '../../../public/data.js'
 import { buttonAwesome } from '../../components/Buttons/buttonAwesome'
 import { Avatar } from '../../components/Avatar/avatar.js'
+import { Tools } from '../../components/Tools/tools.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -49,15 +50,35 @@ export class ProfilePage extends Block {
       {
         icon: 'fa-solid fa-angle-left',
         title: 'Back',
+        events: {
+          click: () => this.onSubmitAwesome('/messenger'),
+        },
       },
       {
         icon: 'fa-solid fa-bars',
         title: 'Settings',
+        events: {
+          click: () => this.onSubmitAwesome('/settings'),
+        },
       },
     ]
-
-    this.children.buttons = buttons.map((d) => new buttonAwesome(d))
+    // pass Form
+    this.children.tools = new Tools({
+      buttons: buttons.map((d) => new buttonAwesome(d)),
+    })
   }
+
+  onSubmitAwesome(url: string) {
+    console.log(url)
+    // const values = Object.values(this.children)
+    //   .filter((child) => child instanceof Input)
+    //   .map((child) => [(child as Input).getName(), (child as Input).getValue()])
+
+    // const data = Object.fromEntries(values)
+
+    // AuthController.signin(data as SignupData)
+  }
+
   render() {
     console.log('render reg')
     console.log(this.props)

@@ -1,11 +1,7 @@
 export const template = `
 <div class="container">
-        <div class="{{{styles.panel}}} {{{styles.right-panel}}}">
-            <div class="{{{styles.tools-container}}}">
-                {{#each buttons}}
-                    {{{this}}}
-                {{/each}}
-            </div>
+        <div class="panel right-panel">
+            {{{tools}}}
             <div class="{{{styles.profile}}}">
                 {{{avatar}}}
                 <div>
