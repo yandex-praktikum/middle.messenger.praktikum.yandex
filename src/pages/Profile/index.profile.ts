@@ -4,11 +4,13 @@ import { template, detailTemplate } from './profile.templ.js'
 import data from '../../../public/data.js'
 import { buttonAwesome } from '../../components/Buttons/buttonAwesome'
 import { Avatar } from '../../components/Avatar/avatar.js'
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
 
 const { profile } = data
 console.log(data)
 interface DetailsProps {
-  value: string
+  value: string | number
   label: string
 }
 
@@ -18,7 +20,7 @@ export class Details extends Block<DetailsProps> {
   }
 
   render() {
-    return this.compile(detailTemplate, { ...this.props })
+    return this.compile(detailTemplate, { ...this.props, styles })
   }
 }
 
@@ -31,7 +33,6 @@ export class ProfilePage extends Block {
     this.children.avatar = new Avatar({
       title: 'Avatar',
       src: profile.avatar,
-      class: 'avatar-container-profile',
     })
 
     const userDetails = [
@@ -61,39 +62,6 @@ export class ProfilePage extends Block {
     console.log('render reg')
     console.log(this.props)
     // return this.compile(template, { ...this.props, styles })
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }
-
-// import Handlebars from "handlebars";
-// import { template } from "./profile.tmpl.js";
-// import data from "../../../data/data.js";
-// import { buttonAwesome } from "../../components/Button/index.button-comp.js";
-
-// const profile = data.profile;
-// const avatar = profile.avatar;
-// const userDetails = [
-//   { label: "Name", value: profile.first_name },
-//   { label: "Last Name", value: profile.second_name },
-//   { label: "Email Address", value: profile.login },
-//   { label: "Phone Number", value: profile.phone },
-//   { label: "Age", value: profile.age },
-//   { label: "City", value: profile.city },
-// ];
-// const buttons = {
-//   back: buttonAwesome({
-//     icon: "fa-solid fa-angle-left",
-//     title: "Back",
-//     url: "/messages",
-//     cl: "back-button",
-//   }),
-//   settings: buttonAwesome({
-//     icon: "fa-solid fa-bars",
-//     title: "Settings",
-//     url: "",
-//     cl: "settings-button",
-//   }),
-// };
-
-// export const showProfile = () =>
-//   Handlebars.compile(template)({ avatar, detail: userDetails, buttons });

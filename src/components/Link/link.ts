@@ -1,8 +1,8 @@
 import Block from '../../utils/Block'
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter'
 import { template } from './link.templ'
-// import styles from './styles.module.pcss';
-
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
 interface LinkProps extends PropsWithRouter {
   to: string
   label: string
@@ -26,7 +26,7 @@ class BaseLink extends Block<LinkProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }
 

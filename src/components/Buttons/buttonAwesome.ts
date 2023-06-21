@@ -1,6 +1,8 @@
 import Block from '../../utils/Block'
 import { template } from './buttonAwesome.templ'
-
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
+console.log('tyles', styles)
 interface ButtonProps {
   icon: string
   title: string
@@ -15,6 +17,6 @@ export class buttonAwesome extends Block<ButtonProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }

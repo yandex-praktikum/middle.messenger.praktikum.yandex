@@ -1,0 +1,96 @@
+@use 'variables' as *;
+// @import 'mixins';
+
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  height: 100vh !important;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background-color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  padding-bottom: 1px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  -webkit-transition: border-color 0.1s ease-in;
+  transition: border-color 0.1s ease-in;
+}
+textarea {
+  resize: none;
+  border: none;
+  outline: none;
+}
+
+form {
+  margin-top: 20px;
+}
+
+#app {
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.container {
+  width: 95%;
+  height: 95%;
+  margin: 10px;
+  background-color: $background-color-white;
+  //   border: 1px solid #ccc;
+  border: 1px solid red;
+  border-radius: 15px;
+  display: flex;
+}
+
+.panel {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.left-panel {
+  flex: 1;
+  border-right: 1px solid #ccc;
+}
+.right-panel {
+  flex: 2;
+  overflow: hidden;
+}
+
+.align-right {
+  text-align: right;
+}
+.float-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.pink {
+  background-color: $background-color-pink;
+}
+.blue {
+  background-color: $background-color-blue;
+}
+.hidden {
+  visibility: hidden;
+}
+
+@media (min-width: 480px) {
+  .return {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+  }
+}

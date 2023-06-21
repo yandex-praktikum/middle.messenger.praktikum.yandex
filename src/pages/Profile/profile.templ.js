@@ -1,14 +1,14 @@
 export const template = `
 <div class="container">
-        <div class="panel right-panel">
-            <div class="tools-container">
+        <div class="{{{styles.panel}}} {{{styles.right-panel}}}">
+            <div class="{{{styles.tools-container}}}">
                 {{#each buttons}}
                     {{{this}}}
                 {{/each}}
             </div>
-            <div class="profile">
+            <div class="{{{styles.profile}}}">
                 {{{avatar}}}
-                <div class="profile-details">
+                <div>
                     {{#each details}}
                         {{{this}}}
                     {{/each}}
@@ -19,7 +19,7 @@ export const template = `
 `
 
 export const detailTemplate = `
-<div class="detail">
+<div class="{{{styles.detail}}}">
     <strong>{{{label}}}:</strong> <span>{{{value}}}</span>
 </div>
 `

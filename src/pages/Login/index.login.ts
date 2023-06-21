@@ -1,9 +1,9 @@
 import Block from '../../utils/Block'
-import { template } from './login.tmpl'
+import { template } from './login.templ'
 import { Button } from '../../components/Buttons/buttonSubmit'
 import { Input } from '../../components/Input/input'
-// import styles from './styles.module.pcss'
 import { Link } from '../../components/Link/link'
+import { Form } from '../../components/Form/form'
 // import { SignupData } from '../../api/AuthAPI'
 // import AuthController from '../../controllers/AuthController'
 
@@ -13,7 +13,8 @@ export class LoginPage extends Block {
   }
 
   init() {
-    const inputs = [
+    // create Blocks for the Form
+    const inputsData = [
       {
         name: 'login',
         type: 'text',
@@ -29,18 +30,26 @@ export class LoginPage extends Block {
       },
     ]
 
-    this.children.inputs = inputs.map((d) => new Input(d))
+    const inputs = inputsData.map((d) => new Input(d))
 
-    this.children.button = new Button({
+    const button = new Button({
       label: 'Login',
       events: {
         click: () => this.onSubmit(),
       },
     })
 
-    this.children.link = new Link({
+    const link = new Link({
       label: 'Register new account',
       to: '/register',
+    })
+
+    // pass Form
+    this.children.form = new Form({
+      title: 'Login',
+      inputs,
+      button,
+      link,
     })
   }
 

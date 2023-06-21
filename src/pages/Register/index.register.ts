@@ -4,14 +4,9 @@ import { Button } from '../../components/Buttons/buttonSubmit'
 import { Input } from '../../components/Input/input'
 // import styles from './styles.module.pcss'
 import { Link } from '../../components/Link/link'
+import { Form } from '../../components/Form/form'
 // import { SignupData } from '../../api/AuthAPI'
 // import AuthController from '../../controllers/AuthController'
-
-// constructor(name, age) {
-//   super(name); // Call the parent class constructor
-
-//   this.age = age; // Add the extra property
-// }
 
 export class RegisterPage extends Block {
   constructor() {
@@ -19,7 +14,8 @@ export class RegisterPage extends Block {
   }
 
   init() {
-    const inputs = [
+    // create Blocks for the Form
+    const inputsData = [
       {
         type: 'text',
         name: 'first_name',
@@ -75,18 +71,26 @@ export class RegisterPage extends Block {
         required: true,
       },
     ]
-    this.children.inputs = inputs.map((d) => new Input(d))
+    const inputs = inputsData.map((d) => new Input(d))
 
-    this.children.button = new Button({
+    const button = new Button({
       label: 'Create account',
       events: {
         click: () => this.onSubmit(),
       },
     })
 
-    this.children.link = new Link({
+    const link = new Link({
       label: 'Login into existing account',
       to: '/',
+    })
+
+    // pass Form
+    this.children.form = new Form({
+      title: 'Register',
+      inputs,
+      button,
+      link,
     })
   }
 

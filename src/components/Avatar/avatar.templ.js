@@ -1,5 +1,5 @@
 export const template = `
-<div class="{{{class}}}">
+<div class="{{{styles.avatar-container-profile}}}">
     <img src="./{{{src}}}" alt="{{{title}}}" title="{{{title}}}">
 </div>
 `

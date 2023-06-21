@@ -1,6 +1,7 @@
 import Block from '../../utils/Block'
 import { template } from './input.templ'
-// import styles from './styles.module.pcss';
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
 
 interface InputProps {
   name: string
@@ -29,6 +30,6 @@ export class Input extends Block<InputProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }
