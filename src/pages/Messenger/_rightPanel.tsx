@@ -2,7 +2,7 @@ import Block from '../../utils/Block.js'
 import { template } from './rightPanel.templ.js'
 
 import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
-import { rmbTemplate, lmbTemplate } from '../../components/MessagesChats/messageBalloon.templ.js'
+import { templateRm, templateLm } from '../../components/MessagesChats/messageBalloon.templ.js'
 import { MessageBalloon } from '../../components/MessagesChats/messageBalloon.js'
 
 type messagesData = {
@@ -36,7 +36,7 @@ export class RightPanel extends Block<RightPanelProps> {
 
       if (author === 'You') {
         return new MessageBalloon({
-          template: rmbTemplate,
+          template: templateRm,
           author,
           avatar,
           hideAvatar,
@@ -45,7 +45,7 @@ export class RightPanel extends Block<RightPanelProps> {
         })
       }
       return new MessageBalloon({
-        template: lmbTemplate,
+        template: templateLm,
         author,
         avatar,
         hideAvatar,
@@ -65,7 +65,7 @@ export class RightPanel extends Block<RightPanelProps> {
 
 // if (name) {
 
-//     const topAvatarContainer = avatarContainerTemplate({
+//     const topContainerChat = avatarContainerTemplate({
 //       display_name,
 //       avatar,
 //       selected: true,
@@ -76,7 +76,7 @@ export class RightPanel extends Block<RightPanelProps> {
 //       buttons,
 //       leftPaneChats,
 //       rightPanelMessages,
-//       topAvatarContainer,
+//       topContainerChat,
 //     });
 //   }
 

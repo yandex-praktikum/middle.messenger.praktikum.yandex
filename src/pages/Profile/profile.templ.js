@@ -1,17 +1,17 @@
 export const template = `
-<div class="container">
-        <div class="panel right-panel">
-            {{{tools}}}
-            <div class="{{{styles.profile}}}">
-                {{{avatar}}}
-                <div>
-                    {{#each details}}
-                        {{{this}}}
-                    {{/each}}
-                </div>
+<main>
+    <div class={{{style.container}}}
+        {{{tools}}}
+        <div class="{{{styles.profile}}}">
+            {{{avatar}}}
+            <div>
+                {{#each details}}
+                    {{{this}}}
+                {{/each}}
             </div>
         </div>
     </div>
+</main>
 `
 
 export const detailTemplate = `

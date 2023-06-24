@@ -1,46 +1,57 @@
 import Block from '../../utils/Block.js'
 // import AuthController from '../../controllers/AuthController'
-import { template, detailTemplate } from './messenger.templ.js'
-import { buttonAwesome } from '../../components/Buttons/buttonAwesome.js'
-import { Input } from '../../components/Input/input.js'
-import { RightPanel } from './rightPanel'
-import { LeftPanel } from './leftPanel.js'
-// import { buttonAwesome } from '../../components/Buttons/buttonAwesome.js'
-// import { Avatar } from '../../components/Avatar/Avatar.js'
-import { AvatarContainer } from '../../components/Avatar/avatarContainer.js'
 import data from '../../../public/data.js'
+import { template } from './messenger.templ.js'
+import { ButtonAwesome } from '../../components/Buttons/buttons.js'
+import { redirect, log } from '../../commonActions/actions.js'
+import { Input } from '../../components/Input/input.js'
+import {
+  Container,
+  ContainerScroller,
+  ContainerChat,
+  ContainerMessage,
+  ContainerMessagersHeader,
+  ContainerSendMessage,
+} from '../../components/Containers/containers.js'
+import * as stylesDefs from '../../scss/styles.module.scss'
+const styles = stylesDefs.default
+
+// import { Avatar } from '../../components/Avatar/Avatar.js'
+
 import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
-const { profile, chats } = data
-console.log(chats)
+const { profile: profiledata, chats: chatsData } = data
+console.log(chatsData)
 let name = 'Noah'
 console.log('messages: ', name)
+
 // get index of the active chat on the name
-const selectedIndex = findIndexByKeyValue(chats, 'display_name', name)
+const selectedIndex = findIndexByKeyValue(chatsData, 'display_name', name)
 // get messages of the chat
-const selectedChat = chats[selectedIndex]
+const selectedChat = chatsData[selectedIndex]
 // get my avatar
-const myAvatar = profile ? profile.avatar : ''
+const myAvatar = profiledata ? profiledata.avatar : ''
 // get avatar of the person of the chat
 const { avatar } = selectedChat
-// complie chat messages to show in the right panel
-const rightPanelMessagesData = selectedChat.messages.map((m) => {
-  const thisAvatar = m.author === 'You' ? myAvatar : avatar
-  return { ...m, avatar: thisAvatar }
-})
-
-const leftPaneChatsData = chats.map((chat, i) => {
-  const { display_name, avatar, newCount } = chat
-  const { author, date, message } = chat.messages[0]
+// complie chats to show in the left panel
+const leftPaneChatsData = chatsData.map((chat, i) => {
+  const { date } = chat.messages[0]
   const selected = i === selectedIndex ? true : false
-  return {
-    display_name,
-    selected,
-    avatar,
-    author,
-    message,
-    date,
-    newCount,
+  const dateFormatted = parseDate(date)
+  return { ...chat, ...chat.messages[0], date: dateFormatted, selected }
+})
+// complie chat messages to show in the right panel
+const rightPanelMessagesData = selectedChat.messages.map((m, i) => {
+  const { author, date } = m
+  let prevAuthor = author
+  let hideAvatar = false
+  if (i < selectedChat.messages.length - 1) {
+    prevAuthor = selectedChat.messages[i + 1].author
   }
+  prevAuthor == author && hideAvatar
+  const dateFormatted = parseDate(date)
+
+  const thisAvatar = m.author === 'You' ? myAvatar : avatar
+  return { ...m, avatar: thisAvatar, date: dateFormatted, hideAvatar }
 })
 
 export class MessengerPage extends Block {
@@ -49,92 +60,74 @@ export class MessengerPage extends Block {
   }
 
   init() {
-    const buttons = {
-      search: {
-        icon: 'fas fa-search',
-        title: 'Search...',
-        url: '',
-        cl: 'search-button',
-        events: {
-          click: () => this.onSubmitAwesome('Search'),
-        },
+    // LEFT PANEL
+    const searchContainer = new Container({
+      content: [
+        new Input({
+          name: 'search',
+          type: 'text',
+          placeholder: 'Search...',
+          classes: ['input-search'],
+        }),
+        new ButtonAwesome({
+          icon: 'fas fa-search',
+          title: 'Search...',
+          events: {
+            click: () => log({ message: 'Searching....' }),
+          },
+        }),
+      ],
+      classes: ['search-container'],
+    })
+    const buttonProfile = new ButtonAwesome({
+      icon: 'fa-regular fa-user',
+      title: 'Profile',
+      classes: ['profile-button'],
+      events: {
+        click: () => redirect({ url: '/profile' }),
       },
-      profile: {
-        icon: 'fa-regular fa-user',
-        title: 'Profile',
-        events: {
-          click: () => this.onSubmitAwesome('/profile'),
-        },
-      },
-      send: {
-        icon: 'fa-regular fa-paper-plane',
-        title: 'Send',
-        events: {
-          click: () => this.onSubmitAwesome('Send'),
-        },
-      },
-      image: {
-        icon: 'fa-regular fa-image',
-        title: 'Attach Image',
-        events: {
-          click: () => this.onSubmitAwesome('AttachImage'),
-        },
-      },
-      attachment: {
-        icon: 'fa-solid fa-paperclip',
-        title: 'Attach document',
-        events: {
-          click: () => this.onSubmitAwesome('Attach Doc'),
-        },
-      },
-      settings: {
-        icon: 'fa-solid fa-bars',
-        title: 'Settings',
-        events: {
-          click: () => this.onSubmitAwesome('/settings'),
-        },
-      },
-    }
-    Object.entries(buttons).forEach(([key, value]) => {
-      const id = `button-${key}`
-      this.children[id] = new buttonAwesome(value)
+    })
+    const search = new Container({
+      content: [searchContainer, buttonProfile],
+      classes: ['tools-container'],
     })
 
-    this.children.search = new Input({
-      name: 'search',
-      type: 'text',
-      placeholder: 'Search...',
-      class: 'search-input',
+    // create chats
+    const chats = leftPaneChatsData.map((m) => new ContainerChat(m))
+    const chatContainer = new ContainerScroller({
+      content: chats,
     })
 
-    /// left panel
-    this.children.chats = new LeftPanel({ data: leftPaneChatsData })
+    this.children.leftPanel = new Container({
+      content: [search, chatContainer],
+      classes: ['panel', 'left-panel'],
+    })
 
-    // right panel
+    // RIGHT PANEL
+    // top toolbar with usser avatar
     const { avatar, display_name, newCount } = selectedChat
-    this.children.topAvatarContainer = new AvatarContainer({
+    const topContainerChat = new ContainerMessagersHeader({
       avatar,
       display_name,
       newCount,
       selected: true,
     })
 
-    this.children.messages = new RightPanel({ data: rightPanelMessagesData })
-  }
+    const messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
+    const messagesContainer = new ContainerScroller({
+      content: messages,
+    })
 
-  onSubmitAwesome(url: string) {
-    console.log(url)
-    // const values = Object.values(this.children)
-    //   .filter((child) => child instanceof Input)
-    //   .map((child) => [(child as Input).getName(), (child as Input).getValue()])
+    const sendMessage = new ContainerSendMessage()
 
-    // const data = Object.fromEntries(values)
-
-    // AuthController.signin(data as SignupData)
+    this.children.rightPanel = new Container({
+      content: [topContainerChat, messagesContainer, sendMessage],
+      classes: ['panel', 'right-panel'],
+    })
   }
 
   render() {
     // return this.compile(template, { ...this.props, styles })
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }

@@ -5,16 +5,22 @@ const styles = stylesDefs.default
 
 interface InputProps {
   name: string
+  value?: string | number
   type: string
-  placeholder: string
+  placeholder?: string
   required?: boolean
   autofocus?: boolean
+  classes?: string[]
   class?: string
 }
 
 export class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     super(props)
+  }
+
+  init() {
+    if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c])
   }
 
   public setValue(value: string) {

@@ -1,6 +1,6 @@
 import Block from '../../utils/Block.js'
 import { template } from './messagesFooter.templ.js'
-import { buttonAwesome } from '../../components/Buttons/buttonAwesome.js'
+import { ButtonAwesome } from '../../components/Buttons/ButtonAwesome.js'
 
 export class MessengerFooter extends Block {
   constructor() {
@@ -49,7 +49,7 @@ export class MessengerFooter extends Block {
 
     Object.entries(buttons).forEach(([key, value]) => {
       const id = `button-${key}`
-      this.children[id] = new buttonAwesome(value)
+      this.children[id] = new ButtonAwesome(value)
     })
   }
   render() {

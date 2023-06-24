@@ -1,30 +1,54 @@
 import Block from '../../utils/Block'
-import { template } from './register.tmpl'
+import { redirect, log } from '../../commonActions/actions.js'
+import { template } from './profileedit.templ'
 import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
 import { Input } from '../../components/Input/input'
-import { Tag } from '../../components/Tags/tags'
-// import styles from './styles.module.pcss'
-import { Link } from '../../components/Link/link'
+import { Avatar } from '../../components/Avatar/avatar.js'
+import { ButtonAwesome } from '../../components/Buttons/buttons'
 import { Form } from '../../components/Form/form'
 // import { SignupData } from '../../api/AuthAPI'
-import { redirect } from '../../commonActions/actions'
 // import AuthController from '../../controllers/AuthController'
+import data from '../../../public/data.js'
 import * as stylesDefs from '../../scss/styles.module.scss'
 const styles = stylesDefs.default
-export class RegisterPage extends Block {
+const { profile: profiledata } = data
+
+export class ProfileEditPage extends Block {
   constructor() {
     super({})
   }
 
   init() {
-    this.props.wrapperClass = styles.wrapper
-    // create Blocks for the Form
+    // TOOLS
+    const buttons = [
+      {
+        icon: 'fa-solid fa-angle-left',
+        title: 'Back',
+        events: {
+          click: () => redirect({ url: '/messenger' }),
+        },
+      },
+      {
+        icon: 'fa-solid fa-bars',
+        title: 'Settings',
+        events: {
+          click: () => redirect({ url: '/settings' }),
+        },
+      },
+    ]
+    this.children.tools = new Container({
+      content: buttons.map((d) => new ButtonAwesome(d)),
+      classes: ['tools-top-container'],
+    })
+
+    // FORM
     const inputsData = [
       {
         type: 'text',
         name: 'first_name',
-        class: '.input-square',
+        classes: ['.input-square'],
+        value: profiledata.first_name,
         placeholder: 'Enter your name',
         required: true,
         autofocus: true,
@@ -32,48 +56,60 @@ export class RegisterPage extends Block {
       {
         type: 'text',
         name: 'second_name',
-        class: '.input-square',
+        value: profiledata.second_name,
+        classes: ['.input-square'],
         placeholder: 'Enter your last name',
         required: true,
       },
       {
         type: 'email',
         name: 'email',
+        classes: ['.input-square'],
+        value: profiledata.email,
         placeholder: 'Enter your email',
         required: true,
       },
       {
         type: 'tel',
         name: 'phone',
+        classes: ['.input-square'],
+        value: profiledata.phone,
         placeholder: 'Enter phone number',
         required: false,
       },
       {
         type: 'number',
         name: 'age',
+        classes: ['.input-square'],
+        value: profiledata.age,
         placeholder: 'Enter your age',
       },
       {
         type: 'text',
         name: 'city',
+        classes: ['.input-square'],
+        value: profiledata.city,
         placeholder: 'Enter your city',
         required: false,
       },
       {
-        type: 'text',
-        name: 'login',
-        placeholder: 'Create your login',
+        type: 'password',
+        name: 'old_password',
+        classes: ['.input-square'],
+        placeholder: 'Enter old password',
         required: true,
       },
       {
         type: 'password',
-        name: 'password',
+        name: 'new_password',
+        classes: ['.input-square'],
         placeholder: 'Create new password',
         required: true,
       },
       {
         type: 'password',
         name: 'repeat_password',
+        classes: ['.input-square'],
         placeholder: 'Repeat password',
         required: true,
       },
@@ -81,37 +117,31 @@ export class RegisterPage extends Block {
     const inputs = inputsData.map((d) => new Input({ ...d, classes: ['input-square'] }))
     // store inputs for submittion
     this.props.inputs = inputs
-
     const button = new Button({
-      label: 'Create account',
+      label: 'Save',
       events: {
         click: () => this.onSubmit(),
       },
     })
-
-    const link = new Link({
-      label: 'Login into existing account',
-      to: '/',
-    })
-
-    // pass Form
-    const title = new Tag({
-      tag: 'h2',
-      content: 'Register',
+    const avatar = new Avatar({
+      title: 'Avatar',
+      src: profiledata.avatar,
+      classes: ['avatar-profile'],
     })
     const form = new Form({
+      title: 'Edit Profile',
+      avatar,
       inputs,
       button,
-      link,
     })
     this.children.form = new Container({
-      content: [title, form],
+      content: [form],
       classes: ['form-container'],
     })
   }
 
   onSubmit() {
-    console.log('submit Register Form')
+    console.log('submit Profile Edit')
     const inputs = this.props.inputs
     const values = inputs.map((i: Input) => [i.getName(), i.getValue()])
     const data = Object.fromEntries(values)
@@ -122,9 +152,6 @@ export class RegisterPage extends Block {
   }
 
   render() {
-    console.log('render reg')
-    console.log(this.props)
-    // return this.compile(template, { ...this.props, styles })
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props, styles })
   }
 }

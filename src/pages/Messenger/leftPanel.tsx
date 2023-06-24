@@ -1,10 +1,10 @@
 import Block from '../../utils/Block.js'
 import { template } from './leftPanel.templ.js'
-import { AvatarContainer } from '../../components/Avatar/avatarContainer.js'
-import { ChatContainer } from '../../components/MessagesChats/chatContainer.js'
+import { ContainerChat } from '../../components/Avatar/avatarContainer.js'
+import { ChatContainer } from '../../components/Containers/containers.js'
 
 // import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
-// import { rmbTemplate, lmbTemplate } from '../../components/MessageBalloons/messageBalloon.templ.js'
+// import { templateRm, templateLm } from '../../components/MessageBalloons/messageBalloon.templ.js'
 // import { messageBalloon } from '../../components/MessageBalloons/messageBalloon.js'
 
 

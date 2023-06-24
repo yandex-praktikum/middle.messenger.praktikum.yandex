@@ -29,6 +29,17 @@
   }
 }
 
+.send-button {
+  background-color: $color-blue;
+  i {
+    color: $color-white;
+  }
+}
+
+.profile-button {
+  margin-top: 15px;
+}
+
 @mixin animate($animation, $duration, $method, $times) {
   animation: $animation $duration $method $times;
 }

@@ -1,5 +1,5 @@
 export const template = `
-<div class="container">
+<main>
     {{{form}}}
-</div>
+</main>
 `

@@ -6,11 +6,17 @@ const styles = stylesDefs.default
 interface AvatarProps {
   title: string
   src: string
+  classes?: string[]
+  class?: string[]
 }
 
 export class Avatar extends Block<AvatarProps> {
   constructor(props: AvatarProps) {
     super({ ...props })
+  }
+
+  init() {
+    if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c])
   }
 
   render() {
