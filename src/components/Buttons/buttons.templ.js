@@ -1,5 +1,8 @@
 export const template = `
-<button class="{{{styles.button-submit}}} {{#each class}} {{{this}}} {{/each}}" type="{{type}}">
+<button class="{{{styles.button-submit}}} {{#each class}} {{{this}}} {{/each}}
+    {{#if disabled}} {{{styles.disabled}}} {{/if}}" 
+    type="{{type}}" 
+    {{#if disabled}} disabled {{/if}}>
     {{ label }}
 </button>
 `

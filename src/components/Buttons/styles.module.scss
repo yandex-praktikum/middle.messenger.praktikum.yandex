@@ -29,6 +29,10 @@
   }
 }
 
+.disabled {
+  background-color: $color-gray;
+}
+
 .send-button {
   background-color: $color-blue;
   i {

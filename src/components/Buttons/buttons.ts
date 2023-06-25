@@ -7,14 +7,20 @@ const styles = stylesDefs.default
 interface ButtonProps {
   type?: string
   label: string
-  events: {
+  classes?: string[]
+  disabled?: boolean
+  events?: {
     click: () => void
   }
 }
 
-export class Button extends Block<ButtonProps> {
+export class Button extends Block {
   constructor(props: ButtonProps) {
-    super({ type: 'button', ...props })
+    super({ type: 'button', disabled: false, ...props })
+  }
+
+  init() {
+    if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
   }
 
   render() {

@@ -1,11 +1,7 @@
 @use '../../scss/variables' as *;
 
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
 .profile {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

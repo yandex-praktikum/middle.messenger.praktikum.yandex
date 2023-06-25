@@ -1,5 +1,5 @@
 export const template = `
 <main>
-    {{{form}}}
+    {{{loginform}}}
 </main>
 `

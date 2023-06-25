@@ -12,27 +12,26 @@ import {
 import { Avatar } from '../Avatar/avatar'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../Tags/tags.js'
-import { redirect, log } from '../../commonActions/actions.js'
+import { redirect } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
 
 const styles = stylesDefs.default
 
 // general container, div classes can be passed as props
 interface ContainerProps {
-  content: Block[]
+  content?: Block[]
   classes?: string[]
-  class?: any
   events?: {
     click: () => void
   }
 }
 
-export class Container extends Block<ContainerProps> {
+export class Container extends Block {
   constructor(props: ContainerProps) {
     super({ ...props })
   }
   init() {
-    if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c])
+    if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
   }
 
   render() {
@@ -197,3 +196,20 @@ export class ContainerSendMessage extends Block {
     return this.compile(templateSendMessage, { ...this.props, styles })
   }
 }
+
+// // container for profile and profile edit
+// export class ContainerProfile extends Container {
+//   constructor() {
+//     super({})
+//   }
+
+//   init() {
+//     const innerContainer = new Container({
+//       classes: ['container']
+//     })
+//   }
+
+//   render() {
+//     return this.compile(templateContainer, { ...this.props, styles })
+//   }
+// }

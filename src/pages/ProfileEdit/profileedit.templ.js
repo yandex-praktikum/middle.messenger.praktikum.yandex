@@ -1,10 +1,8 @@
 export const template = `
 <main>
-    <div class={{{style.container}}}
-        {{{tools}}}
-        <div class="{{{styles.profile}}}">
-            {{{form}}}
-        </div>
+    {{{tools}}}
+    <div class="{{{styles.profile}}}">
+        {{{editform}}}
     </div>
 </main>
 `

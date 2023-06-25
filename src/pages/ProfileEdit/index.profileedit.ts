@@ -1,16 +1,19 @@
 import Block from '../../utils/Block'
-import { redirect, log } from '../../commonActions/actions.js'
+import { redirect } from '../../utils/Helpers.js'
+import { validateForm } from '../../utils/Helpers'
 import { template } from './profileedit.templ'
-import { Container } from '../../components/Containers/containers'
+import { Container, ContainerScroller } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
 import { Input } from '../../components/Input/input'
 import { Avatar } from '../../components/Avatar/avatar.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons'
 import { Form } from '../../components/Form/form'
+import { Tag } from '../../components/Tags/tags.js'
 // import { SignupData } from '../../api/AuthAPI'
 // import AuthController from '../../controllers/AuthController'
 import data from '../../../public/data.js'
-import * as stylesDefs from '../../scss/styles.module.scss'
+import { inputsData, InputData } from '../../../public/inputsData'
+import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 const { profile: profiledata } = data
 
@@ -43,112 +46,85 @@ export class ProfileEditPage extends Block {
     })
 
     // FORM
-    const inputsData = [
-      {
-        type: 'text',
-        name: 'first_name',
-        classes: ['.input-square'],
-        value: profiledata.first_name,
-        placeholder: 'Enter your name',
-        required: true,
-        autofocus: true,
-      },
-      {
-        type: 'text',
-        name: 'second_name',
-        value: profiledata.second_name,
-        classes: ['.input-square'],
-        placeholder: 'Enter your last name',
-        required: true,
-      },
-      {
-        type: 'email',
-        name: 'email',
-        classes: ['.input-square'],
-        value: profiledata.email,
-        placeholder: 'Enter your email',
-        required: true,
-      },
-      {
-        type: 'tel',
-        name: 'phone',
-        classes: ['.input-square'],
-        value: profiledata.phone,
-        placeholder: 'Enter phone number',
-        required: false,
-      },
-      {
-        type: 'number',
-        name: 'age',
-        classes: ['.input-square'],
-        value: profiledata.age,
-        placeholder: 'Enter your age',
-      },
-      {
-        type: 'text',
-        name: 'city',
-        classes: ['.input-square'],
-        value: profiledata.city,
-        placeholder: 'Enter your city',
-        required: false,
-      },
-      {
-        type: 'password',
-        name: 'old_password',
-        classes: ['.input-square'],
-        placeholder: 'Enter old password',
-        required: true,
-      },
-      {
-        type: 'password',
-        name: 'new_password',
-        classes: ['.input-square'],
-        placeholder: 'Create new password',
-        required: true,
-      },
-      {
-        type: 'password',
-        name: 'repeat_password',
-        classes: ['.input-square'],
-        placeholder: 'Repeat password',
-        required: true,
-      },
-    ]
-    const inputs = inputsData.map((d) => new Input({ ...d, classes: ['input-square'] }))
-    // store inputs for submittion
+    // create Blocks for the Form
+    const info = new Container({
+      classes: ['warning-container'],
+      content: [
+        new Tag({
+          tag: 'p',
+          content: 'warning',
+        }),
+      ],
+    })
+
+    // prefil inputs with profile data
+    for (const [key, value] of Object.entries(profiledata)) {
+      const input = inputsData[key]
+      if (input) input.value = value
+    }
+
+    const {
+      first_name,
+      second_name,
+      email,
+      phone,
+      age,
+      city,
+      login,
+      password_old,
+      password_new,
+      repeat_password,
+    } = inputsData
+
+    const inputs = [
+      first_name,
+      second_name,
+      email,
+      phone,
+      age,
+      city,
+      login,
+      password_old,
+      password_new,
+      repeat_password,
+    ].map(
+      (d: InputData) =>
+        new Input({
+          ...d,
+          required: true,
+          classes: ['input-square'],
+        }),
+    )
+    // store inputs for validation and form submission
     this.props.inputs = inputs
+
     const button = new Button({
       label: 'Save',
-      events: {
-        click: () => this.onSubmit(),
-      },
+      disabled: true,
     })
     const avatar = new Avatar({
       title: 'Avatar',
       src: profiledata.avatar,
       classes: ['avatar-profile'],
     })
+
+    // pass Form
     const form = new Form({
       title: 'Edit Profile',
       avatar,
       inputs,
       button,
+      info,
     })
-    this.children.form = new Container({
-      content: [form],
-      classes: ['form-container'],
+
+    this.children.editform = new ContainerScroller({
+      content: [
+        new Container({
+          content: [form],
+          classes: ['form-container'],
+        }),
+      ],
     })
-  }
-
-  onSubmit() {
-    console.log('submit Profile Edit')
-    const inputs = this.props.inputs
-    const values = inputs.map((i: Input) => [i.getName(), i.getValue()])
-    const data = Object.fromEntries(values)
-    console.log(data)
-
-    // AuthController.signin(data as SignupData)
-    // redirect({ url: '/profile' })
   }
 
   render() {

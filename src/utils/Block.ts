@@ -112,7 +112,7 @@ export default class Block<P extends Record<string, any> = any> {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
   }
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate(oldProps: P, newProps: Partial<P>) {
     return true
   }
 
@@ -121,7 +121,7 @@ export default class Block<P extends Record<string, any> = any> {
       return
     }
     Object.assign(this.props, nextProps)
-    componentDidUpdate(this.props, nextProps)
+    this.componentDidUpdate(this.props, nextProps)
   }
 
   get element() {
@@ -222,14 +222,14 @@ export default class Block<P extends Record<string, any> = any> {
     return new Proxy(props, {
       get(target, key: string) {
         if (typeof key === 'string' && key.startsWith('_')) {
-          throw new Error('Нет прав')
+          throw new Error('No access')
         }
         const value = target[key]
         return typeof value === 'function' ? value.bind(target) : value
       },
       set(target, key: string, value) {
         if (typeof key === 'string' && key.startsWith('_')) {
-          throw new Error('Нет прав')
+          throw new Error('No access')
         }
         const oldTarget = { ...target }
 

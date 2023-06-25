@@ -6,11 +6,14 @@ import { Input } from '../../components/Input/input'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags'
-import { redirect } from '../../commonActions/actions'
+import { validateForm } from '../../utils/Helpers'
+
+import { inputsData, InputData } from '../../../public/inputsData'
+
 // import { SignupData } from '../../api/AuthAPI'
 // import AuthController from '../../controllers/AuthController'
-import * as stylesDefs from '../../scss/styles.module.scss'
-const styles = stylesDefs.default
+// import * as stylesDefs from '../../scss/styles.module.scss'
+// const styles = stylesDefs.default
 
 export class LoginPage extends Block {
   constructor() {
@@ -18,35 +21,31 @@ export class LoginPage extends Block {
   }
 
   init() {
-    this.props.wrapperClass = styles.wrapper
-
     // create Blocks for the Form
-    const inputsData = [
-      {
-        name: 'login',
-        type: 'text',
-        class: '.input-square',
-        placeholder: 'Login',
-        autofocus: true,
-      },
-      {
-        name: 'password',
-        type: 'password',
-        class: '.input-square',
-        placeholder: 'Password',
-      },
-    ]
+    const info = new Container({
+      classes: ['warning-container'],
+      content: [
+        new Tag({
+          tag: 'p',
+          content: 'warning',
+        }),
+      ],
+    })
 
-    const inputs = inputsData.map(
-      (d) => new Input({ ...d, required: true, classes: ['input-square'] }),
+    // the class of the info div be passed to the inputs for blur valiudation
+    const { login, password } = inputsData
+    const inputs = [login, password].map(
+      (d: InputData) =>
+        new Input({
+          ...d,
+          required: true,
+          classes: ['input-square'],
+        }),
     )
-    // store inputs for submittion
-    this.props.inputs = inputs
+
     const button = new Button({
       label: 'Login',
-      events: {
-        click: () => this.onSubmit(),
-      },
+      disabled: true,
     })
 
     const link = new Link({
@@ -54,33 +53,21 @@ export class LoginPage extends Block {
       to: '/register',
     })
 
-    // pass Form
     const form = new Form({
       title: 'Login',
       inputs,
       button,
       link,
+      info,
     })
 
-    this.children.form = new Container({
+    this.children.loginform = new Container({
       content: [form],
       classes: ['form-container'],
     })
   }
 
-  onSubmit() {
-    console.log('submit Login Form')
-    const inputs = this.props.inputs
-    const values = inputs.map((i: Input) => [i.getName(), i.getValue()])
-    const data = Object.fromEntries(values)
-    console.log(data)
-
-    // AuthController.signin(data as SignupData)
-    // redirect({ url: '/messenger' })
-  }
-
   render() {
-    // return this.compile(template, { ...this.props, styles })
     return this.compile(template, { ...this.props })
   }
 }

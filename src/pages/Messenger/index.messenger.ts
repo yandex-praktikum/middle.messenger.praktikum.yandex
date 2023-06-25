@@ -3,7 +3,7 @@ import Block from '../../utils/Block.js'
 import data from '../../../public/data.js'
 import { template } from './messenger.templ.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-import { redirect, log } from '../../commonActions/actions.js'
+import { redirect } from '../../utils/Helpers.js'
 import { Input } from '../../components/Input/input.js'
 import {
   Container,

@@ -4,26 +4,29 @@ type message = {
   date: string
 }
 
-type Chat = {
+export type ChatData = {
   display_name: string
   avatar: string
   newCount: number
   messages: message[]
 }
-type ProfileData = {
+export type ProfileData = {
   first_name: string
   second_name: string
   avatar: string
   login: string
   email: string
-  epassword: string
+  password: string
+  password_old: string
+  password_new: string
+  repeat_password: string
   phone: string
   age: number
   city: string
 }
 
 interface Data {
-  chats: Chat[]
+  chats: ChatData[]
   profile: ProfileData
 }
 
@@ -362,8 +365,11 @@ const data: Data = {
     avatar: '/images/hero.png',
     login: 'RandomHero',
     email: 'random@hero.com',
-    epassword: 'admin',
-    phone: '+1 123-456-7890',
+    password: 'Admin123@',
+    password_old: 'Admin123@',
+    password_new: 'Admin123@',
+    repeat_password: 'Admin123@',
+    phone: '+1234567890',
     age: 99,
     city: 'New York',
   },
