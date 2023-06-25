@@ -1,9 +1,7 @@
 import Block from '../../utils/Block'
-import { Tag } from '../Tags/tags'
 import { template } from './input.templ'
 import * as stylesDefs from './styles.module.scss'
 import { setStyles } from '../../utils/Helpers'
-import { validateForm } from '../../utils/Helpers'
 const styles = stylesDefs.default
 const inputStyles = {
   pending: {

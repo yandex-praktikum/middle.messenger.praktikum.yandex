@@ -4,17 +4,9 @@ import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
 import { Input } from '../../components/Input/input'
 import { Tag } from '../../components/Tags/tags.js'
-// import { Tag } from '../../components/Tags/tags'
-// import styles from './styles.module.pcss'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
-// import { SignupData } from '../../api/AuthAPI'
-// import { redirect } from '../../commonActions/actions'
-import { validateForm } from '../../utils/Helpers'
 import { inputsData, InputData } from '../../../public/inputsData'
-// import AuthController from '../../controllers/AuthController'
-// import * as stylesDefs from '../../scss/styles.module.scss'
-// const styles = stylesDefs.default
 export class RegisterPage extends Block {
   constructor() {
     super({})

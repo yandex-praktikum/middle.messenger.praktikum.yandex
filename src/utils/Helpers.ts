@@ -24,6 +24,8 @@ export const redirect = ({ url, action = undefined }: btnAwesomeProps) => {
   // AuthController.signin(data as SignupData)
 }
 
+export const log = (message: string) => console.log(message)
+
 export const findIndexByKeyValue = (arr: any[], key: string, value: any) => {
   return arr.findIndex((obj) => obj[key] === value)
 }

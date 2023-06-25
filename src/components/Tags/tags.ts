@@ -1,5 +1,5 @@
 import Block from '../../utils/Block'
-import { template, templateScroller } from './tags.templ'
+import { template } from './tags.templ'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 

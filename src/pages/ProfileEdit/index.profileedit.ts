@@ -1,6 +1,5 @@
 import Block from '../../utils/Block'
 import { redirect } from '../../utils/Helpers.js'
-import { validateForm } from '../../utils/Helpers'
 import { template } from './profileedit.templ'
 import { Container, ContainerScroller } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
@@ -9,8 +8,7 @@ import { Avatar } from '../../components/Avatar/avatar.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags.js'
-// import { SignupData } from '../../api/AuthAPI'
-// import AuthController from '../../controllers/AuthController'
+import { Routes } from '../../../index.js'
 import data from '../../../public/data.js'
 import { inputsData, InputData } from '../../../public/inputsData'
 import * as stylesDefs from './styles.module.scss'
@@ -29,14 +27,14 @@ export class ProfileEditPage extends Block {
         icon: 'fa-solid fa-angle-left',
         title: 'Back',
         events: {
-          click: () => redirect({ url: '/messenger' }),
+          click: () => redirect({ url: Routes.Messenger }),
         },
       },
       {
         icon: 'fa-solid fa-bars',
         title: 'Settings',
         events: {
-          click: () => redirect({ url: '/settings' }),
+          click: () => redirect({ url: Routes.Settings }),
         },
       },
     ]

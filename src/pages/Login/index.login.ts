@@ -6,8 +6,6 @@ import { Input } from '../../components/Input/input'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags'
-import { validateForm } from '../../utils/Helpers'
-
 import { inputsData, InputData } from '../../../public/inputsData'
 
 // import { SignupData } from '../../api/AuthAPI'

@@ -1,9 +1,8 @@
 import Block from '../../utils/Block.js'
-// import AuthController from '../../controllers/AuthController'
 import data from '../../../public/data.js'
 import { template } from './messenger.templ.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-import { redirect } from '../../utils/Helpers.js'
+import { redirect, log } from '../../utils/Helpers.js'
 import { Input } from '../../components/Input/input.js'
 import {
   Container,
@@ -13,10 +12,9 @@ import {
   ContainerMessagersHeader,
   ContainerSendMessage,
 } from '../../components/Containers/containers.js'
+import { Routes } from '../../../index.js'
 import * as stylesDefs from '../../scss/styles.module.scss'
 const styles = stylesDefs.default
-
-// import { Avatar } from '../../components/Avatar/Avatar.js'
 
 import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
 const { profile: profiledata, chats: chatsData } = data
@@ -73,7 +71,7 @@ export class MessengerPage extends Block {
           icon: 'fas fa-search',
           title: 'Search...',
           events: {
-            click: () => log({ message: 'Searching....' }),
+            click: () => log('Searching....'),
           },
         }),
       ],
@@ -84,7 +82,7 @@ export class MessengerPage extends Block {
       title: 'Profile',
       classes: ['profile-button'],
       events: {
-        click: () => redirect({ url: '/profile' }),
+        click: () => redirect({ url: Routes.Profile }),
       },
     })
     const search = new Container({

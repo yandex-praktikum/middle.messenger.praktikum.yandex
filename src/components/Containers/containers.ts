@@ -12,7 +12,7 @@ import {
 import { Avatar } from '../Avatar/avatar'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../Tags/tags.js'
-import { redirect } from '../../utils/Helpers.js'
+import { redirect, log } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
 
 const styles = stylesDefs.default
@@ -172,13 +172,6 @@ export class ContainerSendMessage extends Block {
           click: () => log({ message: 'Attach Doc' }),
         },
       },
-      // settings: {
-      //   icon: 'fa-solid fa-bars',
-      //   title: 'Settings',
-      //   events: {
-      //     click: () => redirect({ url: '/settings' }),
-      //   },
-      // },
     }
 
     Object.entries(buttons).forEach(([key, value]) => {
@@ -196,20 +189,3 @@ export class ContainerSendMessage extends Block {
     return this.compile(templateSendMessage, { ...this.props, styles })
   }
 }
-
-// // container for profile and profile edit
-// export class ContainerProfile extends Container {
-//   constructor() {
-//     super({})
-//   }
-
-//   init() {
-//     const innerContainer = new Container({
-//       classes: ['container']
-//     })
-//   }
-
-//   render() {
-//     return this.compile(templateContainer, { ...this.props, styles })
-//   }
-// }

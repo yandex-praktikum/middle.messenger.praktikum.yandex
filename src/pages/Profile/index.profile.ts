@@ -1,5 +1,5 @@
 import Block from '../../utils/Block.js'
-// import AuthController from '../../controllers/AuthController'
+import { Routes } from '../../../index.js'
 import { template, detailTemplate } from './profile.templ.js'
 import data from '../../../public/data.js'
 import { redirect } from '../../utils/Helpers.js'
@@ -37,21 +37,21 @@ export class ProfilePage extends Block {
         icon: 'fa-solid fa-angle-left',
         title: 'Back',
         events: {
-          click: () => redirect({ url: '/messenger' }),
+          click: () => redirect({ url: Routes.Messenger }),
         },
       },
       {
         icon: 'far fa-edit',
         title: 'Edit Profile',
         events: {
-          click: () => redirect({ url: '/profileedit' }),
+          click: () => redirect({ url: Routes.ProfileEdit }),
         },
       },
       {
         icon: 'fa-solid fa-bars',
         title: 'Settings',
         events: {
-          click: () => redirect({ url: '/settings' }),
+          click: () => redirect({ url: Routes.Settings }),
         },
       },
     ]

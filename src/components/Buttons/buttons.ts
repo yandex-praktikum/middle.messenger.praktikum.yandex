@@ -1,6 +1,5 @@
 import Block from '../../utils/Block'
 import { template, templateAwesome } from './buttons.templ'
-import { redirect } from '../../commonActions/actions'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
