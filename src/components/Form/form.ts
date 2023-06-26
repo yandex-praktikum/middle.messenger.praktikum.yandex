@@ -2,6 +2,7 @@ import Block from '../../utils/Block'
 import { template } from './form.templ'
 import { Tag } from '../Tags/tags'
 import { Input } from '../Input/input'
+import { Button } from '../Buttons/buttons'
 import { setStyles } from '../../utils/Helpers'
 import { validateForm } from '../../utils/Helpers'
 import * as stylesDefs from './styles.module.scss'
@@ -43,14 +44,15 @@ export class Form extends Block {
     })
 
     // add toggleWarning to inputs
-    this.children.inputs.forEach((i) => {
+    const inputs = this.children.inputs as Block[]
+    inputs.forEach((i: Block) => {
       i.setProps({
         toggleWarning: this.toggleWarning.bind(this),
         formValidator: this.validate.bind(this),
       })
     })
-
-    this.children.button.setProps({
+    const button = this.children.button as Block
+    button.setProps({
       events: {
         click: () => this.submit(),
       },
@@ -60,12 +62,13 @@ export class Form extends Block {
   }
 
   validate() {
-    const inputs = this.children.inputs
+    const inputs = this.children.inputs as Input[]
+    const button = this.children.button as Button
     const values = inputs.map((i: Input) => [i.getName(), i.getValue()])
     this.setProps({ data: Object.fromEntries(values) })
     const valid = validateForm(this.props.data)
     this.setProps({ valid })
-    if (this.props.valid) this.children.button.setProps({ disabled: false })
+    if (this.props.valid) button.setProps({ disabled: false })
   }
 
   submit() {
@@ -79,7 +82,8 @@ export class Form extends Block {
   }
 
   toggleWarning(valid: boolean, message: string) {
-    const warningElement = this.children.info.getContent() as HTMLElement
+    const info = this.children.info as Block
+    const warningElement = info.getContent() as HTMLElement
     if (warningElement) {
       if (valid) {
         setStyles(warningElement, warningStyles.pending)
