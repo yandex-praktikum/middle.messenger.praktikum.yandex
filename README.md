@@ -16,7 +16,7 @@
 
 Дезайн для версии 0.1 можно найти по ссылке на
 [Figma](https://www.figma.com/file/3fadPRCD38XteX6sDx6hNk/Messenger?type=design&node-id=0%3A1&t=PYURXJQ9XpU48Zk7-1).
-Прототип на [Netlify](https://sprint-1--messenger-midkhat.netlify.app/login)
+Прототип на [Netlify](https://sprint-2--mid-messenger-sprint-2-e7e696.netlify.app/login)
 
 ## Установка
 
@@ -33,7 +33,7 @@
 - `npm run dev` — запуск для разраотчика,
 - `npm run build` — сборка приложения
 - `npm run preview` — превью собраного приложения
-- `npm run build:preview` — сборка приложения и запуск превью
+- `npm run start` — сборка приложения и запуск превью
 
 ## Примеры использования
 
