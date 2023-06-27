@@ -12,6 +12,7 @@ import {
 import { Avatar } from '../Avatar/avatar'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../Tags/tags.js'
+import { TextArea } from '../TextArea/textarea.js'
 import { redirect, log } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
 import { Routes } from '../../../index.js'
@@ -156,7 +157,7 @@ export class ContainerSendMessage extends Block {
         title: 'Send',
         classes: ['send-button'],
         events: {
-          click: () => log('Send'),
+          click: this.send.bind(this),
         },
       },
       image: {
@@ -174,16 +175,28 @@ export class ContainerSendMessage extends Block {
         },
       },
     }
-
     Object.entries(buttons).forEach(([key, value]) => {
       const id = `button-${key}`
       this.children[id] = new ButtonAwesome(value)
     })
-    console.log(this.children['button-send'])
-    this.children.textarea = new Tag({
-      tag: 'textarea',
+
+    this.children.textarea = new TextArea({
       name: 'message',
     })
+  }
+
+  send() {
+    const textarea = this.children.textarea as TextArea
+    const value = textarea.getValue()
+    const regex = /^[^QWERTYUIOPqwertyuiopЙЦУКЕНГШЩЗХйцукенгшщзх]*$/
+    const valid = regex.test(value)
+    if (!valid) {
+      alert(
+        `This is a very weird requirement from the designers team, but we currently do not allow any characters from the top row of the QWERTY keyboard. Sorry for the inconvinience.`,
+      )
+    } else {
+      console.log(value)
+    }
   }
 
   render() {
