@@ -2,7 +2,11 @@ export const template = `
 <main>
     {{{tools}}}
     <div class="{{{styles.profile}}}">
-        {{{editform}}}
+        <div class="{{{styles.scroller-container}}}">
+            <div class="{{{styles.scroller}}}">
+                {{{editform}}}
+            </div>
+        </div>
     </div>
 </main>
 `

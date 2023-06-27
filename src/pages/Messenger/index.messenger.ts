@@ -2,128 +2,145 @@ import Block from '../../utils/Block.js'
 import data from '../../../public/data.js'
 import { template } from './messenger.templ.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-import { redirect, log } from '../../utils/Helpers.js'
-import { Input } from '../../components/Input/input.js'
+import { redirect } from '../../utils/Helpers.js'
+import { SearchForm } from '../../components/SearchForm/searchForm.js'
 import {
   Container,
-  ContainerScroller,
   ContainerChat,
   ContainerMessage,
   ContainerMessagersHeader,
   ContainerSendMessage,
 } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
-import * as stylesDefs from '../../scss/styles.module.scss'
+import * as styleMainsDefs from '../../scss/styles.module.scss'
+const stylesMain = styleMainsDefs.default
+import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
 import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
 const { profile: profiledata, chats: chatsData } = data
-let name = 'Noah'
-
-// get index of the active chat on the name
-const selectedIndex = findIndexByKeyValue(chatsData, 'display_name', name)
-// get messages of the chat
-const selectedChat = chatsData[selectedIndex]
-// get my avatar
 const myAvatar = profiledata ? profiledata.avatar : ''
-// get avatar of the person of the chat
-const { avatar } = selectedChat
-// complie chats to show in the left panel
-const leftPaneChatsData = chatsData.map((chat, i) => {
-  const { date } = chat.messages[0]
-  const selected = i === selectedIndex ? true : false
-  const dateFormatted = parseDate(date)
-  return { ...chat, ...chat.messages[0], date: dateFormatted, selected }
-})
-// complie chat messages to show in the right panel
-const rightPanelMessagesData = selectedChat.messages.map((m, i) => {
-  const { author, date } = m
-  let prevAuthor = author
-  let hideAvatar = false
-  if (i < selectedChat.messages.length - 1) {
-    prevAuthor = selectedChat.messages[i + 1].author
-  }
-  prevAuthor == author && hideAvatar
-  const dateFormatted = parseDate(date)
 
-  const thisAvatar = m.author === 'You' ? myAvatar : avatar
-  return { ...m, avatar: thisAvatar, date: dateFormatted, hideAvatar }
-})
+const getChatsMessages = (index: number) => {
+  // chats
+  const leftPaneChatsData = chatsData.map((chat, i) => {
+    const { date } = chat.messages[0]
+    const selected = i === index ? true : false
+    const dateFormatted = parseDate(date)
+    return { ...chat, ...chat.messages[0], date: dateFormatted, selected }
+  })
+
+  // messages
+
+  const selectedChat = chatsData[index]
+  // get avatar of the person of the chat
+  const { avatar } = selectedChat
+  const rightPanelMessagesData = selectedChat.messages.map((m, i) => {
+    const { author, date } = m
+    let prevAuthor = author
+    let hideAvatar = false
+    if (i < selectedChat.messages.length - 1) {
+      prevAuthor = selectedChat.messages[i + 1].author
+    }
+    prevAuthor == author && hideAvatar
+    const dateFormatted = parseDate(date)
+    const thisAvatar = m.author === 'You' ? myAvatar : avatar
+    return { ...m, avatar: thisAvatar, date: dateFormatted, hideAvatar }
+  })
+  return { leftPaneChatsData, rightPanelMessagesData }
+}
 
 export class MessengerPage extends Block {
   constructor() {
-    super({})
+    super({ name: 'Noah' })
   }
 
   init() {
+    // get index of the active chat on the name
+    this.props.selectedIndex = findIndexByKeyValue(chatsData, 'display_name', this.props.name)
+    const { leftPaneChatsData, rightPanelMessagesData } = getChatsMessages(this.props.selectedIndex)
+
     // LEFT PANEL
-    const searchContainer = new Container({
+    this.children.search = new Container({
       content: [
-        new Input({
-          name: 'search',
-          type: 'text',
-          placeholder: 'Search...',
-          classes: ['input-search'],
-        }),
+        new SearchForm(),
         new ButtonAwesome({
-          icon: 'fas fa-search',
-          title: 'Search...',
+          icon: 'fa-regular fa-user',
+          title: 'Profile',
+          classes: ['profile-button'],
           events: {
-            click: () => log('Searching....'),
+            click: () => redirect({ url: Routes.Profile }),
           },
         }),
       ],
-      classes: ['search-container'],
-    })
-    const buttonProfile = new ButtonAwesome({
-      icon: 'fa-regular fa-user',
-      title: 'Profile',
-      classes: ['profile-button'],
-      events: {
-        click: () => redirect({ url: Routes.Profile }),
-      },
-    })
-    const search = new Container({
-      content: [searchContainer, buttonProfile],
       classes: ['tools-container'],
     })
-
-    // create chats
-    const chats = leftPaneChatsData.map((m) => new ContainerChat(m))
-    const chatContainer = new ContainerScroller({
-      content: chats,
-    })
-
-    this.children.leftPanel = new Container({
-      content: [search, chatContainer],
-      classes: ['panel', 'left-panel'],
-    })
+    this.children.chats = leftPaneChatsData.map(
+      (m) =>
+        new ContainerChat({
+          events: {
+            // click: () => console.log(m.display_name),
+            click: () => this.changeChat(m.display_name),
+          },
+          ...m,
+        }),
+    )
 
     // RIGHT PANEL
-    // top toolbar with usser avatar
+    const selectedChat = chatsData[this.props.selectedIndex]
     const { avatar, display_name, newCount } = selectedChat
-    const topContainerChat = new ContainerMessagersHeader({
+
+    // complie chat messages to show in the right panel
+
+    // top toolbar with usser avatar
+    this.children.topContainerChat = new ContainerMessagersHeader({
       avatar,
       display_name,
       newCount,
       selected: true,
     })
 
-    const messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
-    const messagesContainer = new ContainerScroller({
-      content: messages,
-    })
+    this.children.messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
 
-    const sendMessage = new ContainerSendMessage()
+    this.children.sendMessage = new ContainerSendMessage()
+  }
 
-    this.children.rightPanel = new Container({
-      content: [topContainerChat, messagesContainer, sendMessage],
-      classes: ['panel', 'right-panel'],
+  changeChat(name: string) {
+    this.setProps({ name })
+    const oldIndex = this.props.selectedIndex
+    this.props.selectedIndex = findIndexByKeyValue(chatsData, 'display_name', this.props.name)
+    console.log(oldIndex, this.props.selectedIndex)
+    // update chats
+    const chats = this.children.chats as Block[]
+    chats[oldIndex].setProps({ selected: false })
+    chats[this.props.selectedIndex].setProps({ selected: true })
+    // update header messages
+
+    const selectedChat = chatsData[this.props.selectedIndex]
+    const { avatar, display_name, newCount } = selectedChat
+    const topChat = this.children.topContainerChat as Block
+    topChat.setProps({ avatar, display_name, newCount })
+    // update messages
+    const rightPanelMessagesData = selectedChat.messages.map((m, i) => {
+      const { author, date } = m
+      let prevAuthor = author
+      let hideAvatar = false
+      if (i < selectedChat.messages.length - 1) {
+        prevAuthor = selectedChat.messages[i + 1].author
+      }
+      prevAuthor == author && hideAvatar
+      const dateFormatted = parseDate(date)
+
+      const thisAvatar = m.author === 'You' ? myAvatar : avatar
+      return { ...m, avatar: thisAvatar, date: dateFormatted, hideAvatar }
     })
+    this.children.messages = []
+    this.children.messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
+    // selected: boolean
   }
 
   render() {
     // return this.compile(template, { ...this.props, styles })
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles, stylesMain })
   }
 }

@@ -39,6 +39,31 @@
   outline: none;
 }
 
+.scroller-container {
+  padding: 20px;
+  overflow-y: scroll;
+  .scroller {
+    height: 100%;
+  }
+}
+
+.search-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid $color-gray;
+  margin-top: 10px;
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 40px;
+    padding-left: 10px;
+  }
+}
+
 .chat-container {
   border-radius: 10px;
   border: 1px solid $color-light-gray;
@@ -229,12 +254,14 @@
 .spacer {
   flex: 1;
 }
+
 .send-message-container {
   display: flex;
   align-items: center;
   border-radius: 10px;
   margin: 10px;
   border: 1px solid $color-gray;
+
   .send-message-content {
     display: flex;
     width: 100%;

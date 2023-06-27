@@ -36,6 +36,7 @@ export class LoginPage extends Block {
       (d: InputData) =>
         new Input({
           ...d,
+          validate: true,
           required: true,
           classes: ['input-square'],
         }),

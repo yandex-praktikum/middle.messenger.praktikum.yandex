@@ -32,6 +32,7 @@ export class RegisterPage extends Block {
         new Input({
           ...d,
           required: true,
+          validate: true,
           classes: ['input-square'],
         }),
     )

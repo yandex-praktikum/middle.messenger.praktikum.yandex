@@ -41,28 +41,6 @@ export class Container extends Block {
   }
 }
 
-// scroller container for chats and messages
-interface ContainerScrollerProps extends ContainerProps {
-  class1?: string
-  class2?: string
-  scrollerClass?: string
-  scrollerContainerClass?: string
-}
-
-export class ContainerScroller extends Block<ContainerScrollerProps> {
-  constructor(props: ContainerScrollerProps) {
-    super({ class1: 'scroller', class2: 'scroller-container', ...props })
-  }
-  init() {
-    if (this.props.class1) this.props.scrollerClass = styles[this.props.class1]
-    if (this.props.class2) this.props.scrollerContainerClass = styles[this.props.class2]
-  }
-
-  render() {
-    return this.compile(templateScroller, { ...this.props })
-  }
-}
-
 // container for chats in the left panel
 interface ContainerChatProps {
   avatar: string
@@ -71,7 +49,7 @@ interface ContainerChatProps {
   newCount?: number
   message?: string
   events?: {
-    click: () => void
+    click: any
   }
 }
 

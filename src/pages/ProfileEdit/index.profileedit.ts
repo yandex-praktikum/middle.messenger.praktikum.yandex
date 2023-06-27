@@ -1,7 +1,7 @@
 import Block from '../../utils/Block'
 import { redirect } from '../../utils/Helpers.js'
 import { template } from './profileedit.templ'
-import { Container, ContainerScroller } from '../../components/Containers/containers'
+import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
 import { Input } from '../../components/Input/input'
 import { Avatar } from '../../components/Avatar/avatar.js'
@@ -90,6 +90,7 @@ export class ProfileEditPage extends Block {
         new Input({
           ...d,
           required: true,
+          validate: true,
           classes: ['input-square'],
         }),
     )
@@ -98,7 +99,6 @@ export class ProfileEditPage extends Block {
 
     const button = new Button({
       label: 'Save',
-      disabled: true,
     })
     const avatar = new Avatar({
       title: 'Avatar',
@@ -115,13 +115,9 @@ export class ProfileEditPage extends Block {
       info,
     })
 
-    this.children.editform = new ContainerScroller({
-      content: [
-        new Container({
-          content: [form],
-          classes: ['form-container'],
-        }),
-      ],
+    this.children.editform = new Container({
+      content: [form],
+      classes: ['form-container'],
     })
   }
 

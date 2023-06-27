@@ -3,6 +3,7 @@ import { template } from './input.templ'
 import * as stylesDefs from './styles.module.scss'
 import { setStyles, validateInput } from '../../utils/Helpers'
 const styles = stylesDefs.default
+
 const inputStyles = {
   pending: {
     border: '1px solid gray',
@@ -24,7 +25,6 @@ export interface InputProps {
   required?: boolean
   autofocus?: boolean
   classes?: string[]
-  validate?: boolean
   events?: {
     [key: string]: () => void
   }
@@ -32,12 +32,12 @@ export interface InputProps {
 
 export class Input extends Block {
   constructor(props: InputProps) {
-    super({ validate: false, events: {}, regex: /\S+/, ...props })
+    super({ events: {}, regex: /\S+/, ...props })
   }
 
   init() {
     if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
-    if (this.props.validate) this.props.events.blur = () => this.validate()
+    this.props.events.blur = () => this.validate()
   }
 
   validate() {

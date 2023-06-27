@@ -1,0 +1,19 @@
+@use '../../scss/variables' as *;
+
+.search-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid $color-gray;
+  margin-top: 10px;
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin-left: 5px;
+    border-radius: 40px;
+    padding-left: 10px;
+  }
+}
