@@ -20,12 +20,7 @@ export default defineConfig({
       },
     },
   },
-  //   optimizeDeps: { exclude: ["fsevents"], needsInterop: ['vite-express'] },
-  plugins: [
-    //   handlebars({
-    //   reloadOnPartialChange: false,
-    // })
-  ],
+  plugins: [],
   css: {
     preprocessorOptions: {
       scss: {
