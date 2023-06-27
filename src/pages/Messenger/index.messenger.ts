@@ -18,9 +18,8 @@ const styles = stylesDefs.default
 
 import { findIndexByKeyValue, parseDate } from '../../utils/Helpers.js'
 const { profile: profiledata, chats: chatsData } = data
-console.log(chatsData)
 let name = 'Noah'
-console.log('messages: ', name)
+console.log('Messenger messages: ', name)
 
 // get index of the active chat on the name
 const selectedIndex = findIndexByKeyValue(chatsData, 'display_name', name)

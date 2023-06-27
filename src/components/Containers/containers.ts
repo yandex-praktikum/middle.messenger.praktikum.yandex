@@ -14,6 +14,7 @@ import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../Tags/tags.js'
 import { redirect, log } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
+import { Routes } from '../../../index.js'
 
 const styles = stylesDefs.default
 
@@ -104,7 +105,7 @@ export class ContainerMessagersHeader extends Block<ContainerChatProps> {
       title: 'Settings',
       // classes: ['profile-button'],
       events: {
-        click: () => redirect({ url: '/settings' }),
+        click: () => redirect({ url: Routes.Settings }),
       },
     })
   }
@@ -155,21 +156,21 @@ export class ContainerSendMessage extends Block {
         title: 'Send',
         classes: ['send-button'],
         events: {
-          click: () => log({ message: 'Send' }),
+          click: () => log('Send'),
         },
       },
       image: {
         icon: 'fa-regular fa-image',
         title: 'Attach Image',
         events: {
-          click: () => log({ message: 'AttachImage' }),
+          click: () => log('AttachImage'),
         },
       },
       attachment: {
         icon: 'fa-solid fa-paperclip',
         title: 'Attach document',
         events: {
-          click: () => log({ message: 'Attach Doc' }),
+          click: () => log('Attach Doc'),
         },
       },
     }

@@ -1,6 +1,6 @@
 import Block from '../../utils/Block'
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter'
-import { template } from './link.templ'
+import { template } from './link.templ.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 interface LinkProps extends PropsWithRouter {
