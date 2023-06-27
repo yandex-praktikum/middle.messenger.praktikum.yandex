@@ -40,9 +40,10 @@ export const parseDate = (dateString: string) => {
 }
 
 export const setStyles = (el: HTMLElement, attrs: Record<string, string>) => {
-  for (const [key, value] of Object.entries(attrs)) {
-    el.style[key] = value
-  }
+  const style = Object.entries(attrs)
+    .map((a) => `${a[0]}: ${a[1]};`)
+    .join(' ')
+  el.setAttribute('style', style)
 }
 
 export const validateInput = (inp: Input) => {
