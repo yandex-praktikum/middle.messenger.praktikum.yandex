@@ -109,7 +109,6 @@ export class MessengerPage extends Block {
     this.setProps({ name })
     const oldIndex = this.props.selectedIndex
     this.props.selectedIndex = findIndexByKeyValue(chatsData, 'display_name', this.props.name)
-    console.log(oldIndex, this.props.selectedIndex)
     // update chats
     const chats = this.children.chats as Block[]
     chats[oldIndex].setProps({ selected: false })

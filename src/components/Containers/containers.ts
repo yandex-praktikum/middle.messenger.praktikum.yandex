@@ -174,6 +174,7 @@ export class ContainerSendMessage extends Block {
       )
     } else {
       console.log(value)
+      textarea.setValue('')
     }
   }
 
