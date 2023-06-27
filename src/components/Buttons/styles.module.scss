@@ -23,9 +23,32 @@
   i {
     font-size: 1.3em;
     color: $color-dark-gray;
-    // &:hover {
-    //   @include pulse(3s, linear, infinite);
-    // }
+    &:hover {
+      @keyframes pulse {
+        0% {
+          transform: scaleX(1) scaleY(1);
+        }
+        15% {
+          transform: scaleX(1.25) scaleY(1.25);
+        }
+        30% {
+          transform: scaleX(1) scaleY(1);
+        }
+        45% {
+          transform: scaleX(1.25) scaleY(1.25);
+        }
+        60% {
+          transform: scaleX(1) scaleY(1);
+        }
+        75% {
+          transform: scaleX(1.25) scaleY(1.25);
+        }
+        100% {
+          transform: scaleX(1) scaleY(1);
+        }
+      }
+      animation: pulse 3s infinite;
+    }
   }
 }
 
@@ -44,39 +67,6 @@
   margin-top: 15px;
 }
 
-@mixin animate($animation, $duration, $method, $times) {
-  animation: $animation $duration $method $times;
-}
-
-@mixin keyframes($name) {
-  @keyframes #{$name} {
-    @content;
-  }
-}
-
-@mixin pulse($duration, $method, $times) {
-  @include keyframes(pulse) {
-    0% {
-      transform: scaleX(1) scaleY(1);
-    }
-    15% {
-      transform: scaleX(1.25) scaleY(1.25);
-    }
-    30% {
-      transform: scaleX(1) scaleY(1);
-    }
-    45% {
-      transform: scaleX(1.25) scaleY(1.25);
-    }
-    60% {
-      transform: scaleX(1) scaleY(1);
-    }
-    75% {
-      transform: scaleX(1.25) scaleY(1.25);
-    }
-    100% {
-      transform: scaleX(1) scaleY(1);
-    }
-  }
-  @include animate(pulse, $duration, $method, $times);
+.pulse {
+  animation: pulse 2s infinite;
 }
