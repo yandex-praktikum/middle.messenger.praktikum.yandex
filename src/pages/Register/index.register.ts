@@ -40,7 +40,6 @@ export class RegisterPage extends Block {
 
     const button = new Button({
       label: 'Create account',
-      disabled: true,
     })
 
     const link = new Link({

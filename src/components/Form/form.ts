@@ -4,7 +4,7 @@ import { Tag } from '../Tags/tags'
 import { Input } from '../Input/input'
 import { Button } from '../Buttons/buttons'
 import { setStyles } from '../../utils/Helpers'
-import { validateForm } from '../../utils/Helpers'
+import { validateInput } from '../../utils/Helpers'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 const warningStyles = {
@@ -57,18 +57,25 @@ export class Form extends Block {
         click: () => this.submit(),
       },
     })
-
-    this.validate()
   }
 
   validate() {
     const inputs = this.children.inputs as Input[]
-    const button = this.children.button as Button
-    const values = inputs.map((i: Input) => [i.getName(), i.getValue()])
-    this.setProps({ data: Object.fromEntries(values) })
-    const valid = validateForm(this.props.data)
-    this.setProps({ valid })
-    if (this.props.valid) button.setProps({ disabled: false })
+    // validate each input on regex
+    const inputsData = inputs.map((i) => validateInput(i))
+    // store the form data to submit if valid
+    this.props.data = inputsData.reduce(
+      (result, { name, value }) => ({ ...result, [name]: value }),
+      {},
+    )
+    const invalidData = inputsData.filter((d) => !d.valid)
+    if (invalidData.length > 0) {
+      this.setProps({ valid: false })
+      const warnings = invalidData.map((d) => `* ${d.warning}`).join('\n')
+      alert(warnings)
+    } else {
+      this.setProps({ valid: true })
+    }
   }
 
   submit() {
@@ -88,11 +95,9 @@ export class Form extends Block {
       if (valid) {
         setStyles(warningElement, warningStyles.pending)
         warningElement.getElementsByTagName('p')[0].textContent = ''
-        this.setProps({ valid: true })
       } else {
         setStyles(warningElement, warningStyles.invalid)
         warningElement.getElementsByTagName('p')[0].textContent = message
-        this.setProps({ valid: false })
       }
     }
   }

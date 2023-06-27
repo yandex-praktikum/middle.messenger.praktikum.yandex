@@ -123,6 +123,10 @@ export default class Block<P extends Record<string, any> = any> {
     Object.assign(this.props, nextProps)
     this.componentDidUpdate(this.props, nextProps)
   }
+  getProps = (key: string) => {
+    const value = this.props[key]
+    return value
+  }
 
   get element() {
     return this._element

@@ -43,7 +43,6 @@ export class LoginPage extends Block {
 
     const button = new Button({
       label: 'Login',
-      disabled: true,
     })
 
     const link = new Link({

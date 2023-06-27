@@ -35,9 +35,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   Router.use(Routes.Error, ErrorPage500)
 
   const pathname = window.location.pathname
-  console.log(pathname)
   const legitPathNames = Object.values(Routes).map((p) => p.toString())
-  console.log(legitPathNames)
 
   let isProtectedRoute = true
 

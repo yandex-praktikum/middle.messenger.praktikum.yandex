@@ -1,7 +1,4 @@
 import { Routes } from '../../index'
-import Block from './Block'
-import { inputsData, InputData } from '../../public/inputsData'
-import data from '../../public/data'
 import { Input } from '../components/Input/input'
 
 type btnAwesomeProps = {
@@ -48,15 +45,13 @@ export const setStyles = (el: HTMLElement, attrs: Record<string, string>) => {
   }
 }
 
-const { profile } = data
-export const validateForm = (data: Record<string, string>) => {
-  const validations = Object.entries(data).map(([key, value]) => {
-    if (key == 'password_new' && inputsData.password_new.value !== inputsData.repeat_password.value)
-      return false
-
-    if (key == 'password_old' && inputsData.password_old.value !== profile.password) return false
-
-    return inputsData[key].regex.test(value)
-  })
-  return !validations.some((v) => v === false)
+export const validateInput = (inp: Input) => {
+  const regex = inp.getProps('regex')
+  const value = inp.getValue()
+  return {
+    name: inp.getName(),
+    valid: regex.test(value),
+    value: inp.getValue(),
+    warning: inp.getProps('warning'),
+  }
 }
