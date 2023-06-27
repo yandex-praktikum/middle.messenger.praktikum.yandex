@@ -79,7 +79,6 @@ export class MessengerPage extends Block {
       (m) =>
         new ContainerChat({
           events: {
-            // click: () => console.log(m.display_name),
             click: () => this.changeChat(m.display_name),
           },
           ...m,
@@ -89,8 +88,6 @@ export class MessengerPage extends Block {
     // RIGHT PANEL
     const selectedChat = chatsData[this.props.selectedIndex]
     const { avatar, display_name, newCount } = selectedChat
-
-    // complie chat messages to show in the right panel
 
     // top toolbar with usser avatar
     this.children.topContainerChat = new ContainerMessagersHeader({
@@ -111,7 +108,7 @@ export class MessengerPage extends Block {
     this.props.selectedIndex = findIndexByKeyValue(chatsData, 'display_name', this.props.name)
     // update chats
     const chats = this.children.chats as Block[]
-    chats[oldIndex].setProps({ selected: false })
+    chats[oldIndex].setProps({ selected: false, newCount: 0 })
     chats[this.props.selectedIndex].setProps({ selected: true })
     // update header messages
 
