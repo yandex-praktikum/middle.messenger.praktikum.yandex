@@ -6,9 +6,11 @@
   color: $color-dark-gray;
   text-decoration: underline;
   cursor: pointer;
+
   &:visited {
     color: $color-dark-gray;
   }
+
   &:hover {
     color: $color-blue;
   }

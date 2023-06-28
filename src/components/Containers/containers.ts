@@ -16,7 +16,6 @@ import { TextArea } from '../TextArea/textarea.js'
 import { redirect, log } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
 import { Routes } from '../../../index.js'
-
 const styles = stylesDefs.default
 
 // general container, div classes can be passed as props
@@ -34,6 +33,8 @@ export class Container extends Block {
   }
   init() {
     if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
+    console.log(styles)
+    console.log('===>', this.props.class)
   }
 
   render() {

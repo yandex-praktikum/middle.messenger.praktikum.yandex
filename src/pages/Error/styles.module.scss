@@ -11,12 +11,14 @@
   justify-content: center;
   align-items: center;
   position: relative;
+
   h1 {
     color: $color-blue;
     margin: 15vw auto 0;
     font-size: max(2em, 10vw);
     font-weight: 300;
   }
+
   h2 {
     color: $color-blue;
     font-size: max(1em, 3vw);

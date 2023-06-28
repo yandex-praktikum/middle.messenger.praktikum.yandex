@@ -71,7 +71,14 @@ export default class Block<P extends Record<string, any> = any> {
       this._element?.addEventListener(eventName, events[eventName])
     })
   }
+  // remove eventlisteners from this.element, called from _render()
+  _removeEvents() {
+    const { events = {} } = this.props as P & { events: Record<string, () => void> }
 
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName])
+    })
+  }
   // registers static EVENTS, called from constructor
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this))

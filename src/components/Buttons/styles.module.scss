@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.send-button {
+  background-color: $color-blue;
+
+  i {
+    color: $color-white;
+  }
+}
+
 .button-awesome {
   height: 40px;
   width: 40px;
@@ -20,33 +28,42 @@
   margin: 5px;
   border-radius: 50%;
   cursor: pointer;
+
   i {
     font-size: 1.3em;
     color: $color-dark-gray;
+
     &:hover {
       @keyframes pulse {
         0% {
           transform: scaleX(1) scaleY(1);
         }
+
         15% {
           transform: scaleX(1.25) scaleY(1.25);
         }
+
         30% {
           transform: scaleX(1) scaleY(1);
         }
+
         45% {
           transform: scaleX(1.25) scaleY(1.25);
         }
+
         60% {
           transform: scaleX(1) scaleY(1);
         }
+
         75% {
           transform: scaleX(1.25) scaleY(1.25);
         }
+
         100% {
           transform: scaleX(1) scaleY(1);
         }
       }
+
       animation: pulse 3s infinite;
     }
   }
@@ -54,13 +71,6 @@
 
 .disabled {
   background-color: $color-gray;
-}
-
-.send-button {
-  background-color: $color-blue;
-  i {
-    color: $color-white;
-  }
 }
 
 .profile-button {
