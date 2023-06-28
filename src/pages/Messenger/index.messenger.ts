@@ -130,9 +130,9 @@ export class MessengerPage extends Block {
       const thisAvatar = m.author === 'You' ? myAvatar : avatar
       return { ...m, avatar: thisAvatar, date: dateFormatted, hideAvatar }
     })
+    // TODO: this doesn't work properly, need to create proper dismount in the block
     this.children.messages = []
     this.children.messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
-    // selected: boolean
   }
 
   render() {
