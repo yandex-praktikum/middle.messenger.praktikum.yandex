@@ -1,0 +1,25 @@
+@use '../../scss/variables' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.detail {
+  margin-bottom: 10px;
+
+  strong {
+    font-weight: bold;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+}

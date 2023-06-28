@@ -1,0 +1,17 @@
+@use '../../scss/variables' as *;
+
+.link {
+  margin-top: 10px;
+  font-size: 12px;
+  color: $color-dark-gray;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:visited {
+    color: $color-dark-gray;
+  }
+
+  &:hover {
+    color: $color-blue;
+  }
+}
