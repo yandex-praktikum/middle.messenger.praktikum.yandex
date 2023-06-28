@@ -33,8 +33,6 @@ export class Container extends Block {
   }
   init() {
     if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
-    console.log(styles)
-    console.log('===>', this.props.class)
   }
 
   render() {
