@@ -15,12 +15,28 @@ interface State {
   messages: Record<number, Message[]>
   selectedChat?: number
 }
+const setNested = (object: Record<string, any>, path: string, value: any): void => {
+  let schema = object // a moving reference to internal objects within obj
+  const pList = path.split('.')
+  const len = pList.length
+  for (let i = 0; i < len - 1; i++) {
+    const elem = pList[i]
+    if (!schema[elem]) schema[elem] = {}
+    schema = schema[elem]
+  }
+  schema[pList[len - 1]] = value
+}
 
 export class Store extends EventBus {
   private state: any = {}
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data)
+    this.emit(StoreEvents.Updated, this.getState())
+  }
+
+  public setNested(keypath: string, data: unknown) {
+    setNested(this.state, keypath, data)
     this.emit(StoreEvents.Updated, this.getState())
   }
 

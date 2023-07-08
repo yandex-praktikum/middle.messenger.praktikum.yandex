@@ -18,7 +18,7 @@ import {
   ContainerChat,
   ContainerChatProps,
   // ContainerMessage,
-  // ContainerMessagersHeader,
+  ContainerMessagersHeader,
   ContainerSendMessage,
 } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
@@ -89,16 +89,15 @@ export class MessengerPage extends Block {
     })
 
     // RIGHT PANEL
+    // const topChatProps = (this.children.topContainerChat = new ContainerMessagersHeader(props))
 
-    this.children.topContainerChat
-
-    this.children.messages = [
-      new Tag({
-        tag: 'p',
-        content: 'Select chat to see messages',
-        classes: ['select-chat-message'],
-      }),
-    ]
+    // this.children.messages = [
+    //   new Tag({
+    //     tag: 'p',
+    //     content: 'Select chat to see messages',
+    //     classes: ['select-chat-message'],
+    //   }),
+    // ]
 
     this.children.sendMessage = new ContainerSendMessage()
   }
@@ -107,7 +106,6 @@ export class MessengerPage extends Block {
     ChatsController.fetchChats()
       .then(() => {
         const chats = store.getState().chats
-        console.log('UpdateChats')
         this.updateChats(chats)
       })
       .finally(() => {
@@ -120,6 +118,7 @@ export class MessengerPage extends Block {
   updateChats(chats: ContainerChatProps[]) {
     console.log('updateChats called')
     const oldChatsBlocks = this.children.chats ? (this.children.chats as Block[]) : []
+    let selectedChatId: number | undefined
     const oldChatIds = oldChatsBlocks.map((b) => b.getProps('id'))
     const newChatIds = chats.map((b) => b.id)
     const [left, right, intersect] = arrayLeftRightIntersect(oldChatIds, newChatIds)
@@ -136,10 +135,11 @@ export class MessengerPage extends Block {
       let oldChat = oldChatsBlocks.filter((chat) => chat.getProps('id') == id)[0]
       const oldChatProps = oldChat.getProps()
       const selected = oldChatProps.selected
+      if (selected) selectedChatId = id
       const props = chats.filter((chat) => chat.id == id)[0]
       const newChat = new ContainerChat({
         events: {
-          click: () => this.changeChat(props.id),
+          click: () => this.setSelectedChat(props.id),
         },
         ...props,
         selected,
@@ -148,7 +148,7 @@ export class MessengerPage extends Block {
       if (!isEqualProxy(oldChatProps, newChatProps)) {
         oldChat = new ContainerChat({
           events: {
-            click: () => this.changeChat(newChatProps.id),
+            click: () => this.setSelectedChat(newChatProps.id),
           },
           ...newChatProps,
           selected,
@@ -167,24 +167,36 @@ export class MessengerPage extends Block {
       thisChats.push(
         new ContainerChat({
           events: {
-            click: () => this.changeChat(props.id),
+            click: () => this.setSelectedChat(props.id),
           },
           ...props,
           selected: false,
         }),
       )
     })
+
+    // add selected chat to the top
+    if (!selectedChatId) selectedChatId = chats[0].id
+    this.setSelectedChat(selectedChatId)
   }
 
-  changeChat(id: number) {
+  setSelectedChat(id: number) {
     console.log(id)
-    const chats = this.children.chats as Block[]
-    chats.forEach((chat) => chat.setProps({ selected: false }))
-    const thisChat = chats.filter((chat) => chat.getProps('id') == id)[0]
-    thisChat.setProps({ selected: true })
-    const { avatar, title, unread_count } = thisChat.getProps()
+    ChatsController.selectChat(id)
+
+    const thisChats = this.children.chats as Block[]
+    thisChats.forEach((chat) => chat.setProps({ selected: false }))
+    const selectedChat = thisChats.filter((chat) => chat.getProps('id') == id)[0]
+    selectedChat.setProps({ selected: true })
+    const props = selectedChat.getProps()
+    if (!props.avatar) props.avatar = './public/images/cactus.png'
+    props.events.click = null
     const topChat = this.children.topContainerChat as Block
-    topChat.setProps({ avatar, title, unread_count })
+    if (!topChat) {
+      this.children.topContainerChat = new ContainerMessagersHeader(props)
+    } else {
+      topChat.setProps(props)
+    }
 
     // TODO: this doesn't work properly, need to create proper dismount in the block
     // this.children.messages = []

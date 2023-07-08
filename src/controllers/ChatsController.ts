@@ -1,4 +1,6 @@
-import { ChatsAPI } from '../api/ChatsAPI'
+import { ChatInfo, ChatsAPI } from '../api/ChatsAPI'
+import { User } from '../api/AuthAPI'
+import AuthController from './AuthController'
 import store from '../utils/Store'
 import MessagesController from './MessagesController'
 
@@ -33,6 +35,10 @@ class ChatsController {
     await this.api.delete(id)
 
     this.fetchChats()
+  }
+
+  getChatUsers(id: number) {
+    return this.api.getUsers(id)
   }
 
   getToken(id: number) {

@@ -15,6 +15,7 @@ import { Tag } from '../Tags/tags.js'
 import { TextArea } from '../TextArea/textarea.js'
 import { redirect, log } from '../../utils/Helpers.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
+import ChatController from '../../controllers/ChatsController.js'
 
 import * as stylesDefs from './styles.module.scss'
 import { Routes } from '../../../index.js'
@@ -73,17 +74,28 @@ export class ContainerMessagersHeader extends Block<ContainerChatProps> {
     super({ ...props })
   }
   init() {
+    console.log('top', this.props)
     this.children.avatar = new Avatar({
       title: this.props.title,
       src: this.props.avatar,
     })
     this.children.button = new ButtonAwesome({
-      icon: 'fa-solid fa-bars',
-      title: 'Settings',
+      icon: 'fa fa-user-plus',
+      title: 'Add user',
       // classes: ['profile-button'],
       events: {
-        click: () => redirect({ url: Routes.Settings }),
+        click: this.addUsertoChat.bind(this),
       },
+    })
+  }
+  addUsertoChat() {
+    console.log('Add User')
+    const userId = 1187705
+    console.log(this.props.id)
+    ChatController.addUserToChat(this.props.id, userId)
+    ChatController.getChatUsers(this.props.id).then((res) => {
+      console.log('chat members:')
+      console.log(res)
     })
   }
 
