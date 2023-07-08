@@ -331,3 +331,16 @@
     background-color: $background-color-white;
   }
 }
+
+.new-chat-container {
+  position: absolute;
+  border: 1px solid $color-gray;
+  border-radius: 10px;
+  padding: 10px 20px;
+  left: 400px;
+  top: 400px;
+  width: 400px;
+  height: 200px;
+  background-color: $background-color-white;
+  display: none;
+}

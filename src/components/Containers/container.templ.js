@@ -24,10 +24,10 @@ export const templateChat = `
 <div class="{{{styles.chat-container}}}" >
     <div class="{{{styles.avatar-container}}} {{#if selected}}{{{styles.blue}}}{{else}}''{{/if}}">
         {{{avatar}}}
-        <span class="{{{styles.name}}}">{{ display_name }}</span>
-        {{#if (notEqual newCount 0)}}
+        <span class="{{{styles.name}}}">{{ title }}</span>
+        {{#if (notEqual unread_count 0)}}
             <div class="{{{styles.new-count}}}">
-                <span>{{newCount}}</span>
+                <span>{{unread_count}}</span>
             </div>
         {{/if}}
     </div>
@@ -43,7 +43,7 @@ export const templateMessagesHeader = `
 <div class="{{{styles.messages-header-container}}}" >
     <div class="{{{styles.avatar-container}}} {{#if selected}}{{{styles.blue}}}{{else}}''{{/if}}">
         {{{avatar}}}
-        <span class="{{{styles.name}}}">{{ display_name }}</span>
+        <span class="{{{styles.name}}}">{{ title }}</span>
     </div>
     {{{button}}}
 </div>

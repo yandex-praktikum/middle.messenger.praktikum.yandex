@@ -15,6 +15,7 @@ function render(query: string, block: Block) {
     throw new Error(`root not found by selector "${query}"`)
   }
 
+  // clear the previous block
   root.innerHTML = ''
 
   root.append(block.getContent()!)
@@ -68,7 +69,6 @@ export class Router {
   public use(pathname: string, block: BlockConstructable) {
     const route = new Route(pathname, block, this.rootQuery)
     this.routes.push(route)
-
     return this
   }
 

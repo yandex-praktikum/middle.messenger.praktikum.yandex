@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars'
 import { EventBus } from './EventBus'
 import { nanoid } from 'nanoid'
+import { isEqual } from './Helpers'
 
 export default class Block<P extends Record<string, any> = any> {
   static EVENTS = {
@@ -120,7 +121,7 @@ export default class Block<P extends Record<string, any> = any> {
     }
   }
   protected componentDidUpdate(oldProps: P, newProps: Partial<P>) {
-    return true
+    return !isEqual(oldProps, newProps)
   }
 
   setProps = (nextProps: Partial<P>) => {

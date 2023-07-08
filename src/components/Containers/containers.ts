@@ -42,11 +42,13 @@ export class Container extends Block {
 
 // container for chats in the left panel
 interface ContainerChatProps {
+  id: number
+  title: string
   avatar: string
-  display_name: string
+  created_by: number
   selected: boolean
-  newCount?: number
-  message?: string
+  unread_count: number
+  last_message: string
   events?: {
     click: any
   }
@@ -57,9 +59,10 @@ export class ContainerChat extends Block<ContainerChatProps> {
     super({ ...props })
   }
   init() {
+    console.log('this.props =>', this.props)
     this.children.avatar = new Avatar({
-      title: this.props.display_name,
-      src: this.props.avatar,
+      title: this.props.title,
+      src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
     })
   }
 
@@ -75,7 +78,7 @@ export class ContainerMessagersHeader extends Block<ContainerChatProps> {
   }
   init() {
     this.children.avatar = new Avatar({
-      title: this.props.display_name,
+      title: this.props.title,
       src: this.props.avatar,
     })
     this.children.button = new ButtonAwesome({

@@ -29,6 +29,7 @@ interface FormProps {
   avatar?: Block
   link?: Block
   info?: Block
+  onSubmit: any
 }
 
 export class Form extends Block {
@@ -78,11 +79,14 @@ export class Form extends Block {
   }
 
   submit() {
-    this.validate()
+    this.validate() // validates and sets this.props.data values
     const data = this.props.data
     console.log(`Form ${this.props.title} is valid and submitted`)
     console.log(data)
     console.log(JSON.stringify(data, null, 2))
+    const onSubmit = this.props.onSubmit
+    console.log(onSubmit)
+    onSubmit(data)
     // AuthController.signin(data as SignupData)
     // redirect({ url: '/messenger' })
   }
