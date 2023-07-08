@@ -25,7 +25,6 @@ export default class HTTPTransport {
 
   // create chat  '/chats', { title: title }
   public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-    console.log('API', data)
     return this.request<Response>(this.endpoint + path, {
       method: Method.Post,
       data,
@@ -60,7 +59,6 @@ export default class HTTPTransport {
     options: Options = { method: Method.Get },
   ): Promise<Response> {
     const { method, data } = options
-    console.log(method, data)
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
       xhr.open(method, url)

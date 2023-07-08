@@ -2,7 +2,7 @@ export const template = `
 <main>
     <div class="{{{styles.panel}}} {{{styles.left-panel}}}">
         {{{search}}}
-        {{{createNewChat}}}
+        {{{createNewChatPopup}}}
         <div class="{{{styles.scroller-container}}}">
             <div class="{{{styles.scroller}}}">
                 {{#each chats}}

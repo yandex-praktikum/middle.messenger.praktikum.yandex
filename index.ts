@@ -50,6 +50,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   if (!legitPathNames.includes(pathname)) Router.go(Routes.Error)
   try {
+    console.log('checking User fetchUser ====>')
     await AuthController.fetchUser()
     Router.start()
 

@@ -72,7 +72,7 @@ export default class Block<P extends Record<string, any> = any> {
       this._element?.addEventListener(eventName, events[eventName])
     })
   }
-  // remove eventlisteners from this.element, called from _render()
+  // remove eventlisteners from this.element,
   _removeEvents() {
     const { events = {} } = this.props as P & { events: Record<string, () => void> }
 
@@ -131,7 +131,8 @@ export default class Block<P extends Record<string, any> = any> {
     Object.assign(this.props, nextProps)
     this.componentDidUpdate(this.props, nextProps)
   }
-  getProps = (key: string) => {
+  getProps = (key?: string) => {
+    if (!key) return this.props
     const value = this.props[key]
     return value
   }

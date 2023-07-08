@@ -4,6 +4,7 @@ import { User } from './AuthAPI'
 export interface ChatInfo {
   id: number
   title: string
+  created_by: number
   avatar: string
   unread_count: number
   last_message: {

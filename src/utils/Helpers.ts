@@ -103,7 +103,12 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
 
 export function isEqual(a: object, b: object): boolean {
   if (a === b) return true
-  if (typeof a !== 'object' || a === null || typeof b !== 'object' || b === null) return false
+  if (typeof a == 'function' && typeof b == 'function' && a.toString() == b.toString()) {
+    return true
+  }
+  if (typeof a !== 'object' || a === null || typeof b !== 'object' || b === null) {
+    return false
+  }
 
   const keys1 = Object.keys(a)
   const keys2 = Object.keys(b)
@@ -118,4 +123,40 @@ export function isEqual(a: object, b: object): boolean {
   }
 
   return true
+}
+
+export function isEqualProxy(aa: object, bb: object): boolean {
+  const a = Object.assign({}, aa)
+  const b = Object.assign({}, bb)
+  return isEqual(a, b)
+}
+
+export function arrayLeftRightIntersect(
+  arr1: number[],
+  arr2: number[],
+): [number[], number[], number[]] {
+  const leftOnly: number[] = []
+  const rightOnly: number[] = []
+  const intersection: number[] = []
+
+  // Find elements only in the left array
+  for (const element of arr1) {
+    if (!arr2.includes(element)) {
+      leftOnly.push(element)
+    }
+  }
+
+  // Find elements only in the right array
+  for (const element of arr2) {
+    if (!arr1.includes(element)) {
+      rightOnly.push(element)
+    } else {
+      // Find intersection elements
+      if (!intersection.includes(element)) {
+        intersection.push(element)
+      }
+    }
+  }
+
+  return [leftOnly, rightOnly, intersection]
 }

@@ -8,6 +8,7 @@ import { Avatar } from '../../components/Avatar/avatar.js'
 import { Container } from '../../components/Containers/containers.js'
 
 import AuthController from '../../controllers/AuthController.js'
+import { User } from '../../api/AuthAPI.js'
 import store from '../../utils/Store'
 
 import * as stylesDefs from './styles.module.scss'
@@ -64,30 +65,41 @@ export class ProfilePage extends Block {
       classes: ['tools-top-container'],
     })
 
-    const loadProfile = () =>
-      AuthController.fetchUser()
-        .then(() => {
-          const profile = store.getState().user
-          this.children.avatar = new Avatar({
-            title: 'Avatar',
-            src: profile.avatar ? profile.avatar : './public/images/cactus.png',
-            classes: ['avatar-profile'],
-          })
+    const setProfile = (profile: User) => {
+      this.children.avatar = new Avatar({
+        title: 'Avatar',
+        src: profile.avatar ? profile.avatar : './public/images/cactus.png',
+        classes: ['avatar-profile'],
+      })
 
-          const userDetails = [
-            { label: 'Name', value: profile.first_name },
-            { label: 'Last Name', value: profile.second_name },
-            { label: 'Email Address', value: profile.login },
-            { label: 'Phone Number', value: profile.phone },
-          ]
-          this.children.details = userDetails.map((d) => new Details(d))
-        })
-        .finally(() => {
-          this.setProps({
-            isLoaded: true,
-          })
-        })
+      const userDetails = [
+        { label: 'Name', value: profile.first_name },
+        { label: 'Last Name', value: profile.second_name },
+        { label: 'Email Address', value: profile.login },
+        { label: 'Phone Number', value: profile.phone },
+      ]
+      this.children.details = userDetails.map((d) => new Details(d))
+    }
 
+    const loadProfile = () => {
+      console.log('Store user: ', store.getState().user)
+      console.log(!store.getState().user)
+      if (!store.getState().user) {
+        // AuthController.fetchUser()
+        //   .then(() => {
+        //     const profile = store.getState().user
+        //     setProfile(profile)
+        //   })
+        //   .finally(() => {
+        //     this.setProps({
+        //       isLoaded: true,
+        //     })
+        //   })
+      } else {
+        const profile = store.getState().user
+        setProfile(profile)
+      }
+    }
     loadProfile()
   }
 

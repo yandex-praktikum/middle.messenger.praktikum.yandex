@@ -14,6 +14,8 @@ import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../Tags/tags.js'
 import { TextArea } from '../TextArea/textarea.js'
 import { redirect, log } from '../../utils/Helpers.js'
+import { ChatInfo } from '../../api/ChatsAPI.js'
+
 import * as stylesDefs from './styles.module.scss'
 import { Routes } from '../../../index.js'
 const styles = stylesDefs.default
@@ -41,14 +43,8 @@ export class Container extends Block {
 }
 
 // container for chats in the left panel
-interface ContainerChatProps {
-  id: number
-  title: string
-  avatar: string
-  created_by: number
+export interface ContainerChatProps extends ChatInfo {
   selected: boolean
-  unread_count: number
-  last_message: string
   events?: {
     click: any
   }
@@ -59,7 +55,7 @@ export class ContainerChat extends Block<ContainerChatProps> {
     super({ ...props })
   }
   init() {
-    console.log('this.props =>', this.props)
+    // console.log('this.props =>', this.props)
     this.children.avatar = new Avatar({
       title: this.props.title,
       src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
