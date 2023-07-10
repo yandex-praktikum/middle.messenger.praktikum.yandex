@@ -1,0 +1,20 @@
+.error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  gap: 20px;
+
+  &__status {
+    font-size: 40px;
+  }
+
+  &__text {
+    font-size: 20px;
+  }
+
+  &__link {
+    margin-top: 40px;
+  }
+}

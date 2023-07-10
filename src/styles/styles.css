@@ -1,0 +1,91 @@
+@import 'normalize.css';
+@import '_variables.css';
+
+@font-face {
+  font-family: Inter;
+  src: url('../fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+:root {
+  font-family: Inter, sans-serif;
+  font-weight: normal;
+}
+
+* {
+  --scrollbar-width: 3px;
+
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+
+    &-track {
+      background: var(--backgroud-gray);
+      opacity: .7;
+    }
+
+    &-thumb {
+      background: var(--text-gray-color);
+      border-radius: 3px;
+    }
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  color: var(--black-color);
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--brand-color);
+
+  &.danger {
+    color: var(--danger-color);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+input {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+fieldset {
+  padding: 0;
+  margin: 4px 0;
+  border: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border-gray);
+}

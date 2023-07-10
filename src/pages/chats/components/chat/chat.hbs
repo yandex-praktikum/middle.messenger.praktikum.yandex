@@ -1,0 +1,18 @@
+<div role="link" class="{{ className }}" onclick="window.location.replace(`/chats?viewId={{ id }}`)">
+  {{{ avatar }}}
+  <div class="chat-content">
+    <div class="chat-content__right">
+      <span class="chat-content__title">{{ title }}</span>
+      <div class="chat-content-message">
+        {{^isYouLast}}<span>{{ login }}:</span>{{/isYouLast}}
+        {{ message }}
+      </div>
+    </div>
+    <div class="chat-content__left">
+      {{{ time }}}
+      {{#hasUnread}}
+        <div class="chat-content__unread">{{ unread }}</div>
+      {{/hasUnread}}
+    </div>
+  </div>
+</div>

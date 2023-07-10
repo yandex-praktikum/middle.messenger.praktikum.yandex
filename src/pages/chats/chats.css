@@ -1,0 +1,32 @@
+@import '../../styles/_variables.css';
+
+.chats {
+  display: grid;
+  position: relative;
+  grid-template-columns: minmax(320px, 25%) 1fr;
+  width: 100%;
+  height: 100%;
+
+  &-panel {
+    overflow: hidden;
+  }
+
+  &-messages {
+    background: #fff;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+
+    &-messages {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}

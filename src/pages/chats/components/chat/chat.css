@@ -1,0 +1,71 @@
+@import '../../../../styles/_variables.css';
+
+.chat {
+  display: flex;
+  padding: 12px;
+  height: 80px;
+  gap: 12px;
+  cursor: pointer;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 32px;
+
+    &__right, &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__right {
+      text-align: start;
+      flex-grow: 1;
+    }
+
+    &__left {
+      color: var(--text-gray-color);
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-weight: 600;
+    }
+
+    &-message {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: var(--text-gray-color);
+      line-height: 17px;
+
+      span {
+        margin-right: 2px;
+      }
+    }
+
+    &__unread {
+      --size: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min-content;
+      min-width: var(--size);
+      height: var(--size);
+      font-size: 12px;
+      background: var(--brand-color);
+      color: #fff;
+      border-radius: 15px;
+      padding: 4px;
+    }
+  }
+
+  &:hover, &.selected {
+    background: var(--light-blue-color);
+    text-decoration: none;
+  }
+}

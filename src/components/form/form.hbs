@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="container__title">{{ title }}</h2>
+  <form class="form">
+    {{#fieldSets}}
+      {{{.}}}
+    {{/fieldSets}}
+    <div class="form__buttons">
+      {{{ button }}}
+      <a href="{{ linkHref }}">{{ linkText }}</a>
+    </div>
+  </form>
+</div>

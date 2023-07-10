@@ -1,0 +1,16 @@
+<div class="message">
+  <div class="{{ className }}">
+    {{ content }}
+    <div class="message__status">
+      {{{ time }}}
+      {{#hasStatus}}
+        {{#read}}
+          <img src="icons/status_read.svg" alt="status"/>
+        {{/read}}
+        {{^read}}
+          <img src="icons/status_unread.svg" alt="status"/>
+        {{/read}}
+      {{/hasStatus}}
+    </div>
+  </div>
+</div>

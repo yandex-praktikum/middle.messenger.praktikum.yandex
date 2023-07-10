@@ -1,0 +1,75 @@
+@import '../../styles/_variables.css';
+
+.avatar {
+  --avatar-width: 55px;
+  --placeholder-width: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  height: var(--avatar-width);
+  width: var(--avatar-width);
+  border-radius: 50%;
+  background: var(--gray-color);
+  cursor: pointer;
+  overflow: hidden;
+
+  &_big {
+    --avatar-width: 130px;
+    --placeholder-width: 40px;
+
+    height: var(--avatar-width);
+    width: var(--avatar-width);
+
+    .avatar__placeholder {
+      width: var(--placeholder-width);
+      height: var(--placeholder-width);
+    }
+  }
+
+  &_small {
+    --avatar-width: 40px;
+    --placeholder-width: 20px;
+
+    height: var(--avatar-width);
+    width: var(--avatar-width);
+
+    .avatar__placeholder {
+      width: var(--placeholder-width);
+      height: var(--placeholder-width);
+    }
+  }
+
+  &_hover {
+    &:after {
+      content: 'Изменить';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      background: #000;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity .3s ease-in;
+    }
+
+    &:hover:after {
+      opacity: .5;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__placeholder {
+    width: var(--placeholder-width);
+    height: var(--placeholder-width);
+  }
+}

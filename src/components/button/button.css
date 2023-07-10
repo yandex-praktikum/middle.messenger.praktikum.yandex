@@ -1,0 +1,13 @@
+@import '../../styles/_variables.css';
+
+.button {
+  background: var(--brand-color);
+  border-radius: 8px;
+  padding: 12px 20px;
+  color: #fff;
+  transition: box-shadow .35s;
+
+  &:hover {
+    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.25);
+  }
+}

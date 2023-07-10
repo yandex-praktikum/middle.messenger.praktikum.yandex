@@ -1,0 +1,8 @@
+<div class="{{ className }}">
+  {{#hasLink}}
+    <img src="{{ imgLink }}" class="avatar__img" alt="avatar"/>
+  {{/hasLink}}
+  {{^hasLink}}
+    <img src="icons/image.svg" class="avatar__placeholder" alt="avatar"/>
+  {{/hasLink}}
+</div>

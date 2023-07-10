@@ -1,0 +1,80 @@
+@import '../../../../styles/_variables.css';
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+
+    .arrow-link {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__menu {
+    --size: 16px;
+
+    width: var(--size);
+    height: var(--size);
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  &-list {
+    flex-grow: 1;
+    background: url("../images/chat_fon.png");
+    background-size: contain;
+    padding: 8px 20px;
+    overflow: auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+
+    input {
+      flex-grow: 1;
+      background: var(--backgroud-gray);
+      padding: 12px 20px;
+      border-radius: 30px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__clip {
+    --size: 27px;
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-gray-color);
+  }
+
+  @media (max-width: 768px) {
+    &__header .arrow-link {
+      display: block;
+    }
+  }
+}

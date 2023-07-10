@@ -1,0 +1,23 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2022
+  },
+  "plugins": ["import"],
+  "ignorePatterns": ["build/**", "server.js", "vite.config.js"],
+  "rules" : {
+    "semi" : "warn",
+    "no-unused-vars": "warn",
+    "import/order": ["warn", {
+      "newlines-between": "always",
+      "pathGroups": [
+        {
+          "pattern": "@*/**",
+          "group": "internal"
+        }
+      ],
+      "groups": ["builtin", "external", "internal", "parent", ["sibling", "index"]],
+      "pathGroupsExcludedImportTypes": ["builtin"]
+    }]
+  }
+}

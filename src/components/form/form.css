@@ -1,0 +1,35 @@
+@import '../../styles/_variables.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  min-height: 60%;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+
+  &__title {
+    font-size: 20px;
+    margin: 20px 0 40px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
+    gap: 12px;
+    margin-top: 30px;
+  }
+}
