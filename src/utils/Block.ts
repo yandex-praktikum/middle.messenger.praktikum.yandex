@@ -115,7 +115,7 @@ export default class Block<P extends Record<string, any> = any> {
   }
 
   // emits Block.EVENTS.FLOW_RENDER
-  private _componentDidUpdate(oldProps: P, newProps: P) {
+  private _componentDidUpdate(oldProps: P, newProps: Partial<P>) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
@@ -129,7 +129,7 @@ export default class Block<P extends Record<string, any> = any> {
       return
     }
     Object.assign(this.props, nextProps)
-    this.componentDidUpdate(this.props, nextProps)
+    this._componentDidUpdate(this.props, nextProps)
   }
   getProps = (key?: string) => {
     if (!key) return this.props

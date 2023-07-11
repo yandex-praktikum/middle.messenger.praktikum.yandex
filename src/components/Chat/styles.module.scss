@@ -1,0 +1,63 @@
+@use '../../scss/variables' as *;
+
+.chat-container {
+  border-radius: 10px;
+  border: 1px solid $color-light-gray;
+  margin-bottom: 5px;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+
+  .avatar-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid $color-light-gray;
+    position: relative;
+    margin: 0;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid $color-light-gray;
+    }
+
+    .new-count {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid $color-light-gray;
+      border-radius: 30px;
+      background-color: $background-color-blue;
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .name {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+  }
+
+  .message-text {
+    font-size: 1em;
+  }
+
+  .date {
+    text-align: right;
+    color: $color-gray;
+    font-size: 0.6em;
+  }
+
+  .blue {
+    background-color: $background-color-blue;
+    color: $color-white;
+  }
+}

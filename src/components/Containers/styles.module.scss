@@ -212,43 +212,32 @@
   }
 }
 
-.messages-header-container {
+.top-chat-avatar-container {
   display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 50px;
   border: 1px solid $color-light-gray;
-  border-radius: 10px;
-  margin: 10px;
-  margin-bottom: 5px;
-  padding: 10px;
-  text-align: left;
-  cursor: pointer;
+  position: relative;
+  margin: 0;
 
-  .avatar-container {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    border-radius: 50px;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
     border: 1px solid $color-light-gray;
-    position: relative;
-    margin: 0;
-
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid $color-light-gray;
-    }
-
-    .name {
-      margin-left: 10px;
-      font-size: 16px;
-    }
   }
 
-  .blue {
-    background-color: $background-color-blue;
-    color: $color-white;
+  .name {
+    margin-left: 10px;
+    font-size: 16px;
   }
+}
+
+.blue {
+  background-color: $background-color-blue;
+  color: $color-white;
 }
 
 .form-container {
@@ -340,7 +329,7 @@
   left: 400px;
   top: 400px;
   width: 400px;
-  height: 200px;
+  // height: 200px;
   background-color: $background-color-white;
   display: none;
 }

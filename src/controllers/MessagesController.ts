@@ -24,7 +24,7 @@ class MessagesController {
   async connect(id: number, token: string) {
     if (this.sockets.has(id)) return
 
-    const userId = store.getState().user.id
+    const userId = store.getUser().id
     const wsTransport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`)
     // store the open sockets
     this.sockets.set(id, wsTransport)
@@ -66,7 +66,7 @@ class MessagesController {
       messagesToAdd.push(messages)
     }
 
-    const currentMessages = (store.getState().messages || {})[id] || []
+    const currentMessages = (store.getMessages() || {})[id] || []
 
     messagesToAdd = [...currentMessages, ...messagesToAdd]
 

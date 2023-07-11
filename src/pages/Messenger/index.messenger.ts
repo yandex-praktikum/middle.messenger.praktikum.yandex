@@ -8,17 +8,18 @@ import { redirect } from '../../utils/Helpers.js'
 import { SearchForm } from '../../components/SearchForm/searchForm.js'
 import {
   setStyles,
-  isEqual,
-  isEqualProxy,
-  arrayLeftRightIntersect,
-  parseDate,
+  // isEqual,
+  // isEqualProxy,
+  // arrayLeftRightIntersect,
+  // parseDate,
+  // cloneDeep,
 } from '../../utils/Helpers'
 import {
   Container,
-  ContainerChat,
-  ContainerChatProps,
+  // ContainerChat,
+  // ContainerChatProps,
   // ContainerMessage,
-  ContainerMessagersHeader,
+  // ContainerMessagersHeader,
   ContainerSendMessage,
 } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
@@ -29,14 +30,21 @@ import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
 import ChatsController from '../../controllers/ChatsController.js'
+
 import store from '../../utils/Store'
+import { User } from '../../api/AuthAPI.js'
+import { ChatInfo } from '../../api/ChatsAPI.js'
+import { ChatsList } from '../../components/ChatsList/chatlist.js'
+import { ChatTop } from '../../components/ChatTop/chatTop.js'
 
 export class MessengerPage extends Block {
   constructor() {
-    super({ name: 'Noah' })
+    super({})
   }
 
   init() {
+    this.loadChats()
+
     // LEFT PANEL
     this.children.search = new Container({
       content: [
@@ -61,8 +69,15 @@ export class MessengerPage extends Block {
       classes: ['tools-container'],
     })
 
-    // load chats from API
-    this.loadChats()
+    this.children.topChat = new ChatTop({
+      selected: true,
+      events: {
+        addUser: this.addUserToChat.bind(this),
+        deleteChat: this.deleteChat.bind(this),
+      },
+    })
+
+    this.children.chats = new ChatsList({ chats: [], isLoaded: false })
 
     this.children.createNewChatPopup = new Container({
       classes: ['new-chat-container'],
@@ -85,29 +100,26 @@ export class MessengerPage extends Block {
             click: this.createNewChat.bind(this),
           },
         }),
+        new Button({
+          label: 'Cancel',
+          classes: ['button-cancel'],
+          events: {
+            click: () => this.closeCreateNewChatDialog(),
+          },
+        }),
       ],
     })
-
-    // RIGHT PANEL
-    // const topChatProps = (this.children.topContainerChat = new ContainerMessagersHeader(props))
-
-    // this.children.messages = [
-    //   new Tag({
-    //     tag: 'p',
-    //     content: 'Select chat to see messages',
-    //     classes: ['select-chat-message'],
-    //   }),
-    // ]
 
     this.children.sendMessage = new ContainerSendMessage()
   }
 
   loadChats() {
     ChatsController.fetchChats()
-      .then(() => {
-        const chats = store.getState().chats
-        this.updateChats(chats)
-      })
+      // .then((chats) => {
+      //   if (chats.length > 0) {
+      //     ChatsController.selectChat(chats[0].id)
+      //   }
+      // })
       .finally(() => {
         this.setProps({
           isLoaded: true,
@@ -115,97 +127,8 @@ export class MessengerPage extends Block {
       })
   }
 
-  updateChats(chats: ContainerChatProps[]) {
-    console.log('updateChats called')
-    const oldChatsBlocks = this.children.chats ? (this.children.chats as Block[]) : []
-    let selectedChatId: number | undefined
-    const oldChatIds = oldChatsBlocks.map((b) => b.getProps('id'))
-    const newChatIds = chats.map((b) => b.id)
-    const [left, right, intersect] = arrayLeftRightIntersect(oldChatIds, newChatIds)
-    left.forEach((id) => {
-      const oldChat = oldChatsBlocks.filter((chat) => chat.getProps('id') == id)[0]
-      const index = oldChatsBlocks.indexOf(oldChat)
-      if (index > -1) {
-        oldChatsBlocks.splice(index, 1)
-      }
-    })
-
-    // update intersecting chats if necessary
-    intersect.forEach((id) => {
-      let oldChat = oldChatsBlocks.filter((chat) => chat.getProps('id') == id)[0]
-      const oldChatProps = oldChat.getProps()
-      const selected = oldChatProps.selected
-      if (selected) selectedChatId = id
-      const props = chats.filter((chat) => chat.id == id)[0]
-      const newChat = new ContainerChat({
-        events: {
-          click: () => this.setSelectedChat(props.id),
-        },
-        ...props,
-        selected,
-      })
-      const newChatProps = newChat.getProps()
-      if (!isEqualProxy(oldChatProps, newChatProps)) {
-        oldChat = new ContainerChat({
-          events: {
-            click: () => this.setSelectedChat(newChatProps.id),
-          },
-          ...newChatProps,
-          selected,
-        })
-      }
-    })
-
-    // add new chats
-    right.forEach((id) => {
-      const newChatProps = chats.filter((chat) => chat.id == id)[0]
-      if (!this.children.chats) {
-        this.children.chats = []
-      }
-      const thisChats = this.children.chats as Block[]
-      const props = newChatProps
-      thisChats.push(
-        new ContainerChat({
-          events: {
-            click: () => this.setSelectedChat(props.id),
-          },
-          ...props,
-          selected: false,
-        }),
-      )
-    })
-
-    // add selected chat to the top
-    if (!selectedChatId) selectedChatId = chats[0].id
-    this.setSelectedChat(selectedChatId)
-  }
-
-  setSelectedChat(id: number) {
-    console.log(id)
-    ChatsController.selectChat(id)
-
-    const thisChats = this.children.chats as Block[]
-    thisChats.forEach((chat) => chat.setProps({ selected: false }))
-    const selectedChat = thisChats.filter((chat) => chat.getProps('id') == id)[0]
-    selectedChat.setProps({ selected: true })
-    const props = selectedChat.getProps()
-    if (!props.avatar) props.avatar = './public/images/cactus.png'
-    props.events.click = null
-    const topChat = this.children.topContainerChat as Block
-    if (!topChat) {
-      this.children.topContainerChat = new ContainerMessagersHeader(props)
-    } else {
-      topChat.setProps(props)
-    }
-
-    // TODO: this doesn't work properly, need to create proper dismount in the block
-    // this.children.messages = []
-    // this.children.messages = rightPanelMessagesData.map((m) => new ContainerMessage(m))
-  }
-
   createNewChat() {
     const createNewChatContainer = this.children.createNewChatPopup as Container
-
     const children = createNewChatContainer.children.content as Block[]
     const input = children[1]
     const inputElement = input.getContent() as HTMLInputElement
@@ -213,10 +136,8 @@ export class MessengerPage extends Block {
     if (title) {
       inputElement.value = ''
       this.closeCreateNewChatDialog.bind(this)()
-      // ChatsController.create(title)
+      ChatsController.create(title)
     }
-
-    this.loadChats()
   }
 
   openCreateNewChatDialog() {
@@ -241,8 +162,32 @@ export class MessengerPage extends Block {
     }
   }
 
+  async addUserToChat() {
+    const userId = 1187705
+    const chatId = store.getState().selectedChat
+    if (!chatId) return
+    await ChatsController.addUserToChat(chatId, userId)
+    const users = await ChatsController.getChatUsers(chatId)
+    console.log(users)
+    const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
+    const { title } = store.getChatById(chatId)
+    console.log(`User ${first_name} ${second_name} was added to the chat ${title}`)
+  }
+
+  deleteChat() {
+    const id = store.getState().selectedChat
+    if (!id) return
+    const { title } = store.getChatById(id)
+    if (window.confirm(`Do you want to delete chat ${title}?`)) {
+      const chats = store.getChats()
+      const chatsNew = chats.filter((chat: ChatInfo) => chat.id != id)
+      store.set('selectedChat', chatsNew[0].id)
+      store.set('chats', chatsNew)
+      ChatsController.delete(id)
+    }
+  }
+
   render() {
-    // return this.compile(template, { ...this.props, styles })
     return this.compile(template, { ...this.props, styles, stylesMain })
   }
 }

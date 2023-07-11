@@ -82,22 +82,20 @@ export class ProfilePage extends Block {
     }
 
     const loadProfile = () => {
-      console.log('Store user: ', store.getState().user)
-      console.log(!store.getState().user)
-      if (!store.getState().user) {
-        // AuthController.fetchUser()
-        //   .then(() => {
-        //     const profile = store.getState().user
-        //     setProfile(profile)
-        //   })
-        //   .finally(() => {
-        //     this.setProps({
-        //       isLoaded: true,
-        //     })
-        //   })
+      console.log('Store user: ', store.getUser())
+      const user = store.getUser()
+      if (!user) {
+        AuthController.fetchUser()
+          .then((user) => {
+            setProfile(user)
+          })
+          .finally(() => {
+            this.setProps({
+              isLoaded: true,
+            })
+          })
       } else {
-        const profile = store.getState().user
-        setProfile(profile)
+        setProfile(user)
       }
     }
     loadProfile()

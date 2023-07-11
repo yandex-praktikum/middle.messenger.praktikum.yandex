@@ -160,3 +160,41 @@ export function arrayLeftRightIntersect(
 
   return [leftOnly, rightOnly, intersection]
 }
+
+export const cloneDeep = (value: any): any => {
+  if (typeof value !== 'object' || value === null) {
+    return value
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => cloneDeep(item))
+  }
+
+  if (value instanceof Map) {
+    const clonedMap = new Map()
+    value.forEach((innerValue, key) => {
+      clonedMap.set(key, cloneDeep(innerValue))
+    })
+    return clonedMap
+  }
+
+  if (value instanceof Set) {
+    const clonedSet = new Set()
+    value.forEach((innerValue) => {
+      clonedSet.add(cloneDeep(innerValue))
+    })
+    return clonedSet
+  }
+
+  if (typeof value === 'function') {
+    return value
+  }
+
+  const clonedObj: any = {}
+  for (const key in value) {
+    if (value.hasOwnProperty(key)) {
+      clonedObj[key] = cloneDeep(value[key])
+    }
+  }
+  return clonedObj
+}

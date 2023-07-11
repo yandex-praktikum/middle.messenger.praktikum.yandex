@@ -6,6 +6,7 @@ import { ProfileEditPage } from './src/pages/ProfileEdit/index.profileedit'
 import { SettingsPage } from './src/pages/Settings/index.settings'
 import { ErrorPage404, ErrorPage500 } from './src/pages/Error/index.error'
 import AuthController from './src/controllers/AuthController'
+// import ChatsController from './src/controllers/ChatsController'
 import { MessengerPage } from './src/pages/Messenger/index.messenger'
 import { registerHandlebarsHelpers } from './src/utils/HandlebarsHelpers'
 
@@ -49,16 +50,16 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   if (!legitPathNames.includes(pathname)) Router.go(Routes.Error)
-  try {
-    console.log('checking User fetchUser ====>')
-    await AuthController.fetchUser()
-    Router.start()
 
+  Router.start()
+
+  try {
+    await AuthController.fetchUser()
     if (!isProtectedRoute) {
       Router.go(Routes.Profile)
     }
   } catch (e) {
-    Router.start()
+    console.log('index.ts catch error', e)
 
     if (isProtectedRoute) {
       Router.go(Routes.Index)

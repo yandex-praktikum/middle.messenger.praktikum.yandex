@@ -43,6 +43,22 @@ export class Store extends EventBus {
   public getState() {
     return this.state
   }
+
+  public getChatById(id: number) {
+    return store.getState().chats.filter((chat: ChatInfo) => chat.id === id)[0] ?? {}
+  }
+  public getUser() {
+    return this.getState().user ?? {}
+  }
+  public getChats() {
+    return this.getState().chats ?? []
+  }
+  public getMessages() {
+    return this.getState().messages ?? []
+  }
+  public isSelectedChat(id: number) {
+    return store.getState().selectedChat === id
+  }
 }
 
 const store = new Store()

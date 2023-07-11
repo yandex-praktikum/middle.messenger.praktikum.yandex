@@ -2,32 +2,33 @@ import Block from '../../utils/Block'
 import {
   templateBlank,
   templateContainer,
-  templateScroller,
-  templateChat,
-  templateMessagesHeader,
+  // templateScroller,
+  // templateChat,
+  // templateMessagesHeader,
   templateRm,
   templateLm,
   templateSendMessage,
 } from './container.templ'
 import { Avatar } from '../Avatar/avatar'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-import { Tag } from '../Tags/tags.js'
+// import { Tag } from '../Tags/tags.js'
 import { TextArea } from '../TextArea/textarea.js'
-import { redirect, log } from '../../utils/Helpers.js'
+import { log } from '../../utils/Helpers.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
-import ChatController from '../../controllers/ChatsController.js'
+// import store from '../../utils/Store'
 
 import * as stylesDefs from './styles.module.scss'
-import { Routes } from '../../../index.js'
 const styles = stylesDefs.default
+
+type events = {
+  [key: string]: () => void
+}
 
 // general container, div classes can be passed as props
 interface ContainerProps {
   content?: Block[]
   classes?: string[]
-  events?: {
-    click: () => void
-  }
+  events?: events
 }
 
 export class Container extends Block {
@@ -51,59 +52,24 @@ export interface ContainerChatProps extends ChatInfo {
   }
 }
 
-export class ContainerChat extends Block<ContainerChatProps> {
-  constructor(props: ContainerChatProps) {
-    super({ ...props })
-  }
-  init() {
-    // console.log('this.props =>', this.props)
-    this.children.avatar = new Avatar({
-      title: this.props.title,
-      src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
-    })
-  }
+// export class ContainerChat extends Block<ContainerChatProps> {
+//   constructor(props: ContainerChatProps) {
+//     super({ ...props })
+//   }
+//   init() {
+//     // console.log('this.props =>', this.props)
+//     this.children.avatar = new Avatar({
+//       title: this.props.title,
+//       src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
+//     })
+//   }
 
-  render() {
-    return this.compile(templateChat, { ...this.props, styles })
-  }
-}
+//   render() {
+//     return this.compile(templateChat, { ...this.props, styles })
+//   }
+// }
 
 // container for the header above messages in the rigth panel
-export class ContainerMessagersHeader extends Block<ContainerChatProps> {
-  constructor(props: ContainerChatProps) {
-    super({ ...props })
-  }
-  init() {
-    console.log('top', this.props)
-    this.children.avatar = new Avatar({
-      title: this.props.title,
-      src: this.props.avatar,
-    })
-    this.children.button = new ButtonAwesome({
-      icon: 'fa fa-user-plus',
-      title: 'Add user',
-      // classes: ['profile-button'],
-      events: {
-        click: this.addUsertoChat.bind(this),
-      },
-    })
-  }
-  addUsertoChat() {
-    console.log('Add User')
-    const userId = 1187705
-    console.log(this.props.id)
-    ChatController.addUserToChat(this.props.id, userId)
-    ChatController.getChatUsers(this.props.id).then((res) => {
-      console.log('chat members:')
-      console.log(res)
-    })
-  }
-
-  render() {
-    return this.compile(templateMessagesHeader, { ...this.props, styles })
-  }
-}
-
 // container for messages in the right panel
 interface ContainerMessageProps {
   messageTemplate?: (context: any) => string

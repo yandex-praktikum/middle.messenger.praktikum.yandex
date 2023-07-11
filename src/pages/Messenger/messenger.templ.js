@@ -3,17 +3,11 @@ export const template = `
     <div class="{{{styles.panel}}} {{{styles.left-panel}}}">
         {{{search}}}
         {{{createNewChatPopup}}}
-        <div class="{{{styles.scroller-container}}}">
-            <div class="{{{styles.scroller}}}">
-                {{#each chats}}
-                    {{{this}}}
-                {{/each}}
-            </div>
-        </div>
+        {{{chats}}}
     </div>
 
     <div class="{{{styles.panel}}} {{{styles.right-panel}}}">
-        {{{topContainerChat}}}
+        {{{topChat}}}
         <div class="{{{styles.scroller-container}}}">
             <div class="{{{styles.scroller}}}">
                 {{#each messages}}

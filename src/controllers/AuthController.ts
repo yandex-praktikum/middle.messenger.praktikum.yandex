@@ -1,4 +1,4 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI'
+import { AuthAPI, SigninData, SignupData } from '../api/AuthAPI'
 import store from '../utils/Store'
 import router from '../utils/Router'
 import MessagesController from './MessagesController'
@@ -37,8 +37,8 @@ class AuthController {
 
   async fetchUser() {
     const user = await this.api.read()
-    console.log('fetchUser ====>', user)
     store.set('user', user)
+    return user
   }
 
   async logout() {
