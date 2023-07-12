@@ -1,26 +1,10 @@
 import Block from '../../utils/Block'
 import { template } from './form.templ'
 import { Tag } from '../Tags/tags'
-import { Input } from '../Input/input'
-import { setStyles } from '../../utils/Helpers'
+import { setStyles, warningStyles } from '../../utils/Helpers'
 import { validateInput } from '../../utils/Helpers'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
-const warningStyles = {
-  pending: {
-    display: 'none',
-  },
-  valid: {
-    display: 'inline-block',
-    backgroundColor: 'rgba(0, 255, 0, 0.2)',
-    border: '1px solid green',
-  },
-  invalid: {
-    display: 'inline-block',
-    backgroundColor: 'rgba(255, 0, 0, 0.2)',
-    border: '1px solid red',
-  },
-}
 
 interface FormProps {
   title?: string
@@ -44,13 +28,20 @@ export class Form extends Block {
     })
 
     // add toggleWarning to inputs
-    const inputs = this.children.inputs as Block[]
+    const inputContainers = this.children.inputs as Block[]
+    const inputs = inputContainers.map((container) => {
+      const content = container.children.content as Block[]
+      return content[1]
+    })
+
     inputs.forEach((i: Block) => {
       i.setProps({
         toggleWarning: this.toggleWarning.bind(this),
         formValidator: this.validate.bind(this),
       })
     })
+
+    // add submit function
     const button = this.children.button as Block
     button.setProps({
       events: {
@@ -60,7 +51,13 @@ export class Form extends Block {
   }
 
   validate() {
-    const inputs = this.children.inputs as Input[]
+    const inputContainers = this.children.inputs as Block[]
+    const inputs = inputContainers.map((container) => {
+      const content = container.children.content as Block[]
+      return content[1]
+    })
+
+    // this.children.inputs as Input[]
     // validate each input on regex
     const inputsData = inputs.map((i) => validateInput(i))
     // store the form data to submit if valid
@@ -82,13 +79,8 @@ export class Form extends Block {
     this.validate() // validates and sets this.props.data values
     const data = this.props.data
     console.log(`Form ${this.props.title} is valid and submitted`)
-    console.log(data)
     console.log(JSON.stringify(data, null, 2))
-    const onSubmit = this.props.onSubmit
-    console.log(onSubmit)
-    onSubmit(data)
-    // AuthController.signin(data as SignupData)
-    // redirect({ url: '/messenger' })
+    this.props.onSubmit(data)
   }
 
   toggleWarning(valid: boolean, message: string) {

@@ -1,5 +1,6 @@
 export type InputData = {
   name: string
+  label: string
   type: string
   placeholder: string
   required?: boolean
@@ -13,6 +14,7 @@ type InputsData = Record<string, InputData>
 export const inputsData: InputsData = {
   login: {
     name: 'login',
+    label: 'Login',
     type: 'text',
     placeholder: 'Login',
     autofocus: true,
@@ -38,6 +40,7 @@ export const inputsData: InputsData = {
   // },
   password: {
     name: 'password',
+    label: 'Password',
     type: 'password',
     placeholder: 'Password',
     regex: /^(?=.*[A-Z])(?=.*\d).{8,40}$/,
@@ -47,6 +50,7 @@ export const inputsData: InputsData = {
   },
   password_old: {
     name: 'password_old',
+    label: 'Old password',
     type: 'password',
     placeholder: 'Enter your old password',
     regex: /^(?=.*[A-Z])(?=.*\d).{8,40}$/,
@@ -57,6 +61,7 @@ export const inputsData: InputsData = {
   },
   password_new: {
     name: 'password_new',
+    label: 'New password',
     type: 'password',
     placeholder: 'Create new password',
     regex: /^(?=.*[A-Z])(?=.*\d).{8,40}$/,
@@ -66,6 +71,7 @@ export const inputsData: InputsData = {
   },
   repeat_password: {
     name: 'repeat_password',
+    label: 'Repeat password',
     type: 'password',
     placeholder: 'Repeat password',
     regex: /^(?=.*[A-Z])(?=.*\d).{8,40}$/,
@@ -74,8 +80,23 @@ export const inputsData: InputsData = {
     - обязательно хотя бы одна заглавная буква и цифра
     - должен совпадать с введенным новым паролем`,
   },
+  display_name: {
+    name: 'display_name',
+    label: 'Display name',
+    type: 'text',
+    placeholder: 'Display name',
+    autofocus: true,
+    required: true,
+    regex: /^[a-zA-Z0-9-]{3,20}$/,
+    warning: `Ограничения для Имени:
+        - от 3 до 20 символов, 
+        - только латиница, 
+        - цифры, но не состоять из них, 
+        - без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)`,
+  },
   first_name: {
     name: 'first_name',
+    label: 'First name',
     type: 'text',
     placeholder: 'Enter your name',
     required: true,
@@ -89,6 +110,7 @@ export const inputsData: InputsData = {
   },
   second_name: {
     name: 'second_name',
+    label: 'Last Name',
     type: 'text',
     placeholder: 'Enter your last name',
     required: true,
@@ -101,6 +123,7 @@ export const inputsData: InputsData = {
   },
   email: {
     name: 'email',
+    label: 'Email',
     type: 'email',
     placeholder: 'Enter your email',
     required: true,
@@ -114,6 +137,7 @@ export const inputsData: InputsData = {
   },
   phone: {
     name: 'phone',
+    label: 'Phone',
     type: 'tel',
     placeholder: 'Enter phone number',
     required: false,
@@ -125,6 +149,7 @@ export const inputsData: InputsData = {
   },
   age: {
     name: 'age',
+    label: 'Age',
     type: 'number',
     placeholder: 'Enter your age',
     regex: /^(?:\d{1,2}|1[01]\d|120)$/,
@@ -134,6 +159,7 @@ export const inputsData: InputsData = {
   },
   city: {
     name: 'city',
+    label: 'City',
     type: 'text',
     placeholder: 'Enter your city',
     required: false,

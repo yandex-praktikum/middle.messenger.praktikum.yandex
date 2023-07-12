@@ -1,19 +1,7 @@
 import Block from '../../utils/Block'
 import { template } from './textarea.templ'
 import * as stylesDefs from './styles.module.scss'
-import { setStyles, validateInput } from '../../utils/Helpers'
 const styles = stylesDefs.default
-const inputStyles = {
-  pending: {
-    border: '1px solid gray',
-  },
-  valid: {
-    border: '1px solid green',
-  },
-  invalid: {
-    border: '1px solid red',
-  },
-}
 
 export interface InputProps {
   name: string

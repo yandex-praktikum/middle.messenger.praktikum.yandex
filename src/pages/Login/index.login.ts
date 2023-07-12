@@ -6,12 +6,11 @@ import { Input } from '../../components/Input/input'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags'
+import { redirect } from '../../utils/Helpers'
+import { Routes } from '../../..'
 import { inputsData, InputData } from '../../../public/inputsData'
-
-// import { SignupData } from '../../api/AuthAPI'
-// import AuthController from '../../controllers/AuthController'
-// import * as stylesDefs from '../../scss/styles.module.scss'
-// const styles = stylesDefs.default
+import { SigninData } from '../../api/AuthAPI'
+import AuthController from '../../controllers/AuthController'
 
 export class LoginPage extends Block {
   constructor() {
@@ -32,15 +31,27 @@ export class LoginPage extends Block {
 
     // the class of the info div be passed to the inputs for blur valiudation
     const { login, password } = inputsData
-    const inputs = [login, password].map(
-      (d: InputData) =>
-        new Input({
-          ...d,
-          validate: true,
-          required: true,
-          classes: ['input-square'],
-        }),
-    )
+
+    const inputs = [login, password].map((d: InputData) => {
+      d.regex = /^.*$/ // remove validation rules
+      return new Container({
+        classes: ['input-container'],
+        content: [
+          new Tag({
+            tag: 'label',
+            content: d.label,
+            for: d.name,
+          }),
+          new Input({
+            ...d,
+            id: d.name,
+            required: true,
+            validate: true,
+            classes: ['input-square'],
+          }),
+        ],
+      })
+    })
 
     const button = new Button({
       label: 'Login',
@@ -48,7 +59,7 @@ export class LoginPage extends Block {
 
     const link = new Link({
       label: 'Register new account',
-      to: '/register',
+      to: Routes.Register,
     })
 
     const form = new Form({
@@ -57,11 +68,23 @@ export class LoginPage extends Block {
       button,
       link,
       info,
+      onSubmit: this.onSubmit,
     })
 
     this.children.loginform = new Container({
       content: [form],
       classes: ['form-container'],
+    })
+  }
+
+  onSubmit(data: SigninData) {
+    AuthController.signin(data).then((res) => {
+      if (!res.success) {
+        AuthController.fetchUser()
+        alert(res.error.reason)
+        return
+      }
+      redirect({ url: Routes.Profile })
     })
   }
 

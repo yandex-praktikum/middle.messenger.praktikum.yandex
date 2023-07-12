@@ -142,9 +142,7 @@ export class MessengerPage extends Block {
 
   openCreateNewChatDialog() {
     const element = this.children.createNewChatPopup as Block
-    console.log(this.children)
     const newChatPopup = element.getContent() as HTMLElement
-    console.log(newChatPopup.style)
     if (newChatPopup) {
       setStyles(newChatPopup, {
         display: 'inline-block',
@@ -168,7 +166,6 @@ export class MessengerPage extends Block {
     if (!chatId) return
     await ChatsController.addUserToChat(chatId, userId)
     const users = await ChatsController.getChatUsers(chatId)
-    console.log(users)
     const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
     const { title } = store.getChatById(chatId)
     console.log(`User ${first_name} ${second_name} was added to the chat ${title}`)

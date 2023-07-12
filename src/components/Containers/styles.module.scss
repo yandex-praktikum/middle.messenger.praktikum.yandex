@@ -242,6 +242,7 @@
 
 .form-container {
   width: 50%;
+  min-width: 500px;
   margin: auto;
   background-color: $background-color-white;
   padding: 20px;
@@ -252,6 +253,11 @@
     color: $color-blue;
     margin-top: 0;
   }
+}
+
+.input-container {
+  min-width: 400px;
+  text-align: left;
 }
 
 .spacer {

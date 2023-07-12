@@ -6,6 +6,7 @@ const styles = stylesDefs.default
 interface TagProps {
   tag: string
   name?: string
+  for?: string
   content?: string
   classes?: string[]
   class?: any

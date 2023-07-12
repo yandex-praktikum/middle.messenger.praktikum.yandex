@@ -31,7 +31,7 @@ export class AuthAPI extends BaseAPI {
   }
 
   signin(data: SigninData) {
-    return this.http.post('/login', data)
+    return this.http.post('/signin', data)
   }
 
   signup(data: SignupData) {
@@ -44,6 +44,10 @@ export class AuthAPI extends BaseAPI {
 
   logout() {
     return this.http.post('/logout')
+  }
+
+  edit(data: Omit<User, 'id' | 'avatar'>) {
+    return this.http.put('/user/profile', data)
   }
 
   create = undefined

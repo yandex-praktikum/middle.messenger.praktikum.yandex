@@ -18,7 +18,6 @@ class ChatsController {
   }
 
   async fetchChats() {
-    // HTTPTransport.get
     const chats = await this.api.read()
     // console.log('===fetchChats====>', chats)
     // chats.forEach(async (chat) => {

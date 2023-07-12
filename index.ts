@@ -6,7 +6,6 @@ import { ProfileEditPage } from './src/pages/ProfileEdit/index.profileedit'
 import { SettingsPage } from './src/pages/Settings/index.settings'
 import { ErrorPage404, ErrorPage500 } from './src/pages/Error/index.error'
 import AuthController from './src/controllers/AuthController'
-// import ChatsController from './src/controllers/ChatsController'
 import { MessengerPage } from './src/pages/Messenger/index.messenger'
 import { registerHandlebarsHelpers } from './src/utils/HandlebarsHelpers'
 

@@ -8,8 +8,6 @@ import store from '../../utils/Store'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
-const chats = []
-
 interface ChatsListProps {
   chats: ChatInfo[]
   isLoaded: boolean

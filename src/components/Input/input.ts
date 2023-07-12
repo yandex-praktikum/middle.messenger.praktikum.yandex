@@ -17,6 +17,7 @@ const inputStyles = {
 
 export interface InputProps {
   name: string
+  id?: string
   value?: string | number
   type: string
   regex?: RegExp

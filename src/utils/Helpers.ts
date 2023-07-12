@@ -46,6 +46,22 @@ export const setStyles = (el: HTMLElement, attrs: Record<string, string>) => {
   el.setAttribute('style', style)
 }
 
+export const warningStyles = {
+  pending: {
+    display: 'none',
+  },
+  valid: {
+    display: 'inline-block',
+    backgroundColor: 'rgba(0, 255, 0, 0.2)',
+    border: '1px solid green',
+  },
+  invalid: {
+    display: 'inline-block',
+    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+    border: '1px solid red',
+  },
+}
+
 export const validateInput = (inp: Input) => {
   const regex = inp.getProps('regex')
   const value = inp.getValue()

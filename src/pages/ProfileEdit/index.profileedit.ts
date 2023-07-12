@@ -9,15 +9,23 @@ import { ButtonAwesome } from '../../components/Buttons/buttons'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags.js'
 import { Routes } from '../../../index.js'
-import data from '../../../public/data.js'
 import { inputsData, InputData } from '../../../public/inputsData'
+import { ProfileProps } from '../Profile/index.profile.js'
+import { withStore } from '../../utils/Store'
+import { isEqual } from '../../utils/Helpers.js'
+import { User } from '../../api/AuthAPI.js'
+import store from '../../utils/Store'
+import UserController from '../../controllers/UserController.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
-const { profile: profiledata } = data
 
-export class ProfileEditPage extends Block {
-  constructor() {
-    super({})
+interface EditProfileProps extends ProfileProps {
+  password: string
+}
+
+export class ProfileEditPageBase extends Block<EditProfileProps> {
+  constructor(props: EditProfileProps) {
+    super(props)
   }
 
   init() {
@@ -38,10 +46,25 @@ export class ProfileEditPage extends Block {
         },
       },
     ]
+
     this.children.tools = new Container({
       content: buttons.map((d) => new ButtonAwesome(d)),
       classes: ['tools-top-container'],
     })
+
+    this.children.editform = this.loadForm(this.props)
+  }
+
+  protected componentDidUpdate(oldProps: EditProfileProps, newProps: EditProfileProps): boolean {
+    if (!isEqual(oldProps, newProps)) {
+      this.children.editform = this.loadForm(newProps)
+      return true
+    }
+    return false
+  }
+
+  loadForm(props: EditProfileProps) {
+    // const { first_name, second_name, login, phone } = props.user
 
     // FORM
     // create Blocks for the Form
@@ -55,73 +78,90 @@ export class ProfileEditPage extends Block {
       ],
     })
 
-    // prefil inputs with profile data
-    for (const [key, value] of Object.entries(profiledata)) {
-      const input = inputsData[key]
-      if (input) input.value = value
-    }
+    // store inputs for validation and form submission
+
+    const avatar = new Avatar({
+      title: 'Avatar',
+      src: props.user.avatar ? props.user.avatar : './public/images/cactus.png',
+      classes: ['avatar-profile'],
+    })
 
     const {
       first_name,
       second_name,
+      display_name,
       email,
       phone,
-      age,
-      city,
       login,
-      password_old,
-      password_new,
-      repeat_password,
+      // password_old,
+      // password_new,
+      // repeat_password,
     } = inputsData
 
     const inputs = [
       first_name,
       second_name,
+      display_name,
+      login,
       email,
       phone,
-      age,
-      city,
-      login,
-      password_old,
-      password_new,
-      repeat_password,
-    ].map(
-      (d: InputData) =>
-        new Input({
-          ...d,
-          required: true,
-          validate: true,
-          classes: ['input-square'],
-        }),
-    )
-    // store inputs for validation and form submission
-    this.props.inputs = inputs
+      // password_old,
+      // password_new,
+      // repeat_password,
+    ].map((d: InputData) => {
+      const key = d.name as keyof User
+      return new Container({
+        classes: ['input-container'],
+        content: [
+          new Tag({
+            tag: 'label',
+            content: d.label,
+            for: d.name,
+            // <label for="html">HTML</label><br>
+          }),
+          new Input({
+            ...d,
+            id: d.name,
+            value: props.user[key],
+            required: true,
+            validate: true,
+            classes: ['input-square'],
+          }),
+        ],
+      })
+    })
 
     const button = new Button({
       label: 'Save',
     })
-    const avatar = new Avatar({
-      title: 'Avatar',
-      src: profiledata.avatar,
-      classes: ['avatar-profile'],
-    })
 
-    // pass Form
-    const form = new Form({
-      title: 'Edit Profile',
-      avatar,
-      inputs,
-      button,
-      info,
-    })
-
-    this.children.editform = new Container({
-      content: [form],
+    return new Container({
+      content: [
+        new Form({
+          title: 'Edit Profile',
+          avatar,
+          inputs,
+          button,
+          info,
+          onSubmit: this.onSubmit,
+        }),
+      ],
       classes: ['form-container'],
     })
+  }
+
+  onSubmit(newUserData: User) {
+    UserController.editUser(newUserData)
+    redirect({ url: Routes.Messenger })
   }
 
   render() {
     return this.compile(template, { ...this.props, styles })
   }
 }
+
+const withChats = withStore((state) => {
+  return { user: state.user || {} }
+})
+
+export const ProfileEditPage = withChats(ProfileEditPageBase)

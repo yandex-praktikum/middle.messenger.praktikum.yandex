@@ -52,7 +52,6 @@ export class ChatTopBase extends Block<ChatTopProps> {
 
   protected componentDidUpdate(oldProps: ChatTopProps, newProps: ChatTopProps): boolean {
     if (!isEqual(oldProps, newProps) && newProps.selectedChat) {
-      console.log('updating', newProps)
       this.children.avatar = this.createAvatar(newProps)
       return true
     }
@@ -60,12 +59,8 @@ export class ChatTopBase extends Block<ChatTopProps> {
   }
 
   private createAvatar(props: ChatTopProps) {
-    console.log('props top', props)
     const chat = store.getChatById(props.selectedChat)
     const { title, avatar } = chat
-    // console.log(title, avatar, users)
-    // const usersLength = users.length ?? 0
-
     return new Container({
       classes: ['top-chat-avatar-container', 'blue'],
       content: [
@@ -92,14 +87,7 @@ export class ChatTopBase extends Block<ChatTopProps> {
 }
 
 export const withSelectedChat = withStore((state) => {
-  // console.log(state)
-  // const chatProps = state.selectedChat
-  // console.log(chatProps)
   return { selectedChat: state.selectedChat || undefined }
 })
-
-// const withChats = withStore((state) => {
-//   return { chats: [...(state.chats || [])] }
-// })
 
 export const ChatTop = withSelectedChat(ChatTopBase)

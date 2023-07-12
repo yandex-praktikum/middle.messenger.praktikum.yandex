@@ -2,21 +2,14 @@ import Block from '../../utils/Block'
 import {
   templateBlank,
   templateContainer,
-  // templateScroller,
-  // templateChat,
-  // templateMessagesHeader,
   templateRm,
   templateLm,
   templateSendMessage,
 } from './container.templ'
-import { Avatar } from '../Avatar/avatar'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-// import { Tag } from '../Tags/tags.js'
 import { TextArea } from '../TextArea/textarea.js'
 import { log } from '../../utils/Helpers.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
-// import store from '../../utils/Store'
-
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -51,23 +44,6 @@ export interface ContainerChatProps extends ChatInfo {
     click: any
   }
 }
-
-// export class ContainerChat extends Block<ContainerChatProps> {
-//   constructor(props: ContainerChatProps) {
-//     super({ ...props })
-//   }
-//   init() {
-//     // console.log('this.props =>', this.props)
-//     this.children.avatar = new Avatar({
-//       title: this.props.title,
-//       src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
-//     })
-//   }
-
-//   render() {
-//     return this.compile(templateChat, { ...this.props, styles })
-//   }
-// }
 
 // container for the header above messages in the rigth panel
 // container for messages in the right panel

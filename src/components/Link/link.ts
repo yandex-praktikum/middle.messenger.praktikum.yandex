@@ -1,10 +1,12 @@
 import Block from '../../utils/Block'
 import { PropsWithRouter, withRouter } from '../../utils/withRouter.js'
 import { template } from './link.templ.js'
+import { redirect } from '../../utils/Helpers.js'
+import { Routes } from '../../../index.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 interface LinkProps extends PropsWithRouter {
-  to: string
+  to: Routes
   label: string
   events?: {
     click: () => void
@@ -22,7 +24,7 @@ class BaseLink extends Block<LinkProps> {
   }
 
   navigate() {
-    this.props.router.go(this.props.to)
+    redirect({ url: this.props.to })
   }
 
   render() {

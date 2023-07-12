@@ -1,5 +1,8 @@
 export const template = `
-<{{{tag}}} class="{{#each class}} {{{this}}} {{/each}}" >
+<{{{tag}}} 
+    {{#if name}} name="{{{name}}}" {{/if}}
+    {{#if for}} name="{{{for}}}" {{/if}}
+    class="{{#each class}} {{{this}}} {{/each}}"}>
     {{{content}}}
 </{{{tag}}}>
 `
