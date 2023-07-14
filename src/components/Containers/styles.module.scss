@@ -339,3 +339,28 @@
   background-color: $background-color-white;
   display: none;
 }
+
+.edit-profile-avatar-container {
+  position: relative;
+}
+
+.add-avatar-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 20vh;
+  background-color: rgba(2255, 255, 255, 0.2);
+  z-index: 100;
+  display: none;
+  div {
+    border: 1px solid $color-gray;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: auto;
+    width: 400px;
+    // height: 200px;
+    background-color: $background-color-white;
+  }
+}

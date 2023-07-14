@@ -1,4 +1,4 @@
-import { UserAPI, UserUpdate } from '../api/UserAPI'
+import { AvatarUpdate, UserAPI, UserUpdate } from '../api/UserAPI'
 import store from '../utils/Store'
 
 class UserController {
@@ -12,6 +12,10 @@ class UserController {
     const user = await this.api.edit(data)
     store.set('user', user)
     return user
+  }
+
+  async addAvatar(data: AvatarUpdate) {
+    return await this.api.addAvatar(data)
   }
 }
 

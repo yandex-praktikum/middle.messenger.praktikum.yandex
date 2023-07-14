@@ -10,7 +10,10 @@ import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { TextArea } from '../TextArea/textarea.js'
 import { log } from '../../utils/Helpers.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
+import ChatsController from '../../controllers/ChatsController.js'
+import MessageController from '../../controllers/MessagesController.js'
 import * as stylesDefs from './styles.module.scss'
+import store from '../../utils/Store.js'
 const styles = stylesDefs.default
 
 type events = {
@@ -118,17 +121,59 @@ export class ContainerSendMessage extends Block {
   send() {
     const textarea = this.children.textarea as TextArea
     const value = textarea.getValue()
-    const regex = /^[^QWERTYUIOPqwertyuiopЙЦУКЕНГШЩЗХйцукенгшщзх]*$/
-    const valid = regex.test(value)
-    if (!valid) {
-      alert(
-        `This is a very weird requirement from the designers team, but we currently do not allow any characters from the top row of the QWERTY keyboard. Sorry for the inconvinience.`,
-      )
-    } else {
-      console.log(value)
-      textarea.setValue('')
-    }
+    // const regex = /^[^QWERTYUIOPqwertyuiopЙЦУКЕНГШЩЗХйцукенгшщзх]*$/
+    // const valid = regex.test(value)
+    // if (!valid) {
+    //   alert(
+    //     `This is a very weird requirement from the designers team, but we currently do not allow any characters from the top row of the QWERTY keyboard. Sorry for the inconvinience.`,
+    //   )
+    // } else {
+    //   console.log(value)
+    //   textarea.setValue('')
+    // }
+    textarea.setValue('')
+    const userId = store.getUser().id
+    const chatId = store.getState().selectedChat
+    MessageController.sendMessage(chatId, value)
+    // ChatsController.getToken(chatId).then((token) => {
+    //   // this.sendMessage(userId, chatId, token, value)
+    //   MessageController.sendMessage(chatId, value)
+    // })
   }
+
+  // sendMessage(userId: number, chatId: number, token: string, value: string) {
+  //   console.log(userId, chatId, token)
+  //   const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`)
+
+  //   socket.addEventListener('open', () => {
+  //     console.log('Соединение установлено')
+
+  //     socket.send(
+  //       JSON.stringify({
+  //         content: value,
+  //         type: 'message',
+  //       }),
+  //     )
+  //   })
+
+  //   socket.addEventListener('close', (event) => {
+  //     if (event.wasClean) {
+  //       console.log('Соединение закрыто чисто')
+  //     } else {
+  //       console.log('Обрыв соединения')
+  //     }
+
+  //     console.log(`Код: ${event.code} | Причина: ${event.reason}`)
+  //   })
+
+  //   socket.addEventListener('message', (event) => {
+  //     console.log('Получены данные', event.data)
+  //   })
+
+  //   socket.addEventListener('error', (event) => {
+  //     console.log('Ошибка', event.message)
+  //   })
+  // }
 
   render() {
     return this.compile(templateSendMessage, { ...this.props, styles })

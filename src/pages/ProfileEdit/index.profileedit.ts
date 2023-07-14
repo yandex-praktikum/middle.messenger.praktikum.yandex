@@ -15,6 +15,14 @@ import { withStore } from '../../utils/Store'
 import { isEqual } from '../../utils/Helpers.js'
 import { User } from '../../api/AuthAPI.js'
 import store from '../../utils/Store'
+import {
+  setStyles,
+  // isEqual,
+  // isEqualProxy,
+  // arrayLeftRightIntersect,
+  // parseDate,
+  // cloneDeep,
+} from '../../utils/Helpers'
 import UserController from '../../controllers/UserController.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
@@ -77,13 +85,59 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         }),
       ],
     })
+    this.children.addAvatarPopup = new Container({
+      content: [
+        new Container({
+          content: [
+            new Tag({
+              tag: 'h2',
+              content: 'Select file for avatar',
+            }),
+            new Input({
+              name: 'change-avatar',
+              type: 'file',
+              accept: '.jpg,.jpeg,.png',
+              placeholder: 'Select file',
+              required: true,
+              validate: false,
+              classes: ['input-square'],
+            }),
+            new Button({
+              label: 'Change Avatar',
+              events: {
+                click: this.changeAvatar.bind(this),
+              },
+            }),
+            new Button({
+              label: 'Cancel',
+              classes: ['button-cancel'],
+              events: {
+                click: () => this.closeCreateAddAvatarDialog(),
+              },
+            }),
+          ],
+        }),
+      ],
+      classes: ['add-avatar-container'],
+    })
 
-    // store inputs for validation and form submission
-
-    const avatar = new Avatar({
-      title: 'Avatar',
-      src: props.user.avatar ? props.user.avatar : './public/images/cactus.png',
-      classes: ['avatar-profile'],
+    const avatar = new Container({
+      content: [
+        new Avatar({
+          title: 'Avatar',
+          src: props.user.avatar ? props.user.avatar : './public/images/cactus.png',
+          classes: ['avatar-profile'],
+        }),
+        new ButtonAwesome({
+          icon: 'far fa-edit',
+          title: 'Change Avatar',
+          events: {
+            click: this.openCreateAddAvatarDialog.bind(this),
+            // click: () => console.log('click'),
+          },
+        }),
+      ],
+      classes: ['edit-profile-avatar-container'],
     })
 
     const {
@@ -153,6 +207,54 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
   onSubmit(newUserData: User) {
     UserController.editUser(newUserData)
     redirect({ url: Routes.Messenger })
+  }
+
+  changeAvatar() {
+    const popup = this.children.addAvatarPopup as Block
+    const container = popup.children.content as Block[]
+    const children = container[0].children.content as Block[]
+    const input = children[1]
+    const inputElement = input.getContent() as HTMLInputElement
+    console.log(inputElement.files[0])
+    const avatar = inputElement.files[0].name
+    console.log(avatar)
+    const user = store.getUser()
+    console.log({ ...user, avatar })
+
+    UserController.addAvatar({ ...user, avatar }).then((res) => {
+      console.log(res)
+    })
+
+    // curl -X 'PUT' \
+    // 'https://ya-praktikum.tech/api/v2/user/profile/avatar' \
+    // -H 'accept: application/json' \
+    // -H 'Content-Type: multipart/form-data' \
+    // -F 'avatar=@Screenshot 2023-05-26 at 11.13.22 am.png;type=image/png'
+    // change avatar here
+
+    this.closeCreateAddAvatarDialog()
+  }
+
+  openCreateAddAvatarDialog() {
+    console.log('open')
+    const element = this.children.addAvatarPopup as Block
+    const addAvatarPopup = element.getContent() as HTMLElement
+    console.log(addAvatarPopup)
+    if (addAvatarPopup) {
+      setStyles(addAvatarPopup, {
+        display: 'inline-block',
+      })
+    }
+  }
+
+  closeCreateAddAvatarDialog() {
+    const element = this.children.addAvatarPopup as Block
+    const addAvatarPopup = element.getContent() as HTMLElement
+    if (addAvatarPopup) {
+      setStyles(addAvatarPopup, {
+        display: 'none',
+      })
+    }
   }
 
   render() {

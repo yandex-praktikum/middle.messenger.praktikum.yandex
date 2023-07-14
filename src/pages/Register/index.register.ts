@@ -81,7 +81,7 @@ export class RegisterPage extends Block {
         alert(res.error.reason)
         return
       }
-      redirect({ url: Routes.Profile })
+      redirect({ url: Routes.Messenger })
     })
   }
 

@@ -23,19 +23,16 @@ import {
   ContainerSendMessage,
 } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
-
-import * as styleMainsDefs from '../../scss/styles.module.scss'
-const stylesMain = styleMainsDefs.default
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
-
 import ChatsController from '../../controllers/ChatsController.js'
-
 import store from '../../utils/Store'
 import { User } from '../../api/AuthAPI.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
 import { ChatsList } from '../../components/ChatsList/chatlist.js'
 import { ChatTop } from '../../components/ChatTop/chatTop.js'
+import * as styleMainsDefs from '../../scss/styles.module.scss'
+const stylesMain = styleMainsDefs.default
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
 
 export class MessengerPage extends Block {
   constructor() {
@@ -67,14 +64,6 @@ export class MessengerPage extends Block {
         }),
       ],
       classes: ['tools-container'],
-    })
-
-    this.children.topChat = new ChatTop({
-      selected: true,
-      events: {
-        addUser: this.addUserToChat.bind(this),
-        deleteChat: this.deleteChat.bind(this),
-      },
     })
 
     this.children.chats = new ChatsList({ chats: [], isLoaded: false })
@@ -110,7 +99,28 @@ export class MessengerPage extends Block {
       ],
     })
 
+    // RIGHT PANEL
+    this.children.topChat = new ChatTop({
+      selected: true,
+      events: {
+        addUser: this.addUserToChat.bind(this),
+        deleteChat: this.deleteChat.bind(this),
+      },
+    })
+
+    // this.children.messages = this.loadMessages()
+
     this.children.sendMessage = new ContainerSendMessage()
+  }
+
+  protected componentDidUpdate(oldProps, newProps): boolean {
+    // if (!isEqual(oldProps, newProps)) {
+    //   this.children.avatar = this.setAvatar(newProps)
+    //   this.children.details = this.setDetails(newProps)
+    //   return true
+    // }
+    // return false
+    return true
   }
 
   loadChats() {
@@ -125,6 +135,13 @@ export class MessengerPage extends Block {
           isLoaded: true,
         })
       })
+  }
+
+  loadMessages() {
+    // console.log('loadMessages ===>', store.getState())
+    const messages = store.getState().messages
+    console.log(messages)
+    return
   }
 
   createNewChat() {

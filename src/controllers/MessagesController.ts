@@ -58,6 +58,7 @@ class MessagesController {
   }
 
   private onMessage(id: number, messages: Message | Message[]) {
+    // console.log(id, messages)
     let messagesToAdd: Message[] = []
 
     if (Array.isArray(messages)) {
@@ -70,7 +71,7 @@ class MessagesController {
 
     messagesToAdd = [...currentMessages, ...messagesToAdd]
 
-    store.set(`messages.${id}`, messagesToAdd)
+    store.set(`messages.chat${id}`, messagesToAdd)
   }
 
   private onClose(id: number) {

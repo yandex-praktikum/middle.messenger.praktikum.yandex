@@ -2,7 +2,7 @@ import { ChatsAPI } from '../api/ChatsAPI'
 // import { User } from '../api/AuthAPI'
 // import AuthController from './AuthController'
 import store from '../utils/Store'
-// import MessagesController from './MessagesController'
+import MessagesController from './MessagesController'
 
 class ChatsController {
   private readonly api: ChatsAPI
@@ -19,17 +19,17 @@ class ChatsController {
 
   async fetchChats() {
     const chats = await this.api.read()
-    // console.log('===fetchChats====>', chats)
-    // chats.forEach(async (chat) => {
-    //   const users = await this.getChatUsers(chat.id)
-
-    //   // const token = await this.getToken(chat.id)
-    //   // await MessagesController.connect(chat.id, token)
-    // })
     store.set('chats', chats)
     if (!store.getState().selectedChat && chats.length > 0) {
       this.selectChat(chats[0].id)
     }
+    chats.forEach(async (chat) => {
+      console.log(chat.id)
+      const token = await this.getToken(chat.id)
+      await MessagesController.connect(chat.id, token)
+      // const messages = store.getState().messages
+      // console.log(messages)
+    })
     return chats
   }
 
@@ -49,8 +49,18 @@ class ChatsController {
     return this.api.getToken(id)
   }
 
-  selectChat(id: number) {
+  async selectChat(id: number) {
     store.set('selectedChat', id)
+
+    // const users = await this.getChatUsers(id)
+    // const token = await this.getToken(id)
+    // await MessagesController.connect(id, token).then(() => {
+    //   if (store.getState().messages) {
+    //     const messages = store.getState().messages
+    //     console.log(`chat${id}`, messages, messages[`chat${id}`])
+    //     // console.log(Object.keys(messages))
+    //   }
+    // })
   }
 }
 

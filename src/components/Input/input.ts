@@ -20,6 +20,7 @@ export interface InputProps {
   id?: string
   value?: string | number
   type: string
+  accept?: string
   regex?: RegExp
   placeholder?: string
   required?: boolean

@@ -23,6 +23,9 @@ export interface UserUpdate {
   phone: string
 }
 
+export interface AvatarUpdate extends UserUpdate {
+  avatar: string
+}
 export class UserAPI extends BaseAPI {
   constructor() {
     super('')
@@ -30,6 +33,10 @@ export class UserAPI extends BaseAPI {
 
   edit(data: UserUpdate) {
     return this.http.put('/user/profile', data)
+  }
+
+  addAvatar(data: AvatarUpdate) {
+    return this.http.put('/user/profile/avatar', data)
   }
 
   update = undefined

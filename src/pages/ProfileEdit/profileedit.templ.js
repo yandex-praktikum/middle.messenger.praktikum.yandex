@@ -1,6 +1,7 @@
 export const template = `
 <main>
     {{{tools}}}
+    {{{addAvatarPopup}}}
     <div class="{{{styles.profile}}}">
         <div class="{{{styles.scroller-container}}}">
             <div class="{{{styles.scroller}}}">
