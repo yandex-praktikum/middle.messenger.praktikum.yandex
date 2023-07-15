@@ -118,7 +118,7 @@ export default class HTTPTransport {
       } else {
         if (content_type == 'multipart/form-data') {
           xhr.setRequestHeader('Content-Type', 'multipart/form-data')
-          console.log(data)
+          console.log("HTTPTransport data.get('avatar')", data.get('avatar'))
           xhr.send(data)
           // console.log(queryStringify(data))
           // xhr.send(queryStringify(data))
