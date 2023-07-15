@@ -5,6 +5,7 @@ import {
   templateRm,
   templateLm,
   templateSendMessage,
+  templateScroller,
 } from './container.templ'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { TextArea } from '../TextArea/textarea.js'
@@ -141,41 +142,20 @@ export class ContainerSendMessage extends Block {
     // })
   }
 
-  // sendMessage(userId: number, chatId: number, token: string, value: string) {
-  //   console.log(userId, chatId, token)
-  //   const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`)
-
-  //   socket.addEventListener('open', () => {
-  //     console.log('Соединение установлено')
-
-  //     socket.send(
-  //       JSON.stringify({
-  //         content: value,
-  //         type: 'message',
-  //       }),
-  //     )
-  //   })
-
-  //   socket.addEventListener('close', (event) => {
-  //     if (event.wasClean) {
-  //       console.log('Соединение закрыто чисто')
-  //     } else {
-  //       console.log('Обрыв соединения')
-  //     }
-
-  //     console.log(`Код: ${event.code} | Причина: ${event.reason}`)
-  //   })
-
-  //   socket.addEventListener('message', (event) => {
-  //     console.log('Получены данные', event.data)
-  //   })
-
-  //   socket.addEventListener('error', (event) => {
-  //     console.log('Ошибка', event.message)
-  //   })
-  // }
-
   render() {
     return this.compile(templateSendMessage, { ...this.props, styles })
+  }
+}
+
+export class ContainerScroller extends Container {
+  constructor(props: ContainerProps) {
+    super({ ...props })
+  }
+  init() {
+    if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
+  }
+
+  render() {
+    return this.compile(templateScroller, { ...this.props, styles })
   }
 }

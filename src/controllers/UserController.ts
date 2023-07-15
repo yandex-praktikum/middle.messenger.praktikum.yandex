@@ -17,6 +17,10 @@ class UserController {
   async addAvatar(data: AvatarUpdate) {
     return await this.api.addAvatar(data)
   }
+
+  async getUserById(id: number) {
+    return await this.api.getUserById(id)
+  }
 }
 
 const controller = new UserController()

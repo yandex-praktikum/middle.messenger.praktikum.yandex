@@ -117,7 +117,9 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result)
 }
 
-export function isEqual(a: object, b: object): boolean {
+export function isEqual(aa: object, bb: object): boolean {
+  const a = JSON.parse(JSON.stringify(aa))
+  const b = JSON.parse(JSON.stringify(bb))
   if (a === b) return true
   if (typeof a == 'function' && typeof b == 'function' && a.toString() == b.toString()) {
     return true
@@ -139,12 +141,6 @@ export function isEqual(a: object, b: object): boolean {
   }
 
   return true
-}
-
-export function isEqualProxy(aa: object, bb: object): boolean {
-  const a = Object.assign({}, aa)
-  const b = Object.assign({}, bb)
-  return isEqual(a, b)
 }
 
 export function arrayLeftRightIntersect(
@@ -214,3 +210,10 @@ export const cloneDeep = (value: any): any => {
   }
   return clonedObj
 }
+
+export const mappedObject = (arrayOfObjects: any) =>
+  arrayOfObjects.reduce((result: {}, obj: any) => {
+    const { id, ...rest } = obj
+    result[id] = rest
+    return result
+  }, {})

@@ -1,16 +1,21 @@
 import Block from '../../utils/Block'
-import { template } from './chatList.templ.js'
-import { Chat } from '../Chat/chat'
+import { template } from './messages.templ.js'
+// import { Chat } from '../Chat/chat'
+// import { Tag } from '../Tags/tags.js'
 import { withStore } from '../../utils/Store'
-import { ChatInfo } from '../../api/ChatsAPI'
-import ChatsController from '../../controllers/ChatsController'
+import { isEqual, mappedObject } from '../../utils/Helpers.js'
+// import { ChatInfo } from '../../api/ChatsAPI'
+// import ChatsController from '../../controllers/ChatsController'
+import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
 import store from '../../utils/Store'
 import { Message } from '../../controllers/MessagesController.js'
+import { User } from '../../api/AuthAPI.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
 interface MessagesProps {
-  chats: Message[]
+  messages: Message[]
+  chatUsers: User[]
   isLoaded: boolean
 }
 
@@ -20,26 +25,48 @@ class MessagesBase extends Block<MessagesProps> {
   }
 
   protected init() {
-    this.children.chats = this.createChats(this.props)
+    this.children.messages = new ContainerScroller({
+      content: this.createMessages(this.props),
+    })
   }
 
   protected componentDidUpdate(oldProps: MessagesProps, newProps: MessagesProps): boolean {
-    this.children.chats = this.createChats(newProps)
+    if (!isEqual(oldProps, newProps)) {
+      // console.log(JSON.parse(JSON.stringify(oldProps)), JSON.parse(JSON.stringify(newProps)))
+      this.children.messages = new ContainerScroller({
+        content: this.createMessages(this.props),
+      })
+      this.scrollTop()
 
-    return true
+      return true
+    }
+    return false
   }
 
-  private createChats(props: MessagesProps) {
-    return props.messages.map((data) => {
-      const selected = store.isSelectedChat(data.id)
-      return new Chat({
-        ...data,
-        selected,
-        events: {
-          click: () => {
-            ChatsController.selectChat(data.id)
-          },
-        },
+  public scrollTop = () => {
+    const element = this.getContent() as HTMLElement
+    element.scrollTop = element.scrollHeight
+    // console.log('messenger====>', element.scrollHeight)
+    // console.log('messenger====>', element.scrollTop)
+  }
+
+  private createMessages(props: MessagesProps) {
+    if (!props.messages) return []
+    const users = props.chatUsers
+    return props.messages.map((m: Message) => {
+      const name = () => {
+        if (!users || users.length == 0 || !m.user_id) return ''
+        const firstName = users.filter((user) => user.id == m.user_id)[0].first_name
+        const userName = store.getUser().first_name
+        if (userName == firstName) return 'You'
+        return firstName
+      }
+      return new ContainerMessage({
+        author: name(),
+        avatar: './public/images/cactus.png',
+        hideAvatar: false,
+        message: m.content,
+        date: m.time,
       })
     })
   }
@@ -49,10 +76,17 @@ class MessagesBase extends Block<MessagesProps> {
   }
 }
 
-const withChats = withStore((state) => {
+const withMessages = withStore((state) => {
   const selectedChatId = state.selectedChat
-  const messages = selectedChatId ? state.messages[selectedChatId] : []
-  return { messages: [...messages] }
+  try {
+    return {
+      messages: state.messages[selectedChatId],
+      chatUsers: state.chatUsers[selectedChatId],
+      isLoaded: false,
+    }
+  } catch {
+    return { messages: [], chatUsers: [], isLoaded: false }
+  }
 })
 
-export const Messages = withChats(MessagesBase)
+export const Messages = withMessages(MessagesBase)

@@ -14,20 +14,14 @@ import {
   // parseDate,
   // cloneDeep,
 } from '../../utils/Helpers'
-import {
-  Container,
-  // ContainerChat,
-  // ContainerChatProps,
-  // ContainerMessage,
-  // ContainerMessagersHeader,
-  ContainerSendMessage,
-} from '../../components/Containers/containers.js'
+import { Container, ContainerSendMessage } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
 import ChatsController from '../../controllers/ChatsController.js'
 import store from '../../utils/Store'
 import { User } from '../../api/AuthAPI.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
 import { ChatsList } from '../../components/ChatsList/chatlist.js'
+import { Messages } from '../../components/Messages/messages.js'
 import { ChatTop } from '../../components/ChatTop/chatTop.js'
 import * as styleMainsDefs from '../../scss/styles.module.scss'
 const stylesMain = styleMainsDefs.default
@@ -108,40 +102,17 @@ export class MessengerPage extends Block {
       },
     })
 
-    // this.children.messages = this.loadMessages()
+    this.children.messages = new Messages({ messages: [], isLoaded: false })
 
     this.children.sendMessage = new ContainerSendMessage()
   }
 
-  protected componentDidUpdate(oldProps, newProps): boolean {
-    // if (!isEqual(oldProps, newProps)) {
-    //   this.children.avatar = this.setAvatar(newProps)
-    //   this.children.details = this.setDetails(newProps)
-    //   return true
-    // }
-    // return false
-    return true
-  }
-
   loadChats() {
-    ChatsController.fetchChats()
-      // .then((chats) => {
-      //   if (chats.length > 0) {
-      //     ChatsController.selectChat(chats[0].id)
-      //   }
-      // })
-      .finally(() => {
-        this.setProps({
-          isLoaded: true,
-        })
+    ChatsController.fetchChats().finally(() => {
+      this.setProps({
+        isLoaded: true,
       })
-  }
-
-  loadMessages() {
-    // console.log('loadMessages ===>', store.getState())
-    const messages = store.getState().messages
-    console.log(messages)
-    return
+    })
   }
 
   createNewChat() {

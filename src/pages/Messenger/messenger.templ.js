@@ -8,13 +8,7 @@ export const template = `
 
     <div class="{{{styles.panel}}} {{{styles.right-panel}}}">
         {{{topChat}}}
-        <div class="{{{styles.scroller-container}}}">
-            <div class="{{{styles.scroller}}}">
-                {{#each messages}}
-                    {{{this}}}
-                {{/each}}
-            </div>
-        </div>
+        {{{messages}}}
         <div class="{{{styles.spacer}}}"></div>
         {{{sendMessage}}}
     </div>

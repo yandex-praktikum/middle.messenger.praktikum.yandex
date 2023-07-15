@@ -39,6 +39,10 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/user/profile/avatar', data)
   }
 
+  getUserById(id: number) {
+    return this.http.get(`/user/${id}`)
+  }
+
   update = undefined
   read = undefined
   create = undefined

@@ -71,7 +71,7 @@ class MessagesController {
 
     messagesToAdd = [...currentMessages, ...messagesToAdd]
 
-    store.set(`messages.chat${id}`, messagesToAdd)
+    store.set(`messages.${id}`, messagesToAdd)
   }
 
   private onClose(id: number) {

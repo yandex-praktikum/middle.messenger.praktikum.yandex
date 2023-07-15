@@ -13,6 +13,7 @@ interface State {
   user: User
   chats: ChatInfo[]
   messages: Record<number, Message[]>
+  chatUsers: Record<number, User[]>
   selectedChat?: number
 }
 const setNested = (object: Record<string, any>, path: string, value: any): void => {
@@ -35,15 +36,15 @@ export class Store extends EventBus {
     this.emit(StoreEvents.Updated, this.getState())
   }
 
-  public setNested(keypath: string, data: unknown) {
-    setNested(this.state, keypath, data)
-    this.emit(StoreEvents.Updated, this.getState())
-  }
-
   public getState() {
     return this.state
   }
 
+  /// commmon store methods
+  public setNested(keypath: string, data: unknown) {
+    setNested(this.state, keypath, data)
+    this.emit(StoreEvents.Updated, this.getState())
+  }
   public getChatById(id: number) {
     return store.getState().chats.filter((chat: ChatInfo) => chat.id === id)[0] ?? {}
   }
@@ -52,6 +53,13 @@ export class Store extends EventBus {
   }
   public getChats() {
     return this.getState().chats ?? []
+  }
+  public getChatUsers() {
+    const id = this.getState().selectedChat
+    const chat = this.getChatById(id)
+    console.log('===>', id, chat, chat.id, this.getState().chatsUsers)
+    if (!this.getState().chatsUsers) return []
+    return this.getState().chatsUsers[chat.id] || []
   }
   public getMessages() {
     return this.getState().messages ?? []

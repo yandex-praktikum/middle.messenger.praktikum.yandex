@@ -11,8 +11,8 @@ export const templateContainer = `
 `
 
 export const templateScroller = `
-<div class="{{scrollerContainerClass}}" >
-    <div class="{{scrollerClass}}" >
+<div class="{{{styles.scroller-container}}}">
+    <div class="{{{styles.scroller}}}">
         {{#each content}}
             {{{this}}}
         {{/each}}

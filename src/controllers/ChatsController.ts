@@ -1,5 +1,7 @@
 import { ChatsAPI } from '../api/ChatsAPI'
 // import { User } from '../api/AuthAPI'
+import { ChatInfo } from '../api/ChatsAPI'
+import UserController from '../controllers/UserController'
 // import AuthController from './AuthController'
 import store from '../utils/Store'
 import MessagesController from './MessagesController'
@@ -14,7 +16,14 @@ class ChatsController {
   // create chat
   async create(title: string) {
     await this.api.create(title)
-    this.fetchChats()
+    const newChats = await this.api.read()
+    const oldChats = store.getChats()
+    const oldChatsIds = oldChats.map((chat: ChatInfo) => chat.id)
+    const newChat = newChats.filter((chat) => !oldChatsIds.includes(chat.id))[0]
+    store.set('chats', [newChat, ...oldChats])
+    const token = await this.getToken(newChat.id)
+    await MessagesController.connect(newChat.id, token)
+    return store.getChats()
   }
 
   async fetchChats() {
@@ -24,12 +33,13 @@ class ChatsController {
       this.selectChat(chats[0].id)
     }
     chats.forEach(async (chat) => {
-      console.log(chat.id)
       const token = await this.getToken(chat.id)
+      // this is very long, but swagger doesn't support complex requests to JOIN data
       await MessagesController.connect(chat.id, token)
-      // const messages = store.getState().messages
-      // console.log(messages)
+      const chatUsersIds = await this.getChatUsers(chat.id)
+      store.set(`chatUsers.${chat.id}`, chatUsersIds)
     })
+    console.log(store.getState())
     return chats
   }
 
@@ -51,16 +61,6 @@ class ChatsController {
 
   async selectChat(id: number) {
     store.set('selectedChat', id)
-
-    // const users = await this.getChatUsers(id)
-    // const token = await this.getToken(id)
-    // await MessagesController.connect(id, token).then(() => {
-    //   if (store.getState().messages) {
-    //     const messages = store.getState().messages
-    //     console.log(`chat${id}`, messages, messages[`chat${id}`])
-    //     // console.log(Object.keys(messages))
-    //   }
-    // })
   }
 }
 
