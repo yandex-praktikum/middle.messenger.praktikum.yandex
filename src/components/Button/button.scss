@@ -1,0 +1,9 @@
+.button{
+  @include font-style($ff, 500, 15px, 18px, $white);
+  &-blue{
+    @include btn(100%, $blue, $lightBlue, $activeBlue);
+  }
+  &-red{
+    @include btn(100%, $red, $lightRed, $activeRed);
+  }
+}

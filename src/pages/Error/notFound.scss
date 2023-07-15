@@ -1,0 +1,31 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__error {
+    display: flex;
+    margin-bottom: 40px;
+
+    span {
+      @include font-style($ff, 700, 235px, 214px, $blue);
+    }
+  }
+
+  &__text {
+    @include font-style($ff, 500, 21px, 100%, $titleColor);
+    margin-bottom: 80px;
+  }
+
+  &__link {
+    @include font-style($ff, 500, 13px, 18px);
+    @include link();
+  }
+}

@@ -1,0 +1,44 @@
+.avatar__load {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  border: none;
+  border-radius: 50%;
+  background: $gray-300;
+  cursor: pointer;
+  transition: background 200ms;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url('../../assets/icons/camera.svg');
+    transition: scale 200ms;
+  }
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    background: $gray-400;
+
+    &::before {
+      scale: 1.1;
+    }
+  }
+
+  &:focus {
+    outline: 1px solid $activeBlue;
+  }
+}
