@@ -37,7 +37,7 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/user/profile', data)
   }
 
-  addAvatar(data: any) {
+  addAvatar(data: FormData) {
     return this.http.put('/user/profile/avatar', data, 'multipart/form-data')
   }
 

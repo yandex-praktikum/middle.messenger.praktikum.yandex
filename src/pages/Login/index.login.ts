@@ -6,11 +6,12 @@ import { Input } from '../../components/Input/input'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags'
-import { redirect } from '../../utils/Helpers'
+import { formDataToJson, redirect } from '../../utils/Helpers'
 import { Routes } from '../../..'
 import { inputsData, InputData } from '../../../public/inputsData'
 import { SigninData } from '../../api/AuthAPI'
 import AuthController from '../../controllers/AuthController'
+import { validateForm } from '../../utils/FormValidator'
 
 export class LoginPage extends Block {
   constructor() {
@@ -55,6 +56,7 @@ export class LoginPage extends Block {
 
     const button = new Button({
       label: 'Login',
+      type: 'submit',
     })
 
     const link = new Link({
@@ -62,22 +64,32 @@ export class LoginPage extends Block {
       to: Routes.Register,
     })
 
-    const form = new Form({
-      title: 'Login',
-      inputs,
-      buttons: [button],
-      link,
-      info,
-      onSubmit: this.onSubmit,
-    })
-
     this.children.loginform = new Container({
-      content: [form],
+      content: [
+        new Form({
+          title: 'Login',
+          inputs,
+          buttons: [button],
+          link,
+          info,
+          events: {
+            submit: this.loginSubmit.bind(this),
+          },
+        }),
+      ],
       classes: ['form-container'],
     })
+    // store form for validation
   }
 
-  onSubmit(data: SigninData) {
+  loginSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    if (!validateForm(this.children.loginform as Block)) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData) as SigninData
+
     AuthController.signin(data).then((res) => {
       if (!res.success) {
         AuthController.fetchUser()

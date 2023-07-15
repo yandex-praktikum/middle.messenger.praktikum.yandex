@@ -1,5 +1,5 @@
 import Block from '../../utils/Block'
-import { imageExists, redirect } from '../../utils/Helpers.js'
+import { formDataToJson, imageExists, redirect } from '../../utils/Helpers.js'
 import { template } from './profileedit.templ'
 import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
@@ -15,6 +15,8 @@ import { withStore } from '../../utils/Store'
 import { isEqual } from '../../utils/Helpers.js'
 import { User } from '../../api/AuthAPI.js'
 import store from '../../utils/Store'
+import { validateForm } from '../../utils/FormValidator.js'
+import { UserAPI, UserUpdate } from '../../api/UserAPI'
 import {
   setStyles,
   // isEqual,
@@ -118,9 +120,6 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
                 new Button({
                   label: 'Change Avatar',
                   type: 'submit',
-                  // events: {
-                  //   click: this.changeAvatar.bind(this),
-                  // },
                 }),
                 new Button({
                   label: 'Cancel',
@@ -131,17 +130,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
                 }),
               ],
               events: {
-                submit: (e) => {
-                  e.preventDefault()
-                  const formData = new FormData(e.target)
-                  console.log(formData.get('avatar'))
-                  UserController.addAvatar(formData).then((res) => {
-                    console.log('changed avatar')
-                    console.log(res)
-                  })
-
-                  // this.changeAvatar(formData)
-                },
+                submit: this.editAvatarSubmit.bind(this),
               },
             }),
           ],
@@ -217,6 +206,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
 
     const button = new Button({
       label: 'Save',
+      type: 'submit',
     })
 
     return new Container({
@@ -227,49 +217,40 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
           inputs,
           buttons: [button],
           info,
-          onSubmit: this.onSubmit,
+          events: {
+            submit: this.editProfileSubmit.bind(this),
+          },
         }),
       ],
       classes: ['form-container'],
     })
   }
 
-  onSubmit(newUserData: User) {
-    console.log(newUserData)
-    UserController.editUser(newUserData)
-    // redirect({ url: Routes.Messenger })
+  editProfileSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    if (!validateForm(this.children.editform as Block)) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData) as UserUpdate
+    UserController.editUser(data).then((res) => {
+      console.log('changed profile')
+      console.log(res)
+    })
+    redirect({ url: Routes.Messenger })
   }
 
-  changeAvatar(formData: any) {
-    console.log('submit')
-    console.log(formData)
-    // const formData = new FormData(e.target);
-
-    // const container = popup.children.content as Block[]
-    // const children = container[0].children.content as Block[]
-    // const input = children[1]
-    // const inputElement = input.getContent() as HTMLInputElement
-    // const file = inputElement.files[0]
-    // const data = new FormData()
-    // if (file) {
-    //   data.append('avatar', file)
-    // }
-    // console.log("data.get('avatar')", data.get('avatar'))
-    // /// logs file
-
+  editAvatarSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    // if (!validateForm(this.children.addAvatarPopup as Block)) return
+    const formData = new FormData(e.target)
+    this.closeCreateAddAvatarDialog()
     UserController.addAvatar(formData).then((res) => {
       console.log('changed avatar')
       console.log(res)
     })
-
-    // // curl -X 'PUT' \
-    // // 'https://ya-praktikum.tech/api/v2/user/profile/avatar' \
-    // // -H 'accept: application/json' \
-    // // -H 'Content-Type: multipart/form-data' \
-    // // -F 'avatar=@Screenshot 2023-05-26 at 11.13.22 am.png;type=image/png'
-    // // change avatar here
-
-    // this.closeCreateAddAvatarDialog()
   }
 
   openCreateAddAvatarDialog() {
@@ -283,6 +264,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
   }
 
   closeCreateAddAvatarDialog() {
+    console.log('clo=se')
     const element = this.children.addAvatarPopup as Block
     const addAvatarPopup = element.getContent() as HTMLElement
     if (addAvatarPopup) {

@@ -6,6 +6,12 @@ export default defineConfig({
   server: {
     port: 3000,
     strictPort: true,
+    proxy: {
+      '/user': {
+        target: 'https://ya-praktikum.tech/api/v2/resources',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     rollupOptions: {

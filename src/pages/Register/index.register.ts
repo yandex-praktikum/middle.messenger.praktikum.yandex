@@ -6,11 +6,12 @@ import { Input } from '../../components/Input/input'
 import { Tag } from '../../components/Tags/tags.js'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
-import { redirect } from '../../utils/Helpers'
+import { formDataToJson, redirect } from '../../utils/Helpers'
 import { inputsData, InputData } from '../../../public/inputsData'
 import AuthController from '../../controllers/AuthController'
 import { SignupData } from '../../api/AuthAPI.js'
 import { Routes } from '../../../index.js'
+import { validateForm } from '../../utils/FormValidator.js'
 export class RegisterPage extends Block {
   constructor() {
     super({})
@@ -31,6 +32,7 @@ export class RegisterPage extends Block {
 
     const button = new Button({
       label: 'Create account',
+      type: 'submit',
     })
 
     const link = new Link({
@@ -67,14 +69,23 @@ export class RegisterPage extends Block {
           buttons: [button],
           link,
           info,
-          onSubmit: this.onSubmit.bind(this),
+          events: {
+            submit: this.registerSubmit.bind(this),
+          },
         }),
       ],
       classes: ['form-container'],
     })
   }
 
-  onSubmit(data: SignupData) {
+  registerSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    if (!validateForm(this.children.loginform as Block)) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData) as SignupData
+
     AuthController.signup(data).then((res) => {
       if (!res.success) {
         AuthController.fetchUser()

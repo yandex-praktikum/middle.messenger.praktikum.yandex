@@ -62,17 +62,6 @@ export const warningStyles = {
   },
 }
 
-export const validateInput = (inp: Input) => {
-  const regex = inp.getProps('regex')
-  const value = inp.getValue()
-  return {
-    name: inp.getName(),
-    valid: regex.test(value),
-    value: inp.getValue(),
-    warning: inp.getProps('warning'),
-  }
-}
-
 ///////
 export type Indexed<T = any> = {
   [key in string]: T
@@ -223,4 +212,14 @@ export const imageExists = (url: string) => {
   }
 
   return http.status != 404
+}
+
+export const formDataToJson = (formData: FormData): object => {
+  const json: { [key: string]: any } = {}
+
+  for (const [key, value] of formData.entries()) {
+    json[key] = value
+  }
+
+  return json
 }
