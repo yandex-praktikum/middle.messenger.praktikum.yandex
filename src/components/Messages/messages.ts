@@ -3,7 +3,7 @@ import { template } from './messages.templ.js'
 // import { Chat } from '../Chat/chat'
 // import { Tag } from '../Tags/tags.js'
 import { withStore } from '../../utils/Store'
-import { isEqual, parseDate } from '../../utils/Helpers.js'
+import { isEqual, parseDate, imageExists } from '../../utils/Helpers.js'
 // import { ChatInfo } from '../../api/ChatsAPI'
 // import ChatsController from '../../controllers/ChatsController'
 import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
@@ -63,7 +63,9 @@ class MessagesBase extends Block<MessagesProps> {
         // get user the chat with
         const recepient = users.filter((user) => user.id == m.user_id)[0]
         let firstName = recepient.first_name
-        const avatar = recepient.avatar ? recepient.avatar : './public/images/cactus.png'
+        const avatar = imageExists(recepient.avatar)
+          ? recepient.avatar
+          : './public/images/cactus.png'
         // get my username
         const userName = store.getUser().first_name
         if (userName == firstName) firstName = 'You'
