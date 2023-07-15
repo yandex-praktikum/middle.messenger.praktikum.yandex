@@ -21,3 +21,4 @@ export const Profile = () => Handlebars.compile(template)({
     buttonLogOut: Button({label: 'Выйти из профиля', species: 'red'}),
     iconClose
 });
+
