@@ -224,16 +224,17 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
     console.log(inputElement.files)
 
     const file = inputElement.files[0]
-    console.log(file)
+    console.log('file', file)
     /// logs file
     const data = new FormData()
     if (file) {
       data.append('avatar', file)
     }
-    console.log(data.get('avatar'))
+    console.log("data.get('avatar')", data.get('avatar'))
     /// logs file
 
     UserController.addAvatar(data).then((res) => {
+      console.log('changed avatar')
       console.log(res)
     })
 
