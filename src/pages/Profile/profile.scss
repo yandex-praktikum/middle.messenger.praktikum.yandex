@@ -1,0 +1,54 @@
+.profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 60px 40px;
+  margin: auto;
+  width: 463px;
+  background: $white;
+  box-shadow: 0 0 30px rgba(72, 105, 198, 0.15);
+  border-radius: 24px;
+
+  &__title {
+    @include font-style($ff, 600, 30px, 30px, $titleColor);
+    margin-bottom: 40px;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 12px;
+  }
+
+  &__submit {
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+
+  &__container {
+    margin: 50px;
+  }
+
+  &__avatar {
+    margin: 0 auto 20px;
+  }
+
+  &__log-out {
+    width: 100%;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

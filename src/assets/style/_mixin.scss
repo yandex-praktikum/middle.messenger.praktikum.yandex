@@ -1,0 +1,36 @@
+@mixin font-style($ff: 'San Francisco Pro', $fw: 400, $fs: 16px, $lh: 150%, $color: $text) {
+  font-family: $ff;
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: $lh;
+  color: $color;
+}
+
+@mixin btn($width:100%, $bg: $blue, $hovercolor: $lightBlue, $activecolor: $activeBlue) {
+  background: $bg;
+  border-radius: 10px;
+  height: 54px;
+  width: $width;
+  border: none;
+  padding: 0 10px;
+  cursor: pointer;
+  &:hover {
+    background: $hovercolor;
+  }
+  &:active {
+    background: $activecolor;
+  }
+}
+
+@mixin link() {
+  text-decoration: none;
+  color: $blue;
+  cursor: pointer;
+
+  &:hover {
+    color: $lightBlue;
+  }
+  &:active {
+    color: $activeBlue;
+  }
+}

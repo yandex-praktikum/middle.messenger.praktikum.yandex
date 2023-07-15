@@ -1,0 +1,122 @@
+.chats {
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 24px;
+    height: 56px;
+    background: $white;
+    box-shadow: 0 1px 2px 0 rgba(2, 17, 37, 0.12);
+  }
+
+  &__logo {
+    display: flex;
+    gap: 16px;
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+
+    span {
+      @include font-style($ff, 600, 20px, 32px, $titleColor);
+    }
+  }
+
+  &__selected-info {
+    display: flex;
+    gap: 4px;
+    margin-left: 130px;
+  }
+
+  &__selected-name {
+    @include font-style($ff, 600, 14px, 20px, $titleColor);
+  }
+
+  &__selected-count {
+    @include font-style($ff, 400, 14px, 20px, $lightText);
+  }
+
+  &__profile {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__profile-setting {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__profile-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__profile-setting {
+    transition: scale 200ms;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  &__main {
+    display: flex;
+    min-height: calc(100vh - 56px);
+    background: #D9E8FC;
+  }
+
+  &__left {
+    max-width: 400px;
+    min-width: 360px;
+    width: 37%;
+    border-right: 1px solid $lightBorder;
+    background: $white;
+    box-shadow: 6px 0 16px 0 rgba(2, 17, 37, 0.04), 2px 0 8px 0 rgba(2, 17, 37, 0.04), 0 0 4px 0 rgba(2, 17, 37, 0.04);
+  }
+
+  &__list {
+    max-height: calc(100vh - 128px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $lightBorder;
+      border-radius: 20px;
+      border: 3px solid $white;
+    }
+  }
+
+  //noinspection ALL
+  &__right {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 80px 38px;
+    width: 100%;
+    background: url("/assets/img/bgChats.png") repeat;
+
+    p {
+      @include font-style($ff, 400, 14px, 20px, $lightText);
+      align-self: center;
+      height: calc(50% - 20px);
+    }
+  }
+
+  &__search {
+    padding: 12px 24px;
+  }
+
+}

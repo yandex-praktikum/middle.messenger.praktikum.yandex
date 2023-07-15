@@ -1,0 +1,16 @@
+.input {
+  @include font-style($ff, 400, 15px, 20px, $text);
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 16px;
+  background: $lightGray;
+
+  &::placeholder {
+    @include font-style($ff, 400, 15px, 20px, $placeholder);
+  }
+
+  &:focus {
+    outline: 1px solid $activeBlue;
+  }
+}

@@ -1,0 +1,43 @@
+//noinspection ALL
+@font-face {
+  font-family: 'San Francisco Pro';
+  src: local('San Francisco Pro Display Regular'), local('San-Francisco-Pro-Display-Regular'),
+  url('/assets/fonts/SFPro-Regular/SFProDisplay-Regular.woff2') format('woff2'),
+  url('/assets/fonts/SFPro-Regular/SFProDisplay-Regular.woff') format('woff'),
+  url('/assets/fonts/SFPro-Regular/SFProDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+//noinspection ALL
+@font-face {
+  font-family: 'San Francisco Pro';
+  src: local('San Francisco Pro Display Medium'), local('San-Francisco-Pro-Display-Medium'),
+  url('/assets/fonts/SFPro-Medium/SFProDisplay-Medium.woff2') format('woff2'),
+  url('/assets/fonts/SFPro-Medium/SFProDisplay-Medium.woff') format('woff'),
+  url('/assets/fonts/SFPro-Medium/SFProDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+//noinspection ALL
+@font-face {
+  font-family: 'San Francisco Pro';
+  src: local('San Francisco Pro Display Semibold'), local('San-Francisco-Pro-Display-Semibold'),
+  url('/assets/fonts/SFPro-Semibold/SFProDisplay-Semibold.woff2') format('woff2'),
+  url('/assets/fonts/SFPro-Semibold/SFProDisplay-Semibold.woff') format('woff'),
+  url('/assets/fonts/SFPro-Semibold/SFProDisplay-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+//noinspection ALL
+@font-face {
+  font-family: 'San Francisco Pro';
+  src: local('San Francisco Pro Display Bold'), local('San-Francisco-Pro-Display-Bold'),
+  url('/assets/fonts/SFPro-Bold/SFProDisplay-Bold.woff2') format('woff2'),
+  url('/assets/fonts/SFPro-Bold/SFProDisplay-Bold.woff') format('woff'),
+  url('/assets/fonts/SFPro-Bold/SFProDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
