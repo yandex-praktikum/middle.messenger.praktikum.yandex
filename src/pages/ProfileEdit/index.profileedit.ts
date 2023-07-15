@@ -1,5 +1,5 @@
 import Block from '../../utils/Block'
-import { redirect } from '../../utils/Helpers.js'
+import { imageExists, redirect } from '../../utils/Helpers.js'
 import { template } from './profileedit.templ'
 import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
@@ -125,7 +125,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       content: [
         new Avatar({
           title: 'Avatar',
-          src: props.user.avatar ? props.user.avatar : './public/images/cactus.png',
+          // src: imageExists(props.user.avatar) ? props.user.avatar : './public/images/cactus.png',
           classes: ['avatar-profile'],
         }),
         new ButtonAwesome({
@@ -205,23 +205,35 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
   }
 
   onSubmit(newUserData: User) {
+    console.log(newUserData)
     UserController.editUser(newUserData)
-    redirect({ url: Routes.Messenger })
+    // redirect({ url: Routes.Messenger })
   }
 
   changeAvatar() {
+    // const formData = new FormData(e.target);
+
     const popup = this.children.addAvatarPopup as Block
     const container = popup.children.content as Block[]
     const children = container[0].children.content as Block[]
     const input = children[1]
     const inputElement = input.getContent() as HTMLInputElement
-    console.log(inputElement.files[0])
-    const avatar = inputElement.files[0].name
-    console.log(avatar)
-    const user = store.getUser()
-    console.log({ ...user, avatar })
+    // const avatar = inputElement.files[0].name
+    // const user = store.getUser()
+    // console.log({ ...user, avatar })
+    console.log(inputElement.files)
 
-    UserController.addAvatar({ ...user, avatar }).then((res) => {
+    const file = inputElement.files[0]
+    console.log(file)
+    /// logs file
+    const data = new FormData()
+    if (file) {
+      data.append('avatar', file)
+    }
+    console.log(data.get('avatar'))
+    /// logs file
+
+    UserController.addAvatar(data).then((res) => {
       console.log(res)
     })
 

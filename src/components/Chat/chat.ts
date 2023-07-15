@@ -3,6 +3,7 @@ import { template } from './chat.templ.js'
 import { withStore } from '../../utils/Store'
 import { ChatInfo } from '../../api/ChatsAPI'
 import { Avatar } from '../Avatar/avatar'
+import { imageExists } from '../../utils/Helpers.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -20,7 +21,7 @@ export class ChatBase extends Block<ChatProps> {
   init() {
     this.children.avatar = new Avatar({
       title: this.props.title,
-      src: this.props.avatar ? this.props.avatar : './public/images/cactus.png',
+      src: imageExists(this.props.avatar) ? this.props.avatar : './public/images/cactus.png',
     })
   }
 

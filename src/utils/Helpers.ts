@@ -211,9 +211,15 @@ export const cloneDeep = (value: any): any => {
   return clonedObj
 }
 
-export const mappedObject = (arrayOfObjects: any) =>
-  arrayOfObjects.reduce((result: {}, obj: any) => {
-    const { id, ...rest } = obj
-    result[id] = rest
-    return result
-  }, {})
+export const imageExists = (url: string) => {
+  var http = new XMLHttpRequest()
+
+  http.open('HEAD', url, false)
+  try {
+    http.send()
+  } catch (e) {
+    console.log(`Image ${url} doesn't exist`)
+  }
+
+  return http.status != 404
+}

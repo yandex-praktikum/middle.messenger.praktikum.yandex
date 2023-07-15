@@ -39,7 +39,7 @@ class ChatsController {
       const chatUsersIds = await this.getChatUsers(chat.id)
       store.set(`chatUsers.${chat.id}`, chatUsersIds)
     })
-    console.log(store.getState())
+    // console.log(store.getState())
     return chats
   }
 

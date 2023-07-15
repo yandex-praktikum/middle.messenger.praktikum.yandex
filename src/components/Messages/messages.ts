@@ -3,13 +3,14 @@ import { template } from './messages.templ.js'
 // import { Chat } from '../Chat/chat'
 // import { Tag } from '../Tags/tags.js'
 import { withStore } from '../../utils/Store'
-import { isEqual, mappedObject } from '../../utils/Helpers.js'
+import { isEqual, parseDate } from '../../utils/Helpers.js'
 // import { ChatInfo } from '../../api/ChatsAPI'
 // import ChatsController from '../../controllers/ChatsController'
 import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
 import store from '../../utils/Store'
 import { Message } from '../../controllers/MessagesController.js'
 import { User } from '../../api/AuthAPI.js'
+import ChatsController from '../../controllers/ChatsController.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -52,21 +53,38 @@ class MessagesBase extends Block<MessagesProps> {
 
   private createMessages(props: MessagesProps) {
     if (!props.messages) return []
+    console.log(props.messages)
+    console.log(store.getState())
     const users = props.chatUsers
-    return props.messages.map((m: Message) => {
-      const name = () => {
-        if (!users || users.length == 0 || !m.user_id) return ''
-        const firstName = users.filter((user) => user.id == m.user_id)[0].first_name
+    const messages = props.messages.filter((m) => m.type !== 'user connected')
+    return messages.map((m: Message) => {
+      const getParts = (): Record<string, string> => {
+        if (!users || users.length == 0 || !m.user_id) return { firstName: '', message: '' }
+        // get user the chat with
+        const recepient = users.filter((user) => user.id == m.user_id)[0]
+        let firstName = recepient.first_name
+        const avatar = recepient.avatar ? recepient.avatar : './public/images/cactus.png'
+        // get my username
         const userName = store.getUser().first_name
-        if (userName == firstName) return 'You'
-        return firstName
+        if (userName == firstName) firstName = 'You'
+
+        // const userId = store.getUser().id
+        // const message = m.content.replace(
+        //   ` ${userId} was added to the chat`,
+        //   ' (You)  was added to the chat',
+        // )
+        const message = m.content
+        console.log('message', message)
+        return { firstName, message, avatar }
       }
+      const { firstName, message, avatar } = getParts()
+
       return new ContainerMessage({
-        author: name(),
-        avatar: './public/images/cactus.png',
+        author: firstName,
+        avatar,
         hideAvatar: false,
-        message: m.content,
-        date: m.time,
+        message,
+        date: parseDate(m.time),
       })
     })
   }

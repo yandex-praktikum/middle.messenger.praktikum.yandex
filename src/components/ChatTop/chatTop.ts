@@ -11,7 +11,7 @@ import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 import store from '../../utils/Store.js'
 import { Tag } from '../Tags/tags.js'
-import { isEqual } from '../../utils/Helpers.js'
+import { imageExists, isEqual } from '../../utils/Helpers.js'
 
 interface ChatTopProps extends ChatInfo {
   selectedChat: number
@@ -66,7 +66,7 @@ export class ChatTopBase extends Block<ChatTopProps> {
       content: [
         new Avatar({
           title,
-          src: avatar ? avatar : './public/images/cactus.png',
+          src: imageExists(avatar) ? avatar : './public/images/cactus.png',
         }),
         new Tag({
           tag: 'span',

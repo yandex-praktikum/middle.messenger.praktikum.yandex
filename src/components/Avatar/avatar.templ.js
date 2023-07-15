@@ -1,3 +1,7 @@
 export const template = `
-<img class="{{#each class}} {{{this}}} {{/each}}" src=".{{{src}}}" alt="{{{title}}}" title="{{{title}}}">
+<img 
+src="{{{src}}}" 
+class="{{#each class}} {{{this}}} {{/each}}" 
+alt="{{{title}}}" 
+title="{{{title}}}">
 `

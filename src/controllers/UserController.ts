@@ -10,6 +10,7 @@ class UserController {
 
   async editUser(data: UserUpdate) {
     const user = await this.api.edit(data)
+    console.log(user)
     store.set('user', user)
     return user
   }

@@ -23,6 +23,7 @@ import { ChatInfo } from '../../api/ChatsAPI.js'
 import { ChatsList } from '../../components/ChatsList/chatlist.js'
 import { Messages } from '../../components/Messages/messages.js'
 import { ChatTop } from '../../components/ChatTop/chatTop.js'
+import MessageController from '../../controllers/MessagesController.js'
 import * as styleMainsDefs from '../../scss/styles.module.scss'
 const stylesMain = styleMainsDefs.default
 import * as stylesDefs from './styles.module.scss'
@@ -149,14 +150,21 @@ export class MessengerPage extends Block {
   }
 
   async addUserToChat() {
-    const userId = 1187705
+    const userId = 1216054
     const chatId = store.getState().selectedChat
     if (!chatId) return
     await ChatsController.addUserToChat(chatId, userId)
     const users = await ChatsController.getChatUsers(chatId)
     const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
     const { title } = store.getChatById(chatId)
-    console.log(`User ${first_name} ${second_name} was added to the chat ${title}`)
+
+    MessageController.sendMessage(
+      chatId,
+      `User ${first_name} ${second_name} was addded to chat "${title}" by ${
+        store.getUser().first_name
+      }`,
+    )
+    console.log(`User ${first_name} ${second_name} was added to the chat ${chatId}, ${title}`)
   }
 
   deleteChat() {

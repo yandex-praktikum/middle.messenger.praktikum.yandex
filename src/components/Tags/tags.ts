@@ -8,6 +8,8 @@ interface TagProps {
   name?: string
   for?: string
   content?: string
+  title?: string
+  src?: string
   classes?: string[]
   class?: any
   events?: {

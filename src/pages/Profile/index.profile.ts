@@ -1,7 +1,7 @@
 import Block from '../../utils/Block.js'
 import { Routes } from '../../../index.js'
 import { template, detailTemplate } from './profile.templ.js'
-import { redirect } from '../../utils/Helpers.js'
+import { imageExists, redirect } from '../../utils/Helpers.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Avatar } from '../../components/Avatar/avatar.js'
 import { Container } from '../../components/Containers/containers.js'
@@ -38,6 +38,7 @@ class ProfilePageBase extends Block<ProfileProps> {
   }
 
   protected init() {
+    console.log('====>', this.props)
     const buttons = [
       {
         icon: 'fa-solid fa-angle-left',
@@ -82,19 +83,22 @@ class ProfilePageBase extends Block<ProfileProps> {
   }
 
   setAvatar(props: ProfileProps) {
+    console.log(props)
     return new Avatar({
       title: 'Avatar',
-      src: props.user.avatar ? props.user.avatar : './public/images/cactus.png',
+      src: imageExists(props.user.avatar) ? props.user.avatar : './public/images/cactus.png',
       classes: ['avatar-profile'],
     })
   }
 
   setDetails(props: ProfileProps) {
-    const { first_name, second_name, login, phone } = props.user
+    const { first_name, second_name, login, display_name, email, phone } = props.user
     const userDetails = [
       { label: 'Name', value: first_name },
       { label: 'Last Name', value: second_name },
-      { label: 'Email Address', value: login },
+      { label: 'Login', value: login },
+      { label: 'Display Name', value: display_name },
+      { label: 'Email Address', value: email },
       { label: 'Phone Number', value: phone },
     ]
     return userDetails.map((d) => new Details(d))

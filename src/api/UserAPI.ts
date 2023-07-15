@@ -23,9 +23,11 @@ export interface UserUpdate {
   phone: string
 }
 
-export interface AvatarUpdate extends UserUpdate {
-  avatar: string
-}
+// export interface AvatarUpdate {
+//   avatar: string
+// }
+
+// export type AvatarUpdate = FormData<{avatar: string}>
 export class UserAPI extends BaseAPI {
   constructor() {
     super('')
@@ -35,8 +37,8 @@ export class UserAPI extends BaseAPI {
     return this.http.put('/user/profile', data)
   }
 
-  addAvatar(data: AvatarUpdate) {
-    return this.http.put('/user/profile/avatar', data)
+  addAvatar(data: any) {
+    return this.http.put('/user/profile/avatar', data, 'multipart/form-data')
   }
 
   getUserById(id: number) {

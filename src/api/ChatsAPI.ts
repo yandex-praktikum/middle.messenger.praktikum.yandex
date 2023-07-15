@@ -28,13 +28,11 @@ export class ChatsAPI extends BaseAPI {
   }
 
   read(): Promise<ChatInfo[]> {
-    console.log(this)
     return this.http.get('/')
   }
 
   async getUsers(id: number): Promise<Array<User & { role: string }>> {
-    const response = await this.http.get(`/${id}/users`)
-    return response
+    return await this.http.get(`/${id}/users`)
   }
 
   async addUsers(id: number, users: number[]): Promise<unknown> {
