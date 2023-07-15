@@ -64,7 +64,7 @@ export class RegisterPage extends Block {
         new Form({
           title: 'Register',
           inputs,
-          button,
+          buttons: [button],
           link,
           info,
           onSubmit: this.onSubmit.bind(this),

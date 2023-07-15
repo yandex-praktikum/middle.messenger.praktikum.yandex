@@ -9,14 +9,18 @@ const styles = stylesDefs.default
 interface FormProps {
   title?: string
   inputs: Block[]
-  button: Block
+  buttons: Block[]
   avatar?: Block
   link?: Block
   info?: Block
-  onSubmit: any
+  onSubmit?: any
+  valid?: boolean
+  events?: {
+    submit: (e: any) => void
+  }
 }
 
-export class Form extends Block {
+export class Form extends Block<FormProps> {
   constructor(props: FormProps) {
     super({ title: '', valid: false, ...props })
   }
@@ -42,8 +46,8 @@ export class Form extends Block {
     })
 
     // add submit function
-    const button = this.children.button as Block
-    button.setProps({
+    const button = this.children.buttons as Block[]
+    button[0].setProps({
       events: {
         click: () => this.submit(),
       },

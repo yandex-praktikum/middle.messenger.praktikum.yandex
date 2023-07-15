@@ -344,7 +344,7 @@
   position: relative;
 }
 
-.add-avatar-container {
+.add-avatar-overlay {
   position: absolute;
   left: 0;
   top: 0;
@@ -354,7 +354,7 @@
   background-color: rgba(2255, 255, 255, 0.2);
   z-index: 100;
   display: none;
-  div {
+  .add-avatar-container {
     border: 1px solid $color-gray;
     border-radius: 10px;
     padding: 10px 20px;

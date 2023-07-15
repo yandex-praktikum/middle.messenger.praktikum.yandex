@@ -97,7 +97,7 @@ export default class HTTPTransport {
     const { method, data, content_type } = options
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
-      xhr.open(method, url)
+      xhr.open(method, url, true)
       xhr.onreadystatechange = (e) => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status < 400) {
@@ -120,8 +120,6 @@ export default class HTTPTransport {
           xhr.setRequestHeader('Content-Type', 'multipart/form-data')
           console.log("HTTPTransport data.get('avatar')", data.get('avatar'))
           xhr.send(data)
-          // console.log(queryStringify(data))
-          // xhr.send(queryStringify(data))
         } else {
           xhr.responseType = 'json'
           xhr.setRequestHeader('Content-Type', 'application/json')

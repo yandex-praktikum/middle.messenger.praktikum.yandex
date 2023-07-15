@@ -6,7 +6,9 @@ export const template = `
         {{{this}}}
     {{/each}}
     {{{info}}}
-    {{{button}}}
+    {{#each buttons}}
+        {{{this}}}
+    {{/each}}
     {{{link}}}
 </form>
 `

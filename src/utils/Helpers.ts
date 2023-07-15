@@ -216,7 +216,8 @@ export const imageExists = (url: string) => {
 
   http.open('HEAD', url, false)
   try {
-    http.send()
+    const res = http.send()
+    console.log('====>', url, res)
   } catch (e) {
     console.log(`Image ${url} doesn't exist`)
   }

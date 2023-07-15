@@ -86,39 +86,69 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       ],
     })
     this.children.addAvatarPopup = new Container({
+      /// overlay
       content: [
         new Container({
+          /// container for the form
           content: [
-            new Tag({
-              tag: 'h2',
-              content: 'Select file for avatar',
-            }),
-            new Input({
-              name: 'change-avatar',
-              type: 'file',
-              accept: '.jpg,.jpeg,.png',
-              placeholder: 'Select file',
-              required: true,
-              validate: false,
-              classes: ['input-square'],
-            }),
-            new Button({
-              label: 'Change Avatar',
+            new Form({
+              title: 'Select file for avatar',
+              inputs: [
+                new Container({
+                  /// container for the input
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'Select file',
+                      for: 'avatar',
+                    }),
+                    new Input({
+                      name: 'avatar',
+                      type: 'file',
+                      accept: '.jpg,.jpeg,.png',
+                      placeholder: 'Select file',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+              ],
+              buttons: [
+                new Button({
+                  label: 'Change Avatar',
+                  type: 'submit',
+                  // events: {
+                  //   click: this.changeAvatar.bind(this),
+                  // },
+                }),
+                new Button({
+                  label: 'Cancel',
+                  classes: ['button-cancel'],
+                  events: {
+                    click: () => this.closeCreateAddAvatarDialog(),
+                  },
+                }),
+              ],
               events: {
-                click: this.changeAvatar.bind(this),
-              },
-            }),
-            new Button({
-              label: 'Cancel',
-              classes: ['button-cancel'],
-              events: {
-                click: () => this.closeCreateAddAvatarDialog(),
+                submit: (e) => {
+                  e.preventDefault()
+                  const formData = new FormData(e.target)
+                  console.log(formData.get('avatar'))
+                  UserController.addAvatar(formData).then((res) => {
+                    console.log('changed avatar')
+                    console.log(res)
+                  })
+
+                  // this.changeAvatar(formData)
+                },
               },
             }),
           ],
+          classes: ['add-avatar-container'],
         }),
       ],
-      classes: ['add-avatar-container'],
+      classes: ['add-avatar-overlay'],
     })
 
     const avatar = new Container({
@@ -195,7 +225,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
           title: 'Edit Profile',
           avatar,
           inputs,
-          button,
+          buttons: [button],
           info,
           onSubmit: this.onSubmit,
         }),
@@ -210,49 +240,41 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
     // redirect({ url: Routes.Messenger })
   }
 
-  changeAvatar() {
+  changeAvatar(formData: any) {
+    console.log('submit')
+    console.log(formData)
     // const formData = new FormData(e.target);
 
-    const popup = this.children.addAvatarPopup as Block
-    const container = popup.children.content as Block[]
-    const children = container[0].children.content as Block[]
-    const input = children[1]
-    const inputElement = input.getContent() as HTMLInputElement
-    // const avatar = inputElement.files[0].name
-    // const user = store.getUser()
-    // console.log({ ...user, avatar })
-    console.log(inputElement.files)
+    // const container = popup.children.content as Block[]
+    // const children = container[0].children.content as Block[]
+    // const input = children[1]
+    // const inputElement = input.getContent() as HTMLInputElement
+    // const file = inputElement.files[0]
+    // const data = new FormData()
+    // if (file) {
+    //   data.append('avatar', file)
+    // }
+    // console.log("data.get('avatar')", data.get('avatar'))
+    // /// logs file
 
-    const file = inputElement.files[0]
-    console.log('file', file)
-    /// logs file
-    const data = new FormData()
-    if (file) {
-      data.append('avatar', file)
-    }
-    console.log("data.get('avatar')", data.get('avatar'))
-    /// logs file
-
-    UserController.addAvatar(data).then((res) => {
+    UserController.addAvatar(formData).then((res) => {
       console.log('changed avatar')
       console.log(res)
     })
 
-    // curl -X 'PUT' \
-    // 'https://ya-praktikum.tech/api/v2/user/profile/avatar' \
-    // -H 'accept: application/json' \
-    // -H 'Content-Type: multipart/form-data' \
-    // -F 'avatar=@Screenshot 2023-05-26 at 11.13.22 am.png;type=image/png'
-    // change avatar here
+    // // curl -X 'PUT' \
+    // // 'https://ya-praktikum.tech/api/v2/user/profile/avatar' \
+    // // -H 'accept: application/json' \
+    // // -H 'Content-Type: multipart/form-data' \
+    // // -F 'avatar=@Screenshot 2023-05-26 at 11.13.22 am.png;type=image/png'
+    // // change avatar here
 
-    this.closeCreateAddAvatarDialog()
+    // this.closeCreateAddAvatarDialog()
   }
 
   openCreateAddAvatarDialog() {
-    console.log('open')
     const element = this.children.addAvatarPopup as Block
     const addAvatarPopup = element.getContent() as HTMLElement
-    console.log(addAvatarPopup)
     if (addAvatarPopup) {
       setStyles(addAvatarPopup, {
         display: 'inline-block',

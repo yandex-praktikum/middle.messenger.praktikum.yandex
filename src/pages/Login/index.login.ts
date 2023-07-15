@@ -65,7 +65,7 @@ export class LoginPage extends Block {
     const form = new Form({
       title: 'Login',
       inputs,
-      button,
+      buttons: [button],
       link,
       info,
       onSubmit: this.onSubmit,
