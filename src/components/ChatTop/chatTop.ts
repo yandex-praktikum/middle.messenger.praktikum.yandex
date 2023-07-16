@@ -17,10 +17,7 @@ interface ChatTopProps extends ChatInfo {
   selected: boolean
   chat: ChatInfo
   users: User[]
-  events: {
-    addUser: () => void
-    deleteChat: () => void
-  }
+  buttons: Record<string, Block>
 }
 export class ChatTopBase extends Block<ChatTopProps> {
   constructor(props: ChatTopProps) {
@@ -32,22 +29,7 @@ export class ChatTopBase extends Block<ChatTopProps> {
     } else {
       this.props.selected = false
     }
-
-    this.children.buttonAddUser = new ButtonAwesome({
-      icon: 'fa fa-user-plus',
-      title: 'Add user',
-      events: {
-        click: () => this.props.events?.addUser(),
-      },
-    })
-
-    this.children.buttonDeleteChat = new ButtonAwesome({
-      icon: 'fa fa-times',
-      title: 'Delete chat',
-      events: {
-        click: () => this.props.events?.deleteChat(),
-      },
-    })
+    this.children = { ...this.children, ...this.props.buttons }
   }
 
   protected componentDidUpdate(oldProps: ChatTopProps, newProps: ChatTopProps): boolean {

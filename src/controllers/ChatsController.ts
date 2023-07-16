@@ -55,19 +55,22 @@ class ChatsController {
       const token = await this.getToken(chat.id)
       // this is very long, but swagger doesn't support complex requests to JOIN data
       await MessagesController.connect(chat.id, token)
-      const chatsUsersIds = await this.getChatsUsers(chat.id)
-      store.set(`chatsUsers.${chat.id}`, chatsUsersIds)
+      const chatsUsers = await this.getChatUsers(chat.id)
+      store.set(`chatsUsers.${chat.id}`, chatsUsers)
     })
     // console.log(store.getState())
     return chats
   }
 
   async addUserToChat(id: number, userId: number) {
-    return this.api.addUsers(id, [userId])
+    await this.api.addUsers(id, [userId])
+    this.getChatUsers(id)
   }
 
-  async getChatsUsers(id: number) {
-    return await this.api.getUsers(id)
+  async getChatUsers(id: number) {
+    const users = await this.api.getUsers(id)
+    store.set(`chatsUsers.${id}`, users)
+    return users
   }
 
   getToken(id: number) {

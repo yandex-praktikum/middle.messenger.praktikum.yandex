@@ -34,7 +34,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     // console.log(store.getState().selectedChat)
     return props.chats.map((chat: ChatInfo) => {
       const selected = store.isSelectedChat(chat.id)
-      const users = store.getChatsUsers(chat.id)
+      const users = store.getChatUsers(chat.id)
       // console.log('CHATLIST:', chat.id, chat.title, selected)
       return new Chat({
         selected,

@@ -4,7 +4,7 @@ import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Tag } from '../../components/Tags/tags.js'
 import { Input } from '../../components/Input/input.js'
 import { Button } from '../../components/Buttons/buttons.js'
-import { redirect } from '../../utils/Helpers.js'
+import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers.js'
 import { SearchForm } from '../../components/SearchForm/searchForm.js'
 import {
   setStyles,
@@ -27,6 +27,7 @@ import MessageController from '../../controllers/MessagesController.js'
 import * as styleMainsDefs from '../../scss/styles.module.scss'
 const stylesMain = styleMainsDefs.default
 import * as stylesDefs from './styles.module.scss'
+import { Form } from '../../components/Form/form.js'
 const styles = stylesDefs.default
 
 export class MessengerPage extends Block {
@@ -38,74 +39,157 @@ export class MessengerPage extends Block {
     this.loadChats()
 
     // LEFT PANEL
+    const profileButton = new ButtonAwesome({
+      icon: 'fa-regular fa-user',
+      title: 'Profile',
+      classes: ['profile-button'],
+      events: {
+        click: () => redirect({ url: Routes.Profile }),
+      },
+    })
+
+    const createChatButton = new ButtonAwesome({
+      icon: 'fa-regular fa-square-plus',
+      title: 'Add new chat',
+      classes: ['create-new-button'],
+      events: {
+        click: () => this.openPopup('createNewChatPopup'),
+      },
+    })
+
     this.children.search = new Container({
-      content: [
-        new SearchForm(),
-        new ButtonAwesome({
-          icon: 'fa-regular fa-user',
-          title: 'Profile',
-          classes: ['profile-button'],
-          events: {
-            click: () => redirect({ url: Routes.Profile }),
-          },
-        }),
-        new ButtonAwesome({
-          icon: 'fa-regular fa-square-plus',
-          title: 'Add new chat',
-          classes: ['create-new-button'],
-          events: {
-            click: this.openCreateNewChatDialog.bind(this),
-          },
-        }),
-      ],
+      content: [new SearchForm(), profileButton, createChatButton],
       classes: ['tools-container'],
     })
 
     this.children.chats = new ChatsList({ chats: [], isLoaded: false })
 
-    this.children.createNewChatPopup = new Container({
-      classes: ['new-chat-container'],
-      content: [
-        new Tag({
-          tag: 'h2',
-          content: 'Create New Chat',
-        }),
-        new Input({
-          name: 'new-chat',
-          type: 'text',
-          placeholder: 'Enter name for the new chat',
-          required: true,
-          validate: false,
-          classes: ['input-square'],
-        }),
-        new Button({
-          label: 'Create chat',
-          events: {
-            click: this.createNewChat.bind(this),
-          },
-        }),
-        new Button({
-          label: 'Cancel',
-          classes: ['button-cancel'],
-          events: {
-            click: () => this.closeCreateNewChatDialog(),
-          },
-        }),
-      ],
+    // RIGHT PANEL
+    const addUserButton = new ButtonAwesome({
+      icon: 'fa fa-user-plus',
+      title: 'Add user',
+      events: {
+        click: () => this.openPopup('addUserPopup'),
+      },
     })
 
-    // RIGHT PANEL
+    const deleteChatButton = new ButtonAwesome({
+      icon: 'fa fa-times',
+      title: 'Delete chat',
+      events: {
+        click: () => this.deleteChat(),
+      },
+    })
+
     this.children.topChat = new ChatTop({
       selected: true,
-      events: {
-        addUser: this.addUserToChat.bind(this),
-        deleteChat: this.deleteChat.bind(this),
-      },
+      buttons: { addUserButton, deleteChatButton },
     })
 
     this.children.messages = new Messages({ messages: [], isLoaded: false })
 
     this.children.sendMessage = new ContainerSendMessage()
+
+    //POPUPS
+    this.children.createNewChatPopup = new Container({
+      content: [
+        new Container({
+          content: [
+            new Form({
+              title: 'Create Chat',
+              inputs: [
+                new Container({
+                  classes: ['input-container'],
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'Enter name for the new chat',
+                      for: 'title',
+                    }),
+                    new Input({
+                      name: 'title',
+                      type: 'text',
+                      placeholder: 'Enter name for the new chat',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+              ],
+              buttons: [
+                new Button({
+                  label: 'Create chat',
+                  type: 'submit',
+                }),
+                new Button({
+                  label: 'Cancel',
+                  classes: ['button-cancel'],
+                  events: {
+                    click: () => this.closePopup('createNewChatPopup'),
+                  },
+                }),
+              ],
+              events: {
+                submit: this.createNewChatSubmit.bind(this),
+              },
+            }),
+          ],
+          classes: ['form-container'],
+        }),
+      ],
+      classes: ['overlay-container'],
+    })
+
+    this.children.addUserPopup = new Container({
+      content: [
+        new Container({
+          content: [
+            new Form({
+              title: 'Add user to the chat',
+              inputs: [
+                new Container({
+                  classes: ['input-container'],
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'Enter user id',
+                      for: 'user',
+                    }),
+                    new Input({
+                      name: 'user',
+                      type: 'number',
+                      placeholder: 'Enter user id',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+              ],
+              buttons: [
+                new Button({
+                  label: 'Add user',
+                  type: 'submit',
+                }),
+                new Button({
+                  label: 'Cancel',
+                  classes: ['button-cancel'],
+                  events: {
+                    click: () => this.closePopup('addUserPopup'),
+                  },
+                }),
+              ],
+              events: {
+                submit: this.addUserSubmit.bind(this),
+              },
+            }),
+          ],
+          classes: ['form-container'],
+        }),
+      ],
+      classes: ['overlay-container'],
+    })
   }
 
   loadChats() {
@@ -116,55 +200,66 @@ export class MessengerPage extends Block {
     })
   }
 
-  createNewChat() {
-    const createNewChatContainer = this.children.createNewChatPopup as Container
-    const children = createNewChatContainer.children.content as Block[]
-    const input = children[1]
-    const inputElement = input.getContent() as HTMLInputElement
-    const title = inputElement.value
+  createNewChatSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData)
+    const { title } = data as Record<string, string>
     if (title) {
-      inputElement.value = ''
-      this.closeCreateNewChatDialog.bind(this)()
+      this.closePopup('createNewChatPopup')
       ChatsController.create(title)
     }
+    clearFormInputs(e.target)
   }
 
-  openCreateNewChatDialog() {
-    const element = this.children.createNewChatPopup as Block
-    const newChatPopup = element.getContent() as HTMLElement
-    if (newChatPopup) {
-      setStyles(newChatPopup, {
+  async addUserSubmit(e: any) {
+    console.log(e)
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData)
+    const { user } = data as Record<string, string>
+    const userId = +user
+    const chatId = store.getState().selectedChat
+    const { title } = store.getChatById(chatId)
+    this.closePopup('addUserPopup')
+    try {
+      await ChatsController.addUserToChat(chatId, userId)
+      const users = await ChatsController.getChatUsers(chatId)
+      const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
+      MessageController.sendMessage(
+        chatId,
+        `User ${first_name} ${second_name} was addded to chat "${title}" by ${
+          store.getUser().first_name
+        }`,
+      )
+    } catch {
+      alert(`Couldn't add user with id ${userId} chat "${title}"`)
+    }
+    clearFormInputs(e.target)
+  }
+
+  openPopup(popupName: string) {
+    const block = this.children[popupName] as Block
+    const popup = block.getContent() as HTMLElement
+    if (popup) {
+      setStyles(popup, {
         display: 'inline-block',
       })
     }
   }
 
-  closeCreateNewChatDialog() {
-    const element = this.children.createNewChatPopup as Block
-    const newChatPopup = element.getContent() as HTMLElement
-    if (newChatPopup) {
-      setStyles(newChatPopup, {
+  closePopup(popupName: string) {
+    const block = this.children[popupName] as Block
+    const popup = block.getContent() as HTMLElement
+    if (popup) {
+      setStyles(popup, {
         display: 'none',
       })
     }
-  }
-
-  async addUserToChat() {
-    // const userId = 1219637
-    const userId = 1186003
-    const chatId = store.getState().selectedChat
-    if (!chatId) return
-    await ChatsController.addUserToChat(chatId, userId)
-    const users = await ChatsController.getChatsUsers(chatId)
-    const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
-    const { title } = store.getChatById(chatId)
-
-    MessageController.sendMessage(
-      chatId,
-      `User ${first_name} ${second_name} was addded to chat "${title}" by ${
-        store.getUser().first_name
-      }`,
-    )
   }
 
   deleteChat() {
@@ -181,3 +276,6 @@ export class MessengerPage extends Block {
     return this.compile(template, { ...this.props, styles, stylesMain })
   }
 }
+
+// const userId = 1219637
+// const userId = 1186003

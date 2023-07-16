@@ -200,7 +200,7 @@ export const cloneDeep = (value: any): any => {
   return clonedObj
 }
 
-export const formDataToJson = (formData: FormData): object => {
+export const formDataToJson = (formData: FormData): Record<string, string | number | undefined> => {
   const json: { [key: string]: any } = {}
 
   for (const [key, value] of formData.entries()) {
@@ -208,4 +208,18 @@ export const formDataToJson = (formData: FormData): object => {
   }
 
   return json
+}
+
+export const clearFormInputs = (form: HTMLFormElement) => {
+  const elements = form.elements
+
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i]
+
+    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+      element.value = ''
+    } else if (element.tagName === 'SELECT') {
+      element.selectedIndex = 0
+    }
+  }
 }

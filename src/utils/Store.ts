@@ -54,7 +54,7 @@ export class Store extends EventBus {
   public getChats() {
     return this.getState().chats ?? []
   }
-  public getChatsUsers(id: number = this.getState().selectedChat) {
+  public getChatUsers(id: number = this.getState().selectedChat) {
     const chat = this.getChatById(id)
     // console.log('===>', this.getState(), this.getState().chatsUsers)
     // id, chat, chat.id, this.getState().chatsUsers)

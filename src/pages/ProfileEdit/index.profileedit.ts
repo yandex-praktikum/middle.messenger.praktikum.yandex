@@ -14,17 +14,9 @@ import { ProfileProps } from '../Profile/index.profile.js'
 import { withStore } from '../../utils/Store'
 import { isEqual } from '../../utils/Helpers.js'
 import { User } from '../../api/AuthAPI.js'
-import store from '../../utils/Store'
 import { validateForm } from '../../utils/FormValidator.js'
-import { UserAPI, UserUpdate } from '../../api/UserAPI'
-import {
-  setStyles,
-  // isEqual,
-  // isEqualProxy,
-  // arrayLeftRightIntersect,
-  // parseDate,
-  // cloneDeep,
-} from '../../utils/Helpers'
+import { UserUpdate } from '../../api/UserAPI'
+import { setStyles } from '../../utils/Helpers'
 import UserController from '../../controllers/UserController.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
@@ -134,10 +126,10 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
               },
             }),
           ],
-          classes: ['add-avatar-container'],
+          classes: ['form-container'],
         }),
       ],
-      classes: ['add-avatar-overlay'],
+      classes: ['overlay-container'],
     })
 
     const avatar = new Container({

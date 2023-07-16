@@ -1,8 +1,9 @@
 export const template = `
 <main>
+    {{{createNewChatPopup}}}
+    {{{addUserPopup}}}
     <div class="{{{styles.panel}}} {{{styles.left-panel}}}">
         {{{search}}}
-        {{{createNewChatPopup}}}
         {{{chats}}}
     </div>
 

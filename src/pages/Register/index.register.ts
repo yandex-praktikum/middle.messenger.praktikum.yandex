@@ -6,7 +6,7 @@ import { Input } from '../../components/Input/input'
 import { Tag } from '../../components/Tags/tags.js'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
-import { formDataToJson, redirect } from '../../utils/Helpers'
+import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers'
 import { inputsData, InputData } from '../../../public/inputsData'
 import AuthController from '../../controllers/AuthController'
 import { SignupData } from '../../api/AuthAPI.js'
@@ -92,6 +92,7 @@ export class RegisterPage extends Block {
         alert(res.error.reason)
         return
       }
+      clearFormInputs(e.target)
       redirect({ url: Routes.Messenger })
     })
   }

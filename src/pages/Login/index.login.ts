@@ -6,7 +6,7 @@ import { Input } from '../../components/Input/input'
 import { Link } from '../../components/Link/link'
 import { Form } from '../../components/Form/form'
 import { Tag } from '../../components/Tags/tags'
-import { formDataToJson, redirect } from '../../utils/Helpers'
+import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers'
 import { Routes } from '../../..'
 import { inputsData, InputData } from '../../../public/inputsData'
 import { SigninData } from '../../api/AuthAPI'
@@ -96,6 +96,7 @@ export class LoginPage extends Block {
         alert(res.error.reason)
         return
       }
+      clearFormInputs(e.target)
       redirect({ url: Routes.Profile })
     })
   }

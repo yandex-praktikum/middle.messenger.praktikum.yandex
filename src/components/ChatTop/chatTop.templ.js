@@ -5,7 +5,7 @@ export const template = `
     {{/unless}}
 " >
     {{{avatarContainer}}}
-    {{{buttonAddUser}}}
-    {{{buttonDeleteChat}}}
+    {{{addUserButton}}}
+    {{{deleteChatButton}}}
 </div>
 `
