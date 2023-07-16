@@ -2,9 +2,28 @@
 
 .name {
   margin-left: 20px;
-  font-size: 16px;
+  font-size: 1.2em;
+  line-height: 0.2em;
+  margin-top: 0.6em;
+}
+.name-chat {
+  margin-left: 20px;
+  font-size: 1.4em;
 }
 
 label {
   font-size: 0.8em;
+}
+
+.users-number {
+  margin-left: 20px;
+  font-size: 0.8em;
+  line-height: 0.2em;
+}
+
+.message {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1.1em;
+  // line-height: 0.2em;
 }

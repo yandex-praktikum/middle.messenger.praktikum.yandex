@@ -150,11 +150,12 @@ export class MessengerPage extends Block {
   }
 
   async addUserToChat() {
-    const userId = 1216054
+    // const userId = 1219637
+    const userId = 1186003
     const chatId = store.getState().selectedChat
     if (!chatId) return
     await ChatsController.addUserToChat(chatId, userId)
-    const users = await ChatsController.getChatUsers(chatId)
+    const users = await ChatsController.getChatsUsers(chatId)
     const { first_name, second_name } = users.filter((user: User) => user.id === userId)[0]
     const { title } = store.getChatById(chatId)
 
@@ -164,7 +165,6 @@ export class MessengerPage extends Block {
         store.getUser().first_name
       }`,
     )
-    console.log(`User ${first_name} ${second_name} was added to the chat ${chatId}, ${title}`)
   }
 
   deleteChat() {
@@ -172,11 +172,8 @@ export class MessengerPage extends Block {
     if (!id) return
     const { title } = store.getChatById(id)
     if (window.confirm(`Do you want to delete chat ${title}?`)) {
-      const chats = store.getChats()
-      const chatsNew = chats.filter((chat: ChatInfo) => chat.id != id)
-      store.set('selectedChat', chatsNew[0].id)
-      store.set('chats', chatsNew)
       ChatsController.delete(id)
+      console.log('store.getChats()', store.getChats())
     }
   }
 

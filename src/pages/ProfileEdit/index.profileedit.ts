@@ -1,5 +1,5 @@
 import Block from '../../utils/Block'
-import { formDataToJson, imageExists, redirect } from '../../utils/Helpers.js'
+import { formDataToJson, redirect } from '../../utils/Helpers.js'
 import { template } from './profileedit.templ'
 import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
@@ -144,7 +144,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       content: [
         new Avatar({
           title: 'Avatar',
-          // src: imageExists(props.user.avatar) ? props.user.avatar : './public/images/cactus.png',
+          src: props.user.avatar,
           classes: ['avatar-profile'],
         }),
         new ButtonAwesome({
@@ -237,7 +237,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       console.log('changed profile')
       console.log(res)
     })
-    redirect({ url: Routes.Messenger })
+    // redirect({ url: Routes.Messenger })
   }
 
   editAvatarSubmit(e: any) {

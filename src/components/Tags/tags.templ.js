@@ -4,7 +4,9 @@ export const template = `
     {{#if for}} for="{{{for}}}" {{/if}}
     {{#if title}} title="{{{title}}}" {{/if}}
     {{#if src}} scr="{{{src}}}" {{/if}}
-    class="{{#each class}} {{{this}}} {{/each}}"}>
+    {{#if class}} 
+        class="{{{class}}}"
+    {{/if}}>
     {{{content}}}
 </{{{tag}}}>
 `

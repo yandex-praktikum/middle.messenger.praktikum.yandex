@@ -54,7 +54,7 @@ export interface ContainerChatProps extends ChatInfo {
 interface ContainerMessageProps {
   messageTemplate?: (context: any) => string
   author: string
-  avatar: string
+  avatar: string | undefined
   hideAvatar: boolean
   message: string
   date: string
@@ -66,7 +66,9 @@ export class ContainerMessage extends Block<ContainerMessageProps> {
   }
 
   init() {
+    // console.log('PROPS', this.props.author)
     this.props.messageTemplate = this.props.author == 'You' ? templateRm : templateLm
+    // console.log(this.props.messageTemplate)
   }
 
   render() {

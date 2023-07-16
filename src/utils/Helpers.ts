@@ -200,20 +200,6 @@ export const cloneDeep = (value: any): any => {
   return clonedObj
 }
 
-export const imageExists = (url: string) => {
-  var http = new XMLHttpRequest()
-
-  http.open('HEAD', url, false)
-  try {
-    const res = http.send()
-    console.log('====>', url, res)
-  } catch (e) {
-    console.log(`Image ${url} doesn't exist`)
-  }
-
-  return http.status != 404
-}
-
 export const formDataToJson = (formData: FormData): object => {
   const json: { [key: string]: any } = {}
 

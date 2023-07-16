@@ -16,16 +16,35 @@ class ChatsController {
   // create chat
   async create(title: string) {
     await this.api.create(title)
+    await this.updateChats()
+  }
+  async delete(id: number) {
+    await this.api.delete(id)
+    await this.updateChats()
+  }
+
+  async updateChats() {
     const newChats = await this.api.read()
     const oldChats = store.getChats()
     const oldChatsIds = oldChats.map((chat: ChatInfo) => chat.id)
+
     const newChat = newChats.filter((chat) => !oldChatsIds.includes(chat.id))[0]
-    store.set('chats', [newChat, ...oldChats])
-    const token = await this.getToken(newChat.id)
-    await MessagesController.connect(newChat.id, token)
+    console.log('newChats', newChats)
+    // newChat can be undefined if it was deleted
+    if (newChat) {
+      // chat was added
+      store.set('chats', [newChat, ...oldChats])
+      store.set('selectedChat', newChat.id)
+      const token = await this.getToken(newChat.id)
+      await MessagesController.connect(newChat.id, token)
+    } else {
+      // chat was deleted
+      store.set('chats', newChats)
+      console.log('newChats', newChats, newChats[0])
+      newChats[0] ? store.set('selectedChat', newChats[0].id) : store.set('selectedChat', null)
+    }
     return store.getChats()
   }
-
   async fetchChats() {
     const chats = await this.api.read()
     store.set('chats', chats)
@@ -36,8 +55,8 @@ class ChatsController {
       const token = await this.getToken(chat.id)
       // this is very long, but swagger doesn't support complex requests to JOIN data
       await MessagesController.connect(chat.id, token)
-      const chatUsersIds = await this.getChatUsers(chat.id)
-      store.set(`chatUsers.${chat.id}`, chatUsersIds)
+      const chatsUsersIds = await this.getChatsUsers(chat.id)
+      store.set(`chatsUsers.${chat.id}`, chatsUsersIds)
     })
     // console.log(store.getState())
     return chats
@@ -47,12 +66,8 @@ class ChatsController {
     return this.api.addUsers(id, [userId])
   }
 
-  async delete(id: number) {
-    await this.api.delete(id)
-  }
-
-  async getChatUsers(id: number) {
-    return this.api.getUsers(id)
+  async getChatsUsers(id: number) {
+    return await this.api.getUsers(id)
   }
 
   getToken(id: number) {

@@ -24,9 +24,19 @@ export default class WSTransport extends EventBus {
     super()
   }
 
-  public send(data: unknown) {
+  public send(data: unknown, timeout: number = 500) {
     if (!this.socket) throw new Error('Socket is not connected')
-    this.socket.send(JSON.stringify(data))
+
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(JSON.stringify(data))
+    } else if (this.socket.readyState === WebSocket.CONNECTING) {
+      setTimeout(() => {
+        this.send(data, timeout) // Retry after the specified timeout
+      }, timeout)
+    } else {
+      // Handle the case when the WebSocket fails to open within the timeout period
+      console.error('WebSocket connection failed to open within the timeout period')
+    }
   }
 
   public connect(): Promise<void> {

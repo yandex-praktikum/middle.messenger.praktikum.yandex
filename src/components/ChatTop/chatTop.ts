@@ -11,11 +11,11 @@ import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 import store from '../../utils/Store.js'
 import { Tag } from '../Tags/tags.js'
-import { imageExists, isEqual } from '../../utils/Helpers.js'
+import { isEqual } from '../../utils/Helpers.js'
 
 interface ChatTopProps extends ChatInfo {
-  selectedChat: number
   selected: boolean
+  chat: ChatInfo
   users: User[]
   events: {
     addUser: () => void
@@ -24,17 +24,18 @@ interface ChatTopProps extends ChatInfo {
 }
 export class ChatTopBase extends Block<ChatTopProps> {
   constructor(props: ChatTopProps) {
-    super({ ...props })
+    super({ ...props, selected: true })
   }
   init() {
-    if (this.props.selectedChat) {
+    if (this.props.chat) {
       this.children.avatarContainer = this.createAvatar(this.props)
+    } else {
+      this.props.selected = false
     }
 
     this.children.buttonAddUser = new ButtonAwesome({
       icon: 'fa fa-user-plus',
       title: 'Add user',
-      // classes: ['profile-button'],
       events: {
         click: () => this.props.events?.addUser(),
       },
@@ -43,7 +44,6 @@ export class ChatTopBase extends Block<ChatTopProps> {
     this.children.buttonDeleteChat = new ButtonAwesome({
       icon: 'fa fa-times',
       title: 'Delete chat',
-      // classes: ['profile-button'],
       events: {
         click: () => this.props.events?.deleteChat(),
       },
@@ -51,32 +51,46 @@ export class ChatTopBase extends Block<ChatTopProps> {
   }
 
   protected componentDidUpdate(oldProps: ChatTopProps, newProps: ChatTopProps): boolean {
-    if (!isEqual(oldProps, newProps) && newProps.selectedChat) {
-      this.children.avatar = this.createAvatar(newProps)
+    if (!isEqual(oldProps, newProps)) {
+      if (newProps.chat) {
+        this.props.selected = true
+        this.children.avatarContainer = this.createAvatar(newProps)
+      } else {
+        this.props.selected = false
+      }
       return true
     }
     return false
   }
 
   private createAvatar(props: ChatTopProps) {
-    const chat = store.getChatById(props.selectedChat)
-    const { title, avatar } = chat
+    const { chat, users } = props
+    const { title } = chat
+    const creator = users ? users.filter((u: User) => u.id == this.props.created_by)[0] : undefined
+    const src = creator ? creator.avatar : null
+    const usersNumber = users ? `Users: ${users.length}` : 'Users: 1'
+
     return new Container({
       classes: ['top-chat-avatar-container', 'blue'],
       content: [
         new Avatar({
           title,
-          src: imageExists(avatar) ? avatar : './public/images/cactus.png',
+          src,
         }),
-        new Tag({
-          tag: 'span',
-          content: title,
-          classes: ['name'],
+        new Container({
+          content: [
+            new Tag({
+              tag: 'p',
+              content: title,
+              classes: ['name'],
+            }),
+            new Tag({
+              tag: 'p',
+              content: usersNumber,
+              classes: ['users-number'],
+            }),
+          ],
         }),
-        // new Tag({
-        //   tag: 'span',
-        //   content: `User${users > 1 ? 's' : ''}: ${users}`,
-        // }),
       ],
     })
   }
@@ -87,7 +101,13 @@ export class ChatTopBase extends Block<ChatTopProps> {
 }
 
 export const withSelectedChat = withStore((state) => {
-  return { selectedChat: state.selectedChat || undefined }
+  const users = state.selectedChat && state.chatsUsers ? state.chatsUsers[state.selectedChat] : []
+  const selectedChatId = state.selectedChat || undefined
+  const chat = selectedChatId ? store.getChatById(selectedChatId) : null
+  return {
+    chat,
+    users,
+  }
 })
 
 export const ChatTop = withSelectedChat(ChatTopBase)

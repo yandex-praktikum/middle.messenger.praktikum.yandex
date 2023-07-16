@@ -13,7 +13,7 @@ interface State {
   user: User
   chats: ChatInfo[]
   messages: Record<number, Message[]>
-  chatUsers: Record<number, User[]>
+  chatsUsers: Record<number, User[]>
   selectedChat?: number
 }
 const setNested = (object: Record<string, any>, path: string, value: any): void => {
@@ -54,10 +54,10 @@ export class Store extends EventBus {
   public getChats() {
     return this.getState().chats ?? []
   }
-  public getChatUsers() {
-    const id = this.getState().selectedChat
+  public getChatsUsers(id: number = this.getState().selectedChat) {
     const chat = this.getChatById(id)
-    console.log('===>', id, chat, chat.id, this.getState().chatsUsers)
+    // console.log('===>', this.getState(), this.getState().chatsUsers)
+    // id, chat, chat.id, this.getState().chatsUsers)
     if (!this.getState().chatsUsers) return []
     return this.getState().chatsUsers[chat.id] || []
   }

@@ -1,7 +1,7 @@
 import Block from '../../utils/Block.js'
 import { Routes } from '../../../index.js'
 import { template, detailTemplate } from './profile.templ.js'
-import { imageExists, redirect } from '../../utils/Helpers.js'
+import { redirect } from '../../utils/Helpers.js'
 import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { Avatar } from '../../components/Avatar/avatar.js'
 import { Container } from '../../components/Containers/containers.js'
@@ -38,7 +38,6 @@ class ProfilePageBase extends Block<ProfileProps> {
   }
 
   protected init() {
-    console.log('====>', this.props)
     const buttons = [
       {
         icon: 'fa-solid fa-angle-left',
@@ -83,10 +82,9 @@ class ProfilePageBase extends Block<ProfileProps> {
   }
 
   setAvatar(props: ProfileProps) {
-    console.log(props)
     return new Avatar({
       title: 'Avatar',
-      src: imageExists(props.user.avatar) ? props.user.avatar : './public/images/cactus.png',
+      src: props.user.avatar,
       classes: ['avatar-profile'],
     })
   }

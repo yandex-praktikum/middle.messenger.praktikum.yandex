@@ -3,7 +3,7 @@ import { template } from './messages.templ.js'
 // import { Chat } from '../Chat/chat'
 // import { Tag } from '../Tags/tags.js'
 import { withStore } from '../../utils/Store'
-import { isEqual, parseDate, imageExists } from '../../utils/Helpers.js'
+import { isEqual, parseDate } from '../../utils/Helpers.js'
 // import { ChatInfo } from '../../api/ChatsAPI'
 // import ChatsController from '../../controllers/ChatsController'
 import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
@@ -16,7 +16,7 @@ const styles = stylesDefs.default
 
 interface MessagesProps {
   messages: Message[]
-  chatUsers: User[]
+  chatsUsers: User[]
   isLoaded: boolean
 }
 
@@ -53,36 +53,26 @@ class MessagesBase extends Block<MessagesProps> {
 
   private createMessages(props: MessagesProps) {
     if (!props.messages) return []
-    console.log(props.messages)
-    console.log(store.getState())
-    const users = props.chatUsers
+    // console.log(props.messages)
+    // console.log(store.getState())
+    const users = props.chatsUsers
     const messages = props.messages.filter((m) => m.type !== 'user connected')
     return messages.map((m: Message) => {
-      const getParts = (): Record<string, string> => {
-        if (!users || users.length == 0 || !m.user_id) return { firstName: '', message: '' }
+      const getParts = (m: Message): Record<string, string> => {
+        if (!users || users.length == 0 || !m.user_id) return { author: '', message: '' }
         // get user the chat with
-        const recepient = users.filter((user) => user.id == m.user_id)[0]
-        let firstName = recepient.first_name
-        const avatar = imageExists(recepient.avatar)
-          ? recepient.avatar
-          : './public/images/cactus.png'
-        // get my username
-        const userName = store.getUser().first_name
-        if (userName == firstName) firstName = 'You'
-
-        // const userId = store.getUser().id
-        // const message = m.content.replace(
-        //   ` ${userId} was added to the chat`,
-        //   ' (You)  was added to the chat',
-        // )
+        const sender = users.filter((u) => u.id == m.user_id)[0]
+        if (!sender) return { author: '', message: '' }
+        const user = store.getUser()
+        const author = user.id == sender.id ? 'You' : sender.first_name
         const message = m.content
-        console.log('message', message)
-        return { firstName, message, avatar }
+        const avatar = `https://ya-praktikum.tech/api/v2/resources${sender.avatar}`
+        return { author, message, avatar }
       }
-      const { firstName, message, avatar } = getParts()
+      const { author, message, avatar } = getParts(m)
 
       return new ContainerMessage({
-        author: firstName,
+        author,
         avatar,
         hideAvatar: false,
         message,
@@ -98,14 +88,16 @@ class MessagesBase extends Block<MessagesProps> {
 
 const withMessages = withStore((state) => {
   const selectedChatId = state.selectedChat
+  const messages = state.messages && selectedChatId ? state.messages[selectedChatId] : []
+  const chatsUsers = state.chatsUsers && selectedChatId ? state.chatsUsers[selectedChatId] : []
   try {
     return {
-      messages: state.messages[selectedChatId],
-      chatUsers: state.chatUsers[selectedChatId],
+      messages,
+      chatsUsers,
       isLoaded: false,
     }
   } catch {
-    return { messages: [], chatUsers: [], isLoaded: false }
+    return { messages: [], chatsUsers: [], isLoaded: false }
   }
 })
 

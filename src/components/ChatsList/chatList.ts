@@ -6,6 +6,7 @@ import { ChatInfo } from '../../api/ChatsAPI'
 import ChatsController from '../../controllers/ChatsController'
 import store from '../../utils/Store'
 import * as stylesDefs from './styles.module.scss'
+import { User } from '../../api/AuthAPI.js'
 const styles = stylesDefs.default
 
 interface ChatsListProps {
@@ -29,14 +30,19 @@ class ChatsListBase extends Block<ChatsListProps> {
   }
 
   private createChats(props: ChatsListProps) {
-    return props.chats.map((data) => {
-      const selected = store.isSelectedChat(data.id)
+    // console.log(props.chats)
+    // console.log(store.getState().selectedChat)
+    return props.chats.map((chat: ChatInfo) => {
+      const selected = store.isSelectedChat(chat.id)
+      const users = store.getChatsUsers(chat.id)
+      // console.log('CHATLIST:', chat.id, chat.title, selected)
       return new Chat({
-        ...data,
         selected,
+        chat,
+        users,
         events: {
           click: () => {
-            ChatsController.selectChat(data.id)
+            ChatsController.selectChat(chat.id)
           },
         },
       })
