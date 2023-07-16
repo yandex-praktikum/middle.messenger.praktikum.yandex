@@ -4,14 +4,12 @@ import { withStore } from '../../utils/Store.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
 import { User } from '../../api/AuthAPI.js'
 import { Avatar } from '../Avatar/avatar.js'
-import { ButtonAwesome } from '../Buttons/buttons.js'
 import { Container } from '../Containers/containers.js'
-// import ChatsController from '../../controllers/ChatsController.js'
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
 import store from '../../utils/Store.js'
 import { Tag } from '../Tags/tags.js'
 import { isEqual } from '../../utils/Helpers.js'
+import * as stylesDefs from './styles.module.scss'
+const styles = stylesDefs.default
 
 interface ChatTopProps extends ChatInfo {
   selected: boolean

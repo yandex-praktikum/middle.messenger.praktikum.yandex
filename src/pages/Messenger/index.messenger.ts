@@ -6,20 +6,12 @@ import { Input } from '../../components/Input/input.js'
 import { Button } from '../../components/Buttons/buttons.js'
 import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers.js'
 import { SearchForm } from '../../components/SearchForm/searchForm.js'
-import {
-  setStyles,
-  // isEqual,
-  // isEqualProxy,
-  // arrayLeftRightIntersect,
-  // parseDate,
-  // cloneDeep,
-} from '../../utils/Helpers'
+import { setStyles } from '../../utils/Helpers'
 import { Container, ContainerSendMessage } from '../../components/Containers/containers.js'
 import { Routes } from '../../../index.js'
 import ChatsController from '../../controllers/ChatsController.js'
 import store from '../../utils/Store'
 import { User } from '../../api/AuthAPI.js'
-import { ChatInfo } from '../../api/ChatsAPI.js'
 import { ChatsList } from '../../components/ChatsList/chatList.js'
 import { Messages } from '../../components/Messages/messages.js'
 import { ChatTop } from '../../components/ChatTop/chatTop.js'

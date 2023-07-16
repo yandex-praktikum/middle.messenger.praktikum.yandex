@@ -18,8 +18,6 @@ export class RegisterPage extends Block {
   }
 
   init() {
-    // AuthController.fetchUser()
-
     const info = new Container({
       classes: ['warning-container'],
       content: [

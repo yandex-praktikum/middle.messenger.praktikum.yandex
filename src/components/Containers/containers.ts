@@ -11,7 +11,6 @@ import { ButtonAwesome } from '../../components/Buttons/buttons.js'
 import { TextArea } from '../TextArea/textarea.js'
 import { log } from '../../utils/Helpers.js'
 import { ChatInfo } from '../../api/ChatsAPI.js'
-import ChatsController from '../../controllers/ChatsController.js'
 import MessageController from '../../controllers/MessagesController.js'
 import * as stylesDefs from './styles.module.scss'
 import store from '../../utils/Store.js'
@@ -124,24 +123,9 @@ export class ContainerSendMessage extends Block {
   send() {
     const textarea = this.children.textarea as TextArea
     const value = textarea.getValue()
-    // const regex = /^[^QWERTYUIOPqwertyuiopЙЦУКЕНГШЩЗХйцукенгшщзх]*$/
-    // const valid = regex.test(value)
-    // if (!valid) {
-    //   alert(
-    //     `This is a very weird requirement from the designers team, but we currently do not allow any characters from the top row of the QWERTY keyboard. Sorry for the inconvinience.`,
-    //   )
-    // } else {
-    //   console.log(value)
-    //   textarea.setValue('')
-    // }
     textarea.setValue('')
-    const userId = store.getUser().id
     const chatId = store.getState().selectedChat
     MessageController.sendMessage(chatId, value)
-    // ChatsController.getToken(chatId).then((token) => {
-    //   // this.sendMessage(userId, chatId, token, value)
-    //   MessageController.sendMessage(chatId, value)
-    // })
   }
 
   render() {

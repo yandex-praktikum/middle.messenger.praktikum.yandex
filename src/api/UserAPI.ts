@@ -23,11 +23,6 @@ export interface UserUpdate {
   phone: string
 }
 
-// export interface AvatarUpdate {
-//   avatar: string
-// }
-
-// export type AvatarUpdate = FormData<{avatar: string}>
 export class UserAPI extends BaseAPI {
   constructor() {
     super('')

@@ -1,9 +1,6 @@
 import Block from '../../utils/Block'
 import { template } from './avatar.templ'
-import { isEqual } from '../../utils/Helpers'
-import { withStore } from '../../utils/Store'
 import * as stylesDefs from './styles.module.scss'
-import { User } from '../../api/AuthAPI'
 const styles = stylesDefs.default
 
 interface AvatarProps {
@@ -27,24 +24,7 @@ export class Avatar extends Block<AvatarProps> {
     if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c])
   }
 
-  // protected componentDidUpdate(oldProps: AvatarProps, newProps: AvatarProps): boolean {
-  //   if (!isEqual(oldProps, newProps)) {
-  //     const src = newProps.src
-  //       ? `https://ya-praktikum.tech/api/v2/resources${newProps.src}`
-  //       : './public/images/cactus.png'
-
-  //     this.props.src = src
-  //     return true
-  //   }
-  //   return false
-  // }
   render() {
     return this.compile(template, { ...this.props, styles })
   }
 }
-
-// const withChats = withStore((state) => {
-//   return { chats: state.chats || [] }
-// })
-
-// export const Avatar = withChats(AvatarBase)

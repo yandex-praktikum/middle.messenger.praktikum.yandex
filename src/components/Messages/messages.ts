@@ -1,16 +1,11 @@
 import Block from '../../utils/Block'
 import { template } from './messages.templ.js'
-// import { Chat } from '../Chat/chat'
-// import { Tag } from '../Tags/tags.js'
 import { withStore } from '../../utils/Store'
 import { isEqual, parseDate } from '../../utils/Helpers.js'
-// import { ChatInfo } from '../../api/ChatsAPI'
-// import ChatsController from '../../controllers/ChatsController'
 import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
 import store from '../../utils/Store'
 import { Message } from '../../controllers/MessagesController.js'
 import { User } from '../../api/AuthAPI.js'
-import ChatsController from '../../controllers/ChatsController.js'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -47,14 +42,10 @@ class MessagesBase extends Block<MessagesProps> {
   public scrollTop = () => {
     const element = this.getContent() as HTMLElement
     element.scrollTop = element.scrollHeight
-    // console.log('messenger====>', element.scrollHeight)
-    // console.log('messenger====>', element.scrollTop)
   }
 
   private createMessages(props: MessagesProps) {
     if (!props.messages) return []
-    // console.log(props.messages)
-    // console.log(store.getState())
     const users = props.chatsUsers
     const messages = props.messages.filter((m) => m.type !== 'user connected')
     return messages.map((m: Message) => {
