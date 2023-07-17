@@ -354,7 +354,6 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
     const formData = new FormData(e.target)
     const data = formDataToJson(formData)
 
-    console.log(data)
     const { oldPassword, newPassword, repeatPassword } = data as Record<string, string>
     if (!oldPassword) {
       alert('Please enter old password')
@@ -374,7 +373,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
     }
     const res = await UserController.editPassword({ oldPassword, newPassword })
     if (res.success) {
-      alert('Avatar updated')
+      alert('Password updated')
     } else {
       alert(`There were some problems updating password. ${JSON.stringify(res.error)}`)
       return
