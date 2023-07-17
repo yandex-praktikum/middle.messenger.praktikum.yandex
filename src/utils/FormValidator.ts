@@ -35,7 +35,6 @@ export const validateForm = (form: Block): boolean => {
   })
   // validate each input on regex
   const inputsData = inputs.map((i) => validateInput(i))
-  console.log(inputsData)
   const invalidData = inputsData.filter((d) => !d.valid)
   if (invalidData.length > 0) {
     const warnings = invalidData.map((d) => `* ${d.warning}`).join('\n')

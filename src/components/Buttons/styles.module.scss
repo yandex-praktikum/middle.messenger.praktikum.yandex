@@ -19,9 +19,8 @@
 
 .send-button {
   background-color: $color-blue;
-
   i {
-    color: $color-white;
+    color: $color-white !important;
   }
 }
 

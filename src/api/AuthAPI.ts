@@ -31,24 +31,20 @@ export class AuthAPI extends BaseAPI {
     super('/auth')
   }
 
-  signin(data: SigninData) {
+  async signin(data: SigninData): Promise<null> {
     return this.http.post('/signin', data)
   }
 
-  signup(data: SignupData) {
+  async signup(data: SignupData): Promise<{ id: number }> {
     return this.http.post('/signup', data)
   }
 
-  read(): Promise<User> {
+  async read(): Promise<User> {
     return this.http.get('/user')
   }
 
-  logout() {
+  async logout() {
     return this.http.post('/logout')
-  }
-
-  edit(data: Omit<User, 'id' | 'avatar'>) {
-    return this.http.put('/user/profile', data)
   }
 
   create = undefined

@@ -32,7 +32,10 @@ class MessagesBase extends Block<MessagesProps> {
       this.children.messages = new ContainerScroller({
         content: this.createMessages(this.props),
       })
-      this.scrollTop()
+
+      setTimeout(() => {
+        this.scrollTop()
+      }, 0)
 
       return true
     }
@@ -40,7 +43,7 @@ class MessagesBase extends Block<MessagesProps> {
   }
 
   public scrollTop = () => {
-    const element = this.getContent() as HTMLElement
+    const element = (this.children.messages as Block).getContent() as HTMLElement
     element.scrollTop = element.scrollHeight
   }
 
@@ -57,7 +60,7 @@ class MessagesBase extends Block<MessagesProps> {
         const user = store.getUser()
         const author = user.id == sender.id ? 'You' : sender.first_name
         const message = m.content
-        const avatar = `https://ya-praktikum.tech/api/v2/resources${sender.avatar}`
+        const avatar = sender.avatar
         return { author, message, avatar }
       }
       const { author, message, avatar } = getParts(m)

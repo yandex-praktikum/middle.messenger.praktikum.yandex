@@ -1,6 +1,13 @@
-import { UserAPI, UserUpdate } from '../api/UserAPI'
+import { User } from '../api/AuthAPI'
+import { UserAPI, UserUpdate, EditPassword, SearchUserData } from '../api/UserAPI'
 import store from '../utils/Store'
 
+type Response = {
+  success: boolean
+  user?: User | null
+  users?: User[] | null
+  error: any | null
+}
 class UserController {
   private readonly api: UserAPI
 
@@ -8,18 +15,89 @@ class UserController {
     this.api = new UserAPI()
   }
 
-  async editUser(data: UserUpdate) {
-    const user = await this.api.edit(data)
-    store.set('user', user)
-    return user
+  async editProfile(data: UserUpdate): Promise<Response> {
+    try {
+      const user = await this.api.editProfile(data)
+      store.set('user', user)
+      return {
+        success: true,
+        user,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        user: null,
+        error,
+      }
+    }
   }
 
-  async addAvatar(data: FormData) {
-    return await this.api.addAvatar(data)
+  async editAvatar(data: FormData): Promise<Response> {
+    try {
+      const user = await this.api.editAvatar(data)
+      store.set('user', user)
+      return {
+        success: true,
+        user,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        user: null,
+        error,
+      }
+    }
   }
 
-  async getUserById(id: number) {
-    return await this.api.getUserById(id)
+  async editPassword(data: EditPassword): Promise<Response> {
+    try {
+      await this.api.editPassword(data)
+      return {
+        success: true,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        error,
+      }
+    }
+  }
+  /// other chat users
+  async getUserById(id: number): Promise<Response> {
+    try {
+      const user = await this.api.getUserById(id)
+      return {
+        success: true,
+        user,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        user: null,
+        error,
+      }
+    }
+  }
+
+  async getUsersByLogin(data: SearchUserData): Promise<Response> {
+    try {
+      const users = await this.api.getUsersByLogin(data)
+      return {
+        success: true,
+        users,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        users: null,
+        error,
+      }
+    }
   }
 }
 

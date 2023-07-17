@@ -3,5 +3,7 @@ export const template = `
 src="{{{src}}}" 
 class="{{#each class}} {{{this}}} {{/each}}" 
 alt="{{{title}}}" 
-title="{{{title}}}">
+title="{{{title}}}"
+alt="avatar"
+>
 `

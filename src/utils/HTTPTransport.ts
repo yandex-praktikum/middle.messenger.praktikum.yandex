@@ -12,36 +12,6 @@ type Options = {
   data?: any
 }
 
-function queryStringify(data: Record<string, any>): string | never {
-  if (typeof data !== 'object' || Array.isArray(data)) {
-    throw new Error('Input must be an object')
-  }
-
-  const queryStrings: string[] = []
-
-  function processValue(key: string, value: any) {
-    if (Array.isArray(value)) {
-      value.forEach((item, index) => processValue(`${key}[${index}]`, item))
-    } else if (typeof value === 'object') {
-      for (const innerKey in value) {
-        if (value.hasOwnProperty(innerKey)) {
-          processValue(`${key}[${innerKey}]`, value[innerKey])
-        }
-      }
-    } else {
-      queryStrings.push(`${key}=${value}`)
-    }
-  }
-
-  for (const key in data) {
-    if (data.hasOwnProperty(key)) {
-      processValue(key, data[key])
-    }
-  }
-
-  return queryStrings.join('&')
-}
-
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2'
   protected endpoint: string
@@ -111,17 +81,13 @@ export default class HTTPTransport {
       xhr.onerror = () => reject({ reason: 'network error' })
       xhr.ontimeout = () => reject({ reason: 'timeout' })
       xhr.withCredentials = true
-
+      xhr.responseType = 'json'
       if (method === Method.Get || !data) {
-        xhr.responseType = 'json'
         xhr.send()
       } else {
         if (content_type == 'multipart/form-data') {
-          // xhr.setRequestHeader('Content-Type', 'multipart/form-data')
-          console.log("HTTPTransport data.get('avatar')", data.get('avatar'))
           xhr.send(data)
         } else {
-          xhr.responseType = 'json'
           xhr.setRequestHeader('Content-Type', 'application/json')
           xhr.send(JSON.stringify(data))
         }

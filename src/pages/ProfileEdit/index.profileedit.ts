@@ -1,5 +1,5 @@
 import Block from '../../utils/Block'
-import { formDataToJson, redirect } from '../../utils/Helpers.js'
+import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers.js'
 import { template } from './profileedit.templ'
 import { Container } from '../../components/Containers/containers'
 import { Button } from '../../components/Buttons/buttons'
@@ -11,7 +11,7 @@ import { Tag } from '../../components/Tags/tags.js'
 import { Routes } from '../../../index.js'
 import { inputsData, InputData } from '../../../public/inputsData'
 import { ProfileProps } from '../Profile/index.profile.js'
-import { withStore } from '../../utils/Store'
+import store, { withStore } from '../../utils/Store'
 import { isEqual } from '../../utils/Helpers.js'
 import { User } from '../../api/AuthAPI.js'
 import { validateForm } from '../../utils/FormValidator.js'
@@ -43,9 +43,9 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       {
         icon: 'fa-solid fa-bars',
         title: 'Settings',
-        events: {
-          click: () => redirect({ url: Routes.Settings }),
-        },
+        // events: {
+        //   click: () => redirect({ url: Routes.Settings }),
+        // },
       },
     ]
 
@@ -54,32 +54,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       classes: ['tools-top-container'],
     })
 
-    this.children.editform = this.loadForm(this.props)
-  }
-
-  protected componentDidUpdate(oldProps: EditProfileProps, newProps: EditProfileProps): boolean {
-    if (!isEqual(oldProps, newProps)) {
-      this.children.editform = this.loadForm(newProps)
-      return true
-    }
-    return false
-  }
-
-  loadForm(props: EditProfileProps) {
-    // const { first_name, second_name, login, phone } = props.user
-
-    // FORM
-    // create Blocks for the Form
-    const info = new Container({
-      classes: ['warning-container'],
-      content: [
-        new Tag({
-          tag: 'p',
-          content: 'warning',
-        }),
-      ],
-    })
-    this.children.addAvatarPopup = new Container({
+    this.children.editAvatarPopup = new Container({
       /// overlay
       content: [
         new Container({
@@ -89,7 +64,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
               title: 'Select file for avatar',
               inputs: [
                 new Container({
-                  /// container for the input
+                  classes: ['input-container'],
                   content: [
                     new Tag({
                       tag: 'label',
@@ -117,7 +92,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
                   label: 'Cancel',
                   classes: ['button-cancel'],
                   events: {
-                    click: () => this.closeCreateAddAvatarDialog(),
+                    click: () => this.closePopup('editAvatarPopup'),
                   },
                 }),
               ],
@@ -132,6 +107,120 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       classes: ['overlay-container'],
     })
 
+    this.children.editPasswordPopup = new Container({
+      /// overlay
+      content: [
+        new Container({
+          /// container for the form
+          content: [
+            new Form({
+              title: 'Change Password',
+              inputs: [
+                new Container({
+                  classes: ['input-container'],
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'Old password',
+                      for: 'oldPassword',
+                    }),
+                    new Input({
+                      name: 'oldPassword',
+                      type: 'password',
+                      placeholder: 'Enter your old password',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+                new Container({
+                  classes: ['input-container'],
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'New password',
+                      for: 'newPassword',
+                    }),
+                    new Input({
+                      name: 'newPassword',
+                      type: 'password',
+                      placeholder: 'Enter new password',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+                new Container({
+                  classes: ['input-container'],
+                  content: [
+                    new Tag({
+                      tag: 'label',
+                      content: 'repeat password',
+                      for: 'repeatPassword',
+                    }),
+                    new Input({
+                      name: 'repeatPassword',
+                      type: 'password',
+                      placeholder: 'repeat new password',
+                      required: true,
+                      validate: false,
+                      classes: ['input-square'],
+                    }),
+                  ],
+                }),
+              ],
+              buttons: [
+                new Button({
+                  label: 'Change password',
+                  type: 'submit',
+                }),
+                new Button({
+                  label: 'Cancel',
+                  classes: ['button-cancel'],
+                  events: {
+                    click: () => this.closePopup('editPasswordPopup'),
+                  },
+                }),
+              ],
+              events: {
+                submit: this.editPasswordSubmit.bind(this),
+              },
+            }),
+          ],
+          classes: ['form-container'],
+        }),
+      ],
+      classes: ['overlay-container'],
+    })
+
+    this.children.editform = this.loadForm(this.props)
+  }
+
+  protected componentDidUpdate(oldProps: EditProfileProps, newProps: EditProfileProps): boolean {
+    if (!isEqual(oldProps, newProps)) {
+      this.children.editform = this.loadForm(newProps)
+      return true
+    }
+    return false
+  }
+
+  loadForm(props: EditProfileProps) {
+    // const { first_name, second_name, login, phone } = props.user
+
+    // FORM
+    // create Blocks for the Form
+    const info = new Container({
+      classes: ['warning-container'],
+      content: [
+        new Tag({
+          tag: 'p',
+          content: 'warning',
+        }),
+      ],
+    })
+
     const avatar = new Container({
       content: [
         new Avatar({
@@ -143,8 +232,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
           icon: 'far fa-edit',
           title: 'Change Avatar',
           events: {
-            click: this.openCreateAddAvatarDialog.bind(this),
-            // click: () => console.log('click'),
+            click: () => this.openPopup('editAvatarPopup'),
           },
         }),
       ],
@@ -196,9 +284,17 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       })
     })
 
-    const button = new Button({
+    const editProfileSubmitButton = new Button({
       label: 'Save',
       type: 'submit',
+    })
+
+    const editPasswordButton = new Button({
+      label: 'Change password',
+      type: 'button',
+      events: {
+        click: () => this.openPopup('editPasswordPopup'),
+      },
     })
 
     return new Container({
@@ -207,7 +303,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
           title: 'Edit Profile',
           avatar,
           inputs,
-          buttons: [button],
+          buttons: [editProfileSubmitButton, editPasswordButton],
           info,
           events: {
             submit: this.editProfileSubmit.bind(this),
@@ -218,49 +314,91 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
     })
   }
 
-  editProfileSubmit(e: any) {
+  async editProfileSubmit(e: any) {
     e.preventDefault()
     const form = e.target
     if (!form) return
     if (!validateForm(this.children.editform as Block)) return
     const formData = new FormData(e.target)
     const data = formDataToJson(formData) as UserUpdate
-    UserController.editUser(data).then((res) => {
-      console.log('changed profile')
-      console.log(res)
-    })
-    // redirect({ url: Routes.Messenger })
+    const res = await UserController.editProfile(data)
+    if (res.success) {
+      alert('User details updated')
+    } else {
+      alert(`There were some problems updating user details. ${JSON.stringify(res.error)}`)
+      return
+    }
   }
 
-  editAvatarSubmit(e: any) {
+  async editAvatarSubmit(e: any) {
     e.preventDefault()
     const form = e.target
     if (!form) return
-    // if (!validateForm(this.children.addAvatarPopup as Block)) return
     const formData = new FormData(e.target)
-    this.closeCreateAddAvatarDialog()
-    UserController.addAvatar(formData).then((res) => {
-      console.log('changed avatar')
-      console.log(res)
-    })
+    const res = await UserController.editAvatar(formData)
+    if (res.success) {
+      alert('Avatar updated')
+    } else {
+      alert(`There were some problems updating avatar. ${JSON.stringify(res.error)}`)
+      return
+    }
+    clearFormInputs(e.target)
+    this.closePopup('editAvatarPopup')
   }
 
-  openCreateAddAvatarDialog() {
-    const element = this.children.addAvatarPopup as Block
-    const addAvatarPopup = element.getContent() as HTMLElement
-    if (addAvatarPopup) {
-      setStyles(addAvatarPopup, {
+  async editPasswordSubmit(e: any) {
+    e.preventDefault()
+    const form = e.target
+    if (!form) return
+    // if (!validateForm(this.children.editAvatarPopupas Block)) return
+    const formData = new FormData(e.target)
+    const data = formDataToJson(formData)
+
+    console.log(data)
+    const { oldPassword, newPassword, repeatPassword } = data as Record<string, string>
+    if (!oldPassword) {
+      alert('Please enter old password')
+      return
+    }
+    if (!newPassword) {
+      alert('Please enter new password')
+      return
+    }
+    if (!repeatPassword) {
+      alert('Please repeat new password')
+      return
+    }
+    if (newPassword !== repeatPassword) {
+      alert("New password and repeat password don't match")
+      return
+    }
+    const res = await UserController.editPassword({ oldPassword, newPassword })
+    if (res.success) {
+      alert('Avatar updated')
+    } else {
+      alert(`There were some problems updating password. ${JSON.stringify(res.error)}`)
+      return
+    }
+    clearFormInputs(e.target)
+    this.closePopup('editPasswordPopup')
+  }
+
+  openPopup(popupName: string) {
+    const block = this.children[popupName] as Block
+    const popup = block.getContent() as HTMLElement
+    console.log(popup)
+    if (popup) {
+      setStyles(popup, {
         display: 'inline-block',
       })
     }
   }
 
-  closeCreateAddAvatarDialog() {
-    console.log('clo=se')
-    const element = this.children.addAvatarPopup as Block
-    const addAvatarPopup = element.getContent() as HTMLElement
-    if (addAvatarPopup) {
-      setStyles(addAvatarPopup, {
+  closePopup(popupName: string) {
+    const block = this.children[popupName] as Block
+    const popup = block.getContent() as HTMLElement
+    if (popup) {
+      setStyles(popup, {
         display: 'none',
       })
     }

@@ -2,7 +2,6 @@ import Block from '../../utils/Block'
 import { template } from './form.templ'
 import { Tag } from '../Tags/tags'
 import { setStyles, warningStyles } from '../../utils/Helpers'
-import { validateInput } from '../../utils/FormValidator'
 import * as stylesDefs from './styles.module.scss'
 const styles = stylesDefs.default
 
@@ -41,21 +40,18 @@ export class Form extends Block<FormProps> {
     inputs.forEach((i: Block) => {
       i.setProps({
         toggleWarning: this.toggleWarning.bind(this),
-        // formValidator: this.validate.bind(this),
       })
     })
   }
 
   toggleWarning(valid: boolean, message: string) {
     const info = this.children.info as Block
-    console.log(info)
     const warningElement = info.getContent() as HTMLElement
     if (warningElement) {
       if (valid) {
         setStyles(warningElement, warningStyles.pending)
         warningElement.getElementsByTagName('p')[0].textContent = ''
       } else {
-        console.log('invalid')
         setStyles(warningElement, warningStyles.invalid)
         warningElement.getElementsByTagName('p')[0].textContent = message
       }

@@ -76,7 +76,7 @@ export class RegisterPage extends Block {
     })
   }
 
-  registerSubmit(e: any) {
+  async registerSubmit(e: any) {
     e.preventDefault()
     const form = e.target
     if (!form) return
@@ -84,15 +84,14 @@ export class RegisterPage extends Block {
     const formData = new FormData(e.target)
     const data = formDataToJson(formData) as SignupData
 
-    AuthController.signup(data).then((res) => {
-      if (!res.success) {
-        AuthController.fetchUser()
-        alert(res.error.reason)
-        return
-      }
-      clearFormInputs(e.target)
-      redirect({ url: Routes.Messenger })
-    })
+    const res = await AuthController.signup(data)
+    if (!res.success) {
+      alert(`There was some error registering ${JSON.stringify(res.error)}`)
+      return
+    }
+    AuthController.fetchUser()
+    clearFormInputs(e.target)
+    redirect({ url: Routes.Messenger })
   }
 
   render() {

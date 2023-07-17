@@ -82,7 +82,7 @@ export class LoginPage extends Block {
     // store form for validation
   }
 
-  loginSubmit(e: any) {
+  async loginSubmit(e: any) {
     e.preventDefault()
     const form = e.target
     if (!form) return
@@ -90,15 +90,15 @@ export class LoginPage extends Block {
     const formData = new FormData(e.target)
     const data = formDataToJson(formData) as SigninData
 
-    AuthController.signin(data).then((res) => {
-      if (!res.success) {
-        AuthController.fetchUser()
-        alert(res.error.reason)
-        return
-      }
-      clearFormInputs(e.target)
-      redirect({ url: Routes.Profile })
-    })
+    const res = await AuthController.signin(data)
+    if (!res.success) {
+      alert(`There was some error logging in ${JSON.stringify(res.error)}`)
+      return
+    }
+
+    AuthController.fetchUser()
+    clearFormInputs(e.target)
+    redirect({ url: Routes.Profile })
   }
 
   render() {

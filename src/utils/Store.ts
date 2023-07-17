@@ -56,8 +56,6 @@ export class Store extends EventBus {
   }
   public getChatUsers(id: number = this.getState().selectedChat) {
     const chat = this.getChatById(id)
-    // console.log('===>', this.getState(), this.getState().chatsUsers)
-    // id, chat, chat.id, this.getState().chatsUsers)
     if (!this.getState().chatsUsers) return []
     return this.getState().chatsUsers[chat.id] || []
   }

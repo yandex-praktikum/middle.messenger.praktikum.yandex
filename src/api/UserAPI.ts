@@ -1,8 +1,17 @@
+import { User } from './AuthAPI'
 import BaseAPI from './BaseAPI'
 
 export interface SigninData {
   login: string
   password: string
+}
+
+export interface SearchUserData {
+  login: string
+}
+export interface EditPassword {
+  oldPassword: string
+  newPassword: string
 }
 
 export interface SignupData {
@@ -25,19 +34,27 @@ export interface UserUpdate {
 
 export class UserAPI extends BaseAPI {
   constructor() {
-    super('')
+    super('/user')
   }
 
-  edit(data: UserUpdate) {
-    return this.http.put('/user/profile', data)
+  async editProfile(data: UserUpdate): Promise<User | null> {
+    return this.http.put('/profile', data)
   }
 
-  addAvatar(data: FormData) {
-    return this.http.put('/user/profile/avatar', data, 'multipart/form-data')
+  async editAvatar(data: FormData): Promise<User | null> {
+    return this.http.put('/profile/avatar', data, 'multipart/form-data')
   }
 
-  getUserById(id: number) {
+  async editPassword(data: EditPassword): Promise<null> {
+    return await this.http.put('/password', data)
+  }
+
+  async getUserById(id: number): Promise<User | null> {
     return this.http.get(`/user/${id}`)
+  }
+
+  async getUsersByLogin(data: SearchUserData): Promise<User[] | null> {
+    return this.http.post(`/search`, data)
   }
 
   update = undefined

@@ -19,7 +19,6 @@ export class Avatar extends Block<AvatarProps> {
     const src = this.props.src
       ? `https://ya-praktikum.tech/api/v2/resources${this.props.src}`
       : './public/images/cactus.png'
-
     this.props.src = src
     if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c])
   }

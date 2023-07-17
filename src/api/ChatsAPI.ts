@@ -24,6 +24,7 @@ export class ChatsAPI extends BaseAPI {
   }
 
   delete(id: number): Promise<unknown> {
+    console.log(id)
     return this.http.delete('/', { chatId: id })
   }
 
@@ -37,6 +38,16 @@ export class ChatsAPI extends BaseAPI {
 
   async addUsers(id: number, users: number[]): Promise<unknown> {
     return this.http.put('/users', { users, chatId: id })
+  }
+
+  async removeUsers(id: number, users: number[]): Promise<unknown> {
+    try {
+      // returns null if successful
+      const res = this.http.delete('/users', { users, chatId: id })
+      return res
+    } catch (e) {
+      return e
+    }
   }
 
   async getToken(id: number): Promise<string> {

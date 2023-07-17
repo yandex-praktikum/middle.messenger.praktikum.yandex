@@ -33,7 +33,7 @@ export const templateMessagesHeader = `
 
 export const templateLm = `
 <div class="{{{styles.message-container-reply}}}">
-    <img class="{{#if hideAvatar}}{{{styles.hidden}}}{{else}}''{{/if}}" src="{{avatar}}" alt="avatar" title="{{author}}">
+    {{{avatar}}}
     <div class="{{{styles.message-content}}}">
         <p class="{{{styles.author}}}">{{author}}</p>
         <p class="{{{styles.message-text}}}">{{ message }}</p>
@@ -48,7 +48,7 @@ export const templateRm = `
         <p class="{{{styles.message-text}}}">{{ message }}</p>
         <p class="{{{styles.date}}}">{{ date }}</p>
     </div>
-    <img class="{{#if hideAvatar}}{{{styles.hidden}}}{{else}}''{{/if}}" src="{{avatar}}" alt="avatar" title="{{author}}">
+    {{{avatar}}}
 </div>
 `
 

@@ -1,5 +1,4 @@
 import { Routes } from '../../index'
-import { Input } from '../components/Input/input'
 
 type btnAwesomeProps = {
   url: Routes
@@ -8,17 +7,9 @@ type btnAwesomeProps = {
 }
 
 export const redirect = ({ url, action = undefined }: btnAwesomeProps) => {
-  console.log(url)
   if (url) window.location.href = url
   if (action) action()
   // alert('No such route')
-  // const values = Object.values(this.children)
-  //   .filter((child) => child instanceof Input)
-  //   .map((child) => [(child as Input).getName(), (child as Input).getValue()])
-
-  // const data = Object.fromEntries(values)
-
-  // AuthController.signin(data as SignupData)
 }
 
 export const log = (message: string) => console.log(message)
@@ -222,4 +213,34 @@ export const clearFormInputs = (form: HTMLFormElement) => {
       element.selectedIndex = 0
     }
   }
+}
+
+export const queryStringify = (data: Record<string, any>): string | never => {
+  if (typeof data !== 'object' || Array.isArray(data)) {
+    throw new Error('Input must be an object')
+  }
+
+  const queryStrings: string[] = []
+
+  function processValue(key: string, value: any) {
+    if (Array.isArray(value)) {
+      value.forEach((item, index) => processValue(`${key}[${index}]`, item))
+    } else if (typeof value === 'object') {
+      for (const innerKey in value) {
+        if (value.hasOwnProperty(innerKey)) {
+          processValue(`${key}[${innerKey}]`, value[innerKey])
+        }
+      }
+    } else {
+      queryStrings.push(`${key}=${value}`)
+    }
+  }
+
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      processValue(key, data[key])
+    }
+  }
+
+  return queryStrings.join('&')
 }

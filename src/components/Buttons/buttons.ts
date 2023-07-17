@@ -32,14 +32,15 @@ interface ButtonAwesomeProps {
   title: string
   classes?: string[]
   class?: any
+  type?: 'button' | 'submit'
   events?: {
-    click?: () => void
+    click?: any
   }
 }
 
 export class ButtonAwesome extends Block<ButtonAwesomeProps> {
   constructor(props: ButtonAwesomeProps) {
-    super({ ...props })
+    super({ ...props, type: 'button' })
   }
 
   init() {

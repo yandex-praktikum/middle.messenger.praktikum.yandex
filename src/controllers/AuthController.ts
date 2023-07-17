@@ -4,6 +4,12 @@ import store from '../utils/Store'
 import router from '../utils/Router'
 import MessagesController from './MessagesController'
 
+type Response = {
+  success: boolean
+  user?: User | null
+  users?: User[] | null
+  error: any | null
+}
 class AuthController {
   private readonly api: AuthAPI
 
@@ -11,13 +17,13 @@ class AuthController {
     this.api = new AuthAPI()
   }
 
-  async signin(data: SigninData) {
+  async signin(data: SigninData): Promise<Response> {
     try {
       await this.api.signin(data)
       const user = await this.fetchUser()
       return {
         success: true,
-        user,
+        user: user.user,
         error: null,
       }
     } catch (error: any) {
@@ -35,6 +41,24 @@ class AuthController {
       const user = await this.fetchUser()
       return {
         success: true,
+        user: user.user,
+        error: null,
+      }
+    } catch (error: any) {
+      return {
+        success: false,
+        user: null,
+        error,
+      }
+    }
+  }
+
+  async fetchUser(): Promise<Response> {
+    try {
+      const user = await this.api.read()
+      store.set('user', user)
+      return {
+        success: true,
         user,
         error: null,
       }
@@ -47,24 +71,10 @@ class AuthController {
     }
   }
 
-  async fetchUser() {
-    const user = await this.api.read()
-    store.set('user', user)
-    return user
-  }
-
-  async editUser(data: Omit<User, 'id' | 'avatar'>) {
-    const user = await this.api.edit(data)
-    store.set('user', user)
-    return user
-  }
-
   async logout() {
     try {
       MessagesController.closeAll()
-
       await this.api.logout()
-
       router.go('/')
     } catch (e: any) {
       console.error(e.message)
