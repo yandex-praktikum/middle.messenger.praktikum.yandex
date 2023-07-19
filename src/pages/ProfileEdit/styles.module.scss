@@ -1,0 +1,18 @@
+@use '../../scss/variables' as *;
+
+.profile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.scroller-container {
+  padding: 20px;
+  overflow-y: scroll;
+
+  .scroller {
+    height: 100%;
+  }
+}

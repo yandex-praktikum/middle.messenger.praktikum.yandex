@@ -1,0 +1,65 @@
+@use '../../scss/variables' as *;
+
+.panel {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-panel {
+  flex: 1;
+  border-right: 1px solid $color-light-gray;
+}
+
+.right-panel {
+  flex: 2;
+  overflow: hidden;
+}
+
+.scroller-container {
+  padding: 20px;
+  overflow-y: scroll;
+
+  .scroller {
+    height: 100%;
+  }
+}
+
+.search-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid $color-gray;
+  margin-top: 10px;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 40px;
+    padding-left: 10px;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.new-divider {
+  width: 100%;
+  height: 0.8em;
+  border-bottom: 1px solid $color-dark-gray;
+  text-align: center;
+  margin: 20px 0;
+
+  span {
+    font-size: 0.7em;
+    padding: 0 10px;
+    background-color: $background-color-white;
+  }
+}

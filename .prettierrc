@@ -1,0 +1,15 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 80,
+  "endOfLine": "auto",
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "function-paren-newline": "consistent",
+  "implicit-arrow-linebreak": "beside",
+  "lines-between-class-members": 1,
+  "operator-linebreak": "before",
+  "operatorLineBreak": "before"
+}

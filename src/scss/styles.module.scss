@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+// @import 'mixins';
+
+* {
+  box-sizing: border-box !important;
+}
+
+html,
+body {
+  box-sizing: border-box !important;
+  height: 100vh !important;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background-color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  width: 95%;
+  height: 95%;
+  margin: 10px;
+  background-color: $background-color-white;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+// @media (min-width: 480px) {
+//   .return {
+//     position: absolute;
+//     width: 100%;
+//     bottom: 30px;
+//   }
+// }
