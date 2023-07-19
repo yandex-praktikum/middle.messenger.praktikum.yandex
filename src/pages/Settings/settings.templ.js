@@ -4,4 +4,4 @@ export const template = `
         <h1>Settings comig here soon... <h1>
     </div>
 </main>
-`
+`;

@@ -1,4 +1,4 @@
-import Block from '../../utils/Block'
+import Block from '../../utils/Block';
 import {
   templateBlank,
   templateContainer,
@@ -6,86 +6,91 @@ import {
   templateLm,
   templateSendMessage,
   templateScroller,
-} from './container.templ'
-import { ButtonAwesome } from '../../components/Buttons/buttons.js'
-import { TextArea } from '../TextArea/textarea.js'
-import { log } from '../../utils/Helpers.js'
-import { ChatInfo } from '../../api/ChatsAPI.js'
-import MessageController from '../../controllers/MessagesController.js'
-import * as stylesDefs from './styles.module.scss'
-import store from '../../utils/Store.js'
-import { Avatar } from '../Avatar/avatar.js'
-const styles = stylesDefs.default
+} from './container.templ';
+import { ButtonAwesome } from '../../components/Buttons/buttons.js';
+import { TextArea } from '../TextArea/textarea.js';
+import { ChatInfo } from '../../api/ChatsAPI.js';
+import MessageController from '../../controllers/MessagesController.js';
+import * as stylesDefs from './styles.module.scss';
+import store from '../../utils/Store.js';
+import { Avatar } from '../Avatar/avatar.js';
+
+const styles = stylesDefs.default;
 
 type events = {
-  [key: string]: () => void
-}
+  [key: string]: () => void;
+};
 
 // general container, div classes can be passed as props
 interface ContainerProps {
-  content?: Block[]
-  classes?: string[]
-  events?: events
+  content?: Block[];
+  classes?: string[];
+  events?: events;
 }
 
 export class Container extends Block {
   constructor(props: ContainerProps) {
-    super({ ...props })
+    super({ ...props });
   }
   init() {
-    if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
+    if (this.props.classes) {
+      this.props.class = this.props.classes.map((c: string) => styles[c]);
+    }
   }
 
   render() {
-    return this.compile(templateContainer, { ...this.props })
+    return this.compile(templateContainer, { ...this.props });
   }
 }
 
 // container for chats in the left panel
 export interface ContainerChatProps extends ChatInfo {
-  selected: boolean
+  selected: boolean;
   events?: {
-    click: any
-  }
+    click: () => void;
+  };
 }
 
 // container for the header above messages in the rigth panel
 // container for messages in the right panel
 interface ContainerMessageProps extends ContainerProps {
-  messageTemplate?: (context: any) => string
-  author: string
-  avatar: string | null
-  hideAvatar: boolean
-  message: string
-  date: string
+  messageTemplate?: (context: any) => string;
+  author: string;
+  avatar: string | null;
+  hideAvatar: boolean;
+  message: string;
+  date: string;
 }
 
 export class ContainerMessage extends Block<ContainerMessageProps> {
   constructor(props: ContainerMessageProps) {
-    super({ ...props })
+    super({ ...props });
   }
 
   init() {
-    this.props.messageTemplate = this.props.author == 'You' ? templateRm : templateLm
+    this.props.messageTemplate =
+      this.props.author === 'You' ? templateRm : templateLm;
   }
   render() {
     this.children.avatar = new Avatar({
       title: this.props.author,
       src: this.props.avatar,
-    })
-    if (this.props.hideAvatar) this.children.avatar.setProps({ classes: ['hidden'] })
-    if (this.props.messageTemplate) {
-      const { messageTemplate, ...props } = this.props
-      return this.compile(messageTemplate, { ...props, styles })
+    });
+    if (this.props.hideAvatar) {
+      this.children.avatar.setProps({ classes: ['hidden'] });
     }
-    return this.compile(templateBlank, { ...this.props, styles })
+    if (this.props.messageTemplate) {
+      const { messageTemplate, ...props } = this.props;
+      return this.compile(messageTemplate, { ...props, styles });
+    }
+    return this.compile(templateBlank, { ...this.props, styles });
   }
 }
 
 // container for sendMessages
 export class ContainerSendMessage extends Block {
   constructor() {
-    super({})
+    super({});
   }
 
   init() {
@@ -102,49 +107,53 @@ export class ContainerSendMessage extends Block {
         icon: 'fa-regular fa-image',
         title: 'Attach Image',
         events: {
-          click: () => log('AttachImage'),
+          click: () => console.log('AttachImage'),
         },
       },
       attachment: {
         icon: 'fa-solid fa-paperclip',
         title: 'Attach document',
         events: {
-          click: () => log('Attach Doc'),
+          click: () => console.log('Attach Doc'),
         },
       },
-    }
+    };
     Object.entries(buttons).forEach(([key, value]) => {
-      const id = `button-${key}`
-      this.children[id] = new ButtonAwesome(value)
-    })
+      const id = `button-${key}`;
+      this.children[id] = new ButtonAwesome(value);
+    });
 
     this.children.textarea = new TextArea({
       name: 'message',
-    })
+    });
   }
 
   send() {
-    const textarea = this.children.textarea as TextArea
-    const value = textarea.getValue()
-    textarea.setValue('')
-    const chatId = store.getState().selectedChat
-    MessageController.sendMessage(chatId, value)
+    const textarea = this.children.textarea as TextArea;
+    const value = textarea.getValue();
+    if (value !== '') {
+      textarea.setValue('');
+      const chatId = store.getState().selectedChat;
+      MessageController.sendMessage(chatId, value);
+    }
   }
 
   render() {
-    return this.compile(templateSendMessage, { ...this.props, styles })
+    return this.compile(templateSendMessage, { ...this.props, styles });
   }
 }
 
 export class ContainerScroller extends Container {
   constructor(props: ContainerProps) {
-    super({ ...props })
+    super({ ...props });
   }
   init() {
-    if (this.props.classes) this.props.class = this.props.classes.map((c: string) => styles[c])
+    if (this.props.classes) {
+      this.props.class = this.props.classes.map((c: string) => styles[c]);
+    }
   }
 
   render() {
-    return this.compile(templateScroller, { ...this.props, styles })
+    return this.compile(templateScroller, { ...this.props, styles });
   }
 }

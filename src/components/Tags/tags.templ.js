@@ -9,4 +9,4 @@ export const template = `
     {{/if}}>
     {{{content}}}
 </{{{tag}}}>
-`
+`;

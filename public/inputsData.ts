@@ -1,15 +1,15 @@
 export type InputData = {
-  name: string
-  label: string
-  type: string
-  placeholder: string
-  required?: boolean
-  autofocus?: boolean
-  regex: RegExp
-  warning: string
-  value?: string | number
-}
-type InputsData = Record<string, InputData>
+  name: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  required?: boolean;
+  autofocus?: boolean;
+  regex: RegExp;
+  warning: string;
+  value?: string | number;
+};
+type InputsData = Record<string, InputData>;
 
 export const inputsData: InputsData = {
   login: {
@@ -168,4 +168,4 @@ export const inputsData: InputsData = {
     - латиница или кириллица, 
     - нет спецсимволов (допустим только дефис)`,
   },
-}
+};

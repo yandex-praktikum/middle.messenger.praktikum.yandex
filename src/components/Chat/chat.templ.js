@@ -14,4 +14,4 @@ export const template = `
     </div>
     <p class="{{{styles.date}}}">{{ date }}</p>
 </div>
-`
+`;

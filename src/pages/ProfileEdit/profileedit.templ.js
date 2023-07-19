@@ -11,4 +11,4 @@ export const template = `
         </div>
     </div>
 </main>
-`
+`;

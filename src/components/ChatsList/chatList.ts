@@ -1,37 +1,40 @@
-import Block from '../../utils/Block'
-import { template } from './chatList.templ.js'
-import { Chat } from '../Chat/chat'
-import { withStore } from '../../utils/Store'
-import { ChatInfo } from '../../api/ChatsAPI'
-import ChatsController from '../../controllers/ChatsController'
-import store from '../../utils/Store'
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
+import Block from '../../utils/Block';
+import { template } from './chatList.templ.js';
+import { Chat } from '../Chat/chat';
+import store, { withStore } from '../../utils/Store';
+import { ChatInfo } from '../../api/ChatsAPI';
+import ChatsController from '../../controllers/ChatsController';
+import * as stylesDefs from './styles.module.scss';
+
+const styles = stylesDefs.default;
 
 interface ChatsListProps {
-  chats: ChatInfo[]
-  isLoaded: boolean
+  chats: ChatInfo[];
+  isLoaded: boolean;
 }
 
 class ChatsListBase extends Block<ChatsListProps> {
   constructor(props: ChatsListProps) {
-    super({ ...props })
+    super({ ...props });
   }
 
   protected init() {
-    this.children.chats = this.createChats(this.props)
+    this.children.chats = this.createChats(this.props);
   }
 
-  protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
-    this.children.chats = this.createChats(newProps)
+  protected componentDidUpdate(
+    oldProps: ChatsListProps,
+    newProps: ChatsListProps
+  ): boolean {
+    this.children.chats = this.createChats(newProps);
 
-    return true
+    return true;
   }
 
   private createChats(props: ChatsListProps) {
     return props.chats.map((chat: ChatInfo) => {
-      const selected = store.isSelectedChat(chat.id)
-      const users = store.getChatUsers(chat.id)
+      const selected = store.isSelectedChat(chat.id);
+      const users = store.getChatUsers(chat.id);
       // console.log('CHATLIST:', chat.id, chat.title, selected)
       return new Chat({
         selected,
@@ -39,20 +42,18 @@ class ChatsListBase extends Block<ChatsListProps> {
         users,
         events: {
           click: () => {
-            ChatsController.selectChat(chat.id)
+            ChatsController.selectChat(chat.id);
           },
         },
-      })
-    })
+      });
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles });
   }
 }
 
-const withChats = withStore((state) => {
-  return { chats: [...(state.chats || [])] }
-})
+const withChats = withStore((state) => ({ chats: [...(state.chats || [])] }));
 
-export const ChatsList = withChats(ChatsListBase)
+export const ChatsList = withChats(ChatsListBase);

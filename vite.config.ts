@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-const NODE_ENV = process.env.NODE_ENV || 'dev'
+import { defineConfig } from 'vite';
+const NODE_ENV = process.env.NODE_ENV || 'dev';
 
 export default defineConfig({
   base: NODE_ENV === 'production' ? './' : './',
@@ -37,4 +37,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

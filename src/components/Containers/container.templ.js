@@ -1,6 +1,6 @@
 export const templateBlank = `
 <div></div>
-`
+`;
 
 export const templateContainer = `
 <div class="{{#each class}} {{{this}}} {{/each}}" >
@@ -8,7 +8,7 @@ export const templateContainer = `
         {{{this}}}
     {{/each}}
 </div>
-`
+`;
 
 export const templateScroller = `
 <div class="{{{styles.scroller-container}}}">
@@ -18,7 +18,7 @@ export const templateScroller = `
         {{/each}}
     </div>
 </div>
-`
+`;
 
 export const templateMessagesHeader = `
 <div class="{{{styles.messages-header-container}}}" >
@@ -29,7 +29,7 @@ export const templateMessagesHeader = `
     {{{buttonAddUser}}}
     {{{buttonDeleteChat}}}
 </div>
-`
+`;
 
 export const templateLm = `
 <div class="{{{styles.message-container-reply}}}">
@@ -40,7 +40,7 @@ export const templateLm = `
         <p class="{{{styles.date}}}">{{ date }}</p>
     </div>
 </div>
-`
+`;
 export const templateRm = `
 <div class="{{{styles.message-container-you}}}">
     <div class="{{{styles.message-content}}}">
@@ -50,7 +50,7 @@ export const templateRm = `
     </div>
     {{{avatar}}}
 </div>
-`
+`;
 
 export const templateSendMessage = `
 <div class="{{{styles.send-message-container}}}">
@@ -61,4 +61,4 @@ export const templateSendMessage = `
             {{{button-send}}}
     </div>
 </div>
-`
+`;

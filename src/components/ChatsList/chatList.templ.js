@@ -5,4 +5,4 @@ export const template = `
             {{{this}}}
         {{/each}}
     </div>
-</div>`
+</div>`;

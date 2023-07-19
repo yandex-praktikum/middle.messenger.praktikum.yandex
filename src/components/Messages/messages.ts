@@ -1,69 +1,80 @@
-import Block from '../../utils/Block'
-import { template } from './messages.templ.js'
-import { withStore } from '../../utils/Store'
-import { isEqual, parseDate } from '../../utils/Helpers.js'
-import { ContainerScroller, ContainerMessage } from '../Containers/containers.js'
-import store from '../../utils/Store'
-import { Message } from '../../controllers/MessagesController.js'
-import { User } from '../../api/AuthAPI.js'
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
+import Block from '../../utils/Block';
+import { template } from './messages.templ.js';
+import store, { withStore } from '../../utils/Store';
+import { isEqual, parseDate } from '../../utils/Helpers.js';
+import {
+  ContainerScroller,
+  ContainerMessage,
+} from '../Containers/containers.js';
+import { Message } from '../../controllers/MessagesController.js';
+import { User } from '../../api/AuthAPI.js';
+import * as stylesDefs from './styles.module.scss';
+
+const styles = stylesDefs.default;
 
 interface MessagesProps {
-  messages: Message[]
-  chatsUsers: User[]
-  isLoaded: boolean
+  messages: Message[];
+  chatsUsers: User[];
+  isLoaded: boolean;
 }
 
 class MessagesBase extends Block<MessagesProps> {
   constructor(props: MessagesProps) {
-    super({ ...props })
+    super({ ...props });
   }
 
   protected init() {
     this.children.messages = new ContainerScroller({
       content: this.createMessages(this.props),
-    })
+    });
   }
 
-  protected componentDidUpdate(oldProps: MessagesProps, newProps: MessagesProps): boolean {
+  protected componentDidUpdate(
+    oldProps: MessagesProps,
+    newProps: MessagesProps
+  ): boolean {
     if (!isEqual(oldProps, newProps)) {
-      // console.log(JSON.parse(JSON.stringify(oldProps)), JSON.parse(JSON.stringify(newProps)))
       this.children.messages = new ContainerScroller({
         content: this.createMessages(this.props),
-      })
+      });
 
       setTimeout(() => {
-        this.scrollTop()
-      }, 0)
+        this.scrollTop();
+      }, 0);
 
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   public scrollTop = () => {
-    const element = (this.children.messages as Block).getContent() as HTMLElement
-    element.scrollTop = element.scrollHeight
-  }
+    const element = (
+      this.children.messages as Block
+    ).getContent() as HTMLElement;
+    element.scrollTop = element.scrollHeight;
+  };
 
   private createMessages(props: MessagesProps) {
-    if (!props.messages) return []
-    const users = props.chatsUsers
-    const messages = props.messages.filter((m) => m.type !== 'user connected')
+    if (!props.messages) return [];
+    const users = props.chatsUsers;
+    const messages = props.messages.filter((m) => m.type !== 'user connected');
     return messages.map((m: Message) => {
       const getParts = (m: Message): Record<string, string> => {
-        if (!users || users.length == 0 || !m.user_id) return { author: '', message: '' }
+        const message = m.content;
+        if (!users || users.length === 0 || !m.user_id) {
+          return { author: '', message };
+        }
         // get user the chat with
-        const sender = users.filter((u) => u.id == m.user_id)[0]
-        if (!sender) return { author: '', message: '' }
-        const user = store.getUser()
-        const author = user.id == sender.id ? 'You' : sender.first_name
-        const message = m.content
-        const avatar = sender.avatar
-        return { author, message, avatar }
-      }
-      const { author, message, avatar } = getParts(m)
+        const sender = users.filter((u) => u.id === m.user_id)[0];
+        if (!sender) return { author: '', message: '' };
+
+        const user = store.getUser();
+        const author = user.id === sender.id ? 'You' : sender.first_name;
+
+        const { avatar } = sender;
+        return { author, message, avatar };
+      };
+      const { author, message, avatar } = getParts(m);
 
       return new ContainerMessage({
         author,
@@ -71,28 +82,30 @@ class MessagesBase extends Block<MessagesProps> {
         hideAvatar: false,
         message,
         date: parseDate(m.time),
-      })
-    })
+      });
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles });
   }
 }
 
 const withMessages = withStore((state) => {
-  const selectedChatId = state.selectedChat
-  const messages = state.messages && selectedChatId ? state.messages[selectedChatId] : []
-  const chatsUsers = state.chatsUsers && selectedChatId ? state.chatsUsers[selectedChatId] : []
+  const selectedChatId = state.selectedChat;
+  const messages =
+    state.messages && selectedChatId ? state.messages[selectedChatId] : [];
+  const chatsUsers =
+    state.chatsUsers && selectedChatId ? state.chatsUsers[selectedChatId] : [];
   try {
     return {
       messages,
       chatsUsers,
       isLoaded: false,
-    }
+    };
   } catch {
-    return { messages: [], chatsUsers: [], isLoaded: false }
+    return { messages: [], chatsUsers: [], isLoaded: false };
   }
-})
+});
 
-export const Messages = withMessages(MessagesBase)
+export const Messages = withMessages(MessagesBase);

@@ -1,31 +1,34 @@
-import Block from '../../utils/Block'
-import { template } from './tags.templ'
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
+import Block from '../../utils/Block';
+import { template } from './tags.templ';
+import * as stylesDefs from './styles.module.scss';
+
+const styles = stylesDefs.default;
 
 interface TagProps {
-  tag: string
-  name?: string
-  for?: string
-  content?: string
-  title?: string
-  src?: string
-  classes?: string[]
-  class?: any
+  tag: string;
+  name?: string;
+  for?: string;
+  content?: string;
+  title?: string;
+  src?: string;
+  classes?: string[];
+  class?: string;
   events?: {
-    click: () => void
-  }
+    click: () => void;
+  };
 }
 
 export class Tag extends Block<TagProps> {
   constructor(props: TagProps) {
-    super({ ...props })
+    super({ ...props });
   }
   init() {
-    if (this.props.classes) this.props.class = this.props.classes.map((c) => styles[c]).join(' ')
+    if (this.props.classes) {
+      this.props.class = this.props.classes.map((c) => styles[c]).join(' ');
+    }
   }
 
   render() {
-    return this.compile(template, { ...this.props })
+    return this.compile(template, { ...this.props });
   }
 }

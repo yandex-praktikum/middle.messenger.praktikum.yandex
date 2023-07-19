@@ -1,0 +1,18 @@
+@use '../../scss/variables' as *;
+
+.avatar-profile {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid $color-light-gray;
+}
+
+.avatar-chat {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid $color-light-gray;
+}

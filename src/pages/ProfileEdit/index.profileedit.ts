@@ -1,33 +1,37 @@
-import Block from '../../utils/Block'
-import { clearFormInputs, formDataToJson, redirect } from '../../utils/Helpers.js'
-import { template } from './profileedit.templ'
-import { Container } from '../../components/Containers/containers'
-import { Button } from '../../components/Buttons/buttons'
-import { Input } from '../../components/Input/input'
-import { Avatar } from '../../components/Avatar/avatar.js'
-import { ButtonAwesome } from '../../components/Buttons/buttons'
-import { Form } from '../../components/Form/form'
-import { Tag } from '../../components/Tags/tags.js'
-import { Routes } from '../../../index.js'
-import { inputsData, InputData } from '../../../public/inputsData'
-import { ProfileProps } from '../Profile/index.profile.js'
-import store, { withStore } from '../../utils/Store'
-import { isEqual } from '../../utils/Helpers.js'
-import { User } from '../../api/AuthAPI.js'
-import { validateForm } from '../../utils/FormValidator.js'
-import { UserUpdate } from '../../api/UserAPI'
-import { setStyles } from '../../utils/Helpers'
-import UserController from '../../controllers/UserController.js'
-import * as stylesDefs from './styles.module.scss'
-const styles = stylesDefs.default
+import Block from '../../utils/Block';
+import {
+  clearFormInputs,
+  formDataToJson,
+  redirect,
+  isEqual,
+} from '../../utils/Helpers.js';
+import { template } from './profileedit.templ';
+import { Container } from '../../components/Containers/containers';
+import { Button, ButtonAwesome } from '../../components/Buttons/buttons';
+import { Input } from '../../components/Input/input';
+import { Avatar } from '../../components/AvatarProfile/avatarProfile.js';
+import { Form } from '../../components/Form/form';
+import { Tag } from '../../components/Tags/tags.js';
+import { Routes } from '../../../index.js';
+import { inputsData, InputData } from '../../../public/inputsData';
+import { ProfileProps } from '../Profile/index.profile.js';
+import store, { withStore } from '../../utils/Store';
+import { User } from '../../api/AuthAPI.js';
+import { validateForm } from '../../utils/FormValidator.js';
+import { UserUpdate } from '../../api/UserAPI';
+import { setStyles } from '../../utils/Helpers';
+import UserController from '../../controllers/UserController.js';
+import * as stylesDefs from './styles.module.scss';
+
+const styles = stylesDefs.default;
 
 interface EditProfileProps extends ProfileProps {
-  password: string
+  password: string;
 }
 
 export class ProfileEditPageBase extends Block<EditProfileProps> {
   constructor(props: EditProfileProps) {
-    super(props)
+    super(props);
   }
 
   init() {
@@ -47,12 +51,12 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         //   click: () => redirect({ url: Routes.Settings }),
         // },
       },
-    ]
+    ];
 
     this.children.tools = new Container({
       content: buttons.map((d) => new ButtonAwesome(d)),
       classes: ['tools-top-container'],
-    })
+    });
 
     this.children.editAvatarPopup = new Container({
       /// overlay
@@ -105,7 +109,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         }),
       ],
       classes: ['overlay-container'],
-    })
+    });
 
     this.children.editPasswordPopup = new Container({
       /// overlay
@@ -193,17 +197,20 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         }),
       ],
       classes: ['overlay-container'],
-    })
+    });
 
-    this.children.editform = this.loadForm(this.props)
+    this.children.editform = this.loadForm(this.props);
   }
 
-  protected componentDidUpdate(oldProps: EditProfileProps, newProps: EditProfileProps): boolean {
+  protected componentDidUpdate(
+    oldProps: EditProfileProps,
+    newProps: EditProfileProps
+  ): boolean {
     if (!isEqual(oldProps, newProps)) {
-      this.children.editform = this.loadForm(newProps)
-      return true
+      this.children.editform = this.loadForm(newProps);
+      return true;
     }
-    return false
+    return false;
   }
 
   loadForm(props: EditProfileProps) {
@@ -219,7 +226,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
           content: 'warning',
         }),
       ],
-    })
+    });
 
     const avatar = new Container({
       content: [
@@ -237,7 +244,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         }),
       ],
       classes: ['edit-profile-avatar-container'],
-    })
+    });
 
     const {
       first_name,
@@ -249,7 +256,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       // password_old,
       // password_new,
       // repeat_password,
-    } = inputsData
+    } = inputsData;
 
     const inputs = [
       first_name,
@@ -262,7 +269,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       // password_new,
       // repeat_password,
     ].map((d: InputData) => {
-      const key = d.name as keyof User
+      const key = d.name as keyof User;
       return new Container({
         classes: ['input-container'],
         content: [
@@ -281,13 +288,13 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
             classes: ['input-square'],
           }),
         ],
-      })
-    })
+      });
+    });
 
     const editProfileSubmitButton = new Button({
       label: 'Save',
       type: 'submit',
-    })
+    });
 
     const editPasswordButton = new Button({
       label: 'Change password',
@@ -295,7 +302,7 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
       events: {
         click: () => this.openPopup('editPasswordPopup'),
       },
-    })
+    });
 
     return new Container({
       content: [
@@ -311,105 +318,117 @@ export class ProfileEditPageBase extends Block<EditProfileProps> {
         }),
       ],
       classes: ['form-container'],
-    })
+    });
   }
 
-  async editProfileSubmit(e: any) {
-    e.preventDefault()
-    const form = e.target
-    if (!form) return
-    if (!validateForm(this.children.editform as Block)) return
-    const formData = new FormData(e.target)
-    const data = formDataToJson(formData) as UserUpdate
-    const res = await UserController.editProfile(data)
+  async editProfileSubmit(e: Event) {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form) return;
+    if (!validateForm(this.children.editform as Block)) return;
+    const formData = new FormData(form);
+    const data = formDataToJson(formData) as UserUpdate;
+    const res = await UserController.editProfile(data);
     if (res.success) {
-      alert('User details updated')
+      alert('User details updated');
     } else {
-      alert(`There were some problems updating user details. ${JSON.stringify(res.error)}`)
-      return
+      alert(
+        `There were some problems updating user details. ${JSON.stringify(
+          res.error
+        )}`
+      );
+      return;
     }
   }
 
-  async editAvatarSubmit(e: any) {
-    e.preventDefault()
-    const form = e.target
-    if (!form) return
-    const formData = new FormData(e.target)
-    const res = await UserController.editAvatar(formData)
+  async editAvatarSubmit(e: Event) {
+    e.preventDefault();
+    // const oldAvatar = store.getUser().avatar;
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form) return;
+    const formData = new FormData(form);
+    const res = await UserController.editAvatar(formData);
+
     if (res.success) {
-      alert('Avatar updated')
+      alert('Avatar updated');
     } else {
-      alert(`There were some problems updating avatar. ${JSON.stringify(res.error)}`)
-      return
+      alert(
+        `There were some problems updating avatar. ${JSON.stringify(res.error)}`
+      );
+      return;
     }
-    clearFormInputs(e.target)
-    this.closePopup('editAvatarPopup')
+    clearFormInputs(form);
+    this.closePopup('editAvatarPopup');
   }
 
-  async editPasswordSubmit(e: any) {
-    e.preventDefault()
-    const form = e.target
-    if (!form) return
+  async editPasswordSubmit(e: Event) {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form) return;
     // if (!validateForm(this.children.editAvatarPopupas Block)) return
-    const formData = new FormData(e.target)
-    const data = formDataToJson(formData)
+    const formData = new FormData(form);
+    const data = formDataToJson(formData);
 
-    const { oldPassword, newPassword, repeatPassword } = data as Record<string, string>
+    const { oldPassword, newPassword, repeatPassword } = data as Record<
+      string,
+      string
+    >;
     if (!oldPassword) {
-      alert('Please enter old password')
-      return
+      alert('Please enter old password');
+      return;
     }
     if (!newPassword) {
-      alert('Please enter new password')
-      return
+      alert('Please enter new password');
+      return;
     }
     if (!repeatPassword) {
-      alert('Please repeat new password')
-      return
+      alert('Please repeat new password');
+      return;
     }
     if (newPassword !== repeatPassword) {
-      alert("New password and repeat password don't match")
-      return
+      alert("New password and repeat password don't match");
+      return;
     }
-    const res = await UserController.editPassword({ oldPassword, newPassword })
+    const res = await UserController.editPassword({ oldPassword, newPassword });
     if (res.success) {
-      alert('Password updated')
+      alert('Password updated');
     } else {
-      alert(`There were some problems updating password. ${JSON.stringify(res.error)}`)
-      return
+      alert(
+        `There were some problems updating password. ${JSON.stringify(
+          res.error
+        )}`
+      );
+      return;
     }
-    clearFormInputs(e.target)
-    this.closePopup('editPasswordPopup')
+    clearFormInputs(form);
+    this.closePopup('editPasswordPopup');
   }
 
   openPopup(popupName: string) {
-    const block = this.children[popupName] as Block
-    const popup = block.getContent() as HTMLElement
-    console.log(popup)
+    const block = this.children[popupName] as Block;
+    const popup = block.getContent() as HTMLElement;
     if (popup) {
       setStyles(popup, {
         display: 'inline-block',
-      })
+      });
     }
   }
 
   closePopup(popupName: string) {
-    const block = this.children[popupName] as Block
-    const popup = block.getContent() as HTMLElement
+    const block = this.children[popupName] as Block;
+    const popup = block.getContent() as HTMLElement;
     if (popup) {
       setStyles(popup, {
         display: 'none',
-      })
+      });
     }
   }
 
   render() {
-    return this.compile(template, { ...this.props, styles })
+    return this.compile(template, { ...this.props, styles });
   }
 }
 
-const withChats = withStore((state) => {
-  return { user: state.user || {} }
-})
+const withChats = withStore((state) => ({ user: state.user || {} }));
 
-export const ProfileEditPage = withChats(ProfileEditPageBase)
+export const ProfileEditPage = withChats(ProfileEditPageBase);

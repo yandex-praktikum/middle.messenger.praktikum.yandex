@@ -5,7 +5,7 @@ export const template = `
     {{#if disabled}} disabled {{/if}}>
     {{ label }}
 </button>
-`
+`;
 
 export const templateAwesome = `
 <button class="{{{styles.button-awesome}}}
@@ -14,4 +14,4 @@ export const templateAwesome = `
     >
     <i class="{{{icon}}}" aria-hidden="true" title="{{{title}}}" ></i>
 </button>
-`
+`;

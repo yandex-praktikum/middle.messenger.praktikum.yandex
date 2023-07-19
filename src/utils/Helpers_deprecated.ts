@@ -12,6 +12,11 @@ export const redirect = ({ url, action = undefined }: btnAwesomeProps) => {
   // alert('No such route')
 };
 
+export const log = (message: string) => console.log(message);
+
+export const findIndexByKeyValue = (arr: any[], key: string, value: unknown) =>
+  arr.findIndex((obj) => obj[key] === value);
+
 export const parseDate = (dateString: string) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -71,6 +76,24 @@ export type Indexed<T = any> = {
 //   return lhs;
 // };
 
+export const merge = (lhs: Indexed, rhs: Indexed): Indexed => {
+  Object.entries(rhs).forEach(([p, value]) => {
+    if (!Object.prototype.hasOwnProperty.call(rhs, p)) {
+      try {
+        if (value.constructor === Object) {
+          lhs[p] = merge(lhs[p] as Indexed, value as Indexed);
+        } else {
+          lhs[p] = value;
+        }
+      } catch (e) {
+        lhs[p] = value;
+      }
+    }
+  });
+
+  return lhs;
+};
+
 export function set(
   object: Indexed | unknown,
   path: string,
@@ -92,22 +115,6 @@ export function set(
   );
 
   return merge(object as Indexed, result);
-}
-
-export function merge(lhs: Indexed, rhs: Indexed): Indexed {
-  Object.entries(rhs).forEach(([p, value]) => {
-    try {
-      if (value.constructor === Object) {
-        value = merge(lhs[p] as Indexed, value as Indexed);
-      } else {
-        lhs[p] = value;
-      }
-    } catch (e) {
-      lhs[p] = value;
-    }
-  });
-
-  return lhs;
 }
 
 export function isEqual(aa: object, bb: object): boolean {
@@ -225,6 +232,11 @@ export const cloneDeep = (value: unknown): any => {
   }
 
   const clonedObj: any = {};
+  // for (const key in value) {
+  //   if (value.hasOwnProperty(key)) {
+  //     clonedObj[key] = cloneDeep(value[key]);
+  //   }
+  // }
   Object.keys(value).forEach((key) => {
     if (Object.prototype.hasOwnProperty.call(value, key)) {
       clonedObj[key] = cloneDeep(value[key]);
@@ -310,7 +322,20 @@ export const queryStringify = (data: Record<string, any>): string | never => {
   return queryStrings.join('&');
 };
 
-export const formDataToJson = (formData: FormData): Record<string, unknown> => {
+// export const formDataToJson = (formData: FormData):
+// Record<string, string | number | undefined> => {
+//   const json: { [key: string]: any } = {}
+
+//   for (const [key, value] of formData.entries()) {
+//     json[key] = value
+//   }
+
+//   return json
+// }
+
+export const formDataToJson = (
+  formData: FormData
+): Record<string, string | number | undefined> => {
   const json: { [key: string]: any } = {};
 
   formData.forEach((value, key) => {

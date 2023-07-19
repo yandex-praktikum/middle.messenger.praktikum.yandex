@@ -7,4 +7,4 @@ export const template = `
     wrap="{{{wrap}}}"
     placeholder="{{{placeholder}}}"
 ></textarea>
-`
+`;

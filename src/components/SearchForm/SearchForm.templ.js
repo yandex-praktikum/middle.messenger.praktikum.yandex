@@ -3,4 +3,4 @@ export const template = `
     {{{input}}}
     {{{button}}}
 </div>
-`
+`;

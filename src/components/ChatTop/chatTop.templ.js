@@ -7,6 +7,7 @@ export const template = `
     {{{avatarContainer}}}
     {{{addUserButton}}}
     {{{removeUserButton}}}
+    {{{editChatButton}}}
     {{{deleteChatButton}}}
 </div>
-`
+`;

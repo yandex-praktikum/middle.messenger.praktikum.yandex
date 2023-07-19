@@ -10,10 +10,10 @@ export const template = `
         </div>
     </div>
 </main>
-`
+`;
 
 export const detailTemplate = `
 <div class="{{{styles.detail}}}">
     <strong>{{{label}}}:</strong> <span>{{{value}}}</span>
 </div>
-`
+`;

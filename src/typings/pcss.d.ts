@@ -1,1 +1,1 @@
-declare module "*.pcss";
+declare module '*.pcss';

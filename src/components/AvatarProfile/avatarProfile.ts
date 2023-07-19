@@ -1,6 +1,9 @@
 import Block from '../../utils/Block';
 import { template } from './avatar.templ';
+import { withStore } from '../../utils/Store';
 import * as stylesDefs from './styles.module.scss';
+import { isEqual } from '../../utils/Helpers';
+import { User } from '../../api/AuthAPI';
 
 const styles = stylesDefs.default;
 
@@ -9,9 +12,10 @@ interface AvatarProps {
   src: string | null;
   classes?: string[];
   class?: string[];
+  user?: User;
 }
 
-export class Avatar extends Block<AvatarProps> {
+export class AvatarBase extends Block<AvatarProps> {
   constructor(props: AvatarProps) {
     super({ ...props });
   }
@@ -26,11 +30,24 @@ export class Avatar extends Block<AvatarProps> {
     }
   }
 
+  protected componentDidUpdate(
+    oldProps: AvatarProps,
+    newProps: AvatarProps
+  ): boolean {
+    if (!isEqual(oldProps, newProps)) {
+      this.props.src =
+        newProps.user && newProps.user.avatar
+          ? `https://ya-praktikum.tech/api/v2/resources${newProps.user.avatar}`
+          : './public/images.cactus';
+      return true;
+    }
+    return false;
+  }
+
   render() {
     return this.compile(template, { ...this.props, styles });
   }
 }
+const addStore = withStore((state) => ({ user: state.user || {} }));
 
-// console.log('---');
-// console.log(oldProps, newProps);
-// console.log(!isEqual(oldProps, newProps));
+export const Avatar = addStore(AvatarBase);

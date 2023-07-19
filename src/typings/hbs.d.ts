@@ -1,4 +1,4 @@
-declare module "*.hbs" {
+declare module '*.hbs' {
   import { TemplateDelegate } from 'handlebars';
 
   declare const template: TemplateDelegate;

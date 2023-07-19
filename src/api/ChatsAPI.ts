@@ -1,60 +1,63 @@
-import BaseAPI from './BaseAPI'
-import { User } from './AuthAPI'
+import BaseAPI from './BaseAPI';
+import { User } from './AuthAPI';
 
 export interface ChatInfo {
-  id: number
-  title: string
-  created_by: number
-  avatar: string | undefined | null
-  unread_count: number
+  id: number;
+  title: string;
+  created_by: number;
+  avatar: string | undefined | null;
+  unread_count: number;
   last_message: {
-    user: User
-    time: string
-    content: string
-  }
+    user: User;
+    time: string;
+    content: string;
+  };
 }
 
 export class ChatsAPI extends BaseAPI {
   constructor() {
-    super('/chats')
+    super('/chats');
   }
 
   create(title: string) {
-    return this.http.post('/', { title })
+    return this.http.post('/', { title });
   }
 
   delete(id: number): Promise<unknown> {
-    console.log(id)
-    return this.http.delete('/', { chatId: id })
+    return this.http.delete('/', { chatId: id });
+  }
+
+  async editChatAvatar(data: FormData): Promise<User | null> {
+    return this.http.put('/avatar', data, 'multipart/form-data');
   }
 
   read(): Promise<ChatInfo[]> {
-    return this.http.get('/')
+    return this.http.get('/');
   }
 
   async getUsers(id: number): Promise<Array<User & { role: string }>> {
-    return await this.http.get(`/${id}/users`)
+    return this.http.get(`/${id}/users`);
   }
 
   async addUsers(id: number, users: number[]): Promise<unknown> {
-    return this.http.put('/users', { users, chatId: id })
+    return this.http.put('/users', { users, chatId: id });
   }
 
   async removeUsers(id: number, users: number[]): Promise<unknown> {
     try {
       // returns null if successful
-      const res = this.http.delete('/users', { users, chatId: id })
-      return res
+      const res = this.http.delete('/users', { users, chatId: id });
+      return res;
     } catch (e) {
-      return e
+      return e;
     }
   }
 
   async getToken(id: number): Promise<string> {
-    const response = await this.http.post<{ token: string }>(`/token/${id}`)
+    const response = await this.http.post<{ token: string }>(`/token/${id}`);
 
-    return response.token
+    return response.token;
   }
 
-  update = undefined
+  update = undefined;
 }

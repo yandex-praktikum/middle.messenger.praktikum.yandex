@@ -8,4 +8,4 @@ type="{{ type }}"
 placeholder="{{placeholder}}" 
 value="{{{value}}}
 "/>
-`
+`;

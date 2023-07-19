@@ -11,4 +11,4 @@ export const template = `
     {{/each}}
     {{{link}}}
 </form>
-`
+`;

@@ -1,2 +1,2 @@
 export const template = `
-{{{messages}}}`
+{{{messages}}}`;

@@ -1,5 +1,6 @@
 export const template = `
 <main>
+    {{{editChatPopup}}}
     {{{createNewChatPopup}}}
     {{{addUserPopup}}}
     {{{removeUserPopup}}}
@@ -15,4 +16,4 @@ export const template = `
         {{{sendMessage}}}
     </div>
 </main>
-`
+`;

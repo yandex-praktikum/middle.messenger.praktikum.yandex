@@ -1,33 +1,33 @@
 type message = {
-  author: string
-  message: string
-  date: string
-}
+  author: string;
+  message: string;
+  date: string;
+};
 
 export type ChatData = {
-  display_name: string
-  avatar: string
-  newCount: number
-  messages: message[]
-}
+  display_name: string;
+  avatar: string;
+  newCount: number;
+  messages: message[];
+};
 export type ProfileData = {
-  first_name: string
-  second_name: string
-  avatar: string
-  login: string
-  email: string
-  password: string
-  password_old: string
-  password_new: string
-  repeat_password: string
-  phone: string
-  age: number
-  city: string
-}
+  first_name: string;
+  second_name: string;
+  avatar: string;
+  login: string;
+  email: string;
+  password: string;
+  password_old: string;
+  password_new: string;
+  repeat_password: string;
+  phone: string;
+  age: number;
+  city: string;
+};
 
 interface Data {
-  chats: ChatData[]
-  profile: ProfileData
+  chats: ChatData[];
+  profile: ProfileData;
 }
 
 const data: Data = {
@@ -50,7 +50,8 @@ const data: Data = {
         },
         {
           author: 'You',
-          message: 'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
+          message:
+            'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
           date: '2023-02-05T10:56:34.362Z',
         },
         {
@@ -86,7 +87,8 @@ const data: Data = {
         },
         {
           author: 'You',
-          message: 'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
+          message:
+            'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
           date: '2023-03-26T04:19:24.473Z',
         },
         {
@@ -153,7 +155,8 @@ const data: Data = {
         },
         {
           author: 'You',
-          message: 'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
+          message:
+            'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
           date: '2023-06-06T05:05:37.421Z',
         },
       ],
@@ -202,7 +205,8 @@ const data: Data = {
         },
         {
           author: 'You',
-          message: 'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
+          message:
+            'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
           date: '2023-05-25T07:18:38.405Z',
         },
       ],
@@ -282,7 +286,8 @@ const data: Data = {
       messages: [
         {
           author: 'Charlotte',
-          message: 'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
+          message:
+            'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
           date: '2023-01-18T20:17:28.299Z',
         },
         {
@@ -330,12 +335,14 @@ const data: Data = {
         },
         {
           author: 'You',
-          message: 'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
+          message:
+            'Once upon a time, there was a tiny cactus who dreamt of exploring the desert.',
           date: '2023-01-08T13:34:43.110Z',
         },
         {
           author: 'You',
-          message: 'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
+          message:
+            'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
           date: '2023-03-19T19:15:22.392Z',
         },
         {
@@ -352,7 +359,8 @@ const data: Data = {
         },
         {
           author: 'Amelia',
-          message: 'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
+          message:
+            'A mischievous rabbit discovered the prickly nature of a cactus the hard way.',
           date: '2023-06-06T16:26:46.965Z',
         },
       ],
@@ -373,6 +381,6 @@ const data: Data = {
     age: 99,
     city: 'New York',
   },
-}
+};
 
-export default data
+export default data;
