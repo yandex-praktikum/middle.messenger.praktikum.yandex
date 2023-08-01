@@ -1,1 +1,4 @@
-<button type="{{ type }}" class="button">{{ text }}</button>
+{{#if imgSrc}}
+	<img src="{{ imgSrc }}" alt="img" style="width: {{ imgSize }}px; height: {{ imgSize }}px"/>
+{{/if}}
+{{ text }}

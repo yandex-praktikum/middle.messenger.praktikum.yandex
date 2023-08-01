@@ -1,13 +1,22 @@
 {
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2022
-  },
-  "plugins": ["import"],
-  "ignorePatterns": ["build/**", "server.js", "vite.config.js"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import", "@typescript-eslint"],
+  "ignorePatterns": ["dist/**", "server.js", "vite.config.js", "script.js"],
   "rules" : {
-    "semi" : "warn",
-    "no-unused-vars": "warn",
+    "semi": "warn",
+    "quotes": ["warn", "single"],
+    "no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+    "max-len": [1, 100],
+    "space-before-blocks": "warn",
+    "no-multi-spaces": "warn",
+    "no-trailing-spaces": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
     "import/order": ["warn", {
       "newlines-between": "always",
       "pathGroups": [

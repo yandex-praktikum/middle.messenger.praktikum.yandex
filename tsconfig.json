@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "useDefineForClassFields": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+		"noImplicitAny": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+		"sourceMap": true,
+		"strictNullChecks": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@components": ["components"],
+      "@layout": ["layout"],
+      "@models": ["models"],
+      "@pages": ["pages"],
+			"@services": ["services"],
+      "@utilities": ["utils"]
+    }
+  },
+  "include": ["src/**/*"]
+}

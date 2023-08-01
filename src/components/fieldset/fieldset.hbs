@@ -1,0 +1,12 @@
+{{#if isHorizontalMode}}
+  <div class="fieldset__container">
+    <label class="fieldset__label">{{ label }}</label>
+    {{{ input }}}
+  </div>
+{{else}}
+  {{{ input }}}
+  <label class="fieldset__label">{{ label }}</label>
+{{/if}}
+{{#errors}}
+  {{{.}}}
+{{/errors}}

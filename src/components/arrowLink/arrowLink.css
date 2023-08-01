@@ -1,0 +1,33 @@
+@import '../../styles/_variables.css';
+
+.arrow-link {
+  display: flex;
+  align-items: center;
+  color: var(--text-gray-color);
+  gap: 4px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__arrow {
+    --size: 8px;
+
+    width: var(--size);
+    height: var(--size);
+    border-right: 2px solid var(--text-gray-color);
+    border-bottom: 2px solid var(--text-gray-color);
+    transform: rotate(-45deg);
+  }
+
+  &_reversed {
+    .arrow-link__label {
+      order: 2;
+    }
+
+    .arrow-link__arrow {
+      order: 1;
+      transform: rotate(135deg);
+    }
+  }
+}

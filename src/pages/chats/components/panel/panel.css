@@ -31,7 +31,7 @@
       height: var(--size);
     }
 
-    input {
+    .input {
       width: 100%;
     }
   }

@@ -11,7 +11,7 @@
   },
   "chats": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Первый чат",
       "avatar": "images/avatar_1.png",
       "unread_count": 0,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Второй чат",
       "avatar": "images/avatar_2.png",
       "unread_count": 12,
@@ -49,7 +49,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Третий чат",
       "avatar": "",
       "unread_count": 1,

@@ -1,0 +1,65 @@
+@import '../../styles/_variables.css';
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  border: 0;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+	&_horizontal {
+		padding: 12px 0;
+
+		.input {
+			text-align: end;
+			color: var(--text-gray-color);
+		}
+	}
+
+  &_vertical {
+		text-align: start;
+    position: relative;
+    margin: 6px 0;
+
+    .fieldset__label {
+      position: absolute;
+      top: 4px;
+      color: var(--text-gray-color);
+			cursor: text;
+      opacity: .85;
+      transition: .3s;
+    }
+
+    .input {
+			position: relative;
+      width: 100%;
+			height: 25px;
+      border-bottom: 1px solid var(--gray-color);
+			z-index: 2;
+
+      &:focus {
+        border-bottom: 1px solid var(--brand-color);
+      }
+
+      &:focus ~ .fieldset__label, &:not(:placeholder-shown) ~ .fieldset__label {
+        top: -9px;
+        font-size: 10px;
+      }
+    }
+
+		&.fieldset_invalid .input {
+			border-bottom: 1px solid var(--danger-color);
+		}
+  }
+
+  .error-message {
+    margin-top: 4px;
+  }
+}

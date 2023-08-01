@@ -3,6 +3,21 @@
 .message {
   padding: 4px 0;
 
+	&__status {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		float: right;
+		margin: 8px 0 0 10px;
+
+		img {
+			--size: 14px;
+
+			width: var(--size);
+			height: var(--size);
+		}
+	}
+
   &__content {
     background: #fff;
     border-radius: 12px;
@@ -12,7 +27,7 @@
     line-height: 1.35;
     overflow: hidden;
 
-    &.right {
+    &_right {
       margin-left: auto;
       border-bottom-right-radius: 0;
       background: #effdde;
@@ -22,28 +37,13 @@
       }
     }
 
-    &.left {
+    &_left {
       margin-right: auto;
       border-bottom-left-radius: 0;
 
       .message__status {
         color: var(--text-gray-color);
       }
-    }
-  }
-
-  &__status {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    float: right;
-    margin: 8px 0 0 10px;
-
-    img {
-      --size: 14px;
-
-      width: var(--size);
-      height: var(--size);
     }
   }
 

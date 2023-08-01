@@ -1,23 +1,27 @@
-<div class="messages">
-  {{#hasContent}}
-    <div class="messages__header">
-      {{{ backLink }}}
-      {{{ chatAvatar }}}
-      <span class="messages__title">{{ chatName }}</span>
-      <img src="icons/menu.svg" alt="menu" class="messages__menu">
-    </div>
-    <div class="messages-list">
-      {{#messages}}
-        {{{.}}}
-      {{/messages}}
-    </div>
-    <div class="messages__footer">
-      <img src="icons/clip.svg" alt="clip" class="messages__clip">
-      <input placeholder="Сообщение"/>
-      <button>{{{ arrowRound }}}</button>
-    </div>
-  {{/hasContent}}
-  {{^hasContent}}
-    <div class="messages__empty">Выберите чат чтобы отправить сообщение</div>
-  {{/hasContent}}
-</div>
+{{#if chatName}}
+  <div class="messages__header">
+    {{{ backLink }}}
+    {{{ chatAvatar }}}
+    <span class="messages__title">{{ chatName }}</span>
+		{{{ menuButton }}}
+  </div>
+  <div class="messages-list">
+    {{#messages}}
+      {{{.}}}
+    {{/messages}}
+  </div>
+  <div class="messages__footer">
+		{{{ clipButton }}}
+    {{{ messageInput }}}
+    {{{ sendButton }}}
+  </div>
+{{else}}
+  <div class="messages__empty">
+		<img src="icons/chat.svg" alt="chat"/>
+		<span>Выберите чат чтобы отправить сообщение</span>
+	</div>
+{{/if}}
+{{{ userActionsPopup }}}
+{{{ clipActionsPopup }}}
+{{{ addUserModal }}}
+{{{ removeUserModal }}}

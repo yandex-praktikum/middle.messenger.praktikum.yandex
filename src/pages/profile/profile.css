@@ -12,7 +12,7 @@
     align-items: center;
     background: var(--backgound-light-gray);
     border-right: 1px solid var(--border-gray);
-    padding: 20px;
+    padding: 16px;
   }
 
   &-info {
@@ -45,34 +45,6 @@
 
     &__name {
       font-weight: 600;
-    }
-
-    .profile-fieldset {
-      border-bottom: 1px solid var(--gray-color);
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-
-    &-actions {
-      margin-top: 32px;
-    }
-
-    &__link {
-      display: block;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--gray-color);
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-
-    .button {
-      display: block;
-      min-width: 280px;
-      margin: 0 auto;
     }
   }
 

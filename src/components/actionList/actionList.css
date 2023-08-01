@@ -1,0 +1,19 @@
+@import '../../styles/_variables.css';
+
+.action-list {
+	display: flex;
+	flex-direction: column;
+
+	&__item {
+		padding: 16px;
+		cursor: pointer;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid var(--border-gray);
+		}
+
+		&:hover {
+			background: var(--light-blue-color);
+		}
+	}
+}

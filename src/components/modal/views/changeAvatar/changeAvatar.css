@@ -1,0 +1,43 @@
+@import '../../../../styles/_variables.css';
+
+.change-avatar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__title {
+		font-size: 18px;
+	}
+
+	&__file {
+		margin: 45px 0;
+		color: var(--text-gray-color)
+	}
+
+	.input {
+		&::-webkit-file-upload-button {
+			visibility: hidden;
+		}
+
+		&::before {
+			content: 'Выбрать файл на компьютере';
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			color: var(--brand-color);
+			cursor: pointer;
+		}
+
+		&:hover::before {
+			text-decoration: underline;
+		}
+	}
+
+	.button {
+		width: 100%;
+	}
+
+	.error-message {
+		margin-top: 10px;
+	}
+}

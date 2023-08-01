@@ -1,0 +1,12 @@
+{{#fields}}
+	{{{.}}}
+{{/fields}}
+<div class="profile-form__actions">
+	{{#if isMainState}}
+		<a class="profile-form__link" href="/profile?state=edit">Изменить данные</a>
+		<a class="profile-form__link" href="/profile?state=password">Изменить пароль</a>
+		<a class="profile-form__link danger" href="/login">Выйти</a>
+	{{else}}
+		{{{ button }}}
+	{{/if}}
+</div>

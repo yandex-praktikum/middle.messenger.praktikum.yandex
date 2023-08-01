@@ -1,6 +1,8 @@
 import { fileURLToPath, URL } from 'url';
 import path from 'path';
+
 import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
 
 import postcssNested from 'postcss-nested';
 import postcssImport from 'postcss-import';
@@ -21,7 +23,10 @@ export default defineConfig({
     assetsDir: 'src',
     emptyOutDir: true
   },
-  plugins: [handlebars()],
+  plugins: [
+    checker({ typescript: true }),
+    handlebars()
+  ],
   css: {
     postcss: {
       plugins: [
@@ -34,10 +39,11 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@assets', replacement: fileURLToPath(new URL('./src/assets', import.meta.url)) },
       { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) },
       { find: '@layout', replacement: fileURLToPath(new URL('./src/layout', import.meta.url)) },
+      { find: '@models', replacement: fileURLToPath(new URL('./src/models', import.meta.url)) },
       { find: '@pages', replacement: fileURLToPath(new URL('./src/pages', import.meta.url)) },
+			{ find: '@services', replacement: fileURLToPath(new URL('./src/services', import.meta.url)) },
       { find: '@utilities', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) }
     ]
   }

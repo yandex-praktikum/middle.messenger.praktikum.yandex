@@ -63,27 +63,6 @@ a {
   }
 }
 
-input {
-  padding: 0;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-  outline: none;
-}
-
-fieldset {
-  padding: 0;
-  margin: 4px 0;
-  border: 0;
-}
-
 hr {
   border: none;
   height: 1px;

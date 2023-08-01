@@ -1,0 +1,6 @@
+@import '../../styles/_variables.css';
+
+.error-message {
+	font-size: 10px;
+	color: var(--danger-color);
+}

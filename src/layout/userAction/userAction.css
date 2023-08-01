@@ -1,0 +1,15 @@
+.user-action {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	height: 170px;
+
+	&__title {
+		font-size: 16px;
+		margin-bottom: 30px;
+	}
+
+	.form__buttons {
+		margin-top: auto;
+	}
+}

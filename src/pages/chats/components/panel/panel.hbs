@@ -1,19 +1,18 @@
-<div class="panel">
-  <div class="panel__header">
-    {{{ profileLink }}}
-    <div class="panel__search">
-      <img src="icons/search.svg" alt="search">
-      <input placeholder="Поиск" />
-    </div>
+<div class="panel__header">
+  {{{ profileLink }}}
+  <div class="panel__search">
+    <img src="icons/search.svg" alt="search">
+    {{{ searchInput }}}
   </div>
-  <hr class="panel__delimiter"/>
-  <div class="panel-list">
-    {{#chatList}}
-      {{{.}}}
-      <hr class="panel__delimiter"/>
-    {{/chatList}}
-    {{^chatList}}
-      <div class="panel-list__empty">Чаты не найдены</div>
-    {{/chatList}}
-  </div>
+</div>
+<hr class="panel__delimiter"/>
+<div class="panel-list">
+	{{#if chatList}}
+		{{#chatList}}
+			{{{.}}}
+			<hr class="panel__delimiter"/>
+		{{/chatList}}
+  {{else}}
+    <div class="panel-list__empty">Чаты не найдены</div>
+  {{/if}}
 </div>

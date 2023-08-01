@@ -1,33 +1,18 @@
-<div class="profile">
-  <aside class="profile-back">
-    <a href="/chats">{{{ arrowRound }}}</a>
-  </aside>
-  <section class="profile-info">
-    <div class="info">
-      {{^isMainState}}
-        {{{ backLink }}}
-      {{/isMainState}}
-      <div class="info-header">
-        {{{ avatar }}}
-        {{#isMainState}}
-          <h3 class="info__name">Иван</h3>
-        {{/isMainState}}
-      </div>
-      <form class="info-fields">
-        {{#fieldSets}}
-          {{{.}}}
-        {{/fieldSets}}
-        <div class="info-actions">
-          {{#isMainState}}
-            <a class="info__link" href="/profile?state=edit">Изменить данные</a>
-            <a class="info__link" href="/profile?state=password">Изменить пароль</a>
-            <a class="info__link danger" href="/login">Выйти</a>
-          {{/isMainState}}
-          {{^isMainState}}
-            {{{ button }}}
-          {{/isMainState}}
-        </div>
-      </form>
+<aside class="profile-back">
+  {{{ backButton }}}
+</aside>
+<section class="profile-info">
+  <div class="info">
+    {{#unless isMainState}}
+      {{{ backLink }}}
+    {{/unless}}
+    <div class="info-header">
+      {{{ avatar }}}
+      {{#if isMainState}}
+        <h3 class="info__name">Иван</h3>
+      {{/if}}
     </div>
-  </section>
-</div>
+		{{{ form }}}
+  </div>
+</section>
+{{{ changeAvatarModal }}}

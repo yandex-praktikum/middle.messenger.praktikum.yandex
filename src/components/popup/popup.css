@@ -1,0 +1,13 @@
+.popup {
+	position: absolute;
+	box-shadow: 0 0 6px 0 rgba(0 0 0 / 14%);
+	border-radius: 12px;
+	background: #fff;
+	transition: opacity 0.3s;
+	overflow: hidden;
+
+	&_hidden {
+		opacity: 0;
+		transform: scale(0);
+	}
+}

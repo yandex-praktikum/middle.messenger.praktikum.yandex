@@ -3,14 +3,13 @@
     {{ content }}
     <div class="message__status">
       {{{ time }}}
-      {{#hasStatus}}
-        {{#read}}
+      {{#if hasStatus}}
+        {{#if read}}
           <img src="icons/status_read.svg" alt="status"/>
-        {{/read}}
-        {{^read}}
+        {{else}}
           <img src="icons/status_unread.svg" alt="status"/>
-        {{/read}}
-      {{/hasStatus}}
+        {{/if}}
+			{{/if}}
     </div>
   </div>
 </div>
