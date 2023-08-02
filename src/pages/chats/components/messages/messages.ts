@@ -1,15 +1,28 @@
-import { ActionList, AddUser, ArrowLink, Avatar, Button, Input, Modal, Popup, RemoveUser } from '@components';
-import { Block } from '@services';
+import {
+	ActionList,
+	AddUser,
+	ArrowLink,
+	Avatar,
+	Button,
+	ChangeAvatar,
+	Input,
+	Modal,
+	Popup,
+	RemoveUser
+} from '@components';
+import { ConnectBlock } from '@services';
+import { CHATS_PATH } from '@constants';
+import { ChatsController } from '@controllers';
+import { getChatById, isEnterEvent } from '@utilities';
+import { ChatsResponse } from '@models';
 
-import * as MOCK from '../../../../mock.json';
 import { Message } from '../message/message';
-import { Chat, Message as IMessage } from '../../chats.model';
 
 import MessagesTemplate from './messages.hbs';
 import './messages.css';
 
 interface Props {
-  chat?: Chat;
+  chat: ChatsResponse;
 }
 
 interface SuperProps extends Props {
@@ -17,101 +30,104 @@ interface SuperProps extends Props {
   backLink: ArrowLink;
   chatAvatar: Avatar;
 	menuButton: Button;
-	clipButton: Button;
   messageInput: Input;
   sendButton: Button;
-	userActionsPopup: Popup;
-	clipActionsPopup: Popup;
-	addUserModal: Modal;
-	removeUserModal: Modal;
 }
 
-export class Messages extends Block<SuperProps> {
+export class Messages extends ConnectBlock<SuperProps> {
+
+	addUserModal = new Modal({ content: new AddUser() });
+	removeUserModal = new Modal({ content: new RemoveUser() });
+	changeChatAvatarModal = new Modal({
+		content: new ChangeAvatar( { onSaveFile: this.changedChatAvatar.bind(this) })
+	});
+
+	actionsPopup = new Popup({
+		content: new ActionList({
+			items: [
+				new Button({
+					text: 'Добавить пользователей',
+					imgSrc: 'icons/add-user.svg',
+					imgSize: 20,
+					noStyles: true,
+					onClick: () => this.addUserModal.show()
+				}),
+				new Button({
+					text: 'Удалить пользователей',
+					imgSrc: 'icons/remove-user.svg',
+					imgSize: 20,
+					noStyles: true,
+					onClick: () => this.removeUserModal.show()
+				}),
+				new Button({
+					text: 'Удалить чат',
+					danger: true,
+					noStyles: true,
+					onClick: this.deleteChat.bind(this)
+				})
+			]
+		}),
+		align: 'end'
+	});
+
+	get chat(): ChatsResponse {
+		return this.props.chat;
+	}
 
   constructor(props: Props) {
     const superProps: SuperProps = {
       ...props,
-      messages: (props.chat ? (MOCK.messages as Record<string, IMessage[]>)[props.chat.id] : [])
-        .map(message => new Message({ message, profileId: MOCK.profile.id })),
-      backLink: new ArrowLink({ attr: { href: '/chats' }, reversed: true }),
-      chatAvatar: new Avatar({ imgSrc: props.chat?.avatar || '', mode: 'small' }),
+      messages: [].map(message => new Message({ message, profileId: '' })),
+      backLink: new ArrowLink({ attr: { href: CHATS_PATH }, reversed: true }),
+			chatAvatar: new Avatar({
+				imgSrc: props.chat.avatar,
+				mode: 'small',
+				hover: true,
+				onClick: () => this.changeChatAvatarModal.show()
+			}),
 			menuButton: new Button({
 				imgSrc: 'icons/menu.svg',
 				imgSize: 16,
 				noStyles: true,
-				onClick: e => this.props.userActionsPopup.attach(e)
-			}),
-			clipButton: new Button({
-				imgSrc: 'icons/clip.svg',
-				imgSize: 26,
-				noStyles: true,
-				onClick: e => this.props.clipActionsPopup.attach(e)
+				onClick: e => this.actionsPopup.attach(e)
 			}),
       messageInput: new Input({
         attr: {
           name: 'message',
           value: '',
           placeholder: 'Сообщение'
-        }
-      }),
+        },
+				onKeyUp: e => isEnterEvent(e) && this.sendMessage()
+			}),
       sendButton: new Button({
         imgSrc: 'icons/arrow-right.svg',
         rounded: true,
-				onClick: () => this.onSendMessage()
-      }),
-			userActionsPopup: new Popup({
-				content: new ActionList({
-					items: [
-						new Button({
-							text: 'Добавить пользователя',
-							imgSrc: 'icons/add-user.svg',
-							imgSize: 20,
-							noStyles: true,
-							onClick: () => this.props.addUserModal.show()
-						}),
-						new Button({
-							text: 'Удалить пользователя',
-							imgSrc: 'icons/remove-user.svg',
-							imgSize: 20,
-							noStyles: true,
-							onClick: () => this.props.removeUserModal.show()
-						})
-					]
-				}),
-				align: 'end'
-			}),
-			clipActionsPopup: new Popup({
-				content: new ActionList({
-					items: [
-						new Button({
-							text: 'Фото или Видео',
-							imgSrc: 'icons/chat-image.svg',
-							imgSize: 20,
-							noStyles: true
-						}),
-						new Button({
-							text: 'Файл',
-							imgSrc: 'icons/chat-file.svg',
-							imgSize: 20,
-							noStyles: true
-						}),
-						new Button({
-							text: 'Локация',
-							imgSrc: 'icons/chat-location.svg',
-							imgSize: 20,
-							noStyles: true
-						})
-					]
-				}),
-			}),
-			addUserModal: new Modal({ content: new AddUser() }),
-			removeUserModal: new Modal({ content: new RemoveUser() })
+				onClick: () => this.sendMessage()
+      })
     };
 
-    super('div', 'messages', superProps);
+    super('div', 'messages', superProps, getChatById(props.chat.id));
   }
 
-	onSendMessage() {
+	onStoreUpdated(chat: ChatsResponse) {
+		if (!chat) {
+			return;
+		}
+
+		this.setProps({ chat });
+		this.props.chatAvatar.setProps({ imgSrc: chat.avatar });
+	}
+
+	changedChatAvatar(file: File) {
+		const data = new FormData();
+		data.append('chatId', this.chat.id.toString());
+		data.append('avatar', file);
+
+		ChatsController.changeChatAvatar(data)
+			.then(() => this.changeChatAvatarModal.hide());
+	}
+
+	sendMessage() {
 		const message = this.props.messageInput.getValue();
 
 		if (!message) {
@@ -121,7 +137,20 @@ export class Messages extends Block<SuperProps> {
 		console.log('message', message);
 	}
 
-  render(): DocumentFragment {
-    return this.compile(MessagesTemplate, { chatName: this.props.chat?.title });
+	deleteChat() {
+		ChatsController.deleteChat({ chatId: this.chat.id });
+	}
+
+	componentWillUnmount() {
+		[
+			this.addUserModal,
+			this.removeUserModal,
+			this.changeChatAvatarModal,
+			this.actionsPopup
+		].forEach(comp => comp.componentWillUnmount());
+	}
+
+	render(): DocumentFragment {
+    return this.compile(MessagesTemplate, { chatName: this.chat.title });
   }
 }

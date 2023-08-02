@@ -5,6 +5,7 @@
   align-items: center;
   color: var(--text-gray-color);
   gap: 4px;
+	text-decoration: none;
 
   &:hover {
     text-decoration: none;

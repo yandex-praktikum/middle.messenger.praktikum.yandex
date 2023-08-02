@@ -1,5 +1,6 @@
 import { Block } from '@services';
 import { hideAllPopups } from '@utilities';
+import { ROOT_ID } from '@constants';
 
 import './popup.css';
 
@@ -10,12 +11,15 @@ interface Props {
 
 export class Popup extends Block<Props> {
 
-	indent = 12;
+	readonly rootEl = document.getElementById(ROOT_ID)!;
+
+	private _indent = 12;
 
 	constructor(props: Props) {
 		super('div', 'popup', props);
 
 		this.hide();
+		this.rootEl.appendChild(this.element);
 	}
 
 	show() {
@@ -38,7 +42,7 @@ export class Popup extends Block<Props> {
 		const popupRect = this.element.getBoundingClientRect();
 
 		let left = targetElRect.left;
-		let top = targetElRect.bottom + this.indent;
+		let top = targetElRect.bottom + this._indent;
 
 		if (this.props.align === 'end') {
 			left = left - (popupRect.width - targetElRect.width);
@@ -49,11 +53,15 @@ export class Popup extends Block<Props> {
 		}
 
 		if (top + popupRect.height > document.documentElement.clientHeight) {
-			top = targetElRect.top - popupRect.height - this.indent;
+			top = targetElRect.top - popupRect.height - this._indent;
 		}
 
 		this.element.style.top = `${top}px`;
 		this.element.style.left = `${left}px`;
+	}
+
+	componentWillUnmount() {
+		this.rootEl.removeChild(this.element);
 	}
 
 	render(): DocumentFragment {

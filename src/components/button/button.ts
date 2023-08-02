@@ -14,6 +14,7 @@ interface Props {
   imgSrc?: string;
 	imgSize?: number;
   rounded?: boolean;
+	danger?: boolean;
 	noStyles?: boolean;
 
 	onClick?(e: Event): void;
@@ -23,9 +24,10 @@ export class Button extends Block<Props> {
 
   constructor(props: Props) {
     const className = classNames('button', {
-			[props.className as string]: !!props.className,
-      'button_rounded': !!props.rounded,
-      'button_no-styles': !!props.noStyles
+			[props.className as string]: props.className,
+      'button_danger': props.danger,
+      'button_rounded': props.rounded,
+      'button_no-styles': props.noStyles
     });
 
     super('button', className, props);

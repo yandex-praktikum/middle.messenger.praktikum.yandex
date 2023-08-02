@@ -1,0 +1,10 @@
+@import '../../styles/_variables.css';
+
+.link {
+	text-decoration: none;
+	color: var(--brand-color);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

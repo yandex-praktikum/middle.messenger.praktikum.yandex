@@ -1,3 +1,3 @@
+export * from './api';
 export * from './formField';
-export * from './formAccessor';
 export * from './validator';

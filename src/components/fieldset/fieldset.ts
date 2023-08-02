@@ -6,20 +6,22 @@ import { Block } from '@services';
 import FieldsetTemplate from './fieldset.hbs';
 import './fieldset.css';
 
-interface Props<T> extends FormField<T> {
+interface Props extends FormField {
   mode?: 'horizontal';
+
+	onKeyUp?(e: KeyboardEvent): void;
 }
 
-interface SuperProps<T> extends Props<T> {
-  input: Input<T>;
+interface SuperProps extends Props {
+  input: Input;
   validators: ValidatorFn[];
   errors: Error[];
 }
 
-export class Fieldset<T = string> extends Block<SuperProps<T>> {
+export class Fieldset extends Block<SuperProps> {
 
-  constructor(props: Props<T>) {
-    const inputProps: FormField<T> = {
+  constructor(props: Props) {
+    const inputProps: FormField = {
       name: props.name,
       label: props.label,
       type: props.type,
@@ -27,15 +29,17 @@ export class Fieldset<T = string> extends Block<SuperProps<T>> {
 			disabled: props.disabled
     };
 
-    const superProps: SuperProps<T> = {
+    const superProps: SuperProps = {
       ...props,
       validators: props.validators || [],
-      input: new Input<T>({
+      input: new Input({
         attr: { ...inputProps, placeholder: ' ' },
-				onBlur: () => this.forceValidations()
-      }),
-      errors: []
-    };
+				onBlur: () => this.forceValidations(),
+				onKeyUp: e => props.onKeyUp && props.onKeyUp(e)
+			}),
+      errors: [],
+			onKeyUp: () => null
+		};
 
     const className = classNames('fieldset', {
       'fieldset_vertical': props.mode !== 'horizontal',
@@ -48,6 +52,10 @@ export class Fieldset<T = string> extends Block<SuperProps<T>> {
   getValue(): string {
     return this.props.input.getValue();
   }
+
+	setValue(value: string) {
+		return this.props.input.setValue(value);
+	}
 
   forceValidations(): boolean {
     const errors = this.props.validators

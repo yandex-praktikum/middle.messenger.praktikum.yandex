@@ -1,16 +1,17 @@
 import { Avatar } from '@components';
-import { classNames } from '@utilities';
-import { Block } from '@services';
+import { classNames, getAuthUser } from '@utilities';
+import { Block, Router, Store } from '@services';
+import { CHATS_PATH } from '@constants';
+import { ChatsResponse } from '@models';
 
-import * as MOCK from '../../../../mock.json';
 import { Time } from '../time/time';
-import { Chat as IChat } from '../../chats.model';
 
 import ChatTemplate from './chat.hbs';
+
 import './chat.css';
 
 interface Props {
-  chat: IChat & { selected: boolean };
+  chat: ChatsResponse & { selected: boolean };
 }
 
 interface SuperProps extends Props {
@@ -18,20 +19,34 @@ interface SuperProps extends Props {
 		role: 'link'
 	};
   avatar: Avatar;
-  time: Time;
+  time: Time | null;
 
 	onClick(e: Event): void;
 }
 
 export class Chat extends Block<SuperProps> {
 
+	get chat(): ChatsResponse {
+		return this.props.chat;
+	}
+
+	get lastMessage() {
+		return this.chat['last_message'] || {
+			user: null,
+			time: null,
+			content: null
+		};
+	}
+
   constructor(props: Props) {
+		const lastMessage = props.chat['last_message'];
+
     const superProps: SuperProps = {
       ...props,
 			attr: { role: 'link' },
       avatar: new Avatar({ imgSrc: props.chat.avatar }),
-      time: new Time({ date: props.chat['last_message'].time }),
-      onClick: () => window.location.replace(`/chats?viewId=${props.chat.id}`)
+      time: lastMessage ? new Time({ date: lastMessage.time }) : null,
+      onClick: () => Router.go(`${CHATS_PATH}?viewId=${props.chat.id}`)
     };
 
     const className = classNames('chat', { 'selected': props.chat.selected });
@@ -40,16 +55,14 @@ export class Chat extends Block<SuperProps> {
   }
 
   render(): DocumentFragment {
-    const { chat } = this.props;
-    const { user, content } = chat['last_message'];
+    const { user, content } = this.lastMessage;
 
     return this.compile(ChatTemplate, {
-      title: chat.title,
-      login: user.login,
-      isYouLast: user.login === MOCK.profile.login,
+      title: this.chat.title,
+      login: user?.login,
+      isYouLast: user?.login === Store.getState(getAuthUser)?.login,
       message: content,
-      hasUnread: chat['unread_count'] > 0,
-      unread: chat['unread_count']
+      unread: this.chat['unread_count']
     });
   }
 }

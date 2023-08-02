@@ -1,9 +1,8 @@
+<h2 class="form__title">{{ title }}</h2>
 {{#fields}}
   {{{.}}}
 {{/fields}}
 <div class="form__buttons">
   {{{ button }}}
-	{{#if linkHref}}
-		<a href="{{ linkHref }}">{{ linkText }}</a>
-	{{/if}}
+	{{{ link }}}
 </div>

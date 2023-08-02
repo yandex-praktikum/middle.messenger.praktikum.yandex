@@ -1,21 +1,16 @@
 import { isEmpty } from '@utilities';
 
-enum METHOD {
+import { Notifier } from './notifier';
+
+enum Method {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE'
 }
 
-type Options = {
-  method: METHOD;
-  headers?: Record<string, string>;
-  data?: Record<string, any>;
-}
-
-type OptionsWithoutMethod = Omit<Options, 'method'>;
-
-type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHttpRequest>;
+type RequestHeaders = Record<string, string>;
+type RequestData = Record<string, any>;
 
 function queryStringify(data: Record<string, any>) {
   return Object.entries(data).reduce((acc, [key, value], index) => {
@@ -24,50 +19,100 @@ function queryStringify(data: Record<string, any>) {
   }, '?');
 }
 
-export class HTTPTransform {
+export class HTTPTransport {
 
-  get: HTTPMethod = (url, options = {}) => {
-    if (!isEmpty(options.data)) {
-      url += queryStringify(options.data!);
+	private readonly baseUrl: string;
+
+	constructor(url: string) {
+		this.baseUrl = url;
+	}
+
+  get<T>(
+		url: string,
+		headers?: RequestHeaders,
+		data?: RequestData
+	): Promise<T> {
+    if (!isEmpty(data)) {
+      url += queryStringify(data!);
     }
 
-    return this.request(url, { ...options, method: METHOD.GET });
-  };
+    return this.request<T>(url, Method.GET, headers, data);
+  }
 
-  post: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHOD.POST });
-  };
+  post<T>(
+		url: string,
+		headers?: RequestHeaders,
+		data?: RequestData
+	): Promise<T> {
+    return this.request<T>(url, Method.POST, headers, data);
+  }
 
-  put: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHOD.PUT });
-  };
+	put<T>(
+		url: string,
+		headers?: RequestHeaders,
+		data?: RequestData
+	): Promise<T> {
+		return this.request<T>(url, Method.PUT, headers, data);
+	}
 
-  delete: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHOD.DELETE });
-  };
+	delete<T>(
+		url: string,
+		headers?: RequestHeaders,
+		data?: RequestData
+	): Promise<T> {
+		return this.request<T>(url, Method.DELETE, headers, data);
+	}
 
-  private request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
-    const { method, headers = {}, data } = options;
-
+  private request<T>(
+		url: string,
+		method: Method,
+		headers: RequestHeaders = {},
+		data: RequestData = {}
+	): Promise<T> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      xhr.open(method, `${this.baseUrl}${url}`);
 
-      xhr.timeout = 5000;
+      xhr.timeout = 60000;
+			xhr.withCredentials = true;
+			xhr.responseType = 'json';
 
       Object.keys(headers).forEach(key => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = () => resolve(xhr);
+      xhr.onload = () => {
+				const status = xhr.status || 0;
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
+				if (status >=200 && status< 300) {
+					resolve(xhr.response);
+				} else {
+					const message = {
+						'0': 'Abort',
+						'100': 'Information',
+						'200': 'Ok',
+						'300': 'Redirect failed',
+						'400': 'Access error',
+						'500': 'Internal server error'
+					}[Math.floor((status / 100) * 100)];
 
-      if (method === METHOD.GET || isEmpty(data)) {
+					const reason = xhr.response.reason || message;
+					xhr.response.reason !== 'Cookie is not valid' && Notifier.error(reason);
+
+					reject({ status, reason });
+				}
+			};
+
+      xhr.onabort = () => reject({ reason: 'Abort' });
+      xhr.onerror = () => reject({ reason: 'Network error' });
+      xhr.ontimeout = () => reject({ reason: 'Timeout' });
+
+      if (method === Method.GET || isEmpty(data)) {
         xhr.send();
-      } else {
+      } else if (data instanceof FormData) {
+				xhr.send(data);
+			} else {
+				xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));
       }
     });

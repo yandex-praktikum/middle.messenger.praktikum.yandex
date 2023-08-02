@@ -18,11 +18,6 @@
 		box-shadow: 0 0 12px 4px rgba(0 0 0 / 25%);
 	}
 
-  &_rounded {
-    padding: 8px;
-    border-radius: 50%;
-  }
-
 	&_no-styles {
 		padding: 0;
 		background: transparent;
@@ -31,5 +26,14 @@
 		&:hover {
 			box-shadow: none;
 		}
+	}
+
+	&_rounded {
+		padding: 8px;
+		border-radius: 50%;
+	}
+
+	&_danger {
+		color: var(--danger-color);
 	}
 }

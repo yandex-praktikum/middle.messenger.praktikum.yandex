@@ -1,3 +1,4 @@
-export { ChangeAvatar } from './changeAvatar/changeAvatar';
-export { AddUser } from './addUser';
-export { RemoveUser } from './removeUser';
+export * from './addUser/addUser';
+export * from './changeAvatar/changeAvatar';
+export * from './createChat';
+export * from './removeUser/removeUser';

@@ -13,7 +13,6 @@
   width: var(--avatar-width);
   border-radius: 50%;
   background: var(--gray-color);
-  cursor: pointer;
   overflow: hidden;
 
 	&__img {
@@ -50,9 +49,15 @@
       width: var(--placeholder-width);
       height: var(--placeholder-width);
     }
+
+		&.avatar_hover::after {
+			content: 'Изм.';
+		}
   }
 
   &_hover {
+		cursor: pointer;
+
     &::after {
       content: 'Изменить';
       display: flex;

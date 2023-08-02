@@ -1,12 +1,20 @@
 import { Auth } from '@layout';
-import { Fieldset, Form } from '@components';
-import { FormField, FormAccessor } from '@models';
+import { Fieldset, Form, Link } from '@components';
+import { FormField } from '@models';
 import { LOGIN_VALIDATORS, PASSWORD_VALIDATORS } from '@utilities';
+import { Block } from '@services';
+import { AuthController } from '@controllers';
+import { SIGNUP_PATH } from '@constants';
 
 import './login.css';
 
 interface SuperProps {
   content: Auth;
+}
+
+interface LoginFormData {
+	login: string;
+	password: string;
 }
 
 const formFields: FormField[] = [
@@ -25,34 +33,27 @@ const formFields: FormField[] = [
 	}
 ];
 
-export class LoginPage extends FormAccessor<SuperProps, Form> {
+export class LoginPage extends Block<SuperProps> {
 
   constructor() {
-    const form = new Form({
+    const form = new Form<LoginFormData>({
+			title: 'Вход',
       fields: formFields.map(field => new Fieldset(field)),
       buttonText: 'Авторизоваться',
-      linkHref: '/signin',
-      linkText: 'Нет аккаунта?',
-      onSubmit: e => this.onSubmit(e)
+			link: new Link({
+				attr: { href: SIGNUP_PATH },
+				text: 'Нет аккаунта?'
+			}),
+      onSendData: data => this.onSubmit(data)
     });
 
-    const superProps: SuperProps = {
-      content: new Auth({ title: 'Вход', form })
-    };
+    const superProps: SuperProps = { content: new Auth({ form }) };
 
     super('div', 'login', superProps);
-
-    this.form = form;
   }
 
-  onSubmit(e: SubmitEvent) {
-		e.preventDefault();
-
-		if (!super.validateForm()) {
-			return;
-		}
-
-		console.log('login data:', this.formData);
+  onSubmit(formData: LoginFormData) {
+		AuthController.signin(formData);
   }
 
   render(): DocumentFragment {

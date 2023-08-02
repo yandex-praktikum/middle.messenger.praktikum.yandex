@@ -5,7 +5,7 @@
   width: 100%;
   max-width: 420px;
   min-height: 60%;
-  padding: 30px;
+  padding: 50px 30px 30px;
   margin: 20px;
   border-radius: 12px;
   box-shadow: 0 0 6px 0 rgba(0 0 0 / 14%);
@@ -14,4 +14,8 @@
     font-size: 20px;
     margin: 20px 0 40px;
   }
+
+	.form {
+		flex-grow: 1;
+	}
 }

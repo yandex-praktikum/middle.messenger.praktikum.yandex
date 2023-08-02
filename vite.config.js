@@ -39,12 +39,15 @@ export default defineConfig({
   },
   resolve: {
     alias: [
+      { find: '@api', replacement: fileURLToPath(new URL('./src/api', import.meta.url)) },
       { find: '@components', replacement: fileURLToPath(new URL('./src/components', import.meta.url)) },
+      { find: '@controllers', replacement: fileURLToPath(new URL('./src/controllers', import.meta.url)) },
       { find: '@layout', replacement: fileURLToPath(new URL('./src/layout', import.meta.url)) },
       { find: '@models', replacement: fileURLToPath(new URL('./src/models', import.meta.url)) },
       { find: '@pages', replacement: fileURLToPath(new URL('./src/pages', import.meta.url)) },
 			{ find: '@services', replacement: fileURLToPath(new URL('./src/services', import.meta.url)) },
-      { find: '@utilities', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) }
+      { find: '@utilities', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) },
+      { find: '@constants', replacement: fileURLToPath(new URL('./src/constants.ts', import.meta.url)) }
     ]
   }
 });

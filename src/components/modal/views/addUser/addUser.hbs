@@ -1,0 +1,12 @@
+<h2 class="add-user__title">{{ title }}</h2>
+<div class="add-user-search">
+	{{{ searchFieldset }}}
+	{{{ searchButton}}}
+</div>
+<div class="add-user-users">
+	{{#checkboxes}}
+		{{{.}}}
+	{{/checkboxes}}
+</div>
+{{#if noUsersError}}{{{ noUsersError }}}{{/if}}
+{{{ saveButton }}}

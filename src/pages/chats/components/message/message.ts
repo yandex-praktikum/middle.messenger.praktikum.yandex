@@ -2,13 +2,12 @@ import { classNames } from '@utilities';
 import { Block } from '@services';
 
 import { Time } from '../time/time';
-import { Message as IMessage } from '../../chats.model';
 
 import MessageTemplate from './message.hbs';
 import './message.css';
 
 interface Props {
-  message: IMessage;
+  message: any;
   profileId: string;
 }
 

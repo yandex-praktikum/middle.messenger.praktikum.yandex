@@ -2,14 +2,16 @@
 <div class="chat-content">
   <div class="chat-content__right">
     <span class="chat-content__title">{{ title }}</span>
-    <div class="chat-content-message">
-      {{#unless isYouLast}}<span>{{ login }}:</span>{{/unless}}
-      {{ message }}
-    </div>
+		{{#if message}}
+			<div class="chat-content-message">
+				{{#unless isYouLast}}<span>{{ login }}:</span>{{/unless}}
+				{{ message }}
+			</div>
+		{{/if}}
   </div>
   <div class="chat-content__left">
     {{{ time }}}
-    {{#if hasUnread}}
+    {{#if unread}}
       <div class="chat-content__unread">{{ unread }}</div>
     {{/if}}
   </div>

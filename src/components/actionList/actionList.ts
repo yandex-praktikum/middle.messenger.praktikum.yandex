@@ -10,7 +10,7 @@ interface Props {
 export class ActionList extends Block<Props> {
 
 	constructor(props: Props) {
-		super('div', 'actions-list', props);
+		super('div', 'action-list', props);
 	}
 
 	render(): DocumentFragment {

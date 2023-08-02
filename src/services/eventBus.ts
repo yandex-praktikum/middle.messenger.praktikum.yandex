@@ -4,8 +4,6 @@ export class EventBus {
 
   private readonly listeners: Record<string, Array<FnType>> = {};
 
-  constructor() {}
-
   on(event: string, callback: FnType) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
@@ -28,7 +26,9 @@ export class EventBus {
     }
 
     this.listeners[event] = this.listeners[event].filter(
-      listener => listener !== callback
+      listener => {
+				return (listener !== callback) && (listener.toString() !== callback.toString());
+			}
     );
   }
 }

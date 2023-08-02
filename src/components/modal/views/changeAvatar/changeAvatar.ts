@@ -2,8 +2,11 @@ import { Block } from '@services';
 import { Button, Error, Input, InputEvent } from '@components';
 
 import ChangeAvatarTemplate from './changeAvatar.hbs';
-
 import './changeAvatar.css';
+
+interface Props {
+	onSaveFile(file: File): void;
+}
 
 interface SuperProps {
 	title: string;
@@ -15,11 +18,13 @@ interface SuperProps {
 
 export class ChangeAvatar extends Block<SuperProps> {
 
-	get file() {
+	get file(): File | null {
 		return this.props.file;
 	}
 
-	constructor() {
+	onSaveFile: (file: File) => void;
+
+	constructor(props: Props) {
 		const superProps: SuperProps = {
 			title: 'Загрузите файл',
 			input: new Input({
@@ -32,6 +37,8 @@ export class ChangeAvatar extends Block<SuperProps> {
 		};
 
 		super('div', 'change-avatar', superProps);
+
+		this.onSaveFile = props.onSaveFile;
 	}
 
 	onFileSelected(e: InputEvent) {
@@ -49,9 +56,14 @@ export class ChangeAvatar extends Block<SuperProps> {
 			this.setProps({
 				noFileError: new Error( { text: 'Нужно выбрать файл' })
 			});
+			return;
 		}
 
-		//...
+		this.onSaveFile(this.file);
+	}
+
+	show() {
+		this.element.style.display = 'flex';
 	}
 
 	render(): DocumentFragment {

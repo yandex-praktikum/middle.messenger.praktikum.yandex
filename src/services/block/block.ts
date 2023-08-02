@@ -1,6 +1,7 @@
 import { v4 as makeUUID } from 'uuid';
+import { isEqual } from '@utilities';
 
-import { EventBus } from './eventBus';
+import { EventBus } from '../eventBus';
 
 export type BaseProps = Record<string, any>;
 export type ChildrenProps = Record<string, Block | Block[]>;
@@ -10,11 +11,13 @@ function replaceStub({ content }: HTMLTemplateElement, child: Block) {
   stub && stub.replaceWith(child.getContent());
 }
 
-export class Block<T extends BaseProps = NonNullable<unknown>> {
+export abstract class Block<T extends BaseProps = NonNullable<unknown>> {
+
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
+    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render'
   };
 
@@ -44,9 +47,9 @@ export class Block<T extends BaseProps = NonNullable<unknown>> {
 			.map(([prop, value]) => ([prop.replace('on', '').toLowerCase(), value]));
 	}
 
-  constructor(public readonly tagName: string,
-              public readonly classNames: string,
-              propsAndChildren: T | ChildrenProps
+  protected constructor(public readonly tagName: string,
+												public readonly classNames: string,
+												propsAndChildren: T | ChildrenProps
   ) {
 		this._initialState = Object.assign({}, propsAndChildren);
 
@@ -101,6 +104,7 @@ export class Block<T extends BaseProps = NonNullable<unknown>> {
     this._eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    this._eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
     this._eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
@@ -130,7 +134,7 @@ export class Block<T extends BaseProps = NonNullable<unknown>> {
   }
 
   componentDidUpdate(oldProps: T, newProps: T) {
-    return JSON.stringify(oldProps) !== JSON.stringify(newProps);
+    return !isEqual(oldProps, newProps);
   }
 
   private _componentDidUpdate(oldProps: T, newProps: T) {
@@ -140,6 +144,25 @@ export class Block<T extends BaseProps = NonNullable<unknown>> {
 
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
+
+	componentWillUnmount() {
+	}
+
+	dispatchComponentWillUnmount() {
+		this._eventBus.emit(Block.EVENTS.FLOW_CWU);
+	}
+
+	private _componentWillUnmount() {
+		this.componentWillUnmount();
+
+		Object.values(this._children).forEach(child => {
+			if (Array.isArray(child)) {
+				child.forEach(el => el.dispatchComponentWillUnmount());
+			} else {
+				child.dispatchComponentWillUnmount();
+			}
+		});
+	}
 
   setProps(newProps: Partial<T | ChildrenProps>) {
     this._shouldUpdate = false;

@@ -49,23 +49,6 @@
     }
   }
 
-  &__empty {
-    display: flex;
-		flex-direction: column;
-		gap: 16px;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: var(--text-gray-color);
-
-		img {
-			--size: 260px;
-
-			width: var(--size);
-			height: var(--size);
-		}
-  }
-
   @media (max-width: 768px) {
     &__header .arrow-link {
       display: block;

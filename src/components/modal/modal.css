@@ -12,7 +12,7 @@
 	left: 0;
 	background-color: rgba(0 0 0 / 40%);
 	transition: opacity 0.5s;
-	z-index: 10000;
+	z-index: 9999;
 
 	.modal {
 		position: relative;

@@ -1,8 +1,10 @@
 import { Block } from '@services';
+import { ROOT_ID } from '@constants';
 
 import { Button } from '../button/button';
 
 import ModalTemplate from './modal.hbs';
+
 import './modal.css';
 
 interface Props {
@@ -14,6 +16,8 @@ interface SuperProps extends Props {
 }
 
 export class Modal extends Block<SuperProps> {
+
+	readonly rootEl = document.getElementById(ROOT_ID)!;
 
 	constructor(props: Props) {
 		const superProps: SuperProps = {
@@ -30,9 +34,11 @@ export class Modal extends Block<SuperProps> {
 		super('div', 'overlay', superProps);
 
 		this.hide();
+		this.rootEl.appendChild(this.element);
 	}
 
 	show() {
+		this.props.content.show();
 		this.element.style.transform = 'scale(1)';
 		this.element.classList.remove('overlay_hidden');
 	}
@@ -43,7 +49,12 @@ export class Modal extends Block<SuperProps> {
 		setTimeout(() => {
 			this.element.style.transform = 'scale(0)';
 			this.props.content?.resetState();
+			this.props.content.hide();
 		}, 500);
+	}
+
+	componentWillUnmount() {
+		this.rootEl.removeChild(this.element);
 	}
 
 	render(): DocumentFragment {

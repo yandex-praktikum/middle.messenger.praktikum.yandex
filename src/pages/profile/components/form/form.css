@@ -6,22 +6,28 @@
 	}
 
 	&__actions {
+		display: flex;
+		flex-direction: column;
 		margin-top: 32px;
-
-		.button {
-			display: block;
-			min-width: 280px;
-			margin: 60px auto 0;
-		}
 	}
 
-	&__link {
-		display: block;
+	.link {
 		padding: 12px 0;
 		border-bottom: 1px solid var(--gray-color);
 
 		&:last-child {
 			border-bottom: none;
 		}
+	}
+
+	&__save-btn {
+		min-width: 280px;
+		margin: 60px auto 0;
+	}
+
+	&__exit-btn {
+		padding: 12px 0;
+		align-self: flex-start;
+		color: var(--danger-color);
 	}
 }

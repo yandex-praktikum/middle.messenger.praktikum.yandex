@@ -1,0 +1,31 @@
+#notifier {
+	position: fixed;
+	top: 0;
+	height: 0;
+	width: 100%;
+	padding: 7px;
+	z-index: 10000;
+}
+
+.notification {
+	padding: 12px;
+	margin: 12px auto;
+	border-radius: 10px;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	max-width: 400px;
+	width: 100%;
+
+	&_error {
+		background: #e8827b;
+	}
+
+	&_warn {
+		background: #e0cb77;
+	}
+
+	&_success {
+		background: #a9e6b1;
+	}
+}

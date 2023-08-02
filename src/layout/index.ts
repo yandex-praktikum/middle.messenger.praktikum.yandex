@@ -1,3 +1,2 @@
-export { Auth } from './auth/auth';
-export { Page } from './page/page';
-export { UserAction } from './userAction/userAction';
+export * from './auth/auth';
+export * from './page/page';

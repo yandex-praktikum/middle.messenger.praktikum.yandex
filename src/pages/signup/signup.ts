@@ -1,6 +1,6 @@
 import { Auth } from '@layout';
-import { Fieldset, Form } from '@components';
-import { FormField, FormAccessor } from '@models';
+import { Fieldset, Form, Link } from '@components';
+import { FormField } from '@models';
 import {
 	emailValidator,
 	LOGIN_VALIDATORS,
@@ -9,11 +9,23 @@ import {
 	phoneNumberValidator,
 	repeatValidator,
 } from '@utilities';
-
-import './signin.css';
+import { Block } from '@services';
+import { AuthController } from '@controllers';
+import { LOGIN_PATH } from '@constants';
+import './signup.css';
 
 interface SuperProps {
   content: Auth;
+}
+
+interface SigninFormData {
+	first_name: string;
+	second_name: string;
+	login: string;
+	email: string;
+	phone: string;
+	password: string;
+	repeat: string;
 }
 
 const formFields: FormField[] = [
@@ -63,34 +75,27 @@ const formFields: FormField[] = [
 	}
 ];
 
-export class SignInPage extends FormAccessor<SuperProps, Form> {
+export class SignInPage extends Block<SuperProps> {
 
   constructor() {
-    const form = new Form({
+    const form = new Form<SigninFormData>({
+			title: 'Регистрация',
       fields: formFields.map(field => new Fieldset(field)),
       buttonText: 'Зарегистироваться',
-      linkHref: '/login',
-      linkText: 'Войти',
-      onSubmit: e => this.onSubmit(e)
+			link: new Link({
+				attr: { href: LOGIN_PATH },
+				text: 'Войти'
+			}),
+      onSendData: data => this.onSubmit(data)
     });
 
-    const superProps: SuperProps = {
-      content: new Auth({ title: 'Регистрация', form })
-    };
+    const superProps: SuperProps = { content: new Auth({ form }) };
 
     super('div', 'signin', superProps);
-
-    this.form = form;
   }
 
-  onSubmit(e: SubmitEvent) {
-    e.preventDefault();
-
-		if(!super.validateForm()) {
-			return;
-		}
-
-		console.log('signin data:', this.formData);
+  onSubmit(formData: SigninFormData) {
+		AuthController.signup(formData);
   }
 
   render(): DocumentFragment {

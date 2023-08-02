@@ -16,14 +16,18 @@
     "skipLibCheck": true,
 		"sourceMap": true,
 		"strictNullChecks": true,
+		"experimentalDecorators": true,
     "baseUrl": "./src",
     "paths": {
+			"@api": ["api"],
       "@components": ["components"],
+      "@controllers": ["controllers"],
       "@layout": ["layout"],
       "@models": ["models"],
       "@pages": ["pages"],
 			"@services": ["services"],
-      "@utilities": ["utils"]
+      "@utilities": ["utils"],
+      "@constants": ["constants"],
     }
   },
   "include": ["src/**/*"]

@@ -1,27 +1,15 @@
-{{#if chatName}}
-  <div class="messages__header">
-    {{{ backLink }}}
-    {{{ chatAvatar }}}
-    <span class="messages__title">{{ chatName }}</span>
-		{{{ menuButton }}}
-  </div>
-  <div class="messages-list">
-    {{#messages}}
-      {{{.}}}
-    {{/messages}}
-  </div>
-  <div class="messages__footer">
-		{{{ clipButton }}}
-    {{{ messageInput }}}
-    {{{ sendButton }}}
-  </div>
-{{else}}
-  <div class="messages__empty">
-		<img src="icons/chat.svg" alt="chat"/>
-		<span>Выберите чат чтобы отправить сообщение</span>
-	</div>
-{{/if}}
-{{{ userActionsPopup }}}
-{{{ clipActionsPopup }}}
-{{{ addUserModal }}}
-{{{ removeUserModal }}}
+<div class="messages__header">
+	{{{ backLink }}}
+	{{{ chatAvatar }}}
+	<span class="messages__title">{{ chatName }}</span>
+	{{{ menuButton }}}
+</div>
+<div class="messages-list">
+	{{#messages}}
+		{{{.}}}
+	{{/messages}}
+</div>
+<div class="messages__footer">
+	{{{ messageInput }}}
+	{{{ sendButton }}}
+</div>

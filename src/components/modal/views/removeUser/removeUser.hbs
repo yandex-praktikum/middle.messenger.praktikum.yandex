@@ -1,0 +1,12 @@
+{{#if checkboxes}}
+	<h2 class="remove-user__title">{{ title }}</h2>
+	<div class="remove-user-users">
+		{{#checkboxes}}
+			{{{.}}}
+		{{/checkboxes}}
+	</div>
+	{{#if noUsersError}}{{{ noUsersError }}}{{/if}}
+	{{{ deleteButton }}}
+{{else}}
+	Нет доступных для удаления пользователей
+{{/if}}

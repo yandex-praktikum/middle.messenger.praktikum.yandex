@@ -11,30 +11,30 @@
     flex-direction: column;
     align-items: flex-end;
     padding: 20px 12px 14px;
-    gap: 14px;
+    gap: 20px;
   }
 
-  &__search {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 6px;
-    padding: 10px 12px;
-    border-radius: 5px;
-    background: var(--backgroud-gray);
-    width: 100%;
+	&-actions {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		width: 100%;
 
-    img {
-      --size: 20px;
+		.input {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			padding: 10px 12px;
+			border-radius: 5px;
+			background: var(--backgroud-gray);
+			flex-grow: 1;
+			min-width: 0;
+		}
 
-      width: var(--size);
-      height: var(--size);
-    }
-
-    .input {
-      width: 100%;
-    }
-  }
+		.button {
+			padding: 5px;
+		}
+	}
 
   &__delimiter {
     margin: 0 12px;

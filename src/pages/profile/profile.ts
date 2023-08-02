@@ -1,5 +1,7 @@
 import {
 	emailValidator,
+	getAuthUser,
+	getAuthUserAvatar,
 	getQueryParam,
 	LOGIN_VALIDATORS,
 	nameLettersValidator,
@@ -8,9 +10,10 @@ import {
 	repeatValidator
 } from '@utilities';
 import { ArrowLink, Avatar, Button, Fieldset, Modal, ChangeAvatar } from '@components';
-import { FormField, FormAccessor } from '@models';
-
-import * as MOCK from '../../mock.json';
+import { FormField } from '@models';
+import { ConnectBlock, Router, Store } from '@services';
+import { CHATS_PATH, SETTINGS_PATH } from '@constants';
+import { UserController } from '@controllers';
 
 import { ProfileForm } from './components';
 import ProfileTemplate from './profile.hbs';
@@ -23,45 +26,60 @@ interface SuperProps {
   backButton: Button;
 	form: ProfileForm;
   isMainState: boolean;
-	changeAvatarModal: Modal;
 }
+
+interface UserFormData {
+	email: string;
+	login: string;
+	first_name: string;
+	second_name: string;
+	display_name: string;
+	phone: string;
+}
+
+interface PasswordFormData {
+	oldPassword: string;
+	newPassword: string;
+}
+
+type PageState = 'main' | 'edit' | 'password';
 
 const infoFields: FormField[] = [
   {
 		name: 'email',
 		label: 'Почта',
-		value: MOCK.profile.email,
+		value: '',
 		validators: [emailValidator]
 	},
   {
 		name: 'login',
 		label: 'Логин',
-		value: MOCK.profile.login,
+		value: '',
 		validators: LOGIN_VALIDATORS
 	},
   {
 		name: 'first_name',
 		label: 'Имя',
-		value: MOCK.profile.first_name,
+		value: '',
 		validators: [nameLettersValidator]
 	},
   {
 		name: 'second_name',
 		label: 'Фамилия',
-		value: MOCK.profile.second_name,
+		value: '',
 		validators: [nameLettersValidator]
 	},
-  { name: 'display_name', label: 'Имя в чате', value: MOCK.profile.display_name },
+  { name: 'display_name', label: 'Имя в чате', value: '' },
   {
 		name: 'phone',
 		label: 'Телефон',
-		value: MOCK.profile.phone,
+		value: '',
 		validators: [phoneNumberValidator]
 	}
 ];
 
 const passwordFields: FormField[] = [
-  { name: 'oldPassword', label: 'Старый пароль', value: MOCK.profile.password, type: 'password' },
+  { name: 'oldPassword', label: 'Старый пароль', value: '', type: 'password' },
   {
 		name: 'newPassword',
 		label: 'Новый пароль',
@@ -78,39 +96,60 @@ const passwordFields: FormField[] = [
 	}
 ];
 
-export class ProfilePage extends FormAccessor<SuperProps, ProfileForm> {
+function getPageState() {
+	const state = (getQueryParam('state') || 'main') as PageState;
+
+	const fields: FormField[] = [];
+
+	switch (state) {
+		case 'edit':
+			fields.push(...infoFields);
+			break;
+		case 'password':
+			fields.push(...passwordFields);
+			break;
+		default:
+			fields.push(...infoFields.map(field => ({ ...field, disabled: true })));
+	}
+
+	return { state, fields };
+}
+
+export class ProfilePage extends ConnectBlock<SuperProps> {
+
+	changeAvatarModal = new Modal({
+		content: new ChangeAvatar( { onSaveFile: this.changeAvatar.bind(this) })
+	});
+
+	private readonly _pageState: PageState;
+
+	get form(): ProfileForm {
+		return this.props.form;
+	}
 
   constructor() {
-    const state = getQueryParam('state');
-    const isMainState = state !== 'edit' && state !== 'password';
+		const { state, fields } = getPageState();
+		const isMainState = state !== 'edit' && state !== 'password';
 
-    const fields: FormField[] = [];
-
-    switch (state) {
-      case 'edit':
-        fields.push(...infoFields);
-        break;
-      case 'password':
-        fields.push(...passwordFields);
-        break;
-      default:
-        fields.push(...infoFields.map(field => ({ ...field, disabled: true })));
-    }
-
-		const form = new ProfileForm({
+		const form = new ProfileForm<UserFormData | PasswordFormData>({
 			fields: fields.map(field => new Fieldset({ ...field, mode: 'horizontal' })),
 			isMainState,
-			onSubmit: e => this.onSubmit(e)
+			onSendData: data => this.changeProfile(data)
 		});
+
+		form.patchValue(Store.getState(getAuthUser)!);
 
     const superProps: SuperProps = {
       avatar: new Avatar({
 				mode: 'big',
-				hover: true,
-				onClick: () => this.props.changeAvatarModal.show()
+				imgSrc: Store.getState(getAuthUserAvatar),
+				hover: state === 'edit',
+				onClick: () => {
+					state === 'edit' && this.changeAvatarModal.show();
+				}
 			}),
       backLink: new ArrowLink({
-				attr: { href: '/profile' },
+				attr: { href: SETTINGS_PATH },
         label: 'Профиль',
         reversed: true
       }),
@@ -118,32 +157,46 @@ export class ProfilePage extends FormAccessor<SuperProps, ProfileForm> {
 				attr: { role: 'link' },
         imgSrc: 'icons/arrow-left.svg',
         rounded: true,
-        onClick: () => window.location.replace('/chats')
+        onClick: () => Router.go(CHATS_PATH)
       }),
 			form,
-      isMainState,
-			changeAvatarModal: new Modal({ content: new ChangeAvatar() })
+      isMainState
     };
 
-    super('div', 'profile', superProps);
+    super('div', 'profile', superProps, getAuthUserAvatar);
 
-		this.form = form;
+		this._pageState = state;
   }
 
-	onSubmit(e: SubmitEvent) {
-		e.preventDefault();
-
-		if (!super.validateForm()) {
-			return;
-		}
-
-		console.log('profile data:', this.formData);
+	onStoreUpdated(avatar: string) {
+		this.props.avatar.setProps({ imgSrc: avatar });
 	}
 
-  render(): DocumentFragment {
+	changeAvatar(file: File) {
+		const data = new FormData();
+		data.append('avatar', file);
+
+		UserController.updateUserAvatar(data)
+			.then(() => this.changeAvatarModal.hide());
+	}
+
+	changeProfile(formData: UserFormData | PasswordFormData) {
+		if (this._pageState === 'password') {
+			UserController.updateUserPassword(formData as PasswordFormData);
+		} else {
+			UserController.updateUserData(formData as UserFormData);
+		}
+	}
+
+	componentWillUnmount() {
+		this.changeAvatarModal.componentWillUnmount();
+	}
+
+	render(): DocumentFragment {
     return this.compile(ProfileTemplate, {
-			form: this.props.form,
-			isMainState: this.props.isMainState
+			form: this.form,
+			isMainState: this.props.isMainState,
+			name: Store.getState(getAuthUser)?.first_name
 		});
   }
 }
