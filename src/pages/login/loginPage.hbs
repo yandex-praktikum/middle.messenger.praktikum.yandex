@@ -1,0 +1,32 @@
+{{#> layout}}
+  <div class="login-page">
+    {{#getJsonContext '{
+      "title": "Вход",
+        "fields": [
+        {
+          "type": "text",
+          "name": "login",
+          "placeholder": "Введите логин...",
+          "label": "Логин"
+        },
+        {
+          "type": "password",
+          "name": "password",
+          "placeholder": "Введите пароль...",
+          "label": "Пароль"
+        }
+        ],
+        "buttons": [
+        {
+          "type": "submit",
+          "label": "Авторизоваться"
+        }
+        ],
+        "bottom": [
+          "<a href=\"/signup\">Нет аккаунта?</a>"
+        ]
+                      }'}}
+      {{> modal this}}
+    {{/getJsonContext}}
+  </div>
+{{/layout}}

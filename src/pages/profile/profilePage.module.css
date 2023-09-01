@@ -1,0 +1,33 @@
+.profile-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-page_back {
+  min-height: 100vh;
+  height: 100%;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  border-right: 1px solid #eaeaea;
+}
+.profile-page .profile {
+  margin: 0 auto;
+  width: 510px;
+}
+.profile-page .info-list {
+  margin-bottom: 40px;
+}
+.profile-page .actions-list .actions-list__exit {
+  color: #ff0000;
+}
+.profile_username {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 21px;
+  margin-bottom: 60px;
+}

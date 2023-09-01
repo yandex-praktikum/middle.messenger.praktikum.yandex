@@ -1,0 +1,49 @@
+{{#> layout}}
+  <div class="profile-page edit-profile-page">
+    <div class="profile-page_back">
+      {{> button/back to="/profile"}}
+    </div>
+    <div class="profile">
+      {{> userImage}}
+      <div class="profile_username">
+        Иван
+      </div>
+
+      {{#getJsonContext '{
+        "items": [
+            {
+              "title": "Почта",
+              "value": "pochta@yandex.ru"
+            },
+            {
+              "title": "Логин",
+              "value": "ivanivanov"
+            },
+            {
+              "title": "Имя",
+              "value": "Иван"
+            },
+            {
+              "title": "Фамилия",
+              "value": "Иванов"
+            },
+            {
+              "title": "Имя в чате",
+              "value": "Иван"
+            },
+            {
+              "title": "Телефон",
+              "value": "+7 (909) 967 30 30"
+            }
+        ]
+        }'}}
+        {{> infoList this}}
+      {{/getJsonContext}}
+
+      <div class="profile_buttons">
+        {{> button label="Сохранить"}}
+      </div>
+    </div>
+  </div>
+{{/layout}}
+
