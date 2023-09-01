@@ -1,5 +1,6 @@
 import { registerPartials, registerHelpers, getPageByPath } from "./providers";
 import styles from "./styles/index.css";
+import navList from "@/shared/ui/navList/navList.hbs";
 
 function app() {
   registerHelpers();
@@ -24,6 +25,11 @@ function app() {
         .querySelector(".modal-overlay")
         .addEventListener("click", toggleModal);
     } catch (error) {}
+
+    const navContainer = document.createElement("nav");
+    navContainer.classList.add("nav-list");
+    navContainer.innerHTML = navList();
+    document.querySelector("#app main").append(navContainer);
   });
 }
 

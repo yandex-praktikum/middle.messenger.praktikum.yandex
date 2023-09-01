@@ -9,31 +9,32 @@
         Иван
       </div>
 
+      <form>
       {{#getJsonContext '{
         "items": [
             {
               "title": "Почта",
-              "value": "pochta@yandex.ru"
+              "value": "<input type=\"email\" value=\"mail@yandex.ru\" name=\"email\"/>"
             },
             {
               "title": "Логин",
-              "value": "ivanivanov"
+              "value": "<input type=\"text\" value=\"ivanivanov\" name=\"login\"/>"
             },
             {
               "title": "Имя",
-              "value": "Иван"
+              "value": "<input type=\"text\" value=\"Иван\" name=\"first_name\"/>"
             },
             {
               "title": "Фамилия",
-              "value": "Иванов"
+              "value": "<input type=\"text\" value=\"Иванов\" name=\"secondName\"/>"
             },
             {
               "title": "Имя в чате",
-              "value": "Иван"
+              "value": "<input type=\"text\" value=\"ivan\" name=\"display_name\"/>"
             },
             {
               "title": "Телефон",
-              "value": "+7 (909) 967 30 30"
+              "value": "<input type=\"text\" value=\"+7 (909) 967 30 30\" name=\"phone\"/>"
             }
         ]
         }'}}
@@ -43,6 +44,7 @@
       <div class="profile_buttons">
         {{> button label="Сохранить"}}
       </div>
+      </form>
     </div>
   </div>
 {{/layout}}
