@@ -13,32 +13,44 @@
       {{#getJsonContext '{
         "items": [
             {
-              "title": "Почта",
-              "value": "<input type=\"email\" value=\"mail@yandex.ru\" name=\"email\"/>"
+              "label": "Почта",
+              "type": "text",
+              "name": "email",
+              "value": "mail@yandex.ru"
             },
             {
-              "title": "Логин",
-              "value": "<input type=\"text\" value=\"ivanivanov\" name=\"login\"/>"
+              "label": "Логин",
+              "type": "text",
+              "name": "login",
+              "value": "ivanovivan"
             },
             {
-              "title": "Имя",
-              "value": "<input type=\"text\" value=\"Иван\" name=\"first_name\"/>"
+              "label": "Имя",
+              "type": "text",
+              "name": "firts_name",
+              "value": "Иван"
             },
             {
-              "title": "Фамилия",
-              "value": "<input type=\"text\" value=\"Иванов\" name=\"secondName\"/>"
+              "label": "Фамилия",
+              "type": "text",
+              "name": "last_name",
+              "value": "Иванов"
             },
             {
-              "title": "Имя в чате",
-              "value": "<input type=\"text\" value=\"ivan\" name=\"display_name\"/>"
+              "label": "Имя в чате",
+              "type": "text",
+              "name": "display_name",
+              "value": "Ivan"
             },
             {
-              "title": "Телефон",
-              "value": "<input type=\"text\" value=\"+7 (909) 967 30 30\" name=\"phone\"/>"
+              "label": "Телефон",
+              "type": "text",
+              "name": "phone",
+              "value": "+7 (909) 123 45 67"
             }
         ]
         }'}}
-        {{> infoList this}}
+        {{> infoList/edit this}}
       {{/getJsonContext}}
 
       <div class="profile_buttons">

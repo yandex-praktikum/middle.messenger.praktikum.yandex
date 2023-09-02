@@ -9,6 +9,8 @@ import listItem from "@/shared/ui/listItem/listItem.hbs";
 import listItemInfo from "@/shared/ui/listItem/listItem.info.hbs";
 import actionsList from "@/shared/ui/actionsList/actionsList.hbs";
 import buttonBack from "@/shared/ui/button/button.back.hbs";
+import infoListEdit from "@/shared/ui/infoList/infoList.edit.hbs";
+import listItemEdit from "@/shared/ui/listItem/listItem.edit.hbs";
 
 function registerPartials() {
   Handlebars.registerPartial("button", button);
@@ -21,5 +23,7 @@ function registerPartials() {
   Handlebars.registerPartial("listItem", listItem);
   Handlebars.registerPartial("listItem/info", listItemInfo);
   Handlebars.registerPartial("actionsList", actionsList);
+  Handlebars.registerPartial("infoList/edit", infoListEdit);
+  Handlebars.registerPartial("listItem/edit", listItemEdit);
 }
 export { registerPartials };
