@@ -35,7 +35,7 @@ import MembersMenu from '../components/Menu/MembersMenu';
 import FilesMenu from '../components/Menu/FilesMenu';
 import Modal from '../pages/Chats/components/Modal/Modal';
 import MembersModal from '../components/MembersModal/MembersModal';
-import ImageInput from '../components/inputs/ImageInput/ImageInput';
+import ImageInput from '../components/Inputs/ImageInput/ImageInput';
 import Item from '../pages/Profile/components/Item/Item';
 import Body from '../pages/Profile/components/Body/Body';
 import Footer from '../pages/Profile/components/Footer/Footer';
