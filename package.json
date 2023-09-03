@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": "v16.19.1",
-    "npm": "8.19.3"
+    "node": ">=v16.19.1",
+    "npm": ">=8.19.3"
   },
   "scripts": {
     "start": "concurrently \"npm run build\" \"node server.js\"",
