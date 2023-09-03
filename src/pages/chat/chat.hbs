@@ -1,0 +1,30 @@
+<div id="wrapper">
+    <aside>
+
+        {{> InfoBar userName=person.name }}
+        <div class="content">
+            <div class="search-wrapper">
+                {{> Search}}
+            </div>
+            <div class="chats">
+                <div class="chats__indent">
+                    {{#each chats}}
+                        {{> ChatList }}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section>
+        <div class="content">
+            <span>Выберите чат чтобы отправить сообщение</span>
+            <div class="list__pages">
+                {{> Button name="Page404"}}
+                {{> Button name="Page500"}}
+                {{> Button name="LoginPage"}}
+                {{> Button name="ProfilePage"}}
+                {{> Button name="RegistrationPage"}}
+            </div>
+        </div>
+    </section>
+</div>

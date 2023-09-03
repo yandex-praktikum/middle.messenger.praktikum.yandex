@@ -1,0 +1,26 @@
+<div class="profile">
+    <aside>
+
+        {{> InfoBar userName=person.name }}
+        <div class="profile__content">
+            {{> Button name = "back_to_chats" }}
+            {{> Button name = "change_data" }}
+            {{> Button name = "change_password" }}
+            {{> Button name = "exit" }}
+        </div>
+    </aside>
+    <section>
+        <div class="profile__content">
+            {{#> FormAuth name="profile"}}
+                {{> Avatar }}
+                <span>{{ person.name }}</span>
+                {{> Input name="mail" }}
+                {{> Input name="login" }}
+                {{> Input name="name" }}
+                {{> Input name="surname" }}
+                {{> Input name="alias" }}
+                {{> Input name="phone" }}
+            {{/FormAuth}}
+        </div>
+    </section>
+</div>

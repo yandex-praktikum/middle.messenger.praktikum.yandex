@@ -1,0 +1,21 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/mixins
+@import ../../assets/sass/templates
+
+.info-bar
+  box-sizing: border-box
+  @extend %flex-row
+  +flex-alignment(flex-start, center)
+  height: 120px
+  background: $background-color-second
+  padding: 20px
+
+  .user-name
+    font-weight: bold
+    font-size: 18px
+    margin-left: 11px
+    align-self: flex-end
+
+  .button__settings
+    align-self: flex-start
+    margin-left: auto
