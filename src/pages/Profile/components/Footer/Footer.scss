@@ -1,0 +1,20 @@
+@import '../../../../consts.scss';
+
+.footer {
+  @include display-flex(center);
+}
+
+.footer__button {
+  @include display-flex();
+  border: none;
+  border-radius: $small-border-radius;
+  background-color: transparent;
+  cursor: pointer;
+  margin: $main-margin;
+  padding: $main-padding;
+}
+
+.footer_profile.edit {
+  flex-direction: column;
+  width: 100%;
+}

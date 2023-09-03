@@ -1,0 +1,30 @@
+@import '../../consts.scss';
+
+.content {
+  @include display-flex(normal, column, stretch);
+  width: $message-width;
+}
+
+.content__title {
+  @include subtitle-text();
+  @include small-bottom-margin();
+}
+
+.content__title_search {
+  margin: auto $main-margin;
+}
+
+.content__text {
+  @include text();
+  @include main-horizontal-margin();
+  overflow: hidden;
+  height: $item-text-height;
+  line-height: 1.75;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.content__author {
+  font-weight: bolder;
+}

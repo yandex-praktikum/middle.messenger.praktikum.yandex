@@ -1,0 +1,6 @@
+@import '../../../../consts.scss';
+
+.chat-space__dummy {
+  @include text();
+  text-align: center;
+}

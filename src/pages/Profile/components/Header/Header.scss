@@ -1,0 +1,9 @@
+@import '../../../../consts.scss';
+
+.header__title {
+  @include text($dark-text-color, bold);
+  font-size: xxx-large;
+  text-align: center;
+  margin: $main-margin;
+  cursor: default;
+}

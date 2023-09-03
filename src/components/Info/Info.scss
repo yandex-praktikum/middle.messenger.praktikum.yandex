@@ -1,0 +1,30 @@
+@import '../../consts.scss';
+
+.info {
+  @include display-flex(space-between, column, center);
+  width: $item-info-width;
+}
+
+.info__time {
+  margin: $main-margin 0 $small-margin;
+  font-size: small;
+  font-family: $main-font;
+  color: $middle-text-color;
+}
+
+.info__new-messages {
+  @include display-flex();
+  height: $large-icon-size;
+  width: $large-icon-size;
+  border-radius: $circle-border-radius;
+  background-color: $dark-text-color;
+  color: $light;
+  font-family: $main-font;
+  line-height: 1;
+  margin-bottom: $main-margin;
+  font-size: large;
+}
+
+.info__new-messages_search {
+  margin: auto 0;
+}

@@ -1,0 +1,31 @@
+@import '../../../../consts.scss';
+
+.footer_chat {
+  @include display-flex(space-between);
+  padding: $main-padding;
+  position: sticky;
+  bottom: 0;
+  background-color: $light;
+}
+
+.chat-space__file {
+  @include display-flex();
+  justify-self: flex-end;
+  align-self: center;
+  cursor: pointer;
+  margin: 0 $small-margin;
+  position: sticky;
+  bottom: $small-margin;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: transparent;
+}
+
+.chat-space__file:hover {
+  background-color: transparent;
+}
+
+.chat-space__file:hover .icon {
+  transform: none;
+}

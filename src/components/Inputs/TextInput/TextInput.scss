@@ -1,0 +1,33 @@
+@import '../../../consts.scss';
+
+.input {
+  @include text();
+  box-sizing: border-box;
+  border-radius: $small-border-radius;
+  line-height: 1;
+  cursor: text;
+}
+
+.input_chat {
+  padding: $main-padding;
+  background-color: $main-background-color;
+  color: $middle-text-color;
+  border: $border $main-background-color;
+}
+
+.input_message, .input_search {
+  width: 100%;
+}
+
+.input_chat:focus-visible {
+  outline: none;
+  border: $border $middle-text-color;
+}
+
+.input_chat::-webkit-input-placeholder {
+  color: $middle-text-color;
+}
+
+.input_chat:-moz-placeholder {
+  color: $middle-text-color;
+}

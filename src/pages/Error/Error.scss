@@ -1,0 +1,40 @@
+@import '../../consts.scss';
+
+.wrapper_error {
+  @include text();
+  text-align: center;
+  background-color: $light;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+}
+
+.error__code {
+  font-size: 100px;
+  margin: 0;
+  color: $dark-text-color;
+}
+
+.error__message {
+  font-size: 24px;
+  margin: 10px 0;
+  color: $dark-text-color;
+}
+
+.back-button {
+  @include display-flex();
+  background-color: transparent;
+  color: $dark-text-color;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: $small-border-radius;
+  border: none;
+  outline: none;
+}
+
+.back-button:hover {
+  background-color: $main-background-color;
+}

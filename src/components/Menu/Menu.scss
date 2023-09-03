@@ -1,0 +1,37 @@
+@import '../../consts.scss';
+
+.menu {
+  @include display-flex(normal, column, stretch);
+  border-radius: $main-border-radius;
+  position: absolute;
+  z-index: 5000;
+  background-color: $light;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: $main-padding;
+}
+
+.menu__item {
+  @include display-flex(normal, row);
+  padding: $main-padding;
+  cursor: pointer;
+}
+
+.menu__item:hover {
+  background-color: $light-background-color;
+  border-radius: calc($main-border-radius / 2);
+}
+
+.menu__title {
+  @include text($dark-text-color, bold);
+  margin-left: $small-margin;
+}
+
+.menu_members {
+  top: calc(3rem + 2 * $main-padding + $main-padding);
+  right: $main-margin;
+}
+
+.menu_files {
+  bottom: calc(2rem + 2 * $main-padding + $main-padding);
+  left: $main-margin;
+}

@@ -1,0 +1,22 @@
+@import '../../../../consts.scss';
+
+.chat-item {
+  @include display-flex(normal, row, stretch);
+  height: $item-height;
+  cursor: pointer;
+}
+
+.chat-item_active {
+  background-color: $light-shadow-color;
+}
+
+.chat-item__divider {
+  width: 100%;
+  height: $border-height;
+  background-color: $main-background-color;
+  margin: 0 $small-margin;
+}
+
+.chat-item__body {
+  @include display-flex(normal, row, stretch);
+}

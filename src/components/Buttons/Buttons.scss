@@ -1,0 +1,59 @@
+@import '../../consts.scss';
+
+@mixin button($color: $dark-text-color) {
+  @include display-flex();
+  @include text($color);
+  padding: $main-padding;
+  margin: $small-margin $main-margin;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  border-radius: $small-border-radius;
+}
+
+.primary-button {
+  @include button($light);
+  background-color: $middle-background-color;
+}
+
+.link-button {
+  @include button($middle-background-color);
+  background-color: transparent;
+}
+
+.modal-width {
+  width: calc(100% - $main-margin - 2 * $main-padding);
+}
+
+.max-width {
+  width: 100%;
+}
+
+.button_panel {
+  @include button();
+  background-color: transparent;
+  margin: 0;
+  align-self: end;
+}
+
+.button_chats {
+  @include button();
+  background-color: transparent;
+  margin: 0;
+  align-self: end;
+  position: absolute;
+  top: $main-margin;
+  left: $main-margin;
+}
+
+.button__title {
+  margin-left: $small-margin;
+}
+
+.button_icon:hover {
+  background-color: $main-background-color;
+}
+
+.button_icon:hover .icon {
+  transform: scale(1.2);
+}

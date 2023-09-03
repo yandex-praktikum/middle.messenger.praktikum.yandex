@@ -1,0 +1,8 @@
+@import '../../consts.scss';
+
+.error {
+  @include small-vertical-margin();
+  color: #db1515;
+  font-size: small;
+  height: 1rem;
+}

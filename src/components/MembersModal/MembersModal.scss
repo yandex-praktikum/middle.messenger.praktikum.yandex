@@ -1,0 +1,28 @@
+@import '../../consts.scss';
+
+.menu_members-list {
+  overflow-y: scroll;
+  width: calc(25% - $main-margin);
+  top: calc(3rem + 2 * $main-padding + $main-padding);
+  left: $main-margin;
+}
+
+.menu__list {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.user-info {
+  @include display-flex(normal, column, stretch);
+}
+
+.menu__label {
+  color: $dark-text-color;
+  margin-left: $small-margin;
+}
+
+.menu__item_hover {
+  background-color: $light-shadow-color;
+  border-radius: $small-border-radius;
+}

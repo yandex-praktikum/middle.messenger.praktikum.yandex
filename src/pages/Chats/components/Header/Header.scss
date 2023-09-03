@@ -1,0 +1,27 @@
+@import '../../../../consts.scss';
+
+.header_chat {
+  @include display-flex(space-between, row, stretch);
+  padding: $main-padding;
+  position: sticky;
+  top: 0;
+  background-color: $light;
+}
+
+.chat-info__title {
+  @include subtitle-text();
+  align-self: center;
+}
+
+.chat-info {
+  @include display-flex(normal, row, stretch);
+  cursor: pointer;
+}
+
+.chat-info__data {
+  @include display-flex(space-around, column, stretch);
+}
+
+.chat-info__members-count {
+  color: $middle-text-color;
+}

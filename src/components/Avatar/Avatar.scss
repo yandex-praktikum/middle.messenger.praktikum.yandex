@@ -1,0 +1,22 @@
+@import '../../consts.scss';
+
+.avatar {
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: $circle-border-radius;
+  margin: $main-margin 0;
+}
+
+.no-avatar {
+  width: $avatar-size;
+  height: $avatar-size;
+  background-color: $main-background-color;
+  border-radius: $circle-border-radius;
+  margin: $main-margin 0;
+}
+
+.avatar_mini {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 $small-margin;
+}

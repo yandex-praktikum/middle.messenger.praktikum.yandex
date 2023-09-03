@@ -1,0 +1,17 @@
+@import '../../consts.scss';
+
+.profile {
+  @include display-flex(space-evenly, column);
+  height: 80%;
+  width: 30%;
+}
+
+.profile__label {
+  @include text($dark-text-color, bold);
+  cursor: default;
+}
+
+.profile__value {
+  color: $middle-background-color;
+  cursor: default;
+}

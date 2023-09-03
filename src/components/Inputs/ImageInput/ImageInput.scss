@@ -1,0 +1,29 @@
+@import '../../../consts.scss';
+
+.custom-file-upload {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin: 0 $small-margin;
+}
+
+.custom-file-upload input[type='file'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-file-upload label {
+  display: inline-block;
+  padding: $main-padding;
+  background: $dark-text-color;
+  color: $light;
+  border: $border $dark-text-color;
+  border-radius: $small-border-radius;
+  cursor: pointer;
+}
+
+.custom-file-upload label:hover {
+  background: $middle-background-color;
+  border-color: $middle-background-color;
+}

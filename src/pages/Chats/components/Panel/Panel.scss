@@ -1,0 +1,19 @@
+@import '../../../../consts.scss';
+
+.chat-panel {
+  @include display-flex(normal, column, stretch);
+  width: 25rem;
+  height: 100vh;
+  background-color: $light-background-color;
+  padding: $main-padding;
+  border-right: $border $main-background-color;
+}
+
+.chat-panel__header {
+  @include display-flex(space-between);
+  padding: $main-padding;
+  position: sticky;
+  bottom: 0;
+}
+
+

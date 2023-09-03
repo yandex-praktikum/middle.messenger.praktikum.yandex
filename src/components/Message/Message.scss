@@ -1,0 +1,48 @@
+@import '../../consts.scss';
+
+.message {
+  @include display-flex(normal, row, flex-start);
+  margin: $main-margin;
+}
+
+.message_incoming {
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.message_outgoing {
+  justify-content: flex-end;
+}
+
+.message__content {
+  @include display-flex(normal, column, stretch);
+  padding: $main-padding;
+  border-radius: $small-border-radius;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: $middle-text-color;
+}
+
+.message__content.incoming {
+  background-color: $main-background-color;
+}
+
+.message__content.outgoing {
+  background-color: $light-background-color;
+}
+
+.message__author {
+  @include text($middle-text-color, bold);
+}
+
+.message__time {
+  @include text($middle-text-color, bold);
+  align-self: end;
+  font-size: smaller;
+}
+
+.message__image {
+  @include small-vertical-margin();
+  border-radius: $small-border-radius;
+}

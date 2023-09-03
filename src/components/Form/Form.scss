@@ -1,0 +1,48 @@
+@import '../../consts.scss';
+
+.form {
+  @include display-flex(space-between, column, stretch);
+  box-shadow:
+          0.1rem 0.1rem 0.3rem $light-background-color,
+          -0.1rem -0.1rem 0.3rem $light-background-color,
+          -0.1rem 0.1rem 0.3rem $light-background-color,
+          0.1rem -0.1rem 0.3rem $light-background-color,
+  ;
+  border: $border $light-shadow-color;
+  border-radius: $main-border-radius;
+  width: $form-width;
+  background-color: $light;
+  margin: $main-margin;
+  padding: $main-padding;
+}
+
+.form__header {
+  text-align: center;
+  color: $dark-text-color;
+}
+
+.form__title {
+  @include title-text();
+  cursor: default;
+}
+
+.form__body {
+  @include display-flex(center, column);
+}
+
+.form__text {
+  font-family: $main-font;
+  color: $middle-text-color;
+  @include main-horizontal-margin();
+  overflow: hidden;
+}
+
+.form__fields-list {
+  list-style-type: none;
+  padding-inline-start: 0;
+  width: 100%;
+}
+
+.form__footer {
+  width: 100%;
+}

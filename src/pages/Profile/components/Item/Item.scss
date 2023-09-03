@@ -1,0 +1,34 @@
+@import '../../../../consts.scss';
+
+.item {
+  @include text();
+  @include small-vertical-margin();
+}
+
+.item__data {
+  @include display-flex(space-between);
+}
+
+.item__label {
+  @include text($dark-text-color, bold);
+  cursor: default;
+}
+
+.item__value {
+  color: $middle-background-color;
+  cursor: default;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  text-align: end;
+}
+
+.item__value:focus-visible {
+  outline: none;
+}
+
+.item__divider {
+  width: 100%;
+  height: $border-height;
+  background-color: $main-background-color;
+}

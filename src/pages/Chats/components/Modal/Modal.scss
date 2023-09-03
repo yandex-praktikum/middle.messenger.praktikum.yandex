@@ -1,0 +1,21 @@
+@import '../../../../consts.scss';
+
+.wrapper_modal {
+  @include display-flex();
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #00000073;
+}
+
+.modal {
+  @include display-flex(normal, column, stretch);
+  border-radius: $main-border-radius;
+  z-index: 5000;
+  background-color: $light;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: $main-padding;
+  width: 20rem;
+}

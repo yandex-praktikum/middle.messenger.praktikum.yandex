@@ -1,0 +1,75 @@
+// color
+$main-background-color: #d7e3e3;
+$dark-text-color: #3d5a5c;
+$middle-text-color: #588185;
+$middle-background-color: #87acaf;
+$light-background-color: #fdfdfd;
+$light-shadow-color: #e0eaeb;
+$light: #fff;
+
+// font
+$main-font: monospace;
+
+@mixin title-text($color: $dark-text-color) {
+  font-family: $main-font;
+  font-size: x-large;
+  color: $color;
+}
+
+@mixin subtitle-text($color: $dark-text-color) {
+  font-family: $main-font;
+  font-size: large;
+  font-weight: bold;
+  color: $color;
+}
+
+@mixin text($color: $middle-text-color, $weight: normal) {
+  font-family: $main-font;
+  color: $color;
+  font-weight: $weight;
+}
+
+// size
+$form-width: 25rem;
+$avatar-size: 4rem;
+$main-margin: 1rem;
+$main-padding: 0.5rem;
+$large-icon-size: 1.5rem;
+$title-height: 1rem;
+$item-info-width: 3.5rem;
+$border-height: 1px;
+$main-border-radius: 1rem;
+$circle-border-radius: 50%;
+$small-margin: calc($main-margin / 2);
+$small-padding: calc($main-padding / 2);
+$small-border-radius: calc($main-border-radius / 2);
+$item-height: calc($avatar-size + 2 * $main-margin);
+$message-width: calc(100% - $avatar-size - $item-info-width);
+$all-divider-height: calc($border-height + 2 * $small-margin);
+$all-title-height: calc($title-height + $main-margin + $small-margin);
+$item-text-height: calc($item-height - $all-divider-height - $all-title-height);
+
+// border
+$border: $border-height solid;
+
+// position
+@mixin display-flex($justify: center,$direction: row, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin small-bottom-margin() {
+  margin: $main-margin $main-margin $small-margin;
+}
+
+@mixin small-vertical-margin() {
+  margin: $small-margin 0;
+}
+
+@mixin main-horizontal-margin() {
+  margin: 0 $main-margin;
+}
+
+

@@ -1,0 +1,10 @@
+@import '../../consts.scss';
+
+.wrapper {
+  @include display-flex();
+}
+
+.wrapper_max {
+  width: 100vw;
+  height: 100vh;
+}
