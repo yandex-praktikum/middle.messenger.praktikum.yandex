@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  node_version = "14"
+
+[context.production]
+  command = "npm run build"
+  publish = "build"
+  node_version = "14"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
