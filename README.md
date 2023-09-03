@@ -31,5 +31,3 @@ npm run preview
 
 [http://localhost:3000/](http://localhost:3000/) или [https://fancy-kelpie-740e6d.netlify.app](https://fancy-kelpie-740e6d.netlify.app)
 остальные страницы подгружаются на этой же странице при клике по соответствующим кнопкам.
-
-
