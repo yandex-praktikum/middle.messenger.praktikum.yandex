@@ -2,7 +2,7 @@ import './MembersModal.scss';
 
 // language=hbs
 export default `
-    <dev class='menu menu_members-list'>
+    <div class='menu menu_members-list'>
           <ul class='menu__list'>
               <li class='menu__item menu__item_hover'>
                   {{> 'AddIcon' class='icon_blue' }}
@@ -21,5 +21,5 @@ export default `
                   </li>
               {{/each}}
           </ul>
-    </dev>
+    </div>
 `;

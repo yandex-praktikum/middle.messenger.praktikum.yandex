@@ -311,7 +311,7 @@ Expecting `+I.join(", ")+", got '"+(this.terminals_[S]||S)+"'":z="Parse error on
         }}
     </div>
 `;const mi=`
-    <dev class='menu menu_members-list'>
+    <div class='menu menu_members-list'>
           <ul class='menu__list'>
               <li class='menu__item menu__item_hover'>
                   {{> 'AddIcon' class='icon_blue' }}
@@ -330,7 +330,7 @@ Expecting `+I.join(", ")+", got '"+(this.terminals_[S]||S)+"'":z="Parse error on
                   </li>
               {{/each}}
           </ul>
-    </dev>
+    </div>
 `;const gi=`
     <div class='custom-file-upload'>
         <input name='add_file' type='file' accept='image/*' />

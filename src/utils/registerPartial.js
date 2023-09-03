@@ -3,7 +3,6 @@ import Handlebars from 'handlebars';
 import FormInput from '../components/Inputs/FormInput/FormInput';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 import LinkButton from '../components/Buttons/LinkButton';
-
 import ChatItem from '../pages/Chats/components/Item/Item';
 import ChatList from '../pages/Chats/components/List/List';
 import ChatSpace from '../pages/Chats/components/Space/Space';
