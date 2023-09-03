@@ -1,0 +1,58 @@
+extends ../layout/main.pug
+
+block meta
+  - const pageName = 'Registration page';
+
+  title= pageName
+  meta(name='description', content=pageName)
+
+block content 
+
+  +form('Sign up')
+    +form-field()
+      +field-text({
+        title: 'First name:',
+        attrs: {
+          name: 'first_name',
+        }
+      })
+    +form-field()
+      +field-text({
+        title: 'Second name:',
+        attrs: {
+          name: 'second_name',
+        }
+      })
+    +form-field()
+      +field-text({
+        title: 'Email:',
+        attrs: {
+          name: 'email',
+        }
+      })
+    +form-field()
+      +field-text({
+        title: 'Phone:',
+        attrs: {
+          name: 'phone',
+        }
+      })
+    +form-field()
+      +field-text({
+        title: 'Login:',
+        attrs: {
+          name: 'login',
+        }
+      })
+    +form-field()
+      +field-text({
+        title: 'Password:',
+        attrs: {
+          type: 'password',
+          name: 'password',
+        }
+      })
+    +form-field('accent')
+      +btn('Create profile', 'w-100, big')(type="button")
+    +form-field().t-right
+      a.link(href="index.html") Sign in

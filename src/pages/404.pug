@@ -1,0 +1,16 @@
+extends ../layout/main.pug
+
+block meta
+  - const pageName = '404 page';
+  
+  title= pageName
+  meta(name='description', content=pageName)
+
+block content 
+
+  section.error-page 
+    h1.error-page__title 404
+    p.error-page__description who seeks will always find
+    .error-page__bottom 
+      a.error-page__link.link(href="chats-and-chat.html") go to chats page
+

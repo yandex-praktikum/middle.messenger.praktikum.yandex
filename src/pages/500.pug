@@ -1,0 +1,16 @@
+extends ../layout/main.pug
+
+block meta
+  - const pageName = '500 page';
+  
+  title= pageName
+  meta(name='description', content=pageName)
+
+block content 
+
+  section.error-page 
+    h1.error-page__title 500
+    p.error-page__description something went wrong
+    .error-page__bottom 
+      a.error-page__link.link(href="chats-and-chat.html") go to chats page
+

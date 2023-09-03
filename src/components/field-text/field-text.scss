@@ -1,0 +1,28 @@
+.field-text {
+  $block-name: &;
+
+  display: block;
+
+  &__name {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  &__input-wrap {
+  }
+
+  &__input {
+    padding: var(--v-indent) var(--h-indent);
+    width: 100%;
+    border-radius: var(--b-radius);
+    background-color: #d9d9d9;
+
+    &:focus-visible {
+      box-shadow: var(--on-focus);
+    }
+  }
+
+  &__help-text {
+  }
+}
