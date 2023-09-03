@@ -1,5 +1,4 @@
 [Ссылка на прототип](https://www.figma.com/file/zoLY1xVwlhbMUxpHslGQDp/middle.messenger.praktikum.yandex?type=design&t=ruOBLon7eRgVs26J-6)
-[Netlify](https://deploy--jocular-rugelach-1c03ff.netlify.app/)
 
 ## Netlify links
 
