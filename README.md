@@ -5,8 +5,8 @@
 ## Версия: 0.1 (только макет)
 
 ## Дезайн прототипа
-Дезайн для версии 0.1 можно найти по ссылке: 
-[Figma]([https://www.figma.com/file/3fadPRCD38XteX6sDx6hNk/Messenger?type=design&node-id=0%3A1&t=PYURXJQ9XpU48Zk7-1](https://www.figma.com/proto/PCWoIjBK1zEjnN4nkOJDx1/Messenger?page-id=0%3A1&type=design&node-id=1-797&viewport=60%2C176%2C0.19&t=lwHAE0Wwu2VjJ1O9-1&scaling=min-zoom&starting-point-node-id=1%3A797&mode=design)https://www.figma.com/proto/PCWoIjBK1zEjnN4nkOJDx1/Messenger?page-id=0%3A1&type=design&node-id=1-797&viewport=60%2C176%2C0.19&t=lwHAE0Wwu2VjJ1O9-1&scaling=min-zoom&starting-point-node-id=1%3A797&mode=design).
+Дезайн для версии 0.1 можно найти по ссылке:
+Прототип на [Figma](https://www.figma.com/proto/PCWoIjBK1zEjnN4nkOJDx1/Messenger?page-id=0%3A1&type=design&node-id=1-797&viewport=60%2C176%2C0.19&t=lwHAE0Wwu2VjJ1O9-1&scaling=min-zoom&starting-point-node-id=1%3A797&mode=design).
 Прототип на [Netlify](https://fancy-kelpie-740e6d.netlify.app)
 
 ## Установка
