@@ -1,0 +1,29 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/mixins
+@import ../../assets/sass/templates
+
+.chat-list
+  overflow-x: hidden
+  &__header
+    @extend %flex-row
+    +flex-alignment(flex-start, center)
+
+    &__empty
+      flex: 1 auto
+
+    &__content
+      @extend %flex-row
+      +flex-alignment(flex-start, center)
+      flex: 2 auto
+      height: 30px
+      border-radius: 5px 0 0 5px
+      background: $background-color
+
+      .button__arrow
+        margin-left: 20px
+
+      span
+        margin-left: 10px
+
+      .button__add
+        margin-left: 10px

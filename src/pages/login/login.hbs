@@ -1,0 +1,13 @@
+<main class="login__content">
+    {{#> FormAuth name="login"}}
+        <div class="login__content__header">
+            <h2 class="login__content__header__title">Вход</h2>
+            {{> Input name="login" }}
+            {{> Input name="password" }}
+        </div>
+        <div class="login__content__footer">
+            {{> Button name="signIn"}}
+            {{> Button name="signUp"}}
+        </div>
+    {{/FormAuth}}
+</main>

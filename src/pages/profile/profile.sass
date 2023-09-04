@@ -1,0 +1,59 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+html, body
+  @extend %full-screen
+  @extend %no-indents
+  @extend %main-font
+
+#app
+  @extend %full-screen
+  @extend %no-indents
+  overflow: hidden
+  background: $background-color
+  color: $font-color
+
+.profile
+  @extend %all-size
+  @extend %flex-row
+  padding: 20px
+  $root: &
+
+  .sidebar
+    @extend %flex-column
+    flex: 1 auto
+    overflow: hidden
+    border-radius: 25px 0 0 0
+    box-sizing: border-box
+    margin-right: 10px
+    .info-bar
+      padding-right: 110px
+      .button__settings
+        display: none
+
+
+    #{$root}__content
+      box-sizing: border-box
+      @extend %flex-column
+      +flex-alignment(flex-end, stretch)
+      background: $background-color-third
+      flex: 1 auto
+      overflow: hidden
+      margin-top: 10px
+      padding-bottom: 10px
+
+
+  .view
+    display: flex
+    +flex-alignment(center, center)
+    flex: 4 auto
+    overflow: hidden
+    border-radius: 0 25px 0 0
+    background: $background-color-second
+
+    .profile-form
+      @extend %flex-column
+      +flex-alignment(center, center)
+      .status
+        display: none

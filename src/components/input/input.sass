@@ -1,0 +1,79 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.input
+  padding: 10px
+  background: transparent
+
+  .input__container
+    display: flex
+    height: 38px
+    flex-direction: column
+    align-content: flex-end
+
+
+  .input__label
+    color: $font-color-third
+    font-size: 13px
+    font-weight: 500
+    user-select: none
+    margin-bottom: 5px
+
+  .input__element
+    border: none
+    background: transparent
+    font-size: 13px
+    font-weight: 500
+    color: $font-color-second
+    padding: 0
+    padding-bottom: 7px
+    border-bottom: 1px solid $background-color-second
+
+
+  .input__element:focus-visible
+    outline: none
+
+
+  .input__text-error
+    transform: translateY(-7px)
+    color: $font-color
+    font-size: 8px
+    font-weight: 400
+    display: none
+
+  .input__error .input__text-error
+    display: block
+
+  .input__error .input__element
+    color: $font-color
+
+.profile__content
+  .avatar
+    margin-bottom: 20px
+
+  span
+    font-size: 16px
+    font-weight: 700
+    margin-bottom: 40px
+
+  .input
+    border-bottom: 1px #FFF solid
+    &__container
+      flex-direction: row
+      +flex-alignment(space-between, center)
+      width: 510px
+      height: 30px
+
+      .input__label
+        flex: 0 auto
+        color: #FFF
+        font-size: 13px
+        font-weight: 500
+
+      .input__element
+        flex: 1 auto
+        margin-left: 20px
+        color: #FFF
+        text-align: right
+        padding: 0

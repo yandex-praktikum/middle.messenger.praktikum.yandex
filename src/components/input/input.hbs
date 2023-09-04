@@ -1,0 +1,10 @@
+<div class="input  input__{{name}}">
+    {{#with (getInput name) }}
+        <label class="input__container">
+            {{#if label}}
+                <div class="input__label">{{label}}</div>
+            {{/if}}
+            <input class="input__element" {{#if name}}name="{{name}}"{{/if}} {{#if type}}type="{{type}}"{{/if}} {{#if placeholder}}placeholder="{{placeholder}}"{{/if}} {{#if value}}value="{{value}}"{{/if}}/>
+        </label>
+    {{/with}}
+</div>

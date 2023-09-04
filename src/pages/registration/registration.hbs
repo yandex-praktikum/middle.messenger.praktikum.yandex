@@ -1,0 +1,18 @@
+<main class="registration__content">
+    {{#> FormAuth name="registration"}}
+        <div class="registration__content__header">
+            <h2 class="registration__content__header__title">Регистрация</h2>
+            {{> Input name="mail" }}
+            {{> Input name="login" }}
+            {{> Input name="name" }}
+            {{> Input name="surname" }}
+            {{> Input name="phone" }}
+            {{> Input name="password" }}
+            {{> Input name="repeat_password" }}
+        </div>
+        <div class="registration__content__footer">
+            {{> Button name="registration"}}
+            {{> Button name="entrance"}}
+        </div>
+    {{/FormAuth}}
+</main>

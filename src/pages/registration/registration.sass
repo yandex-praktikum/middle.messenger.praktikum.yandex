@@ -1,0 +1,43 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+html, body
+  @extend %full-screen
+  @extend %no-indents
+  @extend %main-font
+
+#app
+  @extend %full-screen
+  @extend %no-indents
+  overflow: hidden
+  background: $background-color
+  color: $font-color
+
+  .registration__content
+    display: flex
+    @extend %full-screen
+    +flex-alignment(center, center)
+
+    &__header
+      @extend %flex-column
+      +flex-alignment(flex-start, center)
+      box-sizing: border-box
+      width: 280px
+
+      &__title
+        color: $font-color-second
+
+      & input
+        width: 280px
+
+      & span
+        color: $font-color-second
+        margin-bottom: 20px
+        font-size: 20px
+        font-weight: 500
+
+    &__footer
+      .button__link
+        padding: 0
+        margin-top: 15px
