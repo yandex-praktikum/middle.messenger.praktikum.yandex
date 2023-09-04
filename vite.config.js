@@ -19,6 +19,8 @@ export default defineConfig({
         registration: resolve(root, 'registration.html'),
         chatsAndChat: resolve(root, 'chats-and-chat.html'),
         userSettings: resolve(root, 'user-settings.html'),
+        userEditingSettings: resolve(root, 'user-editing-settings.html'),
+        userEditingPassword: resolve(root, 'user-editing-password.html'),
         404: resolve(root, '404.html'),
         500: resolve(root, '500.html'),
       },
