@@ -5,12 +5,12 @@
         {{/each}}
     </div>
     <div class="chat-item__content">
-        <span>{{title}}</span>
+        <h4 class="chat-item__content__title">{{title}}</h4>
         <div class="chat-item__content__last-message">
             {{#if lastMessage.personName}}
-                <div class="chat-item__content__last-message-name">
+                <h5 class="chat-item__content__last-message-name">
                     {{ lastMessage.personName }}:
-                </div>
+                </h5>
             {{/if}}
             <div class="chat-item__content__last-message-text">
                 {{ lastMessage.text }}

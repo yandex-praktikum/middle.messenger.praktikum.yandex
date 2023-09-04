@@ -20,7 +20,7 @@ html, body
   padding: 20px
   $root: &
 
-  aside
+  .sidebar
     @extend %flex-column
     flex: 1 auto
     overflow: hidden
@@ -44,7 +44,7 @@ html, body
       padding-bottom: 10px
 
 
-  section
+  .view
     display: flex
     +flex-alignment(center, center)
     flex: 4 auto

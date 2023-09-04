@@ -10,9 +10,15 @@
   background: $background-color-second
   padding: 20px
 
-  .user-name
+  &__title
+    margin: 0
+    @extend %flex-row
+    +flex-alignment(flex-start, flex-end)
+
+  &__username
     font-weight: bold
     font-size: 18px
+    margin: 0
     margin-left: 11px
     align-self: flex-end
 
