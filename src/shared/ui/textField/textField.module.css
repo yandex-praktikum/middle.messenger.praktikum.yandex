@@ -1,0 +1,26 @@
+.text-field {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.text-field input {
+  width: 100%;
+  border: none;
+  background: none;
+  border-radius: 0;
+  border-bottom: 1px solid #3369f3;
+  padding: 4px 0;
+}
+.text-field label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 300ms ease all;
+  color: #999999;
+}
+.text-field input:focus ~ label {
+  top: -20px;
+  font-size: 13px;
+}

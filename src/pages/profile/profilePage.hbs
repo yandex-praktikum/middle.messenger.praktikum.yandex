@@ -1,0 +1,79 @@
+{{#> layout}}
+  <div class="profile-page">
+    <div class="profile-page_back">
+      {{> button/back to="/chat"}}
+    </div>
+    <div class="profile">
+      {{> userImage}}
+      <div class="profile_username">
+        Иван
+      </div>
+
+      {{#getJsonContext '{
+        "items": [
+            {
+              "title": "Почта",
+              "value": "pochta@yandex.ru"
+            },
+            {
+              "title": "Логин",
+              "value": "ivanivanov"
+            },
+            {
+              "title": "Имя",
+              "value": "Иван"
+            },
+            {
+              "title": "Фамилия",
+              "value": "Иванов"
+            },
+            {
+              "title": "Имя в чате",
+              "value": "Иван"
+            },
+            {
+              "title": "Телефон",
+              "value": "+7 (909) 967 30 30"
+            }
+        ]
+        }'}}
+        {{> infoList this}}
+      {{/getJsonContext}}
+
+      {{#getJsonContext '{
+        "items": [
+            {
+              "title": "<a class=\"actions-list__edit\" href=\"/profile-edit\">Изменить данные</a>"
+            },
+            {
+              "title": "<a class=\"actions-list__edit\" href=\"/password-edit\">Изменить пароль</a>"
+            },
+            {
+              "title": "<a class=\"actions-list__exit\" href=\"/signin\">Выйти</a>"
+            }
+        ]
+        }'}}
+        {{> actionsList this}}
+      {{/getJsonContext}}
+
+    </div>
+  </div>
+    {{#getJsonContext '{
+      "title": "Загрузите файл",
+      "isOverlay": true,
+      "fields": [
+        {
+          "type": "file",
+          "name": "avatar"
+        }
+        ],
+      "buttons": [
+        {
+          "type": "submit",
+          "label": "Поменять"
+        }
+        ]
+      }'}}
+      {{> modal this}}
+    {{/getJsonContext}}
+{{/layout}}

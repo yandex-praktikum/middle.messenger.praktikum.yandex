@@ -1,0 +1,10 @@
+.login-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-page .modal {
+  height: 450px;
+}

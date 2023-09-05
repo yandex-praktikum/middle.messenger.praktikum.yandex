@@ -1,0 +1,56 @@
+{{#> layout}}
+  <div class="signup-page">
+    {{#getJsonContext '{
+      "title": "Регистрация",
+        "fields": [
+        {
+          "type": "text",
+          "name": "email",
+          "label": "Почта"
+        },
+        {
+          "type": "text",
+          "name": "login",
+          "label": "Логин"
+        },
+        {
+          "type": "text",
+          "name": "first_name",
+          "label": "Имя"
+        },
+        {
+          "type": "text",
+          "name": "second_name",
+          "label": "Фамилия"
+        },
+        {
+          "type": "text",
+          "name": "phone",
+          "label": "Телефон"
+        },
+        {
+          "type": "password",
+          "name": "password",
+          "label": "Пароль"
+        },
+        {
+          "type": "password",
+          "name": "password",
+          "label": "Пароль (ещё раз)"
+        }
+        ],
+        "buttons": [
+        {
+          "type": "submit",
+          "label": "Зарегистрироваться"
+        }
+        ],
+        "bottom": [
+          "<a href=\"/signin\">Войти</a>"
+        ]
+                      }'}}
+      {{> modal this}}
+    {{/getJsonContext}}
+  </div>
+{{/layout}}
+
