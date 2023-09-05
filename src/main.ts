@@ -25,7 +25,6 @@ const pages = {
 Object.entries(Components).forEach(([name, component]) => {
     Handlebars.registerPartial(name, component);
 });
-
 const navigate = (page: string) => {
     //@ts-ignore
     const [source, context] = pages[page];
