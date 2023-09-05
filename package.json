@@ -17,10 +17,8 @@
     "vite": "^4.4.9",
     "vite-plugin-handlebars": "^1.6.0"
   },
-  "engine": {
     "engines": {
       "node": ">= 14.0.0"
     }
-  }
 }
 
