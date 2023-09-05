@@ -1,6 +1,9 @@
 import './styles/main.css';
+// @ts-ignore
 import Handlebars from 'handlebars';
+// @ts-ignore
 import * as Components from './components';
+// @ts-ignore
 import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
@@ -16,7 +19,8 @@ const pages = {
     "pagePasswordEdit": [Pages.PagePasswordEdit,{user:mockUser}],
     "pageChat": [Pages.PageChat,{chatList:mockListChats,messageList:mockListMessages,currentUser:mockUser}],
     "page500": [Pages.Page500],
-    "page404": [Pages.Page404]
+    "page404": [Pages.Page404],
+    "allPages": [Pages.AllPages]
 };
 Object.entries(Components).forEach(([name, component]) => {
     Handlebars.registerPartial(name, component);
@@ -29,7 +33,7 @@ const navigate = (page: string) => {
     container.innerHTML = Handlebars.compile(source)(context);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('allComponents'));
+document.addEventListener('DOMContentLoaded', () => navigate('allPages'));
 
 document.addEventListener('click', e => {
     //@ts-ignore

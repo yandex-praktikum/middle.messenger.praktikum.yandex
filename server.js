@@ -1,8 +1,9 @@
 // server.js
 const express = require('express');
+const PORT = 3000;
 
 const app = express();
-const PORT = 4000;
+
 
 app.use(express.static(`${__dirname}/dist/`));
 
