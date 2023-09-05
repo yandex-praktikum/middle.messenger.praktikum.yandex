@@ -1,1 +1,2 @@
-export const urlImages='/';
+export const urlImages = '/';
+

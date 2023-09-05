@@ -37,7 +37,8 @@ export const message3: ChatMessage = {
     time: "2020-01-02",
     type: "file",
     content: 'Круто!!!',
-    main:true,
+    main: true,
 }
 
-export const mockListMessages=[message1,message2,message3]
+export const mockListMessages = [message1, message2, message3];
+
