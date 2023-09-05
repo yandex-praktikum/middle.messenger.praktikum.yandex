@@ -1,6 +1,6 @@
 <div class="avatar {{size}}">
     {{#if image}}
-        <img src="{{image}}" alt="image avatar" class="avatar__image "/>
+        {{#imageUrl src=image alt="image avatar" class="avatar__image "}}{{/imageUrl}}
     {{/if}}
     {{#if isLoadAvatar}}
         <div class="avatar__hover">

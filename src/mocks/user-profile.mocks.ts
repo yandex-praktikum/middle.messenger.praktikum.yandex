@@ -8,5 +8,5 @@ export const mockUser:User={
     password: "password123",
     phone: "+7985632369",
     email:"email@gmail.com",
-    avatar: "../../assets/avatars/1.jpeg",
+    avatar: "1.jpeg",
 }

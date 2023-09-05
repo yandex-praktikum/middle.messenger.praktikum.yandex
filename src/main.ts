@@ -5,6 +5,7 @@ import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1,  mockListMessages} from "./mocks/chat-message.mocks";
+import {urlImages} from "./config";
 
 const pages = {
     "allComponents": [Pages.AllComponentsPage,{chat1:chat1,chatList:mockListChats,message:message1,messageList:mockListMessages,currentUser:mockUser}],
@@ -38,4 +39,22 @@ document.addEventListener('click', e => {
         e.preventDefault();
         e.stopImmediatePropagation();
     }
+});
+
+// @ts-ignore
+Handlebars.registerHelper("imageUrl", function( options) {
+    const attrs = Object.keys(options.hash)
+        .map(function(key) {
+            if(key==='src'){
+                const imgUrl = new URL(urlImages+options.hash[key], import.meta.url).href;
+                return key + '="' + imgUrl + '"';}
+            return key + '="' + options.hash[key] + '"';
+        })
+        .join(" ");
+
+    return (
+        "<img " +
+        attrs +
+        ">"  +  "</>"
+    );
 });

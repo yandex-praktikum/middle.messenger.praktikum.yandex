@@ -1,16 +1,17 @@
 import {Chat} from "../models/chat";
 
+
 export const chat1:Chat={
     id: 123,
     title: "my-chat",
-    avatar: "../../assets/avatars/3.jpg",
+    avatar: `3.jpg`,
     unread_count: 15,
     created_by: 12345,
     last_message: {
         user: {
             first_name: "Petya",
             second_name: "Pupkin",
-            avatar: "../../assets/avatars/3.jpg",
+            avatar: `3.jpg`,
             email: "my@email.com",
             login: "userLogin",
             phone: "8(911)-222-33-22",
@@ -23,14 +24,14 @@ export const chat1:Chat={
 export const chat2:Chat={
     id: 124,
     title: "my-chat1",
-    avatar: "../../assets/avatars/1.jpeg",
+    avatar: `1.jpeg`,
     unread_count: 15,
     created_by: 12345,
     last_message: {
         user: {
             first_name: "Lena",
             second_name: "Lukova",
-            avatar: "../../assets/avatars/1.jpeg",
+            avatar: `1.jpg`,
             email: "my@email.com",
             login: "lenaLogin",
             phone: "8(911)-222-33-22",
@@ -43,14 +44,14 @@ export const chat2:Chat={
 export const chat3:Chat={
     id: 125,
     title: "my-chat3",
-    avatar: "../../assets/avatars/1.jpeg",
+    avatar: `2.jpg`,
     unread_count: 0,
     created_by: 12345,
     last_message: {
         user: {
             first_name: "Lena",
             second_name: "Lukova",
-            avatar: "../../assets/avatars/1.jpeg",
+            avatar: `2.jpg`,
             email: "my@email.com",
             login: "lenaLogin",
             phone: "8(911)-222-33-22",

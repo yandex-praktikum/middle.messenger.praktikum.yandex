@@ -1,5 +1,6 @@
 import {ChatMessage} from "../models/chat-message";
 
+
 export const message1: ChatMessage = {
     id: 123,
     user_id: 231,
@@ -10,7 +11,7 @@ export const message1: ChatMessage = {
     file: {
         id: 132,
         user_id: 231,
-        path: "../../assets/avatars/2.jpg",
+        path: `2.jpg`,
         filename: "file name",
         content_type: "image/jpeg",
         content_size: 543672,
