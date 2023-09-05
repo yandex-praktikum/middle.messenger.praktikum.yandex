@@ -8,7 +8,8 @@ import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1,  mockListMessages} from "./mocks/chat-message.mocks";
-export const urlImages='/';
+import {urlImages} from "./config";
+
 
 const pages = {
     "allComponents": [Pages.AllComponentsPage,{chat1:chat1,chatList:mockListChats,message:message1,messageList:mockListMessages,currentUser:mockUser}],
