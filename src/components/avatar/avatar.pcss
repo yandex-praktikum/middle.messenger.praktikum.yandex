@@ -1,6 +1,6 @@
 .avatar {
     border-radius: 100px;
-    border:1px var(--red) solid;
+    border: 1px var(--red) solid;
     cursor: pointer;
     height: 130px;
     width: 130px;
@@ -10,20 +10,21 @@
     background: url("../../assets/icons/image.svg") no-repeat center;
     position: relative;
 
-    &.sm{
+    &.sm {
         height: 50px;
         width: 50px;
     }
 
-    &:hover .avatar__image{
+    &:hover .avatar__image {
         background-color: var(--red);
     }
 
-    &:hover  .avatar__hover{
+    &:hover .avatar__hover {
         background-color: var(--red);
         opacity: 0.8;
     }
-    .avatar__image{
+
+    .avatar__image {
         border-radius: 100%;
         width: 100%;
         height: 100%;
@@ -33,7 +34,7 @@
         display: block;
     }
 
-    .avatar__hover{
+    .avatar__hover {
         transition: .5s ease;
         opacity: 0;
         position: absolute;
@@ -46,14 +47,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        .avatar__hover__text{
+
+        .avatar__hover__text {
             color: white;
             font-size: 16px;
             width: 100px;
             text-align: center;
         }
     }
-    
+
 
 }
 
