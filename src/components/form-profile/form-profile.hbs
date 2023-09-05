@@ -1,6 +1,6 @@
 <div class="profile">
     <div class="profile__avatar">
-        {{> Avatar image=user.image}}
+        {{> Avatar image=user.image isLoadAvatar=true}}
         <h2 class="profile__avatar__name">{{user.firstName}} {{user.lastName}}</h2>
     </div>
     {{#with user}}
