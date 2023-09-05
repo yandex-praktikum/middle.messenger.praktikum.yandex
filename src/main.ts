@@ -10,7 +10,6 @@ import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1,  mockListMessages} from "./mocks/chat-message.mocks";
 import {urlImages} from "./config";
 
-
 const pages = {
     "allComponents": [Pages.AllComponentsPage,{chat1:chat1,chatList:mockListChats,message:message1,messageList:mockListMessages,currentUser:mockUser}],
     "loginPage": [Pages.PageLogin],
