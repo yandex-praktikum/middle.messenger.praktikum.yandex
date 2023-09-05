@@ -23,5 +23,6 @@ ___
  use ```npm run dev``` - for start development <br>
  use ```npm run start``` - for build and start server
 
-### Deploy
+### Demo
 ___
+[Site on Netlify](https://messenger-yandex-el.netlify.app/)
