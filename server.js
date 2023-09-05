@@ -10,3 +10,5 @@ app.use(express.static(`${__dirname}/dist/`));
 app.listen(PORT, function () {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT} ${__dirname}`);
 });
+
+
