@@ -1,0 +1,19 @@
+<div class="message  {{#if myMessage}}message-my{{/if}}">
+    {{#with message}}
+        {{#if file}}
+            <div class="message__file">
+                <img src={{file.path}} alt="included file" />
+                <div class="message__time">
+                    {{>Badge text="01.20" type="primary"}}
+                </div>
+            </div>
+        {{else}}
+            <div class="message__text">
+                <p>{{content}}</p>
+                <div class="message__time">
+                    {{>Badge text="01.20" }}
+                </div>
+            </div>
+        {{/if}}
+    {{/with}}
+</div>
