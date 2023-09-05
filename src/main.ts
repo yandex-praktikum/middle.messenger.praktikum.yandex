@@ -32,9 +32,7 @@ const navigate = (page: string) => {
     const container = document.getElementById('app')!;
     container.innerHTML = Handlebars.compile(source)(context);
 }
-
 document.addEventListener('DOMContentLoaded', () => navigate('allPages'));
-
 document.addEventListener('click', e => {
     //@ts-ignore
     const page = e.target.getAttribute('page');
@@ -44,7 +42,6 @@ document.addEventListener('click', e => {
         e.stopImmediatePropagation();
     }
 });
-
 // @ts-ignore
 Handlebars.registerHelper("imageUrl", function( options) {
     const attrs = Object.keys(options.hash)
