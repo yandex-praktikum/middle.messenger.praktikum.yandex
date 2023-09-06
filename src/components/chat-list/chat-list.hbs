@@ -1,15 +1,15 @@
 <div class="chat-list">
-    <div class="chat-list__header">
+    <nav class="chat-list__header">
         {{>Link caption="Profile" page="pageProfile"  linkIcon=true }}
-    </div>
+    </nav>
     <div class="chat-list__search">
         {{>InputSearch }}
     </div>
-    <div class="chat-list__chats">
+    <ul class="chat-list__chats">
         {{#each list as |chat|}}
             {{>ChatItem chat=chat}}
         {{/each}}
-    </div>
+    </ul>
 </div>
 
 

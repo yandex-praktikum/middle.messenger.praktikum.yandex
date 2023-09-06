@@ -8,20 +8,20 @@
             {{> Button type="dots"}}
         {{/with}}
     </div>
-    <div class="message-list__main">
+    <ul class="message-list__main">
         {{#each messageList as |message|}}
             <div class="message-list__main__message">
                 {{>Message message=message myMessage=message.main}}
             </div>
         {{/each}}
-    </div>
+    </ul>
     <div class="message-list__footer">
         {{> Button type="paperclip"}}
         <input
-            class="message-list__footer__input"
-            placeholder="Message"
-            name="message"
-            type="text"
+                class="message-list__footer__input"
+                placeholder="Message"
+                name="message"
+                type="text"
         />
         {{> Button type="arrow"}}
     </div>
