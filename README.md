@@ -21,3 +21,4 @@
   - Страница чата:  https://leafy-paletas-2c191e.netlify.app/chat
   - Страница ошибки 404:  https://leafy-paletas-2c191e.netlify.app/404
   - Страница ошибки 500:  https://leafy-paletas-2c191e.netlify.app/500
+  
