@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build",
+    "build": "vite build --emptyOutDir",
     "preview": "vite preview",
     "start": "vite build --emptyOutDir && node server.js"
   },
@@ -16,5 +16,8 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "dependencies": {
+    "vite-plugin-handlebars": "^1.6.0"
   }
 }
