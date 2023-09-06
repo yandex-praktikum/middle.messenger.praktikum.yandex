@@ -1,0 +1,30 @@
+<div class="message-list">
+    <div class="message-list__header">
+        {{#with currentUser}}
+            <div class="message-list__header__avatar">
+                {{> Avatar image=avatar size='sm'}}
+                <span>{{nameInChat}}</span>
+            </div>
+            {{> Button type="dots"}}
+        {{/with}}
+    </div>
+    <ul class="message-list__main">
+        {{#each messageList as |message|}}
+            <div class="message-list__main__message">
+                {{>Message message=message myMessage=message.main}}
+            </div>
+        {{/each}}
+    </ul>
+    <div class="message-list__footer">
+        {{> Button type="paperclip"}}
+        <input
+                class="message-list__footer__input"
+                placeholder="Message"
+                name="message"
+                type="text"
+        />
+        {{> Button type="arrow"}}
+    </div>
+</div>
+
+

@@ -1,0 +1,16 @@
+<form class="modal-background">
+    <div class="modal container-shadow ">
+        <h2 class="modal__header">
+            {{caption}}
+        </h2>
+        <div>
+            {{> @partial-block }}
+        </div>
+        <div class="modal__footer">
+            {{> Button caption=ok-text page=ok-page }}
+            {{>Link caption=cancel-text page=cancel-page }}
+        </div>
+    </div>
+</form>
+
+
