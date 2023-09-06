@@ -1,0 +1,17 @@
+@import "../../sass/consts.scss";
+
+.main-error {
+  display: block;
+
+  text-align: center
+}
+
+.link {
+  display: block;
+  padding: 10px 0 0 0;
+
+  font-size: 11px;
+  color: $link-font-color;
+  text-align: center;
+  text-decoration: none;
+}

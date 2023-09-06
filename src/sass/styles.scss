@@ -1,0 +1,62 @@
+@import "./normalize.css";
+@import "https://rsms.me/inter/inter.css";
+@import "consts.scss";
+
+* {box-sizing: border-box;}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+body {
+  font-family: $base-font-family;
+  color: $base-font-color;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+#app {
+  display: flex;
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%  ;
+  top: 0;
+  left: 0;
+
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  overflow: auto;
+}
+
+.wrapper {
+  display: block;
+  position: relative;
+  width: 260px;
+
+  z-index: 2000;
+}
+  
+.popup {
+  padding: 30px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+}
+
+.main-menu {
+  padding: 0;
+  list-style: none;
+}
+
+.main-menu__item {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../sass/consts.scss";
+
+.field {
+  padding-bottom: 20px;
+}
+
+.label {
+  display: block;
+
+  font-size: 9px;
+  color: $popup__label-font-color;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 0 0 5px 0;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  border-style: none none solid none;
+  border-color: $popup__input-border-color;
+
+  outline: none;
+
+  &:focus {
+    border-style: none none solid none;
+    border-color: $popup__input-border-color;
+  }
+}
+
+.error {
+  display: block;
+  margin: 0;
+
+  font-size: 8px;
+  color: $popup__error-font-color;
+}
+
+.error_hidden {
+  display: none;
+}

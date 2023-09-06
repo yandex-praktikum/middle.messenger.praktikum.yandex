@@ -1,0 +1,16 @@
+<div class="chat-message 
+  {{#if right}}
+    chat-message_right
+  {{/if}}
+  {{#if image}}
+    chat-message_image
+  {{/if}}
+">
+  {{#if content}}
+    {{content}}
+  {{/if}}
+  {{#if image}}
+    <img class="chat-message__image" src={{image}}>
+  {{/if}}
+
+</div>

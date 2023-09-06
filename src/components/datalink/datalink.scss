@@ -1,0 +1,18 @@
+@import "../../sass/consts.scss";
+
+.userdata-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  padding: 5px 0;
+
+  border-bottom: 1px solid $navigation-border-color;
+}
+
+.userdata-link {
+  color: $link-font-color;
+  font-weight: bold;
+
+  text-decoration: none;
+}
