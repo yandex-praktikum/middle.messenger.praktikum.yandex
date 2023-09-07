@@ -1,0 +1,12 @@
+<form class="container container-center">
+    {{#> FormAuth caption='Registration' ok-text='sign up' cancel-text='Login' ok-page='pageChat'
+                  cancel-page='loginPage'}}
+        {{>Input label="Email" type="email" name="email" }}
+        {{>Input label="Login" type="text" name="login"}}
+        {{>Input label="First Name" type="text" name="first_name" }}
+        {{>Input label="Second Name" type="text" name="second_name"}}
+        {{>Input label="Phone" type="text" name="phone"}}
+        {{>Input label="Password" type="password" name="password"}}
+        {{>Input label="Password (2nd time)" type="password" name="password2"}}
+    {{/FormAuth}}
+</form>

@@ -1,0 +1,33 @@
+<div class="container container-center">
+    <div class="container-all">
+        {{#> AllComponents}}
+
+            {{> Button caption="sign in"}}
+            {{> Button type="number" caption="330"}}
+            {{> Button type="arrow" page="pageChat"}}
+            {{> Loader}}
+            {{>Link caption="Login" page="loginPage"  linkIcon=true }}
+            {{>Link caption="Profile"  type='success' page="page404" }}
+            {{>Link caption="Edit Profile" page="pageProfileEdit" type='danger' linkLine=true }}
+            {{>Input label="Login" type="text" name="login" }}
+            {{>Input label="Error" type="text" name="error" error=true errorText='Error!!'}}
+            {{> Avatar isLoadAvatar=true}}
+            {{> Avatar image="1.jpeg" isLoadAvatar=true}}
+            {{> Avatar image="2.jpg" isLoadAvatar=true}}
+            {{> Avatar image="3.jpg" isLoadAvatar=true}}
+            {{>InputWide label="Login" type="text" name="login" value='MyLogin' readOnly=false }}
+            {{>InputWide label="Login" type="text" name="login" value='MyLogin' readOnly=true noLine=true }}
+            {{>InputWide label="Error" type="text" name="error" error=true errorText='Error!!' readOnly=false}}
+            {{>ChatItem chat=chat1}}
+            {{>InputSearch }}
+            {{>Badge text="01.20" type="primary"}} {{>Badge text="01.20" }}
+        {{/AllComponents}}
+    </div>
+
+</div>
+<!--
+{{#> Modal caption="Load File" ok-text='Save'}}
+    <div>Ok</div>
+{{/Modal}}-->
+
+

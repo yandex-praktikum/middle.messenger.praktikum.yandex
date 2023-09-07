@@ -1,0 +1,11 @@
+<div class="avatar {{size}}">
+    {{#if image}}
+        {{#imageUrl src=image alt="image avatar" class="avatar__image "}}{{/imageUrl}}
+    {{/if}}
+    {{#if isLoadAvatar}}
+        <div class="avatar__hover">
+            <div class="avatar__hover__text">Load New Avatar</div>
+        </div>
+    {{/if}}
+</div>
+

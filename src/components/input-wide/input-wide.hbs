@@ -1,0 +1,19 @@
+<div class="input-wide">
+    <label class="input-wide__container {{#if noLine}}input-wide__container-noline{{/if}}">
+        <div class="input-wide__label"><span>{{label}}</span></div>
+        {{#if readOnly}}<span class="input-wide__text">{{value}}</span>{{/if}}
+        <input
+                class="input-wide__value {{#if error}}input__value-error{{/if}} {{#if readOnly}}input__value-disabled{{/if}}"
+                placeholder=""
+                name="{{name}}"
+                value="{{value}}"
+                type="{{type}}"
+        />
+    </label>
+    {{#if error}}
+        <div class="input-wide__error">
+            <div class="input-wide__text-error">{{errorText}}</div>
+        </div>
+    {{/if}}
+</div>
+

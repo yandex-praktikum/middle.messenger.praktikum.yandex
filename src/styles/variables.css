@@ -1,0 +1,16 @@
+:root {
+  --white:white;
+  --orange:#FF7A00;
+  --red:#FC4343;
+  --red-light:#fedede;
+  --success:#a043fc;
+  --gray-0:#f3f3f3;
+  --gray-1:#EBEBEB;
+  --gray-light:#9A9A9A;
+  --gray-3:#464646;
+  --gray-dark:#3C3C3C;
+
+  box-sizing: border-box;
+}
+
+

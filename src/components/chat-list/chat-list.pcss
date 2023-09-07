@@ -1,0 +1,25 @@
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-light);
+    height: 100%;
+    padding: 10px;
+
+
+    .chat-list__header {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .chat-list__search {
+        padding: 10px 0;
+        margin-bottom: 10px;
+        border-bottom: 1px solid var(--gray-light);
+    }
+
+    .chat-list__chats {
+        overflow-y: auto;
+        list-style-type: none;
+    }
+}
+

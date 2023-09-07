@@ -1,0 +1,23 @@
+<li class="chat-item">
+    {{#with chat}}
+        <div class="chat-item__avatar">
+            {{> Avatar image=avatar size='sm'}}
+        </div>
+        <div class="chat-item__caption">
+            <div class="chat-item__caption__name">
+                {{title}}
+            </div>
+            <div class="chat-item__caption__time">
+                {{last_message.time}}
+            </div>
+        </div>
+        <div class="chat-item__message">
+            <div class="chat-item__message__content">
+                <p> {{last_message.content}}</p>
+            </div>
+            {{> Button type="number" caption=unread_count}}
+        </div>
+    {{/with}}
+</li>
+
+
