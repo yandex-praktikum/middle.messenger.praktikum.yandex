@@ -1,0 +1,28 @@
+<div class="chat-contact 
+    {{#if current}}
+      chat-contact_current
+    {{/if}}
+    "
+>
+  <div class="chat-contact-user-data">
+    <div class="chat-contact-user-data__avatar">
+
+    </div>
+    <div class="chat-contact-user-data__last-message">
+      <div class="chat-contact-user-name">
+        {{name}}
+      </div>
+      <div class="chat-contact-user-message">
+        {{message}}
+      </div>
+    </div>
+  </div>
+  <div class="chat-contact-message-info">
+    <div class="chat-contact-message-info__time">
+      {{time}}
+    </div>
+    {{#if num}}
+      {{> Num value = num}}
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,36 @@
+@import "../../sass/consts.scss";
+
+.navigation-back {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 64px;
+  
+  border-right: 1px solid $navigation-border-color;
+  background-color: $navigation-background-color;
+
+  background: url(../../assets/back.svg) center center no-repeat;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $navigation-background-color_hover;
+  }
+}
+
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: $main-background-color; 
+}
+
+.title {
+  padding-top: 20px;
+}
+
+.userdata {
+  width: 510px;
+}

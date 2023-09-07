@@ -1,0 +1,13 @@
+@import "../../sass/consts.scss";
+
+.submit {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+
+  color: $submit-font-color;
+
+  border: 0;
+  border-radius: 8px;
+  background-color: $submit-background-color;
+}

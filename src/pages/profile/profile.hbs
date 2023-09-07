@@ -1,0 +1,17 @@
+<div class="navigation-back"></div>
+<main class="profile-main">
+  {{> Avatar}}
+  <h2 class="title">Андрей</h2>
+  {{> Spacer height="50"}}
+  <div class="userdata">
+    {{> Dataline name="email" key="Почта" value="pochta@yandex.ru"}}
+    {{> Dataline name="login" key="Логин" value="asosintsev"}}
+    {{> Dataline name="first_name" key="Имя" value="Андрей"}}
+    {{> Dataline name="second_name" key="Фамилия" value="Осинцев"}}
+    {{> Dataline name="nice_name" key="Имя в чате" value="Андрей"}}
+    {{> Dataline name="phone" key="Телефон" value="+7 (909) 967 30 30"}}
+    {{> Spacer height="60"}}
+    {{> Datalink name="changeData" text="Изменить данные" href=""}}
+    {{> Datalink name="changePassword" text="Изменить пароль" href=""}}
+    {{> Datalink name="logout" text="Выйти" color="red" href=""}}
+</main>
