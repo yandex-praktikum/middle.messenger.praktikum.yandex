@@ -1,9 +1,6 @@
 import './styles/main.css';
-// @ts-ignore
 import Handlebars from 'handlebars';
-// @ts-ignore
 import * as Components from './components';
-// @ts-ignore
 import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
@@ -38,16 +35,16 @@ const navigate = (page: string) => {
     container.innerHTML = Handlebars.compile(source)(context);
 }
 document.addEventListener('DOMContentLoaded', () => navigate('allPages'));
-document.addEventListener('click', e => {
-    //@ts-ignore
-    const page = e.target.getAttribute('page');
+document.addEventListener('click', (e:Event) => {
+    if(!e)return;
+    // @ts-ignore
+    const page = e.target?.getAttribute('page');
     if (page) {
         navigate(page);
         e.preventDefault();
         e.stopImmediatePropagation();
     }
 });
-// @ts-ignore
 Handlebars.registerHelper("imageUrl", function (options) {
     const attrs = Object.keys(options.hash)
         .map(function (key) {

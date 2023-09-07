@@ -4,21 +4,23 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "eslint . &&tsc && vite build",
     "preview": "vite preview",
     "start": "tsc && vite build &&  node ./server.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.5.7",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.48.0",
     "express": "^4.18.2",
     "postcss-preset-env": "^9.1.2",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-handlebars": "^1.6.0"
   },
-    "engines": {
-      "node": ">= 14.0.0"
-    }
+  "engines": {
+    "node": ">= 14.0.0"
+  }
 }
-
