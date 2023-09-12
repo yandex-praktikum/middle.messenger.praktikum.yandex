@@ -2,11 +2,9 @@ type Subscribers = {
   [key: string]: Function[];
 };
 
-type Unregister = () => void;
-
 interface IEventBus {
   dispatch(event: string, arg: any): void;
-  register(event: string, callback: Function): Unregister;
+  register(event: string, callback: Function): void;
   unregister(event: string, callback: Function): void;
 }
 
@@ -26,7 +24,7 @@ export class EventBus implements IEventBus {
     });
   }
 
-  register(event: string, callback: Function): Unregister {
+  register(event: string, callback: Function): void {
     if (this.subscribers[event] === undefined) {
       this.subscribers[event] = [];
     }
