@@ -1,2 +1,2 @@
 export * from "./eventBus";
-export * from "./block";
+export * from "./component";
