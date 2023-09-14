@@ -1,1 +1,1 @@
-export { Block } from "./component";
+export { Component } from "./component";

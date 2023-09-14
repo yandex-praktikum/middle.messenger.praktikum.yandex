@@ -71,15 +71,15 @@ export class Component {
     this.eventBus().register(Component.EVENTS.INIT, this._init.bind(this));
     this.eventBus().register(
       Component.EVENTS.FLOW_COMPONENT_DID_MOUNT,
-      this._componentDidMount.bind(this)
+      this._componentDidMount.bind(this),
     );
     this.eventBus().register(
       Component.EVENTS.FLOW_COMPONENT_DID_UPDATE,
-      this._componentDidUpdate.bind(this)
+      this._componentDidUpdate.bind(this),
     );
     this.eventBus().register(
       Component.EVENTS.FLOW_COMPONENT_RENDER,
-      this._render.bind(this)
+      this._render.bind(this),
     );
   }
 
@@ -96,6 +96,14 @@ export class Component {
 
   protected componentDidMount(): void {}
 
+  public dispatchComponentDidMount() {
+    this.eventBus().dispatch(Component.EVENTS.FLOW_COMPONENT_DID_MOUNT);
+
+    Object.values(this.children).forEach((child) =>
+      child.dispatchComponentDidMount(),
+    );
+  }
+
   private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().dispatch(Component.EVENTS.FLOW_COMPONENT_RENDER);
@@ -103,8 +111,8 @@ export class Component {
   }
 
   protected componentDidUpdate(
-    _oldProps: unknown,
-    _newProps: unknown
+    oldProps?: unknown,
+    newProps?: unknown,
   ): boolean {
     return true;
   }
@@ -113,7 +121,7 @@ export class Component {
     Object.assign(this.props, props);
   }
 
-  get elemnt() {
+  get element() {
     return this._element;
   }
 
@@ -131,7 +139,7 @@ export class Component {
     this._addEvents();
   }
 
-  private compile(template: string, context: any) {
+  private compile(template: string, context: object) {
     const contextAndStubs = { ...context, __refs: this.refs };
 
     const html = Handlebars.compile(template)(contextAndStubs);
@@ -147,17 +155,16 @@ export class Component {
     return templateElement.content;
   }
 
-  private _createResources(): void {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
-
-  private _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
-  }
-
   protected render(): string {
     return "";
+  }
+
+  public getContent(): HTMLElement {
+    return this.element;
+  }
+
+  private createDocumentElement(tagName: string): HTMLElement {
+    return document.createElement(tagName);
   }
 
   private makePropsProxy(props: any): ProxyHandler<any> {
@@ -178,7 +185,7 @@ export class Component {
           .dispatch(
             Component.EVENTS.FLOW_COMPONENT_DID_UPDATE,
             oldTarget,
-            target
+            target,
           );
         return true;
       },
