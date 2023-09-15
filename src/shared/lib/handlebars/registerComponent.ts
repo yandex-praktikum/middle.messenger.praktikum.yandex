@@ -17,7 +17,11 @@ function registerComponent(name: string, _Component: typeof Component) {
         (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
       }
 
-      (data.root.__children = data.root.__children || []).push({
+      if (data.root.__children === undefined) {
+        data.root.__children = [];
+      }
+
+      data.root.__children.push({
         component,
         embed(fragment: DocumentFragment) {
           const stub = fragment.querySelector(`[${dataAttribute}]`);

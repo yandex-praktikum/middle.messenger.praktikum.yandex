@@ -11,6 +11,13 @@ class Button extends Component {
 
   protected render(): string {
     const { label } = this.props;
-    return;
+    return `
+      <button>
+123
+        ${label}
+      </button>
+    `;
   }
 }
+
+export { Button };

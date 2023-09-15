@@ -20,7 +20,7 @@ export class Component {
   private _element: HTMLElement | null = null;
   private _meta: Meta;
   private eventBus: () => EventBus;
-  protected props: unknown;
+  protected props: any;
   protected children: Children;
   public id = uuidv4();
 
@@ -136,7 +136,7 @@ export class Component {
 
     this._element = newElement;
 
-    this._addEvents();
+    this.addEvents();
   }
 
   private compile(template: string, context: object) {
