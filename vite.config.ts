@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import { defineConfig } from "vite"
+import { defineConfig } from "vite"; // eslint-disable-line
 
-import vitePugPlugin from 'vite-plugin-pug-transformer'
+import vitePugPlugin from 'vite-plugin-pug-transformer';
 
 const locals = { bundler: 'Vite' };
 const root = resolve(__dirname, 'src');
@@ -24,7 +24,7 @@ export default defineConfig({
         404: resolve(root, '404.html'),
         500: resolve(root, '500.html'),
       },
-    }
+    },
   },
   publicDir: resolve(__dirname, 'static'),
-})
+});
