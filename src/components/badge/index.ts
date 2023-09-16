@@ -1,4 +1,4 @@
 import './badge.pcss';
 
-export {default as Badge} from './badge.hbs?raw';
+export {Badge as default} from './badge';
 

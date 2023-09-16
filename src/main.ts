@@ -5,7 +5,6 @@ import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1, mockListMessages} from "./mocks/chat-message.mocks";
-import {urlImages} from "./config";
 import {registerComponent} from "./utils/registerComponents";
 import {AllComponentsPage} from "./pages";
 
@@ -32,8 +31,14 @@ Object.entries(Components).forEach(([name, component]) => {
 
 });
 registerComponent('Button', Components.Button);
+registerComponent('Badge', Components.Badge);
+registerComponent('Avatar', Components.Avatar);
+registerComponent('ChatItem', Components.ChatItem);
+registerComponent('ChatList', Components.ChatList);
+registerComponent('Error', Components.Error);
 registerComponent('FormAuth', Components.FormAuth);
 registerComponent('LoginPage', Pages.LoginPage);
+registerComponent('Link', Components.Link);
 const navigate = (page: string) => {
     const app = document.getElementById('app');
 
@@ -60,7 +65,7 @@ document.addEventListener('click', (e:Event) => {
         e.stopImmediatePropagation();
     }
 });
-Handlebars.registerHelper("imageUrl", function (options) {
+/*Handlebars.registerHelper("imageUrl", function (options) {
     const attrs = Object.keys(options.hash)
         .map(function (key) {
             if (key === 'src') {
@@ -76,7 +81,7 @@ Handlebars.registerHelper("imageUrl", function (options) {
         attrs +
         ">" + "</>"
     );
-});
+});*/
 
 
 

@@ -1,7 +1,7 @@
-import {Chat} from "../models/chat";
+import {IChat} from "../models/IChat.ts";
 
 
-export const chat1: Chat = {
+export const chat1: IChat = {
     id: 123,
     title: "my-chat",
     avatar: `3.jpg`,
@@ -21,7 +21,7 @@ export const chat1: Chat = {
     }
 }
 
-export const chat2: Chat = {
+export const chat2: IChat = {
     id: 124,
     title: "my-chat1",
     avatar: `1.jpeg`,
@@ -41,7 +41,7 @@ export const chat2: Chat = {
     }
 }
 
-export const chat3: Chat = {
+export const chat3: IChat = {
     id: 125,
     title: "my-chat3",
     avatar: `2.jpg`,

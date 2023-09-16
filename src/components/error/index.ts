@@ -1,4 +1,4 @@
 import './error.pcss';
-export { default as Error } from './error.hbs?raw';
+export { Error as  default } from './error';
 
 

@@ -1,4 +1,4 @@
 import './chat-list.pcss';
-export { default as ChatList } from './chat-list.hbs?raw';
+export { ChatList as default } from './chat-list';
 
 
