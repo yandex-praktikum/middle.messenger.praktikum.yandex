@@ -6,6 +6,8 @@ import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1, mockListMessages} from "./mocks/chat-message.mocks";
 import {urlImages} from "./config";
+import {registerComponent} from "./utils/registerComponents";
+import {AllComponentsPage} from "./pages";
 
 const pages = {
     "allComponents": [Pages.AllComponentsPage, {
@@ -15,7 +17,7 @@ const pages = {
         messageList: mockListMessages,
         currentUser: mockUser
     }],
-    "loginPage": [Pages.PageLogin],
+    "loginPage": [Pages.LoginPage],
     "pageRegistration": [Pages.PageRegistration],
     "pageProfile": [Pages.PageProfile, {user: mockUser}],
     "pageProfileEdit": [Pages.PageProfileEdit, {user: mockUser}],
@@ -26,15 +28,28 @@ const pages = {
     "allPages": [Pages.AllPages]
 };
 Object.entries(Components).forEach(([name, component]) => {
-    Handlebars.registerPartial(name, component);
+    if(typeof component==='string')Handlebars.registerPartial(name, component);
+
 });
+registerComponent('Button', Components.Button);
+registerComponent('FormAuth', Components.FormAuth);
+registerComponent('LoginPage', Pages.LoginPage);
 const navigate = (page: string) => {
+    const app = document.getElementById('app');
+
+    if(page !== 'allComponents') {
+        const container = document.getElementById('app')!;
+        // @ts-ignore
+        container.innerHTML = Handlebars.compile(pages[page])({});
+        return;
+    }
+
     //@ts-ignore
-    const [source, context] = pages[page];
-    const container = document.getElementById('app')!;
-    container.innerHTML = Handlebars.compile(source)(context);
+    const Component = pages[page]
+    const component = new AllComponentsPage();
+    app?.append(component.getContent()!);
 }
-document.addEventListener('DOMContentLoaded', () => navigate('allPages'));
+document.addEventListener('DOMContentLoaded', () => navigate('allComponents'));
 document.addEventListener('click', (e:Event) => {
     if(!e)return;
     // @ts-ignore
@@ -62,4 +77,6 @@ Handlebars.registerHelper("imageUrl", function (options) {
         ">" + "</>"
     );
 });
+
+
 

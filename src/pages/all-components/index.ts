@@ -1,4 +1,4 @@
 import './all-components.css';
 
-export {default as AllComponentsPage} from './all-components.hbs?raw';
+export {AllComponents as default} from './all-components.ts';
 

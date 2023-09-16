@@ -1,10 +1,10 @@
-export { Button } from './button';
+export { default as Button } from './button'
 export { Input } from './input';
 export { Link } from './link';
 export { Loader } from './loader';
 export { Avatar } from './avatar';
 export { InputWide } from './input-wide';
-export { FormAuth } from './form-auth';
+export { default as FormAuth } from './form-auth';
 export { FormProfile } from './form-profile';
 export { Modal } from './modal';
 export { ChatItem } from './chat-item';
