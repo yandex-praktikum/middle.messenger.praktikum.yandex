@@ -1,7 +1,7 @@
-import {ChatMessage} from "../models/chat-message";
+import {IChatMessage} from "../models/IChatMessage.ts";
 
 
-export const message1: ChatMessage = {
+export const message1: IChatMessage = {
     id: 123,
     user_id: 231,
     chat_id: 312,
@@ -19,7 +19,7 @@ export const message1: ChatMessage = {
     }
 }
 
-export const message2: ChatMessage = {
+export const message2: IChatMessage = {
     id: 123,
     user_id: 231,
     chat_id: 312,
@@ -30,7 +30,7 @@ export const message2: ChatMessage = {
         'Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.',
 }
 
-export const message3: ChatMessage = {
+export const message3: IChatMessage = {
     id: 123,
     user_id: 231,
     chat_id: 312,

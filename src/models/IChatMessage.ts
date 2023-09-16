@@ -1,12 +1,12 @@
-import {File} from "./file";
+import {IFile} from "./IFile.ts";
 
-export interface ChatMessage {
+export interface IChatMessage {
     id: number;
     user_id: number;
     chat_id: number;
     time: string;
     type: string;
     content: number | string;
-    file?: File;
+    file?: IFile;
     main?: boolean;
 }

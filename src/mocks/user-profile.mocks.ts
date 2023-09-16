@@ -1,6 +1,6 @@
-import {User} from "../models/user";
+import {IUser} from "../models/IUser.ts";
 
-export const mockUser: User = {
+export const mockUser: IUser = {
     first_name: "Elena",
     second_name: "Family",
     login: "loginElena",

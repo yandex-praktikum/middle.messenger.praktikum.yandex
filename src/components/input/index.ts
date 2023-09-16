@@ -1,4 +1,4 @@
 import './input.pcss';
-export { default as Input } from './input.hbs?raw';
+export {  Input as default } from './input';
 
 

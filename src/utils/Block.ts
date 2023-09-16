@@ -16,7 +16,7 @@ class Block {
     protected _meta: { props: any; }|null=null;
     private _eventBus: () => EventBus;
     private children: Record<string, Block>;
-    private refs: any;
+    protected refs: any;
 
     constructor( propsWithChildren:any = {}) {
         const eventBus = new EventBus();

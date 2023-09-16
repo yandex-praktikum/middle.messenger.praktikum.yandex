@@ -1,4 +1,4 @@
-export interface File {
+export interface IFile {
     id: number;
     user_id: number;
     path: string;

@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {IUser} from "./IUser.ts";
 
 export interface IChat {
     id: number;
@@ -10,7 +10,7 @@ export interface IChat {
 }
 
 export interface ILastMessage {
-    user: User;
+    user: IUser;
     time: string;
     content: string;
 }

@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
     login?: string;
     password?: string;
     nameInChat?: string;
