@@ -1,4 +1,4 @@
 import './input-search.pcss';
-export { default as InputSearch } from './input-search.hbs?raw';
+export { InputSearch as default } from './input-search';
 
 

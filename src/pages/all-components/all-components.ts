@@ -64,8 +64,9 @@ export class AllComponents extends Block {
                  {{{Link caption="Edit Profile" page="pageProfileEdit" type='danger' linkLine=true }}}
                   {{{Error errorNumber='400' pageGoBack='' errorText='errorText'}}}
                   
-                {{{ Input label="Login" type="text" name="login" validate=validate.login ref="login" }}}
-            {{{ Input label="Error" type="text" name="error" error=true errorText='Error!!' validate=validate.login  ref="password"}}}
+            {{{ InputShort label="Login" type="text" name="login" validate=validate.login ref="login" }}}
+            {{{ InputSearch label="Search" type="text" name="login" ref="search" }}}
+            
             
                {{{ Message message=message}}}
                {{{ Message message=message myMessage=true}}}

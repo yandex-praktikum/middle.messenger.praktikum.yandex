@@ -1,6 +1,8 @@
 import EventBus from "./EventBus";
 import { v4 as uuidv4 } from 'uuid';
 import Handlebars from "handlebars";
+import {isDeepEqual} from "./object.utils.ts";
+
 
 class Block {
     static EVENTS = {
@@ -12,11 +14,11 @@ class Block {
 
     public id = uuidv4();
     protected props: any;
-    private _element: HTMLElement | null = null;
+    protected _element: HTMLElement | null = null;
     protected _meta: { props: any; }|null=null;
     private _eventBus: () => EventBus;
     private children: Record<string, Block>;
-    protected refs: any;
+    protected refs: Record<string, Block> = {};
 
     constructor( propsWithChildren:any = {}) {
         const eventBus = new EventBus();
@@ -28,7 +30,7 @@ class Block {
 
         this.children = children;
         this.props = this._makePropsProxy(props);
-        console.log('init props',props,this.props)
+       // console.log('init props',props,this.props)
 
         this._eventBus = () => eventBus;
 
@@ -85,21 +87,26 @@ class Block {
     }
 
     protected componentDidUpdate(oldProps:any, newProps:any) {
-        if(oldProps!==newProps) this.setProps(newProps);
-        return true;
+        // this.setProps(newProps);
+        return isDeepEqual(oldProps, newProps);
     }
 
     setProps = (nextProps:any) => {
+        console.log('nextProps',nextProps)
         if (!nextProps) {
             return;
         }
-
-        //Object.assign(this.props, nextProps);
+         Object.assign(this.props, nextProps);
 
     };
 
     get element() {
         return this._element;
+    }
+
+    public value() {
+        // @ts-ignore
+        return this._element&&this._element.value ? this._element.value : '';
     }
 
    private _render() {

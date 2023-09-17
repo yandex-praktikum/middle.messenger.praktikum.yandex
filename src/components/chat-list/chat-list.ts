@@ -29,7 +29,7 @@ export class ChatList extends Block {
                     {{{Link caption="Profile" page="pageProfile"  linkIcon=true }}}
                 </nav>
                 <div class="chat-list__search">
-                    {{>InputSearch }}
+                    {{{ InputSearch }}}
                 </div>
                 <ul class="chat-list__chats">
                     ${this.getChats(list)}

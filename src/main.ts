@@ -8,6 +8,25 @@ import {message1, mockListMessages} from "./mocks/chat-message.mocks";
 import {registerComponent} from "./utils/registerComponents";
 import {AllComponentsPage} from "./pages";
 
+const allComponents={
+    'Button': Components.Button,
+    'Avatar': Components.Avatar,
+    'ChatItem': Components.ChatItem,
+    'ChatList': Components.ChatList,
+    'Badge': Components.Badge,
+    'Error': Components.Error,
+    'Input': Components.Input,
+    'InputShort': Components.InputShort,
+    'InputWide': Components.InputWide,
+    'InputSearch': Components.InputSearch,
+    'Loader': Components.Loader,
+    'Message': Components.Message,
+    'MessageList': Components.MessageList,
+    'Modal': Components.Modal,
+    'FormAuth': Components.FormAuth,
+    'LoginPage': Pages.LoginPage,
+    'Link': Components.Link
+}
 const pages = {
     "allComponents": [Pages.AllComponentsPage, {
         chat1: chat1,
@@ -26,24 +45,11 @@ const pages = {
     "page404": [Pages.Page404],
     "allPages": [Pages.AllPages]
 };
-Object.entries(Components).forEach(([name, component]) => {
-    if(typeof component==='string')Handlebars.registerPartial(name, component);
 
+Object.entries(allComponents).forEach(([name, component]) => {
+    registerComponent(name, component);
 });
-registerComponent('Button', Components.Button);
-registerComponent('Badge', Components.Badge);
-registerComponent('Avatar', Components.Avatar);
-registerComponent('ChatItem', Components.ChatItem);
-registerComponent('ChatList', Components.ChatList);
-registerComponent('Error', Components.Error);
-registerComponent('Input', Components.Input);
-registerComponent('Loader', Components.Loader);
-registerComponent('Message', Components.Message);
-registerComponent('MessageList', Components.MessageList);
-registerComponent('Modal', Components.Modal);
-registerComponent('FormAuth', Components.FormAuth);
-registerComponent('LoginPage', Pages.LoginPage);
-registerComponent('Link', Components.Link);
+
 const navigate = (page: string) => {
     const app = document.getElementById('app');
 

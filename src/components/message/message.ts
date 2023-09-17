@@ -23,7 +23,7 @@ export class Message extends Block {
                             {{{ Badge text="01.20" type="primary" }}}
                         </div>
                     </article>`:`<article class="message__text">
-                        <p>{{content}}</p>
+                        <p>${message.content}</p>
                         <div class="message__time">
                             {{{Badge text="01.20" }}}
                         </div>
