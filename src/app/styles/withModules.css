@@ -10,5 +10,4 @@
 @import "@/shared/ui/listItem/listItem.module.css";
 @import "@/shared/ui/listItem/listItem.info.module.css";
 @import "@/shared/ui/userImage/userImage.module.css";
-@import "@/shared/ui/button/button.back.module.css";
 @import "@/pages/editProfile/editProfilePage.module.css";

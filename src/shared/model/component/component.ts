@@ -63,7 +63,9 @@ export class Component {
     };
 
     Object.keys(events).forEach((eventName) => {
-      this._element?.addEventListener(eventName, events[eventName]);
+      if (events[eventName] !== undefined) {
+        this._element?.addEventListener(eventName, events[eventName]);
+      }
     });
   }
 

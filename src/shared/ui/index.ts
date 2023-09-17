@@ -1,2 +1,3 @@
 export { NavList } from "./navList";
-export { Button } from "./button";
+export * from "./button";
+export * from "./input";

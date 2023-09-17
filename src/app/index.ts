@@ -6,6 +6,7 @@ import {
 } from "./providers";
 import { NavList } from "@/shared/ui";
 import { Button } from "@/shared/ui";
+import { Input } from "@/shared/ui/input/input.component";
 
 function app() {
   registerHelpers();
@@ -18,7 +19,10 @@ function app() {
   document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
     if (root !== null) {
-      const button = new Button({ label: "123" });
+      const button = new Button({
+        label: "123",
+        onClick: () => console.log(123),
+      });
       button.setProps({ label: "444" });
 
       root.append(button.getContent());
