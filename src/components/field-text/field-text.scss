@@ -25,4 +25,23 @@
 
   &__help-text {
   }
+
+  &--white {
+    #{$block-name}__input {
+      background-color: #fff;
+    }
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--main {
+    #{$block-name}__input {
+      padding-left: 30px;
+      padding-right: 30px;
+      height: 60px;
+      border-radius: 50px;
+    }
+  }
 }

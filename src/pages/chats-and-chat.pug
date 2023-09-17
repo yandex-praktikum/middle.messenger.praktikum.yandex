@@ -22,18 +22,19 @@ block content
           })
 
       .sidebar__s
-        .chats
-          each val in [1, 2, 3, 4, 5, 7, 8, 9, 10]
-            article.chat(tabindex="0")
-              .chat__f
-                .avatar
-                  img.avatar__img(src="img/avatar-dummy-1.jpg", alt="user name avatar", loading="lazy")
-              .chat__s
-                .chat__s-f
-                  h6.name Chat name
-                  time.chat__time 10:45
-                .chat__s-s
-                  p.chat__last-message last message last message last message last message last message last message
+        .sidebar__s-inner
+          .chats
+            each val in [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+              article.chat(tabindex="0")
+                .chat__f
+                  .avatar
+                    img.avatar__img(src="img/avatar-dummy-1.jpg", alt="user name avatar", loading="lazy")
+                .chat__s
+                  .chat__s-f
+                    h6.name Chat name
+                    time.chat__time 10:45
+                  .chat__s-s
+                    p.chat__last-message last message last message last message last message last message last message
 
       .sidebar__t
         .user-information
@@ -64,26 +65,26 @@ block content
         .messages-area
           .messages-area__f
             .messages-area__conversation
-              .messages-area__conversation-received
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
+              each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                .messages-area__conversation-item.messages-area__conversation-received
+                  .messages-area__conversation-message
+                    | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
+                  .messages-area__conversation-message
+                    | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
 
-              .messages-area__conversation-sent
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
-
+                .messages-area__conversation-item.messages-area__conversation-sent
+                  .messages-area__conversation-message
+                    | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
 
           .messages-area__s
-            +field-text({
-              mods: 'main',
-              attrs: {
-                name: 'message',
-                placeholder: 'Type a message',
-              }
-            })
-            button.settings(type="button") ...
-            button.settings(type="button") ...
-
-      .chat-area__t
+            .messages-area__s-inner
+              +field-text({
+                mods: 'main',
+                attrs: {
+                  name: 'message',
+                  placeholder: 'Type a message',
+                }
+              })
+              .messages-area__buttons
+                button.settings(type="button") ...
+                button.settings(type="button") ...
