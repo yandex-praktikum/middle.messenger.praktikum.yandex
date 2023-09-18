@@ -15,7 +15,7 @@ interface IFormProfileProps {
     buttonText:string,
     buttonPage:string,
     buttonCancelPage:string,
-    onClickOkButton: (event:any) => void,
+    onClickOkButton: (event:Event) => void,
 
 /*
     onClickCancelButton: (event:any) => void,
@@ -37,7 +37,7 @@ export class FormProfile extends Block {
                 email:validateEmail,
                 password:validatePassword
             },
-            onClickOk: (event:any)=>{
+            onClickOk: (event:Event)=>{
                 console.log('OK')
                 props.onClickOkButton(event)
             },

@@ -10,8 +10,8 @@ import {
 interface IFormAuthProps {
     caption: string,
     children: string,
-    onClickOkButton: (event:any) => void,
-    onClickCancelButton: (event:any) => void,
+    onClickOkButton: (event:Event) => void,
+    onClickCancelButton: (event:Event) => void,
     captionOk: string,
     captionCancel: string,
     pageOk:string,
@@ -30,7 +30,7 @@ export class FormAuth extends Block {
                 phone:validatePhone,
                 email:validateEmail,
             },
-            onClickOk: (event:any)=>{
+            onClickOk: (event:Event)=>{
                 console.log('OK')
                 props.onClickOkButton(event)
             }

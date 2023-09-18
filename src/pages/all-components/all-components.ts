@@ -8,11 +8,11 @@ export class AllComponents extends Block {
     constructor() {
         super({
 
-            onClick: (event:any) => {
+            onClick: (event:Event) => {
                 event.preventDefault();
                 console.log("click")
             },
-            onLogin: (event:any) => {
+            onLogin: (event:Event) => {
                 event.preventDefault();
                 const login =  this.refs.login.value();
                 const password =  this.refs.password.value();
@@ -22,7 +22,7 @@ export class AllComponents extends Block {
                     password
                 })
             },
-            onClickLoadAvatar: (event:any) => {
+            onClickLoadAvatar: (event:Event) => {
                 event.preventDefault();
                 console.log("click")
             },

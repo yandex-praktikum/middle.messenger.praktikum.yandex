@@ -13,14 +13,14 @@ class Block {
     };
 
     public id = uuidv4();
-    protected props: any;
+    protected props: Object;
     protected _element: HTMLElement | null = null;
-    protected _meta: { props: any; }|null=null;
+    protected _meta: { props: Object; }|null=null;
     private _eventBus: () => EventBus;
     private children: Record<string, Block>;
     protected refs: Record<string, Block> = {};
 
-    constructor( propsWithChildren:any = {}) {
+    constructor( propsWithChildren:Object = {}) {
         const eventBus = new EventBus();
         const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
@@ -38,8 +38,8 @@ class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _getChildrenAndProps(childrenAndProps: any) {
-        const props: Record<string, any> = {};
+    _getChildrenAndProps(childrenAndProps: Object) {
+        const props: Record<string, unknown> = {};
         const children: Record<string, Block> = {};
 
         Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -78,7 +78,7 @@ class Block {
         Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
     }
 
-    private _componentDidUpdate(oldProps:any, newProps:any) {
+    private _componentDidUpdate(oldProps:Object, newProps:Object) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if(response) {
 
@@ -86,13 +86,12 @@ class Block {
         }
     }
 
-    protected componentDidUpdate(oldProps:any, newProps:any) {
+    protected componentDidUpdate(oldProps:Object, newProps:Object) {
         // this.setProps(newProps);
         return isDeepEqual(oldProps, newProps);
     }
 
-    setProps = (nextProps:any) => {
-        console.log('nextProps',nextProps)
+    setProps = (nextProps:Object) => {
         if (!nextProps) {
             return;
         }
@@ -127,8 +126,6 @@ public getRefs(){
 
     _addEvents() {
         const {events = {}} = this.props as { events: Record<string, () => void> };
-
-        console.log(events);
 
         Object.keys(events).forEach(eventName => {
             this._element?.addEventListener(eventName, events[eventName]);
