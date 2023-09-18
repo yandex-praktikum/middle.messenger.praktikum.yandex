@@ -5,7 +5,7 @@ export {default as Loader } from './loader';
 export {default as Avatar } from './avatar';
 export {default as  InputWide } from './input-wide';
 export { default as FormAuth } from './form-auth';
-export { FormProfile } from './form-profile';
+export {default as  FormProfile } from './form-profile';
 export {default as Modal } from './modal';
 export {default as Input } from './input';
 export { default as ChatItem } from './chat-item';

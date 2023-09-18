@@ -1,2 +1,2 @@
-export {default as PagePasswordEdit} from './password-edit.hbs?raw';
+export { PagePasswordEdit as default} from './password-edit';
 

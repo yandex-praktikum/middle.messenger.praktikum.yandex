@@ -1,7 +1,7 @@
 export interface IUser {
     login?: string;
     password?: string;
-    nameInChat?: string;
+    display_name?: string;
     first_name: string;
     second_name: string;
     phone: string;

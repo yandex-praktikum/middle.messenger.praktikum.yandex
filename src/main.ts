@@ -6,6 +6,7 @@ import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1, mockListMessages} from "./mocks/chat-message.mocks";
 import {registerComponent} from "./utils/registerComponents";
 
+
 const allComponents={
     'Button': Components.Button,
     'Avatar': Components.Avatar,
@@ -22,6 +23,7 @@ const allComponents={
     'MessageList': Components.MessageList,
     'Modal': Components.Modal,
     'FormAuth': Components.FormAuth,
+    'FormProfile': Components.FormProfile,
     'LoginPage': Pages.LoginPage,
     'Link': Components.Link
 }
@@ -36,15 +38,12 @@ const pages = {
     "allPages": {component:Pages.AllPages},
     "loginPage": {component:Pages.LoginPage},
     "pageRegistration": {component:Pages.PageRegistration},
-
-/*
-    "pageProfile": [Pages.PageProfile, {user: mockUser}],
-    "pageProfileEdit": [Pages.PageProfileEdit, {user: mockUser}],
-    "pagePasswordEdit": [Pages.PagePasswordEdit, {user: mockUser}],
-    "pageChat": [Pages.PageChat, {chatList: mockListChats, messageList: mockListMessages, currentUser: mockUser}],
-    "page500": [Pages.Page500],
-    "page404": [Pages.Page404],*/
-
+    "pageProfile": {component:Pages.PageProfile},
+    "pageProfileEdit": {component:Pages.PageProfileEdit},
+    "pagePasswordEdit": {component:Pages.PagePasswordEdit},
+    "page500": {component:Pages.Page500},
+    "page404": {component:Pages.Page500},
+    "pageChat": {component:Pages.PageChat},
 };
 
 Object.entries(allComponents).forEach(([name, component]) => {

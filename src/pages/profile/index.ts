@@ -1,2 +1,2 @@
-export {default as PageProfile} from './profile.hbs?raw';
+export {PageProfile as default} from './profile';
 

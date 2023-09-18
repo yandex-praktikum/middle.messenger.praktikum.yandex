@@ -26,13 +26,13 @@ export class MessageList extends Block {
     }
     protected render(): string {
         const { messageList,currentUser } = this.props;
-        const {avatar,nameInChat}=currentUser;
+        const {avatar,display_name}=currentUser;
         return (`
            <div class="message-list">
                 <div class="message-list__header">
                     <div class="message-list__header__avatar">
                         {{{ Avatar image=${avatar} size='sm'}}}
-                        <span>${nameInChat}</span>
+                        <span>${display_name}</span>
                     </div>
                     {{{ Button type="dots"}}}
                 </div>

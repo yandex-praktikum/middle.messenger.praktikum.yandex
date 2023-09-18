@@ -1,2 +1,2 @@
-export {default as Page500} from './500.hbs?raw';
+export {Page500 as default } from './500';
 

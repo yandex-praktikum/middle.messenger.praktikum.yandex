@@ -4,7 +4,7 @@ export const mockUser: IUser = {
     first_name: "Elena",
     second_name: "Family",
     login: "loginElena",
-    nameInChat: "ElenaChat",
+    display_name: "ElenaChat",
     password: "password123",
     phone: "+7985632369",
     email: "email@gmail.com",

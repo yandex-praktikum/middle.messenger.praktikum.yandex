@@ -1,3 +1,3 @@
 import './form-profile.pcss';
-export { default as FormProfile } from './form-profile.hbs?raw';
+export {  FormProfile as default  } from './form-profile';
 
