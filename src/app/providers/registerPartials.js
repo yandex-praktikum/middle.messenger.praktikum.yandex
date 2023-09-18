@@ -9,17 +9,19 @@ import listItemInfo from "@/shared/ui/listItem/listItem.info.hbs";
 import actionsList from "@/shared/ui/actionsList/actionsList.hbs";
 import infoListEdit from "@/shared/ui/infoList/infoList.edit.hbs";
 import listItemEdit from "@/shared/ui/listItem/listItem.edit.hbs";
+import { AuthForm } from "@/entities/auth";
 
 function registerPartials() {
-  Handlebars.registerPartial("modal", modal);
-  Handlebars.registerPartial("textField", textField);
-  Handlebars.registerPartial("layout", basicLayout);
-  Handlebars.registerPartial("userImage", userImage);
-  Handlebars.registerPartial("infoList", infoList);
-  Handlebars.registerPartial("listItem", listItem);
-  Handlebars.registerPartial("listItem/info", listItemInfo);
-  Handlebars.registerPartial("actionsList", actionsList);
-  Handlebars.registerPartial("infoList/edit", infoListEdit);
-  Handlebars.registerPartial("listItem/edit", listItemEdit);
+  // Handlebars.registerPartial("modal", modal);
+  // Handlebars.registerPartial("textField", textField);
+  // Handlebars.registerPartial("layout", basicLayout);
+  // Handlebars.registerPartial("userImage", userImage);
+  // Handlebars.registerPartial("infoList", infoList);
+  // Handlebars.registerPartial("listItem", listItem);
+  // Handlebars.registerPartial("listItem/info", listItemInfo);
+  // Handlebars.registerPartial("actionsList", actionsList);
+  // Handlebars.registerPartial("infoList/edit", infoListEdit);
+  // Handlebars.registerPartial("listItem/edit", listItemEdit);
+  Handlebars.registerPartial("AuthForm", AuthForm());
 }
 export { registerPartials };

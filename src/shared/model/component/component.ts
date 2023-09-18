@@ -21,7 +21,8 @@ export class Component {
   private _meta: Meta;
   private eventBus: () => EventBus;
   protected props: any;
-  protected children: Children;
+  protected refs: Children = {};
+  public children: Children;
   public id = uuidv4();
 
   constructor(propsWithChildren: object = {}) {
@@ -128,6 +129,7 @@ export class Component {
   }
 
   private _render(): void {
+    console.log(this.render());
     const fragment = this.compile(this.render(), this.props);
 
     const newElement = fragment.firstElementChild as HTMLElement;

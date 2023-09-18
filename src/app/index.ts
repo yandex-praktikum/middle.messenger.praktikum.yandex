@@ -1,12 +1,14 @@
+import Handlebars from "handlebars";
 import {
   registerPartials,
   registerHelpers,
   registerComponents,
   getPageByPath,
 } from "./providers";
-import { NavList } from "@/shared/ui";
+import { InputField, NavList } from "@/shared/ui";
 import { Button } from "@/shared/ui";
 import { Input } from "@/shared/ui/input/input.component";
+import { SigninForm } from "@/widgets/auth";
 
 function app() {
   registerHelpers();
@@ -25,7 +27,13 @@ function app() {
       });
       button.setProps({ label: "444" });
 
+      const inputField = new InputField({
+        label: "asdf",
+      });
+
       root.append(button.getContent());
+      root.append(inputField.getContent());
+      root.append(new SigninForm().getContent());
       return;
       root.innerHTML = page();
 
