@@ -13,14 +13,14 @@ class Block {
     };
 
     public id = uuidv4();
-    protected props: Object;
+    protected props: any;
     protected _element: HTMLElement | null = null;
-    protected _meta: { props: Object; }|null=null;
+    protected _meta: { props: any; }|null=null;
     private _eventBus: () => EventBus;
     private children: Record<string, Block>;
     protected refs: Record<string, Block> = {};
 
-    constructor( propsWithChildren:Object = {}) {
+    constructor( propsWithChildren:any = {}) {
         const eventBus = new EventBus();
         const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
@@ -38,7 +38,7 @@ class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _getChildrenAndProps(childrenAndProps: Object) {
+    _getChildrenAndProps(childrenAndProps: any) {
         const props: Record<string, unknown> = {};
         const children: Record<string, Block> = {};
 
@@ -78,7 +78,7 @@ class Block {
         Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
     }
 
-    private _componentDidUpdate(oldProps:Object, newProps:Object) {
+    private _componentDidUpdate(oldProps:any, newProps:any) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if(response) {
 
@@ -86,12 +86,12 @@ class Block {
         }
     }
 
-    protected componentDidUpdate(oldProps:Object, newProps:Object) {
+    protected componentDidUpdate(oldProps:any, newProps:any) {
         // this.setProps(newProps);
         return isDeepEqual(oldProps, newProps);
     }
 
-    setProps = (nextProps:Object) => {
+    setProps = (nextProps:any) => {
         if (!nextProps) {
             return;
         }
