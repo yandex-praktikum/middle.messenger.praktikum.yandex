@@ -126,11 +126,14 @@ class Block {
     _addEvents() {
         const {events = {}} = this.props as { events: Record<string, () => void> };
 
+        console.log(events);
+
         Object.keys(events).forEach(eventName => {
             this._element?.addEventListener(eventName, events[eventName]);
         });
     }
     private compile(template: string, context: any) {
+
         const contextAndStubs = {...context, __refs: this.refs};
 
         const html = Handlebars.compile(template)(contextAndStubs);

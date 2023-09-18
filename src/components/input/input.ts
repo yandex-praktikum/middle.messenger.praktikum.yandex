@@ -6,7 +6,9 @@ interface IInputProps {
     placeholder: string,
     onBlur:()=>void,
     ref:string,
+    name:string,
     value:string
+    type: 'text' | 'password',
 }
 
 export class Input extends Block {
@@ -20,13 +22,15 @@ export class Input extends Block {
     }
 
     protected render(): string {
-        const { classes, placeholder,ref,value } = this.props;
+        const { classes, placeholder,ref,value,name,type } = this.props;
         return (`
             <input
                 class="${classes}"
                 placeholder="${placeholder || ''}"
                 ref="${ref}"
+                name="${name}"
                 value="${value}"
+                 type="${type}" 
             />
         `)
     }

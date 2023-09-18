@@ -7,12 +7,7 @@ export class AllComponents extends Block {
 
     constructor() {
         super({
-            validate: {
-                login: (value: string) => {
-                    console.log(value)
-                   return  value.length < 3 && value.length !== 0 ? `Length of login should not be less 3 letters.` : ''
-                }
-            },
+
             onClick: (event:any) => {
                 event.preventDefault();
                 console.log("click")
@@ -43,7 +38,7 @@ export class AllComponents extends Block {
         return(`
             <div class="container container-center">
               <div class="container-all">
-                {{{ Button caption="sign in" onClick=onLogin}}}
+                {{{ Button caption="sign in" onClick=onClick}}}
                 {{{ Button type="number" caption="330"}}}
                 {{{ Button type="arrow" onClick=onClick}}}           
                 {{{ Button type="dots" onClick=onClick}}}           

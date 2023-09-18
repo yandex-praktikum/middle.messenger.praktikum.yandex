@@ -2,11 +2,11 @@ import Block from "../../utils/Block";
 
 interface ILinkProps {
     caption: string,
-    page: string,
-    href: string,
+    page?: string,
+    href?: string,
     type: string,
-    linkIcon:boolean
-    linkLine:boolean
+    linkIcon?:boolean
+    linkLine?:boolean
 }
 
 export class Link extends Block {
@@ -16,11 +16,11 @@ export class Link extends Block {
 
     protected render(): string {
         const { href='#', caption='', page='' ,linkIcon=false,linkLine=false,type=''} = this.props;
-        const classLink=`link ${type?"link"+type:''} ${linkLine?'link-line':''}`
+        const classLink=`link ${type?`link-${type}`:''} ${linkLine?'link-line':''}`
         return (`
             <a href= ${href}
-               class=${classLink} 
-               ${page?page:''}>
+               class="${classLink}"
+               ${page?`page=${page}`:''}>
                 ${caption}
                 ${linkIcon ? '<div class="link-icon"></div>' : ''}
             </a>

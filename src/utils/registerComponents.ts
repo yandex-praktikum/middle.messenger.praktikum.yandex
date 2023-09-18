@@ -11,7 +11,6 @@ export function registerComponent(name: string, Component: typeof Block) {
         const component = new Component(hash);
         const dataAttribute = `data-id="${component.id}"`;
 
-        console.log(hash)
         if ('ref' in hash) {
             (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
         }

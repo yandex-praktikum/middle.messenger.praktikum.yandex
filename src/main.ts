@@ -1,12 +1,10 @@
 import './styles/main.css';
-import Handlebars from 'handlebars';
 import * as Components from './components';
 import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
 import {chat1, mockListChats} from "./mocks/chat.mocks";
 import {message1, mockListMessages} from "./mocks/chat-message.mocks";
 import {registerComponent} from "./utils/registerComponents";
-import {AllComponentsPage} from "./pages";
 
 const allComponents={
     'Button': Components.Button,
@@ -28,22 +26,25 @@ const allComponents={
     'Link': Components.Link
 }
 const pages = {
-    "allComponents": [Pages.AllComponentsPage, {
+    "allComponents": {component:Pages.AllComponentsPage,props: {
         chat1: chat1,
         chatList: mockListChats,
         message: message1,
         messageList: mockListMessages,
         currentUser: mockUser
-    }],
-    "loginPage": [Pages.LoginPage],
+    }},
+    "allPages": {component:Pages.AllPages},
+    "loginPage": {component:Pages.LoginPage},
+
+/*
     "pageRegistration": [Pages.PageRegistration],
     "pageProfile": [Pages.PageProfile, {user: mockUser}],
     "pageProfileEdit": [Pages.PageProfileEdit, {user: mockUser}],
     "pagePasswordEdit": [Pages.PagePasswordEdit, {user: mockUser}],
     "pageChat": [Pages.PageChat, {chatList: mockListChats, messageList: mockListMessages, currentUser: mockUser}],
     "page500": [Pages.Page500],
-    "page404": [Pages.Page404],
-    "allPages": [Pages.AllPages]
+    "page404": [Pages.Page404],*/
+
 };
 
 Object.entries(allComponents).forEach(([name, component]) => {
@@ -53,19 +54,25 @@ Object.entries(allComponents).forEach(([name, component]) => {
 const navigate = (page: string) => {
     const app = document.getElementById('app');
 
+/*
     if(page !== 'allComponents') {
         const container = document.getElementById('app')!;
         // @ts-ignore
         container.innerHTML = Handlebars.compile(pages[page])({});
         return;
     }
+*/
 
-    //@ts-ignore
-    const Component = pages[page]
-    const component = new AllComponentsPage();
-    app?.append(component.getContent()!);
+    // @ts-ignore
+    const Component = pages[page].component;
+    // @ts-ignore
+    const props = pages[page].props||{};
+    const component = new Component(props);
+    const htmlElement=component.getContent();
+    if( !app?.firstElementChild)    app?.append(document.createElement('div') );
+    app?.firstElementChild?.replaceWith(htmlElement);
 }
-document.addEventListener('DOMContentLoaded', () => navigate('allComponents'));
+document.addEventListener('DOMContentLoaded', () => navigate('allPages'));
 document.addEventListener('click', (e:Event) => {
     if(!e)return;
     // @ts-ignore

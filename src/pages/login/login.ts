@@ -3,32 +3,29 @@ import Block from "../../utils/Block";
 export class LoginPage extends Block {
     constructor() {
         super({
-            validate: {
-                login: (value: string) => value.length < 3 && value.length !== 0 ? `Length of login should not be less 3 letters.` : ''
-            }/*,
+
             onLogin: (event:Event) => {
                 event.preventDefault();
-                const login =  this.refs.login.value();
-                const password =  this.refs.password.value();
+                // @ts-ignore
+                const login =  this.refs.formLogin.refs?.login.value();
+                // @ts-ignore
+                const password =  this.refs.formLogin.refs?.password.value();
 
                 console.log({
                     login,
                     password
                 })
-            }*/
+            }
         });
     }
 
     protected render(): string {
+        const children:string=`
+        {{{ InputShort label='Login' type='text' name='login' validate=validate.login ref='login' }}}
+        {{{ InputShort label='Password' type='password' name='password' validate=validate.password ref='password' }}}`
         return(`
             <form class="container container-center">
-           
-<!--                    {{{ InputField label="Login" ref="login" validate=validate.login }}}
-                    {{{ InputField label="Password" ref="password" }}}
-                    {{{ Button label="Sign in" type="primary" page="list" onClick=onLogin }}}-->
-                           {{{ Button caption='ok-text' page='ok-page' }}}
-
-            </form>
-        `)
+                {{{ FormAuth caption="Login" captionOk="Login" captionCancel="Cancel" pageOk="allPages" pageCancel="loginPage" onClickOkButton=onLogin children="${children}" ref="formLogin" }}}
+            </form>`)
     }
 }

@@ -1,2 +1,1 @@
-export {default as AllPages} from './all-pages.hbs?raw';
-
+export { AllPages as default } from './all-pages';

@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 
 interface IInputProps {
-    type: 'text' | 'button',
+    type: 'text' | 'password',
     name: string,
     value: string,
     label: string,
@@ -14,7 +14,8 @@ export class InputShort extends Block {
     constructor(props:IInputProps) {
         super({
             ...props,
-            errorText: '', error:false ,
+            errorText: '',
+            error:false ,
             onBlur: () => this.validate()
         });
 
@@ -24,15 +25,13 @@ export class InputShort extends Block {
         if (!this.validate()) {
             return false;
         }
-        return this.refs?.input?.value()
+        return this.refs?.[this.props.ref].value()
     }
 
     private validate() {
-        console.log(this)
-        const value =this.refs?.input?.value();
+        const value =this.refs?.[this.props.ref].value();
         const error = this.props.validate(value);
 
-        console.log('value,error',value,error)
         this.props.value=value;
         if (error) {
             this.setProps({...this.props, errorText: error,error:true});
@@ -43,19 +42,19 @@ export class InputShort extends Block {
     }
 
     protected render(): string {
-        const {type = '', name = '', value = '',  label = "",error=false,errorText=''} = this.props;
+        const {type = '', ref = '', value = '',  label = "",error=false,errorText=''} = this.props;
 
         return (`
             <div class="input">
                 <label class="input__container">
                 {{{ Input 
-                    ref='input' 
+                    ref="${ref}"
                     type="${type}" 
                     classes="input__value  ${error ? "input__value-error" : ""}" 
                     value='${value}'
                     placeholder=" " 
-                    name="${name}"
-                      onBlur=onBlur
+                    name="input"
+                    onBlur=onBlur
                 }}}
                     
                     <div class="input__label">${label}</div>
