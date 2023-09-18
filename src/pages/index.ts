@@ -1,5 +1,5 @@
 export {default as AllComponentsPage} from './all-components';
-export {PageRegistration} from './registration';
+export {default as  PageRegistration} from './registration';
 export {PageProfileEdit} from './profile-edit';
 export {PageProfile} from './profile';
 export {PagePasswordEdit} from './password-edit';

@@ -35,9 +35,9 @@ const pages = {
     }},
     "allPages": {component:Pages.AllPages},
     "loginPage": {component:Pages.LoginPage},
+    "pageRegistration": {component:Pages.PageRegistration},
 
 /*
-    "pageRegistration": [Pages.PageRegistration],
     "pageProfile": [Pages.PageProfile, {user: mockUser}],
     "pageProfileEdit": [Pages.PageProfileEdit, {user: mockUser}],
     "pagePasswordEdit": [Pages.PagePasswordEdit, {user: mockUser}],

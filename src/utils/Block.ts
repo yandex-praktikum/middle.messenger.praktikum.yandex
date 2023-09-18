@@ -108,7 +108,9 @@ class Block {
         // @ts-ignore
         return this._element&&this._element.value ? this._element.value : '';
     }
-
+public getRefs(){
+        return this.refs
+}
    private _render() {
         const fragment = this.compile(this.render(), this.props);
 

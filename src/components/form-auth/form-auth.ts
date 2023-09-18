@@ -1,4 +1,11 @@
 import Block from "../../utils/Block";
+import {
+    validateEmail,
+    validateLogin,
+    validateName,
+    validatePassword,
+    validatePhone
+} from "../../utils/validates.utils.ts";
 
 interface IFormAuthProps {
     caption: string,
@@ -15,14 +22,13 @@ export class FormAuth extends Block {
         super({
             ...props,
             validate: {
-                login: (value: string) => {
-                    console.log(value)
-                    return  value.length < 3 && value.length !== 0 ? `Length of login should not be less 3 letters.` : ''
-                },
-                password: (value: string) => {
-                    console.log(value)
-                    return  value.length < 6 && value.length !== 0 ? `Length of password should not be less 6 letters.` : ''
-                }
+                login: validateLogin,
+                password: validatePassword,
+                password2: validatePassword,
+                first_name:validateName,
+                second_name:validateName,
+                phone:validatePhone,
+                email:validateEmail,
             },
             onClickOk: (event:any)=>{
                 console.log('OK')
