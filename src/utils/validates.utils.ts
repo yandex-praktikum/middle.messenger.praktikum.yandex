@@ -6,11 +6,15 @@ export const validateLogin = (value: string) => {
     if(value.length === 0) return `Login can not be blank`;
     if(value.length < 3)
     {
-        return 'Login must have minimum 8 characters'
+        return 'Login must have minimum 3 characters'
     }
     if(value.length >20)
     {
         return 'Login must have maximum 20 characters'
+    }
+    if(!value.match(/(?=.*[a-z])/))
+    {
+        return 'Login must have letters'
     }
     if(!value.match(/^[a-z0-9_-]{3,}$/))
     {
@@ -62,7 +66,7 @@ export const validateName = (value: string) => {
     {
         return 'Name must have maximum 140 characters'
     }
-    if(!value.match(/^[A-Z]+$/))
+    if(!value.match(/^[A-Z]+/))
     {
         return 'Name must have first uppercase letter'
     }
@@ -93,7 +97,7 @@ export const validateEmail = (value: string) => {
 export const validatePhone = (value: string) => {
     if(value.length === 0) return `Phone can not be blank`;
 
-    if(!value.match(/^\\+[1-9]{10,15}$/))
+    if(!value.match(/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/))
     {
         return 'Invalid Phone, example +123-456-789-1234'
     }
@@ -103,11 +107,6 @@ export const validatePhone = (value: string) => {
  * message — не должно быть пустым.
  */
 export const validateMessage = (value: string) => {
-    if(value.length === 0) return `Phone can not be blank`;
-
-    if(!value.match(/^\\+[1-9]{1}[0-9]{0,2}-[2-9]{1}[0-9]{2}-[2-9]{1}[0-9]{2}-[0-9]{4}$/))
-    {
-        return 'Invalid Phone, example +123-456-789-1234'
-    }
+    if(value.length === 0) return `Message can not be blank`;
     return '';
 }
