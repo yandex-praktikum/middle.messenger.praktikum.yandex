@@ -1,4 +1,4 @@
-import './styles/main.css';
+import './styles/main.pcss';
 import * as Components from './components';
 import * as Pages from './pages';
 import {mockUser} from "./mocks/user-profile.mocks";
@@ -99,6 +99,3 @@ document.addEventListener('click', (e:Event) => {
         ">" + "</>"
     );
 });*/
-
-
-
