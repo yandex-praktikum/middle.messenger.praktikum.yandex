@@ -129,7 +129,6 @@ export class Component {
   }
 
   private _render(): void {
-    console.log(this.render());
     const fragment = this.compile(this.render(), this.props);
 
     const newElement = fragment.firstElementChild as HTMLElement;

@@ -1,5 +1,6 @@
 import { Component } from "@/shared/model";
 import { InputFieldProps } from "./inputField.types";
+import styles from "./inputField.module.css";
 
 class InputFieldComponent extends Component {
   constructor(props: InputFieldProps) {
@@ -33,14 +34,17 @@ class InputFieldComponent extends Component {
   }
 
   protected render(): string {
+    const { name, label } = this.props;
     return `
-      <div class="input-field {{#if error}}input__error{{/if}}" >
-        <label class="input-field__label">
-          {{{ Input
-            ref="input"
-            onBlur=onBlur
-          }}}
-          <div class="input__label">{{label}}</div>
+      <div class="${styles.inputField}" >
+        {{{ Input
+          id="${name}"
+          name="${name}"
+          ref="input"
+          onBlur=onBlur
+        }}}
+        <label for="${name}">
+          ${label}
         </label>
         {{{ ErrorLine error=error ref="errorLine"}}}
       </div>

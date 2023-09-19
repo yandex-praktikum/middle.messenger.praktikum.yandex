@@ -1,6 +1,6 @@
 import { Component } from "@/shared/model";
 
-class SigninForm extends Component {
+class SignupForm extends Component {
   constructor() {
     super({
       validate: {
@@ -25,13 +25,13 @@ class SigninForm extends Component {
   protected render() {
     return `
       <div>
-        {{#> AuthForm title="Вход"}}
+        {{#> AuthForm title="Регистрация"}}
           <div>
             {{{ InputField label="Логин" name="login" validate=validate.login}}}
             {{{ InputField label="Пароль" name="password"}}}
           </div>
           <div class="authForm_buttons">
-            {{{ Button label="Авторизоваться" }}} 
+            {{{ Button label="Зарегистрироваться" }}} 
           </div>
         {{/AuthForm}}
       </div>
@@ -39,4 +39,4 @@ class SigninForm extends Component {
   }
 }
 
-export { SigninForm };
+export { SignupForm };

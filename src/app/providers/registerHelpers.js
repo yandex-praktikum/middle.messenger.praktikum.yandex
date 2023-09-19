@@ -1,4 +1,4 @@
-import Handlebars from "handlebars/runtime";
+import Handlebars from "handlebars";
 
 function registerHelpers() {
   Handlebars.registerHelper("getJsonContext", function (data, options) {
