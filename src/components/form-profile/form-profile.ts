@@ -22,7 +22,7 @@ export class FormProfile extends Block {
 
     protected render(): string {
         const {user,withButton=false,children='',buttonText='',
-            buttonCancelPage=''}=this.props;
+            buttonCancelPage=''}=this._props as IFormProfileProps;
         const {avatar,first_name,second_name}=user;
 
         return(`

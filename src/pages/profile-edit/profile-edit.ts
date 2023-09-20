@@ -1,6 +1,7 @@
 import {IProps,Block} from "../../utils/Block.ts";
 import {mockUser} from "../../mocks/user-profile.mocks.ts";
 import {IUser} from "../../models/IUser.ts";
+import {IPageProfileProps} from "../profile/profile.ts";
 
 export interface IPageProfileEditProps extends IProps {
     onChange:(event:Event)=>void,
@@ -34,7 +35,7 @@ export class PageProfileEdit extends Block {
     }
 
     getChildren() {
-        const {email,login,first_name,second_name,display_name,phone}=this.props.user;
+        const {email,login,first_name,second_name,display_name,phone}=(this._props as IPageProfileProps).user;
         return (
             `{{{ InputWide label='Email' type='email' name='email' validate=validate.email ref='email' readOnly=false value='${email}' }}}
             {{{ InputWide label='Login' type='text' name='login' validate=validate.login ref='login' readOnly=false value='${login}'  }}}

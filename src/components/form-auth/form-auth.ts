@@ -24,7 +24,7 @@ export class FormAuth extends Block {
     }
 
     protected render(): string {
-        const {caption='Login',children='',onClickCancelButton,captionOk,captionCancel,pageCancel}=this.props;
+        const {caption='Login',children='',onClickCancelButton,captionOk,captionCancel,pageCancel}=this._props as IFormAuthProps;
         return(`
             <div class="container-form container-shadow">
             <h2 class="container-form__header">

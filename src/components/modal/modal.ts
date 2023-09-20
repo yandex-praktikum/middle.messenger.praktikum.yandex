@@ -13,7 +13,9 @@ export class Modal extends Block {
         super(props);
 
     }
-
+    public get props(){
+        return this._props as IModalProps;
+    }
     protected render(): string {
         const {  caption='',okText='',cancelText=''} = this.props;
         return (`

@@ -11,7 +11,9 @@ export class Message extends Block {
         super(props);
     }
     public renderForList=this.render;
-
+    public get props(){
+        return this._props as IMessageProps;
+    }
     protected render(): string {
         const { message,myMessage } = this.props;
         return (`

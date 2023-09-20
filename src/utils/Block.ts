@@ -15,7 +15,7 @@ export class Block {
     };
 
     public id = uuidv4();
-    protected props: IProps;
+    protected _props: IProps;
     protected _element: HTMLElement | null = null;
     protected _meta: { props: IProps; }|null=null;
     private _eventBus: () => EventBus;
@@ -31,7 +31,7 @@ export class Block {
         };
 
         this.children = children;
-        this.props = this._makePropsProxy(props,this);
+        this._props = this._makePropsProxy(props,this);
        // console.log('init props',props,this.props)
 
         this._eventBus = () => eventBus;
@@ -97,7 +97,7 @@ export class Block {
         if (!nextProps) {
             return;
         }
-         Object.assign(this.props, nextProps);
+         Object.assign(this._props, nextProps);
 
     };
 
@@ -112,7 +112,7 @@ public getRefs(){
         return this.refs
 }
    private _render() {
-        const fragment = this.compile(this.render(), this.props);
+        const fragment = this.compile(this.render(), this._props);
 
         const newElement = fragment.firstElementChild as HTMLElement;
 
@@ -126,7 +126,7 @@ public getRefs(){
     }
 
     _addEvents() {
-        const {events = {}} = this.props as { events: Record<string, () => void> };
+        const {events = {}} = this._props as { events: Record<string, () => void> };
 
         Object.keys(events).forEach(eventName => {
             this._element?.addEventListener(eventName, events[eventName]);

@@ -12,7 +12,7 @@ export class ChatItem extends Block {
 
     public renderForList=this.render;
     protected render(): string {
-        const { chat } = this.props;
+        const { chat } = this._props as IChatItemProps;
         return (`
             <li class="chat-item">
                 <div class="chat-item__avatar">

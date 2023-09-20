@@ -10,14 +10,14 @@ interface IAvatarProps extends IProps{
 export class Avatar extends Block {
     constructor(props: IAvatarProps) {
         super(props);
-        this.props.events = {
-            click: this.props.onClickLoadAvatar || (() => {
+        this._props.events = {
+            click: props.onClickLoadAvatar || (() => {
             })
         }
     }
 
     protected render(): string {
-        const {size = 'md', isLoadAvatar = false, imageUrl = ''} = this.props;
+        const {size = 'md', isLoadAvatar = false, imageUrl = ''} = this._props as IAvatarProps;
         return (`
             <div class="avatar ${size}">
                 ${imageUrl ? `

@@ -8,8 +8,9 @@ interface IInputProps extends IProps{
     errorText: string,
     error:boolean ,
     onChange: (value: string) => void,
-    validate: (value: string) => void,
-    onBlur: (value: string) => void
+    validate: (value: string) => string,
+    onBlur: (value: string) => void,
+    ref:string
 }
 
 export class InputShort extends Block {
@@ -26,9 +27,12 @@ export class InputShort extends Block {
 
     }
 
+    public get props(){
+        return this._props as IInputProps;
+    }
     public value() {
         if (!this.validate()) {
-            return false;
+            return '';
         }
         return this.refs?.[this.props.ref].value()
     }

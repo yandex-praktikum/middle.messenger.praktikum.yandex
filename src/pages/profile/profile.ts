@@ -15,7 +15,7 @@ export class PageProfile extends Block {
     }
 
     getChildren() {
-        const {email,login,first_name,second_name,display_name,phone}=this.props.user;
+        const {email,login,first_name,second_name,display_name,phone}=(this._props as IPageProfileProps).user;
         return (
             `{{{ InputWide label='Email' type='email' name='email' validate=validate.email ref='email' readOnly=true value='${email}' }}}
             {{{ InputWide label='Login' type='text' name='login' validate=validate.login ref='login' readOnly=true value='${login}'  }}}

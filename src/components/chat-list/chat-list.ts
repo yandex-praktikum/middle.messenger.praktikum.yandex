@@ -22,7 +22,7 @@ export class ChatList extends Block {
         }).join('')
     }
     protected render(): string {
-        const {list } = this.props;
+        const {list } = this._props as IChatListProps;
 
         return (`            
             <div class="chat-list">

@@ -37,7 +37,7 @@ export class InputSearch extends Block {
     }*/
 
     protected render(): string {
-        const { name = '', value = ''} = this.props;
+        const { name = '', value = ''} = this._props as IInputSearch;
 
         return (`
            <label class="input-search">

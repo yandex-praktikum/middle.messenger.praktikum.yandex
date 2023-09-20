@@ -11,7 +11,7 @@ export class Error extends Block {
         super(props);
     }
     protected render(): string {
-        const { errorNumber='',pageGoBack='',errorText=''} = this.props;
+        const { errorNumber='',pageGoBack='',errorText=''} = this._props as IErrorProps;
         return (`
             <div class="error">
                 <h1 class="error__number">${errorNumber}</h1>

@@ -18,7 +18,7 @@ export class Button extends Block {
     }
 
     protected render(): string {
-        const { type='', caption='', page='' } = this.props;
+        const { type='', caption='', page='' } = this._props as IButtonProps;
         return (`
             <button class="button ${type?"button-"+type:""}" 
             ${page ? `page="${page}"` : ''}> 

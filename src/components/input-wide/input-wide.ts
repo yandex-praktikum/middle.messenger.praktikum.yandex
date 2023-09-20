@@ -5,7 +5,7 @@ interface IInputWideProps extends IProps{
     name: string,
     value: string,
     label: string,
-    validate: (value: string) => void,
+    validate: (value: string) => string,
     readOnly: boolean,
     noLine: boolean,
     onBlur: () => void,
@@ -24,10 +24,12 @@ export class InputWide extends Block {
             ...props
         });
     }
-
+    public get props(){
+        return this._props as IInputWideProps;
+    }
     public value() {
         if (!this.validate()) {
-            return false;
+            return '';
         }
         return this.refs?.input?.value()
     }

@@ -13,16 +13,14 @@ interface IInputProps extends IProps {
 
 export class Input extends Block {
     constructor(props: IInputProps) {
-        super({
-            ...props,
-            events: {
-                blur: props.onBlur || (() => {})
-            }
-        })
+        props.events={
+            blur: props.onBlur || (() => {})
+        };
+        super(props)
     }
 
     protected render(): string {
-        const { classes, placeholder,ref,value,name,type } = this.props;
+        const { classes, placeholder,ref,value,name,type } = this._props as IInputProps;
         return (`
             <input
                 class="${classes}"

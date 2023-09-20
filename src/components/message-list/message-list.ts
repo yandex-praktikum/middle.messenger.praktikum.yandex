@@ -13,7 +13,9 @@ export class MessageList extends Block {
     constructor(props: IMessageListProps) {
         super(props);
     }
-
+    public get props(){
+        return this._props as IMessageListProps;
+    }
     getListMessages(list:IChatMessage[]):string{
         if(!list||list.length===0)return '';
         return list.map(message=>{

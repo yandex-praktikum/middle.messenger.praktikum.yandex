@@ -11,7 +11,7 @@ export class Badge extends Block {
     }
 
     protected render(): string {
-        const { type='', text=''} = this.props;
+        const { type='', text=''} = this._props as IBadgeProps;
         return (`
             <div class="badge ${type?"badge-"+type:""}">
                 <span>${text}</span>
