@@ -1,10 +1,18 @@
-import { ErrorPage, ProfilePage, SigninPage } from "@/pages";
+import {
+  EditPasswordPage,
+  EditProfilePage,
+  ErrorPage,
+  ProfilePage,
+  SigninPage,
+} from "@/pages";
 import { SignupPage } from "@/pages";
 
 const routes = {
   "/": SigninPage,
   "/signup": SignupPage,
   "/profile": ProfilePage,
+  "/profile-edit": EditProfilePage,
+  "/password-edit": EditPasswordPage,
 };
 
 function navigate(path: string): void {

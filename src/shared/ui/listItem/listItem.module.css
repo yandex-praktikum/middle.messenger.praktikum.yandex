@@ -1,8 +1,12 @@
-.list-item {
+.listItem {
   display: flex;
   justify-content: space-between;
   width: 100%;
   list-style: none;
   padding: 10px 0;
   border-bottom: 1px solid #eaeaea;
+}
+
+.listItem__info .list-item_value {
+  color: #999999;
 }

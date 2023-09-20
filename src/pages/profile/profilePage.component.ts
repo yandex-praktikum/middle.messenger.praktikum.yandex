@@ -2,66 +2,72 @@ import { Component } from "@/shared/model";
 import styles from "./profilePage.module.css";
 
 class ProfilePage extends Component {
+  constructor() {
+    super({
+      userInfoFields: [
+        {
+          title: "Почта",
+          value: "pochta@yandex.ru",
+          type: "info",
+        },
+        {
+          title: "Логин",
+          value: "ivanivanov",
+          type: "info",
+        },
+        {
+          title: "Имя",
+          value: "Иван",
+          type: "info",
+        },
+        {
+          title: "Фамилия",
+          value: "Иванов",
+          type: "info",
+        },
+        {
+          title: "Имя в чате",
+          value: "Иван",
+          type: "info",
+        },
+        {
+          title: "Телефон",
+          value: "+7 (909) 967 30 30",
+          type: "info",
+        },
+      ],
+      userEditFields: [
+        {
+          title:
+            '<a class="actions-list__edit" href="/profile-edit">Изменить данные</a>',
+          type: "info",
+        },
+        {
+          title:
+            '<a class="actions-list__edit" href="/password-edit">Изменить пароль</a>',
+          type: "info",
+        },
+        {
+          title: '<a class="actions-list__exit" href="/signin">Выйти</a>',
+          type: "info",
+        },
+      ],
+    });
+  }
   protected render() {
     return `
       {{#> layout}}
         <div class="${styles.profilePage}">
-          <div class="profile-page_back">
+          <div>
             {{{ SideButton to="/chats" }}}
           </div>
-          <div class="profile">
-            {{> userImage}}
-            <div class="profile_username">
+          <div class="${styles.profile}">
+            {{{ UserImage }}}
+            <div class="${styles.username}">
               Иван
             </div>
-
-            {{#getJsonContext '{
-              "items": [
-                  {
-                    "title": "Почта",
-                    "value": "pochta@yandex.ru"
-                  },
-                  {
-                    "title": "Логин",
-                    "value": "ivanivanov"
-                  },
-                  {
-                    "title": "Имя",
-                    "value": "Иван"
-                  },
-                  {
-                    "title": "Фамилия",
-                    "value": "Иванов"
-                  },
-                  {
-                    "title": "Имя в чате",
-                    "value": "Иван"
-                  },
-                  {
-                    "title": "Телефон",
-                    "value": "+7 (909) 967 30 30"
-                  }
-              ]
-              }'}}
-              {{> infoList this}}
-            {{/getJsonContext}}
-
-            {{#getJsonContext '{
-              "items": [
-                  {
-                    "title": "<a class=\"actions-list__edit\" href=\"/profile-edit\">Изменить данные</a>"
-                  },
-                  {
-                    "title": "<a class=\"actions-list__edit\" href=\"/password-edit\">Изменить пароль</a>"
-                  },
-                  {
-                    "title": "<a class=\"actions-list__exit\" href=\"/signin\">Выйти</a>"
-                  }
-              ]
-              }'}}
-              {{> actionsList this}}
-            {{/getJsonContext}}
-
+              {{{ InfoList items=userInfoFields }}}
+              {{{ InfoList items=userEditFields }}}
           </div>
         </div>
           {{#getJsonContext '{

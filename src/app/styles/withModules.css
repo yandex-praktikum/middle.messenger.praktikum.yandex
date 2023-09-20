@@ -5,8 +5,5 @@
 @import "@/pages/signup/signupPage.module.css";
 @import "@/pages/profile/profilePage.module.css";
 @import "@/shared/ui/infoList/infoList.module.css";
-@import "@/shared/ui/listItem/listItem.module.css";
-@import "@/shared/ui/listItem/listItem.module.css";
-@import "@/shared/ui/listItem/listItem.info.module.css";
 @import "@/shared/ui/userImage/userImage.module.css";
 @import "@/pages/editProfile/editProfilePage.module.css";

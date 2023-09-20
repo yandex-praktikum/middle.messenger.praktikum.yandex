@@ -10,6 +10,9 @@ function registerComponents(): void {
   registerComponent("SigninForm", SigninForm);
   registerComponent("SignupForm", SignupForm);
   registerComponent("SideButton", Components.SideButton);
+  registerComponent("UserImage", Components.UserImage);
+  registerComponent("ListItem", Components.ListItem);
+  registerComponent("InfoList", Components.InfoList);
 }
 
 export { registerComponents };
