@@ -1,0 +1,61 @@
+.input-wide {
+    .input-wide__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 38px;
+        width: 510px;
+        border-bottom: 1px solid var(--gray-light);
+        padding:5px 0;
+    }
+
+    .input-wide__container-noline{
+        border-bottom:none;
+    }
+
+    .input-wide__label {
+        color: var(--gray-dark);
+        font-weight: 500;
+        user-select: none;
+        min-width: auto;
+    }
+
+    .input-wide__value {
+        border: none;
+        color: var(--gray-light);
+        text-align: end;
+        max-width: 50%;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+    }
+
+    .input-wide__text{
+        color: var(--gray-light);
+        display: block;
+    }
+
+    .input-wide__text-error {
+        color: var(--red);
+        font-size: 11px;
+        font-weight: 400;
+        text-align: end;
+        margin-top:5px;
+    }
+
+    .input__value-error {
+        color: var(--red);
+    }
+
+    .input__value-disabled{
+        display: none;
+    }
+}
+
+
+
+
+
+

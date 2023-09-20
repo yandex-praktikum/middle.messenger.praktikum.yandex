@@ -1,0 +1,10 @@
+<form class="container">
+    {{#> FormProfile user=user button-page='pageChat'}}
+        {{>InputWide label="Email" type="text" name="email" value=email readOnly=true }}
+        {{>InputWide label="Login" type="text" name="login" value=login readOnly=true }}
+        {{>InputWide label="First Name" type="text" name="first_name" value=first_name readOnly=true }}
+        {{>InputWide label="Last Name" type="text" name="second_name" value=second_name readOnly=true }}
+        {{>InputWide label="Name in IChat" type="text" name="display_name" value=nameInChat readOnly=true }}
+        {{>InputWide label="Phone" type="text" name="phone" value=phone noLine=true readOnly=true }}
+    {{/FormProfile}}
+</form>

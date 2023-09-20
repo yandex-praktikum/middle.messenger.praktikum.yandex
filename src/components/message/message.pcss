@@ -1,0 +1,63 @@
+.message {
+    border: 1px solid var(--gray-0);
+    border-radius: 15px;
+    height: auto;
+    width: auto;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+    float:left;
+    max-width: 50%;
+    min-width: 200px;
+
+    &.message-my {
+        border-radius:15px 15px 0;
+        background-color: var(--red-light);
+        border: 1px solid var(--red-light);
+        float:right;
+        max-width: 50%;
+        min-width: 200px;
+
+        .badge {
+            background-color: transparent;
+
+            span {
+                color: var(--red);
+            }
+
+            position: relative;
+
+            &::before {
+                content: "";
+                background-image: url("../../assets/icons/double-check.svg");
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top:3px;
+                left:-16px;
+            }
+        }
+    }
+
+    .message__file {
+        padding: 11px;
+        width: auto;
+        height: 95%;
+
+        img {
+            object-fit: contain;
+            width: 100%;
+
+        }
+    }
+
+    .message__text {
+        padding: 11px;
+        background-color:transparent;
+
+    }
+
+    .message__time {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+

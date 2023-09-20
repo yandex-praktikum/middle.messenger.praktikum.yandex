@@ -1,0 +1,13 @@
+<div class="container-form container-shadow">
+    <h2 class="container-form__header">
+        {{caption}}
+    </h2>
+    <div>
+        {{> @partial-block }}
+    </div>
+    <div class="container-form__buttons">
+        {{{ Button caption=ok-text page=ok-page }}}
+        {{{ Link caption=cancel-text page=cancel-page }}}
+    </div>
+</div>
+
