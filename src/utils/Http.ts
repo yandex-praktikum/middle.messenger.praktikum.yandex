@@ -1,57 +1,55 @@
 enum METHODS {
-    GET= 'GET',
-    POST =  'POST',
+    GET = 'GET',
+    POST = 'POST',
     PUT = 'PUT',
     DELETE = 'DELETE'
 }
 
-type IOptionsRequest ={
-    data?:string;
-    method:METHODS.GET|METHODS.POST|METHODS.PUT|METHODS.DELETE;
-    timeout?:number;
-    headers?:Record<string,string>;
+type IOptionsRequest = {
+    data?: string;
+    method?: METHODS.GET | METHODS.POST | METHODS.PUT | METHODS.DELETE;
+    timeout?: number;
+    headers?: Record<string, string>;
+    params?: object;
 }
+
+type HTTPMethod = (url: string, options?: IOptionsRequest) => Promise<unknown>
+
 /**
- * Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
- * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
- * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
+ *  Get string of query params from object params
+ * @param data
  */
-function queryStringify(data:object) {
-    // Можно делать трансформацию GET-параметров в отдельной функции
-    //if(!data)return ''
-    let result='?';
-    result=result+Object.entries(data).map(([key, value])=>{  return `${key}=${Array.isArray(value)?value.join(','):String(value)}`
+function queryStringify(data: object) {
+    let result = '?';
+    result = result + Object.entries(data).map(([key, value]) => {
+        return `${key}=${Array.isArray(value) ? value.join(',') : String(value)}`
     }).join("&")
     return result;
 }
 
 class HTTPTransport {
-    get = (url:string, options:IOptionsRequest = {method: METHODS.GET},params:object) => {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(url, {
             ...options,
-            data: queryStringify(params||{})||'' ,
+            data: queryStringify(options.params || {}) || '',
             method: METHODS.GET
         }, options.timeout);
     };
 
-    put = (url:string, options:IOptionsRequest = {method: METHODS.PUT}) => {
+    put: HTTPMethod = (url, options = {}) => {
 
         return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     };
-    post = (url:string, options:IOptionsRequest = {method: METHODS.POST}) => {
+    post: HTTPMethod = (url, options = {}) => {
 
         return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     };
-    delete = (url:string, options:IOptionsRequest = {method: METHODS.DELETE}) => {
+    delete: HTTPMethod = (url, options = {}) => {
 
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
-    // PUT, POST, DELETE
 
-    // options:
-    // headers — obj
-    // data — obj
-    request = (url:string, options:IOptionsRequest = {method: METHODS.GET}, timeout = 5000) => {
+    request = (url: string, options: IOptionsRequest = {method: METHODS.GET}, timeout = 5000) => {
         const {method, headers, data} = options;
 
         return new Promise((resolve, reject) => {
@@ -59,7 +57,7 @@ class HTTPTransport {
             const xhr = new XMLHttpRequest();
             xhr.timeout = timeout;
             const isGet = method === METHODS.GET;
-            xhr.open(method, isGet ? `${url}${data}` : url,);
+            xhr.open(method || METHODS.GET, isGet ? `${url}${data}` : url,);
 
 
             if (headers) {
@@ -88,4 +86,5 @@ class HTTPTransport {
 
     };
 }
+
 export default HTTPTransport;

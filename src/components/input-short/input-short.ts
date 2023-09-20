@@ -22,7 +22,6 @@ export class InputShort extends Block {
 
         super({
             ...props,
-
         });
 
     }
@@ -66,7 +65,7 @@ export class InputShort extends Block {
                     classes="input__value  ${error ? "input__value-error" : ""}" 
                     value='${value}'
                     placeholder=" " 
-                    name="input"
+                    name="${ref}"
                     onBlur=onBlur
                 }}}
                     
