@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import  {IProps,Block} from "../../utils/Block";
 
-interface IButtonProps {
+interface IButtonProps extends IProps{
     type: 'arrow' | 'dots'|'paperclip'|'cancel'|'number',
     caption: string,
     page: string,

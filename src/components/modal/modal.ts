@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
-interface IModalProps {
+interface IModalProps extends IProps {
     caption: string,
     okText: string,
     okClick: () => void,

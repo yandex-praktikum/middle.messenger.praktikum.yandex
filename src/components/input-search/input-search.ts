@@ -1,17 +1,18 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
-interface IInputSearch {
+interface IInputSearch extends IProps{
     name: string,
-    value: string
+    value: string,
+    errorText: string,
+    error:boolean ,
 }
 
 export class InputSearch extends Block {
 
     constructor(props:IInputSearch) {
-        super({
-            ...props,
-            errorText: '', error:false,
-        });
+        props.errorText='';
+        props.error=false;
+        super(props);
 
     }
 

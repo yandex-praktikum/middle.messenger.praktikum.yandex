@@ -1,22 +1,27 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
-interface IInputProps {
+interface IInputProps extends IProps{
     type: 'text' | 'password',
     name: string,
     value: string,
     label: string,
-    onChange: (value: string) => void
-    validate: (value: string) => void
+    errorText: string,
+    error:boolean ,
+    onChange: (value: string) => void,
+    validate: (value: string) => void,
+    onBlur: (value: string) => void
 }
 
 export class InputShort extends Block {
 
     constructor(props:IInputProps) {
+        props.errorText='';
+        props.error=false;
+        props.onBlur= () => this.validate();
+
         super({
             ...props,
-            errorText: '',
-            error:false ,
-            onBlur: () => this.validate()
+
         });
 
     }
@@ -34,10 +39,14 @@ export class InputShort extends Block {
 
         this.props.value=value;
         if (error) {
-            this.setProps({...this.props, errorText: error,error:true});
+            this.props.error=true;
+            this.props.errorText=error;
+            this.setProps(this.props);
             return false;
         }
-        this.setProps({...this.props, errorText: '',error:false} );
+        this.props.error=false;
+        this.props.errorText='';
+        this.setProps(this.props);
         return true;
     }
 

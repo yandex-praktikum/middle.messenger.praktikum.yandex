@@ -6,17 +6,17 @@ enum METHODS {
 }
 
 type IOptionsRequest ={
-    data?:Object;
+    data?:string;
     method:METHODS.GET|METHODS.POST|METHODS.PUT|METHODS.DELETE;
     timeout?:number;
-    headers?:{key:string,value:string}[]
+    headers?:Record<string,string>;
 }
 /**
  * Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
  * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
  * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
  */
-function queryStringify(data:Object) {
+function queryStringify(data:object) {
     // Можно делать трансформацию GET-параметров в отдельной функции
     //if(!data)return ''
     let result='?';
@@ -26,10 +26,10 @@ function queryStringify(data:Object) {
 }
 
 class HTTPTransport {
-    get = (url:string, options:IOptionsRequest = {method: METHODS.GET}) => {
+    get = (url:string, options:IOptionsRequest = {method: METHODS.GET},params:object) => {
         return this.request(url, {
             ...options,
-            data: queryStringify(options.data||{})||'' ,
+            data: queryStringify(params||{})||'' ,
             method: METHODS.GET
         }, options.timeout);
     };
@@ -62,7 +62,7 @@ class HTTPTransport {
             xhr.open(method, isGet ? `${url}${data}` : url,);
 
 
-            if (headers) { // @ts-ignore
+            if (headers) {
                 Object.keys(headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
             }
 
@@ -88,4 +88,4 @@ class HTTPTransport {
 
     };
 }
-
+export default HTTPTransport;

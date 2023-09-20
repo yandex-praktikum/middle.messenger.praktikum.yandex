@@ -38,7 +38,7 @@ export const validatePassword = (value: string) => {
     if (!value.match(/(?=.*[a-z])/)) {
         return 'Password must have lower letters'
     }
-    if (!value.match(/(?=.*[0-1])/)) {
+    if (!value.match(/(?=.*[0-9])/)) {
         return 'Password must have number'
     }
     return '';

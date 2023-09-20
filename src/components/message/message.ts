@@ -1,7 +1,7 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 import {IChatMessage} from "../../models/IChatMessage.ts";
 
-interface IMessageProps {
+export interface IMessageProps extends IProps{
     message:IChatMessage;
     myMessage:boolean
 }

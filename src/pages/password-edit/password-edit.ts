@@ -1,9 +1,16 @@
-import Block from "../../utils/Block.ts";
+import {IProps,Block} from "../../utils/Block.ts";
 import {mockUser} from "../../mocks/user-profile.mocks.ts";
+import {IUser} from "../../models/IUser.ts";
 
+export interface ILoginPageProps extends IProps {
+    onChange:(event:Event)=>void,
+    user:IUser
+}
 export class PagePasswordEdit extends Block {
+
     constructor() {
-        super({
+        const props:ILoginPageProps={
+            events:{},
             user:mockUser,
             onChange: (event: Event) => {
 
@@ -18,7 +25,10 @@ export class PagePasswordEdit extends Block {
                     repeatPassword,
                 })
             }
-        });
+        }
+
+        super(props);
+
     }
 
     getChildren() {
@@ -34,7 +44,7 @@ export class PagePasswordEdit extends Block {
     protected render(): string {
         return (`
             <form class="container">
-                {{{ FormProfile withButton=true  children="${this.getChildren()}" ref="form" buttonPage='pageProfile' onClickOkButton=onChange buttonText='Save Password' }}}
+                {{{ FormProfile user=user withButton=true  children="${this.getChildren()}" ref="form" buttonPage='pageProfile' onClickOkButton=onChange buttonText='Save Password' }}}
             </form>`)
     }
 }

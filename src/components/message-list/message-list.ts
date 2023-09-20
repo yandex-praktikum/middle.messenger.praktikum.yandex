@@ -1,9 +1,10 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 import {IChatMessage} from "../../models/IChatMessage.ts";
 import {IUser} from "../../models/IUser.ts";
 import { Message} from "../index.ts";
+import {IMessageProps} from "../message/message.ts";
 
-interface IMessageListProps {
+interface IMessageListProps extends IProps{
     messageList:IChatMessage[];
     currentUser:IUser
 }
@@ -16,7 +17,7 @@ export class MessageList extends Block {
     getListMessages(list:IChatMessage[]):string{
         if(!list||list.length===0)return '';
         return list.map(message=>{
-            const messageBlock=new Message({message:message,myMessage:message.main||false})
+            const messageBlock=new Message({message:message,myMessage:message.main||false} as IMessageProps)
             return(`
             <div class="message-list__main__message">
                 ${messageBlock.renderForList()}

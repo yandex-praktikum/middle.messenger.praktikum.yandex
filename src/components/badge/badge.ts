@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
-interface IBadgeProps {
+interface IBadgeProps extends IProps{
     type: 'primary' | 'ready',
     text: string,
 }

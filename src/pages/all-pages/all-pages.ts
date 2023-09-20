@@ -1,9 +1,9 @@
-import Block from "../../utils/Block";
+import {Block} from "../../utils/Block";
 
 export class AllPages extends Block {
 
     constructor() {
-        super();
+        super({events:{}});
     }
 
     protected render(): string {

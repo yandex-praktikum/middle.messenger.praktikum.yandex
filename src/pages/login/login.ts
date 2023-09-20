@@ -1,22 +1,25 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
+export interface ILoginPageProps extends IProps {
+    onLogin:(event:Event)=>void
+}
 export class LoginPage extends Block {
     constructor() {
-        super({
-
+        const props:ILoginPageProps={
+            events:{},
             onLogin: (event:Event) => {
                 event.preventDefault();
-                // @ts-ignore
-                const login =  this.refs.formLogin.refs?.login.value();
-                // @ts-ignore
-                const password =  this.refs.formLogin.refs?.password.value();
+                const login =  this.refs.formLogin.getRefs()?.login.value();
+                const password =  this.refs.formLogin.getRefs()?.password.value();
 
                 console.log({
                     login,
                     password
                 })
             }
-        });
+        }
+
+        super(props);
     }
 
     protected render(): string {

@@ -1,7 +1,7 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 import {IChat} from "../../models/IChat.ts";
 
-interface IChatItemProps {
+export interface IChatItemProps extends IProps {
     chat:IChat,
 }
 

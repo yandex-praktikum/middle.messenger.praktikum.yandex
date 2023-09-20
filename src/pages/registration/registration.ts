@@ -1,14 +1,15 @@
-import Block from "../../utils/Block.ts";
+import {IProps,Block} from "../../utils/Block.ts";
 
+export interface IPageRegistrationProps extends IProps {
+    onLogin:(event:Event)=>void,
+}
 export class PageRegistration extends Block {
     constructor() {
-        super({
-
-            onLogin: (event: Event) => {
+        const props:IPageRegistrationProps={
+            events:{},
+            onLogin:  (event: Event) => {
                 event.preventDefault();
-                // @ts-ignore
                 const login = this.refs.form.getRefs()?.login.value();
-                // @ts-ignore
                 const email = this.refs.form.getRefs()?.email.value();
                 const phone = this.refs.form.getRefs()?.phone.value();
                 const first_name = this.refs.form.getRefs()?.first_name.value();
@@ -26,15 +27,18 @@ export class PageRegistration extends Block {
                     email
                 })
             }
-        });
+        }
+
+        super(props);
+
     }
 
     getChildren() {
         return (
             `{{{ InputShort label='Email' type='email' name='email' validate=validate.email ref='email' }}}
             {{{ InputShort label='Login' type='text' name='login' validate=validate.login ref='login' }}}
-            {{{ InputShort label='First Name' type='first_name' name='first_name' validate=validate.first_name ref='first_name' }}}
-            {{{ InputShort label='Second Name' name='second_name' validate=validate.second_name ref='second_name' }}}
+            {{{ InputShort label='First Name' type='first_name' name='first_name' validate=validate.name ref='first_name' }}}
+            {{{ InputShort label='Second Name' name='second_name' validate=validate.name ref='second_name' }}}
             {{{ InputShort label='Phone'  name='phone' validate=validate.phone ref='phone' }}}
             {{{ InputShort label='Password' type='password' name='password' validate=validate.password ref='password' }}}
             {{{ InputShort label='Password (2nd time)' type='password' name='password2' validate=validate.password ref='password2' }}}`

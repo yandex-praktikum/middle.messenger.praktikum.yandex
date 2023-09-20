@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 
-interface ILinkProps {
+interface ILinkProps extends IProps{
     caption: string,
     page?: string,
     href?: string,

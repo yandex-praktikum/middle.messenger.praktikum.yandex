@@ -1,8 +1,9 @@
-import Block from "../../utils/Block";
+import {IProps,Block} from "../../utils/Block";
 import {IChat} from "../../models/IChat.ts";
 import {ChatItem} from "../index.ts";
+import {IChatItemProps} from "../chat-item/chat-item.ts";
 
-interface IChatListProps {
+interface IChatListProps extends IProps {
    list:IChat[]
 }
 
@@ -14,7 +15,7 @@ export class ChatList extends Block {
    getChats(list:IChat[]):string{
         if(!list||list.length===0)return '';
         return list.map(chat=>{
-            const chatBlock=new ChatItem({chat:chat})
+            const chatBlock=new ChatItem({chat:chat} as IChatItemProps)
             return(`
                 ${chatBlock.renderForList()}
             `)

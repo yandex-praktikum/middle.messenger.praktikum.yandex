@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import  {IProps,Block} from "../../utils/Block";
 
-interface IAvatarProps {
+interface IAvatarProps extends IProps{
     size: 'sm' | 'md',
     isLoadAvatar: boolean,
     onClickLoadAvatar: () => void,

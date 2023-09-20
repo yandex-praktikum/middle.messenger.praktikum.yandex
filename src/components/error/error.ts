@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
+import{IProps,Block} from "../../utils/Block";
 
-interface IErrorProps {
+interface IErrorProps extends IProps{
     errorNumber: string,
     pageGoBack: string,
     errorText: string,
@@ -9,9 +9,6 @@ interface IErrorProps {
 export class Error extends Block {
     constructor(props: IErrorProps) {
         super(props);
-        this.props.events = {
-            click: this.props.onClick || (() => {})
-        }
     }
     protected render(): string {
         const { errorNumber='',pageGoBack='',errorText=''} = this.props;

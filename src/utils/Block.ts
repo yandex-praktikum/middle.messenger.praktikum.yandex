@@ -3,8 +3,10 @@ import { v4 as uuidv4 } from 'uuid';
 import Handlebars from "handlebars";
 import {isDeepEqual} from "./object.utils.ts";
 
-
-class Block {
+export interface IProps{
+    events?:object
+}
+export class Block {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -13,14 +15,14 @@ class Block {
     };
 
     public id = uuidv4();
-    protected props: any;
+    protected props: IProps;
     protected _element: HTMLElement | null = null;
-    protected _meta: { props: any; }|null=null;
+    protected _meta: { props: IProps; }|null=null;
     private _eventBus: () => EventBus;
-    private children: Record<string, Block>;
+    private children: Record<string, Block> = {};
     protected refs: Record<string, Block> = {};
 
-    constructor( propsWithChildren:any = {}) {
+    constructor( propsWithChildren:IProps ) {
         const eventBus = new EventBus();
         const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
@@ -29,7 +31,7 @@ class Block {
         };
 
         this.children = children;
-        this.props = this._makePropsProxy(props);
+        this.props = this._makePropsProxy(props,this);
        // console.log('init props',props,this.props)
 
         this._eventBus = () => eventBus;
@@ -38,7 +40,7 @@ class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _getChildrenAndProps(childrenAndProps: any) {
+    _getChildrenAndProps(childrenAndProps: IProps) {
         const props: Record<string, unknown> = {};
         const children: Record<string, Block> = {};
 
@@ -78,7 +80,7 @@ class Block {
         Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
     }
 
-    private _componentDidUpdate(oldProps:any, newProps:any) {
+    private _componentDidUpdate(oldProps:IProps, newProps:IProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if(response) {
 
@@ -86,12 +88,12 @@ class Block {
         }
     }
 
-    protected componentDidUpdate(oldProps:any, newProps:any) {
+    protected componentDidUpdate(oldProps:IProps, newProps:IProps) {
         // this.setProps(newProps);
-        return isDeepEqual(oldProps, newProps);
+        return isDeepEqual<IProps>(oldProps as {[index: string]:IProps}, newProps as {[index: string]:IProps});
     }
 
-    setProps = (nextProps:any) => {
+    setProps = (nextProps:IProps) => {
         if (!nextProps) {
             return;
         }
@@ -104,8 +106,7 @@ class Block {
     }
 
     public value() {
-        // @ts-ignore
-        return this._element&&this._element.value ? this._element.value : '';
+        return this._element&&(<HTMLInputElement>this._element).value ? (<HTMLInputElement>this._element).value : '';
     }
 public getRefs(){
         return this.refs
@@ -131,9 +132,10 @@ public getRefs(){
             this._element?.addEventListener(eventName, events[eventName]);
         });
     }
-    private compile(template: string, context: any) {
+    private compile(template: string, context: object) {
 
-        const contextAndStubs = {...context, __refs: this.refs};
+
+        const contextAndStubs = {...context,__children: [] as Array<{ component:unknown,embed(node:DocumentFragment):void }>, __refs: this.refs};
 
         const html = Handlebars.compile(template)(contextAndStubs);
 
@@ -141,7 +143,7 @@ public getRefs(){
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({embed}: any) => {
+        contextAndStubs.__children?.forEach(({embed}) => {
             embed(temp.content);
         });
 
@@ -156,10 +158,7 @@ public getRefs(){
         return this.element;
     }
 
-    _makePropsProxy(props:any) {
-        // Можно и так передать this
-        // Такой способ больше не применяется с приходом ES6+
-        const self = this;
+    _makePropsProxy(props:{[index: string|symbol]:unknown},self:Block) {
         return new Proxy(props, {
             get(target, prop) {
                 const value = target[prop];

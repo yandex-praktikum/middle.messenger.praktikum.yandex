@@ -1,7 +1,7 @@
-import Block from "../../utils/Block.ts";
+import {IProps,Block} from "../../utils/Block.ts";
 
 
-interface IInputProps {
+interface IInputProps extends IProps {
     classes: string,
     placeholder: string,
     onBlur:()=>void,

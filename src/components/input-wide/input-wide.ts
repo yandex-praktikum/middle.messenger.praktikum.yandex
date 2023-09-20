@@ -1,22 +1,27 @@
-import Block from "../../utils/Block";
+import{IProps,Block} from "../../utils/Block";
 
-interface IInputWideProps {
+interface IInputWideProps extends IProps{
     type: 'text' | 'button',
     name: string,
     value: string,
     label: string,
     validate: (value: string) => void,
     readOnly: boolean,
-    noLine: boolean
+    noLine: boolean,
+    onBlur: () => void,
+    errorText: string,
+    error:boolean ,
 }
 
 export class InputWide extends Block {
 
+
     constructor(props: IInputWideProps) {
+        props.errorText='';
+        props.error=false;
+        props.onBlur= () => this.validate();
         super({
-            ...props,
-            errorText: '', error: false,
-            onBlur: () => this.validate()
+            ...props
         });
     }
 
@@ -34,11 +39,16 @@ export class InputWide extends Block {
 
         console.log('value,error', value, error)
         this.props.value = value;
+
         if (error) {
-            this.setProps({...this.props, errorText: error, error: true});
+            this.props.error=true;
+            this.props.errorText=error;
+            this.setProps(this.props);
             return false;
         }
-        this.setProps({...this.props, errorText: '', error: false});
+        this.props.error=false;
+        this.props.errorText='';
+        this.setProps(this.props);
         return true;
     }
 

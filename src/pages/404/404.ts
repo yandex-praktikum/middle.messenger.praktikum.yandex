@@ -1,8 +1,8 @@
-import Block from "../../utils/Block.ts";
+import {Block} from "../../utils/Block.ts";
 
 export class Page404 extends Block {
     constructor() {
-        super();
+        super({events:{}});
     }
 
    protected render(): string {

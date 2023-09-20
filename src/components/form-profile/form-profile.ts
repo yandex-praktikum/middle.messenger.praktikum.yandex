@@ -1,14 +1,8 @@
-import Block from "../../utils/Block";
-import {
-    validateEmail,
-    validateLogin,
-    validateName, validatePassword,
-    validatePhone
-} from "../../utils/validates.utils.ts";
+import {IProps,Block} from "../../utils/Block";
 import {IUser} from "../../models/IUser.ts";
-import {mockUser} from "../../mocks/user-profile.mocks.ts";
+import {ALL_VALIDATE_FIELDS, IValidateType} from "../../models/IValidateType.ts";
 
-interface IFormProfileProps {
+interface IFormProfileProps extends IProps{
     user:IUser,
     withButton:boolean,
     children: string,
@@ -16,39 +10,21 @@ interface IFormProfileProps {
     buttonPage:string,
     buttonCancelPage:string,
     onClickOkButton: (event:Event) => void,
+    validate:IValidateType,
 
-/*
-    onClickCancelButton: (event:any) => void,
-    captionOk: string,
-    captionCancel: string,
-    pageOk:string,
-    pageCancel:string*/
 }
 export class FormProfile extends Block {
     constructor(props:IFormProfileProps) {
-        super({
-            ...props,
-            validate: {
-                login: validateLogin,
-                first_name:validateName,
-                second_name:validateName,
-                display_name:validateName,
-                phone:validatePhone,
-                email:validateEmail,
-                password:validatePassword
-            },
-            onClickOk: (event:Event)=>{
-                console.log('OK')
-                props.onClickOkButton(event)
-            },
-            user:mockUser
-        });
+        props.validate= ALL_VALIDATE_FIELDS;
+
+        super(props);
     }
 
     protected render(): string {
         const {user,withButton=false,children='',buttonText='',
             buttonCancelPage=''}=this.props;
         const {avatar,first_name,second_name}=user;
+
         return(`
       
         <div class="profile">
@@ -63,7 +39,7 @@ export class FormProfile extends Block {
             }
              ${withButton ?
                 `<div class="profile__button">
-                    {{{ Button caption="${buttonText}" onClick=onClickOk }}}
+                    {{{ Button caption="${buttonText}" onClick=onClickOkButton }}}
                 </div>`:            
                 `<div class="profile__buttons">
                     {{{Link caption="Change IUser Data" page="pageProfileEdit" type='success' linkLine=true  }}}
