@@ -7,3 +7,4 @@ export * from "./sideButton";
 export * from "./userImage";
 export * from "./listItem";
 export * from "./infoList";
+export * from "./chatCard";

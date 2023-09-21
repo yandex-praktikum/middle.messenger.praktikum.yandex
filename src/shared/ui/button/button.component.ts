@@ -13,10 +13,9 @@ class ButtonComponent extends Component {
   }
 
   protected render(): string {
-    const { label } = this.props;
     return `
       <button class="${styles.button}" type="button">
-        ${label}
+        {{label}}
       </button>
     `;
   }

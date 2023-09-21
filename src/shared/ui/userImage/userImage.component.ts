@@ -8,7 +8,7 @@ class UserImage extends Component {
     super(props);
   }
   protected render() {
-    const { src } = this.props;
+    const { src, isSmall } = this.props;
 
     let image = `
       <img src="${noImage}" alt="Изображение пользователя" />
@@ -21,7 +21,11 @@ class UserImage extends Component {
     }
 
     return `
-      <div class="${styles.userImage}">
+      <div class="${
+        isSmall
+          ? [styles.userImage, styles.userImageSmall].join(" ")
+          : styles.userImage
+      }">
         ${image}
         <span>
           Поменять<br />

@@ -1,4 +1,5 @@
 import {
+  ChatPage,
   EditPasswordPage,
   EditProfilePage,
   ErrorPage,
@@ -13,6 +14,7 @@ const routes = {
   "/profile": ProfilePage,
   "/profile-edit": EditProfilePage,
   "/password-edit": EditPasswordPage,
+  "/chat": ChatPage,
 };
 
 function navigate(path: string): void {

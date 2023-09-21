@@ -8,6 +8,10 @@
   height: 130px;
   width: 130px;
 }
+.userImageSmall img {
+  height: 47px;
+  width: 47px;
+}
 .userImage span {
   position: absolute;
   text-align: center;

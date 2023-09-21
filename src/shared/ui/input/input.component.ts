@@ -13,8 +13,9 @@ class InputComponent extends Component {
   }
 
   render() {
+    const { type, placeholder } = this.props;
     return `
-      <input class="${styles.input}" ref="input"/>
+      <input class="${styles.input}" ref="input" type="${type}" placeholder="${placeholder}" />
     `;
   }
 }
