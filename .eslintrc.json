@@ -11,7 +11,7 @@
     "plugin:prettier/recommended"
   ],
   "root": true,
-  "ignorePatterns": [".eslintrc.cjs", "*.css", "*.scss"],
+  "ignorePatterns": [".eslintrc.json", "*.css", "*.scss"],
   "rules": {
     "prettier/prettier": 0
   }
