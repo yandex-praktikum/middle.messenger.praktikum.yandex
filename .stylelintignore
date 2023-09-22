@@ -1,1 +1,2 @@
-*.css
+src/**/*.css
+dist/
