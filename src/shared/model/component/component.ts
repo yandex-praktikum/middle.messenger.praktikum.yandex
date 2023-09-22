@@ -134,7 +134,7 @@ export class Component {
   }
 
   private compile(template: string, context: object) {
-    const contextAndStubs = { ...context, __refs: this.refs };
+    const contextAndStubs = { ...context, __refs: this.refs, __children: [] };
 
     const html = Handlebars.compile(template)(contextAndStubs);
 
