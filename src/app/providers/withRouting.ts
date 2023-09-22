@@ -10,6 +10,7 @@ import { SignupPage } from "@/pages";
 
 const routes = {
   "/": SigninPage,
+  "/signin": SigninPage,
   "/signup": SignupPage,
   "/profile": ProfilePage,
   "/profile-edit": EditProfilePage,
@@ -23,6 +24,7 @@ function navigate(path: string): void {
   let PageComponent;
   let page;
   if (path in routes) {
+    // @ts-ignore
     PageComponent = routes[path];
     page = new PageComponent();
   } else {

@@ -6,6 +6,7 @@ class ChatWindow extends Component {
     return `
 <div class=${styles.chatWindow}>
 {{{ ChatHeader }}}
+{{{ SendMessage }}}
 </div>
 `;
   }

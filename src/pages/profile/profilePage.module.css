@@ -4,15 +4,12 @@
   justify-content: space-between;
   align-items: center;
 }
-.profilePage div:last-child {
-  margin-top: 40px;
+.profilePage .inputField {
+  width: 40px;
 }
 .profilePage .profile {
   margin: 0 auto;
   width: 510px;
-}
-.profilePage .info-list {
-  margin-bottom: 40px;
 }
 .profilePage .actions-list .actions-list__exit {
   color: #ff0000;

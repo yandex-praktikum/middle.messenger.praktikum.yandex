@@ -2,10 +2,6 @@ import { EventBus } from "..";
 import Handlebars from "handlebars";
 import { v4 as uuidv4 } from "uuid";
 
-type Meta = {
-  props: unknown;
-};
-
 type Children = Record<string, Component>;
 
 export class Component {
@@ -18,10 +14,9 @@ export class Component {
   };
 
   private _element: HTMLElement | null = null;
-  private _meta: Meta;
   private eventBus: () => EventBus;
   protected props: any;
-  protected refs: Children = {};
+  protected refs: any = {};
   public children: Children;
   public id = uuidv4();
 
@@ -29,10 +24,6 @@ export class Component {
     const eventBus = new EventBus();
 
     const { props, children } = this.getChildrenAndProps(propsWithChildren);
-
-    this._meta = {
-      props,
-    };
 
     this.children = children;
     this.props = this.makePropsProxy(props);
@@ -114,8 +105,8 @@ export class Component {
   }
 
   protected componentDidUpdate(
-    oldProps?: unknown,
-    newProps?: unknown,
+    _oldProps?: unknown,
+    _newProps?: unknown,
   ): boolean {
     return true;
   }
@@ -162,12 +153,8 @@ export class Component {
     return "";
   }
 
-  public getContent(): HTMLElement {
+  public getContent(): HTMLElement | null {
     return this.element;
-  }
-
-  private createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
   }
 
   private makePropsProxy(props: any): ProxyHandler<any> {

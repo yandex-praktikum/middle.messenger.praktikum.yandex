@@ -11,7 +11,8 @@
     "build": "tsc --noEmitOnError && vite build",
     "preview": "vite preview",
     "start": "npm run build && npm run server",
-    "server": "node server.js"
+    "server": "node server.js",
+    "lint": "npx eslint \"src/**\""
   },
   "devDependencies": {
     "@types/handlebars": "^4.1.0",

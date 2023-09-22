@@ -1,23 +1,24 @@
+import { validateLogin, validatePassword } from "@/shared/lib";
 import { Component } from "@/shared/model";
 
 class SigninForm extends Component {
   constructor() {
     super({
       validate: {
-        login: (value: string) =>
-          value.length < 3 && value.length !== 0
-            ? `Length of login should not be less 3 letters.`
-            : "",
+        login: validateLogin,
+        password: validatePassword,
       },
       onLogin: (event: SubmitEvent) => {
         event.preventDefault();
-        const login = this.refs.login.element.value();
-        const password = this.refs.password.element.value();
+        const login = this.refs.login.value();
+        const password = this.refs.password.value();
 
-        console.log({
-          login,
-          password,
-        });
+        if (login && password) {
+          console.log({
+            login,
+            password,
+          });
+        }
       },
     });
   }
@@ -27,11 +28,11 @@ class SigninForm extends Component {
       <div>
         {{#> AuthForm title="Вход"}}
           <div>
-            {{{ InputField label="Логин" name="login" validate=validate.login}}}
-            {{{ InputField label="Пароль" name="password"}}}
+            {{{ InputField ref="login" label="Логин" name="login" validate=validate.login }}}
+            {{{ InputField ref="password" label="Пароль" name="password" type="password" validate=validate.password }}}
           </div>
           <div class="authForm_buttons">
-            {{{ Button label="Авторизоваться" }}} 
+            {{{ Button label="Авторизоваться" type="submit" onClick=onLogin }}} 
           </div>
         {{/AuthForm}}
       </div>

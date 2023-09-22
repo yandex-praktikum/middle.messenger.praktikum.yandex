@@ -12,7 +12,7 @@ class InfoList extends Component {
       <div class="${styles.infoList}">
         <ul>
           {{#each items}}
-            {{{ListItem type=type title=title value=value inputType=inputType inputName=inputName}}}
+            {{{ListItem type=type title=title value=value inputType=inputType inputName=inputName validate=validate ref=ref}}}
           {{/each}}
         </ul>
       </div>

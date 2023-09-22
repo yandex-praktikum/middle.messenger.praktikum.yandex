@@ -1,4 +1,4 @@
-export { NavList } from "./navList";
+export * from "./navigationList";
 export * from "./button";
 export * from "./input";
 export * from "./inputField";
@@ -8,3 +8,4 @@ export * from "./userImage";
 export * from "./listItem";
 export * from "./infoList";
 export * from "./chatCard";
+export * from "./iconButton";

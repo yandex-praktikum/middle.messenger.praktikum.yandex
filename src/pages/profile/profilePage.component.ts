@@ -70,24 +70,6 @@ class ProfilePage extends Component {
               {{{ InfoList items=userEditFields }}}
           </div>
         </div>
-          {{#getJsonContext '{
-            "title": "Загрузите файл",
-            "isOverlay": true,
-            "fields": [
-              {
-                "type": "file",
-                "name": "avatar"
-              }
-              ],
-            "buttons": [
-              {
-                "type": "submit",
-                "label": "Поменять"
-              }
-              ]
-            }'}}
-            {{> modal this}}
-          {{/getJsonContext}}
       {{/layout}}
     `;
   }

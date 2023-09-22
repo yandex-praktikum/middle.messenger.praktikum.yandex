@@ -29,13 +29,7 @@ class ListItem extends Component {
       return `
         <li class="${styles.listItem} listItem__${type}">
           <label for="{{inputName}}" class="list-item_title">{{title}}</label>
-          <input
-            type="{{inputType}}"
-            name="{{inputName}}"
-            id="{{inputName}}"
-            value="${value}"
-            class="list-item_value"
-          />
+          {{{ InputField type=inputType name=inputName value=value placeholder="" label="" customClass="${styles.listItemEdit}" validate=validate ref=ref }}}
         </li>
       `;
     }

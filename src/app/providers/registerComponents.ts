@@ -21,6 +21,7 @@ function registerComponents(): void {
   registerComponent("ChatHeader", ChatHeader);
   registerComponent("ChatWindow", ChatWindow);
   registerComponent("SendMessage", SendMessage);
+  registerComponent("IconButton", Components.IconButton);
 }
 
 export { registerComponents };

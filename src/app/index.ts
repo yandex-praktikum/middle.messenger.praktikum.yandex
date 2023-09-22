@@ -1,9 +1,9 @@
+import { NavigationList } from "@/shared/ui";
 import {
   registerPartials,
   registerHelpers,
   registerComponents,
 } from "./providers";
-import { NavList } from "@/shared/ui";
 import { navigate } from "./providers/withRouting";
 
 function app() {
@@ -25,10 +25,7 @@ function app() {
         .querySelector(".modal-overlay")
         ?.addEventListener("click", toggleModal);
 
-      const navContainer = document.createElement("nav");
-      navContainer.classList.add("nav-list");
-      navContainer.innerHTML = NavList();
-      document.querySelector("#app main")?.append(navContainer);
+      document.body.append(new NavigationList().getContent() ?? "");
     }
     navigate(window.location.pathname);
   });

@@ -1,23 +1,42 @@
+import {
+  validateEmail,
+  validateLogin,
+  validateName,
+  validatePassword,
+  validatePhone,
+} from "@/shared/lib";
 import { Component } from "@/shared/model";
 
 class SignupForm extends Component {
   constructor() {
     super({
       validate: {
-        login: (value: string) =>
-          value.length < 3 && value.length !== 0
-            ? `Length of login should not be less 3 letters.`
-            : "",
+        login: validateLogin,
+        firstName: validateName,
+        secondName: validateName,
+        email: validateEmail,
+        password: validatePassword,
+        phone: validatePhone,
       },
-      onLogin: (event: SubmitEvent) => {
+      onSignup: (event: SubmitEvent) => {
         event.preventDefault();
-        const login = this.refs.login.element.value();
-        const password = this.refs.password.element.value();
+        const login = this.refs.login.value();
+        const password = this.refs.password.value();
+        const firstName = this.refs.firstName.value();
+        const secondName = this.refs.secondName.value();
+        const phone = this.refs.phone.value();
+        const email = this.refs.email.value();
 
-        console.log({
-          login,
-          password,
-        });
+        if (login && firstName && secondName && phone && email && password) {
+          console.log({
+            firstName,
+            secondName,
+            login,
+            email,
+            password,
+            phone,
+          });
+        }
       },
     });
   }
@@ -27,11 +46,15 @@ class SignupForm extends Component {
       <div>
         {{#> AuthForm title="Регистрация"}}
           <div>
-            {{{ InputField label="Логин" name="login" validate=validate.login}}}
-            {{{ InputField label="Пароль" name="password"}}}
+            {{{ InputField ref="firstName" type="text" label="Имя" name="first_name" validate=validate.firstName }}}
+            {{{ InputField ref="secondName" type="text" label="Фамилия" name="second_name" validate=validate.secondName }}}
+            {{{ InputField ref="login" type="text" label="Логин" name="login" validate=validate.login}}}
+            {{{ InputField ref="email" type="text" label="Адрес почты" name="email" validate=validate.email }}}
+            {{{ InputField ref="password" type="password" label="Пароль" name="password" validate=validate.password }}}
+            {{{ InputField ref="phone" type="text" label="Номер телефона" name="phone" validate=validate.phone }}}
           </div>
           <div class="authForm_buttons">
-            {{{ Button label="Зарегистрироваться" }}} 
+            {{{ Button label="Зарегистрироваться" onClick=onSignup }}} 
           </div>
         {{/AuthForm}}
       </div>

@@ -12,10 +12,15 @@ class InputComponent extends Component {
     });
   }
 
+  public value() {
+    const input = this.element as HTMLInputElement;
+    return input.value;
+  }
+
   render() {
-    const { type, placeholder } = this.props;
+    const { type, name, placeholder = "", value } = this.props;
     return `
-      <input class="${styles.input}" ref="input" type="${type}" placeholder="${placeholder}" />
+      <input class="${styles.input}" name="${name}" ref="input" id="${name}" type="${type}" placeholder="${placeholder}" value="${value}" />
     `;
   }
 }

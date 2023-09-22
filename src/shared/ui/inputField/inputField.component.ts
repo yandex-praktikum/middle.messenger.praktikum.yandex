@@ -34,12 +34,14 @@ class InputFieldComponent extends Component {
   }
 
   protected render(): string {
-    const { name, label } = this.props;
+    const { name, label, type, value = "", customClass = "" } = this.props;
     return `
-      <div class="${styles.inputField}" >
+      <div class="${styles.inputField} ${customClass}" >
         {{{ Input
           id="${name}"
           name="${name}"
+          type="${type}"
+          value="${value}"
           ref="input"
           onBlur=onBlur
         }}}

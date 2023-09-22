@@ -1,46 +1,86 @@
 import { Component } from "@/shared/model";
 import styles from "./editProfilePage.module.css";
 import profileStyles from "@/pages/profile/profilePage.module.css";
+import {
+  validateEmail,
+  validateLogin,
+  validateName,
+  validatePhone,
+} from "@/shared/lib";
 
 class EditProfilePage extends Component {
   constructor() {
     super({
+      onSubmit: (event: SubmitEvent) => {
+        event.preventDefault();
+        const firstName =
+          this.refs.fields.refs.firstName.refs.firstName.value();
+        const lastName = this.refs.fields.refs.lastName.refs.lastName.value();
+        const login = this.refs.fields.refs.login.refs.login.value();
+        const email = this.refs.fields.refs.email.refs.email.value();
+        const displayName =
+          this.refs.fields.refs.displayName.refs.displayName.value();
+        const phone = this.refs.fields.refs.phone.refs.phone.value();
+
+        if (firstName && lastName && login && email && displayName && phone) {
+          console.log({
+            firstName,
+            lastName,
+            login,
+            email,
+            displayName,
+            phone,
+          });
+        }
+      },
       userEditFields: [
         {
           title: "Почта",
           type: "edit",
           inputName: "email",
           value: "mail@yandex.ru",
+          validate: validateEmail,
+          ref: "email",
         },
         {
           title: "Логин",
           type: "edit",
           inputName: "login",
           value: "ivanovivan",
+          validate: validateLogin,
+          ref: "login",
         },
         {
           title: "Имя",
           type: "edit",
           inputName: "firts_name",
           value: "Иван",
+          validate: validateName,
+          ref: "firstName",
         },
         {
           title: "Фамилия",
           type: "edit",
           inputName: "last_name",
           value: "Иванов",
+          validate: validateName,
+          ref: "lastName",
         },
         {
           title: "Имя в чате",
           type: "edit",
           inputName: "display_name",
           value: "Ivan",
+          validate: validateLogin,
+          ref: "displayName",
         },
         {
           title: "Телефон",
           type: "edit",
           inputName: "phone",
           value: "+7 (909) 123 45 67",
+          validate: validatePhone,
+          ref: "phone",
         },
       ],
     });
@@ -59,9 +99,9 @@ class EditProfilePage extends Component {
       </div>
 
       <form>
-              {{{ InfoList items=userEditFields }}}
+      {{{ InfoList items=userEditFields ref="fields" }}}
       <div class="profile_buttons">
-        {{{ Button label="Сохранить"}}}
+        {{{ Button label="Сохранить" type="submit" onClick=onSubmit }}}
       </div>
       </form>
     </div>

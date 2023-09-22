@@ -4,10 +4,15 @@ const METHODS = {
   POST: "POST",
   DELETE: "DELETE",
 };
-function queryStringify(data: object) {
-  if (!data) {
-    return;
-  }
+
+interface Options {
+  timeout?: number;
+  data?: object;
+  method?: string;
+  headers?: object;
+  query?: object;
+}
+function queryStringify(data: object): string {
   let query = "?";
   for (const [key, value] of Object.entries(data)) {
     query = query.concat(key, "=", value, "&");
@@ -26,28 +31,28 @@ function setHeaders(xhr: XMLHttpRequest, headers: object) {
 }
 
 class HTTPClient {
-  get = (url: string, options = {}) => {
+  get = (url: string, options: Options = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.GET, query: options.data },
       options.timeout,
     );
   };
-  post = (url: string, options = {}) => {
+  post = (url: string, options: Options = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
       options.timeout,
     );
   };
-  put = (url: string, options = {}) => {
+  put = (url: string, options: Options = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
       options.timeout,
     );
   };
-  delete = (url: string, options = {}) => {
+  delete = (url: string, options: Options = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },
@@ -55,9 +60,9 @@ class HTTPClient {
     );
   };
 
-  request = (url, options, timeout = 5000) => {
+  request = (url: string, options: Options, _timeout = 5000) => {
     console.log("options", options);
-    const { method, data, query, headers } = options;
+    const { method = "get", data, query = {}, headers = {} } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -75,7 +80,7 @@ class HTTPClient {
       if (method === METHODS.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(data as XMLHttpRequestBodyInit);
       }
       //setTimeout(reject, timeout);
     });
