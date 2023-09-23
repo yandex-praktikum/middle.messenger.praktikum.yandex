@@ -1,0 +1,76 @@
+/* eslint-disable */
+
+const METHODS = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+};
+
+function queryStringify (data) {
+  let result = '?';
+
+  for (const [key, value] of Object.entries(data)) {
+    result += `${key}=${value.toString()}&`;
+  }
+
+  return result.slice(0, result.length - 1);
+}
+
+class HTTPTransport {
+  get = (url, options = {}) => {
+    const { data } = options;
+    return this.request((data ? `${url}${queryStringify(data)}` : url), {...options, method: METHODS.GET});
+  };
+
+  post = () => {
+    return this.request(url, {...options, method: METHODS.POST});
+  }
+
+  put = () => {
+    return this.request(url, {...options, method: METHODS.PUT});
+  }
+
+  delete = () => {
+    return this.request(url, {...options, method: METHODS.DELETE});
+  }
+
+  request = (url, options) => {
+    const {method, headers, data, timeout = 5000} = options;
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      if (headers) xhr.setRequestHeader(...headers);
+
+      xhr.onload = () => {
+        resolve(xhr);
+      };
+
+      xhr.onabort = reject;
+      xhr.onerror = reject;
+      xhr.ontimeout = reject;
+
+      if (method === METHODS.GET) {
+        xhr.send();
+      } else {
+        xhr.send(JSON.stringify(data));
+      }
+
+      setTimeout(() => {
+        xhr.abort();
+      }, timeout)
+    })
+  };
+}
+
+function fetchWithRetry (url, options = {}) {
+  let { retries = 2 } = options;
+
+  if (retries === 0) {
+    throw new Error('The number of attempts has been exhausted');
+  }
+
+  return new HTTPTransport().get(url, options)
+    .catch(err => fetchWithRetry(url, {...options, retries: retries - 1}))
+}
