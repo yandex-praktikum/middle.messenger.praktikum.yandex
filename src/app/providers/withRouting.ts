@@ -26,7 +26,7 @@ function navigate(path: string): void {
   if (path in routes) {
     // @ts-ignore
     PageComponent = routes[path];
-    page = new PageComponent();
+    page = new PageComponent({});
   } else {
     PageComponent = ErrorPage;
     page = new ErrorPage({ errorCode: 404, errorMessage: "Не туда попали" });
