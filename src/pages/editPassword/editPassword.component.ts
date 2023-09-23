@@ -2,10 +2,12 @@ import { Component } from "@/shared/model";
 import profileStyles from "@/pages/profile/profilePage.module.css";
 import editProfileStyles from "@/pages/editProfile/editProfilePage.module.css";
 import { validatePassword } from "@/shared/lib";
+import { EditProfilePageProps } from "../editProfile/editProfilePage.types";
 
 class EditPasswordPage extends Component {
-  constructor() {
+  constructor(props: EditProfilePageProps) {
     super({
+      ...props,
       onSubmit: (event: SubmitEvent) => {
         event.preventDefault();
         const oldPassword =

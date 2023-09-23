@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 type Children = Record<string, Component>;
 
-export class Component {
+export class Component<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "INIT",
     FLOW_COMPONENT_DID_MOUNT: "flow:component_did_mount",
@@ -15,12 +15,12 @@ export class Component {
 
   private _element: HTMLElement | null = null;
   private eventBus: () => EventBus;
-  protected props: any;
+  protected props: Props;
   protected refs: any = {};
   public children: Children;
   public id = uuidv4();
 
-  constructor(propsWithChildren: object = {}) {
+  constructor(propsWithChildren: Props) {
     const eventBus = new EventBus();
 
     const { props, children } = this.getChildrenAndProps(propsWithChildren);
@@ -50,13 +50,19 @@ export class Component {
   }
 
   private addEvents() {
-    const { events = {} } = this.props as {
-      events: Record<string, () => void>;
-    };
-
+    const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
       if (events[eventName] !== undefined) {
         this._element?.addEventListener(eventName, events[eventName]);
+      }
+    });
+  }
+
+  private removeEvents() {
+    const { events = {} } = this.props;
+    Object.keys(events).forEach((eventName) => {
+      if (events[eventName] !== undefined) {
+        this._element?.removeEventListener(eventName, events[eventName]);
       }
     });
   }
@@ -125,6 +131,7 @@ export class Component {
     const newElement = fragment.firstElementChild as HTMLElement;
 
     if (this._element) {
+      this.removeEvents();
       this._element.replaceWith(newElement);
     }
 
@@ -157,7 +164,7 @@ export class Component {
     return this.element;
   }
 
-  private makePropsProxy(props: any): ProxyHandler<any> {
+  private makePropsProxy(props: any) {
     const self = this;
 
     return new Proxy(props, {

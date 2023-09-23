@@ -1,9 +1,11 @@
 import { Component } from "@/shared/model";
 import styles from "./profilePage.module.css";
+import { ProfilePageProps } from "./profilePage.types";
 
 class ProfilePage extends Component {
-  constructor() {
+  constructor(props: ProfilePageProps) {
     super({
+      ...props,
       userInfoFields: [
         {
           title: "Почта",

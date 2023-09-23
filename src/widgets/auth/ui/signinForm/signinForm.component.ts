@@ -1,9 +1,11 @@
 import { validateLogin, validatePassword } from "@/shared/lib";
 import { Component } from "@/shared/model";
+import { SigninFormProps } from "./signinForm.types";
 
 class SigninForm extends Component {
-  constructor() {
+  constructor(props: SigninFormProps) {
     super({
+      ...props,
       validate: {
         login: validateLogin,
         password: validatePassword,

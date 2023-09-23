@@ -6,10 +6,12 @@ import {
   validatePhone,
 } from "@/shared/lib";
 import { Component } from "@/shared/model";
+import { SignupFormProps } from "./signupForm.types";
 
 class SignupForm extends Component {
-  constructor() {
+  constructor(props: SignupFormProps) {
     super({
+      ...props,
       validate: {
         login: validateLogin,
         firstName: validateName,

@@ -7,10 +7,12 @@ import {
   validateName,
   validatePhone,
 } from "@/shared/lib";
+import { EditProfilePageProps } from "./editProfilePage.types";
 
 class EditProfilePage extends Component {
-  constructor() {
+  constructor(props: EditProfilePageProps) {
     super({
+      ...props,
       onSubmit: (event: SubmitEvent) => {
         event.preventDefault();
         const firstName =
@@ -61,7 +63,7 @@ class EditProfilePage extends Component {
         {
           title: "Фамилия",
           type: "edit",
-          inputName: "last_name",
+          inputName: "second_name",
           value: "Иванов",
           validate: validateName,
           ref: "lastName",
