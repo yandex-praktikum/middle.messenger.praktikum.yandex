@@ -43,8 +43,8 @@ export function registerComponent(name: string, Component: BlockType) {
             (newData.root.__refs = newData.root.__refs || {})[hash.ref] = component;
         }
 
-        (newData.root.__components = newData.root.__components || {})
-            [hash.ref || component.id] = component;
+        const nameComponent = hash.ref || component.id;
+        (newData.root.__components = newData.root.__components || {})[nameComponent] = component;
 
         (newData.root.__children = newData.root.__children || []).push({
             component,
