@@ -1,0 +1,16 @@
+<div class="chat-message{{#if alignment}} chat-message__{{alignment}}{{/if}}">
+    {{#if avatar}}
+    <div class="chat-message__avatar">
+        {{{ Avatar data=avatar ref=avatar_ref }}}
+    </div>
+    {{/if}}
+    <div class="chat-message__body">
+        <div class="chat-message__info">
+            <div class="chat-message__info__name">{{ name }}</div>
+            <div class="chat-message__info__time">{{ time }}</div>
+        </div>
+        <div class="chat-message__text">
+            {{{ text }}}
+        </div>
+    </div>
+</div>

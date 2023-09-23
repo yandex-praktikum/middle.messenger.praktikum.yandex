@@ -2,17 +2,17 @@
     {{#> FormAuth name="registration"}}
         <div class="registration__content__header">
             <h2 class="registration__content__header__title">Регистрация</h2>
-            {{> Input name="mail" }}
-            {{> Input name="login" }}
-            {{> Input name="name" }}
-            {{> Input name="surname" }}
-            {{> Input name="phone" }}
-            {{> Input name="password" }}
-            {{> Input name="repeat_password" }}
+            {{{ InputField data="mail" ref="mail" }}}
+            {{{ InputField data="login" ref="login" }}}
+            {{{ InputField data="name" ref="name" }}}
+            {{{ InputField data="surname" ref="surname" }}}
+            {{{ InputField data="phone" ref="phone" }}}
+            {{{ InputField data="password" ref="password" }}}
+            {{{ InputField data="repeat_password" ref="repeat_password" }}}
         </div>
         <div class="registration__content__footer">
-            {{> Button name="registration"}}
-            {{> Button name="entrance"}}
+            {{{ Button data="registration" ref="registration" onClick=onRegistration }}}
+            {{{ Button data="entrance" ref="entrance" }}}
         </div>
     {{/FormAuth}}
 </main>

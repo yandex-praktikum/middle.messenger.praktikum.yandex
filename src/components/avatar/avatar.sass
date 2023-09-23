@@ -24,6 +24,8 @@
     background: green
   .offline
     background: red
+  .hideStatus
+    display: none
 
   &__big
     width: $avatar-size
@@ -54,3 +56,18 @@
     .status
       width: $avatar-status-size-small
       height: $avatar-status-size-small
+
+  &__smallest
+    width: $avatar-size-smallest
+    height: $avatar-size-smallest
+    .icon
+      width: $avatar-size-smallest
+      height: $avatar-size-smallest
+    .status
+      width: $avatar-status-size-smallest
+      height: $avatar-status-size-smallest
+
+  &__square
+    border-radius: 5px
+    .icon
+      border-radius: 5px

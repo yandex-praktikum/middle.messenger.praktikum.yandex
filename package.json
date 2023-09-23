@@ -8,19 +8,27 @@
   },
   "scripts": {
     "dev": "vite --open",
-    "build": "vite build --emptyOutDir",
+    "prebuild": "tsc --noEmit",
+    "build": "npm run prebuild && vite build",
     "preview": "vite preview --open",
     "server": "node server.js",
-    "start": "npm run build && npm run server"
+    "start": "npm run build && npm run server",
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "sass": "^1.66.1",
+    "stylelint": "^15.10.3",
+    "typescript": "^5.2.2",
     "vite": "^4.4.5",
     "vite-plugin-static-copy": "^0.17.0"
   },
   "dependencies": {
     "express": "^4.18.2",
     "handlebars": "^4.7.8",
+    "nanoid": "^4.0.2",
     "vite-plugin-handlebars": "^1.6.0"
   }
 }

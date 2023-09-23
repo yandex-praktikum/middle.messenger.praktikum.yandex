@@ -1,7 +1,7 @@
 <div class="chat-item {{#if select}}select{{/if}}">
     <div class="group-avatar">
         {{#each avatars}}
-            {{> Avatar }}
+            {{{ Avatar data=data ref=ref }}}
         {{/each}}
     </div>
     <div class="chat-item__content">

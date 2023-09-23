@@ -2,12 +2,12 @@
     <h3 class="chat-list__header">
         <div class="chat-list__header__empty"></div>
         <div class="chat-list__header__content">
-            {{> Button name="arrow" }}
+            {{{ Button data="arrow" ref="arrow" }}}
             <span>{{ title }}</span>
-            {{> Button name="add" }}
+            {{{ Button data="add" ref="add" }}}
         </div>
     </h3>
     {{#each items}}
-        {{> ChatItem }}
+        {{{ ChatItem data=data ref=ref}}}
     {{/each}}
 </div>

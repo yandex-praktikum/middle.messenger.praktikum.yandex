@@ -1,0 +1,21 @@
+@import ../../assets/sass/variables
+
+.input__text-error
+  transform: translateY(8px)
+  color: $font-color-error
+  font-size: 10px
+  font-weight: 400
+  white-space: pre-wrap
+  display: none
+
+.input__text-error.visible
+  display: block
+
+.profile__content
+  .input__text-error
+    transform: translateY(-5px)
+    float: right
+
+.input__message
+  .input__text-error
+    margin-left: 30px

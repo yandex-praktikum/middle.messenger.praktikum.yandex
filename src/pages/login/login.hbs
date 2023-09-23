@@ -2,12 +2,12 @@
     {{#> FormAuth name="login"}}
         <div class="login__content__header">
             <h2 class="login__content__header__title">Вход</h2>
-            {{> Input name="login" }}
-            {{> Input name="password" }}
+            {{{ InputField data="login" ref="login" }}}
+            {{{ InputField data="password" ref="password" }}}
         </div>
         <div class="login__content__footer">
-            {{> Button name="signIn"}}
-            {{> Button name="signUp"}}
+            {{{ Button data="signIn" ref="signIn" onClick=onLogin }}}
+            {{{ Button data="signUp" ref="signUp" }}}
         </div>
     {{/FormAuth}}
 </main>
