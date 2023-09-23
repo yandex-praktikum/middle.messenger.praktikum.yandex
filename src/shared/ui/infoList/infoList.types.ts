@@ -1,5 +1,5 @@
 interface InfoListProps {
-  items: [];
+  items?: [];
 }
 
 export type { InfoListProps };

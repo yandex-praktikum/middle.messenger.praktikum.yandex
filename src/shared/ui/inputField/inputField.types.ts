@@ -1,6 +1,6 @@
 interface InputFieldProps {
-  label: string;
-  name: string;
+  label?: string;
+  name?: string;
   value?: string;
   type?: string;
   customClass?: string;

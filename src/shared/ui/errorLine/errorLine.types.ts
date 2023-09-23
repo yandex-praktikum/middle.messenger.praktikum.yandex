@@ -1,5 +1,5 @@
 interface ErorrLineProps {
-  error: string;
+  error?: string;
 }
 
 export type { ErorrLineProps };

@@ -1,5 +1,5 @@
 interface ChatListProps {
-  chats: [];
+  chats?: [];
 }
 
 export type { ChatListProps };

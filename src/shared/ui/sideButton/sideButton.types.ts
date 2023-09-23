@@ -1,5 +1,5 @@
 interface SideButtonProps {
-  to: string;
+  to?: string;
 }
 
 export type { SideButtonProps };

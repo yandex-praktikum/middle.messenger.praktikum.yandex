@@ -1,5 +1,5 @@
 interface UserImageProps {
-  src: string;
+  src?: string;
   isSmall?: boolean;
 }
 

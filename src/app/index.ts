@@ -25,7 +25,7 @@ function app() {
         .querySelector(".modal-overlay")
         ?.addEventListener("click", toggleModal);
 
-      document.body.append(new NavigationList().getContent() ?? "");
+      document.body.append(new NavigationList({}).getContent() ?? "");
     }
     navigate(window.location.pathname);
   });

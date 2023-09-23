@@ -1,6 +1,6 @@
 interface IconButtonProps {
-  src: string;
-  type: string;
+  src?: string;
+  type?: string;
   onClick?: () => void;
   customClass?: string;
 }

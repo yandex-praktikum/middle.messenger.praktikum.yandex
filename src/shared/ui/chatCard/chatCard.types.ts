@@ -1,8 +1,8 @@
 interface ChatCardProps {
-  title: string;
-  message: string;
-  date: string;
-  userImage: string;
+  title?: string;
+  message?: string;
+  date?: string;
+  userImage?: string;
   newMessages?: string;
 }
 
