@@ -1,0 +1,14 @@
+.sendMessage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.clipButton {
+}
+
+.sendButton img {
+  transform: rotate(180deg);
+}

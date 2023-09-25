@@ -1,0 +1,8 @@
+@import "@/shared/ui/modal/modal.module.css";
+@import "@/pages/error/errorPage.module.css";
+@import "@/shared/ui/button/button.module.css";
+@import "@/pages/signup/signupPage.module.css";
+@import "@/pages/profile/profilePage.module.css";
+@import "@/shared/ui/infoList/infoList.module.css";
+@import "@/shared/ui/userImage/userImage.module.css";
+@import "@/pages/editProfile/editProfilePage.module.css";

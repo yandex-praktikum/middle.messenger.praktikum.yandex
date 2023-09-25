@@ -1,0 +1,23 @@
+.profilePage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.profilePage .inputField {
+  width: 40px;
+}
+.profilePage .profile {
+  margin: 0 auto;
+  width: 510px;
+}
+.profilePage .actions-list .actions-list__exit {
+  color: #ff0000;
+}
+.profilePage .username {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 21px;
+  margin-bottom: 60px;
+}

@@ -1,0 +1,31 @@
+.userImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userImage img {
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+}
+.userImageSmall img {
+  height: 47px;
+  width: 47px;
+}
+.userImage span {
+  position: absolute;
+  text-align: center;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 130px;
+  width: 130px;
+  padding-top: 50px;
+  border-radius: 50%;
+  display: none;
+}
+.userImage span:hover {
+  display: block;
+}
+.userImage img:hover ~ span {
+  display: block;
+}

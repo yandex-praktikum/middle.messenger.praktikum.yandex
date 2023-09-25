@@ -1,0 +1,8 @@
+.editProfilePage .profile_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editProfilePage .profile_buttons button {
+  max-width: 280px;
+}

@@ -1,0 +1,52 @@
+.chatCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid #eaeaea;
+  gap: 10px;
+  max-height: 70px;
+  padding: 12px 10px;
+}
+
+.userImageContainer {
+  width: 47px;
+}
+
+.userImage {
+}
+
+.messageContainer {
+  flex-grow: 1;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.message {
+  color: #888888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 40px;
+}
+
+.dateContainer {
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  color: #888888;
+}
+
+.newMessages {
+  border-radius: 50%;
+  background-color: #3369f3;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  text-align: center;
+}

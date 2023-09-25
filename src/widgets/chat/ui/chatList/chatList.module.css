@@ -1,0 +1,14 @@
+.chatList {
+  width: 310px;
+  height: 100vh;
+  background-color: #fbfbfb;
+  border-right: 1px solid #eaeaea;
+  padding: 10px;
+}
+
+.linkToProfileContainer {
+  margin: 20px 5px;
+}
+.linkToProfile {
+  color: #999999;
+}
