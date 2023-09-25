@@ -1,0 +1,31 @@
+.authForm {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  padding: 30px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.authForm h3 {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+.authForm form {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.authForm .authForm_buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}

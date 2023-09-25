@@ -1,14 +1,18 @@
-.user-image {
+.userImage {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.user-image img {
+.userImage img {
   border-radius: 50%;
   height: 130px;
   width: 130px;
 }
-.user-image span {
+.userImageSmall img {
+  height: 47px;
+  width: 47px;
+}
+.userImage span {
   position: absolute;
   text-align: center;
   color: #ffffff;
@@ -19,9 +23,9 @@
   border-radius: 50%;
   display: none;
 }
-.user-image span:hover {
+.userImage span:hover {
   display: block;
 }
-.user-image img:hover ~ span {
+.userImage img:hover ~ span {
   display: block;
 }
