@@ -1,9 +1,7 @@
 import { Block } from "../../core/index";
-import template from "./Button.tmp.pug";
+import template from "./Link.tmp.pug";
 
-import "./Button.scss";
-
-export default class Button extends Block {
+export default class Link extends Block {
   constructor(props?: object) {
     super('div', props);
   }

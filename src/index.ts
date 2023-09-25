@@ -1,11 +1,8 @@
-import Button from "./components/Button/Button";
+import { render } from "./utils/index";
+import { Authorization } from "./pages/index";
 
-const button = new Button({
-  text: 'Click me',
-})
+import "./scss/index.scss";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app');
+const page = new Authorization();
 
-  app.innerHTML = button;
-})
+render(page);

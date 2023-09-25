@@ -18,5 +18,6 @@
     "sourceMap": true,
     "strictNullChecks": true,
   },
-  "include": ["src"]
+  "include": ["src", "types/pug.d.ts"],
+  "exclude": ["node_modules", "build", "static"]
 }
