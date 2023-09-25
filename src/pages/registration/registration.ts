@@ -1,5 +1,5 @@
 import { Block } from "../../core/index";
-import template from "./Registration.tmp.pug";
+import template from "./registration.tmp.pug";
 import {
   RegistrationForm,
   FieldText,
