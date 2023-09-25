@@ -1,10 +1,10 @@
-import Authorization from "./Authorization/Authorization";
-import Registration from "./Registration/Registration";
-import ErrorPage from "./ErrorPage/ErrorPage";
-import ChatsAndChat from "./ChatsAndChat/ChatsAndChat";
-import UserSettings from "./UserSettings/UserSettings"
-import EditingSettings from "./EditingSettings/EditingSettings"
-import EditingPassword from "./EditingPassword/EditingPassword";
+import Authorization from "./Authorization/Authorization.ts";
+import Registration from "./Registration/Registration.ts";
+import ErrorPage from "./ErrorPage/ErrorPage.ts";
+import ChatsAndChat from "./ChatsAndChat/ChatsAndChat.ts";
+import UserSettings from "./UserSettings/UserSettings.ts"
+import EditingSettings from "./EditingSettings/EditingSettings.ts"
+import EditingPassword from "./EditingPassword/EditingPassword.ts";
 
 export {
   Authorization,

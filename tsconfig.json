@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "allowImportingTsExtensions": true,
   },
   "include": ["src", "types/pug.d.ts"],
   "exclude": ["node_modules", "build", "static"]

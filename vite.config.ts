@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { defineConfig } from "vite"; // eslint-disable-line
+import { defineConfig } from "vite";
 import pugPrecompile from './vite-plugin-pug-precompile';
 
 const root = resolve(__dirname, 'src');
