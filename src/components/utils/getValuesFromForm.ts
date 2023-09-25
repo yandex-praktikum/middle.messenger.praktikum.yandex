@@ -19,3 +19,7 @@ export default function getValuesFromForm(event: Event, instance: Instance) {
 
   console.log(formValues);
 }
+
+export type {
+  Event,
+}
