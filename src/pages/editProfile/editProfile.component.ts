@@ -55,7 +55,7 @@ class EditProfilePage extends Component {
         {
           title: "Имя",
           type: "edit",
-          inputName: "firts_name",
+          inputName: "first_name",
           value: "Иван",
           validate: validateName,
           ref: "firstName",
