@@ -57,6 +57,14 @@ class Router {
       }
     });
   }
+
+  public back(): void {
+    this.history.back();
+  }
+
+  public forward(): void {
+    this.history.forward();
+  }
 }
 
 export { Router };
