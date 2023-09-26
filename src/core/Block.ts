@@ -4,9 +4,11 @@ import EventBus from "./EventBus";
 // использую any, потому что не получилось типизировать по хорошему,
 // а время на исходе)
 
-export default class Block {
-  children: any;
-  props: any;
+type Props = Record<string, any>;
+
+export default abstract class Block {
+  children: Props;
+  props: Props;
   eventBus: () => EventBus;
 
   static EVENTS = {
@@ -52,7 +54,7 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _getChildren(propsAndChildren: any) {
+  _getChildren(propsAndChildren: Props) {
     const children: any = {};
     const props: any = {};
 
@@ -95,13 +97,13 @@ export default class Block {
   }
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidMount(oldProps?: any) {
+  componentDidMount(oldProps?: Props) {
     console.log(oldProps);
   }
 
   dispatchComponentDidMount() {}
 
-  setProps = (newProps: any) => {
+  setProps = (newProps: Props) => {
     if (!newProps) {
       return;
     }
@@ -112,7 +114,7 @@ export default class Block {
     // this.eventBus().emit(Block.EVENTS.FLOW_CDU);
   };
 
-  _componentDidUpdate(oldProps: any, newProps: any) {
+  _componentDidUpdate(oldProps: Props, newProps: Props) {
     const response = this.componentDidUpdate(oldProps, newProps);
 
     if (response) {
@@ -121,7 +123,7 @@ export default class Block {
   }
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidUpdate(oldProps: any, newProps: any) {
+  componentDidUpdate(oldProps: Props, newProps: Props) {
     let update = false;
     Object.keys(newProps).forEach((key) => {
       if (oldProps[key] !== newProps[key]) {
@@ -145,7 +147,7 @@ export default class Block {
   // Может переопределять пользователь, необязательно трогать
   render(): any {}
 
-  compile(template: Function, props: any) {
+  compile(template: Function, props: Props) {
     if (this.children) {
       const propsAndStubs = { ...props };
 
@@ -156,7 +158,7 @@ export default class Block {
       const fragment = this._createDocumentElement('template');
       fragment.innerHTML = template(propsAndStubs);
 
-      Object.values(this.children).forEach((child: any) => {
+      Object.values(this.children).forEach((child: Props) => {
         const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
         stub.replaceWith(child.getContent());
       });
@@ -205,7 +207,7 @@ export default class Block {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
     const proxyProps = new Proxy(props, {
       set(target: any, prop: string, newValue) {

@@ -21,8 +21,10 @@ type Options = {
   retries?: number,
 }
 
+type HTTPMethod = (url: string, options: Options) => Promise<unknown>;
+
 class HTTP implements IHTTP {
-  get = (url: string, options: Options = { method: METHODS.GET }) => {
+  get: HTTPMethod = (url, options) => {
     let resUrl = url;
     const { data } = options;
 
@@ -30,22 +32,22 @@ class HTTP implements IHTTP {
       resUrl = queryStringify(data);
     }
 
-    return this.request(resUrl, options);
+    return this.request(resUrl, { ...options, method: METHODS.GET });
   };
 
-  post = (url: string, options: Options = { method: METHODS.POST }) => {
-    return this.request(url, options);
+  post: HTTPMethod = (url, options) => {
+    return this.request(url, { ...options, method: METHODS.POST });
   }
 
-  put = (url: string, options: Options = { method: METHODS.PUT }) => {
-    return this.request(url, options);
+  put: HTTPMethod = (url, options) => {
+    return this.request(url, { ...options, method: METHODS.PUT });
   }
 
-  delete = (url: string, options: Options = { method: METHODS.DELETE }) => {
-    return this.request(url, options);
+  delete: HTTPMethod = (url, options) => {
+    return this.request(url, { ...options, method: METHODS.DELETE });
   }
 
-  request = (url: string, options: Options) => {
+  request: HTTPMethod = (url, options) => {
     const {
       method,
       headers,

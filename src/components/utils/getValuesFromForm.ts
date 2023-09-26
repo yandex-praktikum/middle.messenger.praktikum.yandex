@@ -2,11 +2,7 @@ type Event = {
   preventDefault: Function
 }
 
-type Instance = {
-  children: PropertyKey,
-}
-
-export default function getValuesFromForm(event: Event, instance: Instance) {
+export default function getValuesFromForm(event: Event, instance: any) {
   event.preventDefault();
   const formValues: Record<string, object> = {};
 
