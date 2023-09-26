@@ -122,6 +122,10 @@ export class Component<Props extends Record<string, any> = any> {
   }
 
   get element() {
+    if (!this._element) {
+      this._render();
+    }
+
     return this._element;
   }
 
@@ -160,8 +164,8 @@ export class Component<Props extends Record<string, any> = any> {
     return "";
   }
 
-  public getContent(): HTMLElement | null {
-    return this.element;
+  public getContent(): HTMLElement {
+    return this.element as HTMLElement;
   }
 
   private makePropsProxy(props: any) {
