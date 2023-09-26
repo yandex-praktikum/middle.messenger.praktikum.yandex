@@ -1,0 +1,11 @@
+form.form
+  if (title)
+    h1.form__title= title
+  .form__field!= fieldFirstName
+  .form__field!= fieldSecondName
+  .form__field!= fieldEmail
+  .form__field!= fieldPhone
+  .form__field!= fieldLogin
+  .form__field!= fieldPassword
+  .form__field.form__field--accent!= sendBtn
+  .form__field.t-right!= link

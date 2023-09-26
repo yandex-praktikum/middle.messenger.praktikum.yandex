@@ -1,0 +1,33 @@
+.modal
+  .modal__inner
+    button.modal__close(title="Close modal")
+    .modal__content
+      section.user-settings
+        .user-settings__f
+          .user-settings__avatar
+          h2.user-settings__name= userName
+
+        .user-settings__s
+          ul.user-settings__list
+            li.user-settings__list-item
+              span.user-settings__list-item-name Nickname:
+              span.user-settings__list-item-value user name
+            li.user-settings__list-item
+              span.user-settings__list-item-name First name:
+              span.user-settings__list-item-value first name
+            li.user-settings__list-item
+              span.user-settings__list-item-name Second name:
+              span.user-settings__list-item-value second name
+            li.user-settings__list-item
+              span.user-settings__list-item-name Email:
+              span.user-settings__list-item-value test@test.ru
+            li.user-settings__list-item
+              span.user-settings__list-item-name Phone:
+              span.user-settings__list-item-value +7 (000) 000-00-00
+            li.user-settings__list-item
+              span.user-settings__list-item-name Login:
+              span.user-settings__list-item-value mylogin
+
+        .user-settings__t
+          | !{linkToSettings}
+          | !{linkToPassword}
