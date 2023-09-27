@@ -1,3 +1,3 @@
 export const tmpl = `
-    <a href="{{ to }}" data-page="">{{ text }}</a>
+    <a href="" data-page="{{ to }}">{{ text }}</a>
 `
