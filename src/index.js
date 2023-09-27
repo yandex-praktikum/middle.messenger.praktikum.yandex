@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         allLink.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault()
-                const path = e.currentTarget.getAttribute('data-page');
+                const path = e.currentTarget.getAttribute('href');
                 history.pushState({ page: path }, "", path);
 
                 definitionRoute()
