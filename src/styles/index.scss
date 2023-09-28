@@ -1,0 +1,13 @@
+@import './normalize';
+@import './resetCSS';
+
+:root {
+  --black: #1e1e1e;
+  --blue: #3369f3;
+  --gray: #999999;
+  --white: #ffffff;
+}
+
+#root {
+  font-family: 'Inter', sans-serif;
+}
