@@ -32,26 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 root.innerHTML = Profile({content: 'profile'});
                 break;
             default:
-                root.innerHTML = ErrorPage({content: '404'});
+                root.innerHTML = ErrorPage({code: '404', text: 'Мы уже фиксим'});
                 break
         }
 
-        handlerRoute()
+        // handlerRoute()
     }
 
-    const handlerRoute = () => {
-        const allLink = document.querySelectorAll('a');
-
-        allLink.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault()
-                const path = e.currentTarget.getAttribute('data-page');
-                history.pushState({ page: path }, "", path);
-
-                definitionRoute()
-            })
-        })
-    }
+    // const handlerRoute = () => {
+    //     const allLink = document.querySelectorAll('a');
+    //
+    //     allLink.forEach(link => {
+    //         link.addEventListener('click', (e) => {
+    //             e.preventDefault()
+    //             const path = e.currentTarget.getAttribute('data-page');
+    //             history.pushState({ page: path }, "", path);
+    //
+    //             definitionRoute()
+    //         })
+    //     })
+    // }
 
     definitionRoute()
 })
