@@ -10,9 +10,6 @@ import {ErrorPage} from "./pages/ErrorPage/index.js";
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
 
-
-    console.log("JS RUN");
-
     if(!root) return;
 
     const definitionRoute = () => {
