@@ -1,0 +1,36 @@
+@import './normalize';
+@import './resetCSS';
+
+:root {
+  --black: #1e1e1e;
+  --blue: #3369f3;
+}
+
+#root {
+  font-family: 'Inter', sans-serif;
+}
+
+.login {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+  }
+
+  &__block {
+    max-width: 340px;
+
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+  }
+
+  &__title {
+  }
+
+  &__form {
+  }
+}
