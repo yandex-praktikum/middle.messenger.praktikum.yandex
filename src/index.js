@@ -1,6 +1,6 @@
 import './styles/index.scss';
 
-// Components
+// Pages
 import { Main } from './pages/Main';
 import { Login } from './pages/Login';
 import { Profile } from './pages/Profile';

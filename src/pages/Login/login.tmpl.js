@@ -4,25 +4,15 @@ export const tmpl = `
       <div class="login__block">
         <h1 class="login__title">Вход</h1>
         <form class="login__form">
-          <div class="form-input">
-            <input class="form-input__input" type="text" required="required">
-            <label>Логин</label>
-          </div>
-    
-          <div class="form-input">
-            <input class="form-input__input" type="password" required="required">
-            
-            
-           
-            <label>Пароль</label>
-          </div>
-    
+          {{{inputLogin}}}
+          {{{inputPassword}}}
           <div class="login__wrapper-button">
-            <button class="button" type="button">Авторизоваться</button>
+            {{{button}}}
           </div>
         </form>
-    
-    
+        <div class="login__wrapper-link">
+          {{{link}}}
+        </div>
       </div>
     </div>
   </section>

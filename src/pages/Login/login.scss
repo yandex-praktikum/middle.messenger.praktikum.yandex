@@ -36,75 +36,11 @@
   &__wrapper-button {
     margin-top: 160px;
   }
-}
 
-.button {
-  color: var(--white);
-  text-align: center;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 13px;
+  &__wrapper-link {
+    display: flex;
+    justify-content: center;
 
-  width: 100%;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  background: var(--blue);
-  cursor: pointer;
-  transition: opacity 0.25s ease-in-out;
-
-  &:hover {
-    opacity: 0.7;
-  }
-
-  &:focus {
-    outline: 1px solid #555555;
-    opacity: 0.9;
-  }
-}
-
-.form-input {
-  position: relative;
-  width: 100%;
-
-  &__input {
-    color: var(--black);
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 13px;
-    width: 100%;
-    height: 28px;
-    outline: none;
-    display: block;
-    border: none;
-    border-bottom: 1px solid var(--blue);
-
-    &:valid ~ label,
-    &:focus ~ label {
-      transform: translateX(-5px) translateY(-15px);
-      padding: 0 8px;
-
-      font-size: 9px;
-      line-height: 9px;
-    }
-
-    //&:focus {
-    //  outline: 1px solid #96b2c170;
-    //}
-  }
-
-  label {
-    color: var(--gray);
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 13px;
-
-    position: absolute;
-
-    top: 5px;
-    left: 0;
-    pointer-events: none;
-    background: #fff;
-    transition: 0.15s ease-in-out;
+    margin-top: 14px;
   }
 }

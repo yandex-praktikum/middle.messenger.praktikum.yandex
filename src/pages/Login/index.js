@@ -3,8 +3,22 @@ import Handlebars from 'handlebars';
 import { tmpl } from './login.tmpl.js';
 
 // Components
-import { Navbar } from '../../layouts/Navbar/index.js';
+import { Button } from '../../components/button/index.js';
+import { Input } from '../../components/input/index.js';
+import { Link } from '../../components/link/index.js';
 
 export const Login = (props) => {
-  return Handlebars.compile(tmpl)({ ...props, navbar: Navbar() });
+  const inputs = {
+    inputLogin: Input({ type: 'text', label: 'Логин' }),
+    inputPassword: Input({ type: 'password', label: 'Пароль' }),
+  };
+
+  const combineProps = {
+    ...props,
+    ...inputs,
+    button: Button({ text: 'Авторизоваться' }),
+    link: Link({ to: '/', text: 'Нет аккаунта?' }),
+  };
+
+  return Handlebars.compile(tmpl)(combineProps);
 };
