@@ -11,7 +11,60 @@
     <title>App</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <section class="chatting">
+        <div class="chatting__content">
+          <aside class="chatting__aside">
+            <div class="chatting__aside-header">
+               <div class="chatting__aside-profile">
+                 <a href="/profile">
+                   <p class="chatting__aside-profile-text">Профиль</p>
+                 </a>
+               </div>
+                <input class="chatting__search" type="text" placeholder="Поиск">
+            </div>
+
+            <div class="chatting__chats">
+              <div class="chatting__chat">
+                <img class="chatting__chat-avatar" src="./src/images/placeholder-photo-icon.svg" alt="Аватар" width="47" height="47">
+                <div class="chatting__chat-preview">
+                  <p class="chatting__chat-name">Андрей</p>
+                  <p class="chatting__chat-message">Изображение</p>
+                </div>
+                <div class="chatting__chat-info">
+                  <time class="chatting__chat-time">10:49</time>
+                  <div class="chatting__chat-count-message">5</div>
+                </div>
+              </div>
+
+              <div class="chatting__chat">
+                <img class="chatting__chat-avatar" src="./src/images/placeholder-photo-icon.svg" alt="Аватар" width="47" height="47">
+                <div class="chatting__chat-preview">
+                  <p class="chatting__chat-name">Андрей</p>
+                  <p class="chatting__chat-message">Изображение</p>
+                </div>
+                <div class="chatting__chat-info">
+                  <time class="chatting__chat-time">10:49</time>
+                  <div class="chatting__chat-count-message">5</div>
+                </div>
+              </div>
+
+              <div class="chatting__chat">
+                <img class="chatting__chat-avatar" src="./src/images/placeholder-photo-icon.svg" alt="Аватар" width="47" height="47">
+                <div class="chatting__chat-preview">
+                  <p class="chatting__chat-name">Андрей</p>
+                  <p class="chatting__chat-message">Изображение</p>
+                </div>
+                <div class="chatting__chat-info">
+                  <time class="chatting__chat-time">10:49</time>
+                  <div class="chatting__chat-count-message">5</div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
 
     <script type="module" src="/src/index.js"></script>
   </body>

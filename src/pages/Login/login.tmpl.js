@@ -2,7 +2,7 @@ export const tmpl = `
   <section class="login">
     <div class="login__content">
       <div class="login__block">
-        <h1 class="login__title">Вход</h1>
+        <h1 class="login__title">{{title}}</h1>
         <form class="login__form">
           {{{inputLogin}}}
           {{{inputPassword}}}

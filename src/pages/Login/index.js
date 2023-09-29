@@ -9,15 +9,16 @@ import { Link } from '../../components/link/index.js';
 
 export const Login = (props) => {
   const inputs = {
-    inputLogin: Input({ type: 'text', label: 'Логин' }),
-    inputPassword: Input({ type: 'password', label: 'Пароль' }),
+    inputLogin: Input({ type: 'text', label: 'Логин', name: 'login' }),
+    inputPassword: Input({ type: 'password', label: 'Пароль', name: 'password' }),
   };
 
   const combineProps = {
-    ...props,
     ...inputs,
-    button: Button({ text: 'Авторизоваться' }),
-    link: Link({ to: '/', text: 'Нет аккаунта?' }),
+    button: Button({ text: 'Авторизоваться', type: 'submit' }),
+    link: Link({ to: '/sign-in', text: 'Нет аккаунта?' }),
+    title: 'Вход',
+    ...props,
   };
 
   return Handlebars.compile(tmpl)(combineProps);
