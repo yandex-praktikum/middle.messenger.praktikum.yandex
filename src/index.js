@@ -8,6 +8,7 @@ import { Signin } from './pages/Signin';
 import { ErrorPage } from './pages/ErrorPage/index.js';
 import { ProfileInfoEdit } from './pages/profile-info-edit/index.js';
 import { ProfilePasswordEdit } from './pages/profile-password-edit/index.js';
+import { Chatting } from './pages/chatting/index.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('#root');
@@ -22,19 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // root.innerHTML = Main({ content: 'main' });
         break;
       case '/login':
-        root.innerHTML = Login({ content: 'login' });
+        root.innerHTML = Login();
         break;
       case '/sign-in':
-        root.innerHTML = Signin({ content: 'sign-in' });
+        root.innerHTML = Signin();
         break;
       case '/profile':
-        root.innerHTML = Profile({ content: 'profile' });
+        root.innerHTML = Profile();
+        break;
+      case '/chatting':
+        root.innerHTML = Chatting();
         break;
       case '/profile-info-edit':
-        root.innerHTML = ProfileInfoEdit({ content: 'profile-info-edit' });
+        root.innerHTML = ProfileInfoEdit();
         break;
       case '/profile-password-edit':
-        root.innerHTML = ProfilePasswordEdit({ content: 'profile-password-edit' });
+        root.innerHTML = ProfilePasswordEdit();
         break;
       default:
         root.innerHTML = ErrorPage({ code: '505', text: 'Мы уже фиксим' });
