@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.set("view engine", "handlebars");
+app.set("view engine", "hbs");
 
 app.get("/", (req, res) => {
     res.render("index.html", {title: "AuthPage"});

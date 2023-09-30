@@ -6,11 +6,11 @@ import {RegPage} from "./pages/reg";
 import {ChatPage} from "./pages/chat";
 
 const ROUTES: Record<string, string> = {
-    'not-found': NotFoundPage(),
-    'server-error': ServerErrorPage(),
-    'auth': AuthPage(),
-    'reg': RegPage(),
-    'chat': ChatPage(),
+    '/not-found': NotFoundPage(),
+    '/server-error': ServerErrorPage(),
+    '/auth': AuthPage(),
+    '/reg': RegPage(),
+    '/chat': ChatPage(),
     '/': AuthPage()
     
 }
@@ -18,6 +18,8 @@ const ROUTES: Record<string, string> = {
 window.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('app');
     
-    if (root) root.innerHTML =  ROUTES[window.location.pathname] || NotFoundPage()
+    if (root) {
+        root.innerHTML = ROUTES[window.location.pathname] || NotFoundPage()
+    }
     
 })
