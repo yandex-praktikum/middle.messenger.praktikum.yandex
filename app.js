@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, "dist")));
 app.set("view engine", "handlebars");
 
 app.get("/", (req, res) => {
-    res.render("index.html", {title: "Home"});
+    res.render("index.html", {title: "AuthPage"});
 });
 
 app.listen(process.env.PORT || PORT, () => console.log("success"))
