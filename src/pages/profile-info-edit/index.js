@@ -9,7 +9,7 @@ import { Button } from '../../components/button/index.js';
 
 export const ProfileInfoEdit = (props) => {
   const additionalProps = {
-    button: Button({ type: 'button', text: 'Сохранить' }),
+    button: Button({ type: 'submit', text: 'Сохранить' }),
     email: 'pochta@yandex.ru',
     login: 'ivanivanov',
     firstName: 'Иван',

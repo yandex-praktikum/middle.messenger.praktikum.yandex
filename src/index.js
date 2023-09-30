@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         root.innerHTML = ProfilePasswordEdit();
         break;
       default:
+        // В зависимости от ошибки, передаем в шаблон код и текст
         root.innerHTML = ErrorPage({
           code: '505',
           text: 'Мы уже фиксим',

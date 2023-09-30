@@ -82,7 +82,7 @@ export const tmpl = `
             <input id="fileLoad" type="file" />
           </label>
 
-          <input class="chatting__dialog-input-text" type="text" placeholder="Сообщение" />
+          <input class="chatting__dialog-input-text" type="text" placeholder="Сообщение" name="message" />
 
           <button class="chatting__dialog-send-message"></button>
         </div>

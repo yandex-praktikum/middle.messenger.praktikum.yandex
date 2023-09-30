@@ -13,18 +13,18 @@ export const tmpl = `
   
             <div class="profile-password-edit__rows">
               <div class="profile-password-edit__row">
-                  <p class="profile-password-edit__row-label">Почта</p>
-                  <input class="profile-password-edit__row-input" type="password" value="{{oldPassword}}" disabled>
+                  <p class="profile-password-edit__row-label">Старый пароль</p>
+                  <input class="profile-password-edit__row-input" type="password" value="{{oldPassword}}" name="oldPassword" disabled>
               </div>
   
                 <div class="profile-password-edit__row">
-                    <p class="profile-password-edit__row-label">Логин</p>
-                    <input class="profile-password-edit__row-input" type="password" value="{{newPassword}}" disabled>
+                    <p class="profile-password-edit__row-label">Новый пароль</p>
+                    <input class="profile-password-edit__row-input" type="password" value="{{newPassword}}" name="newPassword" disabled>
                 </div>
   
                 <div class="profile-password-edit__row">
-                    <p class="profile-password-edit__row-label">Имя</p>
-                    <input class="profile-password-edit__row-input" type="password" value="{{confirmPassword}}" disabled>
+                    <p class="profile-password-edit__row-label">Повторите новый пароль</p>
+                    <input class="profile-password-edit__row-input" type="password" value="{{confirmPassword}}" name="" disabled>
                 </div>
             </div>
             

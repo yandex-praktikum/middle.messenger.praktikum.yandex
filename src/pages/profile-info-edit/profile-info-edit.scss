@@ -123,4 +123,19 @@
 
     margin-top: 60px;
   }
+
+  &__label {
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    input {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+  }
 }
