@@ -1,9 +1,9 @@
 export const tmpl = `
-    <ul>
+    <ul class="navbar">
         {{#each tmplLinks}}
             <li>
                 {{{ this }}}
             </li>
         {{/each}}
     </ul>
-`
+`;

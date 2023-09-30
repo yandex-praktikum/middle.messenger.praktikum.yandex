@@ -1,11 +1,11 @@
 import './styles/index.scss';
 
 // Pages
-import { Main } from './pages/Main';
-import { Login } from './pages/Login';
+import { Main } from './pages/main';
+import { Login } from './pages/login';
 import { Profile } from './pages/profile';
-import { Signin } from './pages/Signin';
-import { ErrorPage } from './pages/ErrorPage/index.js';
+import { Signin } from './pages/signin';
+import { ErrorPage } from './pages/errorPage/index.js';
 import { ProfileInfoEdit } from './pages/profile-info-edit/index.js';
 import { ProfilePasswordEdit } from './pages/profile-password-edit/index.js';
 import { Chatting } from './pages/chatting/index.js';
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (route) {
       case '/':
-        // root.innerHTML = Main({ content: 'main' });
+        root.innerHTML = Main({ content: 'main' });
         break;
       case '/login':
         root.innerHTML = Login();
@@ -41,26 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
         root.innerHTML = ProfilePasswordEdit();
         break;
       default:
-        root.innerHTML = ErrorPage({ code: '505', text: 'Мы уже фиксим' });
+        root.innerHTML = ErrorPage({
+          code: '505',
+          text: 'Мы уже фиксим',
+          redirectTo: '/chatting',
+          redirectText: 'Назад к чатам',
+        });
         break;
     }
-
-    // handlerRoute()
   };
-
-  // const handlerRoute = () => {
-  //     const allLink = document.querySelectorAll('a');
-  //
-  //     allLink.forEach(link => {
-  //         link.addEventListener('click', (e) => {
-  //             e.preventDefault()
-  //             const path = e.currentTarget.getAttribute('data-page');
-  //             history.pushState({ page: path }, "", path);
-  //
-  //             definitionRoute()
-  //         })
-  //     })
-  // }
 
   definitionRoute();
 });

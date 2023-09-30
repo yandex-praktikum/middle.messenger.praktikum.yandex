@@ -1,3 +1,4 @@
+import './navbar.scss';
 import Handlebars from 'handlebars';
 import { tmpl } from './navbar.tmpl.js';
 import { links } from '../../data/links.js';

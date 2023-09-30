@@ -1,6 +1,9 @@
 export const links = [
-  { to: '/login', text: 'Логин' },
-  { to: '/profile', text: 'Профиль' },
-  { to: '/sign-in', text: 'Регистрация' },
   { to: '/', text: 'Главная' },
+  { to: '/login', text: 'Логин' },
+  { to: '/sign-in', text: 'Регистрация' },
+  { to: '/chatting', text: 'Чаты' },
+  { to: '/profile-info-edit', text: 'Редактировать профиль' },
+  { to: '/profile-password-edit', text: 'Изменить пароль' },
+  { to: '/null', text: 'Страница с ошибкой' },
 ];

@@ -3,9 +3,12 @@ import Handlebars from 'handlebars';
 import { tmpl } from './errorPage.tmpl.js';
 
 // Components
-import { Navbar } from '../../layouts/Navbar/index.js';
 import { Link } from '../../components/link/index.js';
 
 export const ErrorPage = (props) => {
-  return Handlebars.compile(tmpl)({ ...props, link: Link({ text: props.text }) });
+  const combineProps = {
+    link: Link({ text: props.redirectText, to: props.redirectTo }),
+    ...props,
+  };
+  return Handlebars.compile(tmpl)(combineProps);
 };
