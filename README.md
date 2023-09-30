@@ -14,22 +14,10 @@
 
 ## **Ссылки на страницы**
 
-- «[Реакт](https://github.com/facebook/react)»,
-- «[Эхо](https://github.com/labstack/echo)»,
-- «[Вебпак](https://github.com/webpack/webpack)»,
-- «[ТДенгине](https://github.com/taosdata/TDengine)»,
-- «[Соул-хантинг](https://github.com/vladpereskokov/soul-hunting/)».
-
-### **Команда**
-
-Если вы работаете в команде, укажите основных участников: им будет приятно, а новые разработчики охотнее присоединятся к проекту. «Гитхаб» — не просто инструмент, это социальная сеть разработчиков.
-
-![Команда](https://github.com/yandex-praktikum/mf.messenger.praktikum.yandex.images/blob/master/mf/team.png)
-
-### **Примеры README**
-
-- «[Реакт](https://github.com/facebook/react)»,
-- «[Эхо](https://github.com/labstack/echo)»,
-- «[Вебпак](https://github.com/webpack/webpack)»,
-- «[ТДенгине](https://github.com/taosdata/TDengine)»,
-- «[Соул-хантинг](https://github.com/vladpereskokov/soul-hunting/)».
+- [Главная](https://effervescent-gnome-eb94b4.netlify.app/) - сводная страница для удобной навигации.
+- [Логин](https://effervescent-gnome-eb94b4.netlify.app/login) - аутентификация в приложение.
+- [Регистрация](https://effervescent-gnome-eb94b4.netlify.app/sign-in) - страница с регистрацией новых пользвателей.
+- [Профиль](https://effervescent-gnome-eb94b4.netlify.app/profile) - профиль пользователя.
+- [Редактировать профиль](https://effervescent-gnome-eb94b4.netlify.app/profile-info-edit) - поменять информацию пользователя.
+- [Изменить пароль](https://effervescent-gnome-eb94b4.netlify.app/profile-password-edit) - поменять пароль пользователя.
+- [Страница с ошибкой](https://effervescent-gnome-eb94b4.netlify.app/null) - 404/5хх в зависимости от переданных параметров в пропсах
