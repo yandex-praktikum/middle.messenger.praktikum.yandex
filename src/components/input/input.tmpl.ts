@@ -1,10 +1,10 @@
 
 export const input =  `
 
-<div class="people_list">
-  {{#each people}}
+<div class="field_list">
+  {{#each fields}}
   
-    <input placeholder={{this}} required/>
+    <input class="input-styled"  placeholder={{this}} required/>
 
   {{/each}}
 </div>

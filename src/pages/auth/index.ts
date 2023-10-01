@@ -7,18 +7,17 @@ import {content} from "./tmpl/content.tmpl.ts";
 import {Input} from "../../components/input";
 import {Button} from "../../components/button";
 
-const authFieldList = {
-    people: [
-        "Login ",
-        "Password ",
-    ]
-}
 export const AuthPage = () => {
     return HandleBars.compile(content)({
         logo: Logo(),
         regPageLink: Link({to: '/reg', content: 'or Sign Up'}),
         title: Title({title: 'Log In'}),
-        input: Input({props : authFieldList}),
+        input: Input({
+            fields: [
+                "Login",
+                "Password"
+            ],
+        }),
         button: Button({text: 'Enter'})
     });
 }

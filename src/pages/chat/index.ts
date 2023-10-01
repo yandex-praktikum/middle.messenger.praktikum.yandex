@@ -2,6 +2,8 @@ import HandleBars from "handlebars";
 import {content} from "./tmpl/content.tmpl.ts";
 import {Logo} from "../../components/logo";
 import {Link} from "../../components/link";
+import {Title} from "../../components/title";
+import {Input} from "../../components/input";
 
 
 export const ChatPage = () => {
@@ -14,6 +16,14 @@ export const ChatPage = () => {
         linkToAuth: Link({
             to: '/auth',
             content: '<img class="arrow-exit" src=\'/src/assets/exit.svg\' alt="exit"/>'
-        })
+        }),
+        title: Title({
+            title: "Music"
+        }),
+        input: Input({
+            fields: [
+                "Search"
+            ],
+        }),
     });
 }

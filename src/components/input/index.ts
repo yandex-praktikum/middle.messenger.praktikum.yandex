@@ -2,11 +2,6 @@ import HandleBars from "handlebars";
 import {input} from "./input.tmpl.ts";
 
 
-type  InputParams = {
-    props: unknown;
-}
-
-export const Input = ({props}: InputParams) => {
-    console.log(props)
+export const Input = (props: unknown) => {
     return HandleBars.compile(input)(props);
 }

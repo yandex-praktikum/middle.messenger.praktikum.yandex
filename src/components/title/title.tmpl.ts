@@ -1,3 +1,3 @@
 export const title = `
-    <h2>{{ title }}</h2>
+    <h2 class="title-styled">{{ title }}</h2>
 `

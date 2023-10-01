@@ -5,7 +5,7 @@ export const content = `
                {{{logo}}}
                 <label class="input-search-label">
                     <img src='/src/assets/search.svg' alt="search"/>
-                    <input type="search" placeholder="Search for people"/>
+                    {{{input}}}
                 </label>
             </div>
              <div class="header-content-right">
@@ -18,12 +18,13 @@ export const content = `
         
         <div class="wrapper-chats">
              <aside class="preview-chats">
-                    Music
+                  {{{title}}}
              </aside>
-        
              <div class="main-chats">
-                <img src='/src/assets/user.svg' alt="user"/>
-                <span>Alexandr Ivanov</span>
+                 <div class="main-chats-header">
+                     <img src='/src/assets/user.svg' alt="user"/>
+                     <span>Alexandr Ivanov</span>
+                 </div>
              </div>
         </div>
     <div>
