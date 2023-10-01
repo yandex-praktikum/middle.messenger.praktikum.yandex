@@ -1,6 +1,16 @@
 import HandleBars from "handlebars";
-import {description} from "./tmpl/description.ts";
+import {content} from "./tmpl/content.tmpl.ts";
+import {Link} from "../../../components/link";
+import {Title} from "../../../components/title";
 
 export const ServerErrorPage = () => {
-   return HandleBars.compile(description)({});
+   return HandleBars.compile(content)({
+      title: Title({
+         title: '500'
+      }),
+      chatPageLink: Link({
+         to: '/chat',
+         content: 'назад к чатам'
+      })
+   });
 }

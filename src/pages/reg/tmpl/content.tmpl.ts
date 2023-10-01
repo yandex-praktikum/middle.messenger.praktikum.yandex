@@ -1,7 +1,7 @@
- export const content = `
+export const content = `
       {{{ logo }}}
       {{{ title }}}
       <form>{{{ input }}}</form>
       {{{ button }}}
-      {{{ regPageLink }}}
- `
+      {{{ authPageLink }}}
+`

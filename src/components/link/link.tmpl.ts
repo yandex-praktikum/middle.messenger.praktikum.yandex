@@ -1,3 +1,3 @@
 export const link = `
-    <a href={{ to }}>{{ text }}</a>
+    <a href={{ to }}>{{{ content }}}</a>
 `
