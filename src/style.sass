@@ -111,7 +111,9 @@ div
 
 .wrapper-sign-in-page,
 .wrapper-sign-up-page,
-.wrapper-settings-page
+.wrapper-settings-page,
+.wrapper-not-found-page,
+.wrapper-server-error-page
   display: flex
   justify-content: center
   text-align: center
@@ -151,7 +153,26 @@ div
     margin-top: 40px
 
 
+.wrapper-not-found-page
+  .wrapper-content
+    width: 600px
+    img
+      margin-bottom: 25px
 
+.wrapper-server-error-page
+  .wrapper-content
+     display: flex
+     flex-direction: column
+     width: 500px
+     .title-styled
+        font-size: 64px
+        font-weight: 400
+        margin-bottom: 35px
+     span
+        font-size: 20px
+        color: #8F8989
+        font-weight: 400
+        margin-bottom: 25px
 
 
 

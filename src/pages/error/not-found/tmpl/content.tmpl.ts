@@ -1,6 +1,8 @@
 export const content = `
-    <div>
-        <img src='/src/assets/error-not-found.svg' alt="not-found"/>
-        {{{ chatPageLink }}}
+    <div class="wrapper-not-found-page">
+        <div class="wrapper-content">
+            <img src='/src/assets/error-not-found.svg' alt="not-found"/>
+            {{{ chatPageLink }}}
+        </div>
     </div>
 `

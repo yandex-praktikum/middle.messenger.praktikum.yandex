@@ -1,5 +1,10 @@
 export const content = `
-    {{{ title }}}
-    <div>Мы уже фиксим) еще немного</div>
-    {{{ chatPageLink }}}
+   <div class="wrapper-server-error-page">
+       <div class="wrapper-content">
+           {{{ title }}}
+           <span>Мы уже фиксим) еще немного</span>
+           {{{ chatPageLink }}}
+       </div>
+  </div>
+  
 `

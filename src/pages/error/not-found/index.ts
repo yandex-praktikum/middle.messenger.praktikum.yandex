@@ -5,7 +5,7 @@ import {Link} from "../../../components/link";
 export const  NotFoundPage = () => {
    return HandleBars.compile(content)({
       chatPageLink: Link({
-         to: '/chat',
+         to: '/chats',
          content: 'назад к чатам'
       })
    });

@@ -9,7 +9,7 @@ export const ServerErrorPage = () => {
          title: '500'
       }),
       chatPageLink: Link({
-         to: '/chat',
+         to: '/chats',
          content: 'назад к чатам'
       })
    });
