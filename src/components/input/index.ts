@@ -6,6 +6,5 @@ export type InputProps = {
     type?: string;
 }
 export const Input = (props: InputProps) => {
-    console.log(props)
     return HandleBars.compile(input)(props);
 }

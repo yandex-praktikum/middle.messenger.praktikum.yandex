@@ -20,7 +20,7 @@ export const ChatPage = () => {
             content: '<img class="settings-styled" src=\'/src/assets/settings.svg\' alt="settings"/>'
         }),
         linkToAuth: Link({
-            to: '/auth',
+            to: '/sign-in',
             content: '<img class="arrow-exit" src=\'/src/assets/exit.svg\' alt="exit"/>'
         }),
         title: Title({

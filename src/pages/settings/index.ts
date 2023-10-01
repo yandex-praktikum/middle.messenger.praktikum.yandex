@@ -8,11 +8,16 @@ import {Input, InputProps} from "../../components/input";
 const signUpFieldList =
     [
         {
-            placeholder: "first name",
+            placeholder: 'first name',
             type: 'text'
+            
         },
         {
             placeholder: 'second name',
+            type: 'text'
+        },
+        {
+            placeholder: 'display name',
             type: 'text'
         },
         {
@@ -27,16 +32,13 @@ const signUpFieldList =
             placeholder: 'phone',
             type: 'phone'
         },
-        {
-            placeholder: 'password(min.6 charact.)',
-            type: 'password'
-        },
+        
     
     ] as InputProps
 export const SettingsPage = () => {
     return HandleBars.compile(settings)({
         logo: Logo(),
-        authPageLink: Link({to: '/auth', content: 'or Sign In'}),
+        authPageLink: Link({to: '/sign-in', content: 'or Sign In'}),
         button: Button({text: 'Save'}),
         input: Input(signUpFieldList),
     })
