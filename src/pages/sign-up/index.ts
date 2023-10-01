@@ -1,9 +1,10 @@
 import HandleBars from "handlebars";
-import {settings} from "./tmpl/settings.tmpl.ts";
+import {content} from "./tmpl/content.tmpl.ts";
 import {Logo} from "../../components/logo";
 import {Link} from "../../components/link";
-import {Button} from "../../components/button";
+import {Title} from "../../components/title";
 import {Input, InputProps} from "../../components/input";
+import {Button} from "../../components/button";
 
 const signUpFieldList =
     [
@@ -31,13 +32,15 @@ const signUpFieldList =
             placeholder: 'password(min.6 charact.)',
             type: 'password'
         },
-    
+        
     ] as InputProps
-export const SettingsPage = () => {
-    return HandleBars.compile(settings)({
-        logo: Logo(),
-        authPageLink: Link({to: '/auth', content: 'or Sign In'}),
-        button: Button({text: 'Save'}),
-        input: Input(signUpFieldList),
-    })
+
+export const SignUpPage = () => {
+   return HandleBars.compile(content)({
+      logo: Logo(),
+      signUpPageLink: Link({to: '/sign-in', content: 'or Sign In'}),
+      title: Title({title: 'Let`s get started!'}),
+       input: Input(signUpFieldList),
+      button: Button({text: 'Create account'})
+   });
 }

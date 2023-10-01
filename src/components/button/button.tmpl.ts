@@ -1,3 +1,3 @@
 export const button = `
-    <button>{{ text }}</button>
+    <button class="button-styled">{{ text }}</button>
 `
