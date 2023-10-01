@@ -3,8 +3,14 @@ import {content} from "./tmpl/content.tmpl.ts";
 import {Logo} from "../../components/logo";
 import {Link} from "../../components/link";
 import {Title} from "../../components/title";
-import {Input} from "../../components/input";
+import {Input, InputProps} from "../../components/input";
 
+
+const chatField = [
+    {
+        placeholder: 'Search for people'
+    }
+] as InputProps
 
 export const ChatPage = () => {
     return HandleBars.compile(content)({
@@ -20,10 +26,6 @@ export const ChatPage = () => {
         title: Title({
             title: "Music"
         }),
-        input: Input({
-            fields: [
-                "Search"
-            ],
-        }),
+        input: Input(chatField),
     });
 }
