@@ -14,5 +14,5 @@
          {{{ signUpPageLink }}}
       </div>
    </div>
-   
  `
+ 

@@ -10,7 +10,6 @@ const signUpFieldList =
         {
             placeholder: 'first name',
             type: 'text'
-            
         },
         {
             placeholder: 'second name',
@@ -32,7 +31,6 @@ const signUpFieldList =
             placeholder: 'phone',
             type: 'phone'
         },
-        
     
     ] as InputProps
 export const SettingsPage = () => {

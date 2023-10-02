@@ -44,3 +44,4 @@ export const SignUpPage = () => {
       button: Button({text: 'Create account'})
    });
 }
+

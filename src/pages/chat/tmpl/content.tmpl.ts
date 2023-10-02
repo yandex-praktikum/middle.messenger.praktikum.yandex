@@ -28,5 +28,4 @@ export const content = `
              </div>
         </div>
     <div>
-
 `

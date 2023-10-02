@@ -6,5 +6,4 @@ export const content = `
            {{{ chatPageLink }}}
        </div>
   </div>
-  
 `
