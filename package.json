@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "vite --port 3000",
-    "start": "node app.js",
+    "start": "vite build && node app.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
