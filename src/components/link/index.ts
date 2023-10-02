@@ -7,6 +7,6 @@ type LinkProps = {
 }
 export const Link = (props: LinkProps ) => {
     return HandleBars.compile(link)(props);
-    
 }
+
 
