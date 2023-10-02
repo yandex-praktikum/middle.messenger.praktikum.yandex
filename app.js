@@ -9,9 +9,7 @@ app.use(express.static(path.join(__dirname, "dist")));
 app.set("view engine", "hbs");
 
 app.get("/", (req, res) => {
-    res.render("index.html", {title: "AuthPage"});
+    res.render("index.html", {title: "SignInPage"});
 });
 
 app.listen(process.env.PORT || PORT, () => console.log("success"))
-
-
