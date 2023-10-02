@@ -23,5 +23,5 @@ window.addEventListener('DOMContentLoaded', () => {
     if (root) {
         root.innerHTML = ROUTES[window.location.pathname] || NotFoundPage()
     }
-    
 })
+
