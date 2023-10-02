@@ -18,6 +18,7 @@ export class ProfilePage extends Block {
                         dataForms[child.name] = child.value();
                     }
                 });
+                // eslint-disable-next-line no-console
                 console.log(dataForms);
             },
         });

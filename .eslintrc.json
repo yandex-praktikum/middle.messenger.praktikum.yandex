@@ -14,5 +14,6 @@
   },
   "parserOptions": {
     "project": "./tsconfig.json"
-  }
+  },
+  "ignorePatterns": ["vite.config.js"]
 }

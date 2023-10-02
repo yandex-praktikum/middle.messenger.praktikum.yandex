@@ -21,7 +21,7 @@ export function registerComponent(name: string, Component: BlockType) {
         throw new Error(`The ${name} component is already registered!`);
     }
 
-    Handlebars.registerHelper(name, function (this: unknown, { hash, data, fn }: HelperOptions) {
+    Handlebars.registerHelper(name, function hd(this: unknown, { hash, data, fn }: HelperOptions) {
         let props: Props = {};
         const valueHash = hash;
         if (hash.data && typeof hash.data === 'string') {

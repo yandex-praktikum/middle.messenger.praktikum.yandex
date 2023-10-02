@@ -57,7 +57,7 @@ export default class HTTPTransport {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
-            xhr.onload = function () {
+            xhr.onload = function onload() {
                 resolve(xhr);
             };
 
