@@ -1,0 +1,47 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/mixins
+@import ../../assets/sass/templates
+
+.chat-message
+  @extend %flex-row
+  +flex-alignment(center, flex-end)
+  margin: 20px 0
+  &__left
+    margin-right: auto
+
+  &__left &__text
+    background: $background-color-five
+    color: $font-color-text
+
+  &__right
+    margin-left: auto
+
+  &__right &__text
+    background: $background-color-six
+    color: $font-color
+
+  &__avatar
+    margin: 0 -10px 0 20px
+
+  &__body
+    @extend %flex-column
+    +flex-alignment(center, flex-start)
+    margin: 0 20px
+
+  &__info
+    @extend %flex-row
+    +flex-alignment(space-between, center)
+    width: 100%
+    &__name
+      margin: 5px 0 5px 20px
+    &__time
+      margin: 5px 20px 5px 0
+
+  &__text
+    box-sizing: border-box
+    min-width: 300px
+    border-radius: 25px
+    padding: 20px
+    font-size: 16px
+    font-weight: 500
+    line-height: 120%

@@ -1,0 +1,26 @@
+<div class="profile">
+    <section class="sidebar">
+
+        {{{ InfoBar data = "aladzuey" }}}
+        <nav class="profile__content">
+            {{{ Button data = "back_to_chats" ref = "back_to_chats" }}}
+            {{{ Button data = "change_data" ref = "change_data" onClick=onChangeTheData }}}
+            {{{ Button data = "change_password" ref = "change_password" }}}
+            {{{ Button data = "exit" ref = "exit" }}}
+        </nav>
+    </section>
+    <main class="view">
+        <div class="profile__content">
+            {{#> FormAuth name="profile"}}
+                {{{ Avatar data="aladzuey" ref="aladzuey"}}}
+                <h2>{{ name }}</h2>
+                {{{ InputField data="mail" ref="mail" }}}
+                {{{ InputField data="login" ref="login" }}}
+                {{{ InputField data="name" ref="name" }}}
+                {{{ InputField data="surname"  ref="surname"}}}
+                {{{ InputField data="alias" ref="alias"}}}
+                {{{ InputField data="phone" ref="phone"}}}
+            {{/FormAuth}}
+        </div>
+    </main>
+</div>

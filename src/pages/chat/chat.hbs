@@ -1,0 +1,21 @@
+<div id="wrapper">
+    <section class="sidebar">
+
+        {{{ InfoBar data = "aladzuey" }}}
+        <div class="content">
+            <div class="search-wrapper">
+                {{{ Search }}}
+            </div>
+            <nav class="chats">
+                <div class="chats__indent">
+                    {{#each chats}}
+                        {{{ ChatList data=data ref=ref }}}
+                    {{/each}}
+                </div>
+            </nav>
+        </div>
+    </section>
+    <main class="view">
+        {{{ Chat data="common" ref="common" }}}
+    </main>
+</div>

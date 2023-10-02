@@ -1,0 +1,19 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.chat-header
+  @extend %flex-row
+  +flex-alignment(space-between, center)
+  width: 100%
+  height: 80px
+  background: $background-color-fourth
+
+  h2
+    margin-left: 30px
+
+  &__info
+    @extend %flex-row
+    +flex-alignment(flex-end, center)
+    border-left: #FFF 1px solid
+    padding: 0 30px

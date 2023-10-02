@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "indent": ["error", 4],
+    "@typescript-eslint/indent": ["error", 4],
+    "linebreak-style": 0,
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off"
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "ignorePatterns": ["vite.config.js"]
+}

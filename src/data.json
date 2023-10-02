@@ -1,0 +1,689 @@
+{
+  "person": {
+    "name": "Дмитрий Аладьев",
+    "avatar": "./assets/img/avatars/alad.png",
+    "size": "big",
+    "status": "online"
+  },
+  "buttons": {
+    "arrow": {
+      "type": "arrow"
+    },
+    "chatSearch": {
+      "type": "chat-search"
+    },
+    "smile": {
+      "type": "smile"
+    },
+    "scrap": {
+      "type": "scrap"
+    },
+    "send": {
+      "type": "send"
+    },
+    "chatMenu": {
+      "type": "chat-menu"
+    },
+    "add": {
+      "type": "add"
+    },
+    "setting": {
+      "type": "settings",
+      "page": "ProfilePage"
+    },
+    "signIn": {
+      "label": "Авторизироваться",
+      "type": "primary",
+      "page": "ChatPage"
+    },
+    "registration": {
+      "label": "Зарегистрироваться",
+      "type": "primary",
+      "name": "message",
+      "page": "ChatPage"
+    },
+    "signUp": {
+      "label": "Нет аккаунта?",
+      "type": "link",
+      "page": "RegistrationPage"
+    },
+    "entrance": {
+      "label": "Войти",
+      "type": "link",
+      "page": "LoginPage"
+    },
+    "back_to_chats": {
+      "label": "Вернуться к чатам",
+      "type": "link-profile",
+      "page": "ChatPage"
+    },
+    "change_data": {
+      "label": "Изменить данные",
+      "type": "link-profile"
+    },
+    "change_password": {
+      "label": "Изменить пароль",
+      "type": "link-profile"
+    },
+    "exit": {
+      "label": "Выход",
+      "type": "link-profile",
+      "page": "LoginPage"
+    },
+    "back_to_chats_2": {
+      "label": "Вернуться к чатам",
+      "type": "primary",
+      "page": "ChatPage"
+    },
+    "Page404": {
+      "label": "Посмотреть 404 ошибку",
+      "type": "link",
+      "page": "Page404"
+    },
+    "Page500": {
+      "label": "Посмотреть 500 ошибку",
+      "type": "link",
+      "page": "Page500"
+    },
+    "LoginPage": {
+      "label": "Посмотреть страницу логина",
+      "type": "link",
+      "page": "LoginPage"
+    },
+    "ProfilePage": {
+      "label": "Посмотреть страницу профиля",
+      "type": "link",
+      "page": "ProfilePage"
+    },
+    "RegistrationPage": {
+      "label": "Посмотреть страницу регистрации",
+      "type": "link",
+      "page": "RegistrationPage"
+    }
+  },
+  "inputs": {
+    "search": {
+      "type": "search",
+      "placeholder": "Поиск"
+    },
+    "login": {
+      "label": "Логин",
+      "type": "text",
+      "name": "login",
+      "value": "ivanivanov"
+    },
+    "password": {
+      "label": "Пароль",
+      "name": "password",
+      "type": "password"
+    },
+    "repeat_password": {
+      "label": "Пароль (еще раз)",
+      "type": "password"
+    },
+    "mail": {
+      "label": "Почта",
+      "name": "email",
+      "value": "pochtayandex.ru"
+    },
+    "name": {
+      "label": "Имя",
+      "name": "first_name",
+      "value": "Иван"
+    },
+    "surname": {
+      "label": "Фамилия",
+      "name": "second_name",
+      "value": "Иванов"
+    },
+    "phone": {
+      "label": "Телефон",
+      "name": "phone",
+      "value": "+7 (909) 967 30 30"
+    },
+    "alias": {
+      "label": "Имя в чате",
+      "name": "display_name",
+      "value": "Таинственный незнакомец"
+    }
+  },
+  "inputFields": {
+    "login": {
+      "name": "login",
+      "label": "Логин",
+      "input": {
+        "label": "Логин",
+        "type": "text",
+        "name": "login",
+        "value": "ivanivanov"
+      },
+      "validate": [
+        {
+          "regex": "^[\\w-]*$",
+          "error": "- только латиница, цифры, дефис и нижние подчеркивание"
+        },
+        {
+          "regex": "^.{3,20}$",
+          "error": "- от 3 до 20 символов"
+        },
+        {
+          "regex": "\\D",
+          "error": "- не может состоять из одних цифр"
+        }
+      ]
+    },
+    "password": {
+      "name": "password",
+      "label": "Пароль",
+      "input": {
+        "label": "Пароль",
+        "name": "password",
+        "type": "password"
+      },
+      "validate": [
+        {
+          "regex": "[A-ZА-ЯЁ]",
+          "error": "- хотя бы одна заглавная буква"
+        },
+        {
+          "regex": "[0-9]",
+          "error": "- хотя бы одна цифра"
+        },
+        {
+          "regex": "^.{8,40}$",
+          "error": "- от 8 до 40 символов"
+        }
+      ]
+    },
+    "repeat_password": {
+      "name": "repeat_password",
+      "label": "Повторить пароль еще раз",
+      "input": {
+        "label": "Пароль (еще раз)",
+        "type": "password"
+      },
+      "validate": [
+        {
+          "regex": "[A-ZА-ЯЁ]",
+          "error": "- хотя бы одна заглавная буква"
+        },
+        {
+          "regex": "[0-9]",
+          "error": "- хотя бы одна цифра"
+        },
+        {
+          "regex": "^.{8,40}$",
+          "error": "- от 8 до 40 символов"
+        }
+      ]
+    },
+    "mail": {
+      "name": "mail",
+      "label": "Почта",
+      "input": {
+        "label": "Почта",
+        "name": "email",
+        "value": "pochtayandex.ru"
+      },
+      "validate": [
+        {
+          "regex": "^[\\w-@\\.]*$",
+          "error": "- только латиница, цифры, дефис и нижние подчеркивание"
+        },
+        {
+          "regex": "^[^@]+@[^@]+$",
+          "error": "- обязательно должна быть «собака» (@)"
+        },
+        {
+          "regex": "@.+\\..",
+          "error": "- обязательно должна быть точка после «собаки»"
+        },
+        {
+          "regex": "@[A-Za-z]+\\.",
+          "error": "- перед точкой обязательно должны быть буквы"
+        }
+      ]
+    },
+    "name": {
+      "name": "name",
+      "label": "Имя",
+      "input": {
+        "label": "Имя",
+        "name": "first_name",
+        "value": "Иван"
+      },
+      "validate": [
+        {
+          "regex": "^[A-ZА-ЯЁa-zа-яё-]*$",
+          "error": "- только латиница, кирилица или дефис"
+        },
+        {
+          "regex": "^[A-ZА-ЯЁ]",
+          "error": "- первая буква должна быть заглавная"
+        }
+      ]
+    },
+    "surname": {
+      "name": "surname",
+      "label": "Фамилия",
+      "input": {
+        "label": "Фамилия",
+        "name": "second_name",
+        "value": "Иванов"
+      },
+      "validate": [
+        {
+          "regex": "^[A-ZА-ЯЁa-zа-яё-]*$",
+          "error": "- только латиница, кирилица или дефис"
+        },
+        {
+          "regex": "^[A-ZА-ЯЁ]",
+          "error": "- первая буква должна быть заглавная"
+        }
+      ]
+    },
+    "phone": {
+      "name": "phone",
+      "label": "Телефон",
+      "input": {
+        "label": "Телефон",
+        "name": "phone",
+        "value": "+7 (909) 967 30 30"
+      },
+      "validate": [
+        {
+          "regex": "^[\\d\\+]*$",
+          "error": "- только цифры и знак плюс"
+        },
+        {
+          "regex": "^[\\d\\+][\\d]*$",
+          "error": "- плюс должен быть первым"
+        },
+        {
+          "regex": "^.{10,15}$",
+          "error": "- от 10 до 15 символов"
+        }
+      ]
+    },
+    "alias": {
+      "name": "alias",
+      "label": "Имя в чате",
+      "input": {
+        "label": "Имя в чате",
+        "name": "display_name",
+        "value": "Таинственный незнакомец"
+      }
+    },
+    "search": {
+      "name": "search",
+      "type": "text",
+      "placeholder": "Поиск",
+      "input": {
+        "type": "search",
+        "placeholder": "Поиск"
+      }
+    },
+    "message": {
+      "name": "message",
+      "input": {
+        "name": "message",
+        "placeholder": "Введите сообщение"
+      },
+      "validate": [
+        {
+          "regex": "[^.]",
+          "error": "- должен быть хоть один символ"
+        }
+      ]
+    }
+  },
+  "chatLists": {
+    "common": {
+      "title": "Общие чаты",
+      "items": [
+        {
+          "data": {
+            "title": "Cпринт №1",
+            "avatars": [
+              {
+                "data": "milevsky2",
+                "ref": "milevsky"
+              },
+              {
+                "data": "troshina2",
+                "ref": "troshina"
+              },
+              {
+                "data": "isaeva2",
+                "ref": "isaeva"
+              }
+            ],
+            "select": false,
+            "lastMessage": {
+              "personName": "Георгий Милевский",
+              "text": "Крутой дизайн",
+              "time": "17:20"
+            },
+            "numUnreadMessages": 5
+          },
+          "ref": "sprint_1"
+        },
+        {
+          "data": {
+            "title": "Отчисления",
+            "avatars": [
+              {
+                "data": "isaeva2",
+                "ref": "isaeva"
+              },
+              {
+                "data": "troshina2",
+                "ref": "troshina"
+              },
+              {
+                "data": "milevsky2",
+                "ref": "milevsky"
+              }
+            ],
+            "lastMessage": {
+              "personName": "Кани Исаева",
+              "text": "Заверши проект вовремя!!!",
+              "time": "10:30"
+            },
+            "numUnreadMessages": 3
+          },
+          "ref": "deductions"
+        },
+        {
+          "data": {
+            "title": "Доска позора",
+            "avatars": [
+              {
+                "data": "troshina2",
+                "ref": "troshina"
+              },
+              {
+                "data": "milevsky2",
+                "ref": "milevsky"
+              },
+              {
+                "data": "isaeva2",
+                "ref": "isaeva"
+              }
+            ],
+            "lastMessage": {
+              "personName": "Александра Трошина",
+              "text": "Явно плагиат!!!",
+              "time": "10:30"
+            },
+            "numUnreadMessages": 1
+          },
+          "ref": "shameBoard"
+        }
+      ]
+    },
+    "private": {
+      "title": "Личные сообщения",
+      "items": [
+        {
+          "data": {
+            "title": "Георгий Милевский",
+            "avatars": [
+              {
+                "data": "milevsky",
+                "ref": "milevsky"
+              }
+            ],
+            "lastMessage": {
+              "text": "Крутой дизайн",
+              "time": "17:20"
+            },
+            "numUnreadMessages": 5
+          },
+          "ref": "milevsky"
+        },
+        {
+          "data": {
+            "title": "Александра Трошина",
+            "avatars": [
+              {
+                "data": "troshina",
+                "ref": "troshina"
+              }
+            ],
+            "select": true,
+            "lastMessage": {
+              "text": "Явно плагиат!!!",
+              "time": "23:00"
+            },
+            "numUnreadMessages": 2
+          },
+          "ref": "troshina"
+        },
+        {
+          "data": {
+            "title": "Анастасия Выгузова",
+            "avatars": [
+              {
+                "data": "vyguzova",
+                "ref": "vyguzova"
+              }
+            ],
+            "lastMessage": {
+              "text": "Как-то темновато!!!",
+              "time": "11:23"
+            },
+            "numUnreadMessages": 0
+          },
+          "ref": "vyguzova"
+        },
+        {
+          "data": {
+            "title": "Кани Исаева",
+            "avatars": [
+              {
+                "data": "isaeva",
+                "ref": "isaeva"
+              }
+            ],
+            "lastMessage": {
+              "text": "Заверши проект вовремя!!!",
+              "time": "10:30"
+            },
+            "numUnreadMessages": 2
+          },
+          "ref": "isaeva"
+        },
+        {
+          "data": {
+            "title": "Данила Денисов",
+            "avatars": [
+              {
+                "data": "denisov",
+                "ref": "denisov"
+              }
+            ],
+            "lastMessage": {
+              "text": "Вы: Да, что не так???",
+              "time": "03:26"
+            },
+            "numUnreadMessages": 0
+          },
+          "ref": "denisov"
+        },
+        {
+          "data": {
+            "title": "Евгений Талагаев",
+            "avatars": [
+              {
+                "data": "talagaev",
+                "ref": "talagaev"
+              }
+            ],
+            "lastMessage": {
+              "text": "Я бы таким чатом не пользовался",
+              "time": "11:26"
+            },
+            "numUnreadMessages": 0
+          },
+          "ref": "talagaev"
+        }
+      ]
+    }
+  },
+  "avatars": {
+    "aladzuey": {
+      "name": "Дмитрий Аладьев",
+      "avatar": "./assets/img/avatars/alad.png",
+      "size": "big",
+      "status": "online"
+    },
+    "milevsky": {
+      "avatar": "./assets/img/avatars/milev.png",
+      "name": "Георгий Милевский",
+      "size": "medium",
+      "status": "online"
+    },
+    "troshina": {
+      "avatar": "./assets/img/avatars/trosh.png",
+      "name": "Александра Трошина",
+      "size": "medium",
+      "status": "online"
+    },
+    "isaeva": {
+      "avatar": "./assets/img/avatars/isaeva.png",
+      "name": "Кани Исаева",
+      "size": "medium",
+      "status": "offline"
+    },
+    "vyguzova": {
+      "avatar": "./assets/img/avatars/viguz.png",
+      "name": "Анастасия Выгузова",
+      "size": "medium",
+      "status": "offline"
+    },
+    "denisov": {
+      "avatar": "./assets/img/avatars/denisov.png",
+      "name": "Данила Денисов",
+      "size": "medium",
+      "status": "offline"
+    },
+    "talagaev": {
+      "avatar": "./assets/img/avatars/talag.png",
+      "name": "Евгений Талагаев",
+      "size": "medium",
+      "status": "online"
+    },
+    "milevsky2": {
+      "avatar": "./assets/img/avatars/milev.png",
+      "name": "Георгий Милевский",
+      "size": "small",
+      "status": "online"
+    },
+    "troshina2": {
+      "avatar": "./assets/img/avatars/trosh.png",
+      "name": "Александра Трошина",
+      "size": "small",
+      "status": "online"
+    },
+    "isaeva2": {
+      "avatar": "./assets/img/avatars/isaeva.png",
+      "name": "Кани Исаева",
+      "size": "small",
+      "status": "offline"
+    },
+    "milevsky3": {
+      "avatar": "./assets/img/avatars/milev.png",
+      "name": "Георгий Милевский",
+      "size": "smallest",
+      "figure": "square",
+      "status": "hideStatus"
+    },
+    "troshina3": {
+      "avatar": "./assets/img/avatars/trosh.png",
+      "name": "Александра Трошина",
+      "size": "smallest",
+      "figure": "square",
+      "status": "hideStatus"
+    },
+    "isaeva3": {
+      "avatar": "./assets/img/avatars/isaeva.png",
+      "name": "Кани Исаева",
+      "size": "smallest",
+      "figure": "square",
+      "status": "hideStatus"
+    }
+  },
+  "infoBars": {
+    "aladzuey": {
+      "name": "aladzuey",
+      "userName": "Аладьев Дмитрий"
+    }
+  },
+  "chats": {
+    "common": {
+      "header": {
+        "title": "Отчисления",
+        "description": "Сюда попдают те, кому грозит отчисление",
+        "chatInfo": {
+          "avatars": [
+            {
+              "data": "troshina3",
+              "ref": "troshina3"
+            },
+            {
+              "data": "isaeva3",
+              "ref": "isaeva3"
+            },
+            {
+              "data": "milevsky3",
+              "ref": "milevsky3"
+            }
+          ],
+          "numberOfParticipants": 32
+        }
+      },
+      "header_ref": "header",
+      "footer": {
+        "message": "message"
+      },
+      "footer_ref": "footer",
+      "body": {
+        "messages": [
+          {
+            "message": {
+              "alignment": "right",
+              "text": "Мне еще нужно 2 месяца, что бы завершить макет чата. Можете подождать?",
+              "name": "Вы:",
+              "time": "13:00"
+            },
+            "ref": "message_1"
+          },
+          {
+            "message": {
+              "alignment": "left",
+              "text": "Привет. <br> Ты что? Каких 2 месяца? На дизайн дается только 2 часа.",
+              "avatar": "isaeva3",
+              "avatar_ref": "isaeva",
+              "name": "Кани Исаева",
+              "time": "13:00"
+            },
+            "ref": "message_2"
+          },
+          {
+            "message": {
+              "alignment": "left",
+              "text": "Заверши проект вовремя!!!",
+              "avatar": "isaeva3",
+              "avatar_ref": "isaeva",
+              "name": "Кани Исаева",
+              "time": "13:00"
+            },
+            "ref": "message_3"
+          }
+        ]
+      },
+      "body_ref": "body"
+    }
+  }
+}

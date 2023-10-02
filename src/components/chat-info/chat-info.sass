@@ -1,0 +1,19 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.chat-info
+  @extend %flex-row
+  +flex-alignment(flex-end, center)
+  margin: 0 30px
+
+
+  &__avatars
+    @extend %flex-row
+    +flex-alignment(flex-end, center)
+    flex-direction: row-reverse
+    margin-right: -10px
+
+    .avatar
+      margin-right: -15px
+

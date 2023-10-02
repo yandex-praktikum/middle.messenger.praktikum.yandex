@@ -1,0 +1,73 @@
+@import ../../assets/sass/variables
+
+.avatar
+  display: block
+  position: relative
+
+  .icon
+    position: absolute
+    top: 0
+    left: 0
+    box-sizing: border-box
+    border-radius: 50%
+    overflow: hidden
+    border: 2px #FFF solid
+
+  .status
+    position: absolute
+    bottom: 0
+    right: 0
+    border-radius: 50%
+    border: 2px #FFF solid
+
+  .online
+    background: green
+  .offline
+    background: red
+  .hideStatus
+    display: none
+
+  &__big
+    width: $avatar-size
+    height: $avatar-size
+    .icon
+      width: $avatar-size
+      height: $avatar-size
+    .status
+      width: $avatar-status-size
+      height: $avatar-status-size
+
+  &__medium
+    width: $avatar-size-medium
+    height: $avatar-size-medium
+    .icon
+      width: $avatar-size-medium
+      height: $avatar-size-medium
+    .status
+      width: $avatar-status-size-medium
+      height: $avatar-status-size-medium
+
+  &__small
+    width: $avatar-size-small
+    height: $avatar-size-small
+    .icon
+      width: $avatar-size-small
+      height: $avatar-size-small
+    .status
+      width: $avatar-status-size-small
+      height: $avatar-status-size-small
+
+  &__smallest
+    width: $avatar-size-smallest
+    height: $avatar-size-smallest
+    .icon
+      width: $avatar-size-smallest
+      height: $avatar-size-smallest
+    .status
+      width: $avatar-status-size-smallest
+      height: $avatar-status-size-smallest
+
+  &__square
+    border-radius: 5px
+    .icon
+      border-radius: 5px

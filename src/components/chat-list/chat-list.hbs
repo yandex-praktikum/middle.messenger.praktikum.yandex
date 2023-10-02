@@ -1,0 +1,13 @@
+<div class="chat-list">
+    <h3 class="chat-list__header">
+        <div class="chat-list__header__empty"></div>
+        <div class="chat-list__header__content">
+            {{{ Button data="arrow" ref="arrow" }}}
+            <span>{{ title }}</span>
+            {{{ Button data="add" ref="add" }}}
+        </div>
+    </h3>
+    {{#each items}}
+        {{{ ChatItem data=data ref=ref}}}
+    {{/each}}
+</div>
