@@ -17,11 +17,11 @@ export const ChatPage = () => {
         logo: Logo(),
         linkToSettings: Link({
             to: '/settings',
-            content: '<img class="settings-styled" src=\'/src/assets/settings.svg\' alt="settings"/>'
+            content: '<img class="settings-styled" src=\'/assets/settings.svg\' alt="settings"/>'
         }),
         linkToAuth: Link({
             to: '/sign-in',
-            content: '<img class="arrow-exit" src=\'/src/assets/exit.svg\' alt="exit"/>'
+            content: '<img class="arrow-exit" src=\'/assets/exit.svg\' alt="exit"/>'
         }),
         title: Title({
             title: "Music"

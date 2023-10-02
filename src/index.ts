@@ -11,9 +11,9 @@ const ROUTES: Record<string, string> = {
     '/server-error': ServerErrorPage(),
     '/sign-in': SignInPage(),
     '/sign-up': SignUpPage(),
-    '/chats': ChatPage(),
+    '/': ChatPage(),
     '/settings': SettingsPage(),
-    '/': SignInPage()
+    // '/': SignInPage()
     
 }
 

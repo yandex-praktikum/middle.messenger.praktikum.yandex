@@ -4,14 +4,14 @@ export const content = `
             <div class="header-content-left">
                {{{logo}}}
                 <label class="input-search-label">
-                    <img src='/src/assets/search.svg' alt="search"/>
+                    <img src='/assets/search.svg' alt="search"/>
                     {{{input}}}
                 </label>
             </div>
              <div class="header-content-right">
-                <img src='/src/assets/notification.svg' alt="notification"/>
+                <img src='/assets/notification.svg' alt="notification"/>
                 {{{linkToSettings}}}
-                <img src='/src/assets/small-avatar.svg' alt="small-avatar"/>
+                <img src='/assets/small-avatar.svg' alt="small-avatar"/>
                {{{linkToAuth}}}
             </div>
         </header>
@@ -22,7 +22,7 @@ export const content = `
              </aside>
              <div class="main-chats">
                  <div class="main-chats-header">
-                     <img src='/src/assets/user.svg' alt="user"/>
+                     <img src='/assets/user.svg' alt="user"/>
                      <span>Alexandr Ivanov</span>
                  </div>
              </div>
