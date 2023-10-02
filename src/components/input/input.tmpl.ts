@@ -8,4 +8,3 @@ export const input =  `
       {{/each}}
     </div>
 `
-

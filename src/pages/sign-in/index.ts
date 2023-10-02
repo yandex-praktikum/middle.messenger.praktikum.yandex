@@ -28,4 +28,3 @@ export const SignInPage = () => {
         button: Button({text: 'Enter'})
     });
 }
-
