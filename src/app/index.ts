@@ -4,12 +4,14 @@ import {
   registerHelpers,
   registerComponents,
 } from "./providers";
-import { navigate } from "./providers/withRouting";
+import { withRouting } from "./providers/withRouting";
+import { AuthAPI } from "@/shared/api/auth";
 
 function app() {
   registerPartials();
   registerHelpers();
   registerComponents();
+  withRouting();
 
   document.addEventListener("DOMContentLoaded", () => {
     const root = document.querySelector("#app");
@@ -21,13 +23,15 @@ function app() {
       document
         .querySelector(".user-image span")
         ?.addEventListener("click", toggleModal);
+
       document
         .querySelector(".modal-overlay")
         ?.addEventListener("click", toggleModal);
 
       document.body.append(new NavigationList({}).getContent() ?? "");
+
+      console.log(AuthAPI);
     }
-    navigate(window.location.pathname);
   });
 }
 

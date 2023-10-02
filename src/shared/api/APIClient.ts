@@ -1,11 +1,18 @@
-import { HTTPClient } from "./HTTPClient";
-
 class APIClient {
-  private readonly HTTPClient: HTTPClient = new HTTPClient();
-  private base: string;
+  public create() {
+    throw new Error("Not implemented");
+  }
 
-  constructor(base: string) {
-    this.base = base;
+  public request() {
+    throw new Error("Not implemented");
+  }
+
+  public update() {
+    throw new Error("Not implemented");
+  }
+
+  public delete() {
+    throw new Error("Not implemented");
   }
 }
 

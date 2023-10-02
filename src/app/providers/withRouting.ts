@@ -1,49 +1,21 @@
-import {
-  ChatPage,
-  EditPasswordPage,
-  EditProfilePage,
-  ErrorPage,
-  ProfilePage,
-  SigninPage,
-} from "@/pages";
-import { SignupPage } from "@/pages";
+import { ChatPage, SigninPage, SignupPage } from "@/pages";
+import { Router } from "@/shared/model";
 
-const routes = {
-  "/": SigninPage,
-  "/signin": SigninPage,
-  "/signup": SignupPage,
-  "/profile": ProfilePage,
-  "/profile-edit": EditProfilePage,
-  "/password-edit": EditPasswordPage,
-  "/chat": ChatPage,
-};
-
-function navigate(path: string): void {
-  const appContainer = document.querySelector("#app");
-
-  let PageComponent;
-  let page;
-  if (path in routes) {
-    // @ts-ignore
-    PageComponent = routes[path];
-    page = new PageComponent({});
-  } else {
-    PageComponent = ErrorPage;
-    page = new ErrorPage({ errorCode: 404, errorMessage: "Не туда попали" });
-  }
-
-  appContainer?.append(page.getContent());
+enum Routes {
+  Home = "/",
+  SignUp = "/sign-up",
+  Messenger = "/messenger",
 }
 
-function withRouting(): void {
-  document.addEventListener("click", (event: MouseEvent) => {
-    if ((event.target as HTMLElement).tagName === "a") {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      const path = window.location.pathname;
-      navigate(path);
-    }
-  });
+const rootQuery = "#app";
+const router = new Router(rootQuery);
+router
+  .use(Routes.Home, SigninPage)
+  .use(Routes.SignUp, SignupPage)
+  .use(Routes.Messenger, ChatPage);
+
+function withRouting() {
+  router.start();
 }
 
-export { withRouting, navigate };
+export { withRouting };

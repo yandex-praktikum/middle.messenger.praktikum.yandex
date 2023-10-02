@@ -8,15 +8,17 @@ class Router {
   private currentRoute: Route | null = null;
   private rootQuery: string = "";
 
-  constructor() {
+  constructor(rootQuery: string) {
     if (Router.instance) {
       return Router.instance;
     }
 
+    this.rootQuery = rootQuery;
+
     Router.instance = this;
   }
 
-  public use(pathname: string, component: Component): Router {
+  public use(pathname: string, component: typeof Component): Router {
     const route = new Route(pathname, component, { rootQuery: this.rootQuery });
 
     this.routes.push(route);
