@@ -12,6 +12,7 @@ interface Options {
   headers?: object;
   query?: object;
 }
+
 function queryStringify(data: object): string {
   let query = "?";
   for (const [key, value] of Object.entries(data)) {
@@ -34,49 +35,53 @@ class HTTPClient {
     this.base = base;
   }
 
-  get = (path: string, options: Options = {}) => {
-    return this.request(
+  get<TResponse>(path: string, options: Options = {}): Promise<TResponse> {
+    return this.request<TResponse>(
       this.base.concat(path),
       { ...options, method: METHODS.GET, query: options.data },
       options.timeout,
     );
-  };
+  }
 
-  post = (path: string, options: Options = {}) => {
-    return this.request(
+  post<TResponse>(path: string, options: Options = {}): Promise<TResponse> {
+    return this.request<TResponse>(
       this.base.concat(path),
       { ...options, method: METHODS.POST },
       options.timeout,
     );
-  };
+  }
 
-  put = (path: string, options: Options = {}) => {
+  put(path: string, options: Options = {}) {
     return this.request(
       this.base.concat(path),
       { ...options, method: METHODS.PUT },
       options.timeout,
     );
-  };
+  }
 
-  delete = (path: string, options: Options = {}) => {
+  delete(path: string, options: Options = {}) {
     return this.request(
       this.base.concat(path),
       { ...options, method: METHODS.DELETE },
       options.timeout,
     );
-  };
+  }
 
-  request = (url: string, options: Options, _timeout = 5000) => {
+  request<TResponse>(
+    url: string,
+    options: Options,
+    _timeout = 5000,
+  ): Promise<TResponse> {
     const { method = "get", data, query = {}, headers = {} } = options;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<TResponse>((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url.concat(queryStringify(query)));
 
       setHeaders(xhr, headers);
 
       xhr.onload = function () {
-        resolve(xhr);
+        resolve(JSON.parse(xhr.response));
       };
 
       xhr.onabort = reject;
@@ -95,7 +100,7 @@ class HTTPClient {
       }
       //setTimeout(reject, timeout);
     });
-  };
+  }
 }
 
 export { HTTPClient };

@@ -1,2 +1,3 @@
-export { APIClient } from "./APIClient";
+export { BaseAPI } from "./BaseAPI";
 export { HTTPClient } from "./HTTPClient";
+export * from "./types";

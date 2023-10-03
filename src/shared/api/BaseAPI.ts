@@ -1,4 +1,4 @@
-class APIClient {
+class BaseAPI {
   public create() {
     throw new Error("Not implemented");
   }
@@ -16,4 +16,4 @@ class APIClient {
   }
 }
 
-export { APIClient };
+export { BaseAPI };
