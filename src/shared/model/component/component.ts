@@ -195,4 +195,13 @@ export class Component<Props extends Record<string, any> = any> {
       },
     });
   }
+
+  public hide() {
+    this.getContent().style.display = "none";
+    console.log("hide");
+  }
+
+  public show() {
+    this.getContent().style.display = "block";
+  }
 }

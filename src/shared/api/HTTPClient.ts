@@ -81,7 +81,11 @@ class HTTPClient {
       setHeaders(xhr, headers);
 
       xhr.onload = function () {
-        resolve(JSON.parse(xhr.response));
+        try {
+          resolve(JSON.parse(xhr.response));
+        } catch (e) {
+          resolve(this.response);
+        }
       };
 
       xhr.onabort = reject;

@@ -15,7 +15,8 @@ router
   .use(Routes.Messenger, ChatPage);
 
 function withRouting() {
+  window.router = router;
   router.start();
 }
 
-export { withRouting };
+export { withRouting, Routes };

@@ -44,6 +44,8 @@ class Router {
       this.currentRoute.leave();
     }
 
+    this.currentRoute = route;
+
     route.render();
   }
 
