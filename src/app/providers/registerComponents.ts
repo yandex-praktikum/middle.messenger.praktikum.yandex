@@ -22,6 +22,7 @@ function registerComponents(): void {
   registerComponent("ChatWindow", ChatWindow);
   registerComponent("SendMessage", SendMessage);
   registerComponent("IconButton", Components.IconButton);
+  registerComponent("MessageCard", Components.IconButton);
 }
 
 export { registerComponents };

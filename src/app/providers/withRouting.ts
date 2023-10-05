@@ -19,4 +19,4 @@ function withRouting() {
   router.start();
 }
 
-export { withRouting, Routes };
+export { withRouting, Routes, router };

@@ -96,6 +96,8 @@ export class Component<Props extends Record<string, any> = any> {
 
   protected componentDidMount(): void {}
 
+  public componentWillUnmount(): void {}
+
   public dispatchComponentDidMount() {
     this.eventBus().dispatch(Component.EVENTS.FLOW_COMPONENT_DID_MOUNT);
 
@@ -198,7 +200,6 @@ export class Component<Props extends Record<string, any> = any> {
 
   public hide() {
     this.getContent().style.display = "none";
-    console.log("hide");
   }
 
   public show() {

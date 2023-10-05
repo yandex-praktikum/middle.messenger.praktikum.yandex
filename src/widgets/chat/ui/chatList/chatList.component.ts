@@ -6,15 +6,6 @@ class ChatList extends Component {
   constructor(props: ChatListProps) {
     super({
       ...props,
-      chats: [
-        {
-          title: "Иван",
-          message:
-            "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-          date: "10:11",
-          newMessages: 3,
-        },
-      ],
     });
   }
 
@@ -27,7 +18,7 @@ class ChatList extends Component {
         {{{ SearchChat }}}
         <div>
           {{#each chats}}
-            {{{ ChatCard title=title message=message date=date newMessages=newMessages }}}
+            {{{ ChatCard title=title message=last_message date=date newMessages=unread_count id=id }}}
           {{/each}}
         </div>
       </div>

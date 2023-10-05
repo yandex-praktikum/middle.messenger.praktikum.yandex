@@ -4,6 +4,7 @@ interface ChatCardProps {
   date?: string;
   userImage?: string;
   newMessages?: string;
+  id: string;
 }
 
 export type { ChatCardProps };

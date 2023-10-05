@@ -5,11 +5,12 @@ import {
   registerComponents,
   withStore,
 } from "./providers";
-import { withRouting } from "./providers/withRouting";
+import { Routes, router, withRouting } from "./providers/withRouting";
 import { ChatAPI } from "@/shared/api/chat/chat.api";
 import { WSClient } from "@/shared/api";
+import { AuthAPI } from "@/shared/api/auth";
 
-function app() {
+async function app() {
   withStore();
   registerPartials();
   registerHelpers();
@@ -34,6 +35,15 @@ function app() {
       document.body.append(new NavigationList({}).getContent() ?? "");
     }
   });
+
+  const authAPI = new AuthAPI();
+
+  try {
+    const me = await authAPI.getUser();
+    window.store.set({ user: me });
+  } catch (error) {
+    router.go(Routes.Home);
+  }
 }
 
 const chatAPI = new ChatAPI();
@@ -47,7 +57,6 @@ chatAPI.getToken("27462").then(async ({ token }) => {
   wsClient.send({ type: "ping" });
 });
 
-// const authAPI = new AuthAPI();
 // authAPI.logout();
 
 // authAPI

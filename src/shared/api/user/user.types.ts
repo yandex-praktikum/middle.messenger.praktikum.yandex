@@ -5,6 +5,7 @@ interface User {
   email: string;
   password: string;
   phone: string;
+  id?: string;
 }
 
 export type { User };

@@ -8,11 +8,10 @@ const authApi = new AuthAPI();
 class AuthController {
   public async signin(data: SigninFormModel) {
     try {
-      const response = await authApi.signin(data);
-      console.log("response", response);
-      if (response === "OK") {
-        window.router.go(Routes.Messenger);
-      }
+      await authApi.signin(data);
+      window.router.go(Routes.Messenger);
+      const user = await authApi.getUser();
+      window.store.set({ user });
     } catch (error) {}
   }
 }

@@ -9,3 +9,4 @@ export * from "./listItem";
 export * from "./infoList";
 export * from "./chatCard";
 export * from "./iconButton";
+export * from "./messageCard";

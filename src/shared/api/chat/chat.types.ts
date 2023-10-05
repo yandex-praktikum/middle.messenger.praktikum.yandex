@@ -13,4 +13,6 @@ interface Chat {
   };
 }
 
-export type { Chat };
+interface Message {}
+
+export type { Chat, Message };
