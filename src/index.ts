@@ -1,8 +1,16 @@
-import { render } from "./utils/index";
-import { Authorization } from "./pages/index";
+import { Router } from "./core/index";
+import { Authorization, registration as Registration } from "./pages/index";
 
 import "./scss/index.scss";
 
-const page = new Authorization();
+const router = new Router('#app');
+router
+  .use("/", Authorization)
+  .use("/sign-up", Registration)
+  .start()
 
-render(page);
+// const root = document.querySelector('#app');
+
+// if (root) {
+//   render(root, page);
+// }

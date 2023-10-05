@@ -36,7 +36,7 @@ const authForm = new AuthorizationForm({
     text: 'Sign in',
   }),
   link: new Link({
-    href: '/registration/',
+    href: '/sign-up',
     text: 'Sign up',
   }),
 })

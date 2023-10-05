@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import EventBus from "./EventBus";
+// import { isEqualObjects } from "../utils";
 
 // использую any, потому что не получилось типизировать по хорошему,
 // а время на исходе)
@@ -97,42 +98,24 @@ export default abstract class Block {
   }
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidMount(oldProps?: Props) {
-    console.log(oldProps);
-  }
+  componentDidMount() {}
 
-  dispatchComponentDidMount() {}
+  dispatchComponentDidMount() {
+    this._addEvents();
+  }
 
   setProps = (newProps: Props) => {
     if (!newProps) {
       return;
     }
 
-    this._componentDidUpdate(this.props, newProps);
-    // this.eventBus().emit(Block.EVENTS.FLOW_CDU, this.props, newProps);
-    // Object.assign(this.props, newProps);
-    // this.eventBus().emit(Block.EVENTS.FLOW_CDU);
+    Object.assign(this.props, newProps);
   };
 
-  _componentDidUpdate(oldProps: Props, newProps: Props) {
-    const response = this.componentDidUpdate(oldProps, newProps);
-
-    if (response) {
-      Object.assign(oldProps, newProps);
-    }
-  }
+  _componentDidUpdate() {}
 
   // Может переопределять пользователь, необязательно трогать
-  componentDidUpdate(oldProps: Props, newProps: Props) {
-    let update = false;
-    Object.keys(newProps).forEach((key) => {
-      if (oldProps[key] !== newProps[key]) {
-        update = true;
-      }
-    })
-
-    return update;
-  }
+  componentDidUpdate() {}
 
   _render() {
     const block = this.render();
@@ -141,11 +124,11 @@ export default abstract class Block {
     this._element.innerHTML = '';
 
     this._element.appendChild(block);
-    this._addEvents();
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
   // Может переопределять пользователь, необязательно трогать
-  render(): any {}
+  render() {}
 
   compile(template: Function, props: Props) {
     if (this.children) {
@@ -190,12 +173,6 @@ export default abstract class Block {
       } else {
         this._element.removeEventListener(eventName, eventFun);
       }
-
-      // if (eventName === 'submit') {
-      //   this._element.querySelector('form')?.removeEventListener(eventName, eventFun);
-      // } else {
-      //   this._element.removeEventListener(eventName, eventFun);
-      // }
     })
   }
 
@@ -216,7 +193,7 @@ export default abstract class Block {
         }
 
         target[prop] = newValue;
-        self.eventBus().emit(Block.EVENTS.INIT);
+        self.eventBus().emit(Block.EVENTS.FLOW_RENDER);
 
         return true;
       },
@@ -227,4 +204,10 @@ export default abstract class Block {
 
     return proxyProps;
   }
+
+  _hide() {
+    this.hide();
+  }
+
+  hide() {}
 }

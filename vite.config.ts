@@ -4,8 +4,6 @@ import pugPrecompile from './vite-plugin-pug-precompile';
 
 const root = resolve(__dirname, 'src');
 
-console.log(__dirname);
-
 export default defineConfig({
   root,
   base: '',

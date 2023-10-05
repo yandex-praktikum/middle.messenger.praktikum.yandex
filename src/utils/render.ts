@@ -2,10 +2,14 @@ type Page = {
   getContent: Function
 }
 
-export default function render(page: Page) {
+export default function render(root: string, page: Page) {
   document.addEventListener('DOMContentLoaded', () => {
-    const app = document.getElementById('app');
+    const renderPlace = document.querySelector(root);
 
-    app?.append(page.getContent());
+    if (renderPlace) {
+      renderPlace.append(page.getContent());
+    } else {
+      throw new Error('The render root is not found');
+    }
   })
 }
