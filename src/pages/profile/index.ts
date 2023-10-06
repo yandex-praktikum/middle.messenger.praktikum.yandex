@@ -1,1 +1,1 @@
-export { ProfilePage } from "./profilePage.component";
+export { ProfilePageWithStore as ProfilePage } from "./profilePage.component";

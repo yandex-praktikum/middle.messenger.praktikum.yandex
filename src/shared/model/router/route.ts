@@ -39,10 +39,11 @@ class Route {
   }
 
   public render(): void {
-    console.log(this.component);
     if (!this.component) {
       this.component = new this.componentClass({});
       render(this.options.rootQuery, this.component);
+    } else {
+      this.component.show();
     }
   }
 }

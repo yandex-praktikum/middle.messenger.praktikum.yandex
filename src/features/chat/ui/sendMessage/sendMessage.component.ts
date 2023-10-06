@@ -2,6 +2,7 @@ import { Component } from "@/shared/model";
 import clipIcon from "@/assets/clip.svg";
 import arrowIcon from "@/assets/arrow.svg";
 import styles from "./sendMessage.module.css";
+import { ChatAPI } from "@/shared/api";
 
 class SendMessage extends Component {
   constructor() {
@@ -9,8 +10,9 @@ class SendMessage extends Component {
       onClipClick: () => {},
       onSendClick: (event: SubmitEvent) => {
         event.preventDefault();
-
-        console.log({ message: this.refs.message.value() });
+        const message = this.refs.message.value();
+        const { chatSocket } = window.store.getState();
+        chatSocket?.sendMessage(message);
       },
     });
   }
@@ -18,7 +20,7 @@ class SendMessage extends Component {
     return `
       <form class="${styles.sendMessage}">
         {{{ IconButton src="${clipIcon}" onClick=onClipClick type="button" customClass="${styles.clipButton}" }}}
-        {{{ Input placeholder="Собщение..." ref="message" }}}
+        {{{ Input placeholder="Собщение..." ref="message" value="" }}}
         {{{ IconButton src="${arrowIcon}" onClick=onSendClick type="button" customClass="${styles.sendButton}" }}}
       </form>
     `;

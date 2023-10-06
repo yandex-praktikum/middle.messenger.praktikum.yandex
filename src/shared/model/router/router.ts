@@ -1,3 +1,4 @@
+import { Routes } from "@/app/providers/withRouting";
 import { Component } from "..";
 import { Route } from "./route";
 

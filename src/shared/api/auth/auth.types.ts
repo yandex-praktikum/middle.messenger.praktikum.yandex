@@ -7,4 +7,13 @@ type LoginRequest = {
   password: string;
 };
 
-export type { SignupResponse, LoginRequest };
+type SignupRequest = {
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
+};
+
+export type { SignupResponse, LoginRequest, SignupRequest };

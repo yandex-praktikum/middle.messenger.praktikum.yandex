@@ -1,40 +1,45 @@
 import { Component } from "@/shared/model";
 import styles from "./profilePage.module.css";
 import { ProfilePageProps } from "./profilePage.types";
+import { AuthController } from "@/widgets/auth/api";
+import { connect } from "@/shared/model/store/connect";
 
 class ProfilePage extends Component {
   constructor(props: ProfilePageProps) {
+    const authController = new AuthController();
+    const { user } = window.store.getState();
     super({
       ...props,
+      user,
       userInfoFields: [
         {
           title: "Почта",
-          value: "pochta@yandex.ru",
+          value: user?.email,
           type: "info",
         },
         {
           title: "Логин",
-          value: "ivanivanov",
+          value: user?.login,
           type: "info",
         },
         {
           title: "Имя",
-          value: "Иван",
+          value: user?.first_name,
           type: "info",
         },
         {
           title: "Фамилия",
-          value: "Иванов",
+          value: user?.second_name,
           type: "info",
         },
         {
           title: "Имя в чате",
-          value: "Иван",
+          value: user?.display_name,
           type: "info",
         },
         {
           title: "Телефон",
-          value: "+7 (909) 967 30 30",
+          value: user?.phone,
           type: "info",
         },
       ],
@@ -54,6 +59,9 @@ class ProfilePage extends Component {
           type: "info",
         },
       ],
+      handleExitClick: () => {
+        authController.logout();
+      },
     });
   }
   protected render() {
@@ -61,7 +69,7 @@ class ProfilePage extends Component {
       {{#> layout}}
         <div class="${styles.profilePage}">
           <div>
-            {{{ SideButton to="/chats" }}}
+            {{{ SideButton to="/messenger" }}}
           </div>
           <div class="${styles.profile}">
             {{{ UserImage }}}
@@ -69,7 +77,7 @@ class ProfilePage extends Component {
               Иван
             </div>
               {{{ InfoList items=userInfoFields }}}
-              {{{ InfoList items=userEditFields }}}
+              {{{ Button label="Выйти" onClick=handleExitClick }}}
           </div>
         </div>
       {{/layout}}
@@ -77,4 +85,5 @@ class ProfilePage extends Component {
   }
 }
 
-export { ProfilePage };
+const ProfilePageWithStore = connect(({ user }) => ({ user }))(ProfilePage);
+export { ProfilePageWithStore };

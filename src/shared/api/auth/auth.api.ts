@@ -1,12 +1,12 @@
 import { APIError, HTTPClient } from "@/shared/api";
 import { User } from "@/shared/api/user";
-import { LoginRequest, SignupResponse } from "./auth.types";
+import { LoginRequest, SignupRequest, SignupResponse } from "./auth.types";
 
 const authAPIInstance = new HTTPClient("https://ya-praktikum.tech/api/v2/auth");
 
 class AuthAPI {
-  public async signup(user: User): Promise<SignupResponse> {
-    return authAPIInstance.post("/signup", { data: user });
+  public async signup(data: SignupRequest): Promise<SignupResponse> {
+    return authAPIInstance.post("/signup", { data });
   }
 
   public async signin(data: LoginRequest): Promise<void | APIError> {

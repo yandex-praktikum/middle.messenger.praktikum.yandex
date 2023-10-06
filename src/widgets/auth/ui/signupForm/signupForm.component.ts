@@ -7,9 +7,11 @@ import {
 } from "@/shared/lib";
 import { Component } from "@/shared/model";
 import { SignupFormProps } from "./signupForm.types";
+import { AuthController } from "../../api";
 
 class SignupForm extends Component {
   constructor(props: SignupFormProps) {
+    const authController = new AuthController();
     super({
       ...props,
       validate: {
@@ -30,13 +32,13 @@ class SignupForm extends Component {
         const email = this.refs.email.value();
 
         if (login && firstName && secondName && phone && email && password) {
-          console.log({
-            firstName,
-            secondName,
+          authController.signup({
             login,
-            email,
             password,
+            first_name: firstName,
+            second_name: secondName,
             phone,
+            email,
           });
         }
       },

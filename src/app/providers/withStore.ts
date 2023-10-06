@@ -1,4 +1,4 @@
-import { WSClient } from "@/shared/api";
+import { ChatWebsocket } from "@/shared/api";
 import { Chat, Message } from "@/shared/api/chat/chat.types";
 import { User } from "@/shared/api/user";
 import { Store } from "@/shared/model";
@@ -7,7 +7,7 @@ type AppState = {
   user: null | User;
   chats: null | Chat[];
   currentChatId: null | string;
-  chatSocket: WSClient | null;
+  chatSocket: ChatWebsocket | null;
   messages: Message[] | null;
 };
 

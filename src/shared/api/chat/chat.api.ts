@@ -1,4 +1,4 @@
-import { HTTPClient, WSClient } from "@/shared/api";
+import { ChatWebsocket, HTTPClient, WSClient } from "@/shared/api";
 import { Chat } from "./chat.types";
 
 const chatAPIInstance = new HTTPClient(
@@ -26,13 +26,14 @@ class ChatAPI {
 
     const { user } = window.store.getState();
     const { token } = await this.getToken(id);
-    const wsClient = new WSClient(
+    const wsClient = new ChatWebsocket(
       `wss://ya-praktikum.tech/ws/chats/${user?.id}/${id}/${token}`,
     );
 
     window.store.set({ chatSocket: wsClient });
 
     await wsClient.connect();
+    wsClient.getMessages("0");
   }
 }
 

@@ -22,13 +22,15 @@ class ChatWindow extends Component {
       <div class=${styles.chatWindow}>
         {{{ ChatHeader }}}
         {{{ Button onClick=onClick }}}
+        {{{ MessagesList messages=messages }}}
         {{{ SendMessage }}}
       </div>
     `;
   }
 }
 
-const ChatWindowWithStore = connect(({ currentChatId }) => ({ currentChatId }))(
-  ChatWindow,
-);
+const ChatWindowWithStore = connect(({ currentChatId, messages }) => ({
+  currentChatId,
+  messages,
+}))(ChatWindow);
 export { ChatWindowWithStore };

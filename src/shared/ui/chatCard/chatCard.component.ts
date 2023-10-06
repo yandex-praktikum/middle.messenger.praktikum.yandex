@@ -5,7 +5,6 @@ import { ChatAPI } from "@/shared/api";
 
 class ChatCard extends Component {
   constructor(props: ChatCardProps) {
-    console.log(props);
     super({
       ...props,
       events: {

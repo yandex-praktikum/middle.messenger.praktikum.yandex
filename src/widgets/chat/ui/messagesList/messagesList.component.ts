@@ -12,8 +12,8 @@ class MessagesList extends Component {
   protected render() {
     return `
       <div class="${styles.messagesList}">
-        {{#each chats}}
-          {{{ ChatCard title=title message=last_message date=date newMessages=unread_count id=id }}}
+        {{#each messages}}
+          {{{ MessageCard content=content id=id }}}
         {{/each}}
       </div>
     `;

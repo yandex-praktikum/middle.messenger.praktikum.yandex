@@ -25,7 +25,6 @@ class WSClient extends EventBus {
       throw new Error("Socket is not connected");
     }
 
-    console.log("data", data);
     this.socket.send(JSON.stringify(data));
   }
 
@@ -88,4 +87,4 @@ class WSClient extends EventBus {
   }
 }
 
-export { WSClient };
+export { WSClient, WSTransportEvents };

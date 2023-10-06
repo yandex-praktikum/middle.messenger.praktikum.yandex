@@ -30,7 +30,7 @@ class SigninForm extends Component {
         {{#> AuthForm title="Вход"}}
           <div>
             {{{ InputField ref="login" label="Логин" name="login" validate=validate.login }}}
-            {{{ InputField ref="password" label="Пароль" name="password" type="text" validate=validate.password }}}
+            {{{ InputField ref="password" label="Пароль" name="password" type="password" validate=validate.password }}}
           </div>
           <div class="authForm_buttons">
             {{{ Button label="Авторизоваться" type="submit" onClick=onLogin }}} 
