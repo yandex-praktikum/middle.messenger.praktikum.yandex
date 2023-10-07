@@ -55,25 +55,15 @@ Preview builded project
 | :-------------------------- | :------------------------------------------------- | :--------------------------------------- |
 | [/](http://localhost:3000/) | [/](https://ubiquitous-klepon-b5b9ad.netlify.app/) | Home page of application with login form |
 
-#### Login page
-
-```http
-/signin
-```
-
-| Local                                   | Netlify                                                        | Description          |
-| :-------------------------------------- | :------------------------------------------------------------- | :------------------- |
-| [/signin](http://localhost:3000/signin) | [/signin](https://ubiquitous-klepon-b5b9ad.netlify.app/signin) | Page with login form |
-
 #### Signup page
 
 ```http
-/signup
+/sign-up
 ```
 
-| Local                                   | Netlify                                                        | Description           |
-| :-------------------------------------- | :------------------------------------------------------------- | :-------------------- |
-| [/signup](http://localhost:3000/signup) | [/signup](https://ubiquitous-klepon-b5b9ad.netlify.app/signup) | Page with signup form |
+| Local                                     | Netlify                                                          | Description           |
+| :---------------------------------------- | :--------------------------------------------------------------- | :-------------------- |
+| [/sign-up](http://localhost:3000/sign-up) | [/sign-up](https://ubiquitous-klepon-b5b9ad.netlify.app/sign-up) | Page with signup form |
 
 #### Profile page
 
@@ -88,51 +78,21 @@ Preview builded project
 #### Chat page
 
 ```http
-/chat
+/messenger
 ```
 
-| Local                               | Netlify                                                    | Description    |
-| :---------------------------------- | :--------------------------------------------------------- | :------------- |
-| [/chat](http://localhost:3000/chat) | [/chat](https://ubiquitous-klepon-b5b9ad.netlify.app/chat) | Page with chat |
-
-#### Server error page
-
-```http
-/error
-```
-
-| Local                                 | Netlify                                                      | Description                        |
-| :------------------------------------ | :----------------------------------------------------------- | :--------------------------------- |
-| [/error](http://localhost:3000/error) | [/error](https://ubiquitous-klepon-b5b9ad.netlify.app/error) | Page with server error information |
-
-#### Not found error page
-
-Any unlisted route, for example:
-
-```http
-/not-found
-```
-
-| Local                                         | Netlify                                                              | Description                        |
-| :-------------------------------------------- | :------------------------------------------------------------------- | :--------------------------------- |
-| [/not-found](http://localhost:3000/not-found) | [/not-found](https://ubiquitous-klepon-b5b9ad.netlify.app/not-found) | Page with server error information |
+| Local                                         | Netlify                                                              | Description    |
+| :-------------------------------------------- | :------------------------------------------------------------------- | :------------- |
+| [/messenger](http://localhost:3000/messenger) | [/messenger](https://ubiquitous-klepon-b5b9ad.netlify.app/messenger) | Page with chat |
 
 #### Edit profile page
 
 ```http
-/profile-edit
+/settings
 ```
 
-| Local                                               | Netlify                                                                    | Description                 |
-| :-------------------------------------------------- | :------------------------------------------------------------------------- | :-------------------------- |
-| [/profile-edit](http://localhost:3000/profile-edit) | [/profile-edit](https://ubiquitous-klepon-b5b9ad.netlify.app/profile-edit) | Page with profile edit form |
+| Local                                       | Netlify                                                            | Description                 |
+| :------------------------------------------ | :----------------------------------------------------------------- | :-------------------------- |
+| [/settings](http://localhost:3000/settings) | [/settings](https://ubiquitous-klepon-b5b9ad.netlify.app/settings) | Page with profile edit form |
 
 #### Edit password page
-
-```http
-/password-edit
-```
-
-| Local                                                 | Netlify                                                                      | Description                  |
-| :---------------------------------------------------- | :--------------------------------------------------------------------------- | :--------------------------- |
-| [/password-edit](http://localhost:3000/password-edit) | [/password-edit](https://ubiquitous-klepon-b5b9ad.netlify.app/password-edit) | Page with password edit form |
