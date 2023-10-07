@@ -19,7 +19,7 @@ class ChatWebsocket extends WSClient {
   private handleWSMessages(data: any) {
     switch (data.type) {
       case undefined:
-        this.storeMessages(data);
+        this.storeMessages(data.reverse());
         break;
 
       case "message":

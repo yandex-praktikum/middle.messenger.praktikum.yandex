@@ -1,6 +1,5 @@
 import { AuthAPI } from "@/shared/api/auth";
 import { SigninFormModel, SignupFormModel } from "./auth.types";
-import { Router } from "@/shared/model";
 import { Routes } from "@/app/providers/withRouting";
 
 const authApi = new AuthAPI();
@@ -17,10 +16,12 @@ class AuthController {
 
   public async signup(data: SignupFormModel) {
     try {
-      await authApi.signup(data);
-      window.router.go(Routes.Messenger);
-      const user = await authApi.getUser();
-      window.store.set({ user });
+      const response = (await authApi.signup(data)) as any;
+      if (!response.reason) {
+        window.router.go(Routes.Messenger);
+        const user = await authApi.getUser();
+        window.store.set({ user });
+      }
     } catch (error) {}
   }
 

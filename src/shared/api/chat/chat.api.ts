@@ -1,4 +1,4 @@
-import { ChatWebsocket, HTTPClient, WSClient } from "@/shared/api";
+import { ChatWebsocket, HTTPClient } from "@/shared/api";
 import { Chat } from "./chat.types";
 
 const chatAPIInstance = new HTTPClient(
@@ -14,7 +14,7 @@ class ChatAPI {
     return chatAPIInstance.post("", { data: { title } });
   }
 
-  public async getToken(id: string) {
+  public async getToken(id: string): Promise<{ token: string }> {
     return chatAPIInstance.post("/token/".concat(id));
   }
 

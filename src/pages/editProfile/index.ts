@@ -1,1 +1,1 @@
-export { EditProfilePage } from "./editProfile.component";
+export { EditProfilePageWithStore as EditProfilePage } from "./editProfile.component";

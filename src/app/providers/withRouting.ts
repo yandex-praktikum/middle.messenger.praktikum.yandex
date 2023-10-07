@@ -13,7 +13,7 @@ enum Routes {
   Messenger = "/messenger",
   Profile = "/profile",
   SignIn = "/sign-in",
-  ProfileEdit = "/profile-edit",
+  ProfileEdit = "/settings",
 }
 
 const rootQuery = "#app";

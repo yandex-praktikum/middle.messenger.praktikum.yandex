@@ -30,14 +30,18 @@ async function app() {
         .querySelector(".modal-overlay")
         ?.addEventListener("click", toggleModal);
 
-      // document.body.append(new NavigationList({}).getContent() ?? "");
+      document.body.append(new NavigationList({}).getContent() ?? "");
     }
   });
 
   const authAPI = new AuthAPI();
 
   try {
-    const me = await authAPI.getUser();
+    const me = (await authAPI.getUser()) as any;
+    if (window.location.pathname === Routes.SignUp) {
+      router.go(Routes.SignUp);
+      return;
+    }
     if (me.reason) {
       router.go(Routes.Home);
     }

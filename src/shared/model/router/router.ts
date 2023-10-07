@@ -1,4 +1,3 @@
-import { Routes } from "@/app/providers/withRouting";
 import { Component } from "..";
 import { Route } from "./route";
 
@@ -28,8 +27,8 @@ class Router {
   }
 
   public start() {
-    window.addEventListener("popstate", (event: PopStateEvent) => {
-      this.onRoute(event.currentTarget.location.pathname);
+    window.addEventListener("popstate", () => {
+      this.onRoute(window.location.pathname);
     });
 
     this.onRoute(window.location.pathname);

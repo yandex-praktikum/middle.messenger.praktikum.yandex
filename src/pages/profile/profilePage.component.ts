@@ -65,6 +65,7 @@ class ProfilePage extends Component {
     });
   }
   protected render() {
+    console.log(this.props);
     return `
       {{#> layout}}
         <div class="${styles.profilePage}">

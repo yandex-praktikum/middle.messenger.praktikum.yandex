@@ -7,7 +7,7 @@ type Options = {
 
 class Route {
   protected pathname: string;
-  protected componentClass: Component;
+  protected componentClass: typeof Component;
   protected options: Options;
   protected component: Component | null = null;
 

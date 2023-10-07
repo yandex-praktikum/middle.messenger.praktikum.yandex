@@ -3,6 +3,7 @@ import { SigninForm, SignupForm } from "@/widgets/auth";
 import { ChatList, ChatWindow, MessagesList } from "@/widgets/chat";
 import { registerComponent } from "@/shared/lib";
 import { ChatHeader, SearchChat, SendMessage } from "@/features/chat";
+import { SettingsList } from "@/widgets/user";
 
 function registerComponents(): void {
   registerComponent("Button", Components.Button);
@@ -24,6 +25,7 @@ function registerComponents(): void {
   registerComponent("IconButton", Components.IconButton);
   registerComponent("MessagesList", MessagesList);
   registerComponent("MessageCard", Components.MessageCard);
+  registerComponent("SettingsList", SettingsList);
 }
 
 export { registerComponents };

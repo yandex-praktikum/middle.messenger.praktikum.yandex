@@ -22,10 +22,10 @@ class SideButton extends Component {
   protected render() {
     const { to } = this.props;
     return `
-<a class="${styles.sideButton}" href="${to}">
-  <img src="${arrowIcon}" />
-</a>
-`;
+      <a class="${styles.sideButton}" href="${to}">
+        <img src="${arrowIcon}" />
+      </a>
+    `;
   }
 }
 

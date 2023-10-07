@@ -11,7 +11,7 @@ class ChatCard extends Component {
         click: () => {
           window.store.set({ currentChatId: props.id });
           const chatAPI = new ChatAPI();
-          chatAPI.initChat(props.id);
+          chatAPI.initChat(props.id as string);
         },
       },
     });
@@ -29,7 +29,7 @@ class ChatCard extends Component {
             {{title}}
           </span>
           <div class="${styles.message}">
-            {{message}}
+            {{message.content}}
           </div>
         </div>
 
