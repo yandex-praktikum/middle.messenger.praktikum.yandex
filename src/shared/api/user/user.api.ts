@@ -1,6 +1,6 @@
 import { HTTPClient } from "@/shared/api";
 
-const userAPIInstance = new HTTPClient("https://ya-praktikum.tech/api/v2/user");
+const userAPIInstance = new HTTPClient("/user");
 
 class UserAPI {
   public async editUser(data: any) {

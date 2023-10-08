@@ -1,9 +1,7 @@
 import { ChatWebsocket, HTTPClient } from "@/shared/api";
 import { Chat } from "./chat.types";
 
-const chatAPIInstance = new HTTPClient(
-  "https://ya-praktikum.tech/api/v2/chats",
-);
+const chatAPIInstance = new HTTPClient("/chats");
 
 class ChatAPI {
   public async getAll(): Promise<Chat[]> {

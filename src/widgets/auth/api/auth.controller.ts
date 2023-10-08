@@ -11,7 +11,11 @@ class AuthController {
       window.router.go(Routes.Messenger);
       const user = await authApi.getUser();
       window.store.set({ user });
-    } catch (error) {}
+    } catch (error) {
+      const user = await authApi.getUser();
+      window.store.set({ user });
+      window.router.go(Routes.Messenger);
+    }
   }
 
   public async signup(data: SignupFormModel) {
@@ -22,7 +26,9 @@ class AuthController {
         const user = await authApi.getUser();
         window.store.set({ user });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   public async logout() {

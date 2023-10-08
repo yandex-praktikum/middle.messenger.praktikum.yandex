@@ -82,7 +82,9 @@ class WSClient extends EventBus {
           return;
         }
         this.dispatch(WSTransportEvents.Message, data);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 }
