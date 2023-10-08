@@ -32,7 +32,7 @@ class HTTPClient {
   private base: string = "https://ya-praktikum.tech/api/v2";
 
   constructor(endpoint: string) {
-    this.base.concat(endpoint);
+    this.base = this.base.concat(endpoint);
   }
 
   get<TResponse>(path: string, options: Options = {}): Promise<TResponse> {

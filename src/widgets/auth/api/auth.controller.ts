@@ -12,9 +12,11 @@ class AuthController {
       const user = await authApi.getUser();
       window.store.set({ user });
     } catch (error) {
-      const user = await authApi.getUser();
-      window.store.set({ user });
-      window.router.go(Routes.Messenger);
+      const user = (await authApi.getUser()) as any;
+      if (!user.reason) {
+        window.store.set({ user });
+        window.router.go(Routes.Messenger);
+      }
     }
   }
 
