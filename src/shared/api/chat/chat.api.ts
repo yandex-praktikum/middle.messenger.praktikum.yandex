@@ -16,6 +16,10 @@ class ChatAPI {
     return chatAPIInstance.post("/token/".concat(id));
   }
 
+  public async getUsers(id: string) {
+    return chatAPIInstance.get(`/${id}/users`);
+  }
+
   public async initChat(id: string) {
     const { chatSocket } = window.store.getState();
     if (chatSocket !== null) {

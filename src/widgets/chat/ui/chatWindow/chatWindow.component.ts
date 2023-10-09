@@ -13,6 +13,7 @@ class ChatWindow extends Component {
   protected render() {
     return `
       <div class=${styles.chatWindow}>
+        {{{ ChatHeader }}}
         {{{ MessagesList messages=messages }}}
         {{{ SendMessage }}}
       </div>

@@ -1,6 +1,11 @@
 import * as Components from "@/shared/ui";
 import { SigninForm, SignupForm } from "@/widgets/auth";
-import { ChatList, ChatWindow, MessagesList } from "@/widgets/chat";
+import {
+  ChatList,
+  ChatWindow,
+  EditChatModal,
+  MessagesList,
+} from "@/widgets/chat";
 import { registerComponent } from "@/shared/lib";
 import { ChatHeader, SearchChat, SendMessage } from "@/features/chat";
 import { SettingsList } from "@/widgets/user";
@@ -26,6 +31,7 @@ function registerComponents(): void {
   registerComponent("MessagesList", MessagesList);
   registerComponent("MessageCard", Components.MessageCard);
   registerComponent("SettingsList", SettingsList);
+  registerComponent("Modal", EditChatModal);
 }
 
 export { registerComponents };

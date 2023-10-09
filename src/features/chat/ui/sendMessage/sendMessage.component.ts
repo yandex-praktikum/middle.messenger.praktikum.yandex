@@ -9,6 +9,9 @@ class SendMessage extends Component {
       onSendClick: (event: SubmitEvent) => {
         event.preventDefault();
         const message = this.refs.message.value();
+        if (message === "") {
+          return;
+        }
         const { chatSocket } = window.store.getState();
         chatSocket?.sendMessage(message);
       },
