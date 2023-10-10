@@ -1,1 +1,1 @@
-export { ChatHeader } from "./chatHeader.component";
+export { ChatHeaderWithStore as ChatHeader } from "./chatHeader.component";

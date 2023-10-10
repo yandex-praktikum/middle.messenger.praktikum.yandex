@@ -9,9 +9,11 @@ class ChatCard extends Component {
       ...props,
       events: {
         click: () => {
-          window.store.set({ currentChatId: props.id });
+          const { id } = props;
+          window.store.set({ currentChatId: id });
           const chatAPI = new ChatAPI();
-          chatAPI.initChat(props.id as string);
+          chatAPI.initChat(id as string);
+          const currentChatUsers = chatAPI.getUsers(id as string);
         },
       },
     });

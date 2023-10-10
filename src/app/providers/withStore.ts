@@ -9,6 +9,7 @@ type AppState = {
   currentChatId: null | string;
   chatSocket: ChatWebsocket | null;
   messages: Message[] | null;
+  currentChatUsers: User[] | null;
 };
 
 const initialState: AppState = {
@@ -17,6 +18,7 @@ const initialState: AppState = {
   currentChatId: null,
   chatSocket: null,
   messages: null,
+  currentChatUsers: null,
 };
 
 function withStore() {

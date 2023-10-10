@@ -28,10 +28,15 @@ function validatePhone(value: string): string {
     : "от 10 до 15 символов, состоит из цифр, может начинается с плюса.";
 }
 
+function validateIsNotEmpty(value: string): string {
+  return value !== "" ? "" : "Значение не должно быть пустым";
+}
+
 export {
   validateName,
   validateLogin,
   validateEmail,
   validatePassword,
   validatePhone,
+  validateIsNotEmpty,
 };

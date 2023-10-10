@@ -1,5 +1,5 @@
 interface ChatHeaderProps {
-  currentChatId: string;
+  currentChatId?: string;
 }
 
 export type { ChatHeaderProps };

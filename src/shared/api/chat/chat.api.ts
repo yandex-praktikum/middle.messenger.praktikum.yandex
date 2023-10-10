@@ -1,5 +1,6 @@
 import { ChatWebsocket, HTTPClient } from "@/shared/api";
 import { Chat } from "./chat.types";
+import { User } from "../user";
 
 const chatAPIInstance = new HTTPClient("/chats");
 
@@ -17,7 +18,10 @@ class ChatAPI {
   }
 
   public async getUsers(id: string) {
-    return chatAPIInstance.get(`/${id}/users`);
+    const currentChatUsers = (await chatAPIInstance.get(
+      `/${id}/users`,
+    )) as User[];
+    window.store.set({ currentChatUsers });
   }
 
   public async initChat(id: string) {
