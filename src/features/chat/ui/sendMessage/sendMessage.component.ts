@@ -19,7 +19,7 @@ class SendMessage extends Component {
   }
   protected render() {
     return `
-      <form class="${styles.sendMessage}">
+      <form class="${styles.sendMessage}" onsubmit="event.preventDefault()">
         {{{ Input placeholder="Собщение..." ref="message" value="" }}}
         {{{ IconButton src="${arrowIcon}" onClick=onSendClick type="button" customClass="${styles.sendButton}" }}}
       </form>

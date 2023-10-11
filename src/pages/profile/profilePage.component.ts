@@ -3,69 +3,29 @@ import styles from "./profilePage.module.css";
 import { ProfilePageProps } from "./profilePage.types";
 import { AuthController } from "@/widgets/auth/api";
 import { connect } from "@/shared/model/store/connect";
+import { UserAPI } from "@/shared/api/user";
 
 class ProfilePage extends Component {
   constructor(props: ProfilePageProps) {
     const authController = new AuthController();
-    const { user } = window.store.getState();
+    const userAPI = new UserAPI();
     super({
       ...props,
-      user,
-      userInfoFields: [
-        {
-          title: "Почта",
-          value: user?.email,
-          type: "info",
-        },
-        {
-          title: "Логин",
-          value: user?.login,
-          type: "info",
-        },
-        {
-          title: "Имя",
-          value: user?.first_name,
-          type: "info",
-        },
-        {
-          title: "Фамилия",
-          value: user?.second_name,
-          type: "info",
-        },
-        {
-          title: "Имя в чате",
-          value: user?.display_name,
-          type: "info",
-        },
-        {
-          title: "Телефон",
-          value: user?.phone,
-          type: "info",
-        },
-      ],
-      userEditFields: [
-        {
-          title:
-            '<a class="actions-list__edit" href="/profile-edit">Изменить данные</a>',
-          type: "info",
-        },
-        {
-          title:
-            '<a class="actions-list__edit" href="/password-edit">Изменить пароль</a>',
-          type: "info",
-        },
-        {
-          title: '<a class="actions-list__exit" href="/signin">Выйти</a>',
-          type: "info",
-        },
-      ],
       handleExitClick: () => {
         authController.logout();
+      },
+      handleEditAvatarClick: () => {
+        const data = new FormData();
+        data.append("avatar", this.refs.avatar.refs.input.element.files[0]);
+        userAPI.editAvatar(data);
       },
     });
   }
   protected render() {
-    console.log(this.props);
+    let avatarSrc = "";
+    if (this.props.user !== null) {
+      avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user.avatar}"`;
+    }
     return `
       {{#> layout}}
         <div class="${styles.profilePage}">
@@ -73,11 +33,14 @@ class ProfilePage extends Component {
             {{{ SideButton to="/messenger" }}}
           </div>
           <div class="${styles.profile}">
-            {{{ UserImage }}}
+            {{{ UserImage ${avatarSrc} }}}
+            {{{ InputField type="file" label="" ref="avatar" name="avatar" }}}
+            {{{ Button label="Изменить аватар" onClick=handleEditAvatarClick }}}
             <div class="${styles.username}">
-              Иван
+              Данные пользователя:
             </div>
-              {{{ InfoList items=userInfoFields }}}
+              {{{ ProfileList user=user }}}
+              {{{ Link to="/settings" label="Редактировать данные" }}}
               {{{ Button label="Выйти" onClick=handleExitClick }}}
           </div>
         </div>

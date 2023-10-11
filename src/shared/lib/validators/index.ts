@@ -29,7 +29,9 @@ function validatePhone(value: string): string {
 }
 
 function validateIsNotEmpty(value: string): string {
-  return value !== "" ? "" : "Значение не должно быть пустым";
+  return /^\d+$/.test(value)
+    ? ""
+    : "Значение должно быть числом не должно быть пустым";
 }
 
 export {

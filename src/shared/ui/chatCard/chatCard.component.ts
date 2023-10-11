@@ -22,25 +22,12 @@ class ChatCard extends Component {
   protected render() {
     return `
       <div class="${styles.chatCard}">
-        <div class="${styles.userImageContainer}">
-          {{{ UserImage isSmall="true" }}}
-        </div>
-
         <div class="${styles.messageContainer}">
           <span class="${styles.title}">
             {{title}}
           </span>
           <div class="${styles.message}">
             {{message.content}}
-          </div>
-        </div>
-
-        <div class="${styles.dateContainer}">
-          <span class="${styles.date}">
-            {{date}}
-          </span>
-          <div class="${styles.newMessages}">
-             {{newMessages}}
           </div>
         </div>
       </div>

@@ -41,6 +41,36 @@ class ChatAPI {
     await wsClient.connect();
     wsClient.getMessages("0");
   }
+
+  public async addUser(chatId: string, userId: string) {
+    const response = await chatAPIInstance.put("/users", {
+      data: {
+        users: [parseInt(userId)],
+        chatId: parseInt(chatId),
+      },
+    });
+    if (response === "OK") {
+      this.getUsers(chatId);
+    }
+  }
+
+  public async deleteChat(chatId: string) {
+    const response: any = await chatAPIInstance.delete("", {
+      data: {
+        chatId: parseInt(chatId),
+      },
+    });
+
+    if (response.result.id === chatId) {
+      window.store.set({
+        currentChatId: null,
+        currentChatUsers: null,
+        messages: null,
+      });
+      const chats = await this.getAll();
+      window.store.set({ chats });
+    }
+  }
 }
 
 export { ChatAPI };

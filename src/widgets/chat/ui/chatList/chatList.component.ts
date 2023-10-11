@@ -20,6 +20,7 @@ class ChatList extends Component {
   protected render() {
     return `
       <div class="${styles.chatList}">
+        {{{ Link to="/profile" label="Профиль" }}}
         {{{ InputField type="text" ref="chatTitle" name="chatTitle" value="" label="Название чата" }}}
         {{{ Button label="Добавить чат" onClick=handleAddChat }}}
         <div>

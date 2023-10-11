@@ -7,8 +7,14 @@ import { UserAPI } from "@/shared/api/user";
 
 class EditProfilePage extends Component {
   constructor(props: EditProfilePageProps) {
+    const userAPI = new UserAPI();
     super({
       ...props,
+      handleEditAvatarClick: () => {
+        const data = new FormData();
+        data.append("avatar", this.refs.avatar.refs.input.element.files[0]);
+        userAPI.editAvatar(data);
+      },
       onSubmit: (event: SubmitEvent) => {
         event.preventDefault();
         const firstName =
@@ -35,6 +41,10 @@ class EditProfilePage extends Component {
     });
   }
   protected render() {
+    let avatarSrc = "";
+    if (this.props.user !== null) {
+      avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user.avatar}"`;
+    }
     return `
       {{#> layout}}
         <div class="${profileStyles.profilePage} ${styles.editProfilePage}">
@@ -42,9 +52,11 @@ class EditProfilePage extends Component {
                   {{{ SideButton to="/profile" }}}
                 </div>
           <div class="${profileStyles.profile}">
-            {{{ UserImage }}}
+            {{{ UserImage ${avatarSrc} }}}
+            {{{ InputField type="file" label="" ref="avatar" name="avatar" }}}
+            {{{ Button label="Изменить аватар" onClick=handleEditAvatarClick }}}
             <div class="${profileStyles.username}">
-              Иван
+              Данные пользователя:
             </div>
 
             <form>

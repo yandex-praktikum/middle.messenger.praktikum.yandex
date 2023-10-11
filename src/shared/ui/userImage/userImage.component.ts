@@ -5,7 +5,12 @@ import styles from "./userImage.module.css";
 
 class UserImage extends Component {
   constructor(props: UserImageProps) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
   }
   protected render() {
     const { src, isSmall } = this.props;
@@ -27,10 +32,6 @@ class UserImage extends Component {
           : styles.userImage
       }">
         ${image}
-        <span>
-          Поменять<br />
-          аватар
-        </span>
       </div>
     `;
   }

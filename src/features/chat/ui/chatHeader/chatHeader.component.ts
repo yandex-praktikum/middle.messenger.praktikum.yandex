@@ -4,15 +4,20 @@ import { ChatHeaderProps } from "./chatHeader.types";
 import { connect } from "@/shared/model/store/connect";
 import { User } from "@/shared/api/user";
 import { validateIsNotEmpty } from "@/shared/lib";
+import { ChatAPI } from "@/shared/api";
 
 class ChatHeader extends Component {
   constructor(props: ChatHeaderProps) {
+    const chatAPI = new ChatAPI();
     super({
       ...props,
       validateIsNotEmpty,
       handleAddUserClick: () => {
-        const usernameToAdd = this.refs.username.value();
-        console.log(this.refs.username.value());
+        const userId = this.refs.username.value();
+        chatAPI.addUser(props.currentChatId as string, userId);
+      },
+      handleDeleteChatClick: () => {
+        chatAPI.deleteChat(props.currentChatId as string);
       },
     });
   }
@@ -34,7 +39,7 @@ class ChatHeader extends Component {
             {{{ Button label="Добавить пользователя" onClick=handleAddUserClick }}}
           </div>
           <div>
-            {{{ Button label="Удалить чат" }}}
+            {{{ Button label="Удалить чат" onClick=handleDeleteChatClick }}}
           </div>
         </div>
       `;
