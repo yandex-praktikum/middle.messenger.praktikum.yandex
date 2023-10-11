@@ -17,7 +17,6 @@ class EditPasswordPage extends Component {
         const newPasswordRepeat =
           this.refs.fields.refs.newPasswordRepeat.refs.newPasswordRepeat.value();
         if (oldPassword && newPassword && newPasswordRepeat) {
-          console.log({ oldPassword, newPassword });
         }
       },
       passwordEditFields: [

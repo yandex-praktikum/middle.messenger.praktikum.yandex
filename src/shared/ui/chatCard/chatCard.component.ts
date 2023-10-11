@@ -13,7 +13,6 @@ class ChatCard extends Component {
           window.store.set({ currentChatId: id });
           const chatAPI = new ChatAPI();
           chatAPI.initChat(id as string);
-          const currentChatUsers = chatAPI.getUsers(id as string);
         },
       },
     });
