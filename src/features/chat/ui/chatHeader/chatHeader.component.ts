@@ -16,6 +16,10 @@ class ChatHeader extends Component {
         const userId = this.refs.username.value();
         chatAPI.addUser(props.currentChatId as string, userId);
       },
+      handleDeleteUserClick: () => {
+        const userId = this.refs.username.value();
+        chatAPI.deleteUser(props.currentChatId as string, userId);
+      },
       handleDeleteChatClick: () => {
         chatAPI.deleteChat(props.currentChatId as string);
       },
@@ -25,7 +29,9 @@ class ChatHeader extends Component {
   protected render() {
     const { currentChatId, currentChatUsers } = this.props;
     if (currentChatId && currentChatUsers) {
-      const users = currentChatUsers.map((user: User) => `<li>${user.login}`);
+      const users = currentChatUsers.map(
+        (user: User) => `<li>${user.login}</li>`,
+      );
       return `
         <div class="${styles.chatHeader}">
           <div>
@@ -37,6 +43,7 @@ class ChatHeader extends Component {
           <div>
             {{{ InputField type="text" label="id пользователя" ref="username" validate=validateIsNotEmpty }}}
             {{{ Button label="Добавить пользователя" onClick=handleAddUserClick }}}
+            {{{ Button label="Удалить пользователя" onClick=handleDeleteUserClick }}}
           </div>
           <div>
             {{{ Button label="Удалить чат" onClick=handleDeleteChatClick }}}

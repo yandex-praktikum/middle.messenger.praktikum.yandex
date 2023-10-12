@@ -72,6 +72,26 @@ class ChatAPI {
     }
   }
 
+  public async deleteUser(chatId: string, userId: string) {
+    const { user } = window.store.getState();
+    if (user?.id == userId) {
+      return;
+    }
+    try {
+      const response = await chatAPIInstance.delete("/users", {
+        data: {
+          users: [parseInt(userId)],
+          chatId: parseInt(chatId),
+        },
+      });
+      if (response === "OK") {
+        this.getUsers(chatId);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   public async deleteChat(chatId: string) {
     try {
       const response: any = await chatAPIInstance.delete("", {
