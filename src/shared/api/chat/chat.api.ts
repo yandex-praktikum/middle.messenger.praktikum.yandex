@@ -1,4 +1,4 @@
-import { APIError, ChatWebsocket, HTTPClient } from "@/shared/api";
+import { ChatWebsocket, HTTPClient } from "@/shared/api";
 import { Chat } from "./chat.types";
 import { User } from "../user";
 
