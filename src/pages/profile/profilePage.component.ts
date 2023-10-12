@@ -23,7 +23,7 @@ class ProfilePage extends Component {
   }
   protected render() {
     let avatarSrc = "";
-    if (this.props.user !== null) {
+    if (this.props.user?.avatar !== null) {
       avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user.avatar}"`;
     }
     return `

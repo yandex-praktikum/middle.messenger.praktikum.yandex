@@ -19,8 +19,15 @@ class ChatCard extends Component {
   }
 
   protected render() {
+    let avatarSrc = "";
+    if (this.props?.userImage) {
+      avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.userImage}"`;
+    }
     return `
       <div class="${styles.chatCard}">
+        <div class="${styles.userImageContainer}">
+          {{{ UserImage isSmall="true" ${avatarSrc} }}}
+        </div>
         <div class="${styles.messageContainer}">
           <span class="${styles.title}">
             {{title}}

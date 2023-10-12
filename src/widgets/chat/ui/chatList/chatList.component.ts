@@ -8,11 +8,15 @@ class ChatList extends Component {
     super({
       ...props,
       handleAddChat: async () => {
-        const chatAPI = new ChatAPI();
-        const title = this.refs.chatTitle.value();
-        await chatAPI.create(title);
-        const chats = await chatAPI.getAll();
-        window.store.set({ chats });
+        try {
+          const chatAPI = new ChatAPI();
+          const title = this.refs.chatTitle.value();
+          await chatAPI.create(title);
+          const chats = await chatAPI.getAll();
+          window.store.set({ chats });
+        } catch (error) {
+          console.error(error);
+        }
       },
     });
   }
@@ -25,7 +29,7 @@ class ChatList extends Component {
         {{{ Button label="Добавить чат" onClick=handleAddChat }}}
         <div>
           {{#each chats}}
-            {{{ ChatCard title=title message=last_message date=date newMessages=unread_count id=id }}}
+            {{{ ChatCard title=title message=last_message date=date newMessages=unread_count id=id userImage=avatar }}}
           {{/each}}
         </div>
       </div>

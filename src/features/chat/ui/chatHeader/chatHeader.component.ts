@@ -44,7 +44,7 @@ class ChatHeader extends Component {
         </div>
       `;
     }
-    return "";
+    return "<span></span>";
   }
 }
 

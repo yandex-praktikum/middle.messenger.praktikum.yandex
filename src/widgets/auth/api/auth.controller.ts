@@ -34,9 +34,13 @@ class AuthController {
   }
 
   public async logout() {
-    await authApi.logout();
-    window.store.set({ user: null });
-    window.router.go(Routes.Home);
+    try {
+      await authApi.logout();
+      window.store.set({ user: null });
+      window.router.go(Routes.Home);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 

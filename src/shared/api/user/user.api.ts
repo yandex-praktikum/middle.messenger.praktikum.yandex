@@ -4,15 +4,23 @@ const userAPIInstance = new HTTPClient("/user");
 
 class UserAPI {
   public async editUser(data: any) {
-    return userAPIInstance.put("/profile", { data });
+    try {
+      return userAPIInstance.put("/profile", { data });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   public async editAvatar(data: FormData) {
-    const response: any = await userAPIInstance.put("/profile/avatar", {
-      data,
-    });
-    if (response.id) {
-      window.store.set({ user: response });
+    try {
+      const response: any = await userAPIInstance.put("/profile/avatar", {
+        data,
+      });
+      if (response.id) {
+        window.store.set({ user: response });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 }
