@@ -35,7 +35,7 @@ class ChatHeader extends Component {
             </ul>
           </div>
           <div>
-            {{{ InputField type="text" label="Логин пользователя" ref="username" validate=validateIsNotEmpty }}}
+            {{{ InputField type="text" label="id пользователя" ref="username" validate=validateIsNotEmpty }}}
             {{{ Button label="Добавить пользователя" onClick=handleAddUserClick }}}
           </div>
           <div>
