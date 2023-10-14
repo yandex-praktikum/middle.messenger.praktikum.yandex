@@ -43,27 +43,53 @@ export function registerComponent(name: string, Component: BlockType) {
             (newData.root.__refs = newData.root.__refs || {})[hash.ref] = component;
         }
 
-        const nameComponent = hash.ref || component.id;
-        (newData.root.__components = newData.root.__components || {})[nameComponent] = component;
+        (newData.root.__children = newData.root.__children || []).push(component);
 
-        (newData.root.__children = newData.root.__children || []).push({
-            component,
-            embed(fragment: DocumentFragment) {
+        (newData.root.__embeds = newData.root.__embeds || []).push(
+            (fragment: DocumentFragment) => {
                 const stub = fragment.querySelector(`[${dataAttribute}]`);
 
                 if (!stub) {
                     return;
                 }
 
-                component.getContent()
-                    ?.append(...Array.from(stub.childNodes));
+                component.getContent()?.append(...Array.from(stub.childNodes));
 
                 stub.replaceWith(component.getContent()!);
             },
-        });
+        );
 
         const contents = fn ? fn(this) : '';
 
         return `<div ${dataAttribute}>${contents}</div>`;
     });
+}
+
+type ImportValue = Record<string, string | BlockType>;
+type ImportGlob = Record<string, ImportValue>;
+
+export function registerImports(imports: ImportValue) {
+    Object.keys(imports).forEach((name:string) => {
+        const value = imports[name];
+        if (typeof value === 'string') {
+            Handlebars.registerPartial(name, value);
+        } else {
+            registerComponent(name, value);
+        }
+    });
+}
+
+export function loadImport(importGlob: ImportGlob): ImportValue {
+    const result: ImportValue = {};
+    Object.keys(importGlob).forEach((path: string) => {
+        Object.keys(importGlob[path]).forEach((name: string) => {
+            if (name === 'default') {
+                const proto = Object.getPrototypeOf(importGlob[path][name]);
+                result[proto.name] = importGlob[path][name];
+            } else {
+                result[name] = importGlob[path][name];
+            }
+        });
+    });
+    return result;
 }

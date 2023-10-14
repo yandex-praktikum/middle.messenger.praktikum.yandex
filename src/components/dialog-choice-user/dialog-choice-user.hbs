@@ -1,0 +1,18 @@
+{{#Dialog open=isOpenDialogChoiceUser }}
+    <form method="dialog">
+        <h3>Выберите пользователя:</h3>
+        {{#if loginSearch }}
+            {{{ Search onInput=onChoiceUser ref='search_user'}}}
+        {{/if}}
+        <div>
+            {{{ ListOfUsers searchChatUsers=searchChatUsers onChoice=onChoice loginSearch=loginSearch}}}
+            {{{ Button
+                class="cancel"
+                data_type="button"
+                label="отменить"
+                type="link"
+                onClick=onClose
+            }}}
+        </div>
+    </form>
+{{/Dialog}}

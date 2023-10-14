@@ -1,6 +1,7 @@
 import './input-field.sass';
 import tmplInputField from './input-field.hbs?raw';
 import Block, { Props } from '../../core/Block';
+import { Input } from '../input/input';
 
 export class InputField extends Block {
     constructor(props: Props) {
@@ -21,6 +22,16 @@ export class InputField extends Block {
         return '';
     }
 
+    public setValue(value:string) {
+        const input = this.refs?.input as Input || undefined;
+        if (input) {
+            const inputHtml = input?.element as HTMLInputElement || undefined;
+            if (inputHtml) {
+                inputHtml.value = value;
+            }
+        }
+    }
+
     public value() {
         if (!this.validate()) {
             return false;
@@ -33,7 +44,18 @@ export class InputField extends Block {
         return this.props?.name as string | undefined || '';
     }
 
+    public setError(error: string | undefined) {
+        const errorLine = this.refs.errorLine || null;
+        if (errorLine instanceof Block) {
+            errorLine.setProps({ error });
+        }
+    }
+
     private validate() {
+        if (this.props._validate) {
+            return this.props._validate(this._value()) as boolean;
+        }
+
         const value = this._value();
         // const error = this.props.validate?.(value);
 

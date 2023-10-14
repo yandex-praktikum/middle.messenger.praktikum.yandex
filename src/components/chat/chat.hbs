@@ -1,5 +1,5 @@
 <div class="chat_wrap">
-    {{{ ChatHeader data=header ref=header_ref }}}
-    {{{ ChatBody data=body ref=body_ref}}}
-    {{{ ChatFooter data=footer ref=footer_ref }}}
+    {{#if currentChat}}{{{ ChatHeader currentChat=currentChat currentChatUsers=currentChatUsers ref=header_ref }}}{{/if}}
+    {{{ ChatBody currentChat=currentChat ref=body_ref}}}
+    {{#if currentChat}}{{{ ChatFooter data=currentChat ref=footer_ref onSend=onSend }}}{{/if}}
 </div>

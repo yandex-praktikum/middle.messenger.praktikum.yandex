@@ -1,27 +1,32 @@
 import './chat-footer.sass';
 import chatFooterTmpl from './chat-footer.hbs?raw';
-import Block, { Children, Props } from '../../core/Block';
+import Block, { Props } from '../../core/Block';
 import { InputField } from '../input-field/input-field';
+import { sendTextMessage } from '../../services/chat';
 
 export class ChatFooter extends Block {
-    protected constructor(data: Props | Children = {}) {
+    protected constructor(props: Props = {}) {
         super({
-            ...data,
-            onSend: (event: Event | undefined) => {
-                if (!event) return;
-                event.preventDefault();
-
-                const children = Object.values(this.refs);
-                const dataForms: Record<string, string | false> = {};
-                children.forEach((child) => {
-                    if (child instanceof InputField) {
-                        dataForms[child.name] = child.value();
-                    }
-                });
-                // eslint-disable-next-line no-console
-                console.log(dataForms);
+            ...props,
+            onSend: () => {
+                this.send();
+            },
+            onKeyDown: (event: KeyboardEvent) => {
+                if (event?.key === 'Enter') {
+                    event.preventDefault();
+                    this.send();
+                }
             },
         });
+    }
+
+    protected send() {
+        const inputField = this.refs?.message as InputField || undefined;
+        const value = inputField?.value() || '';
+        if (value) {
+            sendTextMessage(value);
+            inputField.setValue('');
+        }
     }
 
     protected render(): string {

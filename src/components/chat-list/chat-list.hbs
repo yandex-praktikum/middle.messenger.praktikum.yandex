@@ -4,10 +4,11 @@
         <div class="chat-list__header__content">
             {{{ Button data="arrow" ref="arrow" }}}
             <span>{{ title }}</span>
-            {{{ Button data="add" ref="add" }}}
+            {{{ Button data="add" onClick=openDialog ref="add" }}}
+            {{{ DialogCreateChat onSave=onSave onClose=closeDialog ref="createChat"}}}
         </div>
     </h3>
-    {{#each items}}
-        {{{ ChatItem data=data ref=ref}}}
+    {{#each chats}}
+        {{{ ChatItem data=this ref=ref onSetCurrentChat=../onSetCurrentChat currentChat= ../currentChat }}}
     {{/each}}
 </div>

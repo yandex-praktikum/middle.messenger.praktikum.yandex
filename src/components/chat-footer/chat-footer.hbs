@@ -3,7 +3,7 @@
         {{{ Button data="smile" ref="smile" }}}
         {{{ Button data="scrap" ref="scrap" }}}
 
-        {{{ InputField data=message ref="message" }}}
-        {{{ Button data="send" ref="send" onClick=onSend }}}
+        {{{ InputField data="message" onKeyDown=onKeyDown ref="message" }}}
+        {{{ Button data="send" data_type="button" ref="send" onClick=onSend }}}
     {{/FormAuth}}
 </footer>

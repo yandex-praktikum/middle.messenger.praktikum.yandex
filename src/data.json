@@ -195,6 +195,29 @@
         }
       ]
     },
+    "old_password": {
+      "name": "old_password",
+      "label": "Старый пароль",
+      "input": {
+        "label": "Старый пароль",
+        "name": "old_password",
+        "type": "password"
+      },
+      "validate": [
+        {
+          "regex": "[A-ZА-ЯЁ]",
+          "error": "- хотя бы одна заглавная буква"
+        },
+        {
+          "regex": "[0-9]",
+          "error": "- хотя бы одна цифра"
+        },
+        {
+          "regex": "^.{8,40}$",
+          "error": "- от 8 до 40 символов"
+        }
+      ]
+    },
     "repeat_password": {
       "name": "repeat_password",
       "label": "Повторить пароль еще раз",
@@ -218,7 +241,7 @@
       ]
     },
     "mail": {
-      "name": "mail",
+      "name": "email",
       "label": "Почта",
       "input": {
         "label": "Почта",
@@ -245,7 +268,7 @@
       ]
     },
     "name": {
-      "name": "name",
+      "name": "first_name",
       "label": "Имя",
       "input": {
         "label": "Имя",
@@ -264,7 +287,7 @@
       ]
     },
     "surname": {
-      "name": "surname",
+      "name": "second_name",
       "label": "Фамилия",
       "input": {
         "label": "Фамилия",
@@ -306,7 +329,7 @@
       ]
     },
     "alias": {
-      "name": "alias",
+      "name": "display_name",
       "label": "Имя в чате",
       "input": {
         "label": "Имя в чате",

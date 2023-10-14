@@ -1,15 +1,11 @@
 <section class="chat-body">
-    {{#each messages}}
-        {{{ ChatMessage data=message ref=ref}}}
+    {{#if currentChat}}
+    {{#each currentChatMessages}}
+        {{{ ChatMessage data=this ref=ref}}}
     {{/each}}
+    {{ else }}
     <div class="content">
         <p>Выберите чат чтобы отправить сообщение</p>
-        <nav class="list__pages">
-            {{{ Button data="Page404" }}}
-            {{{ Button data="Page500" }}}
-            {{{ Button data="LoginPage" }}}
-            {{{ Button data="ProfilePage" }}}
-            {{{ Button data="RegistrationPage" }}}
-        </nav>
     </div>
+    {{/if}}
 </section>

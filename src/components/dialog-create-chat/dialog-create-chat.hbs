@@ -1,0 +1,19 @@
+{{#Dialog open=isOpenDialogChat}}
+    <form method="dialog">
+        <h3>Создать новый чат:</h3>
+        {{{ InputField label="Название чата" ref="chatTitle"}}}
+        {{{ ErrorLine error=error ref="errorLine"}}}
+        <div>
+            {{{ Button
+                label="создать"
+                type="primary"
+                onClick=onSave
+            }}}
+            {{{ Button
+                label="отменить"
+                type="link"
+                onClick=onClose
+            }}}
+        </div>
+    </form>
+{{/Dialog}}

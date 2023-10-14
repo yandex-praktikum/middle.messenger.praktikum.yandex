@@ -1,77 +1,117 @@
-const METHODS = {
-    GET: 'GET',
-    POST: 'POST',
-    PUT: 'PUT',
-    DELETE: 'DELETE',
-};
+import constants from '../constants';
+import queryStringify from '../utils/queryStringify';
 
-type TOptionsData = Record<string, string | number>;
-type TOptions = {
-    headers?: Record<string, string>,
-    data?: TOptionsData,
-    method?: string,
-    timeout?: number
-};
-type HTTPMethod = (url: string, options?: TOptions) => Promise<unknown>;
-type HTTPRequest = (url: string, options?: TOptions, timeout?: number) => Promise<unknown | void>;
-
-function queryStringify(data: TOptionsData): string {
-    if (typeof data !== 'object') {
-        throw new Error('Data must be object');
-    }
-
-    const keys = Object.keys(data);
-    return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
+enum METHOD {
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    PATCH = 'PATCH',
+    DELETE = 'DELETE',
 }
 
-export default class HTTPTransport {
-    static get: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+interface Options {
+    method: METHOD;
+    data?: Record<string | symbol, any> | FormData;
+    headers?: Record<string, string>;
+    timeout?: number;
+}
 
-    static post: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-    static put: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+class HTTPTransport {
+    protected apiUrl: string = '';
 
-    static delete: HTTPMethod = (url = '', options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    constructor(apiPath: string = '') {
+        this.apiUrl = `${constants.HOST}${apiPath}`;
+    }
 
-    static request: HTTPRequest = (url = '', options = {}, timeout = 5000): Promise<unknown | void> => {
-        const { headers = {}, method, data } = options;
+    get = <TResponse>(
+        url: string,
+        options: OptionsWithoutMethod = {},
+    ): Promise<TResponse> => this.request<TResponse>(
+        `${this.apiUrl}${url}`,
+        { ...options, method: METHOD.GET },
+        options.timeout,
+    );
+
+    post = <TResponse>(
+        url: string,
+        options:OptionsWithoutMethod = {},
+    ): Promise<TResponse> => this.request<TResponse>(
+        `${this.apiUrl}${url}`,
+        { ...options, method: METHOD.POST },
+        options.timeout,
+    );
+
+    put = <TResponse>(
+        url: string,
+        options:OptionsWithoutMethod = {},
+    ): Promise<TResponse> => this.request<TResponse>(
+        `${this.apiUrl}${url}`,
+        { ...options, method: METHOD.PUT },
+        options.timeout,
+    );
+
+    delete = <TResponse>(
+        url: string,
+        options:OptionsWithoutMethod = {},
+    ): Promise<TResponse> => this.request<TResponse>(
+        `${this.apiUrl}${url}`,
+        { ...options, method: METHOD.DELETE },
+        options.timeout,
+    );
+
+    request = async <TResponse>(
+        url: string,
+        options:Options = { method: METHOD.GET },
+        timeout = 5000,
+    ): Promise<TResponse> => {
+        const { method, data, headers = {} } = options;
 
         return new Promise((resolve, reject) => {
-            if (!method) {
-                // eslint-disable-next-line prefer-promise-reject-errors
-                reject('No method');
-                return;
+            const xhr = new XMLHttpRequest();
+
+            if (method === METHOD.GET && data) {
+                // eslint-disable-next-line no-param-reassign
+                url += queryStringify(data as Record<string, any>);
             }
 
-            // eslint-disable-next-line no-undef
-            const xhr = new XMLHttpRequest();
-            const isGet = method === METHODS.GET;
+            xhr.open(method || METHOD.GET, url);
 
-            xhr.open(
-                method,
-                isGet && !!data
-                    ? `${url}${queryStringify(data)}`
-                    : url,
-            );
+            if (data instanceof FormData) {
+                xhr.setRequestHeader('Accept', 'application/json');
+            } else {
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+            }
+
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
-            xhr.onload = function onload() {
-                resolve(xhr);
+            xhr.onload = () => {
+                if (xhr.status !== 200) {
+                    reject(new Error(`Ошибка ${xhr.status}: ${xhr?.response?.reason || xhr.statusText}`));
+                } else {
+                    resolve(xhr.response);
+                }
             };
 
             xhr.onabort = reject;
             xhr.onerror = reject;
-
-            xhr.timeout = timeout;
             xhr.ontimeout = reject;
+            xhr.timeout = timeout;
+            xhr.withCredentials = true;
+            xhr.responseType = 'json';
 
-            if (isGet || !data) {
+            if (method === METHOD.GET || !data) {
                 xhr.send();
+            } else if (data instanceof FormData) {
+                xhr.send(data);
             } else {
                 xhr.send(JSON.stringify(data));
             }
         });
     };
 }
+
+export default HTTPTransport;

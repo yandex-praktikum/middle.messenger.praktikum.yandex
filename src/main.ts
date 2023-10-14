@@ -1,6 +1,10 @@
 import Handlebars from 'handlebars';
-import { registerComponent } from './core/resgiterComponent';
-import Block, { BlockType } from './core/Block';
+import { registerImports, loadImport } from './core/resgiterComponent';
+import { BlockType } from './core/Block';
+import { Store } from './core/Store';
+import { AppState } from './type';
+import { initApp } from './services/initApp';
+import Router from './core/Router';
 
 // import * as Components from './components';
 // import * as Pages from "./pages";
@@ -12,63 +16,12 @@ const importComponents: ImportGlob = import.meta.glob('./components/**/*.ts', { 
 const importPartials: ImportGlob = import.meta.glob('./partials/**/*.ts', { eager: true });
 const importPages: ImportGlob = import.meta.glob('./pages/**/*.ts', { eager: true });
 
-const loadImport = (importGlob: ImportGlob): ImportValue => {
-    const result: ImportValue = {};
-    Object.keys(importGlob).forEach((path: string) => {
-        Object.keys(importGlob[path]).forEach((name: string) => {
-            result[name] = importGlob[path][name];
-        });
-    });
-    return result;
-};
-
 const pages: ImportValue = loadImport(importPages);
 const components: ImportValue = loadImport(importComponents);
 const partials: ImportValue = loadImport(importPartials);
 
-const registerImports = (imports: ImportValue) => {
-    Object.keys(imports).forEach((name:string) => {
-        const value = imports[name];
-        if (typeof value === 'string') {
-            Handlebars.registerPartial(name, value);
-        } else {
-            registerComponent(name, value);
-        }
-    });
-};
-
 registerImports(partials);
 registerImports(components);
-registerImports(pages);
-
-/**
- * Page change function
- *  @param page {string} -  The name of the page, for example, LoginPage,
- *                          is taken from the export in the js files of the pages
- */
-const navigate = (page: string) => {
-    if (pages[page]) {
-        const app = document.getElementById('app');
-        if (app) {
-            // root.innerHTML = Handlebars.compile(pages[page])(data);
-
-            const Component = pages[page];
-            if (typeof Component !== 'string') {
-                const component: Block = new Component({});
-                const content = component.getContent();
-                if (content !== null) {
-                    app.innerHTML = '';
-                    app.append(content);
-                }
-            } else {
-                const content = Handlebars.compile(pages[page])({});
-                if (content !== null) {
-                    app.innerHTML = content;
-                }
-            }
-        }
-    }
-};
 
 /*
 Page names:
@@ -79,16 +32,75 @@ Page names:
     - ProfilePage
     - RegistrationPage
 */
-document.addEventListener('DOMContentLoaded', () => navigate('ChatPage'));
+registerImports(pages);
 
-// Automatic transition to the page if the button has the page attribute
-document.addEventListener('click', (e) => {
-    const target: HTMLElement = e.target as HTMLElement;
-    const page = target.getAttribute('page');
-    if (page) {
-        navigate(page);
+Handlebars.registerHelper('getTimeToChat', (time) => {
+    if (!time) return new Handlebars.SafeString('');
 
-        e.preventDefault();
-        e.stopImmediatePropagation();
+    const chatTime = new Date(time);
+    const startDay = new Date();
+    startDay.setHours(0, 0, 0, 0);
+
+    const startWeek = new Date();
+    startWeek.setHours(0, 0, 0, 0);
+    startWeek.setDate(0);
+    let options = {};
+    if (chatTime > startDay) {
+        options = {
+            hour: 'numeric',
+            minute: 'numeric',
+        };
+    } else {
+        options = {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        };
     }
+    return new Handlebars.SafeString(chatTime.toLocaleString('ru', options));
 });
+
+Handlebars.registerHelper('getUserNameToChat', (user) => {
+    if (user.displayName) {
+        return new Handlebars.SafeString(user.displayName);
+    }
+    return new Handlebars.SafeString(`${user.secondName} ${user.firstName}`);
+});
+
+declare global {
+    interface Window {
+        store: Store<AppState>;
+    }
+
+    type Nullable<T> = T | null;
+}
+
+const initState: AppState = {
+    error: null,
+    user: null,
+    isOpenDialogChat: false,
+    isOpenDialogPassword: false,
+    isOpenDialogChatMenu: false,
+    isOpenDialogChoiceUser: false,
+    chats: [],
+    currentChat: null,
+    currentChatUsers: [],
+    searchChatUsers: [],
+    loginSearch: true,
+    currentChatMessages: [],
+};
+window.store = new Store<AppState>(initState);
+
+const router = new Router('#app');
+
+// Можно обновиться на /user и получить сразу пользователя
+router
+    .use('/', pages.ChatPage as BlockType)
+    .use('/login', pages.LoginPage as BlockType)
+    .use('/sign-up', pages.RegistrationPage as BlockType)
+    .use('/messenger', pages.ChatPage as BlockType)
+    .use('/settings', pages.ProfilePage as BlockType)
+    .use('/404', pages.Page404 as BlockType)
+    .use('/500', pages.Page500 as BlockType);
+
+document.addEventListener('DOMContentLoaded', () => initApp());

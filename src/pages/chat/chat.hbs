@@ -1,16 +1,14 @@
 <div id="wrapper">
     <section class="sidebar">
 
-        {{{ InfoBar data = "aladzuey" }}}
+        {{{ InfoBar data = user}}}
         <div class="content">
             <div class="search-wrapper">
                 {{{ Search }}}
             </div>
             <nav class="chats">
                 <div class="chats__indent">
-                    {{#each chats}}
-                        {{{ ChatList data=data ref=ref }}}
-                    {{/each}}
+                    {{{ ChatList title="Общие чаты" chats=chats ref=ref }}}
                 </div>
             </nav>
         </div>

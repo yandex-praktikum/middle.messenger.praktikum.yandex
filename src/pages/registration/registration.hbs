@@ -12,7 +12,8 @@
         </div>
         <div class="registration__content__footer">
             {{{ Button data="registration" ref="registration" onClick=onRegistration }}}
-            {{{ Button data="entrance" ref="entrance" }}}
+            {{{ ErrorLine error=error ref="error"}}}
+            {{{ Button data="entrance" ref="entrance" onClick=onExit }}}
         </div>
     {{/FormAuth}}
 </main>

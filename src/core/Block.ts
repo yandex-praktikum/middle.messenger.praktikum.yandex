@@ -4,19 +4,28 @@
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
+import isEqual from '../utils/isEqual';
 
 type EventsEnum = {
     [key in Uppercase<string>]: Lowercase<string>;
 };
 
-type Events = Record<string, () => void>;
-export type Props = Record<string | symbol, unknown>;
-export type Children = Record<string, Element | Block>;
-type Ref = Record<string | symbol, Element | Block>;
-type Parent = Element | Block | undefined;
+export type TEvent = (e:Event)=>void;
+type Events = {
+    [key: string | symbol]:TEvent;
+};
+type Parent = Block | undefined;
+export type Props = {
+    events?: Events,
+    parent?: Parent,
+    [key: string | symbol]: any,
+};
+
+type Children = Block[] | Element[];
+export type Ref = Record<string | symbol, Block>;
 
 export type BlockType = {
-    new(propsWithChildren: Props | Children): Block
+    new(propsAndParent: Props): Block
 };
 
 // Нельзя создавать экземпляр данного класса
@@ -25,6 +34,7 @@ abstract class Block {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
+        FLOW_CWU: 'flow:component-will-unmount',
         FLOW_RENDER: 'flow:render',
     };
 
@@ -38,8 +48,10 @@ abstract class Block {
 
     protected parent: Parent;
 
+    protected events: Events = {};
+
     // Храним для удаления
-    public children: Children;
+    public children: Children = [];
 
     // События, которые будут автоматически подключены к указанным refs или this.element()
     // При передаче { event: callback } подключается к this.element()
@@ -49,15 +61,14 @@ abstract class Block {
     // Элемент в DOM в который отрендерим этот компонент
     private _element: HTMLElement | null = null;
 
-    protected constructor(propsWithChildren: Props | Children) {
-        const eventBus: EventBus = new EventBus();
-
-        const { props, children, parent } = Block.getChildrenAndProps(propsWithChildren);
+    protected constructor(propsAndParent: Props) {
+        const { events, parent, ...props } = propsAndParent;
 
         this.parent = parent;
-        this.children = children;
-        this.props = this._makePropsProxy(props);
+        this.events = events || {};
+        this.props = this._makePropsProxy(props as Props);
 
+        const eventBus: EventBus = new EventBus();
         this.eventBus = () => eventBus;
 
         this._registerEvents(eventBus);
@@ -65,59 +76,41 @@ abstract class Block {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    static getChildrenAndProps(childrenAndProps: Props | Children)
-        : { props: Props, children: Children, parent: Parent } {
-        const props: Props = {};
-        const children: Children = {};
-        let parent: Parent;
-
-        Object.entries(childrenAndProps)
-            .forEach(([key, value]) => {
-                if (value instanceof Block || value instanceof Element) {
-                    if (key === 'parent') {
-                        parent = value;
-                    } else {
-                        children[key] = value;
-                    }
-                } else {
-                    props[key] = value;
-                }
+    private _addEvents() {
+        Object.keys(this.events)
+            .forEach((eventName) => {
+                this._element?.addEventListener(eventName, this.events[eventName]);
             });
-
-        return { props, children, parent };
+        this.addEvents();
     }
 
-    private _addEvents() {
-        const { events = {} } = this.props as { events: Events };
-
-        Object.keys(events)
-            .forEach((eventName) => {
-                this._element?.addEventListener(eventName, events[eventName]);
-            });
+    addEvents() {
     }
 
     // Not used anywhere yet
     // @ts-ignore
     private _removeEvents() {
-        const { events = {} } = this.props as { events: Events };
-
-        Object.keys(events)
+        Object.keys(this.events)
             .forEach((eventName) => {
-                this._element?.removeEventListener(eventName, events[eventName]);
+                this._element?.removeEventListener(eventName, this.events[eventName]);
             });
+        this.removeEvents();
+    }
+
+    removeEvents() {
     }
 
     private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
     private _init() {
         this.init();
-        this.eventBus()
-            .emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     protected init() {
@@ -125,6 +118,7 @@ abstract class Block {
     }
 
     private _componentDidMount() {
+        this._checkInDom();
         this.componentDidMount();
     }
 
@@ -132,25 +126,42 @@ abstract class Block {
     }
 
     public dispatchComponentDidMount() {
-        this.eventBus()
-            .emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-        Object.values(this.children)
-            .forEach((child) => {
-                if (child instanceof Block) child.dispatchComponentDidMount();
-            });
+        this.children.forEach((child) => {
+            if (child instanceof Block) child.dispatchComponentDidMount();
+        });
     }
 
     private _componentDidUpdate(oldProps: Props, newProps: Props) {
         if (this.componentDidUpdate(oldProps, newProps)) {
-            this.eventBus()
-                .emit(Block.EVENTS.FLOW_RENDER);
+            this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+            this.afterComponentUpdate();
         }
     }
 
+    protected afterComponentUpdate() {}
+
     protected componentDidUpdate(oldProps: Props, newProps: Props) {
-        return oldProps !== newProps;
+        return !isEqual(oldProps, newProps);
     }
+
+    protected _checkInDom() {
+        const elementInDOM = document.body.contains(this._element);
+
+        if (elementInDOM) {
+            setTimeout(() => this._checkInDom(), 1000);
+            return;
+        }
+
+        this.eventBus().emit(Block.EVENTS.FLOW_CWU, this.props);
+    }
+
+    protected _componentWillUnmount() {
+        this.componentWillUnmount();
+    }
+
+    public componentWillUnmount() {}
 
     public setProps = (nextProps: Props) => {
         if (!nextProps) {
@@ -180,7 +191,7 @@ abstract class Block {
 
     private compile(template: string, context: Props) {
         const contextAndStubs = {
-            ...context, __refs: this.refs, __parent: this, __children: [], __components: {},
+            ...context, __refs: this.refs, __parent: this, __children: this.children, __embeds: [],
         };
 
         const html = Handlebars.compile(template)(contextAndStubs);
@@ -189,12 +200,9 @@ abstract class Block {
 
         temp.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({ embed }
-        : { embed: (fragment: DocumentFragment)=>void }) => {
-            embed(temp.content);
-        });
+        contextAndStubs.__embeds
+            ?.forEach((fn: (fragment: DocumentFragment)=>void) => fn(temp.content));
 
-        this.children = contextAndStubs?.__components || {};
         return temp.content;
     }
 
@@ -203,10 +211,21 @@ abstract class Block {
     }
 
     getContent() {
+        // Хак, чтобы вызвать CDM только после добавления в DOM
+        if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+            setTimeout(() => {
+                if (
+                    this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE
+                ) {
+                    this.dispatchComponentDidMount();
+                }
+            }, 100);
+        }
+
         return this.element;
     }
 
-    _makePropsProxy(props: Props) {
+    _makePropsProxy(props: Props): Props {
         // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
         const self = this;
 
@@ -215,10 +234,10 @@ abstract class Block {
                 const value = target[prop];
                 return typeof value === 'function' ? value.bind(target) : value;
             },
-            set(target, prop, value) {
+            set(target, prop, value):boolean {
                 const oldTarget = { ...target };
 
-                target[prop] = value;
+                target[prop as keyof Props] = value;
 
                 // Запускаем обновление компоненты. Плохой cloneDeep,
                 // в следующей итерации нужно заставлять добавлять cloneDeep им самим
@@ -240,7 +259,7 @@ abstract class Block {
      */
 
     show() {
-        this.getContent()!.style.display = 'block';
+        this.getContent()!.style.removeProperty('display'); // .display = 'block';
     }
 
     hide() {
