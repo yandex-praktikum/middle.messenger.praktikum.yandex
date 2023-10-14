@@ -1,0 +1,23 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.login-form
+  @extend %flex-column
+  +flex-alignment(space-between, center)
+  box-sizing: border-box
+  padding: 50px 30px 30px
+  width: 340px
+  height: 450px
+  box-shadow: 0 0 6px 0 #FFFFFFC6
+  border-radius: 12px
+  background: #FFF
+
+  & .button__primary
+    display: flex
+    +flex-alignment(center, center)
+    width: 280px
+    height: 27px
+
+.profile-form
+  flex: 1 auto

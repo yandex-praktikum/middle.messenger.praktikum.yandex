@@ -1,0 +1,5 @@
+<div class="chat_wrap">
+    {{#if currentChat}}{{{ ChatHeader currentChat=currentChat currentChatUsers=currentChatUsers ref=header_ref }}}{{/if}}
+    {{{ ChatBody currentChat=currentChat ref=body_ref}}}
+    {{#if currentChat}}{{{ ChatFooter data=currentChat ref=footer_ref onSend=onSend }}}{{/if}}
+</div>

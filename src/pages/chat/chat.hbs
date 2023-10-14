@@ -1,0 +1,19 @@
+<div id="wrapper">
+    <section class="sidebar">
+
+        {{{ InfoBar data = user}}}
+        <div class="content">
+            <div class="search-wrapper">
+                {{{ Search }}}
+            </div>
+            <nav class="chats">
+                <div class="chats__indent">
+                    {{{ ChatList title="Общие чаты" chats=chats ref=ref }}}
+                </div>
+            </nav>
+        </div>
+    </section>
+    <main class="view">
+        {{{ Chat data="common" ref="common" }}}
+    </main>
+</div>

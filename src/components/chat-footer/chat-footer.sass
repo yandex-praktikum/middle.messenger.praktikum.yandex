@@ -1,0 +1,21 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.chat-footer
+  @extend %flex-column
+  +flex-alignment(center, center)
+  width: 100%
+  height: 95px
+  min-height: 95px
+  background: $background-color-fourth
+  .send_message-form
+    @extend %flex-row
+    +flex-alignment(space-between, center)
+    width: 100%
+    .button
+      margin: 0 30px
+    .button__scrap
+      margin-left: 0
+    .input__message
+      flex-grow: 1

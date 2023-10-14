@@ -1,0 +1,9 @@
+<div class="input{{#if name}} input__{{name}}{{/if}}">
+    <label class="input__container">
+        {{#if label}}
+            <div class="input__label">{{label}}</div>
+        {{/if}}
+        {{{ Input data=input value=value ref="input" onBlur=onBlur onInput=onInput onKeyDown=onKeyDown }}}
+    </label>
+    {{{ ErrorLine error=error ref="errorLine"}}}
+</div>

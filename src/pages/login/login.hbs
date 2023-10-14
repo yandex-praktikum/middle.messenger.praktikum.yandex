@@ -1,0 +1,14 @@
+<main class="login__content">
+    {{#> FormAuth name="login"}}
+        <div class="login__content__header">
+            <h2 class="login__content__header__title">Вход</h2>
+            {{{ InputField data="login" ref="login" }}}
+            {{{ InputField data="password" ref="password" }}}
+        </div>
+        <div class="login__content__footer">
+            {{{ Button data="signIn" ref="signIn" onClick=onLogin }}}
+            {{{ ErrorLine error=error ref="error"}}}
+            {{{ Button data="signUp" ref="signUp" onClick=onRegistration }}}
+        </div>
+    {{/FormAuth}}
+</main>

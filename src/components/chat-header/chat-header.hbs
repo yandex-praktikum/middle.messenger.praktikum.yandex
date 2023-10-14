@@ -1,0 +1,11 @@
+<header class="chat-header">
+    <h2>{{ title }}</h2>
+    <h4>{{ description }}</h4>
+    <div class="chat-header__info">
+        {{{ Button data="chatSearch" ref="chatSearch" }}}
+        {{{ ChatInfo data=chatInfo currentChatUsers=currentChatUsers ref="chatInfo" }}}
+        {{{ Button data="chatMenu" ref="chatMenu" onClick=onShowDialogChatMenu }}}
+        {{{ DialogChatMenu onAddUser=onAddUser onDeleteUser=onDeleteUser onDeleteChat=onDeleteChat ref="chatMenu"}}}
+    </div>
+    {{{ DialogChoiceUser ref="chatChoiceUser" onSearchUser=onSearchUser }}}
+</header>

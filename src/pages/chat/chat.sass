@@ -1,0 +1,72 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+html, body
+  @extend %full-screen
+  @extend %no-indents
+  @extend %main-font
+
+#app
+  @extend %full-screen
+  @extend %no-indents
+  overflow: hidden
+  background: $background-color
+  color: $font-color
+
+#wrapper
+  @extend %all-size
+  @extend %flex-row
+  padding: 20px
+
+  .sidebar
+    @extend %flex-column
+    flex: 1 auto
+    overflow: hidden
+    border-radius: 25px 0 0 0
+    background: $background-color
+    box-sizing: border-box
+    & .info-bar
+      margin-right: 10px
+    & .search-wrapper,
+    & .chat-list__header,
+    & .chats__indent
+      margin-right: 10px
+      background: $background-color-third
+    & .chat-list__header__content
+      margin-right: -10px
+    & .chats__indent
+      flex: 1 auto
+
+    .chats
+      display: flex
+      flex: 1 auto
+      overflow-x: hidden
+      overflow-y: scroll
+      -ms-overflow-style: none
+      scrollbar-width: none
+      &::-webkit-scrollbar
+        width: 0
+        height: 0
+
+    .content
+      box-sizing: border-box
+      margin-top: 10px
+      @extend %flex-column
+      +flex-alignment(flex-start, stretch)
+      flex: 1 auto
+      overflow: hidden
+      //background: $background-color-third
+
+  .view
+    display: flex
+    +flex-alignment(center, center)
+    flex: 4 auto
+    overflow: hidden
+    border-radius: 0 25px 0 0
+    background: $background-color-second
+
+.list__pages
+  background: #FFF
+  border-radius: 25px
+  margin-top: 20px

@@ -1,0 +1,89 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/mixins
+@import ../../assets/sass/templates
+
+.chat-item
+  @extend %flex-row
+  +flex-alignment(flex-end, center)
+  height: $chat-item-size
+  margin: 7px -10px 7px 10px
+  padding-right: 10px
+
+  &__content
+    @extend  %flex-column
+    +flex-alignment(space-between, flex-start)
+    height: $chat-item-content-size
+
+    flex: 1
+    padding: 5px 0
+    padding-left: 15px
+    border-bottom: 1px #FFF solid
+
+    &__title
+      margin: 0
+
+    &__last-message
+      font-size: 12px
+
+    span,
+    &__last-message-name
+      margin: 0
+      font-size: 13px
+      font-weight: bold
+
+  .group-avatar
+    width: $chat-item-content-size
+    height: $chat-item-content-size
+    margin-left: 10px
+    position: relative
+    & .avatar:nth-child(1)
+      position: absolute
+      left: 0
+      bottom: 0
+      z-index: 3
+    & .avatar:nth-child(2)
+      position: absolute
+      left: 5px
+      bottom: 5px
+      z-index: 2
+    & .avatar:nth-child(3)
+      position: absolute
+      right: 0
+      top: 0
+      z-index: 1
+
+
+  &__status
+    @extend  %flex-column
+    +flex-alignment(space-between, flex-end)
+    height: $chat-item-content-size
+    padding: 5px 0
+    padding-right: 15px
+    margin-right: 10px
+    border-bottom: 1px #FFF solid
+
+  &__unread-message
+    display: flex
+    +flex-alignment(center, center)
+    width: 22px
+    height: 22px
+    border-radius: 50%
+    background: #EF811F
+    border: #FFF 1px solid
+
+  $root: &
+  &:hover
+    background: linear-gradient(270deg, $background-color-second 0%, $background-color 100%)
+    border-radius: 25px 0 0 25px
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+    cursor: pointer
+    #{$root}__content,
+    #{$root}__status
+      border-bottom-color: transparent
+  &.select
+    background: $background-color-second
+    border-radius: 25px 0 0 25px
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+    #{$root}__content,
+    #{$root}__status
+      border-bottom-color: transparent

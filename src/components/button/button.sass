@@ -1,0 +1,98 @@
+@import ../../assets/sass/variables
+
+.button
+  box-sizing: border-box
+  background-color: initial
+  border: none
+  font-weight: 500
+  display: block
+  width: 100%
+  padding: 12px 0
+  border-radius: 8px
+  cursor: pointer
+
+
+.button__arrow
+  width: 15px
+  height: 15px
+
+  background-image: url('../../assets/img/components/arrow.svg')
+  background-size: 100% 100%
+
+.button__chat-search
+  width: 25px
+  height: 25px
+
+  background-image: url('../../assets/img/components/chat_search.svg')
+  background-size: 100% 100%
+
+.button__smile
+  width: 32px
+  height: 32px
+
+  background-image: url('../../assets/img/components/smile.svg')
+  background-size: 100% 100%
+
+.button__scrap
+  width: 32px
+  height: 32px
+
+  background-image: url('../../assets/img/components/scrap.svg')
+  background-size: 100% 100%
+
+.button__send
+  width: 32px
+  height: 32px
+
+  background-image: url('../../assets/img/components/send.svg')
+  background-size: 100% 100%
+
+.button__chat-menu
+  width: 25px
+  height: 25px
+
+  background-image: url('../../assets/img/components/chat_menu.svg')
+  background-size: 100% 100%
+
+.button__add
+  width: 18px
+  height: 18px
+
+  background-image: url('../../assets/img/components/add.svg')
+  background-size: 100% 100%
+
+.button__settings
+  width: 25px
+  height: 25px
+
+  background-image: url('../../assets/img/components/settings.svg')
+  background-size: 100% 100%
+
+.button__primary
+  background-color: #14141A
+  color: #FFF
+  font-size: 13px
+
+.button__link
+  color: #3369F3
+  font-size: 11px
+  text-align: center
+  &:hover
+    text-decoration: underline
+  &.cancel
+    color: #9d0000
+    border-top: 1px solid #9d0000
+    border-bottom: 1px solid #9d0000
+
+.button__link-profile
+  color: #F00
+  text-align: left
+  margin: 0 25px
+  font-size: 13px
+  font-weight: 500
+  width: auto
+  border-radius: 0
+  &:has(+ &)
+    border-bottom: 1px #FFF solid
+    color: #3369F3
+

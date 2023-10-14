@@ -1,0 +1,9 @@
+<footer class="chat-footer">
+    {{#> FormAuth name="send_message"}}
+        {{{ Button data="smile" ref="smile" }}}
+        {{{ Button data="scrap" ref="scrap" }}}
+
+        {{{ InputField data="message" onKeyDown=onKeyDown ref="message" }}}
+        {{{ Button data="send" data_type="button" ref="send" onClick=onSend }}}
+    {{/FormAuth}}
+</footer>

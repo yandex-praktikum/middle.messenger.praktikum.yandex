@@ -1,0 +1,35 @@
+<div class="chat-item{{#if select}} select{{/if}}">
+    <div class="group-avatar">
+        {{#if avatars}}
+            {{#each avatars}}
+                {{{ Avatar avatar=this size = "big" status= "online" ref=ref }}}
+            {{/each}}
+        {{else}}
+            {{{ Avatar avatar=avatar size = "medium" status= "online" ref=ref }}}
+        {{/if}}
+    </div>
+    <div class="chat-item__content">
+        <h4 class="chat-item__content__title">{{title}}</h4>
+        <div class="chat-item__content__last-message">
+            {{#if lastMessage}}
+                <h5 class="chat-item__content__last-message-name">
+                    {{ getUserNameToChat lastMessage.user }}:
+                </h5>
+
+                <div class="chat-item__content__last-message-text">
+                    {{ lastMessage.content }}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="chat-item__status">
+        <div class="chat-item__time">
+            {{getTimeToChat lastMessage.time}}
+        </div>
+        {{#if unreadCount}}
+            <div class="chat-item__unread-message">
+                {{ unreadCount }}
+            </div>
+        {{/if}}
+    </div>
+</div>

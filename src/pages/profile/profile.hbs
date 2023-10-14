@@ -1,0 +1,29 @@
+<div class="profile">
+    <section class="sidebar">
+
+        {{{ InfoBar data = user }}}
+        <nav class="profile__content">
+            {{{ Button data = "back_to_chats" ref = "back_to_chats" onClick=onBackToChat}}}
+            {{{ Button data = "change_data" data_type="submit" ref = "change_data" onClick=onChangeTheData }}}
+            {{{ Button data = "change_password" ref = "change_password" onClick=openDialogPassword }}}
+            {{{ Button data = "exit" ref = "exit" onClick=onExit }}}
+        </nav>
+    </section>
+    <main class="view">
+        <div class="profile__content">
+            {{#> FormAuth name="profile"}}
+                {{{ Avatar avatar=user.avatar size = "big" ref="avatar" title="Кликните, что бы сменить аватар" onClick=onClickAvatar }}}
+                {{{ Input type="file" id="loadAvatar" style="display: none" accept="image/jpeg"  onChange=onChangeAvatar }}}
+                <h2>Профиль</h2>
+                {{{ InputField data="mail" value=user.email ref="mail" }}}
+                {{{ InputField data="login" value=user.login ref="login" }}}
+                {{{ InputField data="name" value=user.firstName ref="name" }}}
+                {{{ InputField data="surname" value=user.secondName  ref="surname"}}}
+                {{{ InputField data="alias" value=user.displayName  ref="alias"}}}
+                {{{ InputField data="phone" value=user.phone ref="phone"}}}
+            {{/FormAuth}}
+            {{{ DialogChangePassword onSave=onSavePassword onClose=onClosePassword ref="changePassword"}}}
+            {{{ ErrorLine error=error ref="error"}}}
+        </div>
+    </main>
+</div>

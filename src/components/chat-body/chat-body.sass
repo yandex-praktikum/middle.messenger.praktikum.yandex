@@ -1,0 +1,20 @@
+@import ../../assets/sass/variables
+@import ../../assets/sass/templates
+@import ../../assets/sass/mixins
+
+.chat-body
+  @extend %flex-column
+  +flex-alignment(flex-start, center)
+  flex-grow: 1
+  width: 100%
+  overflow-y: scroll
+  -ms-overflow-style: none
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    width: 0
+    height: 0
+  .content
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center

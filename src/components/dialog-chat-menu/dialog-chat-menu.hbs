@@ -1,0 +1,24 @@
+{{#Dialog open=isOpenDialogChatMenu class="dialog_chat-menu" }}
+    <form method="dialog">
+        <div class="button_section">
+            {{{ Button
+                data_type="button"
+                label="Добавить пользователя"
+                type="link"
+                onClick=onAddUser
+            }}}
+            {{{ Button
+                data_type="button"
+                label="Удалить пользователя"
+                type="link"
+                onClick=onDeleteUser
+            }}}
+            {{{ Button
+                data_type="button"
+                label="Удалить чат"
+                type="link"
+                onClick=onDeleteChat
+            }}}
+        </div>
+    </form>
+{{/Dialog}}

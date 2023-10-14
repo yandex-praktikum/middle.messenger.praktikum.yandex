@@ -1,0 +1,11 @@
+<div class="user-list">
+    {{#if loginSearch}}
+        {{#each searchChatUsers}}
+            {{{ Button data=this data_type="button" label=login ref=login type="link" onClick=../onChoice }}}
+        {{/each}}
+    {{else}}
+        {{#each currentChatUsers}}
+            {{{ Button data=this data_type="button" label=login ref=login type="link" onClick=../onChoice }}}
+        {{/each}}
+    {{/if}}
+</div>

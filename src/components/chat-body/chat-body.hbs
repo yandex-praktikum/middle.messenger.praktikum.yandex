@@ -1,0 +1,11 @@
+<section class="chat-body">
+    {{#if currentChat}}
+    {{#each currentChatMessages}}
+        {{{ ChatMessage data=this ref=ref}}}
+    {{/each}}
+    {{ else }}
+    <div class="content">
+        <p>Выберите чат чтобы отправить сообщение</p>
+    </div>
+    {{/if}}
+</section>

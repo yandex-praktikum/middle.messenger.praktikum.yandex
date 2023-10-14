@@ -1,0 +1,8 @@
+<div class="chat-info">
+    <div class="chat-info__avatars">
+        {{#each getAvatars}}
+            {{{ Avatar avatar = avatar name = secondName  size = "smallest" figure = "square" status = "hideStatus" ref = ref }}}
+        {{/each}}
+    </div>
+    <h2>{{ numberOfParticipants }}</h2>
+</div>

@@ -1,0 +1,14 @@
+<div class="chat-list">
+    <h3 class="chat-list__header">
+        <div class="chat-list__header__empty"></div>
+        <div class="chat-list__header__content">
+            {{{ Button data="arrow" ref="arrow" }}}
+            <span>{{ title }}</span>
+            {{{ Button data="add" onClick=openDialog ref="add" }}}
+            {{{ DialogCreateChat onSave=onSave onClose=closeDialog ref="createChat"}}}
+        </div>
+    </h3>
+    {{#each chats}}
+        {{{ ChatItem data=this ref=ref onSetCurrentChat=../onSetCurrentChat currentChat= ../currentChat }}}
+    {{/each}}
+</div>
