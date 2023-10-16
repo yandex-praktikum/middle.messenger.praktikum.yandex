@@ -13,7 +13,6 @@ app.use(cors());
 
 app.use(express.static('build'));
 
-// @ts-ignore
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build/index.html'))
 })
