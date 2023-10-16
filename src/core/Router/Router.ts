@@ -10,16 +10,14 @@ import {
 } from "../../pages/index";
 
 class Router {
-  __instance: any;
+  static __instance: Router;
   routes: any;
   history: any;
   _currentRoute: any;
   _rootQuery;
 
   constructor(rootQuery: string) {
-    // @ts-ignore
     if (Router.__instance) {
-      // @ts-ignore
       return Router.__instance;
     }
 
@@ -27,7 +25,6 @@ class Router {
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-    // @ts-ignore
     Router.__instance = this;
   }
 
