@@ -48,29 +48,59 @@ class Router {
   }
 
   _onRoute(pathname: string) {
-    console.log(pathname);
     const inSystem = sessionStorage.getItem("inSystem");
-    console.log(inSystem);
 
-    if (pathname !== '/') {
-      if (!inSystem || inSystem === 'false') {
-        this.go('/');
+    switch (pathname) {
+      case '/':
+        if (inSystem === 'true') {
+          this.go('/messenger');
+          return;
+        }
+        break;
 
-        return;
-      }
-    } else if (pathname === '/') {
-      if (inSystem === 'true') {
-        this.go('/messenger');
+      case '/sign-up':
+        if (inSystem === 'true') {
+          this.go('/messenger');
+          return;
+        }
+        break;
 
-        return;
-      }
+      case '/messenger':
+        if (!inSystem || inSystem === 'false') {
+          this.go('/');
+          return;
+        }
+        break;
+
+      case '/settings':
+        if (!inSystem || inSystem === 'false') {
+          this.go('/');
+          return;
+        }
+        break;
+
+      case '/editing-settings':
+        if (!inSystem || inSystem === 'false') {
+          this.go('/');
+          return;
+        }
+        break;
+
+      case '/editing-password':
+        if (!inSystem || inSystem === 'false') {
+          this.go('/');
+          return;
+        }
+        break;
+
+      default:
+        break;
     }
 
     const route = this.getRoute(pathname);
 
     if (!route) {
       this.go('/messenger');
-
       return;
     }
 
