@@ -39,6 +39,7 @@ const authForm = new AuthorizationForm({
     href: '/sign-up',
     text: 'Sign up',
   }),
+  errorText: '',
 })
 
 export default class Authorization extends Block {

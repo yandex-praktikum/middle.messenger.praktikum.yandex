@@ -1,0 +1,23 @@
+.chat-area__f
+  .chat-area__f-f
+    .chat-area__info
+      .chat-area__info-l!= chatAvatar
+      .chat-area__info-r
+        h6.name!= chatName
+
+  .chat-area__f-s
+    .dropdown.dropdown--t-6
+      button.dropdown__trigger(
+        type="button",
+        title="Open chat settings menu",
+        aria-expanded="false",
+        aria-controls="chatSettings"
+        data-open-text="Open chat settings menu"
+        data-close-text="Close chat settings menu"
+      )
+        span.link Chat settings
+      #chatSettings.dropdown__body
+        .dropdown__body-inner
+          .btns
+            each btn in chatButtons
+              | !{btn}

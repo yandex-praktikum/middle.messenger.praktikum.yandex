@@ -1,6 +1,11 @@
-import { render } from "../../utils";
+import { render as renderPage } from "../../utils";
 
 export default class Route {
+  _pathname: string;
+  _blockClass: any;
+  _block: any;
+  _props: any;
+
   constructor(pathname: string, view: any, props: object) {
     this._pathname = pathname;
     this._blockClass = view;
@@ -8,7 +13,7 @@ export default class Route {
     this._props = props;
   }
 
-  navigate(pathname) {
+  navigate(pathname: string) {
     if (this.match(pathname)) {
       this._pathname = pathname;
       this.render();
@@ -21,21 +26,15 @@ export default class Route {
     }
   }
 
-  match(pathname) {
+  match(pathname: string) {
     return pathname === this._pathname;
   }
 
   render() {
     if (!this._block) {
-
-      console.log(this._blockClass);
-
       this._block = new this._blockClass();
-      render(this._props.rootQuery, this._block);
-
-      return;
     }
 
-    this._block.show();
+    renderPage(this._props.rootQuery, this._block);
   }
 }

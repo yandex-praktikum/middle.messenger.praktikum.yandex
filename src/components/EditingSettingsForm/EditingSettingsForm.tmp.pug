@@ -5,21 +5,5 @@ form#userSettingsForm.user-settings__form
     li.user-settings__list-item!= secondName
     li.user-settings__list-item!= email
     li.user-settings__list-item!= phone
-
-  //ul.user-settings__list
-    li.user-settings__list-item
-      label.user-settings__list-item-name(for="display_name") Nickname:
-      input.user-settings__list-item-value.t-right(id="display_name" type="text" name="display_name" value="user name")
-    li.user-settings__list-item
-      label.user-settings__list-item-name(for="first_name") First name:
-      input.user-settings__list-item-value.t-right(id="first_name" type="text" name="first_name" value="first name")
-    li.user-settings__list-item
-      label.user-settings__list-item-name(for="second_name") Second name:
-      input.user-settings__list-item-value.t-right(id="second_name" type="text" name="second_name" value="second name")
-    li.user-settings__list-item
-      label.user-settings__list-item-name(for="email") Email:
-      input.user-settings__list-item-value.t-right(id="email" type="text" name="email" value="test@test.ru")
-    li.user-settings__list-item
-      label.user-settings__list-item-name(for="phone") Phone:
-      input.user-settings__list-item-value.t-right(id="phone" type="text" name="phone" value="+7 (000) 000-00-00")
-  //input(type="file", name="avatar", hidden)
+    li.user-settings__list-item.form__field--error!= errorText
+    input(id="avatar" type="file", name="avatar", accept=".png, .jpg, .jpeg, .webp", hidden)

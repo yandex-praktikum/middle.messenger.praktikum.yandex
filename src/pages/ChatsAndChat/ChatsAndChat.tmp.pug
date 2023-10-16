@@ -1,64 +1,25 @@
 .chats-and-chat
   aside.sidebar
     .sidebar__f
+      .dropdown.dropdown--t-6
+        button.dropdown__trigger(
+          type="button",
+          title="Open the chat creation menu",
+          aria-expanded="false",
+          aria-controls="createChat"
+          data-open-text="Open the chat creation menu"
+          data-close-text="Close the chat creation menu"
+        )
+          span.link Create chat
+        #createChat.dropdown__body
+          .dropdown__body-inner!= createChatForm
+
       form.search!= fieldSearch
+
     .sidebar__s
-      .sidebar__s-inner
-        .chats
-          each val in [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-            article.chat(tabindex="0")
-              .chat__f
-                .avatar
-                  img.avatar__img(src="img/avatar-dummy-1.jpg", alt="user name avatar", loading="lazy")
-              .chat__s
-                .chat__s-f
-                  h6.name Chat name
-                  time.chat__time 10:45
-                .chat__s-s
-                  p.chat__last-message last message last message last message last message last message last message
+      .sidebar__s-inner!= chatsArea
 
-    .sidebar__t
-      .user-information
-        .user-information__f
-          .user-information__f-f
-            .avatar
-              img.avatar__img(src="img/avatar-dummy-1.jpg", alt="user name avatar", loading="lazy")
-          .user-information__f-s
-            h6.name User name
+    .sidebar__t!= userInformation
 
-        .user-information__s
-          button.settings(type="button") ...
-
-  .chat-area
-    .chat-area__f
-      .chat-area__f-f
-        .chat-area__info
-          .chat-area__info-l
-            .avatar
-              img.avatar__img(src="img/avatar-dummy-1.jpg", alt="user name avatar", loading="lazy")
-          .chat-area__info-r
-            h6.name Chat name
-
-      .chat-area__f-s
-        button.settings(type="button") ...
-
-    .chat-area__s
-      .messages-area
-        .messages-area__f
-          .messages-area__conversation
-            each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-              .messages-area__conversation-item.messages-area__conversation-received
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
-
-              .messages-area__conversation-item.messages-area__conversation-sent
-                .messages-area__conversation-message
-                  | Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum iste non corrupti molestias. Provident dolorum nostrum quasi id modi cumque doloribus nemo, beatae veritatis rem. Ducimus, amet dicta? Adipisci, corrupti?
-
-        .messages-area__s
-          .messages-area__s-inner!= fieldMessage
-            .messages-area__buttons
-              button.settings(type="button") ...
-              button.settings(type="button") ...
+  | !{chatArea}
+  | !{modal}

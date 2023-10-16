@@ -1,0 +1,9 @@
+section.d-modal(id="defaultModal", class=className, tabindex='-1', aria-hidden='true')&attributes(attributes)
+  .d-modal__dialog
+    .d-modal__content
+      button.d-modal__close(data-modal='close', title='Close modal') #[span]
+      if title
+        header.d-modal__header
+          h5.d-modal__title!= title
+      .d-modal__body!= content
+

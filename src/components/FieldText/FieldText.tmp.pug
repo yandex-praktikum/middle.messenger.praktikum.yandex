@@ -2,6 +2,6 @@ label.field-text(class=mods)
   if(typeof(title) !== 'undefined' && title)
     span.field-text__name= title
   span.field-text__input-wrap
-    input.field-text__input(type=type, name=name, value=value, data-pattern=pattern placeholder=placeholder, autocomplete="off")
+    input.field-text__input(type=type, name=name, value=value, data-pattern=pattern placeholder=placeholder, autocomplete="off")&attributes(attributes)
   if(typeof(helpText) !== 'undefined' && helpText)
     span.field-text__help-text= helpText

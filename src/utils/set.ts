@@ -19,5 +19,5 @@ export default function set(obj: Object, path: string, value: any): Object {
     {},
   )
 
-  return merge([obj, objFromKeys]);
+  return merge(obj, objFromKeys);
 }

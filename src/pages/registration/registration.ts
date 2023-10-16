@@ -85,6 +85,7 @@ const registratonForm = new RegistrationForm({
     href: '/',
     text: 'Sign in',
   }),
+  errorText: '',
 })
 
 export default class Registration extends Block {

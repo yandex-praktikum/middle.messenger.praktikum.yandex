@@ -34,4 +34,14 @@
     padding-top: 14px;
     padding-bottom: 14px;
   }
+
+  &--red {
+    border-color: rgb(240, 91, 64);
+    background-color: rgb(240, 91, 64);
+
+    &:hover {
+      border-color: rgb(219, 76, 51);
+      background-color: rgb(219, 76, 51);
+    }
+  }
 }

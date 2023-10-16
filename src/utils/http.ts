@@ -14,17 +14,22 @@ interface IHTTP {
 }
 
 type Options = {
-  method: string,
-  headers?: [string, string],
-  data?: [string, string][],
+  method?: string,
+  headers?: Map<string, string>,
+  data?: [string, string][] | object,
   timeout?: number,
   retries?: number,
 }
 
-type HTTPMethod = (url: string, options: Options) => Promise<unknown>;
+type XHRInstance = {
+  status: number,
+  responseText: string,
+}
+
+type HTTPMethod = (url: string, options?: Options) => Promise<XHRInstance>;
 
 class HTTP implements IHTTP {
-  get: HTTPMethod = (url, options) => {
+  get: HTTPMethod = (url, options = {}) => {
     let resUrl = url;
     const { data } = options;
 
@@ -35,19 +40,19 @@ class HTTP implements IHTTP {
     return this.request(resUrl, { ...options, method: METHODS.GET });
   };
 
-  post: HTTPMethod = (url, options) => {
+  post: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: METHODS.POST });
   }
 
-  put: HTTPMethod = (url, options) => {
+  put: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: METHODS.PUT });
   }
 
-  delete: HTTPMethod = (url, options) => {
+  delete: HTTPMethod = (url, options = {}) => {
     return this.request(url, { ...options, method: METHODS.DELETE });
   }
 
-  request: HTTPMethod = (url, options) => {
+  request: HTTPMethod = (url, options = {}) => {
     const {
       method,
       headers,
@@ -57,8 +62,12 @@ class HTTP implements IHTTP {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
+      // @ts-ignore
       xhr.open(method, url);
-      if (headers) xhr.setRequestHeader(...headers);
+      xhr.withCredentials = true;
+      if (headers) {
+        headers.forEach((value, header) => xhr.setRequestHeader(header, value))
+      }
 
       xhr.onload = () => {
         resolve(xhr);
@@ -70,7 +79,10 @@ class HTTP implements IHTTP {
 
       if (method === METHODS.GET) {
         xhr.send();
+      } else if (data instanceof FormData) {
+        xhr.send(data as FormData);
       } else {
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));
       }
 
@@ -81,7 +93,7 @@ class HTTP implements IHTTP {
   };
 }
 
-function queryStringify(data: [string, string][]): string {
+function queryStringify(data: [string, string][] | object): string {
   let result = '?';
 
   for (const [key, value] of Object.entries(data)) {
@@ -106,4 +118,8 @@ export default HTTP;
 
 export {
   fetchWithRetry,
+}
+
+export type {
+  Options,
 }

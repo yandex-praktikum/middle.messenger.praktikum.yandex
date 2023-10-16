@@ -8,6 +8,8 @@ import isPlainObject from "./isPlainObject";
 import isArrayOrObject from "./isArrayOrObject";
 import cloneDeep from "./cloneDeep";
 import queryStringify from "./queryStringify";
+import set from "./set";
+import initDropdowns from "./initDropDowns";
 
 export {
   render,
@@ -21,4 +23,6 @@ export {
   isArrayOrObject,
   cloneDeep,
   queryStringify,
+  set,
+  initDropdowns,
 }

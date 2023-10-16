@@ -1,11 +1,14 @@
 import EventBus from './EventBus';
 import Block from './Block';
-import Router from './Router/Router';
+import router from './Router/Router';
 import Route from './Router/Route';
+import Store, { StoreEvents } from './Store';
 
 export {
   Block,
   EventBus,
-  Router,
+  router,
   Route,
+  Store,
+  StoreEvents,
 };

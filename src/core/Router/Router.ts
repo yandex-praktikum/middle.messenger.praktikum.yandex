@@ -1,8 +1,25 @@
 import Route from "./Route";
 
-export default class Router {
+import {
+  Authorization,
+  registration as Registration,
+  UserSettings,
+  ChatsAndChat,
+  EditingSettings,
+  EditingPassword,
+} from "../../pages/index";
+
+class Router {
+  __instance: any;
+  routes: any;
+  history: any;
+  _currentRoute: any;
+  _rootQuery;
+
   constructor(rootQuery: string) {
+    // @ts-ignore
     if (Router.__instance) {
+      // @ts-ignore
       return Router.__instance;
     }
 
@@ -10,7 +27,7 @@ export default class Router {
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-
+    // @ts-ignore
     Router.__instance = this;
   }
 
@@ -22,7 +39,8 @@ export default class Router {
   }
 
   start() {
-    window.onpopstate = (event) => {
+    window.onpopstate = (event: any) => {
+      event.preventDefault();
       this._onRoute(event.currentTarget.location.pathname);
     }
 
@@ -31,10 +49,28 @@ export default class Router {
 
   _onRoute(pathname: string) {
     console.log(pathname);
+    const inSystem = sessionStorage.getItem("inSystem");
+    console.log(inSystem);
+
+    if (pathname !== '/') {
+      if (!inSystem || inSystem === 'false') {
+        this.go('/');
+
+        return;
+      }
+    } else if (pathname === '/') {
+      if (inSystem === 'true') {
+        this.go('/messenger');
+
+        return;
+      }
+    }
 
     const route = this.getRoute(pathname);
 
     if (!route) {
+      this.go('/messenger');
+
       return;
     }
 
@@ -43,7 +79,7 @@ export default class Router {
     }
 
     this._currentRoute = route;
-    route.render(route, pathname);
+    route.render();
   }
 
   go(pathname: string) {
@@ -60,6 +96,14 @@ export default class Router {
   }
 
   getRoute(pathname: string) {
-    return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route: Route) => route.match(pathname));
   }
 }
+
+export default new Router('#app')
+  .use("/", Authorization)
+  .use("/sign-up", Registration)
+  .use('/messenger', ChatsAndChat)
+  .use('/settings', UserSettings)
+  .use('/editing-settings', EditingSettings)
+  .use('/editing-password', EditingPassword)

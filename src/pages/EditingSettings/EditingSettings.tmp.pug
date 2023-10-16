@@ -4,8 +4,11 @@
     .modal__content
       section.user-settings
         .user-settings__f
-          .user-settings__avatar
+          label.user-settings__avatar(for="avatar", title="Change avatar", style="background-image: url(" + `https://ya-praktikum.tech/api/v2/resources${avatar}` + ")")
           h2.user-settings__name= userName
 
         .user-settings__s!= userSettings
-        .user-settings__t!= saveBtn
+        .user-settings__t
+          | !{saveBtn}
+          | !{linkChangePass}
+          | !{linkProfilePage}

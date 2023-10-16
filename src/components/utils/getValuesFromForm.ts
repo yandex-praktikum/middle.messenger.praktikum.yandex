@@ -2,18 +2,32 @@ type Event = {
   preventDefault: Function
 }
 
+function isValidForm(form: Element) {
+  const errors = form.querySelectorAll('.field-text--invalid');
+
+  if (errors.length === 0) return true;
+
+  return false;
+}
+
 export default function getValuesFromForm(event: Event, instance: any) {
   event.preventDefault();
-  const formValues: Record<string, object> = {};
 
-  Object.entries(instance.children).forEach(([name, child]: [string, any]) => {
+  const formValues: any = {};
+
+  Object.values(instance.children).forEach((child: any) => {
     if (child.value) {
+      const { name } = child._meta.props;
       formValues[name] = child.value();
       child.validate();
     }
   })
 
-  console.log(formValues);
+  if (isValidForm(instance.element)) {
+    return formValues;
+  }
+
+  return undefined;
 }
 
 export type {

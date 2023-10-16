@@ -1,33 +1,34 @@
 .modal
   .modal__inner
-    button.modal__close(title="Close modal")
+    | !{logoutBtn}
     .modal__content
       section.user-settings
         .user-settings__f
-          .user-settings__avatar
-          h2.user-settings__name= userName
+          .user-settings__avatar(style="background-image: url(" + `https://ya-praktikum.tech/api/v2/resources${avatar}` + ")")
+          h2.user-settings__name= first_name
 
         .user-settings__s
           ul.user-settings__list
             li.user-settings__list-item
               span.user-settings__list-item-name Nickname:
-              span.user-settings__list-item-value user name
+              span.user-settings__list-item-value= display_name
             li.user-settings__list-item
               span.user-settings__list-item-name First name:
-              span.user-settings__list-item-value first name
+              span.user-settings__list-item-value= first_name
             li.user-settings__list-item
               span.user-settings__list-item-name Second name:
-              span.user-settings__list-item-value second name
+              span.user-settings__list-item-value= second_name
             li.user-settings__list-item
               span.user-settings__list-item-name Email:
-              span.user-settings__list-item-value test@test.ru
+              span.user-settings__list-item-value= email
             li.user-settings__list-item
               span.user-settings__list-item-name Phone:
-              span.user-settings__list-item-value +7 (000) 000-00-00
+              span.user-settings__list-item-value= phone
             li.user-settings__list-item
               span.user-settings__list-item-name Login:
-              span.user-settings__list-item-value mylogin
+              span.user-settings__list-item-value= login
 
         .user-settings__t
           | !{linkToSettings}
           | !{linkToPassword}
+          | !{linkToChats}

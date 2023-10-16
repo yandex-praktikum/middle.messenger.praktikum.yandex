@@ -6,15 +6,13 @@ import { validateField } from "../utils/index";
 import "./FieldText.scss";
 
 export default class FieldText extends Block {
-  constructor(props?: object) {
-    const newProps = {
-      ...props,
-      events: new Map([
-        ['blur', validateField],
-      ]),
+  constructor(props?: any) {
+    const { events = new Map() } = props;
+    if (events.size === 0) {
+      events.set('blur', validateField);
     }
 
-    super('div', newProps);
+    super('div', { ...props, events });
   }
 
   public value() {
