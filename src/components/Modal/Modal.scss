@@ -38,9 +38,6 @@
     border-radius: var(--b-radius);
   }
 
-  &__header {
-  }
-
   &__title {
     margin-bottom: 30px;
     font-size: 20px;
@@ -73,8 +70,8 @@
       background: transparent;
       pointer-events: none;
 
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         content: "";
         position: absolute;
         top: 0;
@@ -85,11 +82,11 @@
         transform-origin: 50% 50%;
       }
 
-      &:before {
+      &::before {
         transform: rotate3d(0, 0, 1, 45deg);
       }
 
-      &:after {
+      &::after {
         transform: rotate3d(0, 0, 1, -45deg);
       }
     }
@@ -145,7 +142,7 @@
   z-index: 999;
   width: 100vw;
   height: 100vh;
-  background-color: #000000;
+  background-color: #000;
   animation: modal-backdrop 0.3s 1 ease-out forwards;
 }
 
