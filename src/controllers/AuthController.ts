@@ -33,6 +33,12 @@ class AuthController {
         }
 
         const { reason } = JSON.parse(xhr.responseText);
+        if (reason === 'User already in system') {
+          sessionStorage.setItem("inSystem", "true");
+          router.go('/messenger');
+
+          return;
+        }
         Store.set('error', reason);
       })
       .catch((error) => {
