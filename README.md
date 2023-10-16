@@ -3,13 +3,11 @@
 ## Netlify links
 
 - [Sign in](https://deploy--jocular-rugelach-1c03ff.netlify.app/)
-- [Sign out](https://deploy--jocular-rugelach-1c03ff.netlify.app/registration/)
-- [Chats and chat](https://deploy--jocular-rugelach-1c03ff.netlify.app/chats-and-chat/)
-- [User settings](https://deploy--jocular-rugelach-1c03ff.netlify.app/user-settings/)
+- [Sign out](https://deploy--jocular-rugelach-1c03ff.netlify.app/sign-up/)
+- [Messenger](https://deploy--jocular-rugelach-1c03ff.netlify.app/messenger/)
+- [User settings](https://deploy--jocular-rugelach-1c03ff.netlify.app/settings/)
 - [User editing settings](https://deploy--jocular-rugelach-1c03ff.netlify.app/editing-settings/)
 - [User editing password](https://deploy--jocular-rugelach-1c03ff.netlify.app/editing-password/)
-- [Page 404](https://deploy--jocular-rugelach-1c03ff.netlify.app/404/)
-- [Page 500](https://deploy--jocular-rugelach-1c03ff.netlify.app/500/)
 
 ## Установка
 
