@@ -62,8 +62,9 @@ class HTTP implements IHTTP {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      // @ts-ignore
-      xhr.open(method, url);
+      if (method) {
+        xhr.open(method, url);
+      }
       xhr.withCredentials = true;
       if (headers) {
         headers.forEach((value, header) => xhr.setRequestHeader(header, value))
