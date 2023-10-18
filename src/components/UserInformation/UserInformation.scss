@@ -1,0 +1,16 @@
+.user-information {
+  $block-name: &;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__f {
+    display: flex;
+    align-items: center;
+  }
+
+  &__f-s {
+    margin-left: 15px;
+  }
+}

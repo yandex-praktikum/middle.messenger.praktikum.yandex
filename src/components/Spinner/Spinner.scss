@@ -1,0 +1,29 @@
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+
+  @at-root .chats & {
+    margin-top: 15px;
+  }
+}
+
+.loader {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  border-bottom-color: var(--m-color-1);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

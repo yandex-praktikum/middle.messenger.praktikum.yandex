@@ -1,0 +1,25 @@
+.chats-and-chat
+  aside.sidebar
+    .sidebar__f
+      .dropdown.dropdown--t-6
+        button.dropdown__trigger(
+          type="button",
+          title="Open the chat creation menu",
+          aria-expanded="false",
+          aria-controls="createChat"
+          data-open-text="Open the chat creation menu"
+          data-close-text="Close the chat creation menu"
+        )
+          span.link Create chat
+        #createChat.dropdown__body
+          .dropdown__body-inner!= createChatForm
+
+      form.search!= fieldSearch
+
+    .sidebar__s
+      .sidebar__s-inner!= chatsArea
+
+    .sidebar__t!= userInformation
+
+  | !{chatArea}
+  | !{modal}

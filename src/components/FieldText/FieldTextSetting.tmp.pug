@@ -1,0 +1,6 @@
+.field-text
+  if(typeof(title) !== 'undefined' && title)
+    label.user-settings__list-item-name(for=name)= title
+  input.user-settings__list-item-value.t-right(id=name, type=type, name=name, value=value, data-pattern=pattern, placeholder=placeholder)
+  if(typeof(helpText) !== 'undefined' && helpText)
+    span.field-text__help-text= helpText

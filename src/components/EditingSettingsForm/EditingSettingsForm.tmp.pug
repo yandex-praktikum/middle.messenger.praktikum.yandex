@@ -1,0 +1,9 @@
+form#userSettingsForm.user-settings__form
+  ul.user-settings__list
+    li.user-settings__list-item!= nickname
+    li.user-settings__list-item!= firstName
+    li.user-settings__list-item!= secondName
+    li.user-settings__list-item!= email
+    li.user-settings__list-item!= phone
+    li.user-settings__list-item.form__field--error!= errorText
+    input(id="avatar" type="file", name="avatar", accept=".png, .jpg, .jpeg, .webp", hidden)

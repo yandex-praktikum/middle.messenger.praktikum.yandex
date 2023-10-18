@@ -1,0 +1,34 @@
+.modal
+  .modal__inner
+    | !{logoutBtn}
+    .modal__content
+      section.user-settings
+        .user-settings__f
+          .user-settings__avatar(style=`background-image: url(${baseURL}resources${avatar})`)
+          h2.user-settings__name= first_name
+
+        .user-settings__s
+          ul.user-settings__list
+            li.user-settings__list-item
+              span.user-settings__list-item-name Nickname:
+              span.user-settings__list-item-value= display_name
+            li.user-settings__list-item
+              span.user-settings__list-item-name First name:
+              span.user-settings__list-item-value= first_name
+            li.user-settings__list-item
+              span.user-settings__list-item-name Second name:
+              span.user-settings__list-item-value= second_name
+            li.user-settings__list-item
+              span.user-settings__list-item-name Email:
+              span.user-settings__list-item-value= email
+            li.user-settings__list-item
+              span.user-settings__list-item-name Phone:
+              span.user-settings__list-item-value= phone
+            li.user-settings__list-item
+              span.user-settings__list-item-name Login:
+              span.user-settings__list-item-value= login
+
+        .user-settings__t
+          | !{linkToSettings}
+          | !{linkToPassword}
+          | !{linkToChats}

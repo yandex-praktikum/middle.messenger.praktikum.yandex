@@ -1,0 +1,14 @@
+.modal
+  .modal__inner
+    button.modal__close(title="Close modal")
+    .modal__content
+      section.user-settings
+        .user-settings__f
+          label.user-settings__avatar(for="avatar", title="Change avatar", style=`background-image: url(${baseURL}resources${avatar})`)
+          h2.user-settings__name= userName
+
+        .user-settings__s!= userSettings
+        .user-settings__t
+          | !{saveBtn}
+          | !{linkChangePass}
+          | !{linkProfilePage}

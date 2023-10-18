@@ -1,0 +1,7 @@
+form.form.form--t-1
+  .form__field.t-center
+    label.link(for="avatar") Choose avatar
+    input(id="avatar", name="avatar", type="file", accept=".jpg, .jpeg, .png, .webp", hidden)
+    input(name="chatId", value=chatId type="text", hidden)
+  .form__field!= sendBtn
+  .form__field.form__field--error.t-center!= errorText

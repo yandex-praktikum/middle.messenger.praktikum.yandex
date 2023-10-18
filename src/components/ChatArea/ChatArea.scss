@@ -1,0 +1,39 @@
+.chat-area {
+  $block-name: &;
+
+  --indent-h: 30px;
+  --height-f: 72px;
+
+  height: 100vh;
+
+  &__f,
+  &__s {
+    padding-left: var(--indent-h);
+    padding-right: var(--indent-h);
+  }
+
+  &__f {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: var(--height-f);
+    background-color: var(--t-l-grey-2);
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__info-r {
+    margin-left: 15px;
+  }
+
+  &__s {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: calc(100% - var(--height-f));
+  }
+}

@@ -1,0 +1,11 @@
+a.chat(tabindex="0", id=id, href='javascript:void(0)')
+  .chat__f!= chatAvatar
+  .chat__s
+    .chat__s-f
+      h6.name!= chatName
+      if (lastMessage)
+        - const middle = lastMessage.time.search('T')
+        time.chat__time= lastMessage.time.substring(middle + 1, middle + 6)
+    if (lastMessage)
+      .chat__s-s
+        p.chat__last-message #[b #{lastMessage.user.display_name}:] #{lastMessage.content}
