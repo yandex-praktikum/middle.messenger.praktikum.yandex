@@ -20,7 +20,8 @@ class ChatsController {
           return;
         }
 
-        Store.set('error', res.response);
+        const { reason } = res.response;
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -36,7 +37,8 @@ class ChatsController {
           return;
         }
 
-        Store.set('error', res.response);
+        const { reason } = res.response;
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -61,7 +63,8 @@ class ChatsController {
           return;
         }
 
-        Store.set('error', res.response);
+        const { reason } = res.response;
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -129,7 +132,8 @@ class ChatsController {
           return;
         }
 
-        Store.set('error', res.response);
+        const { reason } = res.response;
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);

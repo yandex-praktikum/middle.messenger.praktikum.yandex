@@ -14,7 +14,8 @@ class AuthController {
           return;
         }
 
-        Store.set('error', res.response);
+        const { reason } = res.response;
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -31,14 +32,16 @@ class AuthController {
           return;
         }
 
-        if (res.response === 'User already in system') {
+        const { reason } = res.response;
+
+        if (reason === 'User already in system') {
           sessionStorage.setItem("inSystem", "true");
           router.go('/messenger');
 
           return;
         }
 
-        Store.set('error', res.response);
+        Store.set('error', reason);
       })
       .catch((error) => {
         console.error(`${error}`);

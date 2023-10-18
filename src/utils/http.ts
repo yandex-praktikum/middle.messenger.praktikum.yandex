@@ -96,7 +96,7 @@ class HTTP implements IHTTP {
         try {
           response = JSON.parse(xhr.responseText);
         } catch (error) {
-          console.error(error);
+          // Send error to logger
         }
 
         const data = {
