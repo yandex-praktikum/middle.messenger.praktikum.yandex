@@ -10,16 +10,14 @@ import type {
 class UsersController {
   public changeProfile(data: UserData) {
     UsersAPI.changeProfile(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const userData = JSON.parse(xhr.responseText);
-          Store.set('user', userData);
+      .then((res) => {
+        if (res.status === 200) {
+          Store.set('user', res.response);
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -28,16 +26,14 @@ class UsersController {
 
   public changeAvatar(data: FormData) {
     UsersAPI.changeAvatar(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const userData = JSON.parse(xhr.responseText);
-          Store.set('user', userData);
+      .then((res) => {
+        if (res.status === 200) {
+          Store.set('user', res.response);
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -46,13 +42,12 @@ class UsersController {
 
   public changePassword(data: PasswordData) {
     UsersAPI.changePassword(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
+      .then((res) => {
+        if (res.status === 200) {
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -60,30 +55,21 @@ class UsersController {
   }
 
   public async search(data: SearchData) {
-    const xhr = await UsersAPI.search(data);
+    const res = await UsersAPI.search(data);
 
-    if (xhr.status === 200) {
-      return JSON.parse(xhr.responseText);
+    if (res.status === 200) {
+      return res.response;
     }
 
-    const { reason } = JSON.parse(xhr.responseText);
-    Store.set('error', reason);
+    Store.set('error', res.response);
   }
 
   public async request(id: number) {
-    const xhr = await UsersAPI.request(id);
+    const res = await UsersAPI.request(id);
 
-    if (xhr.status !== 200) return;
+    if (res.status !== 200) return;
 
-    let res = null;
-
-    try {
-      res = JSON.parse(xhr.responseText);
-    } catch (error) {
-      console.error(error);
-    }
-
-    return res;
+    return res.response;
   }
 }
 

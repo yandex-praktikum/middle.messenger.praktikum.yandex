@@ -19,31 +19,27 @@ export type SearchData = {
   login: string,
 }
 
-const usersAPIInstance = new HTTP();
+const usersAPIInstance = new HTTP(`${import.meta.env.VITE_BASE_URL}user/`);
 
 class UsersAPI extends BaseAPI {
-  private _baseURL = 'https://ya-praktikum.tech/api/v2/user/';
-
   request(id: number) {
-    return usersAPIInstance.get(`${this._baseURL}${id}`);
+    return usersAPIInstance.get(`${id}`);
   }
 
   changeProfile(data: UserData) {
-    return usersAPIInstance.put(`${this._baseURL}profile`, { data });
+    return usersAPIInstance.put(`profile`, { data });
   }
 
   changeAvatar(data: FormData) {
-    const headers = new Map([['Content-Type', 'multipart/form-data']]);
-
-    return usersAPIInstance.put(`${this._baseURL}profile/avatar`, { data, headers });
+    return usersAPIInstance.put(`profile/avatar`, { data });
   }
 
   changePassword(data: PasswordData) {
-    return usersAPIInstance.put(`${this._baseURL}password`, { data });
+    return usersAPIInstance.put(`password`, { data });
   }
 
   search(data: SearchData) {
-    return usersAPIInstance.post(`${this._baseURL}search`, { data });
+    return usersAPIInstance.post(`search`, { data });
   }
 }
 

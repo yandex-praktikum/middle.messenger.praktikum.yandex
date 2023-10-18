@@ -13,16 +13,14 @@ type ActionUser = {
 class ChatsController {
   public request() {
     ChatsAPI.request()
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const chats = JSON.parse(xhr.responseText);
-          Store.set('chats', chats);
+      .then((res) => {
+        if (res.status === 200) {
+          Store.set('chats', res.response);
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -31,15 +29,14 @@ class ChatsController {
 
   public create(data: CreateData) {
     ChatsAPI.create(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
+      .then((res) => {
+        if (res.status === 200) {
           this.request();
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -48,9 +45,9 @@ class ChatsController {
 
   public uploadAvatar(data: FormData) {
     ChatsAPI.uploadAvatar(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const data = JSON.parse(xhr.responseText);
+      .then((res) => {
+        if (res.status === 200) {
+          const { response: data } = res;
           const { chats } = Store.getState();
 
           chats.forEach((chat: any) => {
@@ -64,8 +61,7 @@ class ChatsController {
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -87,9 +83,9 @@ class ChatsController {
       chatId,
       users: [foundUser.id],
     }
-    const xhr = await ChatsAPI.addUsers(addUsersData);
+    const res = await ChatsAPI.addUsers(addUsersData);
 
-    return xhr.responseText;
+    return res.response;
   }
 
   public async deleteUsers(item: ActionUser) {
@@ -106,42 +102,34 @@ class ChatsController {
       chatId,
       users: [foundUser.id],
     }
-    const xhr = await ChatsAPI.deleteUsers(addUsersData);
+    const res = await ChatsAPI.deleteUsers(addUsersData);
 
-    return xhr.responseText;
+    return res.response;
   }
 
   public async getUsers(id: number, parameters = {}) {
-    const xhr = await ChatsAPI.getUsers(id, parameters);
+    const res = await ChatsAPI.getUsers(id, parameters);
 
-    if (xhr.status !== 200) return;
+    if (res.status !== 200) return;
 
-    let res = null;
-
-    try {
-      res = JSON.parse(xhr.responseText);
-    } catch (error) {
-      console.error(error);
-    }
-
-    return res;
+    return res.response;
   }
 
   public delete(data: IdData) {
     ChatsAPI.delete(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const { result } = JSON.parse(xhr.responseText);
+      .then((res) => {
+        if (res.status === 200) {
+          const { result } = res.response;
           const { chats } = Store.getState();
           const updatedChats = chats.filter((chat: any) => chat.id !== result.id);
+
           Store.set('chats', updatedChats);
           Store.set('selectedChat', null);
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -149,19 +137,11 @@ class ChatsController {
   }
 
   public async getToken(id: number) {
-    const xhr = await ChatsAPI.getToken(id);
+    const res = await ChatsAPI.getToken(id);
 
-    if (xhr.status !== 200) return;
+    if (res.status !== 200) return;
 
-    let res = null;
-
-    try {
-      res = JSON.parse(xhr.responseText);
-    } catch (error) {
-      console.error(error);
-    }
-
-    return res;
+    return res.response;
   }
 }
 

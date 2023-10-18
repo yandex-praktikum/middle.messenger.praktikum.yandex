@@ -158,6 +158,7 @@ export default class ChatsAndChat extends Block {
           user,
           chats,
           selectedChat: selectedChatId,
+          messages,
         } = Store.getState();
 
         if (!selectedChatId) {
@@ -175,7 +176,6 @@ export default class ChatsAndChat extends Block {
           id,
           avatar,
           title,
-          last_message,
         } = chats.find((chat) => chat.id === selectedChatId);
 
         id as number;
@@ -188,6 +188,17 @@ export default class ChatsAndChat extends Block {
 
         socket.addEventListener('open', () => {
           console.log('Соединение установлено');
+
+          socket.send(JSON.stringify({
+            type: 'get old',
+            content: '0',
+          }))
+
+          setInterval(() => {
+            socket.send(JSON.stringify({
+              type: 'ping',
+            }))
+          }, 30000)
         });
 
         socket.addEventListener('close', (event) => {
@@ -207,8 +218,20 @@ export default class ChatsAndChat extends Block {
           } catch (error) {
             console.error(error);
           }
+
+          if (result.type === 'pong') {
+            return;
+          }
+
+          if (Array.isArray(result)) {
+            Store.set('messages', result.reverse());
+
+            return;
+          }
+
           const { content, time, user_id } = result;
           const { chats, selectedChat: selectedChatId, messages } = Store.getState();
+
           const userInfo = await UsersController.request(user_id);
 
           const updatedChats = chats.map((item) => {
@@ -223,11 +246,7 @@ export default class ChatsAndChat extends Block {
             return item;
           });
 
-          messages.push({
-            content,
-            time,
-            user: userInfo,
-          });
+          messages.push(result);
 
           Store.set('chats', updatedChats);
           Store.set('messages', messages);
@@ -236,8 +255,6 @@ export default class ChatsAndChat extends Block {
         socket.addEventListener('error', (event: any) => {
           console.log('Ошибка', event.message);
         });
-
-        const arrMessages = last_message ? [last_message] : [];
 
         chatArea.children['content'] = new ChatArea({
           chatInfo: new ChatInformation({
@@ -358,12 +375,12 @@ export default class ChatsAndChat extends Block {
             ],
           }),
           conversation: new Conversation({
-            content: arrMessages.map(({ user: { login }, time, content }) => {
+            content: messages.map(({ user_id, time, content }) => {
               return new Message({
-                login,
+                user_id,
                 time,
                 content,
-                active_user_login: user.login,
+                active_user_id: user.id,
                 append: false,
               })
             }),
@@ -385,25 +402,27 @@ export default class ChatsAndChat extends Block {
                 socket.send(JSON.stringify({
                   type: 'message',
                   content: value,
-                }))
+                }));
+
+                target.value = '';
               }],
             ]),
           }),
         })
+
         chatArea._render();
-        Store.set('messages', arrMessages);
       })
       .on(StoreEvents.ChatsMessage, () => {
         const { chatArea } = this.children;
         const { conversation } = chatArea.children.content.children;
         const { messages, user } = Store.getState();
 
-        conversation.children['content'] = messages.map(({ user: { login }, time, content }) => {
+        conversation.children['content'] = messages.map(({ user_id, time, content }) => {
           return new Message({
-            login,
+            user_id,
             time,
             content,
-            active_user_login: user.login,
+            active_user_id: user.id,
             append: false,
           })
         })

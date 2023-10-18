@@ -15,25 +15,23 @@ type SigninData = {
   password: string,
 }
 
-const authAPIInstance = new HTTP();
+const authAPIInstance = new HTTP(`${import.meta.env.VITE_BASE_URL}auth/`);
 
 class AuthAPI extends BaseAPI {
-  private _baseURL = 'https://ya-praktikum.tech/api/v2/auth/';
-
   signup(data: SignupData) {
-    return authAPIInstance.post(`${this._baseURL}signup`, { data })
+    return authAPIInstance.post(`signup`, { data })
   }
 
   signin(data: SigninData) {
-    return authAPIInstance.post(`${this._baseURL}signin`, { data })
+    return authAPIInstance.post(`signin`, { data })
   }
 
   logout() {
-    return authAPIInstance.post(`${this._baseURL}logout`)
+    return authAPIInstance.post(`logout`)
   }
 
   getUserInfo() {
-    return authAPIInstance.get(`${this._baseURL}user`)
+    return authAPIInstance.get(`user`)
   }
 }
 

@@ -14,6 +14,7 @@ export default class EditingSettings extends Block {
       ...props,
       withId: true,
       userName: '-',
+      baseURL: import.meta.env.VITE_BASE_URL,
       userSettings: new EditingSettingsForm({
         nickname: new FieldText({
           withId: true,

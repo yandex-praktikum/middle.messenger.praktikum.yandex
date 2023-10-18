@@ -14,45 +14,68 @@ interface IHTTP {
 }
 
 type Options = {
-  method?: string,
   headers?: Map<string, string>,
   data?: [string, string][] | object,
   timeout?: number,
   retries?: number,
 }
 
-type XHRInstance = {
-  status: number,
-  responseText: string,
+type MethodOnly = {
+  method: string,
 }
 
-type HTTPMethod = (url: string, options?: Options) => Promise<XHRInstance>;
+type OptionsWithMethod = Options & MethodOnly;
+
+// type XHRInstance = {
+//   status: number,
+//   responseText: string,
+// }
+
+type ReturnedData = {
+  status: number,
+  response: any
+}
+
+type HTTPMethod = (url?: string, options?: Options) => Promise<ReturnedData>;
+type HTTPMethodRequest = (url: string, options: OptionsWithMethod) => Promise<ReturnedData>;
 
 class HTTP implements IHTTP {
-  get: HTTPMethod = (url, options = {}) => {
-    let resUrl = url;
+  private _baseURL;
+
+  constructor(baseURL?: string) {
+    this._baseURL = baseURL || '';
+  }
+
+  get: HTTPMethod = (url = '', options = {}) => {
+    let resURL = `${this._baseURL}${url}`;
     const { data } = options;
 
     if (data) {
-      resUrl = queryStringify(data);
+      resURL = queryStringify(data);
     }
 
-    return this.request(resUrl, { ...options, method: METHODS.GET });
+    return this.request(resURL, { ...options, method: METHODS.GET });
   };
 
   post: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.POST });
+    const resURL = `${this._baseURL}${url}`;
+
+    return this.request(resURL, { ...options, method: METHODS.POST });
   }
 
   put: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.PUT });
+    const resURL = `${this._baseURL}${url}`;
+
+    return this.request(resURL, { ...options, method: METHODS.PUT });
   }
 
   delete: HTTPMethod = (url, options = {}) => {
-    return this.request(url, { ...options, method: METHODS.DELETE });
+    const resURL = `${this._baseURL}${url}`;
+
+    return this.request(resURL, { ...options, method: METHODS.DELETE });
   }
 
-  request: HTTPMethod = (url, options = {}) => {
+  request: HTTPMethodRequest = (url, options) => {
     const {
       method,
       headers,
@@ -62,16 +85,25 @@ class HTTP implements IHTTP {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      if (method) {
-        xhr.open(method, url);
-      }
+      xhr.open(method, url);
       xhr.withCredentials = true;
       if (headers) {
         headers.forEach((value, header) => xhr.setRequestHeader(header, value))
       }
 
       xhr.onload = () => {
-        resolve(xhr);
+        let response = '';
+        try {
+          response = JSON.parse(xhr.responseText);
+        } catch (error) {
+          console.error(error);
+        }
+
+        const data = {
+          response,
+          status: xhr.status,
+        }
+        resolve(data);
       };
 
       xhr.onabort = reject;
@@ -81,7 +113,7 @@ class HTTP implements IHTTP {
       if (method === METHODS.GET) {
         xhr.send();
       } else if (data instanceof FormData) {
-        xhr.send(data as FormData);
+        xhr.send(data);
       } else {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));

@@ -6,16 +6,15 @@ import type { SignupData, SigninData } from "../api/auth-api";
 class AuthController {
   public signup(data: SignupData) {
     AuthAPI.signup(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
+      .then((res) => {
+        if (res.status === 200) {
           sessionStorage.setItem("inSystem", "true");
           router.go('/messenger');
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        Store.set('error', reason);
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -24,22 +23,22 @@ class AuthController {
 
   public signin(data: SigninData) {
     AuthAPI.signin(data)
-      .then((xhr) => {
-        if (xhr.status === 200) {
+      .then((res) => {
+        if (res.status === 200) {
           sessionStorage.setItem("inSystem", "true");
           router.go('/messenger');
 
           return;
         }
 
-        const { reason } = JSON.parse(xhr.responseText);
-        if (reason === 'User already in system') {
+        if (res.response === 'User already in system') {
           sessionStorage.setItem("inSystem", "true");
           router.go('/messenger');
 
           return;
         }
-        Store.set('error', reason);
+
+        Store.set('error', res.response);
       })
       .catch((error) => {
         console.error(`${error}`);
@@ -59,10 +58,9 @@ class AuthController {
 
   public getUserInfo() {
     AuthAPI.getUserInfo()
-      .then((xhr) => {
-        if (xhr.status === 200) {
-          const userData = JSON.parse(xhr.responseText);
-          Store.set('user', userData);
+      .then((res) => {
+        if (res.status === 200) {
+          Store.set('user', res.response);
         }
       })
       .catch((error) => {

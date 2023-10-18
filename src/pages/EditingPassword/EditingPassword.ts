@@ -12,8 +12,10 @@ export default class EditingPassword extends Block {
   constructor(props?: object) {
     const newProps = {
       ...props,
+      baseURL: import.meta.env.VITE_BASE_URL,
       first_name: '-',
       userSettings: new EditingPasswordForm({
+        baseURL: import.meta.env.VITE_BASE_URL,
         currentPassword: new FieldText({
           withId: true,
           title: 'Current password:',

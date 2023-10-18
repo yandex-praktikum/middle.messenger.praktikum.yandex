@@ -8,8 +8,8 @@ export default class Message extends Block {
   }
 
   render() {
-    const { login, active_user_login } = this.props;
+    const { user_id, active_user_id } = this.props;
 
-    return this.compile(login === active_user_login ? templateInner : templateOuter, this.props);
+    return this.compile(user_id === active_user_id ? templateInner : templateOuter, this.props);
   }
 }

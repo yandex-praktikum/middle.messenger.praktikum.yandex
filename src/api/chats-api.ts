@@ -14,61 +14,59 @@ export type UsersData = {
   users: number[],
 }
 
-const chatsAPIInstance = new HTTP();
+const chatsAPIInstance = new HTTP(`${import.meta.env.VITE_BASE_URL}chats/`);
 
 class ChatsAPI extends BaseAPI {
-  private _baseURL = 'https://ya-praktikum.tech/api/v2/chats/';
-
   request() {
-    return chatsAPIInstance.get(`${this._baseURL}`);
+    return chatsAPIInstance.get();
   }
 
   create(data: CreateData) {
-    return chatsAPIInstance.post(`${this._baseURL}`, { data });
+    return chatsAPIInstance.post('', { data });
   }
 
   delete(data: IdData) {
-    return chatsAPIInstance.delete(`${this._baseURL}`, { data });
+    return chatsAPIInstance.delete('', { data });
   }
 
   getFiles(id: number) {
-    return chatsAPIInstance.get(`${this._baseURL}${id}/files`);
+    return chatsAPIInstance.get(`${id}/files`);
   }
 
   getArchive(parameters: { [key: string]: any }) {
-    return chatsAPIInstance.get(`${this._baseURL}archive${queryStringify(parameters)}`);
+    return chatsAPIInstance.get(`archive${queryStringify(parameters)}`);
   }
 
   archive(data: IdData) {
-    return chatsAPIInstance.post(`${this._baseURL}archive`, { data });
+    return chatsAPIInstance.post(`archive`, { data });
   }
 
   unarchive(data: IdData) {
-    return chatsAPIInstance.post(`${this._baseURL}unarchive`, { data });
+    return chatsAPIInstance.post(`unarchive`, { data });
   }
 
   getUsers(id: number, parameters = {}) {
-    return chatsAPIInstance.get(`${this._baseURL}${id}/users${queryStringify(parameters)}`);
+    return chatsAPIInstance.get(`${id}/users${queryStringify(parameters)}`);
   }
 
   getNewMessagesCount(id: number) {
-    return chatsAPIInstance.get(`${this._baseURL}new/${id}`);
+    return chatsAPIInstance.get(`new/${id}`);
   }
 
   uploadAvatar(data: FormData) {
-    return chatsAPIInstance.put(`${this._baseURL}avatar`, { data });
+    return chatsAPIInstance.put(`avatar`, { data });
   }
 
   addUsers(data: UsersData) {
-    return chatsAPIInstance.put(`${this._baseURL}users/`, { data });
+    return chatsAPIInstance.put(`users/`, { data });
   }
 
   deleteUsers(data: UsersData) {
-    return chatsAPIInstance.delete(`${this._baseURL}users/`, { data });
+    return chatsAPIInstance.delete(`users/`, { data });
   }
 
   getToken(id: number) {
-    return chatsAPIInstance.post(`${this._baseURL}token/${id}`);
+    return chatsAPIInstance.post(`token/${id}`);
   }
 }
 

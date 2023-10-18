@@ -24,7 +24,7 @@ export default class Modal extends Block {
   }
 
   closeModal(event: any) {
-    const target = event;
+    const { target } = event;
     if (
       target.getAttribute('data-modal') === 'close' ||
       !target.closest('.d-modal__content, [data-modal="open"]')

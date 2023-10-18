@@ -7,6 +7,7 @@ export default class UserSettings extends Block {
   constructor(props?: object) {
     const newProps = {
       ...props,
+      baseURL: import.meta.env.VITE_BASE_URL,
       logoutBtn: new Button({
         className: 'modal__close',
         type: 'button',
