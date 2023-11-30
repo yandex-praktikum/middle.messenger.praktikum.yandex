@@ -1,0 +1,14 @@
+.info-input {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	border-bottom: 1px solid lightgrey;
+	padding-bottom: 10px;
+	input {
+		width: 100%;
+		border: none;
+		background-color: white;
+		text-align: right;
+	}
+}

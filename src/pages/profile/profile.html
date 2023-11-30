@@ -1,0 +1,19 @@
+{{#> layouts/page title="Login Page"}}
+<link rel="stylesheet" href="/src/pages/profile/profile.scss" />
+
+<div class="profile">
+	{{> user-photo/user-photo src='/public/images/photo_missed.jpg'
+	name=user.first_name}}
+	<div class="container-info">
+		{{#each user }} {{> info-input/info-input name=this.email field =this.field
+		value=this.value disabled='disabled'}} {{/each}}
+	</div>
+	<div class="refers">
+		{{>ref/ref href='' border-color='lightgrey' ref_name='Изменить данные'}}
+		{{>ref/ref href='' border-color='lightgrey' ref_name='Изменить пароль'}}
+		{{>ref/ref href='/src/pages/login/login.html' border-color='white'
+		color='red' ref_name='Выйти'}}
+	</div>
+</div>
+
+{{/ layouts/page}}

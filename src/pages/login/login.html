@@ -1,0 +1,15 @@
+{{#> layouts/page title="Login Page"}}
+<link rel="stylesheet" href="/src/pages/login/login.scss" />
+
+<div class="login-page">
+	{{#> card/card pageName='Вход'}} {{#each login.inputs }} {{> input/input
+	type=this.type placeholder=this.placeholder name=this.name}} {{/each}}
+	<div class="buttons-container">
+		{{> button/button label="Войти"}} {{> ref/ref border-color='white'
+		ref_name='Создать аккаунт'}}
+	</div>
+
+	{{/card/card}}
+</div>
+
+{{/ layouts/page}}
