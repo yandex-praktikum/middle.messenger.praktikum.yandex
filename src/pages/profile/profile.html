@@ -1,7 +1,7 @@
 {{#> layouts/page title="Profile"}}
 <link rel="stylesheet" href="/src/pages/profile/profile.scss" />
 
-<main class="profile">
+<div class="profile">
 	{{> user-photo/user-photo src='/public/images/photo_missed.jpg' alt='Фото
 	пользователя' name='Jack'}}
 	<form class="container-info">
@@ -14,6 +14,6 @@
 		{{>ref/ref href='/src/pages/login/login.html' border-color='white'
 		color='red' ref_name='Выйти'}}
 	</div>
-</main>
+</div>
 
 {{/ layouts/page}}
