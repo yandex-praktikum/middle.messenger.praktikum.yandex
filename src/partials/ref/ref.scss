@@ -1,7 +1,9 @@
+$link-color: #3369f3;
+
 .ref {
 	display: block;
 	text-decoration: none;
-	color: #3369f3;
+	color: $link-color;
 	margin-bottom: 7px;
 	padding-bottom: 5px;
 }

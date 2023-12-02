@@ -1,14 +1,18 @@
+$info_input-bckGround-color: white;
+$info_input-border: 1px solid lightgrey;
+
 .info-input {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
-	border-bottom: 1px solid lightgrey;
+	border-bottom: $info_input-border;
 	padding-bottom: 10px;
 	input {
 		width: 100%;
 		border: none;
-		background-color: white;
+		max-width: 400px;
+		background-color: $info_input-bckGround-color;
 		text-align: right;
 	}
 }
