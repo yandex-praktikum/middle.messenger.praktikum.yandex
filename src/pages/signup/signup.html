@@ -1,0 +1,14 @@
+{{#> layouts/page title="Sign up Page" }}
+<link rel="stylesheet" href="/src/pages/signup/signup.scss" />
+<div class="signup-page">
+	{{#> card/card pageName='Регистрация'}} {{#each registration }} {{>
+	input/input type=this.type placeholder=this.placeholder name=this.name}}
+	{{/each}}
+	<div class="buttons-container">
+		{{> button/button label="Зарегистрироваться"}} {{> ref/ref
+		border-color='white' ref_name='Войти'}}
+	</div>
+
+	{{/card/card}}
+</div>
+{{/ layouts/page}}

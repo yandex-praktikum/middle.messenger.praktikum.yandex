@@ -1,0 +1,12 @@
+$input-border: 1px solid grey;
+$input-border--hover: blue;
+
+.input {
+	width: 100%;
+	border: none;
+	border-bottom: $input-border;
+	margin-bottom: 40px;
+}
+.input:hover {
+	border-color: $input-border--hover;
+}
