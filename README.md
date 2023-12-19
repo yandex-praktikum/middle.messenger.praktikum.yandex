@@ -2,12 +2,14 @@
 
 ## Netlify links
 
-- [Sign in](https://keen-khapse-9f31f6.netlify.app/src/pages/auth/auth)
-- [Sign out](https://keen-khapse-9f31f6.netlify.app/src/pages/registation/registation)
-- [Messenger](https://keen-khapse-9f31f6.netlify.app/src/pages/chats/chats)
-- [User settings](https://keen-khapse-9f31f6.netlify.app/src/pages/profile/profile)
-- [404](https://keen-khapse-9f31f6.netlify.app/src/pages/404/404)
-- [500](https://keen-khapse-9f31f6.netlify.app/src/pages/500/500)
+[Navigation](https://illustrious-chimera-d6af04.netlify.app/)
+
+- [Auth](https://illustrious-chimera-d6af04.netlify.app/src/pages/auth/auth.html)
+- [Registration](https://illustrious-chimera-d6af04.netlify.app/src/pages/registation/registation)
+- [Messenger](https://illustrious-chimera-d6af04.netlify.app/src/pages/chats/chats.html)
+- [User settings](https://illustrious-chimera-d6af04.netlify.app/src/pages/profile/profile.html)
+- [404](https://illustrious-chimera-d6af04.netlify.app/src/pages/404/404.html)
+- [500](https://illustrious-chimera-d6af04.netlify.app/src/pages/500/500.html)
 
 ## Установка
 
