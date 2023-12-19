@@ -1,0 +1,27 @@
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        font-size: 23px;
+        color: white;
+        text-decoration: none;
+        margin: 5px;
+        padding: 10px;
+        background: skyblue;
+        border-radius: 10px;
+    }
+
+    a:hover {
+        background: coral;
+    }
+
+    a:active {
+        background: whitesmoke;
+    }
+}

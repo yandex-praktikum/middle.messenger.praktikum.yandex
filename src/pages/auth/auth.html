@@ -1,0 +1,11 @@
+{{#>layouts/page/page title="Auth Page" style='../../style.scss'}}
+    <div class="auth-page">
+        {{#>layouts/card/card}}
+            {{> capital-word/capital-word text='Вход'}}
+            {{> input/input idForLable='login' selectorInput='log' selecrtorLable='logLable' type='text' placeholder='Логин'}}
+            {{> input/input idForLable='password' selectorInput="log" selecrtorLable='logLable' type='password' placeholder='Пароль'}}
+            {{> button/button background='background' text="Авторизоваться"}}
+            {{> button/button text="Нет аккаунта ?"}}
+        {{/layouts/card/card}}
+    </div>
+{{/layouts/page/page}}

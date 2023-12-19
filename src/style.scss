@@ -1,0 +1,31 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+@import './pages/auth/auth.scss';
+@import './pages/registation/registation.scss';
+@import './pages/chats/chats.scss';
+@import './pages/profile/profile.scss';
+@import './pages/404/404.scss';
+@import './pages/500/500.scss';
+
+@import './partials/button/button.scss';
+@import './partials/input/input.scss';
+@import './partials/button-profile/button-profile.scss';
+@import './partials/choiсe-chat-in-list/choiсe-chat-in-list.scss';
+@import './partials/plug/plug.scss';
+@import './partials/header-messages-chat/header-messages-chat.scss';
+@import './partials/messages-input-button/messages-input-button.scss';
+@import './partials/data/data.scss';
+@import './partials/message/message.scss';
+@import './partials/profile-type-info/profile-type-info.scss';
+
+@import './partials/layouts/page/page.scss';
+@import './partials/layouts/card/card.scss';
+@import './partials/layouts/leftPositionChats/leftPositionChats.scss';
+@import './partials/layouts/rightPositionChat/rightPositionChat.scss';
+@import './partials/layouts/header-wrap/header-wrap.scss';
+@import './partials/layouts/chat-list/chat-list.scss';
+@import './partials/layouts/messages/messages.scss';
+@import './partials/layouts/message-wrap/message-wrap.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');

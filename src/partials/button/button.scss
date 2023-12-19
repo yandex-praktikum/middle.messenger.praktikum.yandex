@@ -1,0 +1,33 @@
+.button {
+    font-size: $middle-font-size;
+    color: $button-color;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: $margin-bottom-button;
+}
+
+.button:hover {
+    text-decoration: underline;
+}
+
+.button:active {
+    color: $button-active;
+}
+
+.background {
+    padding: 0.7rem 3rem;
+    color: white;
+    background: $button-color;
+}
+
+.background:hover {
+    background: $button-hover;
+    text-decoration: none;
+}
+
+.background:active {
+    background: $button-active;
+    text-decoration: none;
+}

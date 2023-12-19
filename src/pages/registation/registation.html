@@ -1,0 +1,16 @@
+{{#>layouts/page/page title="Auth Page" style='../../style.scss'}}
+    <div class="registation-page">
+        {{#>layouts/card/card}}
+            {{> capital-word/capital-word text='Регистрация'}}
+            {{> input/input idForLable='email' selectorInput="log" selecrtorLable='logLable' type='email' placeholder='Почта'}}
+            {{> input/input idForLable='login' selectorInput="log" selecrtorLable='logLable' type='text' placeholder='Логин'}}
+            {{> input/input idForLable='name' selectorInput="log" selecrtorLable='logLable' type='text' placeholder='Имя'}}
+            {{> input/input idForLable='lastName' selectorInput="log" selecrtorLable='logLable' type='text' placeholder='Фамилия'}}
+            {{> input/input idForLable='phone' selectorInput="log" selecrtorLable='logLable' type='tel' placeholder='Телефон'}}
+            {{> input/input idForLable='password' selectorInput="log" selecrtorLable='logLable' type='password' placeholder='Пароль'}}
+            {{> input/input idForLable='returnPassword' selectorInput="log" selecrtorLable='logLable' type='password' placeholder='Повторить пароль'}}
+            {{> button/button background='background' text="Зарегистрироваться"}}
+            {{> button/button text="Войти"}}
+        {{/layouts/card/card}}
+    </div>
+{{/layouts/page/page}}

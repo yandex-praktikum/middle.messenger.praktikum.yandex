@@ -1,0 +1,48 @@
+.message {
+    position: relative;
+    color: #1E1E1E;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 10px;
+
+    max-width: 600px;
+    min-width: 50px;
+
+    p {
+        margin: 0;
+    }
+
+    .time {
+        display: block;
+        float: right;
+        font-size:11px;
+    }
+
+    .time-left {
+        color: #999999;
+
+        svg {
+            visibility: hidden;
+        }
+    }
+    
+    .time-right {
+        color: $button-color;
+    }
+
+    .time-right::after { 
+        content: url("https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=1-189&mode=design&t=K9RyQ3MwWe23hhX5-4");
+    }
+}
+
+.message-left {
+    background: #F8F8F8;
+    border-radius: 0px 10px 10px 10px;
+}
+
+.message-right {
+    background: #E4EDFD;
+    border-radius: 10px 10px 0 10px;
+}
+

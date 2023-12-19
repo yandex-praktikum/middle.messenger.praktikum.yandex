@@ -1,0 +1,48 @@
+{{#> layouts/page/page title="Chat Page" style='../../style.scss'}}
+    <div class="chats-page">
+        {{#> layouts/leftPositionChats/leftPositionChats}}
+            {{#> layouts/header-wrap/header-wrap}}
+                {{> button-profile/button-profile selector-wrap="button-profile-wrap" selector-button="button-profile" text='Профиль >'}}
+                {{> input/input idForLable='search' selectorInput="search" selecrtorLable='searchLable' type='text' placeholder='Поиск'}}
+            {{/layouts/header-wrap/header-wrap}}
+            {{#> layouts/chat-list/chat-list}}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+                {{> choiсe-chat-in-list/choiсe-chat-in-list iconChat="" nameChat="Андрей" message="Изображение" time="10:49" quantity="2" }}
+            {{/layouts/chat-list/chat-list}}
+        {{/layouts/leftPositionChats/leftPositionChats}}
+        {{#> layouts/rightPositionChat/rightPositionChat}}
+            {{> header-messages-chat/header-messages-chat nameMessage="Андрей"}}
+            {{#> layouts/messages/messages }}
+                {{> data/data data="19 Июня"}}
+                {{#> layouts/message-wrap/message-wrap}}
+                    {{> message/message message-left-or-right="message-left" text="Привет! Смотри, тут всплыл интересный кусок лунной космической истории — 
+                        НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали 
+                        с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой."
+                        time-left-or-right="time-left" time="11:56" }}
+                {{/layouts/message-wrap/message-wrap }}
+
+                {{#> layouts/message-wrap/message-wrap right="right" }}
+                    {{> message/message message-left-or-right="message-right" text="Круто!" time-left-or-right="time-right" time="12:00" }}
+                {{/layouts/message-wrap/message-wrap }}
+
+            {{/layouts/messages/messages }}
+            {{> messages-input-button/messages-input-button}}
+        {{/layouts/rightPositionChat/rightPositionChat}}
+    </div>
+{{/layouts/page/page}}

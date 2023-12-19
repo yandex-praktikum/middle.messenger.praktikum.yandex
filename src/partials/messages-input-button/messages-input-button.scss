@@ -1,0 +1,43 @@
+.messages-input-button {
+    flex: 1 1 5%;
+
+    border-top: 2px solid #EAEAEA;
+    margin: 0 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .paper-clip {
+        cursor: pointer;
+    }
+
+    .input-message-wrap {
+        flex: 1 1 100%;
+        display: flex;
+        justify-content: center;
+
+        .input-message {
+            width: 95%;
+            background: #EFEFEF;
+            box-sizing: border-box;
+            border-radius: 30px;
+            padding: 12px;
+        }
+    }
+
+    .button-message-wrap {
+        .button-message {
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: $button-color;
+            border-radius: 100%;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

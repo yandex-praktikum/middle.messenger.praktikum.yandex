@@ -1,0 +1,126 @@
+.profile-page {
+    height: 99.8vh;
+
+    display: flex;
+
+    .back-chat {
+        flex: 1 1 5%;
+
+        background: #FBFBFB;
+        border-right: 2px solid #EAEAEA;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .wrap-back {
+
+            @keyframes backAnim {
+                50% {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+
+            .back {
+                width: 30px;
+                height: 30px;
+                background: $button-color;
+                border: none;
+                border-radius: 100%;
+                @include flexCenterPosition;
+                cursor: pointer;
+            }
+
+            .back:hover {
+                background: $button-hover;
+                animation: backAnim 0.3s ease;
+            }
+        }
+
+    }
+
+    .profile-wrap {
+        flex: 1 1 95%;
+
+        @include flexCenterPosition;
+
+        .profile {
+            width: 600px;
+            height: 600px;
+            
+
+            .profile-photo-name {
+                @include flexCenterPosition;
+                flex-direction: column;
+
+              .profile-photo {
+                width: 130px;
+                height: 130px;
+                border-radius: 100%;
+                background: #EFEFEF;
+                cursor: pointer;
+
+                @include flexCenterPosition;
+
+                .change-photo {
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 100%;
+                    background: rgba(0,0,0, .5);
+                    position: absolute;
+                    @include flexCenterPosition;
+
+
+                    .change-photo-button {
+                        @include buttonNone;
+                        color: #FFFFFF;
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+                }
+
+              } 
+              
+            }
+
+            .profile-info-user {
+                margin: 3rem 0;
+            }
+
+            .profile-editing {
+                .wrap-editing {
+                    border-bottom: 2px solid #EAEAEA;
+                    padding: 10px 0;
+                    
+                    .editing {
+                        padding: 0;
+                        @include buttonNone;
+                        color: $button-color;
+                        font-size: 16px;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+
+                    .editing:hover {
+                        text-decoration: underline;
+                    }
+
+                    .exit {
+                        color: #FF0000;
+                    }
+
+                    .exit:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                .wrap-editing:last-child {
+                    border: none;
+                }
+            }
+        }
+
+    }
+    
+}

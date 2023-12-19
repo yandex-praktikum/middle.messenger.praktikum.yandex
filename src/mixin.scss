@@ -1,0 +1,25 @@
+@mixin dontSelect {
+    -webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin flexCenterPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin forCardCenterPosition {
+	width: 100vw;
+    height: 100vh;
+
+    @include flexCenterPosition;
+}
+
+@mixin buttonNone {
+    background: none;
+    border: none;
+}

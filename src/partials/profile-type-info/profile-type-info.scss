@@ -1,0 +1,17 @@
+.profile-type-info {
+    padding: 10px 0;
+
+    border-bottom: 2px solid #EAEAEA;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span, h4 {
+        margin: 0;
+    }
+}
+
+.profile-type-info:last-child {
+    border: none;
+}

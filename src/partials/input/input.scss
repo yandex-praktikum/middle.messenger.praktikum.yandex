@@ -1,0 +1,59 @@
+.input-wrap {
+    width: 100%;
+    position: relative;
+    margin-bottom: $margin-bottom-input;
+
+    .input {
+        margin: 0 auto;
+        font-size: $middle-font-size;
+        display: block;
+
+    }
+
+    .lable {
+        display: block;
+        position: absolute;
+    }
+
+    .log {
+        width: 15rem;
+        border-bottom: 1px solid $input-underline;
+    }
+
+    .logLable {
+        top: -0.1rem;
+        left: 3.5rem;
+        font-size: 1rem;
+        transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+        @include dontSelect;
+    }
+
+    .log:focus ~ .logLable,
+    .log:not(:placeholder-shown) ~ .logLable {
+        top: -1rem;
+        font-size: 0.8rem;
+        left: 2rem;
+    }
+    
+    .log:not(:placeholder-shown) {
+        border-bottom: 1px solid $button-color;
+    }
+
+    .search {
+        width: 85%;
+        padding: 0.5rem;
+        background: #EFEFEF;
+        border-radius: $border-radius;
+    }
+
+    .searchLable {
+        top: 0.4rem;
+        left: 45%;
+        color: $chat-list-color;
+    }
+
+    .search:focus ~ .searchLable,
+    .search:not(:placeholder-shown) ~ .searchLable {
+        visibility: hidden;
+    }
+}
