@@ -1,0 +1,17 @@
+<div class="signup-container">
+    {{#> FormAuth}}
+        {{> Logo }}
+        <div class="signup-container__space"></div>
+        {{> Input label="First name"}}
+        {{> Input label="Last Name"}}
+        {{> Input label="Email"}}
+        {{> Input label="Phone number"}}
+        {{> Input label="Login"}}
+        {{> Input label="Password" type="password"}}
+        {{> Input label="Repeat password" error="password are not mached" type="password"}}
+        <div class="signup-container__space"></div>
+        {{> Button label="Sign up" type="primary"}}
+        {{> Button label="Sign in" type="link"  page="signin"}}
+    {{/FormAuth}}
+</div>
+ 

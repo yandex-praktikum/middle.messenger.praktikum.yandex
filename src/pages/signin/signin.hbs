@@ -1,0 +1,12 @@
+<div class="signin-container">
+    {{#> FormAuth}}
+        {{> Logo }}
+        <div class="signin-container__space"></div>
+        {{> Input label="Login"}}
+        {{> Input label="Password" error="wrong password" type="password"}}
+        <div class="signin-container__space"></div>
+        {{> Button label="Sign in" type="primary"}}
+        {{> Button label="Sign up" type="link" page="signup"}}
+    {{/FormAuth}}
+</div>
+ 
