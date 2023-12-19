@@ -8,7 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
+src
+public
 dist-ssr
 *.local
 
@@ -25,3 +26,9 @@ dist-ssr
 
 27061998
 27061998.pub
+index.html
+index.scss
+package-lock.json
+package.json
+server.json
+vite.config.js
