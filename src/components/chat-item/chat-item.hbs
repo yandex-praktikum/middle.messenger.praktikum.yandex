@@ -1,16 +1,17 @@
-<div class="chat-item" >
-    <div class="chat-item__avatar"></div>
-    <div class="chat-item__titles-container">
-        <div class="chat-item__title">
-            <span class="chat-item__user-title">User_name</span>
-            <span class="chat-item__details-title">12:34</span>
+<div class="chat-item {{#if isSelected}}chat-item--selected{{/if}}">
+    <div class="chat-item__avatar">
+        {{> Avatar }}
+    </div>
+    <div class="chat-item__info">
+        <div class="chat-item__info-top">
+            <b>User fullname</b>
+            <span>12:23</span>
         </div>
-        <div class="chat-item__subtitle">
-            <span class="chat-item__dialog-subtitle">
-                <span class="chat-item__author">You:</span>
-                <span class="chat-item__message">Message</span>
-            </span>
-            <span class="chat-item__dialog-badge">2</span>
+        <div class="chat-item__info-bottom">
+            <p>This is the last user message. It can be very long</p>
+            <div class="chat-item__info-bottom-count">
+                9
+            </div>
         </div>
     </div>
 </div>

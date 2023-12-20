@@ -1,0 +1,4 @@
+@mixin random-bgr(){
+  $rand-color: rgb(random(255), random(255), random(255));
+  background: linear-gradient(135deg, $rand-color, 0%, lighten($rand_color, 6.25%) 96.52%);
+}
