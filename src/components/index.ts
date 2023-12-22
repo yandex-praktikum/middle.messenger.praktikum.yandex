@@ -1,7 +1,10 @@
 export { Button } from './button'
 export { FormAuth } from './form-auth'
-export { FormChatList } from './form-chat-list'
+export { ChatList } from './chat-list'
 export { Input } from './input'
 export { Logo } from './logo'
 export { Avatar } from "./avatar";
 export { ChatItem } from "./chat-item";
+export { Search } from "./search";
+export { Conversation } from "./conversation";
+export { Navigator } from "./navigator";

@@ -3,8 +3,12 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
 
-.signin-container__space {
-    height: 15px;
+    h1 {
+        text-align: center;
+    }
+
+    &__space {
+        height: 15px;
+    }
 }

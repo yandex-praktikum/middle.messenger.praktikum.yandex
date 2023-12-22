@@ -1,0 +1,17 @@
+.navigator {
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px solid black;
+
+  ul {
+    margin: 0;
+    li {
+      display: inline-block;
+    }
+  }
+
+  .button {
+    font-size: 20px;
+    padding: 0 20px 0 20px;
+  }
+}

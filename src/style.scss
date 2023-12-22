@@ -5,6 +5,11 @@
 @import '/src/components/logo/logo';
 @import '/src/components/chat-item/chat-item';
 @import '/src/components/avatar/avatar';
+@import '/src/components/search/search';
+@import '/src/components/chat-list/chat-list';
+@import '/src/components/conversation/conversation';
+@import '/src/components/navigator/navigator';
 @import '/src/pages/signin/signin';
 @import '/src/pages/signup/signup';
-@import '/src/pages/chats/chats';
+@import '/src/pages/messenger/messenger';
+@import '/src/pages/error/error';

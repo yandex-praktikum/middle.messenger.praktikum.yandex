@@ -22,4 +22,12 @@
   font-size: 11px;
   text-align: center;
 }
-  
+
+.button__settings {
+  background-color: transparent;
+  background-image: url("/icons/menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: content-box;
+  opacity: 0.5;
+}

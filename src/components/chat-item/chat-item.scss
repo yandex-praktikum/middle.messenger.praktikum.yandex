@@ -1,7 +1,11 @@
+@import "/src/scss/variables";
+
 .chat-item {
   display: flex;
   color: black;
   align-items: center;
+  background-color: white;
+  margin: 2px 1px 2px 0;
 
   &:hover {
     background-color: #d1d3dc;
@@ -55,7 +59,7 @@
         position: absolute;
         right: 3px;
         bottom: 3px;
-        background: #6b92f4;
+        background: $main-color;
         color: #fff;
         font-weight: bold;
         width: 100%;
@@ -66,7 +70,7 @@
         font-size: 11px;
         text-align: center;
         line-height: 17px;
-        box-shadow: 0 0 0px 3px #fff;
+        box-shadow: 0 0 0 2px #fff;
       }
     }
   }
