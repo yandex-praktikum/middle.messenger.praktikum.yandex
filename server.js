@@ -8,7 +8,11 @@ const __dirname = path.dirname(__filename)
 const app = express();
 const PORT = 3000;
 
-app.use(express.static(`${__dirname}/`));
+express.static.mime.define({'application/wasm': ['wasm']});
+
+//app.use(express.static(`${__dirname}/`));
+app.use(express.static(__dirname + '/dist'));
+//app.use(express.static(`.`));
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}!`);
