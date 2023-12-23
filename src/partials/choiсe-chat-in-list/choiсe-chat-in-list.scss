@@ -1,7 +1,7 @@
 .chat-wrap {
     height: 80px;
-    color: #999999;
-    border-top: 2px solid #EAEAEA;
+    color: $chat-list-color;
+    border-top: 2px solid $border-chat;
     margin: 0 10px;
 
     display: flex;
@@ -15,7 +15,7 @@
         .icon {
             width:47px;
             height: 47px;
-            background: #EFEFEF;
+            background: $none-icon-chat;
             border-radius: 100%;
         }
     }
@@ -38,7 +38,7 @@
             margin-bottom: 0.2rem;
 
             h3 {
-                color: #1E1E1E;
+                color: $black;
             }
         }
 
@@ -65,7 +65,7 @@
             height: 20px;
             width: 20px;
             border-radius: 100%;
-            background: #3369F3;
+            background: $quantity;
 
             display: flex;
             justify-content: center;
@@ -74,7 +74,7 @@
             span {
                 font-size: 11px;
                 font-weight: bold;
-                color: #FFFFFF;
+                color: $white;
             }
         }
     }

@@ -1,8 +1,8 @@
 .card {
     width: 340px;
     border-radius: 10px;
-    background: white;
-    box-shadow: 0 0 5px #b3b3b3;
+    background: $white;
+    box-shadow: 0 0 5px $input-underline;
     padding: 1rem;
 
     display: flex;

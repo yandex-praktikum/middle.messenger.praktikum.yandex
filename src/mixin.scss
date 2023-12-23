@@ -23,3 +23,9 @@
     background: none;
     border: none;
 }
+
+@mixin inputNone {
+    background: none;
+    border: none;
+    outline: none;
+}

@@ -1,7 +1,7 @@
 .messages-input-button {
     flex: 1 1 5%;
 
-    border-top: 2px solid #EAEAEA;
+    border-top: 2px solid $border-chat;
     margin: 0 15px;
 
     display: flex;
@@ -19,7 +19,8 @@
 
         .input-message {
             width: 95%;
-            background: #EFEFEF;
+            border: none;
+            background: $none-icon-chat;
             box-sizing: border-box;
             border-radius: 30px;
             padding: 12px;

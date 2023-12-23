@@ -1,6 +1,6 @@
 .message {
     position: relative;
-    color: #1E1E1E;
+    color: $black;
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
@@ -20,7 +20,7 @@
     }
 
     .time-left {
-        color: #999999;
+        color: $chat-list-color;
 
         svg {
             visibility: hidden;
@@ -37,12 +37,12 @@
 }
 
 .message-left {
-    background: #F8F8F8;
+    background: $left-chats-list;
     border-radius: 0px 10px 10px 10px;
 }
 
 .message-right {
-    background: #E4EDFD;
+    background: $right-chat;
     border-radius: 10px 10px 0 10px;
 }
 

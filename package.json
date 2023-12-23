@@ -5,7 +5,7 @@
   "type":"commonjs",
   "scripts": {
     "start": "vite build && node ./server.js",
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview"
   },

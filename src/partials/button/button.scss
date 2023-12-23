@@ -4,8 +4,11 @@
     background: none;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     margin-bottom: $margin-bottom-button;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .button:hover {

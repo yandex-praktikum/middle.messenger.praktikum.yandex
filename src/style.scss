@@ -2,7 +2,7 @@
 @import './mixin.scss';
 
 @import './pages/auth/auth.scss';
-@import './pages/registation/registation.scss';
+@import './pages/registration/registration.scss';
 @import './pages/chats/chats.scss';
 @import './pages/profile/profile.scss';
 @import './pages/404/404.scss';
@@ -27,5 +27,6 @@
 @import './partials/layouts/chat-list/chat-list.scss';
 @import './partials/layouts/messages/messages.scss';
 @import './partials/layouts/message-wrap/message-wrap.scss';
+@import './partials//layouts//form/form.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
