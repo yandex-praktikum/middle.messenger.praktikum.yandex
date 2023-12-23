@@ -1,0 +1,7 @@
+.auth-page {
+    @include forCardCenterPosition;
+
+    .input-wrap:nth-child(3n) {
+        margin-bottom: 8rem;
+    }
+}

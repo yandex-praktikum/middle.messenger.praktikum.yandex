@@ -1,0 +1,24 @@
+{
+  "name": "strekochat",
+  "private": true,
+  "version": "0.0.0",
+  "type":"commonjs",
+  "scripts": {
+    "start": "vite build && node ./server.js",
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "sass": "^1.69.5",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "vite-plugin-handlebars": "^1.6.0"
+  },
+  "engines": {
+		"node": ">= 12.0.0"
+	}
+}

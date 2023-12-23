@@ -1,0 +1,35 @@
+.wrap-error-404 {
+    @include forCardCenterPosition;
+
+    .block-error {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .number-error-404 {
+            font-size: 40px;
+
+            h2 {
+                margin: 0;
+            }
+        }
+
+        .info-error {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .back-button-wrap {
+
+            .back-button {
+                @include buttonNone;
+                font-size: 12px;
+                padding: 0;
+                color: $button-color;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+    }
+}
