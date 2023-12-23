@@ -1,0 +1,22 @@
+.input {
+  padding: 12px;
+  font-size: 13px;
+}
+
+.input__container {
+  display: flex;
+  height: 38px;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+.input__element {
+  border: none;
+  border-bottom: 1px solid var(--underline-color);
+  color: var(--text-color);
+  padding-bottom: 8px;
+}
+
+.input__element::placeholder {
+  color: var(--disable-color);
+}

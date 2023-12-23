@@ -1,0 +1,52 @@
+@import '/src/components/button/button.css';
+@import '/src/components/avatar/avatar.css';
+@import '/src/components/badge/badge.css';
+@import '/src/components/input/input.css';
+@import '/src/components/modal/modal.css';
+@import '/src/components/text/text.css';
+
+@import '/src/Features/ChatListItem/chatListItem.css';
+@import '/src/Features/ChatMessage/chatMessage.css';
+
+@import '/src/Pages/chat/chat.css';
+@import '/src/Pages/notFound/notFound.css';
+@import '/src/Pages/serverError/serverError.css';
+@import '/src/Pages/singIn/signIn.css';
+@import '/src/Pages/singUp/signUp.css';
+
+/* 
+  z-index
+
+  0000–1999: основной контент,
+  2000–2999: выпадающие списки,
+  3000–3999: навигация,
+  4000–4999: шапка и подвал,
+  5000–7999: другое,
+  8000–8999: модальные окна,
+  9000–9999: уведомления.
+*/
+
+:root {
+  --main-color: #b3b54d;
+  --error-color: #ff2f2f;
+  --text-color: #080808;
+  --text-secondary-color: #918981;
+  --success-color: #10bf6a;
+  --disable-color: #d0cdc9;
+  --underline-color: #4c5b6c;
+  --border-color: #d0cdc9;
+  --light-color: #f1f1f1;
+  --bg-color: #ffffff;
+}
+
+#app {
+  background-color: var(--bg-color);
+}
+
+.shadow {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+}
+
+.error {
+  color: var(--error-color);
+}

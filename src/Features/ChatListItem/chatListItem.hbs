@@ -1,0 +1,17 @@
+<div class="chatListItem">
+    <div class="chatListItem_avatar">
+        {{> Avatar img={{img}} src={{src}} }}
+    </div>
+    <div class="chatListItem_title">
+        {{> Text weight='700' size='medium' text={{title}} }}
+    </div>
+    <div class="chatListItem_lastMessage">
+        {{> Text size='small' type='secondary' text={{lastMessage}} }}
+    </div>
+    <div class="chatListItem_time">
+        {{> Text size='small' type='secondary' text={{time}} }}
+    </div>
+    <div class="chatListItem_messagesCount">
+        {{> Badge count={{messagesCount}} }}
+    </div>
+</div>

@@ -1,0 +1,37 @@
+.button {
+  border: none;
+  display: flex;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.button__primary {
+  background-color: var(--main-color);
+  color: var(--light-color);
+  color: #fff;
+}
+
+.button__primary:hover {
+  filter: opacity(25%);
+}
+
+.button__text {
+  color: var(--main-color);
+  background-color: transparent;
+  text-align: center;
+}
+
+.button__text:hover {
+  background-color: var(--main-color);
+  filter: opacity(25%);
+}
+
+.button__circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 0;
+}

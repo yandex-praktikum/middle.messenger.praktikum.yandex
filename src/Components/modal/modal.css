@@ -1,0 +1,19 @@
+.modal_root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  filter: opacity(40%);
+  background: #000;
+
+  z-index: 8000;
+}
+
+.modal_container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+  padding: 12px;
+}

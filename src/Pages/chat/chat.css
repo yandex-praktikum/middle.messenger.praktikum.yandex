@@ -1,0 +1,10 @@
+.chat {
+  display: flex;
+}
+
+.chat_chatList {
+  border-right: 1px solid var(--border-color);
+}
+
+.chat_chatDetail {
+}

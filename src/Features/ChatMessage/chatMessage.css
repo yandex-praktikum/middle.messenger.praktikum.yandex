@@ -1,0 +1,35 @@
+.chatMessage {
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: auto 40px 14px;
+  grid-template-rows: auto 14px;
+  gap: 4px;
+  grid-template-areas:
+    'chatMessage_text chatMessage_text chatMessage_text'
+    'chatMessage_text chatMessage_time chatMessage_status';
+
+  filter: opacity(25%);
+  padding: 12px 8px 8px 12px;
+  background-color: var(--border-color);
+}
+
+.chatMessage[data-sender='me'] {
+  background-color: var(--main-color);
+}
+
+.chatMessage[data-type='media'] {
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+}
+
+.chatMessage_time {
+  grid-area: chatMessage_time;
+}
+
+.chatMessage_text {
+  grid-area: chatMessage_text;
+}
+
+.chatMessage_status {
+  grid-area: chatMessage_status;
+}

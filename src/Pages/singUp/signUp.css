@@ -1,0 +1,12 @@
+.singUp_container {
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.singUp_form {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 340px;
+}
