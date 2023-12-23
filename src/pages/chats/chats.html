@@ -2,7 +2,7 @@
     <div class="chats-page">
         {{#> layouts/leftPositionChats/leftPositionChats}}
             {{#> layouts/header-wrap/header-wrap}}
-                {{> button-profile/button-profile selector-wrap="button-profile-wrap" selector-button="button-profile" text='Профиль >'}}
+                {{> button-profile/button-profile selector-wrap="button-profile-wrap" type="button" selector-button="button-profile" text='Профиль >'}}
                 {{> input/input idForLable='search' selectorInput="search" name="search" selecrtorLable='searchLable' type='text' placeholder='Поиск'}}
             {{/layouts/header-wrap/header-wrap}}
             {{#> layouts/chat-list/chat-list}}
@@ -42,7 +42,7 @@
                 {{/layouts/message-wrap/message-wrap }}
 
             {{/layouts/messages/messages }}
-            {{> messages-input-button/messages-input-button}}
+            {{> messages-input-button/messages-input-button type="button"}}
         {{/layouts/rightPositionChat/rightPositionChat}}
     </div>
 {{/layouts/page/page}}
