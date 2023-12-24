@@ -1,16 +1,14 @@
 import Handlebars from 'handlebars';
 import * as Components from './components';
 import * as Pages from './pages';
-import { chat_list_data } from "./data/chat_list";
-import * as Errors from "./data/errors";
-import {conversation} from "./data/conversation";
+import * as Data from "./data";
 
 const pages = {
     'signin': [ Pages.SignInPage, ],
     'signup': [ Pages.SignUpPage,  ],
-    'messenger': [ Pages.Messenger, { chat_list: chat_list_data, conversation: conversation }],
-    '404': [ Pages.ErrorPage,  Errors.Error404],
-    '500': [ Pages.ErrorPage, Errors.Error500 ],
+    'messenger': [ Pages.Messenger, { chat_list: Data.ChatListData, conversation: Data.ConversationData }],
+    '404': [ Pages.ErrorPage,  Data.Errors404Data],
+    '500': [ Pages.ErrorPage, Data.Errors500Data],
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
