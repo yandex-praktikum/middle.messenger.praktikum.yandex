@@ -7,16 +7,11 @@
     box-sizing: border-box;
     width: 100%;
     border: none;
-    //background-color: #d1d3dc;
     border-radius: 15px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-color);
+    color: $text-color;
     padding: 7px 15px;
-
-    &::placeholder {
-      //text-align: center;
-    }
 
     &:focus-visible {
       outline: 1px solid $main-color;

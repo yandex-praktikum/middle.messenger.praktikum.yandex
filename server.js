@@ -10,10 +10,8 @@ const PORT = 3000;
 
 express.static.mime.define({'application/wasm': ['wasm']});
 
-//app.use(express.static(`${__dirname}/`));
 app.use(express.static(__dirname + '/dist'));
-//app.use(express.static(`.`));
 
 app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
+    console.log(`Express app listening on port ${PORT}!`);
 });

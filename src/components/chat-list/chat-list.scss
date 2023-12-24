@@ -14,5 +14,7 @@
   &__scroll {
     overflow-y: auto;
     max-height: calc(100vh - 100px);
+    margin: 0;
+    padding: 0;
   }
 }

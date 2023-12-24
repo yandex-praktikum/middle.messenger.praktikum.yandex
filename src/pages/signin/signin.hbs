@@ -3,8 +3,8 @@
         {{> Logo }}
         <h1>Sing in</h1>
         <div class="signin-container__space"></div>
-        {{> Input label="Login"}}
-        {{> Input label="Password" error="wrong password" type="password"}}
+        {{> Input label="Login" name="login" type="text"}}
+        {{> Input label="Password" error="wrong password" name="password" type="password"}}
         <div class="signin-container__space"></div>
         {{> Button label="Sign in" type="primary"}}
         {{> Button label="Sign up" type="link" page="signup"}}

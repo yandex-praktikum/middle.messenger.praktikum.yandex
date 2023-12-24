@@ -1,3 +1,5 @@
+@import "/src/scss/variables";
+
 .conversation {
   width: 100%;
 
@@ -6,7 +8,7 @@
     grid-template-columns: auto  auto 40px;
     align-items: center;
     height: 90px;
-    border-bottom: 1px #999999 solid;
+    border-bottom: 1px $border-color solid;
 
     .avatar {
       width: 70px;
@@ -18,7 +20,7 @@
       box-sizing: border-box;
       border-radius: 0;
       height: 100%;
-      background-color: #dedede;
+      background-color: transparent;
     }
   }
 

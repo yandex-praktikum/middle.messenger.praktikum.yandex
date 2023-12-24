@@ -3,15 +3,15 @@
         {{> Logo }}
         <h1>Sing up</h1>
         <div class="signup-container__space"></div>
-        {{> Input label="First name"}}
-        {{> Input label="Second Name"}}
-        {{> Input label="Login"}}
-        {{> Input label="Email"}}
-        {{> Input label="Phone number"}}
-        {{> Input label="Password" type="password"}}
-        {{> Input label="Repeat password" error="password are not mached" type="password"}}
+        {{> Input label="First name" name="first_name" type="text"}}
+        {{> Input label="Second Name" name="second_name" type="text"}}
+        {{> Input label="Login" name="login" type="text"}}
+        {{> Input label="Email" name="email" type="email"}}
+        {{> Input label="Phone number" name="phone" type="tel"}}
+        {{> Input label="Password" type="password" name="password" type="password"}}
+        {{> Input label="Repeat password" error="password are not mached" name="password" type="password"}}
         <div class="signup-container__space"></div>
         {{> Button label="Sign up" type="primary"}}
-        {{> Button label="Sign in" type="link"  page="signin"}}
+        {{> Button label="Sign in" type="link" page="signin"}}
     {{/FormAuth}}
 </div>

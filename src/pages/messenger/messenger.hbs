@@ -1,7 +1,7 @@
 <main class="messenger">
-    {{> ChatList }}
+    {{> ChatList list=chat_list}}
     {{#if true}}
-        {{> Conversation }}
+        {{> Conversation conversation=conversation}}
     {{^}}
         <span class="messenger__placeholder">Choose a chat to start messaging.</span>
     {{/if}}
