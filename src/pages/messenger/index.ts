@@ -1,1 +1,1 @@
-export { default as Messenger } from './messenger.hbs?raw';
+export { default as MessengerPage } from './messenger.hbs?raw';

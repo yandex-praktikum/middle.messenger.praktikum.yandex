@@ -1,0 +1,20 @@
+<div class="messenger">
+    <div class="messenger__widget">
+        {{> Avatar user=user }}
+        {{#with user}}
+            <h1>{{display_name}}</h1>
+            <div class="messenger__space"></div>
+            <ul>
+                <!--to edit this field we should click on it to invoke pop-up form-->
+                {{> Pair key="Display name:" value=display_name}}
+                {{> Pair key="First name:" value=first_name}}
+                {{> Pair key="Second name:" value=second_name}}
+                {{> Pair key="Login:" value=login}}
+                {{> Pair key="Phone:" value=phone}}
+            </ul>
+            {{> Button label="Changr password" type="link"}}
+            <div class="messenger__space"></div>
+        {{/with}}
+        {{> Button label="Log out" type="primary"}}
+    </div>
+</div>

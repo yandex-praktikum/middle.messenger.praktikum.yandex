@@ -6,9 +6,10 @@ import * as Data from "./data";
 const pages = {
     'signin': [ Pages.SignInPage, ],
     'signup': [ Pages.SignUpPage,  ],
-    'messenger': [ Pages.Messenger, { chat_list: Data.ChatListData, conversation: Data.ConversationData }],
+    'messenger': [ Pages.MessengerPage, { chat_list: Data.ChatListData, conversation: Data.ConversationData }],
     '404': [ Pages.ErrorPage,  Data.Errors404Data],
     '500': [ Pages.ErrorPage, Data.Errors500Data],
+    'profile': [ Pages.ProfilePage, {user: Data.UserData} ],
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
@@ -26,7 +27,7 @@ function navigate(page: string) {
     container.innerHTML = Handlebars.compile(source)(context);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('messenger'));
+document.addEventListener('DOMContentLoaded', () => navigate('profile'));
 
 document.addEventListener('click', e => {
     //@ts-ignore

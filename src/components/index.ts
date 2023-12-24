@@ -8,3 +8,4 @@ export { ChatItem } from "./chat-item";
 export { Search } from "./search";
 export { Conversation } from "./conversation";
 export { Navigator } from "./navigator";
+export { Pair } from "./pair";
