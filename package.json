@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "npm run build"
+    "start": "npm install & npm run build"
   },
   "devDependencies": {
     "handlebars": "4.7.8",
+    "sass": "1.69.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-handlebars": "1.6.0"
