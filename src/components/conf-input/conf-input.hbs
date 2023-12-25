@@ -1,0 +1,14 @@
+<label class="conf-input {{#if error}}conf-input-error{{/if}}">
+    <div class="conf-input__label"><span>{{label}}</span></div>
+    {{#if editable}}
+        <input
+                class="conf-input__value {{#if editable}}conf-input__value-editable{{/if}}"
+                placeholder=""
+                name="{{name}}"
+                value="{{value}}"
+                type="{{type}}"
+        />
+    {{^}}
+        <span class="conf-input__value">{{value}}</span>
+    {{/if}}
+</label>

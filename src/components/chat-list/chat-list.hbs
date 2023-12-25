@@ -1,0 +1,11 @@
+<div class="chat-list">
+    <div class="chat-list__header">
+        {{> Search }}
+        {{> Button type="settings"}}
+    </div>
+    <ul class="chat-list__scroll">
+        {{#each chat_list as |chat|}}
+            {{> ChatItem chat=chat}}
+        {{/each}}
+    </ul>
+</div>

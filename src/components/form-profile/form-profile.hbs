@@ -1,0 +1,20 @@
+<form class="profile-form">
+    {{#if editable}}
+        <div class="profile-form__avatar-mask"></div>
+    {{/if}}
+    <input class="profile-form__avatar" type="image" name="avatar" src="{{user.avatar}}" alt="User avatar">
+    <h1>{{user.display_name}}</h1>
+    {{#with user}}
+        {{> @partial-block }}
+    {{/with}}
+    <div class="profile-form__buttons">
+        {{#if editable}}
+            {{> Button label="Change password" type="link"}}
+            {{> Button label="Cancel" type="primary"}}
+            {{> Button label="Save" type="primary"}}
+        {{^}}
+            {{> Button label="Log out" type="link"}}
+            {{> Button label="Cancel" type="primary"}}
+        {{/if}}
+    </div>
+</form>

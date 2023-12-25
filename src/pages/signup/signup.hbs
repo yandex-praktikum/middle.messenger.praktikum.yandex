@@ -1,0 +1,11 @@
+<div class="signup-container">
+    {{#> FormAuth caption="Sign up" ok-text="Sign up" ok-page="messenger" cancel-text="Sign in" cancel-page="signin"}}
+        {{> Input label="First name" name="first_name" type="text"}}
+        {{> Input label="Second Name" name="second_name" type="text"}}
+        {{> Input label="Login" name="login" type="text"}}
+        {{> Input label="Email" name="email" type="email"}}
+        {{> Input label="Phone number" name="phone" type="tel"}}
+        {{> Input label="Password" type="password" name="password" type="password"}}
+        {{> Input label="Repeat password" error="password are not mached" name="password" type="password"}}
+    {{/FormAuth}}
+</div>

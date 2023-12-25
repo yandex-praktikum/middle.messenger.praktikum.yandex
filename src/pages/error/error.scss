@@ -1,0 +1,19 @@
+@import "/src/scss/variables";
+
+.error {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  h1 {
+    font-family: titillium web,sans-serif;
+    font-size: 186px;
+    font-weight: 900;
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    color: $main-color;
+  }
+}

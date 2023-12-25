@@ -1,0 +1,33 @@
+@import "/src/scss/variables";
+
+.button {
+    background-color: initial;
+    border: none;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+  
+.button__primary {
+  background-color: $main-color;
+  color: #fff;
+  font-size: 13px;
+}
+
+.button__link {
+  color: $main-color;
+  font-size: 11px;
+  text-align: center;
+}
+
+.button__settings {
+  background-color: transparent;
+  background-image: url("/icons/menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: content-box;
+  opacity: 0.5;
+}

@@ -1,0 +1,21 @@
+@import "/src/scss/variables";
+
+.search {
+  padding: 10px;
+
+  &__element {
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-color;
+    padding: 7px 15px;
+
+    &:focus-visible {
+      outline: 1px solid $main-color;
+    }
+  }
+
+}

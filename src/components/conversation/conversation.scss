@@ -1,0 +1,35 @@
+@import "/src/scss/variables";
+
+.conversation {
+  width: 100%;
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto  auto 40px;
+    align-items: center;
+    height: 90px;
+    border-bottom: 1px $border-color solid;
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      margin-left: 10px;
+    }
+
+    .button {
+      box-sizing: border-box;
+      border-radius: 0;
+      height: 100%;
+      background-color: transparent;
+    }
+  }
+
+  &__scroll {
+    overflow-y: auto;
+    height: calc(100vh - 150px);
+  }
+
+  &__footer {
+
+  }
+}

@@ -1,0 +1,20 @@
+@import "/src/scss/variables";
+
+.chat-list {
+  max-width: 30vw;
+  min-width: 500px;
+  background-color: $chat-list-color;
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto 40px;
+    width: 100%;
+  }
+
+  &__scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+    margin: 0;
+    padding: 0;
+  }
+}

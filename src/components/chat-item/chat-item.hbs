@@ -1,0 +1,19 @@
+<li class="chat-item {{#if isSelected}}chat-item--selected{{/if}}">
+    {{#with chat}}
+        <div class="chat-item__avatar">
+            {{> Avatar user=last_message.user}}
+        </div>
+        <div class="chat-item__info">
+            <div class="chat-item__info-top">
+                <b>{{title}}</b>
+                <span>12:23</span>
+            </div>
+            <div class="chat-item__info-bottom">
+                <p>This is the last user message. It can be very long</p>
+                <div class="chat-item__info-bottom-count">
+                    {{unread_msg_count}}
+                </div>
+            </div>
+        </div>
+    {{/with}}
+</li>

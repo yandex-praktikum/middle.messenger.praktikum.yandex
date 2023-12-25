@@ -1,0 +1,32 @@
+.messenger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+
+  &__widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 30px 30px;
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 12px;
+
+    .avatar {
+      display: flex;
+      width: 120px;
+      height: 120px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      padding: 0;
+      width: 100%;
+    }
+  }
+}

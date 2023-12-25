@@ -1,0 +1,11 @@
+@import "/src/scss/variables";
+
+.logo {
+    margin: auto;
+    height: 140px;
+    width: 140px;
+    border: 2px solid $main-color;
+    border-radius: 50%;
+    background: url("/assets/logo.png") no-repeat center / contain;
+    box-shadow: 5px 5px 25px 0px rgba(34, 60, 80, 0.25);
+}

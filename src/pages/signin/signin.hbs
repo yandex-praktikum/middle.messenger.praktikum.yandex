@@ -1,0 +1,6 @@
+<div class="signin-container">
+    {{#> FormAuth caption="Sign in" ok-text="Sign in" ok-page="messenger" cancel-text="Sign up" cancel-page="signup"}}
+        {{> Input label="Login" name="login" type="text"}}
+        {{> Input label="Password" error="wrong password" name="password" type="password"}}
+    {{/FormAuth}}
+</div>

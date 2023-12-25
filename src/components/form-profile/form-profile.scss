@@ -1,0 +1,40 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  &__avatar-mask {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: transparent;
+    border-radius: 50%;
+    opacity: 1;
+
+    &:hover{
+      box-sizing: border-box;
+      background: url("/icons/add.svg") no-repeat center / cover;
+      border: 5px solid black;
+      opacity: 0.7;
+    }
+  }
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  &__buttons {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+<form class="auth-form">
+    {{> Logo }}
+    <h1 class="auth-form__header">
+        {{caption}}
+    </h1>
+    {{> @partial-block }}
+    <div class="auth-form__buttons">
+        {{> Button label=ok-text page=ok-page type="primary"}}
+        {{> Button label=cancel-text page=cancel-page  type="link" }}
+    </div>
+</form>
