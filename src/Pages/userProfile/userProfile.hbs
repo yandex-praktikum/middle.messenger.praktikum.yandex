@@ -1,0 +1,21 @@
+<div class="userProfile">
+  <div class="userProfile_container shadow">
+    <div class="userProfile_header">
+      {{> Avatar src=src alt=alt }}
+      {{> Text size='large' weight='700' text=name }}
+    </div>
+    <form class="userProfile_form">
+      {{> Input disabled=true placeholder="Почта" type='email' name='email' id='email' }}
+      {{> Input disabled=true placeholder="Логин" name='login' id='login' }}
+      {{> Input disabled=true placeholder="Имя" name='first_name' id='first_name' }}
+      {{> Input disabled=true placeholder="Фамилия" name='second_name' id='second_name' }}
+      {{> Input disabled=true placeholder="Телефон" name='phone' id='phone' }}
+      {{> Input disabled=true placeholder="Имя в чате" name='phone' id='phone' }}
+    </form>
+    <div class="userProfile_actions">
+      {{> Button label="Изменить данные" type="text" page="userProfile" }}
+      {{> Button label="Изменить пароль" type="text" page="changePassword" }}
+      {{> Button label="Выйти" type="text" danger=true page="exit" }}
+    </div>
+  </div>
+</div>

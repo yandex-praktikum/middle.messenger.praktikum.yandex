@@ -1,9 +1,11 @@
-.input {
+.input,
+.uploadFile {
   padding: 12px;
   font-size: 13px;
 }
 
-.input__container {
+.input__container,
+.uploadFile__container {
   display: flex;
   height: 38px;
   flex-direction: column;
@@ -19,4 +21,17 @@
 
 .input__element::placeholder {
   color: var(--disable-color);
+}
+
+.input__element:focus-visible {
+  outline: none;
+}
+
+.uploadFile input[type='file'] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
 }

@@ -1,0 +1,13 @@
+{{#> Modal}}
+<div class="loadAvatar shadow">
+    <div class="loadAvatar_header">
+        {{> Text size='large' weight='700' text='Загрузите файл' }}
+    </div>
+    <form class="loadAvatar_form">
+        {{> UploadFile id='avatar' name='avatar' }}
+    </form>
+    <div class="loadAvatar_actions">
+        {{> Button label="Поменять" type="primary" page="chat" }}
+    </div>
+</div>
+{{/Modal}}

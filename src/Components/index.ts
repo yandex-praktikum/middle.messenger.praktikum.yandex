@@ -1,5 +1,5 @@
 export { Button } from './button';
-export { Input } from './input';
+export { Input, UploadFile } from './input';
 export { Text } from './text';
 export { Modal } from './modal';
 export { Badge } from './badge';

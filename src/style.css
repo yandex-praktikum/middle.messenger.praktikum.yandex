@@ -8,11 +8,19 @@
 @import '/src/Features/ChatListItem/chatListItem.css';
 @import '/src/Features/ChatMessage/chatMessage.css';
 
+@import '/src/Widgets/ChatDetail/chatDetail.css';
+@import '/src/Widgets/ChatList/chatList.css';
+
 @import '/src/Pages/chat/chat.css';
 @import '/src/Pages/notFound/notFound.css';
 @import '/src/Pages/serverError/serverError.css';
-@import '/src/Pages/singIn/signIn.css';
-@import '/src/Pages/singUp/signUp.css';
+@import '/src/Pages/signIn/signIn.css';
+@import '/src/Pages/signUp/signUp.css';
+@import '/src/Pages/addUser/addUser.css';
+@import '/src/Pages/removeUser/removeUser.css';
+@import '/src/Pages/loadAvatar/loadAvatar.css';
+@import '/src/Pages/userProfile/userProfile.css';
+@import '/src/Pages/changePassword/changePassword.css';
 
 /* 
   z-index
@@ -41,6 +49,7 @@
 
 #app {
   background-color: var(--bg-color);
+  font-family: 'Roboto', sans-serif;
 }
 
 .shadow {
@@ -49,4 +58,15 @@
 
 .error {
   color: var(--error-color);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
 }

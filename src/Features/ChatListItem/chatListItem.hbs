@@ -1,17 +1,17 @@
 <div class="chatListItem">
     <div class="chatListItem_avatar">
-        {{> Avatar img={{img}} src={{src}} }}
+        {{> Avatar alt=alt src=src }}
     </div>
     <div class="chatListItem_title">
-        {{> Text weight='700' size='medium' text={{title}} }}
+        {{> Text weight='700' size='medium' text=title ellipsis=true }}
     </div>
     <div class="chatListItem_lastMessage">
-        {{> Text size='small' type='secondary' text={{lastMessage}} }}
+        {{> Text size='small' type='secondary' text=lastMessage ellipsis=true }}
     </div>
     <div class="chatListItem_time">
-        {{> Text size='small' type='secondary' text={{time}} }}
+        {{> Text size='small' type='secondary' text=time }}
     </div>
     <div class="chatListItem_messagesCount">
-        {{> Badge count={{messagesCount}} }}
+        {{> Badge count=messagesCount }}
     </div>
 </div>

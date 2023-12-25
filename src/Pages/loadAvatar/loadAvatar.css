@@ -1,0 +1,30 @@
+.loadAvatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 24px;
+  width: 340px;
+  background-color: var(--bg-color);
+  gap: 16px;
+}
+
+.loadAvatar_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loadAvatar_header {
+  padding-top: 10px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.loadAvatar_actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}

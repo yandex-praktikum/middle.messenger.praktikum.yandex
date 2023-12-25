@@ -1,4 +1,4 @@
 <div class="chat">
-    <div class="chat_chatList">{{ #with currentChat}} {{ >ChatDetail }} {{/with}}</div>
-    <div class="chat_chatDetail">{{ >ChatList {{chats}} }}</div>
+    <div class="chat_chatList">{{> ChatList chats=chats }}</div>
+    <div class="chat_chatDetail">{{#with currentChat}} {{> ChatDetail }} {{/with}}</div>
 </div>

@@ -55,3 +55,14 @@
 .text[data-weight='700'] {
   font-weight: 700;
 }
+
+.ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.underline {
+  text-decoration: underline;
+}

@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 47px 1fr auto;
   grid-template-rows: 15px 15px auto;
-  gap: 0px 0px;
+  gap: 4px;
   grid-auto-flow: row;
   grid-template-areas:
     'chatListItem_avatar chatListItem_title chatListItem_time'
@@ -15,6 +15,7 @@
 
 .chatListItem_avatar {
   grid-area: chatListItem_avatar;
+  align-self: center;
 }
 
 .chatListItem_title {
@@ -27,6 +28,7 @@
 
 .chatListItem_messagesCount {
   grid-area: chatListItem_messagesCount;
+  justify-self: end;
 }
 
 .chatListItem_time {

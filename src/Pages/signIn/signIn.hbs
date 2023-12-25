@@ -1,0 +1,13 @@
+<div class="signIn_container shadow">
+    <div class="signIn_header">
+        {{> Text size='large' weight='700' text='Вход' }}
+    </div>
+    <form class="signIn_form">
+        {{> Input placeholder="Логин" name='login' id='login' }}
+        {{> Input placeholder="Пароль" type='password' name='password' id='password' }}
+    </form>
+    <div class="signIn_actions">
+        {{> Button label="Авторизоваться" type="primary" page="chat" }}
+        {{> Button label="Нет аккаунта ?" type="text" page='signUp' }}
+    </div>
+</div>

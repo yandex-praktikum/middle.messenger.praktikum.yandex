@@ -1,26 +1,28 @@
 <div class="chatDetail">
   <div class="chatDetail_header">
-    <div class="chatDetail_user">
-      {{ >Avatar src={{avatar}} alt={{alt}} }}
-      {{ >Text weight='700' type='primary' size='medium' }}
+    <div class="chatDetail_img">
+      {{> Avatar src=src alt=alt }}
     </div>
-    <div>
-      {{ >DotsInColumn}}
+    <div class="chatDetail_title">
+      {{> Text weight='700' type='primary' size='medium' text=title }}
+    </div>
+    <div class="chatDetail_actions">
+      {{> DotsInColumn}}
     </div>
   </div>
   <div class="chatDetail_body">
-    <ul>
+    <ul class="chatDetail_list">
       {{#each messages}}
-      <li>{{>ChatMessage sender={{this.sender}} type={{this.type}} message={{this.message}} readed={{ this.readed}}
-        created_time={{this.created_time}} }}</li>
+      <li>{{> ChatMessage sender=this.sender type=this.type message=this.message readed=this.readed
+        created_time=this.created_time }}</li>
       {{/each}}
     </ul>
   </div>
   <div class="chatDetail_footer">
-    {{ >Clip }}
-    <form>
-      {{ >Input placeholder='Сообщение' id='message' name='message' }}
+    {{> Clip }}
+    <form class="chatDetail_form">
+      {{> Input placeholder='Сообщение' id='message' name='message' }}
     </form>
-    {{ >Button type='primary' shape='circle' label={{ >ArrowRight }} }}
+    {{> Button type='primary' shape='circle' label='→'}}
   </div>
 </div>

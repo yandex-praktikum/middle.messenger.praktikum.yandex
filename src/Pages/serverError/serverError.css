@@ -1,8 +1,49 @@
 .serverError {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   border-radius: 8px;
+  gap: 20px;
+
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.serverError_container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  gap: 20px;
+  background-color: var(--light-color);
+}
+
+.serverError::after {
+  content: '';
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.serverError::before {
+  content: '';
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://www.cbr.ru/StaticHtml/File/96685/500r_01_av.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .serverError_status {

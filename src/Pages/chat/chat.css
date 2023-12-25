@@ -1,5 +1,6 @@
 .chat {
   display: flex;
+  height: 100vh;
 }
 
 .chat_chatList {
@@ -7,4 +8,5 @@
 }
 
 .chat_chatDetail {
+  width: 100%;
 }
