@@ -1,6 +1,7 @@
 @import '/src/scss/variables';
 @import '/src/components/button/button';
 @import '/src/components/form-auth/form-auth';
+@import '/src/components/form-profile/form-profile';
 @import '/src/components/input/input';
 @import '/src/components/logo/logo';
 @import '/src/components/chat-item/chat-item';
@@ -9,7 +10,7 @@
 @import '/src/components/chat-list/chat-list';
 @import '/src/components/conversation/conversation';
 @import '/src/components/navigator/navigator';
-@import '/src/components/pair/pair';
+@import '/src/components/conf-input/conf-input';
 @import '/src/pages/signin/signin';
 @import '/src/pages/signup/signup';
 @import '/src/pages/messenger/messenger';

@@ -10,6 +10,7 @@ const pages = {
     '404': [ Pages.ErrorPage,  Data.Errors404Data],
     '500': [ Pages.ErrorPage, Data.Errors500Data],
     'profile': [ Pages.ProfilePage, {user: Data.UserData} ],
+    'profile-edit': [ Pages.ProfileEditPage, {user: Data.UserData,} ],
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
@@ -27,7 +28,7 @@ function navigate(page: string) {
     container.innerHTML = Handlebars.compile(source)(context);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('profile'));
+document.addEventListener('DOMContentLoaded', () => navigate('profile-edit'));
 
 document.addEventListener('click', e => {
     //@ts-ignore

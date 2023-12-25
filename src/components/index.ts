@@ -1,5 +1,6 @@
 export { Button } from './button'
 export { FormAuth } from './form-auth'
+export { FormProfile } from './form-profile'
 export { ChatList } from './chat-list'
 export { Input } from './input'
 export { Logo } from './logo'
@@ -8,4 +9,4 @@ export { ChatItem } from "./chat-item";
 export { Search } from "./search";
 export { Conversation } from "./conversation";
 export { Navigator } from "./navigator";
-export { Pair } from "./pair";
+export { ConfInput } from "./conf-input";

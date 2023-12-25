@@ -13,6 +13,21 @@
     width: 500px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 12px;
+
+    .avatar {
+      display: flex;
+      width: 120px;
+      height: 120px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      padding: 0;
+      width: 100%;
+    }
   }
 }
 
