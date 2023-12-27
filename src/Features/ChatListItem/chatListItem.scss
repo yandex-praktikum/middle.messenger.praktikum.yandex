@@ -1,0 +1,36 @@
+.chatListItem {
+  padding: 10px 12px;
+  border-top: 1px solid var(--border-color);
+
+  display: grid;
+  grid-template-columns: 47px 1fr auto;
+  grid-template-rows: 15px 15px auto;
+  gap: 4px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'chatListItem_avatar chatListItem_title chatListItem_time'
+    'chatListItem_avatar chatListItem_lastMessage chatListItem_messagesCount'
+    'chatListItem_avatar . chatListItem_messagesCount';
+}
+
+.chatListItem_avatar {
+  grid-area: chatListItem_avatar;
+  align-self: center;
+}
+
+.chatListItem_title {
+  grid-area: chatListItem_title;
+}
+
+.chatListItem_lastMessage {
+  grid-area: chatListItem_lastMessage;
+}
+
+.chatListItem_messagesCount {
+  grid-area: chatListItem_messagesCount;
+  justify-self: end;
+}
+
+.chatListItem_time {
+  grid-area: chatListItem_time;
+}

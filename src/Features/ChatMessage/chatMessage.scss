@@ -1,0 +1,42 @@
+.chatMessage {
+  max-width: 400px;
+  margin: 4px;
+  display: grid;
+  grid-template-columns: auto 40px 20px;
+  grid-template-rows: auto 14px;
+  gap: 4px;
+  grid-template-areas:
+    'text text text'
+    '. time status';
+
+  padding: 12px 8px 8px 12px;
+  background-color: color-mix(in srgb, var(--border-color), transparent 50%);
+  border-radius: 15px;
+  border-top-left-radius: 0px;
+}
+
+.chatMessage[data-sender='me'] {
+  background-color: color-mix(in srgb, var(--main-color), transparent 50%);
+  margin-left: auto;
+
+  border-radius: 15px;
+  border-bottom-right-radius: 0px;
+}
+
+.chatMessage[data-type='media'] {
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+}
+
+.chatMessage_time {
+  grid-area: time;
+}
+
+.chatMessage_text {
+  grid-area: text;
+}
+
+.chatMessage_status {
+  grid-area: status;
+  justify-self: end;
+}

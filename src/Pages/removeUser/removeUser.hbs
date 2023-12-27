@@ -1,0 +1,13 @@
+{{#> Modal}}
+<div class="removeUser shadow">
+    <div class="removeUser_header">
+        {{> Text size='large' weight='700' text='Удалить пользователя' }}
+    </div>
+    <form class="removeUser_form">
+        {{> Input placeholder="Логин" name='login' id='login' }}
+    </form>
+    <div class="removeUser_actions">
+        {{> Button label="Удалить" type="primary" page="chat" }}
+    </div>
+</div>
+{{/Modal}}

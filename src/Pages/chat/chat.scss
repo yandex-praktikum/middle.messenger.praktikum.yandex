@@ -1,0 +1,12 @@
+.chat {
+  display: flex;
+  height: 100vh;
+}
+
+.chat_chatList {
+  border-right: 1px solid var(--border-color);
+}
+
+.chat_chatDetail {
+  width: 100%;
+}

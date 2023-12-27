@@ -1,0 +1,16 @@
+<div class="chatList">
+  <div class="chatList_header">
+    {{> Button type='text' label='Профиль' }}
+    {{> Input placeholder='Поиск' }}
+  </div>
+  <div class="chatList_body">
+    <ul>
+      {{#each chats}}
+      <li>
+        {{> ChatListItem alt=this.alt src=this.src title=this.title lastMessage=this.lastMessage
+        messagesCount=this.messagesCount time=this.time }}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+@import '/src/Components/avatar/avatar.scss';
+@import '/src/Components/badge/badge.scss';
+@import '/src/Components/button/button.scss';
+@import '/src/Components/input/input.scss';
+@import '/src/Components/modal/modal.scss';
+@import '/src/Components/text/text.scss';
+
+@import '/src/Features/ChatListItem/chatListItem.scss';
+@import '/src/Features/ChatMessage/chatMessage.scss';
+
+@import '/src/Widgets/ChatDetail/chatDetail.scss';
+@import '/src/Widgets/ChatList/chatList.scss';
+
+@import '/src/Pages/chat/chat.scss';
+@import '/src/Pages/notFound/notFound.scss';
+@import '/src/Pages/serverError/serverError.scss';
+@import '/src/Pages/signIn/signIn.scss';
+@import '/src/Pages/signUp/signUp.scss';
+@import '/src/Pages/addUser/addUser.scss';
+@import '/src/Pages/removeUser/removeUser.scss';
+@import '/src/Pages/loadAvatar/loadAvatar.scss';
+@import '/src/Pages/userProfile/userProfile.scss';
+@import '/src/Pages/changePassword/changePassword.scss';
+
+/* 
+  z-index
+
+  0000–1999: основной контент,
+  2000–2999: выпадающие списки,
+  3000–3999: навигация,
+  4000–4999: шапка и подвал,
+  5000–7999: другое,
+  8000–8999: модальные окна,
+  9000–9999: уведомления.
+*/
+
+:root {
+  --main-color: #b3b54d;
+  --error-color: #ff2f2f;
+  --text-color: #080808;
+  --text-secondary-color: #918981;
+  --success-color: #10bf6a;
+  --disable-color: #d0cdc9;
+  --underline-color: #4c5b6c;
+  --border-color: #d0cdc9;
+  --light-color: #f1f1f1;
+  --bg-color: #ffffff;
+}
+
+#app {
+  background-color: var(--bg-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+.shadow {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+}
+
+.error {
+  color: var(--error-color);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}

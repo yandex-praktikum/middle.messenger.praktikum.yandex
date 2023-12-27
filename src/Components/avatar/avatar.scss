@@ -1,0 +1,13 @@
+.avatar {
+  clip-path: circle(closest-side);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.avatar img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}

@@ -1,0 +1,46 @@
+.button {
+  border: none;
+  display: flex;
+  padding: 12px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.button__primary {
+  background-color: var(--main-color);
+  color: var(--light-color);
+}
+
+.button__primary:hover {
+  background-color: color-mix(in srgb, var(--main-color), transparent 25%);
+}
+
+.button__text {
+  color: var(--main-color);
+  background-color: transparent;
+  text-align: center;
+}
+
+.button__text:hover {
+  background-color: color-mix(in srgb, var(--main-color), transparent 90%);
+}
+
+.button__circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.button__text.danger {
+  color: var(--error-color);
+}
+
+.button__primary.danger {
+  background-color: var(--error-color);
+}

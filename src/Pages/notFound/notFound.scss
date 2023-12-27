@@ -1,0 +1,53 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  gap: 20px;
+
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notFound_container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  gap: 20px;
+  background-color: var(--light-color);
+}
+
+.notFound::after {
+  content: '';
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.notFound::before {
+  content: '';
+  z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://sun9-8.userapi.com/impg/GCDL10GJrG1oX7SwncoL-DlnWB82KRsoQWKv1g/ybr7y_Ym1OI.jpg?size=720x540&quality=96&sign=d992ad6306442209fdd66388761b4fe8&c_uniq_tag=NXI_PTu79kCgsjxq5cYJqrai6b0umRlGhWbLcmYp9rA&type=album);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.notFound_status {
+  font-size: 40px;
+  line-height: 40px;
+  text-align: center;
+}

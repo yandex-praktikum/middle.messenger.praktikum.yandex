@@ -1,0 +1,13 @@
+{{#> Modal}}
+<div class="addUser shadow">
+    <div class="addUser_header">
+        {{> Text size='large' weight='700' text='Добавить пользователя' }}
+    </div>
+    <form class="addUser_form">
+        {{> Input placeholder="Логин" name='login' id='login' }}
+    </form>
+    <div class="addUser_actions">
+        {{> Button label="Добавить" type="primary" page="chat" }}
+    </div>
+</div>
+{{/Modal}}
