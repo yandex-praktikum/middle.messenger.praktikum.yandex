@@ -1,0 +1,17 @@
+<aside class='navigation'>
+	<div class='header_navigation'>
+		Профиль
+	</div>
+	<input class='search' placeholder='Поиск' />
+	<div class='dialogs'>
+		{{#each dialogs}}
+			{{{DialogItem
+				src=this.src
+				name=this.name
+				last_message=this.last_message
+				message_time=this.message_time
+				message_count=this.message_count
+			}}}
+		{{/each}}
+	</div>
+</aside>

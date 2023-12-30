@@ -1,0 +1,47 @@
+.dialog-item {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid lightgrey;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+.avatar {
+	display: block;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	margin-right: 10px;
+	position: absolute;
+}
+
+.name-mess {
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 60px;
+
+	.last-mess {
+		font-weight: normal;
+		color: #999;
+		font-size: 12px;
+		margin-top: 3px;
+	}
+}
+
+.time-mess {
+	font-size: 8px;
+	color: lightgrey;
+	margin-right: 10px;
+
+	span {
+		display: block;
+		margin-top: 19px;
+		font-size: 13px;
+		width: 15px;
+		height: 15px;
+		background-color: rgb(30 111 233);
+		text-align: center;
+		border-radius: 50%;
+		color: white;
+	}
+}

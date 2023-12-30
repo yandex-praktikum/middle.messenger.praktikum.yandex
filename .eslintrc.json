@@ -1,0 +1,19 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+
+  "extends": ["eslint:recommended", "prettier"],
+
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  // Здесь мы подключаем используемые плагины.
+  "plugins": ["prettier"],
+  /* Правила для отслеживания линтером. Если пресеты покрывают не все ситуации, 
+    вы можете прописать нужные правила вручную. */
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}

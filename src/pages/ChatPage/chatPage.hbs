@@ -1,0 +1,49 @@
+<div class='chat_page'>
+	{{#Sidebar}}
+		{{#each dialogs}}
+			{{{DialogItem
+				src_avatar=this.src_avatar
+				name=this.name
+				last_message=this.last_message
+				message_time=this.message_time
+				message_count=this.message_count
+			}}}
+		{{/each}}
+	{{/Sidebar}}
+
+	<div class='chat'>
+		<div class='header_chat'>
+			<div class='user_block'>
+				<img src='{{src_avatar}}' alt='Фото' class='user_photo' />
+				{{name}}
+			</div>
+			<div class='btn_popup'></div>
+
+		</div>
+
+		<div class='messages'>
+			<div class='message_date'>{{message_date}}</div>
+			{{{SentMessage sent_message=this.messages.sent_message}}}
+			{{{ArrivedMessage arrived_message=this.messages.arrived_message}}}
+
+		</div>
+		<div class='input-message'>
+			<label for='select-file'><img
+					class='clip'
+					src='../../public/icons/clip.svg'
+					alt='clip'
+				/></label>
+			<input type='file' class='select-file' id='select-file' />
+			<form id='data-form' class='form_submit' action=''>
+				<input
+					name='message'
+					class='message-send'
+					placeholder='Сообщение'
+					type='text'
+				/>
+				<button type='submit' class='button-send'></button>
+			</form>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<div class='signup-page'>
+	{{#Card pageName=this.pageName}}
+		{{#each inputs}}
+			{{{Input type=this.type placeholder=this.placeholder name=this.name}}}
+		{{/each}}
+		<div class='buttons-container'>
+			{{{Button label='Зарегистрироваться'}}}
+			{{{Ref onClick=this.ref.onClick border_color='white' ref_name='Войти'}}}
+		</div>
+
+	{{/Card}}
+</div>
