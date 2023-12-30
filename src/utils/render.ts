@@ -8,25 +8,25 @@ import PasswordChange from '../pages/PasswordChange'
 import Home from '../pages/Home'
 
 const ROUTES = {
-	home: Home,
-	login: LoginPage,
-	signup: SignUp,
-	profile: Profile,
-	chat: ChatPage,
-	settings: Settings,
-	password: PasswordChange,
+  home: Home,
+  login: LoginPage,
+  signup: SignUp,
+  profile: Profile,
+  chat: ChatPage,
+  settings: Settings,
+  password: PasswordChange,
 }
 
 export function render(name: keyof typeof ROUTES) {
-	const root = document.querySelector('#app')!
+  const root = document.querySelector('#app')!
 
-	root.innerHTML = ''
+  root.innerHTML = ''
 
-	const Page = ROUTES[name]
+  const Page = ROUTES[name]
 
-	const page = new Page()
+  const page = new Page()
 
-	root.append(page.getContent()!)
+  root.append(page.getContent()!)
 
-	page.dispatchComponentDidMount()
+  page.dispatchComponentDidMount()
 }

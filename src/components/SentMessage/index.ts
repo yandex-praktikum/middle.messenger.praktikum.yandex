@@ -3,15 +3,15 @@ import template from './sentMessage.hbs'
 import './sentMessage.scss'
 
 interface SentMessageProps {
-	sent_message: string
+  sent_message: string
 }
 
 export default class SentMessage extends Block {
-	constructor(props: SentMessageProps) {
-		super(props)
-	}
+  constructor(props: SentMessageProps) {
+    super(props)
+  }
 
-	render() {
-		return this.compile(template, this.props)
-	}
+  render() {
+    return this.compile(template, this.props)
+  }
 }
