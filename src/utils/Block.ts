@@ -35,7 +35,7 @@ class Block {
     const props: Record<string, unknown> = {}
     const children: Record<string, Block> = {}
 
-    Object.entries(childrenAndProps).forEach(([key, value]) => {
+    Object.entries(childrenAndProps as any).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value
       } else {
@@ -92,7 +92,7 @@ class Block {
     )
   }
 
-  private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
+  private _componentDidUpdate(oldProps?: unknown, newProps?: unknown) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
@@ -107,7 +107,7 @@ class Block {
       return
     }
 
-    Object.assign(this.props, nextProps)
+    Object.assign(this.props as any, nextProps)
     this._removeEvents()
   }
 
