@@ -35,6 +35,16 @@ export default class Home extends Block {
           render('chat')
         },
       },
+      page404: {
+        onClick: () => {
+          render('page404')
+        },
+      },
+      page500: {
+        onClick: () => {
+          render('page500')
+        },
+      },
     })
   }
   render() {

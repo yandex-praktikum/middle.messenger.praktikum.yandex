@@ -1,19 +1,18 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2020": true
   },
 
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["eslint:recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
 
   "parserOptions": {
     "sourceType": "module"
   },
-  // Здесь мы подключаем используемые плагины.
-  "plugins": ["prettier"],
-  /* Правила для отслеживания линтером. Если пресеты покрывают не все ситуации, 
-    вы можете прописать нужные правила вручную. */
+
   "rules": {
-    "prettier/prettier": "error"
+    "no-unused-vars": "off"
   }
 }

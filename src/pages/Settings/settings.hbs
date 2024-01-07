@@ -1,20 +1,20 @@
 <div class='profile'>
-	{{{UserPhoto
-		src='../../public/images/photo_missed.jpg'
-		alt='Фото
+  {{{UserPhoto
+    src='../../images/photo_missed.jpg'
+    alt='Фото
 	пользователя'
-		name='Jack'
-	}}}
-	<form class='container-info'>
-		{{#each inputs}}
-			{{{InfoInput
-				name=this.name
-				field=this.field
-				value=this.value
-				disabled=false
-			}}}
-		{{/each}}
-		<div class='btn_wrapper'>
-			{{{Button type=this.button.type label='Сохранить'}}}</div>
-	</form>
+    name='Jack'
+  }}}
+  <form class='container-info'>
+    {{#each inputs}}
+      {{{InfoInput
+        name=this.name
+        field=this.field
+        value=this.value
+        disabled=false
+      }}}
+    {{/each}}
+    <div class='btn_wrapper'>
+      {{{Button type=this.button.type label='Сохранить'}}}</div>
+  </form>
 </div>

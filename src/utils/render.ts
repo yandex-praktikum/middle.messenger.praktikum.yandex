@@ -6,6 +6,8 @@ import ChatPage from '../pages/ChatPage'
 import Settings from '../pages/Settings'
 import PasswordChange from '../pages/PasswordChange'
 import Home from '../pages/Home'
+import Page500 from '../pages/500'
+import Page404 from '../pages/404'
 
 const ROUTES = {
   home: Home,
@@ -15,6 +17,8 @@ const ROUTES = {
   chat: ChatPage,
   settings: Settings,
   password: PasswordChange,
+  page500: Page500,
+  page404: Page404,
 }
 
 export function render(name: keyof typeof ROUTES) {

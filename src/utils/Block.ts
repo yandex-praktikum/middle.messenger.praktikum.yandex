@@ -1,7 +1,6 @@
 import { EventBus } from './EventBus'
 import { nanoid } from 'nanoid'
 
-// Нельзя создавать экземпляр данного класса
 class Block {
   static EVENTS = {
     INIT: 'init',
@@ -11,27 +10,16 @@ class Block {
   }
 
   public id = nanoid(6)
-  protected props: any
+  protected props: unknown
   protected refs: Record<string, Block> = {}
   public children: Record<string, Block>
   private eventBus: () => EventBus
   private _element: HTMLElement | null = null
-  private _meta: { props: any }
 
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
-  constructor(propsWithChildren: any = {}) {
+  constructor(propsWithChildren: unknown = {}) {
     const eventBus = new EventBus()
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren)
-
-    this._meta = {
-      props,
-    }
 
     this.children = children
     this.props = this._makePropsProxy(props)
@@ -43,8 +31,8 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT)
   }
 
-  _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {}
+  _getChildrenAndProps(childrenAndProps: unknown) {
+    const props: Record<string, unknown> = {}
     const children: Record<string, Block> = {}
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -58,15 +46,19 @@ class Block {
     return { props, children }
   }
   _removeEvents() {
-    const { events = {} } = this.props
-    Object.keys(events).forEach((event) => {
+    const { events = {} } = this.props as {
+      events: Record<string, () => void>
+    }
+    Object.keys(events).forEach(event => {
       this._element?.removeEventListener(event, events[event])
     })
   }
   _addEvents() {
-    const { events = {} } = this.props as { events: Record<string, () => void> }
+    const { events = {} } = this.props as {
+      events: Record<string, () => void>
+    }
 
-    Object.keys(events).forEach((eventName) => {
+    Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName], true)
     })
   }
@@ -95,22 +87,22 @@ class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM)
 
-    Object.values(this.children).forEach((child) =>
-      child.dispatchComponentDidMount()
+    Object.values(this.children).forEach(child =>
+      child.dispatchComponentDidMount(),
     )
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: unknown, newProps: unknown) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
-    return true
+  protected componentDidUpdate(oldProps: unknown, newProps: unknown) {
+    return oldProps === newProps ? true : false
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: unknown) => {
     if (!nextProps) {
       return
     }
@@ -138,7 +130,7 @@ class Block {
     this._addEvents()
   }
 
-  protected compile(template: (context: any) => string, context: any) {
+  protected compile(template: (context: unknown) => string, context: any) {
     const contextAndStubs = { ...context, __refs: this.refs }
 
     const html = template(contextAndStubs)

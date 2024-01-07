@@ -1,6 +1,6 @@
 {
   "singleQuote": true,
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "max-len": ["error", 140, 2],
   "tabWidth": 2,
   "useTabs": false,

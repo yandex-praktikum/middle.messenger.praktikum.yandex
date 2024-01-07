@@ -13,35 +13,31 @@ export default class HTTPTransport {
     return this.request(
       newURL,
       { ...options, method: METHODS.GET },
-      options.timeout
+      options.timeout,
     )
   }
   put = (url: string, options: any = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
-      options.timeout
+      options.timeout,
     )
   }
   post = (url: string, options: any = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
-      options.timeout
+      options.timeout,
     )
   }
   delete = (url: string, options: any = {}) => {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },
-      options.timeout
+      options.timeout,
     )
   }
-  // PUT, POST, DELETE
 
-  // options:
-  // headers — obj
-  // data — obj
   request = (url: string, options: any, timeout = 5000) => {
     const { method, data, headers = {} } = options
 

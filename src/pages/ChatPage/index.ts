@@ -11,26 +11,26 @@ export default class ChatPage extends Block {
       },
       dialogs: [
         {
-          src_avatar: '../../public/images/photo_missed.jpg',
+          src_avatar: '../../images/photo_missed.jpg',
           name: 'Irina',
-          last_message: 'I love you',
+          last_message: 'Привет',
           message_time: '22:55',
           message_count: 1,
         },
         {
-          src_avatar: '../../public/images/photo_missed.jpg',
-          name: 'Irina',
-          last_message: 'I love you',
+          src_avatar: '../../images/photo_missed.jpg',
+          name: 'Denis',
+          last_message: 'Как дела',
           message_time: '22:55',
           message_count: 2,
         },
       ],
-      src_avatar: '../../public/images/photo_missed.jpg',
+      src_avatar: '../../images/photo_missed.jpg',
       name: 'Irina',
       message_date: '22 December',
       messages: {
-        sent_message: 'How are you?',
-        arrived_message: 'I love you so much',
+        sent_message: 'Как дела',
+        arrived_message: 'Привет',
       },
     })
   }
