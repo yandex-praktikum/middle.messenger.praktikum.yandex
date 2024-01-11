@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --emptyOutDir",
     "start": "npm run build && node ./server.js",
     "preview": "vite preview",
     "eslint": "eslint ./src/*/*.ts",
