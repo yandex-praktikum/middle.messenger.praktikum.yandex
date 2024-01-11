@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-semi */
 import Handlebars from 'handlebars'
 import Block from './Block'
 import { HelperOptions } from 'handlebars'

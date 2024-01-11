@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "start": "npm run build && node ./server.js",
     "preview": "vite preview",
-    "eslint": "eslint ./src/*.ts",
+    "eslint": "eslint ./src/*/*.ts",
     "stylelint": "stylelint  '**/*{.css,.scss}'",
     "prettier": "prettier"
   },

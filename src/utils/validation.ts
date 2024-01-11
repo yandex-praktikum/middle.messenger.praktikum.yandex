@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-semi */
 export function validation(name: string, value: string) {
   let regexp
   switch (name) {
