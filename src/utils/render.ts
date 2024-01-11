@@ -1,7 +1,7 @@
 // import { HomePage } from '../pages/Home'
 import { LoginPage } from '../pages/Login'
 import SignUp from '../pages/SignUp'
-import Profile from '../pages/Profile'
+import Profile from '../pages/Profiletest'
 import ChatPage from '../pages/ChatPage'
 import Settings from '../pages/Settings'
 import PasswordChange from '../pages/PasswordChange'

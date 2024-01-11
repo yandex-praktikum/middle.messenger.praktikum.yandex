@@ -1,6 +1,6 @@
 import Block from '../../utils/Block'
 import template from './settings.hbs'
-import '../Profile/profile.scss'
+import '../Profiletest/profile.scss'
 import '../Settings/settings.scss'
 import { blurValidation, submitValidation } from '../../utils/validation'
 
