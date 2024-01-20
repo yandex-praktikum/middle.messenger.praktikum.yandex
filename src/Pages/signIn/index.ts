@@ -1,1 +1,3 @@
-export { default as SignIn } from './signIn.hbs?raw';
+import './signIn.scss';
+
+export { SignInPage } from './SignIn';

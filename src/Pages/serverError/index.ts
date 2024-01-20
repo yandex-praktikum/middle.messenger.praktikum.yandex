@@ -1,1 +1,3 @@
-export { default as ServerError } from './serverError.hbs?raw';
+import './serverError.scss';
+
+export { ServerError } from './ServerError';

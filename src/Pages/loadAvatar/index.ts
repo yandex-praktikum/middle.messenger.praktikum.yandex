@@ -1,1 +1,3 @@
-export { default as LoadAvatar } from './loadAvatar.hbs?raw';
+import './loadAvatar.scss';
+
+export { LoadAvatar } from './LoadAvatar';

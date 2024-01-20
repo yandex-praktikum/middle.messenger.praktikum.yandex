@@ -35,3 +35,15 @@
   width: 0;
   height: 0;
 }
+
+.input__text-error {
+  display: none;
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.input__text-error.visible {
+  display: block;
+}
+

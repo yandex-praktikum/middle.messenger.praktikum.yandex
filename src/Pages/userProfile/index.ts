@@ -1,1 +1,3 @@
-export { default as UserProfile } from './userProfile.hbs?raw';
+import './userProfile.scss';
+
+export { UserProfile } from './UserProfile';

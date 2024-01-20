@@ -1,1 +1,3 @@
-export { default as ChangePassword } from './changePassword.hbs?raw';
+import './changePassword.scss';
+
+export { ChangePassword } from './ChangePassword';

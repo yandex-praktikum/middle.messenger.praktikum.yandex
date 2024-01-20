@@ -1,1 +1,3 @@
-export { default as SignUp } from './signUp.hbs?raw';
+import './signUp.scss';
+
+export { SignUpPage } from './SignUp';

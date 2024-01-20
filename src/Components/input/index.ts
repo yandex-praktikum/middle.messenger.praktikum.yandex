@@ -1,2 +1,5 @@
-export { default as Input } from './input.hbs?raw';
-export { default as UploadFile } from './uploadFile.hbs?raw';
+import './input.scss';
+
+export { Input } from './Input';
+export { UploadFile } from './UploadFile';
+export { InputBaseElement } from './InputBaseElement';

@@ -1,1 +1,3 @@
-export { default as AddUser } from './addUser.hbs?raw';
+import './addUser.scss';
+
+export { AddUser } from './AddUser';

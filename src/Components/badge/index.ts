@@ -1,1 +1,3 @@
-export { default as Badge } from './badge.hbs?raw';
+import './badge.scss';
+
+export { Badge } from './Badge';

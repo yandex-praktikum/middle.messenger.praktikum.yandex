@@ -1,0 +1,46 @@
+{
+  "plugins": ["@typescript-eslint", "prettier", "unicorn",  "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb-base", "plugin:unicorn/recommended", "plugin:prettier/recommended", "prettier"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "unicorn/prevent-abbreviations": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "warn",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": "warn",
+    "unicorn/no-array-for-each": "off",
+    "no-undef": "off",
+    "unicorn/no-null": "warn",
+    "class-methods-use-this": "warn",
+    "unicorn/filename-case": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^\\u0000"],
+          ["^"],
+          ["^widgets"],
+          ["^features"],
+          ["^entities"],
+          ["^shared"],
+          ["(?!\\./styles\\.module\\.scss$)(\\./.*)"],
+          ["^\\."]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-shadow": ["warn", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
+    "camelcase": "warn"
+  }
+}

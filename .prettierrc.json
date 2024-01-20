@@ -1,6 +1,6 @@
 {
   "printWidth": 120,
-  "endOfLine": "lf",
+  "endOfLine": "crlf",
   "singleQuote": true,
   "tabWidth": 2,
   "indentStyle": "space",

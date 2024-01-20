@@ -1,1 +1,3 @@
-export { default as ChatMessage } from './chatMessage.hbs?raw';
+import './chatMessage.scss';
+
+export { ChatMessage } from './ChatMessage';

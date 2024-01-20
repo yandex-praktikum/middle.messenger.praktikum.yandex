@@ -1,1 +1,3 @@
-export { default as RemoveUser } from './removeUser.hbs?raw';
+import './removeUser.scss';
+
+export { RemoveUser } from './RemoveUser';

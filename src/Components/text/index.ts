@@ -1,1 +1,3 @@
-export { default as Text } from './text.hbs?raw';
+import './text.scss';
+
+export { Text } from './Text';
