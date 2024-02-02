@@ -1,9 +1,12 @@
 import {defineConfig} from 'vite'
 import handlebars from 'vite-plugin-handlebars';
 
+
 export default defineConfig({
-    publicDir: "static",
-    plugins: [handlebars()],
+    root: "./src",
+    plugins: [
+        handlebars(),
+    ],
     css: {
         preprocessorOptions: {
             less: {
