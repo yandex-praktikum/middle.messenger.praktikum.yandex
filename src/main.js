@@ -1,16 +1,18 @@
-import './style.css'
-import { setupCounter } from './counter.js'
+import {showAuth} from "./pages/auth/auth.js";
+import {showRegister} from "./pages/register/register.js";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
-
-setupCounter(document.querySelector('#counter'))
+document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("app");
+    root.innerHTML = "";
+    const loc = window.location.pathname;
+    const loadPage = (path) => {
+        if (path === "/" || path === "") {
+            window.location.href = "/login";
+        } else if (path === "/login") {
+            return showAuth();
+        } else if (path === "/register") {
+            return showRegister();
+        }
+    };
+    root.innerHTML = loadPage(loc);
+});
