@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.scss" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navPages">
+        {{> LinkPage text='Страница авторизации' href='/pages/auth/auth.html' }}
+        {{> LinkPage text='Страница регистрации' href='/' }}
+        {{> LinkPage text='Страница список чатов (заглушка)' href='/' }}
+        {{> LinkPage text='Страница настройка пользователя' href='/' }}
+        {{> LinkPage text='ошибка 404' href='/' }}
+        {{> LinkPage text='ошибка 500' href='/' }}
+
+      </nav>
+    </div>
+  </body>
+</html>
