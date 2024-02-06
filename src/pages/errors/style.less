@@ -1,0 +1,38 @@
+@viewport-width: 1280px;
+@percent: (100vw / @viewport-width) * 12px;
+@percent2: (100vw / @viewport-width) / 114px;
+
+.error_page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: flex-start;
+
+  h1 {
+    font-size: 120px;
+    color: #1E1E1E;
+    margin-top: 150px;
+    margin-bottom: 50px;
+  }
+
+  p {
+    font-size: 20px;
+    color: #1E1E1E;
+  }
+
+  a {
+    color: #3369F3;
+    font-size: 24px;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    &:hover {
+      color: #2a56c5;
+    }
+  }
+
+}
