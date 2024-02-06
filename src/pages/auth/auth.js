@@ -2,6 +2,8 @@ import Handlebars from "handlebars";
 import { template } from "./auth.tmpl.js";
 import { button } from "../../components/Button/buttons.js";
 import { input } from "../../components/Input/input.js";
+
+const title = "Вход";
 const authButton = button({
     url: "/messages",
     text: "Авторизация",
@@ -21,4 +23,4 @@ const inp2 = input({
 })
 
 export const showAuth = () =>
-    Handlebars.compile(template)({ button: authButton, inp, inp2 });
+    Handlebars.compile(template)({ button: authButton, title, inp, inp2 });
