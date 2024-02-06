@@ -1,0 +1,14 @@
+@import url(components/LinkPage/LinkPage.scss);
+@import url(components/Input/Input.scss);
+@import url(components/Button/Button.scss);
+
+.navPages{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+  height: 100vh;
+}
+
