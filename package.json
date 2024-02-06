@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +17,7 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "lodash-es": "^4.17.21",
     "vite-plugin-handlebars": "^2.0.0"
   }
