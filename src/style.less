@@ -3,7 +3,17 @@
 }
 
 body {
+  margin: 0;
   font-family: 'Inter', sans-serif;
+}
+
+// imports
+@import "./pages/messages/messages.less";
+@import "./pages/profile/profile.less";
+@import "./pages/errors/style.less";
+
+.rotate_svg_180 > svg {
+  transform: rotate(180deg);
 }
 
 .form {
@@ -37,10 +47,15 @@ body {
   h1 {
     color: #1E1E1E;
     font-size: 20px;
+    line-height: 20px;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 40px;
   }
+}
+
+.from__high {
+  height: 615px;
 }
 
 .inputs {
@@ -50,10 +65,12 @@ body {
     margin-right: 30px;
     border-bottom: 1px solid #3369F3;
     margin-top: 16px;
+    height: 36px;
 
     .name {
       color: #999999;
       font-size: 9px;
+      line-height: 9px;
       margin-bottom: 8px;
     }
 
@@ -63,6 +80,9 @@ body {
       margin-bottom: 7px;
       border: none;
       width: 100%;
+      font-weight: 600;
+      height: 13px;
+      padding: 0;
     }
   }
 }
@@ -83,4 +103,8 @@ body {
   &:hover {
     background-color: #66bb6e;
   }
+}
+
+.button__blue {
+  background-color: #466FDA;
 }
