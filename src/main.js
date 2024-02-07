@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return showMessages();
         }  else if (path === "/profile") {
             return showProfile();
+        }   else if (path === "/500") {
+            return showError(500);
         }   else {
             return showError();
         }
