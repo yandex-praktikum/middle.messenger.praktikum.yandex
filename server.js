@@ -1,11 +1,9 @@
-import path from'path';
 import express from 'express';
 import http from 'http';
 const app = express();
 const port = 3000;
 
-
-app.use('/index.html', express.static('./index.html'));
+app.use(express.static('./dist'));
 
 const server = http.createServer(app);
 
