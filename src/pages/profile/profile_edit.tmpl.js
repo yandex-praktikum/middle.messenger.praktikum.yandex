@@ -8,7 +8,6 @@ export const template_edit = `
         
         <div class="profile_content">
              <label class="profile_logo">
-                 <img src="">
                     <input class="profile_logo_input" type="file" name="avatar">
             </label>
             

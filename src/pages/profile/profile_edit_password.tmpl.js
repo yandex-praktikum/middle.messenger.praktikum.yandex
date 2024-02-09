@@ -7,9 +7,7 @@ export const template_edit_password = `
         </a>
         
         <div class="profile_content">
-              <div class="profile_logo">
-                <img src="">
-            </div>  
+              <div class="profile_logo"></div>  
             
                
             </input>           

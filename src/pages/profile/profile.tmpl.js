@@ -8,7 +8,6 @@ export const template = `
         
         <div class="profile_content">
             <div class="profile_logo">
-                <img src="">
             </div>           
              <div class="profile_name">{{name}}</div>
             <div class="profile_params">
