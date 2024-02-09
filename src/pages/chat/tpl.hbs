@@ -1,0 +1,52 @@
+<div class='chat'>
+  <section class='chat__menu'>
+    <header class='chat__header'>
+      <div class='chat__info'>
+        <div class='chat__user'>
+          {{#if user.avatar.isLoaded}}
+          <img class='chat__info-avatar' src={{ user.avatar.link }} alt='avatar'>
+          {{else}}
+          <div class='chat__info-avatar'></div>
+          {{/if}}
+          <h2 class='chat__info-title'>{{ user.name }}</h2>
+        </div>
+        {{{profileButton}}}
+      </div>
+      {{{search}}}
+    </header>
+    <nav class='chat__nav'>
+      <ul class='chat__list'>
+        {{#each chats}}
+          <li class='chat__item'>
+            <div class='chat__item-container'>
+              <div class='chat__item-avatar'></div>
+              <div class='chat__item-info'>
+                <div class='chat__item-header'>
+                  <h4 class='chat__item-title'>{{this.name}}</h4>
+                  <span class='chat__item-date'>{{convertDate this.date}}</span>
+                </div>
+                <div class='chat__item-main'>
+                  {{#if this.message.isMyMessage}}
+                    <p class='chat__item-text'><span class='chat__item-text_weight_bold'>Вы: </span>{{this.message.text}}</p>
+                  {{else}}
+                    <p class='chat__item-text'>{{this.message.text}}</p>
+                  {{/if}}
+                  {{ messageCount this.newMessageCount}}
+                </div>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </nav>
+  </section>
+  <main class='chat__main'>
+    <section class='chat__main-header'>
+      <span class='chat__main-text chat__main-text_type_empty'>Выберите чат чтобы отправить сообщение..</span>
+      {{{menuButton}}}
+    </section>
+    <section class='chat__messages'>
+      <img class='chat__img' src={{img}}>
+    </section>
+  </main>
+</div>

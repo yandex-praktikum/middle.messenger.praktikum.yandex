@@ -1,0 +1,36 @@
+<div class='profile'>
+  <nav class='profile__nav'>
+    <a class='profile__nav-link'> </a>
+  </nav>
+  <main class='profile__container'>
+    {{#if user.avatar.isLoaded}}
+      <img class='profile__img' src={{ user.avatar.link }} alt='avatar'>
+    {{else}}
+      <div class='profile__img profile__img_type_empty'>
+        {{{imageButton}}}
+      </div>
+    {{/if}}
+    <h2 class='profile__title'>{{ user.name }}</h2>
+    <ul class='profile__list'>
+      {{#each fields}}
+        <li class='profile__item'>
+          <span class='profile__item-caption'>{{ this.caption }}</span>
+          <p class='profile__item-text'>{{ this.text }}</p>
+        </li>
+      {{/each}}
+    </ul>
+    <ul class='profile__list profile__list_type_control'>
+      {{#each control}}
+          {{#if this.isMainColor}}
+            <li class='profile__item'>
+              <button class='profile__btn profile__btn_color_main' type='button'>{{ this.text }}</button>
+            </li>
+          {{else}}
+            <li class='profile__item'>
+              <button class='profile__btn profile__btn_color_secondary' type='button'>{{ this.text }}</button>
+            </li>  
+          {{/if}}
+      {{/each}}
+    </ul>
+  </main>
+</div>

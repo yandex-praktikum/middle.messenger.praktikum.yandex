@@ -1,0 +1,53 @@
+@import url(../../static/fonts/fonts.scss);
+
+:root {
+	--title-color: #262626;
+	--subtitle-color: #a6a6a6;
+	--white-color: #ffffff;
+	--background-main-color: #F4F4F6;
+	--background-secondary-color: #FBFBFB;
+	--background-element-color: #EFEFEF;
+	--main-color: #837aea;
+	--secondary-color: #FF7B02;
+	--border-color: #EAEAEA;
+	--border-radius: 12px;
+}
+body {
+	margin: 0px;
+	width: 100%;
+	color: var(--title-color);
+	background-color: var(--white-color);
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 16px;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+}
+.app {
+	margin: 0px auto;
+	max-width: 1440px;
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	position: relative;
+}
+* {
+	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	height: 12px;
+	width: 12px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--subtitle-color);
+	border-radius: var(--border-radius);
+}
+::-webkit-scrollbar-track {
+	background: var(--background-element-color);
+	border-radius: var(--border-radius);
+}
