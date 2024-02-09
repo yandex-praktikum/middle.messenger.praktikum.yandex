@@ -21,8 +21,8 @@ export const template = `
                 {{/each}}
             </div>
             <div class="profile_buttons">
-                <a class="profile_buttons_button" href="#">Изменить данные</a>
-                <a class="profile_buttons_button" href="#">Изменить пароль</a>
+                <a class="profile_buttons_button" href="/profile-edit">Изменить данные</a>
+                <a class="profile_buttons_button" href="/profile-edit-password">Изменить пароль</a>
                 <a class="profile_buttons_button profile_buttons_button__red" href="/">Выйти</a>
             </div>
         </div>

@@ -301,10 +301,17 @@ body {
   color: #999999;
   font-size: 13px;
 }
+.page_profile .profile_content .profile_params .profile_param_value input {
+  color: #999999;
+  font-size: 13px;
+  border: none;
+  text-align: right;
+}
 .page_profile .profile_content .profile_buttons {
   display: flex;
   flex-direction: column;
   margin-top: 60px;
+  align-items: center;
 }
 .page_profile .profile_content .profile_buttons_button {
   margin-top: 10px;
@@ -322,6 +329,27 @@ body {
   border-bottom: none;
   font-weight: 600;
   color: #FF0000;
+}
+.page_profile__edit .profile_logo_input {
+  opacity: 0;
+}
+.page_profile__edit .profile_logo {
+  position: relative;
+  cursor: pointer;
+}
+.page_profile__edit .profile_logo:hover {
+  background-color: #000000;
+}
+.page_profile__edit .profile_logo:hover::before {
+  content: "Поменять аватар";
+  color: #fff;
+  font-weight: 600;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 .error_page {
   width: 100vw;
@@ -425,11 +453,13 @@ body {
   background-color: #7CDC85;
   color: #FFFFFF;
   font-size: 13px;
-  position: absolute;
-  bottom: 55px;
 }
 .button:hover {
   background-color: #66bb6e;
+}
+.button__absolute {
+  position: absolute;
+  bottom: 55px;
 }
 .button__blue {
   background-color: #466FDA;
