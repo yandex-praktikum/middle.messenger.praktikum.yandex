@@ -1,3 +1,6 @@
+/.idea
+sprint_1/package-lock.json
+node_modules/
 # Logs
 logs
 *.log
@@ -25,3 +28,4 @@ dist-ssr
 *.sln
 *.sw?
 package-lock.json
+
