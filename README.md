@@ -8,6 +8,8 @@
 1. [Регистрация](https://playful-naiad-496831.netlify.app/register)
 1. [Чаты](https://playful-naiad-496831.netlify.app/messages)
 1. [Профиль](https://playful-naiad-496831.netlify.app/profile)
+1. [Профиль - редактирование](https://playful-naiad-496831.netlify.app/profile-edit)
+1. [Профиль - редактирование - пароль](https://playful-naiad-496831.netlify.app/profile-edit-password)
 1. [500](https://playful-naiad-496831.netlify.app/500)
 1. [404](https://playful-naiad-496831.netlify.app/404)
 
