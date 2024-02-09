@@ -6,7 +6,8 @@ export const template_edit = `
             </div>
         </a>
         
-        <div class="profile_content">
+        <form action="/profile" class="profile_content">
+        
              <label class="profile_logo">
                     <input class="profile_logo_input" type="file" name="avatar">
             </label>
@@ -15,7 +16,7 @@ export const template_edit = `
             </input>           
             
              <div class="profile_name">{{name}}</div>
-            <form action="/profile">
+            
                 <div class="profile_params">
                 
                 {{#each params}}
@@ -30,8 +31,8 @@ export const template_edit = `
             <div class="profile_buttons">
                 {{{saveButton}}}
             </div>
-            </form>
-        </div>
+            
+        </form>
  </div>
 `
 
