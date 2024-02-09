@@ -1,0 +1,125 @@
+.page_profile {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  .button_back {
+    width: 64px;
+    height: 100%;
+    background-color: #FBFBFB;
+    border-right: 1px solid #EAEAEA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #e8e5e5;
+      cursor: pointer;
+    }
+  }
+
+  .profile_content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile_logo {
+      background-color: #EFEFEF;
+      min-width: 130px;
+      min-height: 130px;
+      max-width: 130px;
+      border-radius: 50%;
+      margin-top: 60px;
+      margin-bottom: 21px;
+    }
+
+    .profile_name {
+      font-size: 16px;
+      color: #1E1E1E;
+      font-weight: 600;
+    }
+
+    .profile_params {
+      margin-top: 60px;
+
+      .profile_param {
+        margin-top: 10px;
+        width: 510px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #EAEAEA;
+
+        &_name {
+          color: #1E1E1E;
+          font-size: 13px;
+          font-weight: 600;
+        }
+        &_value {
+          color: #999999;
+          font-size: 13px;
+        }
+        &_value input {
+          color: #999999;
+          font-size: 13px;
+          border: none;
+          text-align: right;
+        }
+      }
+    }
+
+    .profile_buttons {
+      display: flex;
+      flex-direction: column;
+      margin-top: 60px;
+      align-items: center;
+
+      &_button {
+        margin-top: 10px;
+        padding-bottom: 10px;
+        width: 510px;
+        font-size: 13px;
+        color: #3369F3;
+        border-bottom: 1px solid #EAEAEA;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      &_button__red {
+        border-bottom: none;
+        font-weight: 600;
+        color: #FF0000;
+      }
+    }
+
+  }
+
+  &__edit {
+    .profile_logo_input {
+      opacity: 0;
+    }
+    .profile_logo {
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #000000;
+        &::before {
+          content: "Поменять аватар";
+          color: #fff;
+          font-weight: 600;
+          z-index: 1;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          text-align: center;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
