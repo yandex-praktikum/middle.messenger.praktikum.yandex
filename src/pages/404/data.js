@@ -1,9 +1,12 @@
-const notFoundErrorData = {
-  '/pages/404/404.html': {
-    title: 'Мы не нашли того, что вы искали',
-    link: '../../index.html',
-    linkText: 'Вернуться',
-  },
+import img from '../../images/404.svg';
+
+const data = {
+  title: 'Мы не нашли того, что вы искали',
+  img: img,
+  link: {
+    url: '../../index.html',
+    text: 'Вернуться',
+  }
 }
 
-export default notFoundErrorData;
+export default data;

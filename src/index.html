@@ -4,23 +4,10 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='icon' type='image/svg+xml' href='/vite.svg' />
     <title>Web App Chat</title>
   </head>
   <body>
-    <div class='app'>
-      <div class='main'>
-        <h1 class='main__title'>Список страниц</h1>
-        <nav class='main__nav'>
-          <ul class='main__list'>
-            {{#each links}}
-              <li class='main__item'>{{ indexIncrease @index }}) {{> link/link }}</li>
-            {{/each}}
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <script type='module' src='data.js'></script>
-    <script type='module' src='index.js'></script>
+    <div class='app' id='app'></div>
+    <script type='module' src='pages/index/index.js'></script>
   </body>
 </html>

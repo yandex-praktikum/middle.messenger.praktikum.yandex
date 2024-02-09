@@ -1,0 +1,10 @@
+<div class='main'>
+  <h1 class='main__title'>Список страниц</h1>
+  <nav class='main__nav'>
+    <ul class='main__list'>
+      {{#each links}}
+        <li class='main__item'>{{ increaseIndex @index }}) <a class='main__link' href={{ this.url }}>{{ this.text }}</a></li>
+      {{/each}}
+    </ul>
+  </nav>
+</div>

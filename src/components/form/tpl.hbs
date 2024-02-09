@@ -1,0 +1,19 @@
+<form class='form'>
+  <h2 class='form__title'>{{ form.title }}</h2>
+  <ul class='form__fields'>
+    {{#each form.fields}}
+      <li class='form__field'>
+        <span class='form__field-caption'>{{ caption }}</span>
+        <input class='form__input' type={{ type }} id={{ id }} name={{ id }}></input>
+        <span class='form__input-error'></span>
+      </li>
+    {{/each}}
+  </ul>
+  <a class='form__link' href={{ form.link.url }}>{{ form.link.text }}</a>
+  <div class='form__buttons'>
+    {{#each form.buttons}}
+      <button class='form__button' type={{ type }} id={{ id }}>{{ text }}</button>
+    {{/each}}
+  </div>
+  <span class='form__error'></span>
+</form>

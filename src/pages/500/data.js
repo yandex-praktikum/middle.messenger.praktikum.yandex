@@ -1,9 +1,12 @@
-const serverErrorData = {
-  '/pages/500/500.html': {
-    title: 'На сервере произошла ошибка',
-    link: '../../index.html',
-    linkText: 'Вернуться',
-  },
+import img from '../../images/500.svg';
+
+const data = {
+  title: 'На сервере произошла ошибка',
+  img: img,
+  link: {
+    url: '../../index.html',
+    text: 'Вернуться',
+  }
 }
 
-export default serverErrorData;
+export default data ;

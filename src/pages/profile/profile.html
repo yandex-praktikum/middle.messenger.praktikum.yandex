@@ -4,57 +4,10 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='icon' type='image/svg+xml' href='/vite.svg' />
     <title>Web App Chat</title>
   </head>
   <body>
-    <div class='app'>
-      <div class='profile'>
-        <nav class='profile__nav'>
-          <a class='profile__nav-link'> </a>
-        </nav>
-        <main class='profile__container'>
-          <div class='profile__img'></div>
-          <h2 class='profile__title'>{{ display_name }}</h2>
-          <ul class='profile__list'>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Почта</span>
-              <p class='profile__item-text'>{{ email }}</p>
-            </li>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Логин</span>
-              <p class='profile__item-text'>{{ login }}</p>
-            </li>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Имя</span>
-              <p class='profile__item-text'>{{ first_name }}</p>
-            </li>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Фамилия</span>
-              <p class='profile__item-text'>{{ second_name }}</p>
-            </li>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Имя в чате</span>
-              <p class='profile__item-text'>{{ display_name }}</p>
-            </li>
-            <li class='profile__item'>
-              <span class='profile__item-caption'>Телефон</span>
-              <p class='profile__item-text'>{{ phone }}</p>
-            </li>
-            <li class='profile__item profile__item_type_control'>
-              <button class='profile__btn profile__btn_color_main' type='button'>Изменить данные</button>
-            </li>
-            <li class='profile__item'>
-              <button class='profile__btn profile__btn_color_main' type='button'>Изменить пароль</button>
-            </li>
-            <li class='profile__item'>
-              <button class='profile__btn profile__btn_color_secondary' type='button'>Выйти</button>
-            </li>
-          </ul>
-        </main>
-      </div>
-    </div>
-    <script type='module' src='data.js'></script>
-    <script type='module' src='profile.js'></script>
+    <div class='app' id='app'></div>
+    <script type='module' src='index.js'></script>
   </body>
 </html>

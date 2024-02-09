@@ -1,0 +1,38 @@
+.icon-button {
+	margin: 0px;
+	width: 32px;
+	height: 32px;
+	padding: 0px;
+	border: none;
+	background: inherit;
+	outline: none;
+	transition: all .3s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		opacity: .7;
+	}
+	&_type_profile {
+		background-image: url('../../../static/icons/profile.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	&_type_attach {
+		background-image: url('../../../static/icons/attach.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	&_type_menu {
+		background-image: url('../../../static/icons/menu.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	&_type_image {
+		background-image: url('../../../static/icons/image.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+}

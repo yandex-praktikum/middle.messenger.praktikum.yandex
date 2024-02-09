@@ -1,4 +1,4 @@
-@import url(../fonts/fonts.scss);
+@import url(../../static/fonts/fonts.scss);
 
 :root {
 	--title-color: #262626;
@@ -34,7 +34,20 @@ body {
 	width: 100%;
 	height: 100vh;
 	box-sizing: border-box;
+	position: relative;
 }
 * {
 	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	height: 12px;
+	width: 12px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--subtitle-color);
+	border-radius: var(--border-radius);
+}
+::-webkit-scrollbar-track {
+	background: var(--background-element-color);
+	border-radius: var(--border-radius);
 }

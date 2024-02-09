@@ -4,31 +4,10 @@
     <meta charset='UTF-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <link rel='icon' type='image/svg+xml' href='/vite.svg' />
     <title>Web App Chat</title>
   </head>
   <body>
-    <div class='app'>
-      <main class='registration'>
-        <img class='registration__image' src='../../images/registration.svg'>
-        <form class='form'>
-          {{> form/formTitle/formTitle }}
-          <ul class='form__fields'>
-            {{#each form.fields}}
-              {{> form/formField/formField }}
-            {{/each}}
-          </ul>
-          {{> form/formLink/formLink }}
-          <div class='form__buttons'>
-            {{#each form.buttons}}
-              {{> form/formButton/formButton }} 
-            {{/each}}
-          </div>
-          <span class='form__error'></span>
-        </form>
-      </main>
-    </div>
-    <script type='module' src='data.js'></script>
-    <script type='module' src='registration.js'></script>
+    <div class='app' id='app'></div>
+    <script type='module' src='index.js'></script>
   </body>
 </html>

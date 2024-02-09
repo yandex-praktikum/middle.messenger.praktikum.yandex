@@ -1,0 +1,210 @@
+.chat {
+	margin: 0px;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	&__menu {
+		margin: 0px;
+		flex-basis: 480px;
+		flex-grow: 2;
+		background-color: var(--background-secondary-color);
+		display: flex;
+		flex-direction: column;
+	}
+	&__header {
+		margin: 0px;
+		width: 100%;
+		padding: 20px;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+	}
+	&__info {
+		margin: 0px 0px 20px 0px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		&-avatar {
+			margin: 0px 12px 0px 0px;
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			background: var(--background-element-color);
+			object-fit: cover;
+			object-position: center;
+		}
+		&-title {
+			margin: 0px;
+			font-weight: bold;
+			font-style: normal;
+			font-size: 28px;
+			line-height: 36px;
+			color: var(--title-color);
+		}
+	}
+	&__user {
+		margin: 0px;
+		display: flex;
+		align-items: center;
+	}
+	&__nav {
+		margin: 0px;
+		width: 100%;
+		height: calc(100vh - 136px);
+		margin: 0px 0px 20px 0px;
+		box-sizing: border-box;
+		overflow-y: auto;
+	}
+	&__list {
+		margin: 0px;
+		width: 100%;
+		padding: 0px;
+		list-style-type: none;
+		display: flex;
+		flex-direction: column;
+	}
+	&__item {
+		margin: 0px;
+		width: 100%;
+		padding: 0px 20px;
+		box-sizing: border-box;
+		transition: all .3s ease-in-out;
+		&:hover {
+			cursor: pointer;
+			background-color: rgba(131, 122, 234, .1);
+		}
+		&-container {
+			margin: 0px;
+			width: 100%;
+			padding: 12px 0px;
+			box-sizing: border-box;
+			display: flex;
+			border-top: 1px solid var(--border-color);
+		}
+		&-avatar {
+			margin: 0px 12px 0px 0px;
+			width: 56px;
+			height: 56px;
+			border-radius: 50%;
+			background: var(--background-element-color);
+			object-fit: cover;
+			object-position: center;
+			flex-shrink: 0;
+		}
+		&-info {
+			margin: 0px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		&-header {
+			margin: 0px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		&-title {
+			margin: 0px;
+			font-weight: bold;
+			font-style: normal;
+			font-size: 16px;
+			line-height: 20px;
+			color: var(--title-color);
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			display: -webkit-box;
+			overflow: hidden;
+		}
+		&-date {
+			margin: 0px 0px 0px 8px;
+			font-weight: normal;
+			font-style: normal;
+			font-size: 12px;
+			line-height: 14px;
+			color: var(--subtitle-color);
+			flex-shrink: 0;
+		}
+		&-main {
+			margin: 4px 0px 0px 0px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		&-text {
+			margin: 0px;
+			font-weight: normal;
+			font-style: normal;
+			font-size: 14px;
+			line-height: 18px;
+			color: var(--subtitle-color);
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			display: -webkit-box;
+			overflow: hidden;
+			&_weight_bold {
+				font-weight: bold;
+				color: var(--title-color);
+			}
+		}
+		&-count {
+			margin: 0px 0px 0px 8px;
+			width: 24px;
+			height: 24px;
+			background-color: var(--main-color);
+			border-radius: 50%;
+			color: var(--white-color);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			font-style: normal;
+			font-size: 12px;
+			line-height: 14px;
+			flex-shrink: 0;
+		}
+	}
+	&__main {
+		margin: 0px 20px;
+		width: calc(100% - 40px);
+		display: flex;
+		flex-direction: column;
+		&-header {
+			margin: 0px;
+			width: 100%;
+			padding: 20px 0px 19px 0px;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid var(--border-color);
+		}
+		&-text {
+			margin: 0px;
+			font-weight: bold;
+			font-style: normal;
+			font-size: 16px;
+			line-height: 20px;
+			color: var(--title-color);
+			&_type_empty {
+				color: var(--subtitle-color);
+			}
+		}
+	}
+	&__messages {
+		margin: 20px 0px 0px 0px;
+		width: 100%;
+		flex-grow: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__img {
+		margin: 0px;
+		width: 60%;
+		object-fit: contain;
+		object-position: center;
+	}
+}
