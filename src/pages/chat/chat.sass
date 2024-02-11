@@ -1,0 +1,130 @@
+.chats
+    display: grid
+    width: 100%
+    grid-template-columns: 310px auto
+    overflow-x: hidden
+    height: 100vh
+    &__sidebar
+        background: rgba(251, 251, 251, 1)
+        border-right: 1px solid rgba(234, 234, 234, 1)
+        padding: 15px 0 0
+        overflow: auto
+    &__search
+        display: flex
+        flex-direction: column
+        padding: 20px
+        gap: 20px
+        align-items: flex-end
+        gap: 20px
+        & > a
+            text-decoration: none
+            color: rgba(153, 153, 153, 1)
+            font-family: Inter
+            font-size: 12px
+            font-weight: 500
+            line-height: 12px
+            letter-spacing: 0em
+        &-form
+            position: relative
+            width: 100%
+            & > input
+                background: rgba(239, 239, 239, 1)
+                border-radius: 5px
+                text-align: center
+                padding: 6px 0 
+                height: 32px
+                width: 100%
+            & > img
+                position: absolute
+                width: 20px
+                height: 20px
+                left: 50%
+                transform: translate(-44px, 4px)
+    &__messages
+        display: flex
+        align-items: center
+        justify-content: center
+        & > span
+            font-family: Inter
+            font-size: 12px
+            font-weight: 500
+            line-height: 12px
+            letter-spacing: 0em
+            text-align: center
+            color: rgba(153, 153, 153, 1)
+    
+
+.chat
+    &__list
+        display: flex
+        flex-direction: column
+        gap: 6px
+        margin: 0
+        padding: 0
+ 
+    &__item
+        display: flex
+        width: 100%
+        gap: 10px
+        padding: 20px 10px
+        &:hover
+            background: rgba(228, 237, 253, 1)  
+    
+
+        & .avatar
+            width: 47px
+            height: 47px
+            border-radius: 50%
+            background: rgba(239, 239, 239, 1)
+
+.chat__item-inner
+    display: flex
+    flex-direction: column
+    gap: 8px
+    flex: 1
+    & .row
+        display: flex
+        justify-content: space-between
+        position: relative
+        & .name
+            font-family: Inter
+            font-size: 13px
+            font-weight: 600
+            line-height: 13px
+            letter-spacing: 0em
+            color: rgba(30, 30, 30, 1)
+        & .time  
+            font-family: Inter
+            font-size: 13px
+            font-weight: 600
+            line-height: 13px
+            letter-spacing: 0em
+            color: rgba(153, 153, 153, 1)   
+        & .message
+            font-family: Inter
+            font-size: 12px
+            font-weight: 500
+            line-height: 15px
+            letter-spacing: 0em
+            color: rgba(153, 153, 153, 1)
+            flex: 1
+            &.yours
+                color: rgba(30, 30, 30, 1)
+        & .unreads
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 20px
+            height: 20px
+            background: rgba(51, 105, 243, 1)
+            color: #fff
+            border-radius: 50%
+            margin-left: 10px
+            &.count
+                color: #fff
+
+.divider
+    width: calc(100% - 20px)
+    margin: 0 auto
+    height: 1px
+    background: rgba(234, 234, 234, 1)
