@@ -1,11 +1,11 @@
-<div class="profile">
+<main class="profile">
   <div class="profile__row">
     <div class="profile__sidebar">
       <button class="profile__btn"><a href="/" class="nav__link"></a></button>
     </div>
     <div class="profile__info">
       <div class="profile__container">
-        <div class="profile__content">
+        <form class="profile__content">
           <div class="profile__avatar-block pb-37">
             <div class="profile__avatar">
               <img src="{{avatar}}" alt="Аватар" />
@@ -22,6 +22,7 @@
                 class="profile__input"
                 id="profile__input-email"
                 value="pochta@yandex.ru"
+                name="email"
               />
             </div>
             <div class="profile__row">
@@ -34,6 +35,7 @@
                 class="profile__input"
                 id="profile__input-id"
                 value="ivanivanov"
+                name="login"
               />
             </div>
             <div class="profile__row">
@@ -46,6 +48,7 @@
                 class="profile__input"
                 id="profile__input-first-name"
                 value="Иван"
+                name="first_name"
               />
             </div>
             <div class="profile__row">
@@ -58,6 +61,7 @@
                 class="profile__input"
                 id="profile__input-last-name"
                 value="Иванов"
+                name="second_name"
               />
             </div>
             <div class="profile__row">
@@ -68,6 +72,7 @@
                 class="profile__input"
                 id="profile__input-name-chat"
                 value="Иван"
+                name="display_name"
               />
             </div>
             <div class="profile__row">
@@ -80,6 +85,7 @@
                 class="profile__input"
                 id="profile__input-tel"
                 value="+7 (909) 967 30 30"
+                name="phone"
               />
             </div>
           </div>
@@ -90,9 +96,9 @@
               </a>
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 
-</div>
+</main>

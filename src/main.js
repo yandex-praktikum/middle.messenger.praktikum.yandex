@@ -1,4 +1,6 @@
 import avatar from './assets/svg/Avatar.svg';
+import { error_404Template } from './pages/404/404';
+import { error_500Template } from './pages/500/500';
 import { chatsTemplate } from "./pages/Chats/chats";
 import { loginTemplate } from "./pages/Login/login";
 import { profileTemplate } from "./pages/Profile/profile";
@@ -55,7 +57,12 @@ function changeRoute(route) {
       app.innerHTML = profileEditPasswordTemplate({ avatar })
       break;
 
+    case "500":
+      app.innerHTML = error_500Template();
+      break;
+
     default:
+      app.innerHTML = error_404Template()
       break;
   }
 }
