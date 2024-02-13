@@ -1,0 +1,104 @@
+<main class="profile">
+  <div class="profile__row">
+    <div class="profile__sidebar">
+      <button class="profile__btn"><a href="/" class="nav__link"></a></button>
+    </div>
+    <div class="profile__info">
+      <div class="profile__container">
+        <form class="profile__content">
+          <div class="profile__avatar-block pb-37">
+            <div class="profile__avatar">
+              <img src="{{avatar}}" alt="Аватар" />
+            </div>
+          </div>
+          <div class="profile__inputs">
+            <div class="profile__row">
+              <label
+                class="profile__label"
+                for="profile__input-email"
+              >Почта</label>
+              <input
+                type="email"
+                class="profile__input"
+                id="profile__input-email"
+                value="pochta@yandex.ru"
+                name="email"
+              />
+            </div>
+            <div class="profile__row">
+              <label
+                class="profile__label"
+                for="profile__input-id"
+              >Логин</label>
+              <input
+                type="text"
+                class="profile__input"
+                id="profile__input-id"
+                value="ivanivanov"
+                name="login"
+              />
+            </div>
+            <div class="profile__row">
+              <label
+                class="profile__label"
+                for="profile__input-first-name"
+              >Имя</label>
+              <input
+                type="text"
+                class="profile__input"
+                id="profile__input-first-name"
+                value="Иван"
+                name="first_name"
+              />
+            </div>
+            <div class="profile__row">
+              <label
+                class="profile__label"
+                for="profile__input-last-name"
+              >Фамилия</label>
+              <input
+                type="text"
+                class="profile__input"
+                id="profile__input-last-name"
+                value="Иванов"
+                name="second_name"
+              />
+            </div>
+            <div class="profile__row">
+              <label class="profile__label" for="profile__input-name-chat">Имя в
+                чате</label>
+              <input
+                type="text"
+                class="profile__input"
+                id="profile__input-name-chat"
+                value="Иван"
+                name="display_name"
+              />
+            </div>
+            <div class="profile__row">
+              <label
+                class="profile__label"
+                for="profile__input-tel"
+              >Телефон</label>
+              <input
+                type="tel"
+                class="profile__input"
+                id="profile__input-tel"
+                value="+7 (909) 967 30 30"
+                name="phone"
+              />
+            </div>
+          </div>
+          <div class="profile__links">
+            <button class="profile__link-btn">
+              <a href="/profile" class="nav__link">
+                Сохранить
+              </a>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</main>

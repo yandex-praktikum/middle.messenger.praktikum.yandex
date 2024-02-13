@@ -1,0 +1,10 @@
+@import "./variables";
+@import "./libs/normalize";
+@import "./fonts.scss";
+
+body {
+    font-family: "Inter";
+}
+#app {
+    height: 100%;
+}

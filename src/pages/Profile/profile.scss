@@ -1,0 +1,162 @@
+@import "./../../scss/variables";
+.profile {
+    height: 100%;
+    .mt-102 {
+        margin-top: 102px;
+    }
+    .pb-37 {
+        padding-bottom: 37px;
+    }
+    &__row {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        height: 100%;
+    }
+    &__sidebar {
+        height: 100%;
+        width: 64px;
+        background: $sub-primary-element_background;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__btn {
+        width: 28px;
+        height: 28px;
+        background-color: transparent;
+        background-image: url("./../../assets/svg/return-arrow.svg");
+        a {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+    &__info {
+        flex: 1;
+    }
+    &__container {
+        width: 100%;
+        max-width: 510px;
+        margin: auto;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+    }
+    &__avatar-block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 21px;
+    }
+    &__avatar {
+        text-align: center;
+        width: 130px;
+        height: 130px;
+        padding: 45px;
+        background: $primary-element_background;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            &::before {
+                background-color: #00000080;
+                color: $main_background;
+            }
+        }
+        &::before {
+            content: "Поменять аватар";
+            transition: background-color 1s ease-in-out;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            padding: 51px 33px;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 14px; /* 107.692% */
+            color: transparent;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    &__name {
+        color: $primary-text_color;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px; /* 100% */
+    }
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $primary-element_background;
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+    &__label {
+        color: $primary-text_color;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 13px; /* 100% */
+    }
+    &__input {
+        color: $sub-primary-text_color;
+        text-align: right;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 13px; /* 100% */
+    }
+    &__links {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: center;
+    }
+    &__link-btn {
+        border-radius: 8px;
+        background: $blue;
+        width: 280px;
+        height: 37px;
+        a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $primary-button_color;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 13px; /* 100% */
+        }
+    }
+    &__link {
+        width: 100%;
+        border-bottom: 1px solid $primary-element_background;
+        padding-bottom: 10px;
+        &:last-child {
+            border-bottom: none;
+            a {
+                color: $red;
+            }
+        }
+        a {
+            color: #3369f3;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 13px; /* 100% */
+        }
+    }
+}
