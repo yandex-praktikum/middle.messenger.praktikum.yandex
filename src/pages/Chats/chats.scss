@@ -1,0 +1,25 @@
+@import "../../scss/variables";
+
+.chats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: $primary-text_color;
+  }
+
+  &__link {
+    text-align: center;
+    color: $blue;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 11px;
+    /* 100% */
+  }
+}
