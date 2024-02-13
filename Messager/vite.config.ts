@@ -33,7 +33,7 @@ export default defineConfig({
           },
     },
 
-
+//@ts-ignore
     plugins:[handlebars({
         partialDirectory:[
             resolve(__dirname, 'src/components'),
