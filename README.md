@@ -13,9 +13,9 @@
 5. Изменение пароля
 6. Главная страница - стоит заглушка
 
-Проект выложен на Netlify [Ссылка на сайт](https://deploy--astonishing-meerkat-179882.netlify.app/login)
+Проект выложен на Netlify [Ссылка на сайт](https://deploy--astonishing-meerkat-179882.netlify.app)
 
-Использовался стандартный макет от Яндекса [Ссылка на макет](https://deploy--astonishing-meerkat-179882.netlify.app/login)
+Использовался стандартный макет от Яндекса [Ссылка на макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0-1&mode=design&t=e9hwKVgd5jg5lP4U-0)
 
 ### Команды
 
