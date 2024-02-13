@@ -1,0 +1,19 @@
+.itemChat{
+  display: grid;
+  grid-template-columns: 70px 3fr 1fr;
+  gap: 10px;
+}
+
+.nameChat{
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.infoChat{
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  justify-content: space-around;
+}

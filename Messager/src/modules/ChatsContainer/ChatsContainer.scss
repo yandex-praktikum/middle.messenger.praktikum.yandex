@@ -1,0 +1,12 @@
+.containerChats{
+background-color: rgba(251, 251, 251, 1);
+  min-width: 300px;
+  padding: 10px;
+}
+.headerChats{
+  display: flex;
+  gap: 30px;
+
+  flex-direction: column;
+  align-items: flex-end;
+}

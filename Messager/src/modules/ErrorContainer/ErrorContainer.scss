@@ -1,0 +1,13 @@
+.containerError{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto;
+  align-items: center;
+   .codeError, .titleError{
+     display: block;
+   }
+  .linkPageError{
+    margin-top: 20px;
+  }
+}

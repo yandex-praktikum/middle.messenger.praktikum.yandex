@@ -1,0 +1,15 @@
+@import url(../../style.scss);
+
+.bodyProfile{
+  display: grid;
+  grid-template-columns: 60px 1fr;
+
+}
+.containerProfile{
+  display: flex ;
+  margin: auto;
+ flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 500px;
+}

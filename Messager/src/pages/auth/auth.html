@@ -10,13 +10,13 @@
     <div class="containerAuth">
 
     <h2 class="titleAuth">Вход</h2>
-        <form class="authForm">
+        <form class="formAuth">
 
-            {{> Input label='Логин' name='login' type='text' placeholder='Логин' }}
-            {{> Input label='Пароль' name='password' type='password' placeholder='Пароль' }}
-            {{> Button text='Войти' type='submit' }}
+            {{> Input/InputForm/InputForm label='Логин' name='login' type='text' placeholder='Логин' }}
+            {{> Input/InputForm/InputForm label='Пароль' name='password' type='password' placeholder='Пароль' }}
+            {{> Button/Button/Button text='Войти' type='submit' }}
         </form>
-        {{>LinkPage href='../registration/registration.html' text='Нет аккаунта?'}}
+        {{>LinkPage/LinkPage href='../registration/registration.html' text='Нет аккаунта?'}}
 
     </div>
     </body>
