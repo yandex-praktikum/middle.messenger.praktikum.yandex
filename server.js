@@ -6,8 +6,8 @@ import open from 'open';
 const app = express();
 const PORT = 3000;
 
-const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
 
 const staticPath = path.join(__dirname, 'dist');
 
