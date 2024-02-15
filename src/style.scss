@@ -1,0 +1,39 @@
+@import url(normilize.scss);
+
+@import url(components/Avatar/Avatar.scss);
+@import url(components/Badge/Badge.scss);
+@import url(components/Button/Button/Button.scss);
+@import url(components/Button/BackButtonPage/BackButtonPage.scss);
+@import url(components/Divider/Divider.scss);
+@import url(components/Input/InputSearch/InputSearch.scss);
+@import url(components/Input/InputForm/InputForm.scss);
+@import url(components/LinkPage/LinkPage.scss);
+@import url(components/Input/InputDefault/InputDefault.scss);
+
+@import url(modules/ErrorContainer/ErrorContainer.scss);
+@import url(modules/ChatsContainer/ChatsContainer.scss);
+@import url(modules/ChatContainer/ChatContainer.scss);
+@import url(modules/ChatItem/ChatItem.scss);
+@import url(modules/ProfileForm/InfoItem/InfoItem.scss);
+@import url(modules/ProfileForm/ProfileDefaultForm/ProfileDefaultForm.scss);
+@import url(modules/ProfileForm/ProfileEditPasswordForm/ProfileEditPasswordForm.scss);
+
+body{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+
+  font-style: normal;
+  font-variation-settings:
+          "slnt" 0;
+}
+
+.navPages{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+  height: 100vh;
+}
+

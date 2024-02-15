@@ -1,0 +1,18 @@
+<div class="profileBlock " >
+
+    {{> ProfileForm/InfoItem/InfoItem title='Почта' editInfo='pochta@yandex.ru'}}
+    {{> ProfileForm/InfoItem/InfoItem title='Логин'  editInfo='Homer'}}
+    {{> ProfileForm/InfoItem/InfoItem title='Имя'  editInfo='Гомер'}}
+    {{> ProfileForm/InfoItem/InfoItem title='Фамилия'  editInfo='Симпсон'}}
+    {{> ProfileForm/InfoItem/InfoItem title='Имя в чате'  editInfo='Гомер'}}
+    {{> ProfileForm/InfoItem/InfoItem title='Телефон'  editInfo='888888888888'}}
+
+    <div class="profileLinks">
+        {{> LinkPage/LinkPage href='/pages/profileEditUserInfo/profileEditUserInfo.html' text='Изменить данные'}}
+            {{> Divider/Divider}}
+        {{> LinkPage/LinkPage href='/pages/profileEditPassword/profileEditPassword.html' text='Изменить пароль'}}
+        {{> Divider/Divider}}
+        <b> {{> LinkPage/LinkPage href='/' text='Выйти'}}</b>
+
+    </div>
+</div>

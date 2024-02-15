@@ -1,0 +1,27 @@
+<div class="containerChats">
+    <div class="headerChats">
+    {{> LinkPage/LinkPage href='/' text='Профиль >'  }}
+    {{> Input/InputSearch/InputSearch placeholder='Поиск' name='searchChats' }}
+    </div>
+    <div  >
+
+        {{> ChatItem/ChatItem
+                userName='Бэтман'
+                senderUser='Вы'
+                message='Где детонатор?'
+                time='12:30'
+                number='4'
+                src='https://wallpapercosmos.com/w/full/2/3/0/472453-1920x1080-desktop-full-hd-batman-returns-background-image.jpg'
+        }}
+
+        {{> ChatItem/ChatItem
+                userName='Гомер Симпсон'
+                senderUser='Гомер'
+                message='Ты должен денег Вазовский'
+                time='11:45'
+                number='1'
+                src='https://yt3.googleusercontent.com/ytc/AGIKgqPFw7YGpx88aXwn_CF2rwOOOSSeZSBbFif-8wEkjw=s900-c-k-c0x00ffffff-no-rj'
+
+        }}
+    </div>
+</div>

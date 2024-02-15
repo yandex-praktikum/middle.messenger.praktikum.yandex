@@ -1,0 +1,16 @@
+.labelInputForm{
+  display: flex;
+  flex-direction: column;
+  color:rgba(153, 153, 153, 1);
+  font-size: 14px;
+}
+
+.inputForm{
+  font-size: 14px;
+  line-height: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(51, 105, 243, 1);
+  border-radius: 4px;
+  outline: none;
+  height: 30px;
+}

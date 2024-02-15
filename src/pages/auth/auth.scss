@@ -1,0 +1,23 @@
+@import url(../../style.scss);
+
+.bodyAuth{
+  display: flex;
+}
+.containerAuth{
+  width: 340px;
+
+  padding: 20px 30px;
+  box-sizing: border-box;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+  border-radius: 20px;
+  margin:auto;
+  text-align: center;
+}
+
+.formAuth{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}

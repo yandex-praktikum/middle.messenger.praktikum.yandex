@@ -1,0 +1,28 @@
+<form class="profileFormEditBlock " >
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Почта'   }}
+        {{> Input/InputDefault/InputDefault type='email' placeholder='Почта' name='email' value='Email@yandex.ru'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Логин'   }}
+        {{> Input/InputDefault/InputDefault type='login' placeholder='Логин' name='login' value='Simpson'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Имя'   }}
+        {{> Input/InputDefault/InputDefault type='name' placeholder='Имя' name='second_name' value='Homer'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Фамилия'   }}
+        {{> Input/InputDefault/InputDefault type='firstName' placeholder='Фамилия' name='first_name' value='Simpson'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Имя в чате'   }}
+        {{> Input/InputDefault/InputDefault type='string' placeholder='Имя в чате' name='display_name' value='Simpson23'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+
+    {{#> ProfileForm/EditInfoItem/EditInfoItem title='Телефон'   }}
+        {{> Input/InputDefault/InputDefault type='phone' placeholder='Телефон' name='phone' value='88005553535'}}
+    {{/ ProfileForm/EditInfoItem/EditInfoItem}}
+    {{> Button/Button/Button type='subbmit'  text='Сохранить'}}
+</form>

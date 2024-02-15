@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="style.scss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navPages">
+        {{> LinkPage/LinkPage text='Страница авторизации' href='/pages/auth/auth.html' }}
+        {{> LinkPage/LinkPage text='Страница регистрации' href='/pages/registration/registration.html' }}
+        {{> LinkPage/LinkPage text='Страница список чатов' href='/pages/chat/chat.html' }}
+        {{> LinkPage/LinkPage text='Страница настройка пользователя' href='/pages/profile/profile.html'}}
+        {{> LinkPage/LinkPage text='ошибка 404' href='/pages/404/404.html'}}
+        {{> LinkPage/LinkPage text='ошибка 500'  href='/pages/500/500.html'}}
+
+      </nav>
+    </div>
+  </body>
+</html>

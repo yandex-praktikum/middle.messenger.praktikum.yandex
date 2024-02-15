@@ -1,0 +1,26 @@
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='stylesheet' href='registration.scss'/>
+    <title>registration</title>
+</head>
+    <body class="bodyRegistration">
+    <main class="containerRegistration">
+
+        <h2 >Вход</h2>
+        <form class="formRegistration">
+            {{> Input/InputForm/InputForm label='Почта' name='email' type='text' placeholder='Почта' }}
+            {{> Input/InputForm/InputForm label='Логин' name='login' type='text' placeholder='Логин' }}
+            {{> Input/InputForm/InputForm label='Имя' name='second_name' type='text' placeholder='Имя' }}
+            {{> Input/InputForm/InputForm label='Фамилия' name='first_name' type='text' placeholder='Фамилия' }}
+            {{> Input/InputForm/InputForm label='Телефон' name='phone' type='phone' placeholder='Телефон' }}
+            {{> Input/InputForm/InputForm label='Пароль' name='password' type='password' placeholder='Пароль' }}
+            {{> Input/InputForm/InputForm label='Пароль (ещё раз)' name='password' type='password' placeholder='Пароль (ещё раз)' }}
+            {{> Button/Button/Button text='Зарегистрироваться' type='submit' }}
+        </form>
+        {{>LinkPage/LinkPage href='../auth/auth.html' text='Войти'}}
+
+    </main>
+    </body>
+</html>
