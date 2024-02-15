@@ -1,0 +1,20 @@
+{{#> layout/layout }}
+<link rel="stylesheet" href="login.sass">
+<form class="register login" onsubmit="return false">
+    <div class="top">
+        <p>Регистрация</p>
+        <input type="email" name="email" placeholder="Почта">
+        <input type="text" name="login" placeholder="Логин">
+        <input type="text" name="first_name" placeholder="Имя">
+        <input type="text" name="second_name" placeholder="Фамилия">
+        <input type="text" name="phone" placeholder="Телефон">
+        <input type="password" name="password" placeholder="Пароль">
+        <input type="password" name="password" placeholder="Пароль еще раз">
+    </div>
+    <div class="buttons">
+        <button class="auth">Зарегистрироваться</button>
+        <button class="register">Войти</button>
+    </div>
+</form>
+
+{{/ layout/layout}}

@@ -1,0 +1,27 @@
+{{#> layout/layout }}
+<link rel="stylesheet" href="./profile.sass">
+<div class="profile">
+    <a class="backButton" href="src/pages/chat/chat.html">
+        <img src="arrowLeft.png" alt="back">
+    </a>
+    <div class="profile__content">
+        <div class="profile__avatar">
+            <img src="./mock.jpg" alt="">
+        </div>
+        <p class="profile__name">Иван</p>
+        <div class="info">
+            <div class="info__row"><span class="accent">Почта</span><span class="caption">pochta@yandex.ru</span></div>
+            <div class="info__row"><span class="accent">Логин</span><span class="caption">ivanivanov</span></div>
+            <div class="info__row"><span class="accent">Имя</span><span class="caption">Иван</span></div>
+            <div class="info__row"><span class="accent">Фамилия</span><span class="caption">Иванов</span></div>
+            <div class="info__row"><span class="accent">Имя в чате</span><span class="caption">Иван</span></div>
+            <div class="info__row"><span class="accent">Телефон</span><span class="caption">+7 (909) 967 30 30</span></div>
+        </div>
+        <div class="controls">
+            <div class="controls__row"><a href="../edit-profile/edit-profile.html">Изменить данные</a></div>
+            <div class="controls__row"><a href="../edit-profile/edit-password.html">Изменить пароль</a></div>
+            <div class="controls__row"><button class="exit">Выйти</button></div>
+        </div>
+    </div>
+</div>
+{{/ layout/layout}}

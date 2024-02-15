@@ -1,0 +1,51 @@
+.login
+    display: flex
+    flex-direction: column
+    max-width: 340px
+    height: 460px
+    border-radius: 12px
+    margin: 52px auto 0
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14)
+    padding: 20px
+    box-sizing: border-box
+    justify-content: space-between
+    &.register
+        height: 615px
+    .top
+        display: flex
+        flex-direction: column
+        gap: 20px
+        p
+            text-align: center
+            color: rgba(30, 30, 30, 1)
+            font-family: Inter
+            font-size: 20px
+            font-weight: 500
+            line-height: 20px
+            letter-spacing: 0em
+            text-align: center
+        input
+            border-bottom: 1px solid rgba(51, 105, 243, 1)
+
+    & .buttons
+        display: flex
+        flex-direction: column
+
+        button
+            padding: 12px 0
+            transition: 0.3s
+            border-radius: 8px
+            &:hover
+                cursor: pointer
+        & .auth
+            background: rgba(51, 105, 243, 1)
+            color: #fff
+            &:hover
+                background: rgba(51, 105, 243, 0.8)
+        & .register
+            background: #fff
+            color: rgba(51, 105, 243, 1)
+            &:hover
+                background: rgba(51, 105, 243, 0.2)
+
+
