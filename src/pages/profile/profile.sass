@@ -1,0 +1,85 @@
+.profile
+    display: grid
+    grid-template-columns: 72px 1fr
+    height: 100vh
+    &__content
+        display: flex
+        width: 100%
+        max-width: 510px
+        padding: 40px
+        margin: 0 auto
+        flex-direction: column
+        align-items: center
+    &__avatar
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 130px
+        height: 130px
+        border-radius: 50%
+        background: rgba(239, 239, 239, 1)
+        & img
+            width: 40px
+            height: 40px
+    &__name
+        font-family: Inter
+        font-size: 16px
+        font-weight: 600
+        line-height: 16px
+        letter-spacing: 0em
+        text-align: center
+        color: rgba(30, 30, 30, 1)
+        padding: 20px 0 30px
+        
+.info
+    display: flex
+    flex-direction: column
+    width: 100%
+    &__row
+        display: flex
+        justify-content: space-between
+        padding: 8px 0
+        border-bottom: 1px solid rgba(234, 234, 234, 1)
+        &:last-of-type
+            border-bottom: none
+        & span
+            font-family: Inter
+            font-size: 13px
+            font-weight: 500
+            line-height: 13px
+            letter-spacing: 0em
+            text-align: left
+            &.accent
+                color: rgba(30, 30, 30, 1)
+            &.caption
+                color: rgba(153, 153, 153, 1)
+
+.controls
+    display: flex
+    flex-direction: column
+    width: 100%
+    &__row
+        border-bottom: 1px solid rgba(234, 234, 234, 1)
+        &:last-of-type
+            border-bottom: none
+        & > button, a
+            color: rgba(51, 105, 243, 1)
+            padding: 8px 0
+            background: transparent
+            transition: 0.3s
+            text-decoration: none
+            &:hover
+                cursor: pointer
+                opacity: 0.8
+                transform: scale(1.1)
+            &.exit
+                color: rgba(255, 0, 0, 1)
+
+.backButton
+    background: #FBFBFB
+    align-items: center
+    justify-content: center
+    display: flex
+    & > img
+        width: 28px
+        height: 28px
