@@ -1,0 +1,42 @@
+* {
+  font-family: var(--font-family);
+  color: var(--color-text);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+}
+
+h1 {
+  padding-bottom: 20px;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#app {
+  height: 100%;
+}
+
+.link {
+  color: var(--color-blue);
+  font-size: 12px;
+  cursor: pointer;
+}

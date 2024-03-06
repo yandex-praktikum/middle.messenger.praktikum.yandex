@@ -1,0 +1,10 @@
+@import '../../styles/mixins.css';
+
+.error {
+  @mixin dialog;
+  flex-direction: column;
+
+  &__description {
+    padding-bottom: 30px;
+  }
+}

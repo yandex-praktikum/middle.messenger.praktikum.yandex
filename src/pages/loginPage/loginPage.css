@@ -1,0 +1,13 @@
+@import '../../styles/mixins.css';
+
+.login {
+  @mixin dialog;
+}
+
+.wrapper {
+  @mixin dialog-wrapper;
+}
+
+.login-form {
+  @mixin dialog-form;
+}
