@@ -2,11 +2,11 @@
 import './registerPage.css'
 
 export default `
-    <div class="register">
-        <div class="wrapper">
-            <h4>Регистрация</h4>
+    <div class="register dialog">
+        <div class="dialog-wrapper">
+            <h4 class="register__title">Регистрация</h4>
 
-            <form action="" class="register-form">
+            <form action="" class="register-form dialog-form">
                 {{> input type="text" name="email" label="Почта" placeholder="Почта..."}}
                 {{> input type="text" name="login" label="Логин" placeholder="Логин..."}}
                 {{> input type="text" name="first_name" label="Имя" placeholder="Имя..."}}

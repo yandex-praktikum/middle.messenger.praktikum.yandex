@@ -1,13 +1,9 @@
-@import '../../styles/mixins.css';
-
 .login {
-  @mixin dialog;
-}
+  &__title {
+    margin-bottom: 40px;
+  }
 
-.wrapper {
-  @mixin dialog-wrapper;
-}
-
-.login-form {
-  @mixin dialog-form;
+  #login-btn {
+    margin-top: 130px;
+  }
 }
