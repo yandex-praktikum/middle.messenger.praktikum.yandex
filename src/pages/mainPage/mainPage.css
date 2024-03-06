@@ -1,0 +1,10 @@
+.main {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  height: 100%;
+
+  .sidebar {
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+  }
+}
