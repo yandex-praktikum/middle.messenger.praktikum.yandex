@@ -2,5 +2,5 @@
 import './button.css'
 
 export default `
-    <button id="{{id}}" class="button">{{label}}</button>
+    <button class="button {{class}}">{{label}}</button>
 `

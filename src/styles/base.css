@@ -37,8 +37,9 @@ h4 {
 
 .link {
   color: var(--color-blue);
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .dialog {

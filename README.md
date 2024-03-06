@@ -8,25 +8,29 @@
 
 ### Ссылки на страницы приложения при запуске локально
 
-| Экран       | Ссылка                             |
-|:------------|------------------------------------|
-| Логин       | http://localhost:3000/#login       |
-| Регистрация | http://localhost:3000/#register    |
-| Мессенджер  | http://localhost:3000/#main        |
-| Профиль     | http://localhost:3000/#profile     |
-| 404         | http://localhost:3000/#notFound    |
-| 500         | http://localhost:3000/#serverError |
+| Экран           | Ссылка                              |
+|:----------------|-------------------------------------|
+| Логин           | http://localhost:3000/#login        |
+| Регистрация     | http://localhost:3000/#register     |
+| Мессенджер      | http://localhost:3000/#main         |
+| Профиль         | http://localhost:3000/#profile      |
+| Изменить данные | http://localhost:3000/#editUserdata |
+| Изменить пароль | http://localhost:3000/#editPassword |
+| 404             | http://localhost:3000/#notFound     |
+| 500             | http://localhost:3000/#serverError  |
 
 ### Ссылки на страницы приложения на Netlify
 
-| Экран       | Ссылка                                  |
-|:------------|-----------------------------------------|
-| Логин       | https://yamess.netlify.app/#login       |
-| Регистрация | https://yamess.netlify.app/#register    |
-| Мессенджер  | https://yamess.netlify.app/#main        |
-| Профиль     | https://yamess.netlify.app/#profile     |
-| 404         | https://yamess.netlify.app/#notFound    |
-| 500         | https://yamess.netlify.app/#serverError |
+| Экран           | Ссылка                                   |
+|:----------------|------------------------------------------|
+| Логин           | https://yamess.netlify.app/#login        |
+| Регистрация     | https://yamess.netlify.app/#register     |
+| Мессенджер      | https://yamess.netlify.app/#main         |
+| Профиль         | https://yamess.netlify.app/#profile      |
+| Изменить данные | https://yamess.netlify.app/#editUserdata |
+| Изменить пароль | https://yamess.netlify.app/#editPassword |
+| 404             | https://yamess.netlify.app/#notFound     |
+| 500             | https://yamess.netlify.app/#serverError  |
 
 ### Команды npm
 

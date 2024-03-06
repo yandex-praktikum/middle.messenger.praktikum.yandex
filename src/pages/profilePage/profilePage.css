@@ -10,7 +10,7 @@
     background: var(--sidebar-bg);
     border-right: 1px solid var(--border);
 
-    &__button {
+    &__btn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,6 +40,14 @@
       font-weight: 600;
     }
 
+    .profile-edit-form {
+      width: 100%;
+
+      &__save-btn {
+        margin-top: 20px;
+      }
+    }
+
     .profile-info {
       width: 100%;
       padding-bottom: 60px;
@@ -54,13 +62,13 @@
         }
 
         &__name {
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 600;
         }
 
         &__value {
           color: var(--color-gray);
-          font-size: 14px;
+          font-size: 13px;
         }
       }
     }
@@ -79,10 +87,7 @@
         }
       }
 
-      &__button {
-        border: none;
-        outline: none;
-        background: none;
+      &__link {
         cursor: pointer;
         font-weight: 500;
 
