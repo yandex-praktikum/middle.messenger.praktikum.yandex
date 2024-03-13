@@ -6,15 +6,16 @@ export enum METHODS {
   DELETE = 'DELETE',
 }
 
-function queryStringify(data: XMLHttpRequestBodyInit) {
+function queryStringify(data: { [index: string]: unknown }) {
   const keysArr = Object.keys(data)
-  const queryArr = []
+  const queryArr: string[] = []
 
   for (let i = 0; i < keysArr.length; i++) {
-    if (Array.isArray(data[keysArr[i]])) {
-      queryArr.push(`${keysArr[i]}=${data[keysArr[i]].join()}`)
+    const value = data[keysArr[i]]
+    if (Array.isArray(value)) {
+      queryArr.push(`${keysArr[i]}=${value.join()}`)
     } else {
-      queryArr.push(`${keysArr[i]}=${data[keysArr[i]]}`)
+      queryArr.push(`${keysArr[i]}=${value}`)
     }
   }
 
@@ -23,7 +24,7 @@ function queryStringify(data: XMLHttpRequestBodyInit) {
 
 export type Options = {
   method: keyof typeof METHODS
-  data: XMLHttpRequestBodyInit
+  data: Record<string, number | string | FormData>
   headers: Record<string, string>
   timeout: number
 }
@@ -95,7 +96,7 @@ export default class HTTPTransport {
       if (method === METHODS.GET || !data) {
         xhr.send()
       } else {
-        xhr.send(data)
+        xhr.send(JSON.stringify(data))
       }
     })
   }

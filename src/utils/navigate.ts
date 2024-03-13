@@ -1,18 +1,18 @@
 import Handlebars from 'handlebars'
 import pages from '../pages'
-import {ErrorPageContext, ProfilePageContext} from '../types'
+import { ErrorPageContext, ProfilePageContext } from '../types'
 import { Routes } from '../constants/routes'
 
 export default () => {
   const rootDiv = document.querySelector('#app') as Element
 
-  console.log(window.location.hash)
-
   const mainPage = Handlebars.compile(pages.mainPageTmpl)({})
-  const profilePage = (context: ProfilePageContext) => Handlebars.compile(pages.profilePageTmpl)(context)
+  const profilePage = (context: ProfilePageContext) =>
+    Handlebars.compile(pages.profilePageTmpl)(context)
   const loginPage = Handlebars.compile(pages.loginPageTmpl)({})
   const registerPage = Handlebars.compile(pages.registerPageTmpl)({})
-  const errorPage = (context: ErrorPageContext) => Handlebars.compile(pages.errorPageTmpl)(context)
+  const errorPage = (context: ErrorPageContext) =>
+    Handlebars.compile(pages.errorPageTmpl)(context)
 
   switch (window.location.hash) {
     case Routes.main:
