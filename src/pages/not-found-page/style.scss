@@ -1,0 +1,19 @@
+.not-found-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 50px;
+    font-weight: 700;
+  }
+
+  &__message {
+    font-size: 24px;
+  }
+
+  &__link {
+    margin-top: 40px;
+  }
+}

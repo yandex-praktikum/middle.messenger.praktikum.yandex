@@ -1,0 +1,17 @@
+{{#> Container}}
+    <div class="form-wrapper">
+        {{> Title text='Редактировать профиль'}}
+        <form class="form-wrapper__form">
+            {{> Input type='input' label='Имя' name='first_name'}}
+            {{> Input type='input'label='Фамилия' name='second_name'}}
+            {{> Input type='input'label='Логин' name='login'}}
+            {{> Input type='email' label='Email' name='email'}}
+            {{> Input type='password' label='Пароль' name='password'}}
+            {{> Input type='phone' label='Телефон' name='phone'}}
+            <div class="form-wrapper__form-footer">
+                {{> Button text='Редактировать'}}
+                {{> Link text='Войти'}}
+            </div>
+        </form>
+    </div>
+{{/ Container}}
