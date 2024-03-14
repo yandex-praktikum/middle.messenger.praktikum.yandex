@@ -1,0 +1,22 @@
+.form-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  width: 360px;
+  height: auto;
+
+  &__form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+  }
+}

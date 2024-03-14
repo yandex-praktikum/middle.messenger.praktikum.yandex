@@ -1,0 +1,13 @@
+{{#> Container}}
+    <div class="form-wrapper">
+        {{> Title text='Войти'}}
+        <form class="form-wrapper__form">
+            {{> Input type='input' label='Логин' name='form'}}
+            {{> Input type='password' label='Пароль' name='password'}}
+            <div  class="form-wrapper__form-footer">
+                {{> Button text='Войти'}}
+                {{> Link href='/register' text='Зарегистриваться'}}
+            </div>
+        </form>
+    </div>
+{{/ Container}}
