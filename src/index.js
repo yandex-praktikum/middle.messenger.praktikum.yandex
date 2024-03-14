@@ -25,7 +25,6 @@ const navigate = (page) => {
 
 document.addEventListener('DOMContentLoaded', (e) => {
   const path = e.target.location.pathname;
-  console.log('!!!', e.target.location.pathname);
 
   switch (path) {
     case '/login': {

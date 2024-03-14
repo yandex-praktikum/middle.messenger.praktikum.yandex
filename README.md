@@ -23,3 +23,5 @@
 - http://localhost:3000/404
 - http://localhost:3000/500 - страница ошибки
 
+https://fastidious-salamander-621cd8.netlify.app
+
