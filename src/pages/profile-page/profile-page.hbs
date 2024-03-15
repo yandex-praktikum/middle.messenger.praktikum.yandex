@@ -1,0 +1,35 @@
+{{#> Container}}
+    <div class="profile-wrapper">
+        <div class="profile-wrapper__avatar">{{> Avatar avatar=''}}</div>
+        <div class="profile-wrapper__content">
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Имя</div>
+                <div class="profile-wrapper__content-field-value">{{ first_name }}</div>
+            </div>
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Фамилия</div>
+                <div class="profile-wrapper__content-field-value">{{ second_name }}</div>
+            </div>
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Логин</div>
+                <div class="profile-wrapper__content-field-value">{{ login }}</div>
+            </div>
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Email</div>
+                <div class="profile-wrapper__content-field-value">{{ email }}</div>
+            </div>
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Пароль</div>
+                <div class="profile-wrapper__content-field-value">{{ password }}</div>
+            </div>
+            <div class="profile-wrapper__content-field">
+                <div class="profile-wrapper__content-field-name">Телефон</div>
+                <div class="profile-wrapper__content-field-value">{{ phone }}</div>
+            </div>
+        </div>
+        <div class='profile-wrapper__footer'>
+            {{> Link href='/edit-profile' text='Изменить данные'}}
+            {{> Link text='Вернуться к чатам'}}
+        </div>
+    </div>
+{{/ Container}}

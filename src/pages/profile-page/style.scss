@@ -1,0 +1,35 @@
+.profile-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  width: 360px;
+  height: auto;
+  text-align: center;
+
+  &__avatar {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 15px;
+
+    &-field {
+      display: flex;
+      justify-content: space-between;
+
+      &-value {
+        color: #898585;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+}
