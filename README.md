@@ -10,8 +10,8 @@
 ## Установка
 - git clone https://github.com/AnnaFiluykova/middle.messenger.praktikum.yandex.git - клонирование репозитория
 - `npm install` — установка,
-- `npm start` — запуск,
-- `npm run dev` — запуск сервера,
+- `npm run dev` — запуск,
+- `npm start` — запуск сервера,
 - `npm run build` — сборка проекта.
 
 ## Перечень доступных страниц
