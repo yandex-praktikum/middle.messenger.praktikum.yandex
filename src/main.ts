@@ -1,18 +1,18 @@
-import Handlebars from 'handlebars'
-import pages from './pages'
 import { navigate, registerPartials } from './utils'
 import partials from './partials'
 import './style.css'
+import { testPage } from './pages/testPage/testPage'
+import Button from './components/button/button'
+import {render} from "./utils/renderDOM";
 
 document.addEventListener('DOMContentLoaded', () => {
   registerPartials(partials)
 
   if (!window.location.hash) {
-    const rootDiv = document.querySelector('#app') as Element
-    rootDiv.innerHTML = Handlebars.compile(pages.loginPageTmpl)({})
+    render("#app", new testPage({ testButton: new Button({label: 'Lol', withId: true}) }))
   } else {
     navigate()
   }
 })
 
-window.addEventListener('hashchange', navigate)
+// window.addEventListener('hashchange', navigate)

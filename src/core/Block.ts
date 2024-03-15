@@ -1,9 +1,12 @@
+import Handlebars from 'handlebars'
+import { nanoid } from 'nanoid'
 import EventBus from './EventBus'
 
 type Children = Record<string, Block>
 
 export type Props = {
   events?: { [eventName: string]: (e: Event) => void }
+  withId?: boolean
   [prop: string]: unknown
 }
 
@@ -13,7 +16,7 @@ export type PropsAndChildren = {
   [prop: string]: unknown
 }
 
-export default class Block {
+export default abstract class Block {
   private static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -21,13 +24,17 @@ export default class Block {
     FLOW_RENDER: 'flow:render',
   }
 
-  private _element: null | HTMLElement = null
-  private _meta: { tagName: string; propsAndChildren: PropsAndChildren }
+  private readonly _meta: {
+    tagName: string
+    propsAndChildren: PropsAndChildren
+  }
+  private _element: HTMLElement | null = null
+  protected id: string = ''
+  protected eventBus: () => EventBus
   public props: Props
   public children: Children
-  protected eventBus: () => EventBus
 
-  constructor(
+  protected constructor(
     tagName: string = 'div',
     propsAndChildren: PropsAndChildren = {}
   ) {
@@ -37,7 +44,14 @@ export default class Block {
       propsAndChildren,
     }
     const { children, props } = this._getChildrenAndProps(propsAndChildren)
-    this.props = this._makePropsProxy(props)
+
+    if (props.withId) {
+      this.id = nanoid()
+      this.props = this._makePropsProxy({ ...props, id: this.id })
+    } else {
+      this.props = this._makePropsProxy(props)
+    }
+
     this.children = children
     this.eventBus = () => eventBus
     this._registerEvents(eventBus)
@@ -51,17 +65,26 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
-  private _createResources() {
-    const { tagName } = this._meta
-    this._element = this._createDocumentElement(tagName)
+  private _createDocumentElement(tagName: string) {
+    const element = document.createElement(tagName)
+    if (this.id) {
+      element.dataset.id = this.id
+    }
+
+    return element
   }
 
   init() {
-    this._createResources()
+    this._element = this._createDocumentElement(this._meta.tagName)
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
   }
 
   private _componentDidMount() {
     this.componentDidMount(this.props)
+
+    Object.values(this.children).forEach((child) => {
+      child.dispatchComponentDidMount()
+    })
   }
 
   componentDidMount(oldProps: Props) {
@@ -81,6 +104,10 @@ export default class Block {
     return true
   }
 
+  public get element() {
+    return this._element
+  }
+
   setProps = (nextProps: Props) => {
     if (!nextProps) {
       return
@@ -90,17 +117,37 @@ export default class Block {
   }
 
   private _render() {
+    const block = this.render()
     this._removeEvents()
-    this._element!.innerHTML = this.render()
+    this._element!.innerHTML = ''
+    this._element!.appendChild(block)
     this._addEvents()
   }
 
-  render() {
-    return ''
+  abstract render(): DocumentFragment
+
+  compile(template: string, props: Props) {
+    const propsAndStubs = { ...props }
+
+    Object.entries(this.children).forEach(([key, child]) => {
+      propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+    })
+
+    const fragment = this._createDocumentElement(
+      'template'
+    ) as HTMLTemplateElement
+    fragment.innerHTML = Handlebars.compile(template)(propsAndStubs)
+
+    Object.values(this.children).forEach((child) => {
+      const stub = fragment.content.querySelector(`[data-id="${child.id}"]`)
+      stub!.replaceWith(child.getContent()!)
+    })
+
+    return fragment.content
   }
 
   getContent() {
-    return this._element
+    return this.element
   }
 
   private _getChildrenAndProps(propsAndChildren: PropsAndChildren): {
@@ -148,7 +195,7 @@ export default class Block {
     })
   }
 
-  _removeEvents() {
+  private _removeEvents() {
     const { events } = this.props
 
     if (events) {
@@ -158,7 +205,7 @@ export default class Block {
     }
   }
 
-  _addEvents() {
+  private _addEvents() {
     const { events } = this.props
 
     if (events) {
@@ -168,15 +215,11 @@ export default class Block {
     }
   }
 
-  _createDocumentElement(tagName: string) {
-    return document.createElement(tagName)
-  }
+  // show() {
+  //   this.getContent()!.style.display = 'block'
+  // }
 
-  show() {
-    this.getContent()!.style.display = 'block'
-  }
-
-  hide() {
-    this.getContent()!.style.display = 'none'
-  }
+  // hide() {
+  //   this.getContent()!.style.display = 'none'
+  // }
 }

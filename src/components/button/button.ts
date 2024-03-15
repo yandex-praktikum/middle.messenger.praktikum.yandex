@@ -1,15 +1,18 @@
-import Handlebars from 'handlebars'
 import Block, { Props } from '../../core/Block'
 
+const buttonTemplate: string = `<button class="button {{class}}">{{{ label }}}</button>`
+
+type ButtonProps = {
+  label: string
+  className?: string
+} & Props
+
 export default class Button extends Block {
-  constructor(props: Props | undefined) {
+  constructor(props: ButtonProps) {
     super('button', props)
   }
 
   render() {
-    const { label } = this.props
-    const source = `<button class="button {{class}}">{{label}}</button>`
-    const template = Handlebars.compile(source)
-    return template(label)
+    return this.compile(buttonTemplate, this.props)
   }
 }
