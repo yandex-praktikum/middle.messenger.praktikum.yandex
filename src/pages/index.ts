@@ -1,13 +1,14 @@
-import errorPageTmpl from './errorPage/errorPage'
-import loginPageTmpl from './loginPage/loginPage'
+import { loginPage } from './loginPage/loginPage'
+import { registerPage } from './registerPage/registerPage'
+import { notFound, serverError } from './errorPage/errorPage'
 import mainPageTmpl from './mainPage/mainPage'
 import profilePageTmpl from './profilePage/profilePage'
-import registerPageTmpl from './registerPage/registerPage'
 
 export default {
-  errorPageTmpl: errorPageTmpl,
-  loginPageTmpl: loginPageTmpl,
+  notFoundPage: notFound,
+  serverError: serverError,
+  loginPage: loginPage,
+  registerPage: registerPage,
   mainPageTmpl: mainPageTmpl,
   profilePageTmpl: profilePageTmpl,
-  registerPageTmpl: registerPageTmpl,
 }

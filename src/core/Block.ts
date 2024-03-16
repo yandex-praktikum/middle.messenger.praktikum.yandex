@@ -24,29 +24,18 @@ export default abstract class Block {
     FLOW_RENDER: 'flow:render',
   }
 
-  private readonly _meta: {
-    tagName: string
-    propsAndChildren: PropsAndChildren
-  }
-  private _element: HTMLElement | null = null
+  private _element: DocumentFragment | null = null
   protected id: string = ''
   protected eventBus: () => EventBus
-  public props: Props
-  public children: Children
+  props: Props
+  children: Children
 
-  protected constructor(
-    tagName: string = 'div',
-    propsAndChildren: PropsAndChildren = {}
-  ) {
+  protected constructor(propsAndChildren: PropsAndChildren = {}) {
     const eventBus = new EventBus()
-    this._meta = {
-      tagName,
-      propsAndChildren,
-    }
     const { children, props } = this._getChildrenAndProps(propsAndChildren)
 
     if (props.withId) {
-      this.id = nanoid()
+      this.id = nanoid(6)
       this.props = this._makePropsProxy({ ...props, id: this.id })
     } else {
       this.props = this._makePropsProxy(props)
@@ -75,7 +64,6 @@ export default abstract class Block {
   }
 
   init() {
-    this._element = this._createDocumentElement(this._meta.tagName)
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
   }
 
@@ -104,7 +92,10 @@ export default abstract class Block {
     return true
   }
 
-  public get element() {
+  get element(): DocumentFragment {
+    if (!this._element) {
+      throw new Error('Идите нахуй')
+    }
     return this._element
   }
 
@@ -117,10 +108,8 @@ export default abstract class Block {
   }
 
   private _render() {
-    const block = this.render()
     this._removeEvents()
-    this._element!.innerHTML = ''
-    this._element!.appendChild(block)
+    this._element = this.render()
     this._addEvents()
   }
 
@@ -140,14 +129,10 @@ export default abstract class Block {
 
     Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`)
-      stub!.replaceWith(child.getContent()!)
+      stub!.replaceWith(child.element)
     })
 
     return fragment.content
-  }
-
-  getContent() {
-    return this.element
   }
 
   private _getChildrenAndProps(propsAndChildren: PropsAndChildren): {
@@ -214,12 +199,4 @@ export default abstract class Block {
       })
     }
   }
-
-  // show() {
-  //   this.getContent()!.style.display = 'block'
-  // }
-
-  // hide() {
-  //   this.getContent()!.style.display = 'none'
-  // }
 }

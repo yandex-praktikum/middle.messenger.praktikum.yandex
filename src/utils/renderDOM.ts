@@ -3,9 +3,13 @@ import Block from '../core/Block'
 export function render(query: string, block: Block) {
   const root = document.querySelector(query)
 
-  root!.appendChild(block.getContent())
+  if (!root) {
+    throw new Error('Нет рут элемента')
+  }
 
-  block.dispatchComponentDidMount()
+  root.innerHTML= ''
+
+  root.appendChild(block.element)
 
   return root
 }

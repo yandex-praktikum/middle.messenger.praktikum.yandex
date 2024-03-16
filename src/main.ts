@@ -1,18 +1,15 @@
-import { navigate, registerPartials } from './utils'
-import partials from './partials'
+import { navigate } from './utils'
 import './style.css'
-import { testPage } from './pages/testPage/testPage'
-import Button from './components/button/button'
-import {render} from "./utils/renderDOM";
+import { render } from './utils/renderDOM'
+import { loginPage } from './pages/loginPage/loginPage'
 
 document.addEventListener('DOMContentLoaded', () => {
-  registerPartials(partials)
 
   if (!window.location.hash) {
-    render("#app", new testPage({ testButton: new Button({label: 'Lol', withId: true}) }))
+    render('#app', loginPage)
   } else {
     navigate()
   }
 })
 
-// window.addEventListener('hashchange', navigate)
+window.addEventListener('hashchange', navigate)
