@@ -1,7 +1,7 @@
-// language=hbs
+import Block from '../../core/Block'
 import './profilePage.css'
 
-export default `
+const ProfilePageTemplate = `
     <div class="profile">
         <div class="back">
             <button class="back__btn">
@@ -85,3 +85,41 @@ export default `
         </div>
     </div>
 `
+
+type User = {
+    email: string
+    login: string
+    firstName: string
+    lastName: string
+    displayName: string
+    phone: string
+}
+
+type ProfilePageProps = {
+    editInfo?: boolean
+    editPassword?: boolean
+    userdata: User
+}
+
+class ProfilePage extends Block {
+    constructor(props: ProfilePageProps) {
+        super(props)
+    }
+
+    render() {
+        return this.compile(ProfilePageTemplate, this.props)
+    }
+}
+
+export const profilePage = new ProfilePage({
+    editInfo: false,
+    editPassword: false,
+    userdata: {
+      email: 'pochta@yandex.ru',
+      login: 'ivanivanov',
+      firstName: 'Иван',
+      lastName: 'Иванов',
+      displayName: 'Иван',
+      phone: '+7 (909) 967 30 30',
+    },
+})

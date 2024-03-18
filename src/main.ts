@@ -1,12 +1,11 @@
-import { navigate } from './utils'
-import './style.css'
-import { render } from './utils/renderDOM'
+import { navigate, renderDOM } from './utils'
 import { loginPage } from './pages/loginPage/loginPage'
+import './style.css'
 
 document.addEventListener('DOMContentLoaded', () => {
 
   if (!window.location.hash) {
-    render('#app', loginPage)
+    renderDOM('#app', loginPage)
   } else {
     navigate()
   }

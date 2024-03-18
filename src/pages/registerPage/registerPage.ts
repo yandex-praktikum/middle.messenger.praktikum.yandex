@@ -3,7 +3,6 @@ import Input from '../../components/input/input'
 import Button from '../../components/button/button'
 import './registerPage.css'
 
-// language=hbs
 const registerPageTemplate = `
     <div class="register dialog">
         <div class="dialog-wrapper">

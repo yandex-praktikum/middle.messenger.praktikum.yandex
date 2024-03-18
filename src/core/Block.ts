@@ -94,7 +94,7 @@ export default abstract class Block {
 
   get element(): DocumentFragment {
     if (!this._element) {
-      throw new Error('Идите нахуй')
+      throw new Error('Нет элемента')
     }
     return this._element
   }

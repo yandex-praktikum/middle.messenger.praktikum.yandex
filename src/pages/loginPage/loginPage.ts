@@ -3,7 +3,6 @@ import Button from '../../components/button/button'
 import Input from '../../components/input/input'
 import './loginPage.css'
 
-// language=hbs
 const loginPageTemplate = `
     <div class="login dialog">
         <div class="wrapper dialog-wrapper">
@@ -31,7 +30,7 @@ class LoginPage extends Block {
     super(props)
   }
 
-  render(): DocumentFragment {
+  render() {
     return this.compile(loginPageTemplate, this.props)
   }
 }

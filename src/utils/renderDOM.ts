@@ -1,6 +1,6 @@
 import Block from '../core/Block'
 
-export function render(query: string, block: Block) {
+export default function render(query: string, block: Block) {
   const root = document.querySelector(query)
 
   if (!root) {
@@ -9,7 +9,5 @@ export function render(query: string, block: Block) {
 
   root.innerHTML= ''
 
-  root.appendChild(block.element)
-
-  return root
+  root.appendChild(block.element.cloneNode(true))
 }
