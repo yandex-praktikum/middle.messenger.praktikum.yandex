@@ -1,0 +1,15 @@
+.link {
+  color: var(--color-blue);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+
+  &_blue {
+    color: var(--color-blue);
+  }
+
+  &_red {
+    color: var(--color-red);
+  }
+}

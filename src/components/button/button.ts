@@ -1,4 +1,4 @@
-import Block from '../../core/Block'
+import Block, {Props} from '../../core/Block'
 import './button.css'
 
 const buttonTemplate: string = `<button class="button {{class}}">{{ label }}</button>`
@@ -6,7 +6,7 @@ const buttonTemplate: string = `<button class="button {{class}}">{{ label }}</bu
 type ButtonProps = {
   label: string
   className?: string
-}
+} & Props
 
 export default class Button extends Block {
   constructor(props: ButtonProps) {

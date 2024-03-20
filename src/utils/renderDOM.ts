@@ -7,7 +7,7 @@ export default function render(query: string, block: Block) {
     throw new Error('Нет рут элемента')
   }
 
-  root.innerHTML= ''
+  root.innerHTML = ''
 
   root.appendChild(block.element.cloneNode(true))
 }

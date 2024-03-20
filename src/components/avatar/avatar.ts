@@ -1,4 +1,4 @@
-import Block from "../../core/Block";
+import Block from '../../core/Block'
 import './avatar.css'
 
 const avatarTemplate = `
@@ -12,7 +12,7 @@ type AvatarProps = {
   alt: string
 }
 
-export class Avatar extends Block {
+export default class Avatar extends Block {
   constructor(props: AvatarProps) {
     super(props)
   }

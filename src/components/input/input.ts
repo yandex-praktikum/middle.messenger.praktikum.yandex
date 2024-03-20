@@ -1,10 +1,11 @@
-import Block from '../../core/Block'
+import Block, {Props} from '../../core/Block'
 import './input.css'
 
+// language=hbs
 const inputTemplate: string = `
     <div class="input">
         <label class="input__label" for="{{name}}">
-            {{label}}
+            {{ label }}
             <input class="input__input" id="{{name}}" name="{{name}}" type="{{type}}" value="{{initialValue}}" placeholder="{{placeholder}}" />
         </label>
     </div>
@@ -17,7 +18,7 @@ type InputProps = {
   initialValue?: string
   placeholder?: string
   className?: string
-}
+} & Props
 
 export default class Input extends Block {
   constructor(props: InputProps) {

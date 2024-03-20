@@ -32,6 +32,7 @@ export default abstract class Block {
 
   protected constructor(propsAndChildren: PropsAndChildren = {}) {
     const eventBus = new EventBus()
+    this.eventBus = () => eventBus
     const { children, props } = this._getChildrenAndProps(propsAndChildren)
 
     if (props.withId) {
@@ -42,7 +43,6 @@ export default abstract class Block {
     }
 
     this.children = children
-    this.eventBus = () => eventBus
     this._registerEvents(eventBus)
     eventBus.emit(Block.EVENTS.INIT)
   }
@@ -108,9 +108,9 @@ export default abstract class Block {
   }
 
   private _render() {
-    this._removeEvents()
+    // this.removeEvents()
     this._element = this.render()
-    this._addEvents()
+    this.addEvents()
   }
 
   abstract render(): DocumentFragment
@@ -129,7 +129,9 @@ export default abstract class Block {
 
     Object.values(this.children).forEach((child) => {
       const stub = fragment.content.querySelector(`[data-id="${child.id}"]`)
-      stub!.replaceWith(child.element)
+      if (stub) {
+        stub.replaceWith(child.element)
+      }
     })
 
     return fragment.content
@@ -158,17 +160,11 @@ export default abstract class Block {
 
     return new Proxy(props, {
       get(target, prop: string) {
-        if (prop.indexOf('_') === 0) {
-          throw new Error('Нет доступа')
-        }
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
 
       set(target, prop: string, value) {
-        if (prop.indexOf('_') === 0) {
-          throw new Error('Нет доступа')
-        }
         const oldProps = {
           ...target,
         }
@@ -180,22 +176,22 @@ export default abstract class Block {
     })
   }
 
-  private _removeEvents() {
+  // private removeEvents() {
+  //   const { events } = this.props
+  //
+  //   if (events) {
+  //     Object.keys(events).forEach((eventName) => {
+  //       this.element.removeEventListener(eventName, events[eventName])
+  //     })
+  //   }
+  // }
+
+  private addEvents() {
     const { events } = this.props
 
     if (events) {
       Object.keys(events).forEach((eventName) => {
-        this._element?.removeEventListener(eventName, events[eventName])
-      })
-    }
-  }
-
-  private _addEvents() {
-    const { events } = this.props
-
-    if (events) {
-      Object.keys(events).forEach((eventName) => {
-        this._element?.addEventListener(eventName, events[eventName])
+        this.element.addEventListener(eventName, events[eventName])
       })
     }
   }

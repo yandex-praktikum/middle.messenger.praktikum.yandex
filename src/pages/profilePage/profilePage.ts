@@ -1,6 +1,10 @@
+import { routes } from '../../constants/routes'
 import Block from '../../core/Block'
+import Avatar from '../../components/avatar/avatar'
+import Link from "../../components/link/link";
 import './profilePage.css'
 
+// language=hbs
 const ProfilePageTemplate = `
     <div class="profile">
         <div class="back">
@@ -10,116 +14,110 @@ const ProfilePageTemplate = `
         </div>
 
         <div class="profile-content">
-            {{#if editInfo}}
-            {{else if editPassword}}
-            {{else}}
-                {{> avatar src="https://images.pexels.com/photos/276267/pexels-photo-276267.jpeg" alt="avatar"}}
-                <span class="profile-content__username">{{userdata.displayName}}</span>
-            {{/if}}
+            {{{ userAvatar }}}
+            <span class="profile-content__username">{{ userdata.displayName }}</span>
 
-            {{#if editInfo}}
-
-                <form action="" class="profile-edit-form">
-                    {{> input type="text" name="email" label="Почта" initialValue=userdata.email placeholder="Почта"}}
-                    {{> input type="text" name="login" label="Логин" initialValue=userdata.login placeholder="Логин"}}
-                    {{> input type="text" name="first_name" label="Имя" initialValue=userdata.firstName placeholder="Имя"}}
-                    {{> input type="text" name="second_name" label="Фамилия" initialValue=userdata.lastName placeholder="Фамилия"}}
-                    {{> input type="text" name="display_name" label="Имя в чате" initialValue=userdata.displayName placeholder="Имя в чате"}}
-                    {{> input type="text" name="phone" label="Телефон" initialValue=userdata.phone placeholder="Телефон"}}
-                        
-                    {{> button class="profile-edit-form__save-btn" label="Сохранить" }}
-                </form>
-
-            {{else if editPassword}}
-
-                <form action="" class="profile-edit-form">
-                    {{> input type="password" name="old_password" label="Старый пароль" placeholder="Старый пароль"}}
-                    {{> input type="password" name="new_password" label="Новый пароль" placeholder="Новый пароль"}}
-                    {{> input type="password" name="new_password_match" label="Повторите новый пароль" placeholder="Повторите новый пароль"}}
-
-                    {{> button class="profile-edit-form__save-btn" label="Сохранить" }}
-                </form>
-
-            {{else}}
-
-                <div class="profile-info">
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Почта</span>
-                        <span class="profile-info-row__value">{{userdata.email}}</span>
-                    </div>
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Логин</span>
-                        <span class="profile-info-row__value">{{userdata.login}}</span>
-                    </div>
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Имя</span>
-                        <span class="profile-info-row__value">{{userdata.firstName}}</span>
-                    </div>
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Фамилия</span>
-                        <span class="profile-info-row__value">{{userdata.lastName}}</span>
-                    </div>
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Имя в чате</span>
-                        <span class="profile-info-row__value">{{userdata.displayName}}</span>
-                    </div>
-                    <div class="profile-info-row">
-                        <span class="profile-info-row__name">Телефон</span>
-                        <span class="profile-info-row__value">{{userdata.phone}}</span>
-                    </div>
+            <div class="profile-info">
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Почта</span>
+                    <span class="profile-info-row__value">{{ userdata.email }}</span>
                 </div>
-
-                <div class="profile-actions">
-                    <div class="profile-actions__wrapper">
-                        <a href="#editUserdata" class="link profile-actions__link profile-actions__link_blue">Изменить данные</a>
-                    </div>
-                    <div class="profile-actions__wrapper">
-                        <a href="#editPassword" class="link profile-actions__link profile-actions__link_blue">Изменить пароль</a>
-                    </div>
-                    <div class="profile-actions__wrapper">
-                        <a class="link profile-actions__link profile-actions__link_red">Выйти</a>
-                    </div>
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Логин</span>
+                    <span class="profile-info-row__value">{{ userdata.login }}</span>
                 </div>
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Имя</span>
+                    <span class="profile-info-row__value">{{ userdata.firstName }}</span>
+                </div>
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Фамилия</span>
+                    <span class="profile-info-row__value">{{ userdata.secondName }}</span>
+                </div>
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Имя в чате</span>
+                    <span class="profile-info-row__value">{{ userdata.displayName }}</span>
+                </div>
+                <div class="profile-info-row">
+                    <span class="profile-info-row__name">Телефон</span>
+                    <span class="profile-info-row__value">{{ userdata.phone }}</span>
+                </div>
+            </div>
 
-            {{/if}}
+            <div class="profile-actions">
+                <div class="profile-actions__wrapper">
+                  {{{ editUserdataLink }}}
+                </div>
+                <div class="profile-actions__wrapper">
+                    {{{ editPasswordLink }}}
+                </div>
+                <div class="profile-actions__wrapper">
+                    {{{ logoutLink }}}
+                </div>
+            </div>
         </div>
     </div>
 `
 
 type User = {
-    email: string
-    login: string
-    firstName: string
-    lastName: string
-    displayName: string
-    phone: string
+  email: string
+  login: string
+  firstName: string
+  secondName: string
+  displayName: string
+  phone: string
 }
 
 type ProfilePageProps = {
-    editInfo?: boolean
-    editPassword?: boolean
-    userdata: User
+  editInfo: boolean
+  editPassword: boolean
+  userdata: User
+  userAvatar: Avatar
+  editUserdataLink: Link
+  editPasswordLink: Link
+  logoutLink: Link
 }
 
 class ProfilePage extends Block {
-    constructor(props: ProfilePageProps) {
-        super(props)
-    }
+  constructor(props: ProfilePageProps) {
+    super(props)
+  }
 
-    render() {
-        return this.compile(ProfilePageTemplate, this.props)
-    }
+  render() {
+    return this.compile(ProfilePageTemplate, this.props)
+  }
+}
+
+const userdata = {
+  email: 'pochta@yandex.ru',
+  login: 'ivanivanov',
+  firstName: 'Иван',
+  secondName: 'Иванов',
+  displayName: 'Иван',
+  phone: '+7 (909) 967 30 30',
 }
 
 export const profilePage = new ProfilePage({
-    editInfo: false,
-    editPassword: false,
-    userdata: {
-      email: 'pochta@yandex.ru',
-      login: 'ivanivanov',
-      firstName: 'Иван',
-      lastName: 'Иванов',
-      displayName: 'Иван',
-      phone: '+7 (909) 967 30 30',
-    },
+  editInfo: false,
+  editPassword: false,
+  userdata: userdata,
+  userAvatar: new Avatar({
+    src: 'https://i.ibb.co/k8qJmGG/1.png',
+    alt: 'userdata',
+  }),
+  editUserdataLink: new Link({
+    to: routes.editUserdata,
+    label: 'Изменить данные',
+    className: 'profile-actions__link profile-actions__link_blue',
+  }),
+  editPasswordLink: new Link({
+    to: routes.editPassword,
+    label: 'Изменить пароль',
+    className: 'profile-actions__link profile-actions__link_blue',
+  }),
+  logoutLink: new Link({
+    to: "#logout",
+    label: 'Выйти',
+    className: 'profile-actions__link profile-actions__link_red',
+  }),
 })
