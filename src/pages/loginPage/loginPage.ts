@@ -54,6 +54,7 @@ export const loginPage = new LoginPage({
       className: 'login-btn',
       events: {
         click: (event) => {
+          event.preventDefault()
           console.log(event)
         },
       },

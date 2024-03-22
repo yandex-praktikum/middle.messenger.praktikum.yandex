@@ -24,7 +24,7 @@ export default abstract class Block {
     FLOW_RENDER: 'flow:render',
   }
 
-  private _element: DocumentFragment | null = null
+  private _element: Element | null = null
   protected id: string = ''
   protected eventBus: () => EventBus
   props: Props
@@ -84,7 +84,9 @@ export default abstract class Block {
   }
 
   private _componentDidUpdate(oldProps?: Props, newProps?: Props) {
-    this.componentDidUpdate(oldProps, newProps)
+    if (this.componentDidUpdate(oldProps, newProps)) {
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
+    }
   }
 
   componentDidUpdate(oldProps?: Props, newProps?: Props) {
@@ -92,7 +94,7 @@ export default abstract class Block {
     return true
   }
 
-  get element(): DocumentFragment {
+  get element() {
     if (!this._element) {
       throw new Error('Нет элемента')
     }
@@ -113,7 +115,7 @@ export default abstract class Block {
     this.addEvents()
   }
 
-  abstract render(): DocumentFragment
+  abstract render(): Element
 
   compile(template: string, props: Props) {
     const propsAndStubs = { ...props }
@@ -134,7 +136,11 @@ export default abstract class Block {
       }
     })
 
-    return fragment.content
+    if (!fragment.content.firstElementChild) {
+      throw new Error('Нет элемента')
+    }
+
+    return fragment.content.firstElementChild
   }
 
   private _getChildrenAndProps(propsAndChildren: PropsAndChildren): {
