@@ -9,5 +9,5 @@ export default function render(query: string, block: Block) {
 
   root.innerHTML = ''
 
-  root.appendChild(block.element.cloneNode(true))
+  root.appendChild(block.element)
 }

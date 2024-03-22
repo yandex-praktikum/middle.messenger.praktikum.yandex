@@ -1,4 +1,4 @@
-import Block from "../../core/Block";
+import Block, {Props} from "../../core/Block";
 import './link.css'
 
 // language=hbs
@@ -8,7 +8,7 @@ type LinkProps = {
   to: string
   label: string
   className?: string
-}
+} & Props
 
 export default class Link extends Block {
   constructor(props: LinkProps) {

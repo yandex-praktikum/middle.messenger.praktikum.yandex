@@ -30,6 +30,7 @@
     "stylelint-config-standard": "^36.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.4",
-    "vite-plugin-eslint": "^1.8.1"
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-stylelint": "^5.3.1"
   }
 }

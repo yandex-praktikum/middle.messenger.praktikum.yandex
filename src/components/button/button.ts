@@ -1,7 +1,8 @@
 import Block, {Props} from '../../core/Block'
 import './button.css'
 
-const buttonTemplate: string = `<button class="button {{class}}">{{ label }}</button>`
+// language=hbs
+const buttonTemplate: string = `<button class="button {{ className }}">{{ label }}</button>`
 
 type ButtonProps = {
   label: string
@@ -11,6 +12,7 @@ type ButtonProps = {
 export default class Button extends Block {
   constructor(props: ButtonProps) {
     super(props)
+    console.log(props)
   }
 
   render() {

@@ -13,8 +13,11 @@ export type Props = {
 export type PropsAndChildren = {
   children?: Children
   props?: Props
+  blockArrays?: Record<string, Block[]>
   [prop: string]: unknown
 }
+
+export type BlockArrays = Record<string, Block[]>
 
 export default abstract class Block {
   private static EVENTS = {
@@ -29,11 +32,12 @@ export default abstract class Block {
   protected eventBus: () => EventBus
   props: Props
   children: Children
+  blockArrays: BlockArrays
 
   protected constructor(propsAndChildren: PropsAndChildren = {}) {
     const eventBus = new EventBus()
     this.eventBus = () => eventBus
-    const { children, props } = this._getChildrenAndProps(propsAndChildren)
+    const { children, props, blockArrays } = this._getChildrenAndProps(propsAndChildren)
 
     if (props.withId) {
       this.id = nanoid(6)
@@ -43,6 +47,7 @@ export default abstract class Block {
     }
 
     this.children = children
+    this.blockArrays = blockArrays
     this._registerEvents(eventBus)
     eventBus.emit(Block.EVENTS.INIT)
   }
@@ -119,10 +124,15 @@ export default abstract class Block {
 
   compile(template: string, props: Props) {
     const propsAndStubs = { ...props }
+    const listId = nanoid(6)
 
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child.id}"></div>`
     })
+
+    Object.keys(this.blockArrays).forEach(key => {
+      propsAndStubs[key] = `<div data-id="__l_${listId}"></div>`;
+    });
 
     const fragment = this._createDocumentElement(
       'template'
@@ -136,6 +146,24 @@ export default abstract class Block {
       }
     })
 
+    Object.values(this.blockArrays).forEach(child => {
+
+      const listCont = this._createDocumentElement('template') as HTMLTemplateElement;
+
+      child.forEach(item => {
+        if (item) {
+          listCont.content.append(item.element);
+        } else {
+          listCont.content.append(`${item}`);
+        }
+      });
+
+      const stub = fragment.content.querySelector(`[data-id="__l_${listId}"]`);
+      if (stub) {
+        stub.replaceWith(listCont.content);
+      }
+    });
+
     if (!fragment.content.firstElementChild) {
       throw new Error('Нет элемента')
     }
@@ -146,19 +174,23 @@ export default abstract class Block {
   private _getChildrenAndProps(propsAndChildren: PropsAndChildren): {
     props: Props
     children: Children
+    blockArrays: BlockArrays
   } {
     const children: Children = {}
     const props: Props = {}
+    const blockArrays: BlockArrays = {}
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
-      if (value instanceof Block) {
+      if (Array.isArray(value)) {
+        blockArrays[key] = value
+      }else if (value instanceof Block) {
         children[key] = value
       } else {
         props[key] = value
       }
     })
 
-    return { props, children }
+    return { props, children, blockArrays }
   }
 
   private _makePropsProxy(props: Props) {
@@ -181,16 +213,6 @@ export default abstract class Block {
       },
     })
   }
-
-  // private removeEvents() {
-  //   const { events } = this.props
-  //
-  //   if (events) {
-  //     Object.keys(events).forEach((eventName) => {
-  //       this.element.removeEventListener(eventName, events[eventName])
-  //     })
-  //   }
-  // }
 
   private addEvents() {
     const { events } = this.props

@@ -1,38 +1,26 @@
+import { routes } from '../../constants/routes'
 import Block from '../../core/Block'
-import Input from '../../components/input/input'
 import Button from '../../components/button/button'
+import Form from '../../components/form/form'
+import Input from '../../components/input/input'
+import Link from '../../components/link/link'
 import './registerPage.css'
 
+// language=hbs
 const registerPageTemplate = `
     <div class="register dialog">
         <div class="dialog-wrapper">
             <h4 class="register__title">Регистрация</h4>
+            {{{ registerForm }}}
 
-            <form action="" class="register-form dialog-form">
-                {{{ emailInput }}}
-                {{{ loginInput }}}
-                {{{ firstNameInput }}}
-                {{{ secondNameInput }}}
-                {{{ phoneInput }}}
-                {{{ passwordInput }}}
-                {{{ passwordVerifyInput }}}
-                {{{ registerBtn }}}
-            </form>
-
-            <a class="link" href="#login">Войти</a>
+            {{{ loginLink }}}
         </div>
     </div>
 `
 
 type RegisterPageProps = {
-  emailInput: Input
-  loginInput: Input
-  firstNameInput: Input
-  secondNameInput: Input
-  phoneInput: Input
-  passwordInput: Input
-  passwordVerifyInput: Input
-  registerBtn: Button
+  registerForm: Form
+  loginLink: Link
 }
 
 class RegisterPage extends Block {
@@ -46,47 +34,57 @@ class RegisterPage extends Block {
 }
 
 export const registerPage = new RegisterPage({
-  emailInput: new Input({
-    type: 'text',
-    name: 'email',
-    label: 'Почта',
-    placeholder: 'Почта...',
+  registerForm: new Form({
+    className: 'register-form dialog-form',
+    inputs: [
+      new Input({
+        type: 'text',
+        name: 'email',
+        label: 'Почта',
+        placeholder: 'Почта...',
+      }),
+      new Input({
+        type: 'text',
+        name: 'login',
+        label: 'Логин',
+        placeholder: 'Логин...',
+      }),
+      new Input({
+        type: 'text',
+        name: 'first_name',
+        label: 'Имя',
+        placeholder: 'Имя...',
+      }),
+      new Input({
+        type: 'text',
+        name: 'second_name',
+        label: 'Фамилия',
+        placeholder: 'Фамилия...',
+      }),
+      new Input({
+        type: 'text',
+        name: 'phone',
+        label: 'Телефон',
+        placeholder: 'Телефон...',
+      }),
+      new Input({
+        type: 'password',
+        name: 'password',
+        label: 'Пароль',
+        placeholder: 'Пароль...',
+      }),
+      new Input({
+        type: 'password',
+        name: 'password_verify',
+        label: 'Пароль ещё раз',
+        placeholder: 'Повторите пароль...',
+      }),
+    ],
+    submitBtn: new Button({ label: 'Зарегистрироваться' }),
   }),
-  loginInput: new Input({
-    type: 'text',
-    name: 'login',
-    label: 'Логин',
-    placeholder: 'Логин...',
+  loginLink: new Link({
+    to: routes.login,
+    label: 'Войти',
+    withId: true,
   }),
-  firstNameInput: new Input({
-    type: 'text',
-    name: 'first_name',
-    label: 'Имя',
-    placeholder: 'Имя...',
-  }),
-  secondNameInput: new Input({
-    type: 'text',
-    name: 'second_name',
-    label: 'Фамилия',
-    placeholder: 'Фамилия...',
-  }),
-  phoneInput: new Input({
-    type: 'text',
-    name: 'phone',
-    label: 'Телефон',
-    placeholder: 'Телефон...',
-  }),
-  passwordInput: new Input({
-    type: 'password',
-    name: 'password',
-    label: 'Пароль',
-    placeholder: 'Пароль...',
-  }),
-  passwordVerifyInput: new Input({
-    type: 'password',
-    name: 'password_verify',
-    label: 'Пароль ещё раз',
-    placeholder: 'Повторите пароль...',
-  }),
-  registerBtn: new Button({ label: 'Зарегистрироваться' }),
 })

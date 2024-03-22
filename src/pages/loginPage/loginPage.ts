@@ -1,19 +1,19 @@
 import { routes } from '../../constants/routes'
-import Block from '../../core/Block'
+import Block, { Props } from '../../core/Block'
 import Button from '../../components/button/button'
+import Form from '../../components/form/form'
 import Input from '../../components/input/input'
 import Link from '../../components/link/link'
 import './loginPage.css'
-import { Form } from '../../components/form/form'
 
+// language=hbs
 const loginPageTemplate = `
     <div class="login dialog">
         <div class="wrapper dialog-wrapper">
             <h4 class="login__title">Вход</h4>
-
             {{{ loginForm }}}
 
-            <a class="link" href="#register">Нет аккаунта?</a>
+            {{{ registerLink }}}
         </div>
     </div>
 `
@@ -21,7 +21,7 @@ const loginPageTemplate = `
 type LoginPageProps = {
   loginForm: Form
   registerLink: Link
-}
+} & Props
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps) {
@@ -35,6 +35,7 @@ class LoginPage extends Block {
 
 export const loginPage = new LoginPage({
   loginForm: new Form({
+    className: 'login-form dialog-form',
     inputs: [
       new Input({
         type: 'text',
@@ -52,14 +53,11 @@ export const loginPage = new LoginPage({
     submitBtn: new Button({
       label: 'Авторизоваться',
       className: 'login-btn',
-      events: {
-        click: (event) => {
-          event.preventDefault()
-          console.log(event)
-        },
-      },
-    }),
-    className: 'login-form dialog-form',
+    })
   }),
-  registerLink: new Link({ to: routes.register, label: 'Нет аккаунта?' }),
+  registerLink: new Link({
+    to: routes.register,
+    label: 'Нет аккаунта?',
+    withId: true,
+  }),
 })
