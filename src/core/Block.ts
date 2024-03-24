@@ -94,8 +94,9 @@ export default abstract class Block {
     }
   }
 
-  componentDidUpdate(oldProps?: Props, newProps?: Props) {
-    console.log(oldProps, newProps)
+  componentDidUpdate(oldProps?: Props, newProps?: Partial<Props>) {
+    console.log(oldProps)
+    console.log(newProps)
     return true
   }
 
@@ -115,7 +116,6 @@ export default abstract class Block {
   }
 
   private _render() {
-    // this.removeEvents()
     this._element = this.render()
     this.addEvents()
   }

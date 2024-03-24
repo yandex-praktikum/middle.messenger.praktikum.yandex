@@ -12,7 +12,6 @@ type ButtonProps = {
 export default class Button extends Block {
   constructor(props: ButtonProps) {
     super(props)
-    console.log(props)
   }
 
   render() {
