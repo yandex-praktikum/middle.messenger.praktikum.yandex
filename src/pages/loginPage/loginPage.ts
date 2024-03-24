@@ -42,12 +42,18 @@ export const loginPage = new LoginPage({
         name: 'login',
         label: 'Логин',
         placeholder: 'Логин...',
+        validation: {
+          required: true
+        }
       }),
       new Input({
         type: 'password',
         name: 'password',
         label: 'Пароль',
         placeholder: 'Пароль...',
+        validation: {
+          required: true
+        }
       }),
     ],
     submitBtn: new Button({

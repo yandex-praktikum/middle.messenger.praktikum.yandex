@@ -21,13 +21,9 @@ type MainPageProps = {
 export class MainPage extends Block {
   constructor(props: MainPageProps) {
     super(props)
-    setTimeout(()=> {
-      this.setProps({kek: 'her'})
-    }, 3000)
   }
 
   render() {
-    console.log(this)
     return this.compile(MainPageTemplate, this.props)
   }
 }

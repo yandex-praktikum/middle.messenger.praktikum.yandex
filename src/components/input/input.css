@@ -17,5 +17,9 @@
     border: none;
     border-bottom: 1px solid var(--color-blue);
     outline: none;
+
+    &_error {
+      border-bottom: 1px solid var(--color-red);
+    }
   }
 }
