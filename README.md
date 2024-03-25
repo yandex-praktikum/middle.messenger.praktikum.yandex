@@ -7,7 +7,7 @@
 
 ### Также не забудьте проверить, что репозиторий публичный.
 ---
-Домен на Netlify: https://rainbow-tiramisu-ab9761.netlify.app/
+Домен на Netlify: https://famous-alfajores-2b6ee4.netlify.app
 Ссылка github https://github.com/achuzhegin/middle.messenger.praktikum.yandex.git
 
 Схематичные макеты в папке: https://www.figma.com/file/CoUPn2Kxakd4gSwznciTcb/Untitled?type=design&node-id=0%3A1&mode=design&t=Zq1cMmWLw0LRr5Ln-1
