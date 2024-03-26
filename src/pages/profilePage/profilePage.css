@@ -27,6 +27,11 @@
     }
   }
 
+  &__avatar {
+    width: 130px;
+    height: 130px;
+  }
+
   .profile-content {
     display: flex;
     flex-direction: column;

@@ -12,4 +12,8 @@
   &_red {
     color: var(--color-red);
   }
+
+  &_gray {
+    color: var(--color-gray);
+  }
 }

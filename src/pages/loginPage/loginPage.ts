@@ -5,6 +5,7 @@ import Form from '../../components/form/form'
 import Input from '../../components/input/input'
 import Link from '../../components/link/link'
 import './loginPage.css'
+import { ValidationsMap } from '../../constants/validations'
 
 // language=hbs
 const loginPageTemplate = `
@@ -43,8 +44,10 @@ export const loginPage = new LoginPage({
         label: 'Логин',
         placeholder: 'Логин...',
         validation: {
-          required: true
-        }
+          required: true,
+          regExp: ValidationsMap.login,
+          errorText: 'Неверный формат логина',
+        },
       }),
       new Input({
         type: 'password',
@@ -52,14 +55,16 @@ export const loginPage = new LoginPage({
         label: 'Пароль',
         placeholder: 'Пароль...',
         validation: {
-          required: true
-        }
+          required: true,
+          regExp: ValidationsMap.password,
+          errorText: 'Неверный формат пароля',
+        },
       }),
     ],
     submitBtn: new Button({
       label: 'Авторизоваться',
       className: 'login-btn',
-    })
+    }),
   }),
   registerLink: new Link({
     to: routes.register,

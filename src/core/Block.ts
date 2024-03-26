@@ -37,7 +37,8 @@ export default abstract class Block {
   protected constructor(propsAndChildren: PropsAndChildren = {}) {
     const eventBus = new EventBus()
     this.eventBus = () => eventBus
-    const { children, props, blockArrays } = this._getChildrenAndProps(propsAndChildren)
+    const { children, props, blockArrays } =
+      this._getChildrenAndProps(propsAndChildren)
 
     if (props.withId) {
       this.id = nanoid(6)
@@ -95,7 +96,7 @@ export default abstract class Block {
   }
 
   componentDidUpdate(oldProps?: Props, newProps?: Partial<Props>) {
-    oldProps = {...oldProps, ...newProps}
+    oldProps = { ...oldProps, ...newProps }
     return true
   }
 
@@ -133,9 +134,9 @@ export default abstract class Block {
       propsAndStubs[key] = `<div data-id="${child.id}"></div>`
     })
 
-    Object.keys(this.blockArrays).forEach(key => {
-      propsAndStubs[key] = `<div data-id="__l_${listId}"></div>`;
-    });
+    Object.keys(this.blockArrays).forEach((key) => {
+      propsAndStubs[key] = `<div data-id="__l_${listId}"></div>`
+    })
 
     const fragment = this._createDocumentElement(
       'template'
@@ -149,23 +150,24 @@ export default abstract class Block {
       }
     })
 
-    Object.values(this.blockArrays).forEach(child => {
+    Object.values(this.blockArrays).forEach((child) => {
+      const listCont = this._createDocumentElement(
+        'template'
+      ) as HTMLTemplateElement
 
-      const listCont = this._createDocumentElement('template') as HTMLTemplateElement;
-
-      child.forEach(item => {
+      child.forEach((item) => {
         if (item) {
-          listCont.content.append(item.element);
+          listCont.content.append(item.element)
         } else {
-          listCont.content.append(`${item}`);
+          listCont.content.append(`${item}`)
         }
-      });
+      })
 
-      const stub = fragment.content.querySelector(`[data-id="__l_${listId}"]`);
+      const stub = fragment.content.querySelector(`[data-id="__l_${listId}"]`)
       if (stub) {
-        stub.replaceWith(listCont.content);
+        stub.replaceWith(listCont.content)
       }
-    });
+    })
 
     if (!fragment.content.firstElementChild) {
       throw new Error('Нет элемента')
@@ -186,7 +188,7 @@ export default abstract class Block {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (Array.isArray(value)) {
         blockArrays[key] = value
-      }else if (value instanceof Block) {
+      } else if (value instanceof Block) {
         children[key] = value
       } else {
         props[key] = value

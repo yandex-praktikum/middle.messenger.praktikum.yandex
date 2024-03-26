@@ -1,7 +1,11 @@
+import { User } from '../../constants/types'
+import { userdata } from '../../mockData'
 import Block from '../../core/Block'
 import Button from '../../components/button/button'
+import Form from '../../components/form/form'
 import Input from '../../components/input/input'
 import '../profilePage/profilePage.css'
+import { ValidationsMap } from '../../constants/validations'
 
 const EditUserdataPageTemplate = `
   <div class="profile">
@@ -12,38 +16,14 @@ const EditUserdataPageTemplate = `
     </div>
 
     <div class="profile-content">
-      <form action="" class="profile-edit-form">
-        {{{ emailInput }}}
-        {{{ loginInput }}}
-        {{{ firstNameInput }}}
-        {{{ secondNameInput }}}
-        {{{ displayNameInput }}}
-        {{{ phoneInput }}}
-
-        {{{ saveBtn }}}
-      </form>
+      {{{ editUserDataForm }}}
     </div>
   </div>
 `
 
-type User = {
-  email: string
-  login: string
-  firstName: string
-  secondName: string
-  displayName: string
-  phone: string
-}
-
 type EditUserdataPageProps = {
+  editUserDataForm: Form
   userdata: User
-  emailInput: Input
-  loginInput: Input
-  firstNameInput: Input
-  secondNameInput: Input
-  displayNameInput: Input
-  phoneInput: Input
-  saveBtn: Button
 }
 
 class EditUserdataPage extends Block {
@@ -56,55 +36,81 @@ class EditUserdataPage extends Block {
   }
 }
 
-const userdata = {
-  email: 'pochta@yandex.ru',
-  login: 'ivanivanov',
-  firstName: 'Иван',
-  secondName: 'Иванов',
-  displayName: 'Иван',
-  phone: '+7 (909) 967 30 30',
-}
-
 export const editUserdataPage = new EditUserdataPage({
   userdata: userdata,
-  emailInput: new Input({
-    type: 'text',
-    name: 'email',
-    label: 'Почта',
-    placeholder: 'Почта',
-  }),
-  loginInput: new Input({
-    type: 'text',
-    name: 'login',
-    label: 'Логин',
-    placeholder: 'Логин',
-  }),
-  firstNameInput: new Input({
-    type: 'text',
-    name: 'first_name',
-    label: 'Имя',
-    placeholder: 'Имя',
-  }),
-  secondNameInput: new Input({
-    type: 'text',
-    name: 'second_name',
-    label: 'Фамилия',
-    placeholder: 'Фамилия',
-  }),
-  displayNameInput: new Input({
-    type: 'text',
-    name: 'display_name',
-    label: 'Имя в чате',
-    placeholder: 'Имя в чате',
-  }),
-  phoneInput: new Input({
-    type: 'text',
-    name: 'phone',
-    label: 'Телефон',
-    placeholder: 'Телефон',
-  }),
-  saveBtn: new Button({
-    label: 'Сохранить',
-    className: 'profile-edit-form__save-btn',
+  editUserDataForm: new Form({
+    className: 'login-form dialog-form',
+    inputs: [
+      new Input({
+        type: 'text',
+        name: 'email',
+        label: 'Почта',
+        placeholder: 'Почта',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.email,
+          errorText: 'Неверный формат почты',
+        },
+      }),
+      new Input({
+        type: 'text',
+        name: 'login',
+        label: 'Логин',
+        placeholder: 'Логин',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.login,
+          errorText: 'Неверный формат логина',
+        },
+      }),
+      new Input({
+        type: 'text',
+        name: 'first_name',
+        label: 'Имя',
+        placeholder: 'Имя',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.name,
+          errorText: 'Неверный формат имени',
+        },
+      }),
+      new Input({
+        type: 'text',
+        name: 'second_name',
+        label: 'Фамилия',
+        placeholder: 'Фамилия',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.name,
+          errorText: 'Неверный формат фамилии',
+        },
+      }),
+      new Input({
+        type: 'text',
+        name: 'display_name',
+        label: 'Имя в чате',
+        placeholder: 'Имя в чате',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.name,
+          errorText: 'Неверный формат фамилии',
+        },
+      }),
+      new Input({
+        type: 'text',
+        name: 'phone',
+        label: 'Телефон',
+        placeholder: 'Телефон',
+        validation: {
+          required: true,
+          regExp: ValidationsMap.phone,
+          errorText: 'Неверный формат телефона',
+        },
+      }),
+    ],
+    submitBtn: new Button({
+      label: 'Сохранить',
+      className: 'profile-edit-form__save-btn',
+    }),
   }),
 })

@@ -1,21 +1,28 @@
 import Block from '../../core/Block'
 import ChatItem from '../../components/chatItem/chatItem'
-import { default as mockData } from './mockData'
+import { mockChatItems, mockMessages, userdata } from '../../mockData'
+import { Chat } from '../../components/chat/chat'
 import './mainPage.css'
 
 // language=hbs
 const MainPageTemplate = `
   <div class="main">
     <div class="sidebar">
+      <div class="sidebar__top-block">
+        <a class="link link_gray" href="#profile">Профиль></a>
+        <input type="text" class="input-round" />
+      </div>
+      
       {{{ chatItems }}}
     </div>
-    <div class="chat">{{{ kek }}}</div>
+    
+    {{{ chat }}}
   </div>
 `
 
 type MainPageProps = {
   chatItems: ChatItem[]
-  kek: string
+  chat: Chat
 }
 
 export class MainPage extends Block {
@@ -29,6 +36,9 @@ export class MainPage extends Block {
 }
 
 export const mainPage = new MainPage({
-  chatItems: mockData,
-  kek: 'lol',
+  chatItems: mockChatItems,
+  chat: new Chat({
+    user: userdata,
+    messages: mockMessages,
+  }),
 })

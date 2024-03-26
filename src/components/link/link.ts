@@ -1,4 +1,4 @@
-import Block, {Props} from "../../core/Block";
+import Block, { Props } from '../../core/Block'
 import './link.css'
 
 // language=hbs
@@ -12,10 +12,10 @@ type LinkProps = {
 
 export default class Link extends Block {
   constructor(props: LinkProps) {
-    super(props);
+    super(props)
   }
 
   render() {
-    return this.compile(LinkTemplate, this.props);
+    return this.compile(LinkTemplate, this.props)
   }
 }

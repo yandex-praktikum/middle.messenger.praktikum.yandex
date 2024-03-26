@@ -3,18 +3,17 @@ import './input.css'
 
 // language=hbs
 const inputTemplate: string = `
-  <div class="input">
-    <label class="input__label" for="{{name}}">
-      {{ label }}
-      <input class="input__input" id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}"/>
-    </label>
-    <span class="input__warning">{{{ warning }}}</span>
-  </div>
+  <label class="label" for="{{name}}">
+    <span>{{ label }}</span>
+    {{{ input }}}
+    <span class="error">{{ errorText }}</span>
+  </label>
 `
 
 type InputValidation = {
   required?: boolean
   regExp?: RegExp
+  errorText?: string
 }
 
 type InputProps = {
@@ -28,14 +27,17 @@ type InputProps = {
 
 export default class Input extends Block {
   _name: string
-  _validation?: InputValidation
+  _inputElement: InputField
 
   constructor(props: InputProps) {
-    super(props)
+    const input = new InputField({ ...props })
+    super({
+      ...props,
+      input: input,
+    })
+    input.props._parentBlock = this
     this._name = props.name
-    if (props.validation) {
-      this._validation = props.validation
-    }
+    this._inputElement = input
   }
 
   get name() {
@@ -43,31 +45,74 @@ export default class Input extends Block {
   }
 
   getValue() {
-    const element = this.element.querySelector('.input__input')
-
-    if (element instanceof HTMLInputElement) {
-      return element.value
-    } else {
-      throw new Error('Input: нет элемента')
-    }
+    return this._inputElement.getValue()
   }
 
   validate() {
-    const value = this.getValue()
-    if (this._validation && this._validation.required) {
-      console.log(value.length)
-    }
+    return this._inputElement.validate()
   }
 
   render() {
-    console.log(this.props)
-    const element = this.compile(inputTemplate, this.props)
-    const inputElement = element.querySelector('.input__input')
-    if (inputElement) {
-      inputElement.addEventListener('blur', () => {
-        this.validate()
-      })
+    return this.compile(inputTemplate, this.props)
+  }
+}
+
+// language=hbs
+const inputFieldTemplate: string = `
+  <input class="input" id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" />
+`
+
+class InputField extends Block {
+  _validation?: InputValidation
+
+  constructor(props: Partial<InputProps>) {
+    super({
+      ...props,
+      events: {
+        blur: () => {
+          this.validate()
+          this.toggleErrorClass()
+        },
+      },
+    })
+    if (props.validation) {
+      this._validation = props.validation
     }
-    return element
+  }
+
+  getValue() {
+    const element = this.element as HTMLInputElement
+    return element.value
+  }
+
+  toggleErrorClass() {
+    this.element.classList.toggle('input_error', !this.validate())
+  }
+
+  validate() {
+    const parent = this.props._parentBlock as Input
+    const value = this.getValue()
+
+    if (!this._validation) {
+      return true
+    }
+
+    if (this._validation.required && !value.length) {
+      parent.props.errorText = 'Необходимо заполнить это поле'
+      return false
+    } else if (
+      this._validation.regExp &&
+      !this._validation.regExp.test(value)
+    ) {
+      parent.props.errorText = this._validation.errorText
+      return false
+    }
+
+    parent.props.errorText = ''
+    return true
+  }
+
+  render() {
+    return this.compile(inputFieldTemplate, this.props)
   }
 }

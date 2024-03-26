@@ -10,5 +10,13 @@
     border-right: 1px solid var(--border);
     scrollbar-width: thin;
     box-sizing: border-box;
+
+    &__top-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 22px;
+      padding: 14px 10px;
+    }
   }
 }

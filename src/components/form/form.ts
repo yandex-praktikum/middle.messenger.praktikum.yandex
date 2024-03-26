@@ -1,9 +1,9 @@
-import Block, {Props} from "../../core/Block";
-import Input from "../input/input";
-import Button from "../button/button";
+import Block, { Props } from '../../core/Block'
+import Input from '../input/input'
+import Button from '../button/button'
 
 // language=hbs
-const FormTemplate = `<form class="{{ className }}">
+const FormTemplate: string = `<form class="{{ className }}">
   {{{ inputs }}}
   {{{ submitBtn }}}
 </form>`
@@ -16,26 +16,33 @@ export type FormProps = {
 
 export default class Form extends Block {
   constructor(props: FormProps) {
-    super(props);
+    super(props)
     this.props.events = {
       submit: (e) => {
         e.preventDefault()
         this.getValues()
-      }
+      },
     }
   }
 
   getValues() {
     const data: { [index: string]: string } = {}
-    this.blockArrays.inputs.forEach(input => {
+    this.blockArrays.inputs.forEach((input) => {
       if (input instanceof Input) {
-        data[input.name] = input.getValue()
+        const isValid = input.validate()
+        if (isValid) {
+          data[input.name] = input.getValue()
+        }
       }
     })
-    console.log(data)
+    if (Object.keys(data).length) {
+      console.log(data)
+    } else {
+      console.log('Форма содержит ошибки')
+    }
   }
 
   render() {
-    return this.compile(FormTemplate, this.props);
+    return this.compile(FormTemplate, this.props)
   }
 }

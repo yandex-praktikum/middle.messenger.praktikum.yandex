@@ -3,15 +3,16 @@
   grid-template-columns: 50px auto 40px;
   grid-template-rows: 20px auto;
   column-gap: 10px;
+  align-items: center;
   padding: 12px 10px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
 
   &:hover {
-    background: #e4edfd;
+    background: var(--blue-bg);
   }
 
   &__avatar {
@@ -24,8 +25,9 @@
   }
 
   &__date {
+    color: var(--color-gray);
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   &__message {
@@ -34,7 +36,6 @@
     -webkit-box-orient: vertical;
     max-width: 100%;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 14px;
     font-weight: 400;
