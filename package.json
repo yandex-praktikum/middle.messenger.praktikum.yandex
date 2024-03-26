@@ -26,6 +26,7 @@
     "nanoid": "^5.0.6",
     "postcss-nested": "^6.0.1",
     "prettier": "3.2.5",
+    "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.4",
