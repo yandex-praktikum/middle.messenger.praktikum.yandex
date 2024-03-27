@@ -11,6 +11,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static('./dist'));
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'))
+  res.sendFile(path.join(__dirname, 'src/dist/index.html'))
 })
 app.listen(3000);
