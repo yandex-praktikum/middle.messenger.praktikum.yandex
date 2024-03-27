@@ -11,6 +11,7 @@
   "devDependencies": {
     "vite": "^5.2.0",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-handlebars": "^2.0.0",
     "vite-plugin-stylelint": "^5.3.1"
   }
 }
