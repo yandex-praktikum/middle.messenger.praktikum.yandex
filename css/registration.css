@@ -2,7 +2,6 @@ body {
     margin: 0;
     max-width: 1280px;
     max-height: 720px;
-    /* background-color: #f0f0f0; */
     font-family: Montserrat, Arial, sans-serif;
     font-weight: 500;
 }
@@ -73,6 +72,5 @@ label {
 	text-align: center;
     line-height: 38px;
     text-decoration: none;
-	/* background: #3369F3; */
-	border-radius: 12px;
+    border-radius: 12px;
 }
