@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "run-s clean build node",
+    "start": "run start",
     "dev": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview"
