@@ -2,19 +2,18 @@ body {
     margin: 0;
     max-width: 1342px;
     max-height: 720px;
-    /* background-color: #f0f0f0; */
+    
     font-family: Montserrat, Arial, sans-serif;
     font-weight: 500;
 }
 .container {
     width: 553px;
-    /* height: 450px; */
+   
     margin: 0 auto;
     margin-top: 55px;
     padding-left: 15px;
     padding-right: 15px;
-    /* border: solid;
-    border-radius: 12px; */
+    
     border-color: #F5F5F5;
 }
 .row {
@@ -35,8 +34,7 @@ body {
 input {
 	height: 16px;
     width: 64%;
-	/* padding: 6px 181px10px;  */
-	/* background-color: #fff; */
+	
     margin-left: 35%;
 	border: none;
     border-bottom: 2px solid;
@@ -55,10 +53,10 @@ input {
 }
 
 label {
-    /* display: inline-block;  */
+   
     margin-bottom: 10px;
     font-size: 12px;
-    /* color: #999999; */
+    
 }
 .btn {
 	display: inline-block;
@@ -76,11 +74,10 @@ label {
 	height: 38px;
     width: 100%;
 	color:  #3369F3;
-	/* text-align: center; */
+	
     line-height: 38px;
     text-decoration: none;
-	/* background: #3369F3; */
-	/* border-radius: 12px; */
+	
 }
 .btn-3 {
 	display: inline-block;
@@ -90,8 +87,7 @@ label {
 	/* text-align: center; */
     line-height: 38px;
     text-decoration: none;
-	/* background: #3369F3; */
-	/* border-radius: 12px; */
+	
 }
 .btn-4 {
 	display: inline-block;
@@ -101,14 +97,13 @@ label {
 	text-align: center;
     line-height: 38px;
     text-decoration: none;
-	/* background: #3369F3; */
-	/* border-radius: 12px; */
+	
 }
 .foto {
     background: #EFEFEF;
    
     border-radius: 50%;
-    /* box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125); */
+   
     display: flex;
     height: 130px;
     width: 130px;
@@ -117,8 +112,6 @@ label {
   }
   .foto img {
     margin: auto;
-    /* margin-right: auto;
-    display: block;
-    position:absolute;  */
+ 
    
   }
