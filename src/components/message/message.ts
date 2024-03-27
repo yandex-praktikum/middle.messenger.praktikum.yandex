@@ -16,7 +16,6 @@ export type MessageProps = {
 export class Message extends Block {
   constructor(props: MessageProps) {
     super(props)
-    console.log(this.props.id)
     if (this.props.id === '1') {
       this.element.classList.add('message_my')
     }

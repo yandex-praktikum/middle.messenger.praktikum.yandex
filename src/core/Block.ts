@@ -118,6 +118,7 @@ export default abstract class Block {
   private _render() {
     const newElement = this.render()
     if (this._element) {
+      this.removeEvents()
       this._element.replaceWith(newElement)
     }
     this._element = newElement
@@ -217,6 +218,16 @@ export default abstract class Block {
         return true
       },
     })
+  }
+
+  private removeEvents() {
+    const { events } = this.props
+
+    if (events) {
+      Object.keys(events).forEach((eventName) => {
+        this._element?.removeEventListener(eventName, events[eventName])
+      })
+    }
   }
 
   private addEvents() {

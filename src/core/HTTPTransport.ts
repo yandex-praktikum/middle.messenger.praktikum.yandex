@@ -6,6 +6,15 @@ export enum METHODS {
   DELETE = 'DELETE',
 }
 
+type HTTPMethod = (url: string, options: Options) => Promise<unknown>
+
+export type Options = {
+  method: keyof typeof METHODS
+  data: Record<string, number | string | FormData>
+  headers: Record<string, string>
+  timeout: number
+}
+
 function queryStringify(data: { [index: string]: unknown }) {
   const keysArr = Object.keys(data)
   const queryArr: string[] = []
@@ -22,15 +31,8 @@ function queryStringify(data: { [index: string]: unknown }) {
   return `?${queryArr.join('&')}`
 }
 
-export type Options = {
-  method: keyof typeof METHODS
-  data: Record<string, number | string | FormData>
-  headers: Record<string, string>
-  timeout: number
-}
-
 export default class HTTPTransport {
-  get(url: string, options: Options) {
+  get: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
       { ...options, method: METHODS.GET },
@@ -38,7 +40,7 @@ export default class HTTPTransport {
     )
   }
 
-  post(url: string, options: Options) {
+  post: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
       { ...options, method: METHODS.POST },
@@ -46,7 +48,7 @@ export default class HTTPTransport {
     )
   }
 
-  put(url: string, options: Options) {
+  put: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
       { ...options, method: METHODS.PUT },
@@ -54,7 +56,7 @@ export default class HTTPTransport {
     )
   }
 
-  patch(url: string, options: Options) {
+  patch: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
       { ...options, method: METHODS.PATCH },
