@@ -1,0 +1,9 @@
+.login {
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  .login-btn {
+    margin-top: 60px;
+  }
+}

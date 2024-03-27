@@ -1,0 +1,39 @@
+.label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.input {
+  width: 100%;
+  padding: 4px 0 8px;
+  font-size: 16px;
+  font-weight: 300;
+  border: none;
+  border-bottom: 1px solid var(--color-blue);
+  outline: none;
+
+  &_error {
+    border-bottom: 1px solid var(--color-red);
+  }
+}
+
+.error {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-red);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.input-round {
+  width: 100%;
+  padding: 10px 20px;
+  background: var(--color1);
+  color: var(--color-gray);
+  box-sizing: border-box;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}

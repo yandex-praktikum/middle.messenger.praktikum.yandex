@@ -1,0 +1,109 @@
+.profile {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  height: 100%;
+
+  .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      background: var(--color-blue);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+
+      .lni {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30%;
+
+    &__username {
+      padding: 20px 0 60px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .profile-edit-form {
+      width: 100%;
+
+      &__save-btn {
+        margin-top: 20px;
+      }
+    }
+
+    .profile-info {
+      width: 100%;
+      padding-bottom: 60px;
+
+      .profile-info-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--border);
+        }
+
+        &__name {
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        &__value {
+          color: var(--color-gray);
+          font-size: 13px;
+        }
+      }
+    }
+
+    .profile-actions {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-start;
+      width: 100%;
+
+      &__wrapper {
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid var(--border);
+        }
+      }
+
+      &__link {
+        cursor: pointer;
+        font-weight: 500;
+
+        &_blue {
+          color: var(--color-blue);
+        }
+
+        &_red {
+          color: var(--color-red);
+        }
+      }
+    }
+  }
+}
