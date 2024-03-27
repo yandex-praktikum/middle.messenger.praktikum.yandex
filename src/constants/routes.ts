@@ -1,4 +1,5 @@
-export enum Routes {
+export enum routes {
+  empty = '',
   login = '#login',
   register = '#register',
   main = '#main',

@@ -1,0 +1,16 @@
+.message {
+  width: calc(50% - 40px);
+  padding: 12px;
+  background: var(--message-bg);
+  border-radius: 10px;
+
+  &_my {
+    background: var(--blue-bg);
+    align-self: flex-end;
+  }
+
+  &__text {
+    font-size: 15px;
+    font-weight: 400;
+  }
+}

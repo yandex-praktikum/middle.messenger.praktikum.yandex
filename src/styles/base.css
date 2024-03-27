@@ -35,13 +35,6 @@ h4 {
   height: 100%;
 }
 
-.link {
-  color: var(--color-blue);
-  font-size: 13px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .dialog {
   display: flex;
   justify-content: center;
@@ -64,4 +57,3 @@ h4 {
   width: 100%;
   padding-bottom: 16px;
 }
-

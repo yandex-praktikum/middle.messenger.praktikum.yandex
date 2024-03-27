@@ -1,15 +1,10 @@
-import Handlebars from 'handlebars'
-import pages from './pages'
-import { navigate, registerPartials } from './utils'
-import partials from './partials'
+import { navigate, renderDOM } from './utils'
+import { loginPage } from './pages/loginPage/loginPage'
 import './style.css'
 
 document.addEventListener('DOMContentLoaded', () => {
-  registerPartials(partials)
-
   if (!window.location.hash) {
-    const rootDiv = document.querySelector('#app') as Element
-    rootDiv.innerHTML = Handlebars.compile(pages.loginPageTmpl)({})
+    renderDOM('#app', loginPage)
   } else {
     navigate()
   }

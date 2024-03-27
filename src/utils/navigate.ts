@@ -1,90 +1,49 @@
-import Handlebars from 'handlebars'
-import pages from '../pages'
-import {ErrorPageContext, ProfilePageContext} from '../types'
-import { Routes } from '../constants/routes'
+import { loginPage } from '../pages/loginPage/loginPage'
+import { registerPage } from '../pages/registerPage/registerPage'
+import { mainPage } from '../pages/mainPage/mainPage'
+import { profilePage } from '../pages/profilePage/profilePage'
+import { editUserdataPage } from '../pages/editUserdataPage/editUserdataPage'
+import { editPasswordPage } from '../pages/editPasswordPage/editPasswordPage'
+import { notFound, serverError } from '../pages/errorPage/errorPage'
+import { routes } from '../constants/routes'
+import { renderDOM } from '../utils'
 
 export default () => {
-  const rootDiv = document.querySelector('#app') as Element
-
-  console.log(window.location.hash)
-
-  const mainPage = Handlebars.compile(pages.mainPageTmpl)({})
-  const profilePage = (context: ProfilePageContext) => Handlebars.compile(pages.profilePageTmpl)(context)
-  const loginPage = Handlebars.compile(pages.loginPageTmpl)({})
-  const registerPage = Handlebars.compile(pages.registerPageTmpl)({})
-  const errorPage = (context: ErrorPageContext) => Handlebars.compile(pages.errorPageTmpl)(context)
+  const rootDiv = document.querySelector('#app')
+  if (!rootDiv) {
+    throw new Error('Нет рут элемента')
+  }
 
   switch (window.location.hash) {
-    case Routes.main:
-      rootDiv.innerHTML = mainPage
+    case routes.empty:
+      renderDOM('#app', loginPage)
       break
-    case Routes.profile:
-      rootDiv.innerHTML = profilePage({
-        editInfo: false,
-        editPassword: false,
-        userdata: {
-          username: 'Иван',
-          email: 'pochta@yandex.ru',
-          login: 'ivanivanov',
-          firstName: 'Иван',
-          lastName: 'Иванов',
-          displayName: 'Иван',
-          phone: '+7 (909) 967 30 30',
-        },
-      })
+    case routes.main:
+      renderDOM('#app', mainPage)
       break
-    case Routes.editUserdata:
-      rootDiv.innerHTML = profilePage({
-        editInfo: true,
-        editPassword: false,
-        userdata: {
-          username: 'Иван',
-          email: 'pochta@yandex.ru',
-          login: 'ivanivanov',
-          firstName: 'Иван',
-          lastName: 'Иванов',
-          displayName: 'Иван',
-          phone: '+7 (909) 967 30 30',
-        },
-      })
+    case routes.profile:
+      renderDOM('#app', profilePage)
       break
-    case Routes.editPassword:
-      rootDiv.innerHTML = profilePage({
-        editInfo: false,
-        editPassword: true,
-        userdata: {
-          username: 'Иван',
-          email: 'pochta@yandex.ru',
-          login: 'ivanivanov',
-          firstName: 'Иван',
-          lastName: 'Иванов',
-          displayName: 'Иван',
-          phone: '+7 (909) 967 30 30',
-        },
-      })
+    case routes.editUserdata:
+      renderDOM('#app', editUserdataPage)
       break
-    case Routes.login:
-      rootDiv.innerHTML = loginPage
+    case routes.editPassword:
+      renderDOM('#app', editPasswordPage)
       break
-    case Routes.register:
-      rootDiv.innerHTML = registerPage
+    case routes.login:
+      renderDOM('#app', loginPage)
       break
-    case Routes.notFound:
-      rootDiv.innerHTML = errorPage({
-        errorCode: '404',
-        errorText: 'Не туда попали',
-      })
+    case routes.register:
+      renderDOM('#app', registerPage)
       break
-    case Routes.serverError:
-      rootDiv.innerHTML = errorPage({
-        errorCode: '500',
-        errorText: 'Мы уже фиксим',
-      })
+    case routes.notFound:
+      renderDOM('#app', notFound)
+      break
+    case routes.serverError:
+      renderDOM('#app', serverError)
       break
     default:
-      rootDiv.innerHTML = errorPage({
-        errorCode: '404',
-        errorText: 'Не туда попали',
-      })
+      renderDOM('#app', notFound)
+      break
   }
 }

@@ -1,6 +1,6 @@
 # Тренировочный проект мессенджера.
 
-Использовался сборщик Vite, линтеры Eslint и Stylelint, шаблонизатор Handlebars
+Использовался сборщик Vite, Typescript, линтеры Eslint и Stylelint, шаблонизатор Handlebars
 
 ### Макеты приложения
 

@@ -5,4 +5,11 @@
   color: var(--color-white);
   border: none;
   border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.button-icon {
+  background: none;
+  border: none;
+  outline: none;
 }
