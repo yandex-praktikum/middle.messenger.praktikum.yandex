@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npm run build",
+    "start": "run-s clean build node",
     "dev": "vite --port 3000",
     "build": "vite build",
     "preview": "vite preview"
@@ -21,6 +21,7 @@
     "vite-plugin-handlebars": "^2.0.0"
   }
   "engines": {
-    "node": "16.x"
+    "node": ">=18.16",
+    "npm": ">=9.5"
   }
 }
