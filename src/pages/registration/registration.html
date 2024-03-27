@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+    <link rel="stylesheet" rel="stylesheet/less" href="registration.less"> 
+</head>
+
+<body>
+    <section id="login">
+       
+        <form class="container" name="contactForm" action="" method="get">
+            <h2 class="heading">Регистрация</h2>
+            <div class="row">
+                <div class="column-2">
+                    <p>
+                        <label for="email">Почта</label>
+                        {{> input type = "email" name = "email" placeholder = ""}}  
+                    </p>
+                    <p>
+                        <label for="first_name">Имя</label>
+                        {{> input type = "text" name = "first_name" placeholder = ""}}  
+                    </p>
+                    <p>
+                        <label for="second_name">Фамилия</label>
+                        {{> input type = "text" name = "second_name" placeholder = ""}} 
+                    </p>
+                    <p>
+                        <label for="phone">Телефон</label>
+                        {{> input type = "text" name = "phone" placeholder = ""}} 
+                    </p>                    
+                    <p>
+                        <label for="oldPassword">Пароль</label>
+                        <input type="password" id="oldPassword" name="oldPassword">
+                    </p>
+                    <p>
+                        <label for="password">Пароль (еще раз)</label>
+                        <input type="password" id="newPassword" name="newPassword">
+                    </p>
+
+                </div>
+
+            </div>
+            <div class="row-2">
+                <div class="column-2">  
+                    
+                    
+                    <p>
+                        {{> button class = "btn" href = "../profiles/profile.html" heading = 'Зарегестрироваться'}}  
+                    </p>
+                    <p>
+                        {{> button class = "btn-2" href = "../chats/chat.html" heading = 'Войти'}}
+                    </p>
+                   
+                </div>
+            </div>
+        </form>
+
+
+      
+    </section>
+</body>
+
+</html>

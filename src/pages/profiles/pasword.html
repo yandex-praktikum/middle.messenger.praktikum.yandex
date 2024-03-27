@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data save</title>
+    <link rel="stylesheet" rel="stylesheet/less" href="profile.less">
+</head>
+
+<body>
+    <section id="profile">
+        
+        <form class="container" name="foto" action="" method="post">
+            <div class="foto">
+                <img src="img\Union.svg" alt="" /> 
+            </div>
+
+        </form>
+        <form class="container" name="contactForm" action="" method="get">
+            <h2 class="heading">Андрей</h2>
+            <div class="row">
+                <div class="column-2">
+                    <label for="oldPassword">Пароль</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "password" name = "oldPassword" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="newPassword">Новый пароль</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "password" name = "newPassword" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="confirmationPassword">Подтвердите новый пароль</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "password" name = "confirmationPassword" placeholder = ""}}  
+                </div>
+                
+
+            </div>
+            <div class="row-2">
+                <div class="column-centr">
+                    <p>
+                        {{> button class = "btn" href = "accounting.html" heading = 'Сохранить'}}
+                    </p>
+                    <p>
+                        {{> button class = "btn" href = "../chats/chat.html" heading = 'Выйти'}}
+                    </p>
+                </div>
+            </div>
+        </form>
+
+
+       
+    </section>
+</body>
+
+</html>

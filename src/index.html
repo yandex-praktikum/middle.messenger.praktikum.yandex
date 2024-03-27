@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" rel="stylesheet/less" href="./pages/main/main.less">
+ 
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app">
+    <section id="login">
+     
+      <form class="container" name="contactForm" action="" method="get">
+        <h2 class="heading">Добрый день!!</h2>
+        <h3 class="heading">Добро пожаловать на сайт!</h3>
+        <div class="row-2">
+          <div class="column-2">
+            <p>
+              {{> button class = "btn" href = "./pages/login/login.html" heading = 'Войти'}}
+            </p>
+            <p>
+              {{> button class = "btn" href = "./pages/registration/registration.html" heading = 'Нет аккаунта'}}
+            </p>
+
+          </div>
+        </div>
+      </form>
+      <!-- </div> -->
+    </section>
+  </div>
+  <!-- <script type="module" src="/main.js"></script> -->
+
+  <!-- {{> button class = "btn" href = "./src/pages/chat.html" heading = 'Профиль'}} -->
+
+</body>
+
+</html>

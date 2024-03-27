@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" rel="stylesheet/less" href="login.less">    
+</head>
+
+<body>
+    <section id="login">
+       
+        <form class="container" name="contactForm" action="" method="get">
+            <h2 class="heading">Вход</h2>
+            <div class="row">
+                <div class="column-2">
+                    <p>
+                        <label for="login">Логин</label>
+                        
+                        {{> input type = "text" name = "login" placeholder = ""}}
+                        
+                    </p>
+                    <p>
+                        <label for="password">Пароль</label>
+                        {{> input type = "password" name = "password" placeholder = ""}}                        
+                    </p>
+
+                </div>
+
+            </div>
+            <div class="row-2">
+                <div class="column-2">
+                    <p>
+                        {{> button class = "btn" href = "../chats/chat.html" heading = 'Войти'}}
+                    </p>
+                    <p>
+                        {{> button class = "btn" href = "../registration/registration.html" heading = 'Нет аккаунта'}}
+                    </p>
+                   
+                </div>
+            </div>
+        </form>
+
+
+        
+    </section>
+</body>
+
+</html>

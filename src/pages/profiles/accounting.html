@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data save</title>
+    <link rel="stylesheet" rel="stylesheet/less" href="profile.less"> 
+</head>
+
+<body>
+    <section id="profile">
+        
+        <form class="container" name="foto" action="" method="post">
+            <div class="foto">
+                <img src="img\Union.svg" alt="" /> 
+            </div>
+
+        </form>
+        <form class="container" name="contactForm" action="" method="get">
+            <h2 class="heading">Андрей</h2>
+            <div class="row">
+                <div class="column-2">
+                    <label for="email">Почта</label>
+                </div>
+                <div class="column-2">
+                    {{> input type = "email" name = "email" placeholder = ""}}   
+                    
+                </div>
+                <div class="column-2">
+                    <label for="login">Логин</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "text" name = "login" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="first_name">Имя</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "text" name = "first_name" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="second_name">Фамилия</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "text" name = "second_name" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="display_name">Имя в чате</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "text" name = "display_name" placeholder = ""}}  
+                </div>
+                <div class="column-2">
+                    <label for="phone">Телефон</label>
+                </div>
+                <div class="column-2">
+                    
+                    {{> input type = "text" name = "phone" placeholder = ""}}  
+                </div>
+
+
+            </div>
+            <div class="row-2">
+                <div class="column-centr">
+                    <p>
+                        {{> button class = "btn" href = "accounting.html" heading = 'Сохранить'}}
+                    </p>
+                    <p>
+                        {{> button class = "btn" href = "../chats/chat.html" heading = 'Выйти'}}
+                    </p>
+                    
+                </div>
+            </div>
+        </form>
+
+
+       
+    </section>
+</body>
+
+</html>
