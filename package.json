@@ -4,11 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "run start",
     "dev": "vite --port 3000",
+    "start": "npm run build && node server.js",
     "build": "vite build",
     "preview": "vite preview"
-    
   },
   "devDependencies": {
     "@vitejs/plugin-legacy": "^5.3.2",
@@ -17,6 +16,7 @@
     "vite": "^5.1.4"
   },
   "dependencies": {
+    "express": "^4.19.2",
     "lodash-es": "^4.17.21",
     "vite-plugin-handlebars": "^2.0.0"
   },
