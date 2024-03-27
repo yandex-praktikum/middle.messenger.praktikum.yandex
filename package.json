@@ -20,7 +20,5 @@
     "lodash-es": "^4.17.21",
     "vite-plugin-handlebars": "^2.0.0"
   }
-  "engines": {
-    "node": "18.7.1"
-  }
+  
 }
