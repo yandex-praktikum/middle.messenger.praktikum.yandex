@@ -1,14 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yandex-messenger</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <div>{{> shared/ui/button/button text='Войти' type='submit'}}</div>
-    <script type="module" src="/main.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Yandex-messenger</title>
+    </head>
+    <body>
+        <main id="app">
+            <h1>Yandex messenger</h1>
+            <p>todo...</p>
+            {{> shared/ui/button/button text='Войти' type='submit'}}
+
+            <div>{{> shared/ui/input/input type='text' name='email'}}</div>
+        </main>
+        <script type="module" src="/main.js"></script>
+    </body>
 </html>
