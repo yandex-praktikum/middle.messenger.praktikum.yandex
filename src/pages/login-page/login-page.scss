@@ -1,3 +1,19 @@
+.navigation {
+  position: absolute;
+  display: flex;
+  &__list {
+    list-style: none;
+  }
+  margin-top: -800px;
+}
+
+.list-item {
+  padding-left: 25px;
+  padding-right: 25px;
+  display: inline;
+}
+
+
 .login-page {
     width: 280px;
     height: 390px;
