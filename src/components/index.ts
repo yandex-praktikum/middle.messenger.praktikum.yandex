@@ -10,6 +10,6 @@ export { Backspace } from './backspace';
 export { UserImage } from './user-image';
 export { UserData } from './user-data';
 export { UserOption } from './user-option';
-export { ErrorDescription } from './error-description'
+export { ErrorDescription } from './error-description';
 
 
