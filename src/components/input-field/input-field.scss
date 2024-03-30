@@ -1,0 +1,12 @@
+@import '../../assets/variables';
+
+.input-field {
+  &__title {
+    font: $font-nano;
+    color: $text-light-color;
+  }
+
+  &__element {
+    border-bottom: 1px solid $link-color;
+  }
+}

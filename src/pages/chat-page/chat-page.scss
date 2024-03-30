@@ -1,0 +1,15 @@
+@import '../../assets/variables';
+
+.chat-page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  &__list {
+    border-right: 1px solid $divider-line-color;
+    width: 30%;
+  }
+  &__profile {
+    width: 100%;
+  }
+}

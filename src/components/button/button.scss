@@ -1,0 +1,17 @@
+@import '../../assets/variables';
+
+.button {
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  background-color: $button-bgcolor;
+  color: $button-color;
+  border: 0;
+  cursor: pointer;
+  margin-top: 8px;
+    &__white{
+      background-color: $button-color;
+      color: $link-color;
+    }
+}

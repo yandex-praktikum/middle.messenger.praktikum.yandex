@@ -1,0 +1,29 @@
+.navigation {
+  position: absolute;
+  display: flex;
+  &__list {
+    list-style: none;
+  }
+  margin-top: -800px;
+}
+
+.list-item {
+  padding-left: 25px;
+  padding-right: 25px;
+  display: inline;
+}
+
+.login-page {
+  width: 280px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__input {
+    margin-top: 16px;
+  }
+}

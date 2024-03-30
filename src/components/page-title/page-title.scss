@@ -1,0 +1,12 @@
+@import '../../assets/variables';
+
+.page-title {
+  font: $font-big;
+  text-align: center;
+  margin: 20px 0 40px;
+  color: $title-color;
+  &__error {
+    font-size: 44px;
+  }
+}
+

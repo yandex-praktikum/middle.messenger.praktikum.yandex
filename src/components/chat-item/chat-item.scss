@@ -1,0 +1,77 @@
+@import '../../assets/variables';
+
+.chat-item {
+  &__line {
+    height: 1px;
+    background: $divider-line-color;
+    margin: 2px 0;
+    padding: 0 10px;
+  }
+
+  &__block {
+    height: 70px;
+    width: 100%;
+    display: grid;
+    grid-template:
+      "a n n" 13px
+      "a m u" 1fr
+      / 47px 1fr 50px;
+
+    gap: 0 10px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &--current {
+      background: $chat-list-current-bgcolor;
+      cursor: default;
+    }
+  }
+
+  &__avatar {
+    grid-area: a;
+    background: $gray-light-color;
+    height: 47px;
+    width: 47px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    grid-area: n;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__date {
+    float: right;
+    font: $font-nano;
+  }
+
+  &__message {
+    grid-area: m;
+  }
+
+  &__message-text {
+    font: $font-small;
+    margin-top: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__unread {
+    grid-area: u;
+    margin-top: 14px;
+    height: 20px;
+    width: 20px;
+    font: $font-micro;
+    background: $button-bgcolor;
+    color: $button-color;
+    place-self: end;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

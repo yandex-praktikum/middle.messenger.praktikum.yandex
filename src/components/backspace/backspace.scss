@@ -1,0 +1,22 @@
+@import '../../assets/variables';
+
+.backspace {
+  display: flex;
+  border-right: 2px solid $chat-message-inverse-bgcolor;
+  width: 5%;
+  min-height: 100%;
+  margin-right: auto;
+  background-color: $chat-message-my-bgcolor;
+  align-items: center;
+  &__triangle {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 30px solid $link-color;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+  }
+}
+

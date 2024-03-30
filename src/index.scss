@@ -1,0 +1,29 @@
+@import './assets/variables';
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font: $font-regular;
+  background-color: $text-bgcolor;
+  color: $text-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-size: inherit;
+  line-height: inherit;
+}

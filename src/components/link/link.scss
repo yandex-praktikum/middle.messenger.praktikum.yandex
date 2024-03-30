@@ -1,0 +1,18 @@
+@import '../../assets/variables';
+
+.link {
+  font: $font-small;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  color: $link-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
