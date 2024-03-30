@@ -1,0 +1,12 @@
+.user-data {
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-between;
+    &__info {
+        color: grey;
+    }
+    border-bottom: 1px solid #999;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}

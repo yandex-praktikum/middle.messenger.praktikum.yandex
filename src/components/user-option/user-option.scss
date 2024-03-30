@@ -1,0 +1,13 @@
+.user-option {
+    height: 30px;
+    color: #3369f3;
+    cursor: pointer;
+    &__red {
+        color: #FF0000;
+        cursor: pointer;
+    }
+    &__error {
+        margin-top: 25px;
+        margin-left: 30%;
+    }
+}
