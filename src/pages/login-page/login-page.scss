@@ -14,19 +14,21 @@
 }
 
 .login-page {
-    width: 280px;
-    height: 390px;
-    display: flex;
-    flex-direction: column;
+  width: 280px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
   
-    &__content {
-      flex: 1;
-    }
-  
-    &__input {
-      margin-top: 16px;
-    }
+  &__content {
+    flex: 1;
   }
+  
+  &__input {
+    margin-top: 16px;
+  }
+}
+
+
 
 
 
