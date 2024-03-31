@@ -9,5 +9,6 @@ export function setupPartials() {
         Input: Input,
         Form: Form,
     };
+
     registerPartials(partials);
 }

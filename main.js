@@ -1,19 +1,27 @@
-import { setupPartials } from './src/shared/ui';
-
-// import { Button } from './src/shared/ui/button';
-import { Login } from './src/pages/login';
 import './style.scss';
+import { setupPartials } from './src/shared/ui';
+import { navigateOnClient } from './src/shared/utils/navigate-on-client';
+import * as Pages from './src/pages';
 
 setupPartials();
 
-import Handlebars from 'handlebars';
-// const data = { type: 'submit', text: 'asd' };
-console.log(Login);
-
-const data = {
-    text: 'Logiiiiin',
+const pages = {
+    Login: [Pages.Login],
+    SingIn: [Pages.SingIn],
 };
 
-const a = Handlebars.compile(Login)(data);
+document.addEventListener('DOMContentLoaded', () =>
+    navigateOnClient(pages, 'Login'),
+);
 
-document.getElementById('app').innerHTML = a;
+// document.addEventListener('click', (event) => {
+//     const page = event.target.getAttribute('page');
+//     console.log(page, 'page');
+//     if (page) {
+//         console.log(page, 'in main');
+//         navigateOnClient(page);
+
+//         event.preventDefault();
+//         event.stopImmediatePropagation();
+//     }
+// });

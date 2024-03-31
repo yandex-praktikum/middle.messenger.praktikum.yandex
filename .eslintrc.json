@@ -9,8 +9,15 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [],
+    "plugins": ["prettier"],
     "rules": {
-        "no-console": "warn"
+        "no-console": "warn",
+        "quote-props": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
     }
 }
