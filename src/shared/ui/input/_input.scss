@@ -1,3 +1,46 @@
-input {
-    color: red;
+$primary-color: #4c4c4c;
+$secondary-color: #f2f2f2;
+$error-color: #f44336;
+
+.input {
+    $input-background: $secondary-color;
+    $input-border-color: $primary-color;
+    $input-text-color: $primary-color;
+    $input-placeholder-color: $primary-color;
+    $input-error-color: $error-color;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        color: $primary-color;
+    }
+
+    > input {
+        display: block;
+        width: 100%;
+        padding: 0.5em;
+        margin-bottom: 1.5em;
+        border-radius: 4px;
+        border: 1px solid $input-border-color;
+        background-color: $input-background;
+        color: $input-text-color;
+        transition: border-color 0.2s ease-in-out;
+
+        &:focus {
+            outline: none;
+            border-color: #333;
+            box-shadow: 0 0 2px 1px rgb(0 0 0 / 20%);
+        }
+
+        & + .error {
+            display: none;
+            font-size: 0.8em;
+            margin-top: 0.2em;
+        }
+    }
 }

@@ -1,12 +1,15 @@
-<form action='#'>
-    <h1>Welcom back!</h1>
-    <h2>enter your login and password</h2>
+<form action='#' class="form__{{formType}}">
+    <div class="form__header">
+        <h1 class="form__header-title">{{formHeaderTitle}}</h1>
+        <h2 class="form__header-discription">{{formHeaderDescription}}</h2>
+    </div>
+    <div class="form__body">
+        {{> Input type="text" name="email" placeholder="email" label='email'}}
+        {{> Input type="text" name="password" placeholder="password" label='password'}}
+        {{> Button text="Авторизоваться"}}  
+    </div>
 
-    {{> Input type="text" name="email"}}
-    {{> Input type="text" name="password"}}
-
-
-    <div>
-        <span>Don't have an account?</span><a href="">Sing up</a>
+    <div class="form__footer">
+        <span class="form__footer-title">{{formFooterTitle}}</span><a href="" class="form__footer-link">{{formHeaderLink}}</a>
     </div>
 </form>
