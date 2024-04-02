@@ -1,7 +1,9 @@
 .button {
     background: #000fff;
     border: none;
-    padding: 1em 2em;
+    padding: 0.8em 1.5em;
+    color: white;
+    margin-bottom: 1.25em;
 
     &:hover {
         opacity: 0.75;

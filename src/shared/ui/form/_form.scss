@@ -21,4 +21,31 @@ $accent-color: #4caf50;
         flex-direction: column;
         align-items: center;
     }
+
+    &__footer {
+        display: flex;
+        width: max-content;
+        gap: 0.25em;
+    }
+
+    &__login {
+        &_1 {
+            & .error-email,
+            .error-password {
+                display: none;
+            }
+        }
+
+        &_2 {
+            & .error-email {
+                display: none;
+            }
+        }
+
+        &_3 {
+            & .error-password {
+                display: none;
+            }
+        }
+    }
 }

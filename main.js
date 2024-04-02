@@ -8,10 +8,11 @@ setupPartials();
 const pages = {
     Login: [Pages.Login],
     SingIn: [Pages.SingIn],
+    Profile: [Pages.Profile],
 };
 
 document.addEventListener('DOMContentLoaded', () =>
-    navigateOnClient(pages, 'Login'),
+    navigateOnClient(pages, 'Profile'),
 );
 
 // document.addEventListener('click', (event) => {
