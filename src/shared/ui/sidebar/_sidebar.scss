@@ -1,0 +1,57 @@
+.sidebar {
+    &__body {
+        width: 8em;
+        background-color: #fbfbfb;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-right: 1px solid #eaeaea;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-circle {
+            height: 50px;
+            width: 50px;
+            background-color: #000fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-arrow {
+            div {
+                position: relative;
+                top: calc(50% - 2px);
+                width: 23px;
+                height: 4px;
+                background-color: white;
+                right: 0;
+                display: block;
+            }
+
+            div::after,
+            div::before {
+                content: '';
+                position: absolute;
+                width: 1em;
+                height: 3.5px;
+                background-color: white;
+            }
+
+            div::after {
+                top: -4.3px;
+                left: -3.5px;
+                transform: rotate(-45deg);
+            }
+
+            div::before {
+                bottom: -4.3px;
+                left: -3.5px;
+                transform: rotate(45deg);
+            }
+        }
+    }
+}

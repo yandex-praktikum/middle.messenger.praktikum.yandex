@@ -52,8 +52,8 @@ h1 {
 }
 
 .card {
-    width: 300px;
-    padding: 2em;
+    width: 340px;
+    height: 450px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
@@ -68,6 +68,8 @@ button {
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    width: 280px;
+    height: 37px;
 }
 
 // html[data-theme='light'] {
