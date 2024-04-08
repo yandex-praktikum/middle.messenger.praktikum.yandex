@@ -7,9 +7,12 @@
         {{#each inputs}}
             {{> Input }}
         {{/each}}
-        {{#each buttons}}
-            {{> Button }}
-        {{/each}}
+        
+        <div class='form__body-buttons'>
+            {{#each buttons}}
+                {{> Button }}
+            {{/each}}
+        </div>
     </div>
 
     <div class='form__footer'>

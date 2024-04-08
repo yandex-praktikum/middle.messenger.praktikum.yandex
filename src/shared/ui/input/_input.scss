@@ -2,7 +2,7 @@ $input-background: #f2f2f2;
 $input-border-color: #3369f3;
 $input-text-color: #1e1e1e;
 $input-placeholder-color: #999;
-$input-error-color: #f44336;
+$input-error-color: #ff2f2f;
 
 .input {
     width: 100%;
@@ -51,13 +51,13 @@ $input-error-color: #f44336;
             display: block;
         }
 
-        & + .error-email,
-        & + .error-password {
+        & ~ .error-login,
+        & ~ .error-password {
             color: $input-error-color;
-            font-size: 0.7em;
-            margin-bottom: 0.5em;
+            font-size: 0.5em;
+            margin-top: 0.3em;
             position: absolute;
-            bottom: 0;
+            left: 0;
         }
     }
 }

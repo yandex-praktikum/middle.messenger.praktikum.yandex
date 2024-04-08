@@ -1,9 +1,12 @@
 .button {
-    background: #000fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3369f3;
     border: none;
     padding: 0.8em 1.5em;
     color: white;
-    margin-bottom: 1.25em;
+    font-weight: 400;
 
     &:hover {
         opacity: 0.75;

@@ -11,11 +11,11 @@
 
 a {
     font-weight: 500;
-    color: #000fff;
+    color: #3369f3;
     text-decoration: inherit;
 }
 a:hover {
-    color: #535bf2;
+    color: #3369f3a9;
 }
 
 input {
@@ -57,9 +57,8 @@ h1 {
 
 .card {
     width: 340px;
-    height: 450px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    border-radius: 12px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
 }
 
 button {

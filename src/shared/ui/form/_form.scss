@@ -1,4 +1,4 @@
-$primary-color: #4c4c4c;
+$primary-color: #1e1e1e;
 $secondary-color: #f2f2f2;
 $accent-color: #4caf50;
 
@@ -7,12 +7,13 @@ $accent-color: #4caf50;
         padding: 1.5em;
 
         &-title {
-            font-size: 1.5em;
+            font-size: 1.25em;
+            font-weight: 500;
             color: $primary-color;
         }
 
         &-discription {
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
     }
 
@@ -20,33 +21,21 @@ $accent-color: #4caf50;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        padding: 30px 30px 10px;
+
+        &-buttons {
+            margin-top: 7.5em;
+        }
     }
 
     &__footer {
-        display: flex;
-        width: max-content;
-        gap: 0.25em;
+        font-size: 0.8em;
+        padding-bottom: 30px;
     }
 
-    &__login {
-        &_1 {
-            & .error-email,
-            .error-password {
-                display: none;
-            }
-        }
-
-        &_2 {
-            & .error-email {
-                display: none;
-            }
-        }
-
-        &_3 {
-            & .error-password {
-                display: none;
-            }
+    &__registration {
+        input[type='password'] {
+            color: red;
         }
     }
 }
