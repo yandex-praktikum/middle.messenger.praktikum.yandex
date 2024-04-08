@@ -4,3 +4,6 @@ node_modules
 # Generated folders
 /public/
 /dist/
+
+# History
+.history

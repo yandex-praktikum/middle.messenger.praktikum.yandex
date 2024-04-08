@@ -28,3 +28,6 @@ dist-ssr
 
 # Stylelin
 .stylelintcache
+
+# History
+.history
