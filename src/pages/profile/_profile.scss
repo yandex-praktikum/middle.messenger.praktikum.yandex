@@ -32,6 +32,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 0.8em;
+                font-weight: 500;
                 border-bottom: 1px solid #eaeaea;
             }
 
@@ -41,13 +42,18 @@
 
             &-content {
                 color: #999;
+                border: 0;
+                font-size: 1em;
+                text-align: right;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
     }
 
     &__footer {
-        width: inherit;
-
         &-actions {
             list-style: none;
             text-align: left;
@@ -64,6 +70,11 @@
             a {
                 color: red;
             }
+        }
+
+        &-buttons {
+            display: flex;
+            justify-content: center;
         }
     }
 }

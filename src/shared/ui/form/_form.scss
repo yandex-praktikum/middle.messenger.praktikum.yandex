@@ -38,4 +38,13 @@ $accent-color: #4caf50;
             color: red;
         }
     }
+
+    &__profileChangesData,
+    &__profileChangesPassword {
+        .profile {
+            &__body-info {
+                margin-bottom: 10em;
+            }
+        }
+    }
 }

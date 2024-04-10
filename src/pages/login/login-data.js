@@ -1,99 +1,99 @@
-// export const LoginPageData = {
-//     formType: 'login',
-//     formHeaderTitle: 'Вход',
-//     formFooterLink: 'Нет аккаунта?',
-
-//     inputs: [
-//         {
-//             type: 'email',
-//             name: 'email',
-//             label: 'Логин',
-//             placeholder: 'Логин',
-//         },
-//         {
-//             type: 'password',
-//             name: 'password',
-//             label: 'Пароль',
-//             placeholder: 'Пароль',
-//         },
-//     ],
-//     buttons: [{ text: 'Авторизоваться' }],
-// };
-
-// export const LoginPageData = {
-//     formType: 'login',
-//     formHeaderTitle: 'Вход',
-//     formFooterLink: 'Нет аккаунта?',
-
-//     inputs: [
-//         {
-//             type: 'email',
-//             name: 'email',
-//             label: 'Логин',
-//             placeholder: 'Логин',
-//             value: 'ivanivanov',
-//         },
-//         {
-//             type: 'password',
-//             name: 'password',
-//             label: 'Пароль',
-//             placeholder: 'Пароль',
-//             value: 'asdfghjklp[=',
-//         },
-//     ],
-//     buttons: [{ text: 'Авторизоваться' }],
-// };
-
-// export const LoginPageData = {
-//     formType: 'login',
-//     formHeaderTitle: 'Вход',
-//     formFooterLink: 'Нет аккаунта?',
-
-//     inputs: [
-//         {
-//             type: 'email',
-//             name: 'email',
-//             label: 'Логин',
-//             placeholder: 'Логин',
-//             value: 'ivanivanov',
-//             errorName: 'Неверный логин',
-//         },
-//         {
-//             type: 'password',
-//             name: 'password',
-//             label: 'Пароль',
-//             placeholder: 'Пароль',
-//         },
-//     ],
-//     buttons: [{ text: 'Авторизоваться' }],
-// };
-
-// export const LoginPageData = {
-//     formType: 'login',
-//     formHeaderTitle: 'Вход',
-//     formFooterLink: 'Нет аккаунта?',
-
-//     inputs: [
-//         {
-//             type: 'email',
-//             name: 'email',
-//             label: 'Логин',
-//             placeholder: 'Логин',
-//             value: 'ivanivanov',
-//             errorName: 'Неверный логин',
-//         },
-//         {
-//             type: 'password',
-//             name: 'password',
-//             label: 'Пароль',
-//             placeholder: 'Пароль',
-//             value: 'asddssadsadsd',
-//         },
-//     ],
-//     buttons: [{ text: 'Авторизоваться' }],
-// };
-
 export const LoginPageData = {
+    formType: 'login',
+    formHeaderTitle: 'Вход',
+    formFooterLink: 'Нет аккаунта?',
+
+    inputs: [
+        {
+            type: 'email',
+            name: 'email',
+            label: 'Логин',
+            placeholder: 'Логин',
+            value: 'ivanivanov',
+        },
+        {
+            type: 'password',
+            name: 'password',
+            label: 'Пароль',
+            placeholder: 'Пароль',
+            value: 'asdfghjklp[=',
+        },
+    ],
+    buttons: [{ text: 'Авторизоваться' }],
+};
+
+export const LoginPageDataEmpty = {
+    formType: 'login',
+    formHeaderTitle: 'Вход',
+    formFooterLink: 'Нет аккаунта?',
+
+    inputs: [
+        {
+            type: 'email',
+            name: 'email',
+            label: 'Логин',
+            placeholder: 'Логин',
+        },
+        {
+            type: 'password',
+            name: 'password',
+            label: 'Пароль',
+            placeholder: 'Пароль',
+        },
+    ],
+    buttons: [{ text: 'Авторизоваться' }],
+};
+
+export const LoginPageDataErrorLogin = {
+    formType: 'login',
+    formHeaderTitle: 'Вход',
+    formFooterLink: 'Нет аккаунта?',
+
+    inputs: [
+        {
+            type: 'email',
+            name: 'email',
+            label: 'Логин',
+            placeholder: 'Логин',
+            value: 'ivanivanov',
+            errorName: 'Неверный логин',
+        },
+        {
+            type: 'password',
+            name: 'password',
+            label: 'Пароль',
+            placeholder: 'Пароль',
+        },
+    ],
+    buttons: [{ text: 'Авторизоваться' }],
+};
+
+export const LoginPageDataErrorLoginPassword = {
+    formType: 'login',
+    formHeaderTitle: 'Вход',
+    formFooterLink: 'Нет аккаунта?',
+
+    inputs: [
+        {
+            type: 'email',
+            name: 'email',
+            label: 'Логин',
+            placeholder: 'Логин',
+            value: 'ivanivanov',
+            errorName: 'Неверный логин',
+        },
+        {
+            type: 'password',
+            name: 'password',
+            label: 'Пароль',
+            placeholder: 'Пароль',
+            value: 'asddssadsadsd',
+        },
+    ],
+    buttons: [{ text: 'Авторизоваться' }],
+};
+
+export const LoginPageDataRegistration = {
     formType: 'registration',
     formHeaderTitle: 'Регистрация',
 
@@ -135,14 +135,14 @@ export const LoginPageData = {
         },
         {
             type: 'password',
-            name: 'password',
+            name: 'oldpassword',
             label: 'Пароль',
             placeholder: 'Пароль',
             value: 'asddssadsadsd',
         },
         {
             type: 'password',
-            name: 'password',
+            name: 'newpassword',
             label: 'Пароль (ещё раз)',
             placeholder: 'Пароль (ещё раз)',
             value: 'asddssadsadsd',

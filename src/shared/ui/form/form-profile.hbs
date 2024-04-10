@@ -1,0 +1,34 @@
+<form action='#' class='form__{{formType}}'>
+
+    <ul class='profile__body-info'>
+        {{#each profileItems}}
+            <li class='profile__body-info-list'>
+                <span class='profile__body-info-name'>{{label}}</span>
+                <input
+                    class='profile__body-info-content'
+                    name='{{name}}'
+                    value='{{value}}'
+                    type="{{type}}"
+                    {{readonly}}
+                />
+            </li>
+        {{/each}}
+    </ul>
+
+    <ul class='profile__footer-actions'>
+        {{#each profileActions}}
+            <li class='profile__footer-item'>
+                <a
+                    class='profile__footer-name'
+                    href='#'
+                >{{profileActionsName}}</a>
+            </li>
+        {{/each}}
+    </ul>
+
+     <ul class='profile__footer-buttons'>
+        {{#each profileButtons}}
+            {{> Button}}
+        {{/each}}
+    </ul>
+</form>

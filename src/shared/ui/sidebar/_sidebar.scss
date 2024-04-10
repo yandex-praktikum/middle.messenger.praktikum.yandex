@@ -14,7 +14,7 @@
         &-circle {
             height: 50px;
             width: 50px;
-            background-color: #000fff;
+            background-color: #3369f3;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -22,36 +22,9 @@
         }
 
         &-arrow {
-            div {
-                position: relative;
-                top: calc(50% - 2px);
-                width: 23px;
-                height: 4px;
-                background-color: white;
-                right: 0;
-                display: block;
-            }
-
-            div::after,
-            div::before {
-                content: '';
-                position: absolute;
-                width: 1em;
-                height: 3.5px;
-                background-color: white;
-            }
-
-            div::after {
-                top: -4.3px;
-                left: -3.5px;
-                transform: rotate(-45deg);
-            }
-
-            div::before {
-                bottom: -4.3px;
-                left: -3.5px;
-                transform: rotate(45deg);
-            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
