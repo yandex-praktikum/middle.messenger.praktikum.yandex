@@ -2,10 +2,12 @@ import { registerPartials } from '../utils/register-partials';
 import { Button } from './button';
 import { Form, FormProfile } from './form';
 import { Input } from './input';
+import { Modal } from './modal';
 import { Sidebar } from './sidebar';
+export { Selector } from './selector';
 
 import ProfileImg from './profile';
-import { Modal } from './modal';
+import { Selector } from './selector';
 
 export function setupPartials() {
     const partials = {
@@ -16,6 +18,7 @@ export function setupPartials() {
         ProfileImg: ProfileImg,
         FormProfile: FormProfile,
         Modal: Modal,
+        Selector: Selector,
     };
 
     registerPartials(partials);

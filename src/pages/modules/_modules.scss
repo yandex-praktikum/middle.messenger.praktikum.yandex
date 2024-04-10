@@ -1,0 +1,10 @@
+.modules {
+    .modal {
+        .modal-content {
+            > div.input input {
+                border-bottom: 1px solid #3369f3;
+                visibility: visible;
+            }
+        }
+    }
+}

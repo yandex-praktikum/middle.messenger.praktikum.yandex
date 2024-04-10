@@ -1,0 +1,8 @@
+<div class='selector'>
+    {{#each items as |item|}}
+        <button class='selector-item'>
+            <img src='{{item.src}}' alt='{{item.name}}' class='selector-icon' />
+            {{item.name}}
+        </button>
+    {{/each}}
+</div>

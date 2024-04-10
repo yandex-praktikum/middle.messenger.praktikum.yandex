@@ -6,6 +6,8 @@ import {
     LoginPageDataErrorLoginPassword,
     LoginPageDataRegistration,
 } from './src/pages/login/login-data';
+import { SelectorData } from './src/pages/modules/modules-data';
+
 import {
     ProfileModalFileError,
     ProfileModalFileErrorLoad,
@@ -38,20 +40,25 @@ const pages = {
 
     Messenger: [Pages.Messenger],
     MessengerToChoose: [Pages.MessengerToChoose],
+
+    Error404: [Pages.page404],
+    Error505: [Pages.page505],
+
+    Home: [Pages.Home],
+
+    OtherModules: [Pages.Modules, SelectorData],
 };
 
 document.addEventListener('DOMContentLoaded', () =>
-    navigateOnClient(pages, 'Messenger'),
+    navigateOnClient(pages, 'Home'),
 );
 
-// document.addEventListener('click', (event) => {
-//     const page = event.target.getAttribute('page');
-//     console.log(page, 'page');
-//     if (page) {
-//         console.log(page, 'in main');
-//         navigateOnClient(page);
+document.addEventListener('click', (event) => {
+    const page = event.target.getAttribute('page');
+    if (page) {
+        navigateOnClient(pages, page);
 
-//         event.preventDefault();
-//         event.stopImmediatePropagation();
-//     }
-// });
+        event.preventDefault();
+        event.stopImmediatePropagation();
+    }
+});
