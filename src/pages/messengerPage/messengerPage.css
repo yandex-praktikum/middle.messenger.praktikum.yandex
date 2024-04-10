@@ -1,4 +1,4 @@
-.main {
+.messenger {
   display: grid;
   grid-template-columns: 310px 1fr;
   height: 100%;
@@ -17,6 +17,10 @@
       align-items: flex-end;
       gap: 22px;
       padding: 14px 10px;
+
+      .back-btn {
+        color: var(--color-gray);
+      }
     }
   }
 }

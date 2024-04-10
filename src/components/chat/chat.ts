@@ -1,5 +1,5 @@
-import { User } from '../../constants/types'
-import Block from '../../core/Block'
+import { User } from '@/constants/types'
+import Block from '@/core/Block'
 import { Message, MessageProps } from '../message/message'
 import './chat.css'
 

@@ -1,4 +1,4 @@
-import Block, { Props } from '../../core/Block'
+import Block, { Props } from '@/core/Block'
 import Avatar from '../avatar/avatar'
 import './chatItem.css'
 

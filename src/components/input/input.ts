@@ -1,13 +1,13 @@
-import Block, { Props } from '../../core/Block'
+import Block, { Props } from '@/core/Block'
 import './input.css'
 
 // language=hbs
 const inputTemplate: string = `
-  <label class="label" for="{{name}}">
-    <span>{{ label }}</span>
-    {{{ input }}}
-    <span class="error">{{ errorText }}</span>
-  </label>
+    <label class="label {{className}}" for="{{name}}">
+        <span>{{ label }}</span>
+        {{{ input }}}
+        <span class="error">{{ errorText }}</span>
+    </label>
 `
 
 type InputValidation = {
@@ -20,14 +20,17 @@ type InputProps = {
   name: string
   type: string
   label: string
+  value?: string
   placeholder?: string
   className?: string
+  classNameInput?: string
   validation?: InputValidation
 } & Props
 
 export default class Input extends Block {
   _name: string
   _inputElement: InputField
+  _validation: InputValidation | undefined
 
   constructor(props: InputProps) {
     const input = new InputField({ ...props })
@@ -38,6 +41,7 @@ export default class Input extends Block {
     input.props._parentBlock = this
     this._name = props.name
     this._inputElement = input
+    this._validation = props.validation
   }
 
   get name() {
@@ -52,6 +56,10 @@ export default class Input extends Block {
     return this._inputElement.validate()
   }
 
+  showError(error: string) {
+    this.props.errorText = error
+  }
+
   render() {
     return this.compile(inputTemplate, this.props)
   }
@@ -59,7 +67,12 @@ export default class Input extends Block {
 
 // language=hbs
 const inputFieldTemplate: string = `
-  <input class="input" id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" />
+    <input class="input {{classNameInput}}"
+           id="{{name}}"
+           name="{{name}}"
+           type="{{type}}"
+           placeholder="{{placeholder}}"
+           value="{{value}}" />
 `
 
 class InputField extends Block {

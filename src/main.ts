@@ -1,13 +1,23 @@
-import { navigate, renderDOM } from './utils'
-import { loginPage } from './pages/loginPage/loginPage'
+import { routes } from '@/constants/routes.ts'
+import { notFound, serverError } from '@/pages/errorPage/errorPage.ts'
+import { loginPage } from '@/pages/loginPage/loginPage.ts'
+import { registerPage } from '@/pages/registerPage/registerPage.ts'
+import { messengerPage } from '@/pages/messengerPage/messengerPage.ts'
+import { profilePage } from '@/pages/profilePage/profilePage.ts'
+import { editUserdataPage } from '@/pages/editUserdataPage/editUserdataPage.ts'
+import { editPasswordPage } from '@/pages/editPasswordPage/editPasswordPage.ts'
+import router from '@/router.ts'
 import './style.css'
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.location.hash) {
-    renderDOM('#app', loginPage)
-  } else {
-    navigate()
-  }
+  router
+    .use(routes.serverError, serverError)
+    .use(routes.login, loginPage)
+    .use(routes.register, registerPage)
+    .use(routes.messenger, messengerPage)
+    .use(routes.notFound, notFound)
+    .use(routes.profile, profilePage)
+    .use(routes.editUserdata, editUserdataPage)
+    .use(routes.editPassword, editPasswordPage)
+    .start()
 })
-
-window.addEventListener('hashchange', navigate)

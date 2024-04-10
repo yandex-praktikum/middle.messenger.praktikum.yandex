@@ -1,6 +1,5 @@
 import ChatItem from './components/chatItem/chatItem'
 import { MessageProps } from './components/message/message'
-import Avatar from './components/avatar/avatar'
 
 export const mockChatItems = [
   new ChatItem({
@@ -169,17 +168,3 @@ export const mockMessages: MessageProps[] = [
     body: 'Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.',
   },
 ]
-
-export const userdata = {
-  avatar: new Avatar({
-    src: 'https://i.ibb.co/k8qJmGG/1.png',
-    alt: 'userdata',
-    size: '100%',
-  }),
-  email: 'pochta@yandex.ru',
-  login: 'ivanivanov',
-  firstName: 'Иван',
-  secondName: 'Иванов',
-  displayName: 'Иван',
-  phone: '+7 (909) 967 30 30',
-}

@@ -1,12 +1,14 @@
-import Block, { Props } from '../../core/Block'
+import Block, { Props } from '@/core/Block'
 import Input from '../input/input'
 import Button from '../button/button'
 
 // language=hbs
-const FormTemplate: string = `<form class="{{ className }}">
-  {{{ inputs }}}
-  {{{ submitBtn }}}
-</form>`
+const FormTemplate: string = `
+    <form class="{{ className }}">
+        {{{ inputs }}}
+        {{{ submitBtn }}}
+    </form>
+`
 
 export type FormProps = {
   inputs: Input[]
@@ -15,18 +17,21 @@ export type FormProps = {
 } & Props
 
 export default class Form extends Block {
+  inputs: Input[]
+
   constructor(props: FormProps) {
     super(props)
-    this.props.events = {
-      submit: (e) => {
-        e.preventDefault()
-        this.getValues()
-      },
-    }
+    this.inputs = props.inputs
   }
 
-  getValues() {
+  showInputError(inputName: string, error: string) {
+    const input = this.inputs.filter((input) => input.name === inputName)[0]
+    input.showError(error)
+  }
+
+  getValues(): Record<string, string> | boolean {
     const data: { [index: string]: string } = {}
+
     this.blockArrays.inputs.forEach((input) => {
       if (input instanceof Input) {
         const isValid = input.validate()
@@ -35,10 +40,13 @@ export default class Form extends Block {
         }
       }
     })
+
     if (Object.keys(data).length) {
       console.log(data)
+      return data
     } else {
       console.log('Форма содержит ошибки')
+      return false
     }
   }
 

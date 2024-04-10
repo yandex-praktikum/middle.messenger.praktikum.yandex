@@ -2,17 +2,16 @@ export enum METHODS {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
-  PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
 
-type HTTPMethod = (url: string, options: Options) => Promise<unknown>
+type HTTPMethod = (url: string, options: Options) => Promise<XMLHttpRequest>
 
 export type Options = {
-  method: keyof typeof METHODS
-  data: Record<string, number | string | FormData>
-  headers: Record<string, string>
-  timeout: number
+  method?: keyof typeof METHODS
+  data?: Record<string, number | string> | FormData
+  headers?: Record<string, string>
+  timeout?: number
 }
 
 function queryStringify(data: { [index: string]: unknown }) {
@@ -31,7 +30,7 @@ function queryStringify(data: { [index: string]: unknown }) {
   return `?${queryArr.join('&')}`
 }
 
-export default class HTTPTransport {
+export class HTTPTransport {
   get: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
@@ -56,15 +55,7 @@ export default class HTTPTransport {
     )
   }
 
-  patch: HTTPMethod = (url: string, options: Options) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.PATCH },
-      options.timeout
-    )
-  }
-
-  delete(url: string, options: Options) {
+  delete: HTTPMethod = (url: string, options: Options) => {
     return this.request(
       url,
       { ...options, method: METHODS.DELETE },
@@ -72,16 +63,26 @@ export default class HTTPTransport {
     )
   }
 
-  request(url: string, options: Options, timeout = 5000) {
+  request(url: string, options: Options, timeout = 0): Promise<XMLHttpRequest> {
     const { method, headers, data } = options
+
+    if (!method) {
+      throw new Error('Method not implemented')
+    }
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
       const xhrURL =
-        method === METHODS.GET && data ? `${url}${queryStringify(data)}` : url
+        method === METHODS.GET && (typeof data === 'object' && !(data instanceof FormData)) ? `${url}${queryStringify(data)}` : url
 
       xhr.open(method, xhrURL)
+      xhr.withCredentials = true
       xhr.timeout = timeout
+
+      if(typeof data === 'object' && !(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json')
+      }
+
 
       for (const key in headers) {
         xhr.setRequestHeader(key, headers[key])
@@ -97,9 +98,13 @@ export default class HTTPTransport {
 
       if (method === METHODS.GET || !data) {
         xhr.send()
+      } else if(data instanceof FormData){
+        xhr.send(data)
       } else {
         xhr.send(JSON.stringify(data))
       }
     })
   }
 }
+
+export default new HTTPTransport()
