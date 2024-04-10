@@ -7,6 +7,7 @@
         flex: 1;
         border-right: 1px solid #eaeaea;
         padding: 1em;
+        background-color: #fbfbfb;
 
         &-header {
             height: 102px;
@@ -19,6 +20,60 @@
         &-profile-link {
             text-decoration: none;
             color: #999;
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #eaeaea;
+            padding: 0.8em 0;
+
+            &-title {
+                font-size: 1em;
+            }
+
+            &-text {
+                color: #999;
+                font-size: 0.9em;
+            }
+
+            &-info {
+                &-right {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    &-time {
+                        color: #999;
+                        font-size: 0.5em;
+                    }
+
+                    &-count {
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        background-color: red;
+                        color: white;
+                        font-size: 0.8em;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                width: 100%;
+                padding-left: 1em;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &-img {
+                border-radius: 50%;
+                width: 47px;
+                height: 47px;
+            }
         }
 
         &-search {
@@ -72,6 +127,14 @@
     &__right {
         flex: 3;
         padding: 0 1.5em;
+
+        &-choose {
+            flex: 3;
+            padding: 0 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         &-header {
             display: flex;

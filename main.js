@@ -37,6 +37,7 @@ const pages = {
     ProfileModalFileError: [Pages.ProfileModal, ProfileModalFileError],
 
     Messenger: [Pages.Messenger],
+    MessengerToChoose: [Pages.MessengerToChoose],
 };
 
 document.addEventListener('DOMContentLoaded', () =>
