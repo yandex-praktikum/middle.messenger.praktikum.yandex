@@ -15,7 +15,7 @@
 
 Для развертывания проекта мы используем платформу [Netlify](https://www.netlify.com/). С помощью Netlify вы можете легко развернуть свое приложение в интернете и получить уникальный URL.
 
-**Ссылка проекта:** - [messenger](...)
+**Ссылка проекта:** - [messenger](https://neon-vacherin-e2eeda.netlify.app/)
 
 # Запускаем проект
 
@@ -27,10 +27,12 @@
 npm run dev
 ```
 
-## Деплой
+## Запустить проект
+
+Соибраем проект и запускаем на 3000 порту.
 
 ```bash
-npm deploy
+npm run start
 ```
 
 # Остальное
@@ -39,3 +41,5 @@ npm deploy
 
 Проект в фигме взятый за основу, это лишь прототип, все анимации и стили будут меняться.
 [Figma](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=0-1&mode=design&t=X3CoGF2DSxfQJVj2-0)
+
+ПРОЕКТ НАХОДИТСЯ В СТАДИИ РАЗРАБОТКИ И ТЕСТИРОВАНИЯ!
