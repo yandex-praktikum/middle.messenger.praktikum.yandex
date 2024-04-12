@@ -1,13 +1,13 @@
-import { RegisterData } from '@/services/AuthService.ts'
-import { AuthController } from '@/controllers/AuthController.ts'
-import { routes } from '@/constants/routes'
-import { ValidationsMap } from '@/constants/validations'
-import connect from '@/utils/connect.ts'
-import Block from '@/core/Block'
 import Form from '@/components/form/form'
 import Input from '@/components/input/input'
 import Link from '@/components/link/link'
+import { routes } from '@/constants/routes'
+import { ValidationsMap } from '@/constants/validations'
+import { AuthController } from '@/controllers/AuthController.ts'
+import Block from '@/core/Block'
 import router from '@/router.ts'
+import { RegisterData } from '@/services/AuthService.ts'
+import { withUserdata } from '@/utils/connect.ts'
 import './registerPage.css'
 
 // language=hbs
@@ -46,7 +46,7 @@ const submitHandler = (e: Event) => {
     authController.signup(values).then((resp) => {
       if (resp.status === 200) {
         router.go(routes.messenger)
-      } else if(resp.status === 409) {
+      } else if (resp.status === 409) {
         registerForm.showInputError('login', 'Логин уже занят')
       }
     })
@@ -146,7 +146,7 @@ const registerForm = new Form({
   }),
 })
 
-const connectedRegisterPage = connect(RegisterPage)
+const connectedRegisterPage = withUserdata(RegisterPage)
 
 export const registerPage = new connectedRegisterPage({
   registerForm: registerForm,

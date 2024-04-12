@@ -1,28 +1,30 @@
+import { EditPasswordData, User } from '@/constants/types.ts'
 import HTTPTransport from '@/core/HTTPTransport.ts'
-import { User } from '@/constants/types.ts'
 
 export class UserService {
   baseURL: string = 'https://ya-praktikum.tech/api/v2/user'
 
   editProfile(data: Partial<User>) {
     return HTTPTransport.put(`${this.baseURL}/profile`, {
-      data: data,
+      body: data,
     })
   }
 
   editAvatar(data: FormData) {
     return HTTPTransport.put(`${this.baseURL}/profile/avatar`, {
-      data: data,
+      body: data,
     })
   }
 
-  editPassword() {
-    return HTTPTransport.put(`${this.baseURL}/password`, {})
+  editPassword(data: EditPasswordData) {
+    return HTTPTransport.put(`${this.baseURL}/password`, {
+      body: data,
+    })
   }
 
   searchUser(login: string) {
     return HTTPTransport.post(`${this.baseURL}/search`, {
-      data: { login },
+      body: { login },
     })
   }
 }

@@ -1,13 +1,13 @@
-import { routes } from '@/constants/routes'
-import { ValidationsMap } from '@/constants/validations'
-import connect from '@/utils/connect.ts'
-import Block, { Props } from '@/core/Block'
 import Form from '@/components/form/form'
 import Input from '@/components/input/input'
 import Link from '@/components/link/link'
-import { RegisterData } from '@/services/AuthService.ts'
+import { routes } from '@/constants/routes'
+import { ValidationsMap } from '@/constants/validations'
 import { AuthController } from '@/controllers/AuthController.ts'
+import Block, { Props } from '@/core/Block'
 import router from '@/router.ts'
+import { RegisterData } from '@/services/AuthService.ts'
+import { withUserdata } from '@/utils/connect.ts'
 import './loginPage.css'
 
 // language=hbs
@@ -99,13 +99,12 @@ const loginForm = new Form({
   }),
 })
 
-const connectedLoginPage = connect(LoginPage)
+const connectedLoginPage = withUserdata(LoginPage)
 
 export const loginPage = new connectedLoginPage({
   loginForm: loginForm,
   registerLink: new Link({
     to: routes.register,
     label: 'Нет аккаунта?',
-    withId: true,
   }),
 })

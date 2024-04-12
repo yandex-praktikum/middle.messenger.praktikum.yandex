@@ -1,14 +1,15 @@
+import Avatar from '@/components/avatar/avatar'
+import Button from '@/components/button/button.ts'
+import Link from '@/components/link/link'
 import { routes } from '@/constants/routes'
 import { User } from '@/constants/types'
+import { AuthController } from '@/controllers/AuthController.ts'
+import { UserController } from '@/controllers/UserController.ts'
 import Block from '@/core/Block'
 import store from '@/core/Store.ts'
 import router from '@/router.ts'
-import Button from '@/components/button/button.ts'
-import Avatar from '@/components/avatar/avatar'
-import Link from '@/components/link/link'
+import { withUserAvatar, withUserdata } from '@/utils/connect.ts'
 import './profilePage.css'
-import connect from '@/utils/connect.ts'
-import { UserController } from '@/controllers/UserController.ts'
 
 // language=hbs
 const ProfilePageTemplate = `
@@ -20,7 +21,7 @@ const ProfilePageTemplate = `
     <div class="profile-content">
       <div class="profile__avatar">{{{ avatar }}}</div>
       
-      <span class="profile-content__username">{{ userdata.displayName }}</span>
+      <span class="profile-content__username">{{ userdata.display_name }}</span>
 
       <div class="profile-info">
         <div class="profile-info-row">
@@ -41,7 +42,7 @@ const ProfilePageTemplate = `
         </div>
         <div class="profile-info-row">
           <span class="profile-info-row__name">Имя в чате</span>
-          <span class="profile-info-row__value">{{ userdata.displayName }}</span>
+          <span class="profile-info-row__value">{{ userdata.display_name }}</span>
         </div>
         <div class="profile-info-row">
           <span class="profile-info-row__name">Телефон</span>
@@ -89,6 +90,7 @@ class ProfilePage extends Block {
   }
 }
 
+const authController = new AuthController()
 const userController = new UserController()
 
 const avatarUploadHandler = () => {
@@ -96,7 +98,7 @@ const avatarUploadHandler = () => {
   fileInput.type = 'file'
 
   fileInput.onchange = async (e: Event) => {
-    if (e.currentTarget instanceof  HTMLInputElement && e.currentTarget.files) {
+    if (e.currentTarget instanceof HTMLInputElement && e.currentTarget.files) {
       const formData = new FormData()
       formData.append('avatar', e.currentTarget.files[0])
       userController.editAvatar(formData)
@@ -106,8 +108,16 @@ const avatarUploadHandler = () => {
   fileInput.click()
 }
 
-const connectedProfilePage = connect(ProfilePage)
-const connectedAvatar = connect(Avatar)
+const logoutBtnHandler = () => {
+  authController.logout().then((resp) => {
+    if (resp.status === 200) {
+      router.go(routes.login)
+    }
+  })
+}
+
+const connectedProfilePage = withUserdata(ProfilePage)
+const connectedAvatar = withUserAvatar(Avatar)
 
 export const profilePage = new connectedProfilePage({
   userdata: store.getState().userdata,
@@ -124,8 +134,8 @@ export const profilePage = new connectedProfilePage({
     src: store.getState().userdata.avatar,
     alt: 'avatar',
     events: {
-      click: avatarUploadHandler
-    }
+      click: avatarUploadHandler,
+    },
   }),
   editUserdataLink: new Link({
     to: routes.editUserdata,
@@ -137,9 +147,11 @@ export const profilePage = new connectedProfilePage({
     label: 'Изменить пароль',
     className: 'profile-actions__link profile-actions__link_blue',
   }),
-  logoutLink: new Link({
-    to: '#logout',
+  logoutLink: new Button({
+    events: {
+      click: logoutBtnHandler
+    },
     label: 'Выйти',
-    className: 'profile-actions__link profile-actions__link_red',
+    className: 'link profile-actions__link profile-actions__link_red',
   }),
 })

@@ -12,7 +12,6 @@
   &__text {
     display: none;
     position: absolute;
-    color: #000;
   }
 
   &__img {
@@ -23,13 +22,15 @@
   }
 
   &:hover {
-    background: var(--hover-bg);
-
-    .avatar__text {
-      display: block;
+    &__text {
+      background: var(--hover-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
 
-    .avatar__img {
+    &__img {
       width: 100%;
       height: 100%;
       object-fit: cover;

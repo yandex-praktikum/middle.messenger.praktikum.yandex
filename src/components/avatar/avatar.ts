@@ -5,7 +5,9 @@ import './avatar.css'
 const avatarTemplate = `
   <div class="avatar {{ className }}">
     <img class="avatar__img" src="{{src}}" alt="{{alt}}">
-    <span class="avatar__text">Сменить аватар</span>
+    <div class="avatar__text">
+      <span>Сменить аватар</span>
+    </div>
   </div>
 `
 

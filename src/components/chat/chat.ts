@@ -32,7 +32,7 @@ type ChatProps = {
   messages: MessageProps[]
 }
 
-export class Chat extends Block {
+export class ChatWindow extends Block {
   constructor(props: ChatProps) {
     const messagesArr: Message[] = []
     props.messages.map((message) => {

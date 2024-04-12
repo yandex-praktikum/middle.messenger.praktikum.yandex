@@ -1,5 +1,6 @@
 export const initialState = {
   userdata: {
+    id: 0,
     avatar: '',
     email: '',
     login: '',
@@ -8,5 +9,5 @@ export const initialState = {
     displayName: '',
     phone: '',
   },
-  id: 0
+  chats: []
 }

@@ -128,7 +128,7 @@ export default class Block {
   }
 
   render(): Element {
-    return document.createElement('div');
+    return document.createElement('div')
   }
 
   compile(template: string, props: Props) {

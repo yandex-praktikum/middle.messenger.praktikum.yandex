@@ -1,6 +1,6 @@
-import EventBus from './EventBus.ts'
-import { User } from '@/constants/types.ts'
 import { initialState } from '@/constants/initialState.ts'
+import { Chat, User } from '@/constants/types.ts'
+import EventBus from './EventBus.ts'
 
 export enum StoreEvents {
   UPDATED = 'updated',
@@ -32,8 +32,9 @@ function set(
   return object
 }
 
-type StateType = {
+export type StateType = {
   userdata: User
+  chats: Chat[]
   [key: string]: unknown
 }
 

@@ -1,5 +1,5 @@
-import { AuthService, LoginData, RegisterData } from '@/services/AuthService.ts'
 import store from '@/core/Store.ts'
+import { AuthService, LoginData, RegisterData } from '@/services/AuthService.ts'
 
 const authService = new AuthService()
 
@@ -33,21 +33,32 @@ export class AuthController {
         return resp
       })
       .catch((error) => {
+        console.log(error)
         return error
       })
   }
 
   public async getUser() {
-    return authService.getUser().then((resp) => {
-      if (resp.status === 200) {
-        const data = JSON.parse(resp.response)
-        data.avatar = data.avatar.replaceAll('/', '%2F')
-        data.avatar = `https://ya-praktikum.tech/api/v2/resources/${data.avatar}`
-        store.set('userdata', data)
-      }
+    return authService
+      .getUser()
+      .then((resp) => {
+        if (resp.status === 200) {
+          const data = JSON.parse(resp.response)
+          data.avatar = data.avatar.replaceAll('/', '%2F')
+          data.avatar = `https://ya-praktikum.tech/api/v2/resources/${data.avatar}`
+          store.set('userdata', data)
+        }
+        return resp
+      })
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
+  }
+
+  public async logout() {
+    return authService.logout().then((resp) => {
       return resp
-    }).catch((error) => {
-      return error
     })
   }
 }

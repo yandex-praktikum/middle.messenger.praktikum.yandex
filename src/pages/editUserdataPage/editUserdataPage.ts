@@ -1,12 +1,13 @@
-import router from '@/router.ts'
-import { User } from '@/constants/types'
-import { ValidationsMap } from '@/constants/validations'
-import Block from '@/core/Block'
 import Button from '@/components/button/button'
 import Form from '@/components/form/form'
 import Input from '@/components/input/input'
+import { routes } from '@/constants/routes.ts'
+import { User } from '@/constants/types'
+import { ValidationsMap } from '@/constants/validations'
+import { UserController } from '@/controllers/UserController.ts'
+import Block from '@/core/Block'
+import router from '@/router.ts'
 import '../profilePage/profilePage.css'
-import store from '@/core/Store.ts'
 
 const EditUserdataPageTemplate = `
   <div class="profile">
@@ -23,7 +24,6 @@ const EditUserdataPageTemplate = `
 type EditUserdataPageProps = {
   backBtn: Button
   editUserDataForm: Form
-  userdata: User
 }
 
 class EditUserdataPage extends Block {
@@ -36,8 +36,25 @@ class EditUserdataPage extends Block {
   }
 }
 
+const userController = new UserController()
+
+const submitHandler = (e: Event) => {
+  e.preventDefault()
+  if (editUserdataForm.getValues()) {
+    const values = editUserdataForm.getValues() as Partial<User>
+    userController.editProfile(values).then((resp) => {
+      if (resp.status === 200) {
+        router.go(routes.profile)
+      }
+    })
+  }
+}
+
 const editUserdataForm = new Form({
-  className: 'login-form dialog-form',
+  className: 'edit-userdata dialog-form',
+  events: {
+    submit: submitHandler,
+  },
   inputs: [
     new Input({
       type: 'text',
@@ -45,7 +62,6 @@ const editUserdataForm = new Form({
       label: 'Почта',
       placeholder: 'Почта',
       validation: {
-        required: true,
         regExp: ValidationsMap.email,
         errorText: 'Неверный формат почты',
       },
@@ -56,7 +72,6 @@ const editUserdataForm = new Form({
       label: 'Логин',
       placeholder: 'Логин',
       validation: {
-        required: true,
         regExp: ValidationsMap.login,
         errorText: 'Неверный формат логина',
       },
@@ -67,7 +82,6 @@ const editUserdataForm = new Form({
       label: 'Имя',
       placeholder: 'Имя',
       validation: {
-        required: true,
         regExp: ValidationsMap.name,
         errorText: 'Неверный формат имени',
       },
@@ -78,7 +92,6 @@ const editUserdataForm = new Form({
       label: 'Фамилия',
       placeholder: 'Фамилия',
       validation: {
-        required: true,
         regExp: ValidationsMap.name,
         errorText: 'Неверный формат фамилии',
       },
@@ -89,7 +102,6 @@ const editUserdataForm = new Form({
       label: 'Имя в чате',
       placeholder: 'Имя в чате',
       validation: {
-        required: true,
         regExp: ValidationsMap.name,
         errorText: 'Неверный формат фамилии',
       },
@@ -100,7 +112,6 @@ const editUserdataForm = new Form({
       label: 'Телефон',
       placeholder: 'Телефон',
       validation: {
-        required: true,
         regExp: ValidationsMap.phone,
         errorText: 'Неверный формат телефона',
       },
@@ -116,7 +127,6 @@ const editUserdataForm = new Form({
 })
 
 export const editUserdataPage = new EditUserdataPage({
-  userdata: store.getState().userdata,
   backBtn: new Button({
     label: '<i class="lni lni-arrow-left"></i>',
     className: 'back__btn',

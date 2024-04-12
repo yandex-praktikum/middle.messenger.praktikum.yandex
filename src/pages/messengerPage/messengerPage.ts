@@ -1,13 +1,16 @@
-import Block from '@/core/Block'
-import router from '@/router.ts'
-import { routes } from '@/constants/routes.ts'
-import ChatItem from '@/components/chatItem/chatItem'
-import { mockChatItems, mockMessages } from '@/mockData'
-import { Chat } from '@/components/chat/chat'
 import Button from '@/components/button/button.ts'
-import './messengerPage.css'
+import { ChatWindow } from '@/components/chat/chat'
+import ChatItem from '@/components/chatItem/chatItem.ts'
+import { routes } from '@/constants/routes.ts'
+import { Chat } from '@/constants/types.ts'
 import { AuthController } from '@/controllers/AuthController.ts'
+import { ChatController } from '@/controllers/ChatController.ts'
+import Block, { Props } from '@/core/Block'
 import store from '@/core/Store.ts'
+import { mockMessages } from '@/mockData'
+import router from '@/router.ts'
+import { withChats } from '@/utils/connect.ts'
+import './messengerPage.css'
 
 // language=hbs
 const MessengerPageTemplate = `
@@ -18,7 +21,7 @@ const MessengerPageTemplate = `
         <input type="text" class="input-round" />
       </div>
       
-      {{{ chatItems }}}
+      {{{ chats }}}
     </div>
     
     {{{ chat }}}
@@ -27,27 +30,44 @@ const MessengerPageTemplate = `
 
 type MessengerPageProps = {
   profileBtn: Button
-  chatItems: ChatItem[]
-  chat: Chat
-}
+  chat: ChatWindow
+} & Props
 
 const authController = new AuthController()
+const chatController = new ChatController()
 
 export class MessengerPage extends Block {
+  chats: ChatItem[]
+
   constructor(props: MessengerPageProps) {
     super(props)
+    this.chats = []
+  }
+
+  createChatItems(chats: Chat[]) {
+    return this.chats = chats.map((chat) => new ChatItem(chat))
+  }
+
+  componentDidMount() {
+    authController.getUser().then((resp) => {
+      if (resp.status === 401) {
+        router.go(routes.login)
+      } else {
+        chatController.getChats().then(() => {
+          this.createChatItems(store.getState().chats)
+        })
+      }
+    })
   }
 
   render() {
     return this.compile(MessengerPageTemplate, this.props)
   }
-
-  componentDidMount() {
-    authController.getUser()
-  }
 }
 
-export const messengerPage = new MessengerPage({
+const connectedMessengerPage = withChats(MessengerPage)
+
+export const messengerPage = new connectedMessengerPage({
   profileBtn: new Button({
     label: 'Профиль>',
     className: 'button-icon back-btn',
@@ -57,8 +77,7 @@ export const messengerPage = new MessengerPage({
       },
     },
   }),
-  chatItems: mockChatItems,
-  chat: new Chat({
+  chat: new ChatWindow({
     user: store.getState().userdata,
     messages: mockMessages,
   }),

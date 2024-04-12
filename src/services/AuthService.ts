@@ -19,17 +19,21 @@ export class AuthService {
 
   signin(data: LoginData) {
     return HTTPTransport.post(`${this.baseURL}/signin`, {
-      data: data,
+      body: data,
     })
   }
 
   signup(data: RegisterData) {
     return HTTPTransport.post(`${this.baseURL}/signup`, {
-      data: data,
+      body: data,
     })
   }
 
   getUser() {
     return HTTPTransport.get(`${this.baseURL}/user`, {})
+  }
+
+  logout() {
+    return HTTPTransport.post(`${this.baseURL}/logout`, {})
   }
 }

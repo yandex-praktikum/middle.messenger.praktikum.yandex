@@ -1,6 +1,6 @@
+import { routes } from '@/constants/routes.ts'
 import Block from './Block.ts'
 import { Route } from './Route.ts'
-import { routes } from '@/constants/routes.ts'
 
 export type BlockChild = InstanceType<typeof Block>
 
@@ -49,7 +49,7 @@ export default class Router {
 
     this._currentRoute = route
     route.render()
-    route._block?.componentDidMount()
+    route._block?.dispatchComponentDidMount()
   }
 
   go(pathname: string) {

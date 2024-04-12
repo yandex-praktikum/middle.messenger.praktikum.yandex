@@ -9,7 +9,7 @@ type HTTPMethod = (url: string, options: Options) => Promise<XMLHttpRequest>
 
 export type Options = {
   method?: keyof typeof METHODS
-  data?: Record<string, number | string> | FormData
+  body?: Record<string, number | number[] | string> | FormData
   headers?: Record<string, string>
   timeout?: number
 }
@@ -64,7 +64,7 @@ export class HTTPTransport {
   }
 
   request(url: string, options: Options, timeout = 0): Promise<XMLHttpRequest> {
-    const { method, headers, data } = options
+    const { method, headers, body } = options
 
     if (!method) {
       throw new Error('Method not implemented')
@@ -73,16 +73,19 @@ export class HTTPTransport {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
       const xhrURL =
-        method === METHODS.GET && (typeof data === 'object' && !(data instanceof FormData)) ? `${url}${queryStringify(data)}` : url
+        method === METHODS.GET &&
+        typeof body === 'object' &&
+        !(body instanceof FormData)
+          ? `${url}${queryStringify(body)}`
+          : url
 
       xhr.open(method, xhrURL)
       xhr.withCredentials = true
       xhr.timeout = timeout
 
-      if(typeof data === 'object' && !(data instanceof FormData)) {
+      if (typeof body === 'object' && !(body instanceof FormData)) {
         xhr.setRequestHeader('Content-Type', 'application/json')
       }
-
 
       for (const key in headers) {
         xhr.setRequestHeader(key, headers[key])
@@ -96,12 +99,12 @@ export class HTTPTransport {
       xhr.onerror = reject
       xhr.ontimeout = reject
 
-      if (method === METHODS.GET || !data) {
+      if (method === METHODS.GET || !body) {
         xhr.send()
-      } else if(data instanceof FormData){
-        xhr.send(data)
+      } else if (body instanceof FormData) {
+        xhr.send(body)
       } else {
-        xhr.send(JSON.stringify(data))
+        xhr.send(JSON.stringify(body))
       }
     })
   }

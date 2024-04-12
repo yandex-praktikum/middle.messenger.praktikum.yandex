@@ -1,3 +1,4 @@
+import { Chat } from '@/constants/types.ts'
 import Block, { Props } from '@/core/Block'
 import Avatar from '../avatar/avatar'
 import './chatItem.css'
@@ -12,12 +13,7 @@ const ChatItemTemplate = `
   </div>
 `
 
-export type ChatItemProps = {
-  avatar: string
-  nickname: string
-  message: string
-  datetime: string
-} & Props
+export type ChatItemProps = Chat & Props
 
 export default class ChatItem extends Block {
   constructor(props: ChatItemProps) {

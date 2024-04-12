@@ -1,7 +1,7 @@
-import Block from '@/core/Block'
-import './errorPage.css'
 import Link from '@/components/link/link'
 import { routes } from '@/constants/routes'
+import Block from '@/core/Block'
+import './errorPage.css'
 
 const errorPageTemplate = `
 <div class="error dialog">

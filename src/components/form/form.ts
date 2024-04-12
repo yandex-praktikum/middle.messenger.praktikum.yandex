@@ -1,6 +1,6 @@
 import Block, { Props } from '@/core/Block'
-import Input from '../input/input'
 import Button from '../button/button'
+import Input from '../input/input'
 
 // language=hbs
 const FormTemplate: string = `

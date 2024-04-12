@@ -1,5 +1,5 @@
-import Block from './Block.ts'
 import { renderDOM } from '../utils'
+import Block from './Block.ts'
 import { BlockChild } from './Router.ts'
 
 export class Route {
