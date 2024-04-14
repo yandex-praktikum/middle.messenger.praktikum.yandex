@@ -149,7 +149,7 @@ export const profilePage = new connectedProfilePage({
   }),
   logoutLink: new Button({
     events: {
-      click: logoutBtnHandler
+      click: logoutBtnHandler,
     },
     label: 'Выйти',
     className: 'link profile-actions__link profile-actions__link_red',

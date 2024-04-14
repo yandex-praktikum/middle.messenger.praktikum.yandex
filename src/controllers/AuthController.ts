@@ -1,5 +1,6 @@
 import store from '@/core/Store.ts'
 import { AuthService, LoginData, RegisterData } from '@/services/AuthService.ts'
+import getResourceURL from '@/utils/getResourceURL.ts'
 
 const authService = new AuthService()
 
@@ -28,7 +29,7 @@ export class AuthController {
       })
       .then((resp) => {
         if (resp.status === 200) {
-          store.set('user', { id: resp.response })
+          store.set('userdata', { id: resp.response })
         }
         return resp
       })
@@ -44,8 +45,7 @@ export class AuthController {
       .then((resp) => {
         if (resp.status === 200) {
           const data = JSON.parse(resp.response)
-          data.avatar = data.avatar.replaceAll('/', '%2F')
-          data.avatar = `https://ya-praktikum.tech/api/v2/resources/${data.avatar}`
+          data.avatar = getResourceURL(data.avatar)
           store.set('userdata', data)
         }
         return resp

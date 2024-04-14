@@ -16,10 +16,11 @@ export type Chat = {
   unread_count: number
   created_by: number
   last_message: {
+    content: string
+    id: number
+    time: string
     user: User
   }
-  time: Date
-  content: string
 }
 
 export type EditPasswordData = {

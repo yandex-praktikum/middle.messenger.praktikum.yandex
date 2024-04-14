@@ -9,5 +9,6 @@ export const initialState = {
     displayName: '',
     phone: '',
   },
-  chats: []
+  chats: [],
+  selectedChat: 0,
 }

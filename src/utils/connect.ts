@@ -31,5 +31,5 @@ export const withUserAvatar = connect((state) => ({
   src: state.userdata.avatar,
 }))
 export const withChats = connect((state) => ({
-  chats: state.chats
+  chats: state.chats,
 }))

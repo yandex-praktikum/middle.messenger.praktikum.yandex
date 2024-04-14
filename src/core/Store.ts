@@ -35,6 +35,7 @@ function set(
 export type StateType = {
   userdata: User
   chats: Chat[]
+  selectedChat: number
   [key: string]: unknown
 }
 

@@ -26,13 +26,13 @@ export class ChatService {
 
   addUserToChat(data: ChatUsersRequest) {
     return HTTPTransport.put(`${this.baseURL}/users`, {
-      body: data
+      body: data,
     })
   }
 
   deleteUserFromChat(data: ChatUsersRequest) {
     return HTTPTransport.delete(`${this.baseURL}/users`, {
-      body: data
+      body: data,
     })
   }
 }

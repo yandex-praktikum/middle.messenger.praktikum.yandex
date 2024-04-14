@@ -30,6 +30,7 @@ const MessengerPageTemplate = `
 
 type MessengerPageProps = {
   profileBtn: Button
+  chats: Chat[]
   chat: ChatWindow
 } & Props
 
@@ -37,15 +38,12 @@ const authController = new AuthController()
 const chatController = new ChatController()
 
 export class MessengerPage extends Block {
-  chats: ChatItem[]
-
   constructor(props: MessengerPageProps) {
     super(props)
-    this.chats = []
   }
 
   createChatItems(chats: Chat[]) {
-    return this.chats = chats.map((chat) => new ChatItem(chat))
+    return chats.map((chat) => new ChatItem(chat))
   }
 
   componentDidMount() {
@@ -53,11 +51,14 @@ export class MessengerPage extends Block {
       if (resp.status === 401) {
         router.go(routes.login)
       } else {
-        chatController.getChats().then(() => {
-          this.createChatItems(store.getState().chats)
-        })
+        chatController.getChats()
       }
     })
+  }
+
+  componentDidUpdate(oldProps?: Props, newProps?: Partial<Props>): boolean {
+    this.blockArrays.chats = this.createChatItems(store.getState().chats)
+    return super.componentDidUpdate(oldProps, newProps)
   }
 
   render() {
@@ -77,6 +78,7 @@ export const messengerPage = new connectedMessengerPage({
       },
     },
   }),
+  chats: store.getState().chats,
   chat: new ChatWindow({
     user: store.getState().userdata,
     messages: mockMessages,
