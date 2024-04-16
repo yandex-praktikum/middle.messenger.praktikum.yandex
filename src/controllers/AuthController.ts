@@ -29,7 +29,7 @@ export class AuthController {
       })
       .then((resp) => {
         if (resp.status === 200) {
-          store.set('userdata', { id: resp.response })
+          store.set('userdata', { ...store.getState().userdata, id: resp.response })
         }
         return resp
       })
@@ -45,7 +45,9 @@ export class AuthController {
       .then((resp) => {
         if (resp.status === 200) {
           const data = JSON.parse(resp.response)
-          data.avatar = getResourceURL(data.avatar)
+          if (data.avatar) {
+            data.avatar = getResourceURL(data.avatar)
+          }
           store.set('userdata', data)
         }
         return resp

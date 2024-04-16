@@ -1,5 +1,6 @@
 import { EditPasswordData, User } from '@/constants/types.ts'
 import { AuthController } from '@/controllers/AuthController.ts'
+import store from '@/core/Store.ts'
 import { UserService } from '@/services/UserService.ts'
 
 const authController = new AuthController()
@@ -10,8 +11,7 @@ export class UserController {
     return userService
       .editProfile(userdata)
       .then((resp) => {
-        authController.getUser()
-        return resp
+        store.set('userdata', resp.response)
       })
       .catch((error) => {
         return error

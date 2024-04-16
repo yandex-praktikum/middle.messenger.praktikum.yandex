@@ -1,3 +1,4 @@
+import { MessageItemProps } from '@/components/message/message.ts'
 import { initialState } from '@/constants/initialState.ts'
 import { Chat, User } from '@/constants/types.ts'
 import EventBus from './EventBus.ts'
@@ -6,29 +7,14 @@ export enum StoreEvents {
   UPDATED = 'updated',
 }
 
-function set(
+function set<K extends keyof StateType>(
   object: StateType,
-  path: string,
-  value: Partial<StateType>
+  path: K,
+  value: StateType[K]
 ): StateType {
-  const parts = path.split('.')
-  let current = object
-
-  for (let i = 0; i < parts.length - 1; i++) {
-    const part = parts[i]
-
-    if (!(part in current)) {
-      current[part] = {}
-    }
-
-    current = current[part] as StateType
-
-    if (typeof current !== 'object' || current === null) {
-      return object
-    }
+  if (path in object) {
+    object[path] = value
   }
-
-  current[parts[parts.length - 1]] = value
   return object
 }
 
@@ -36,7 +22,8 @@ export type StateType = {
   userdata: User
   chats: Chat[]
   selectedChat: number
-  [key: string]: unknown
+  messages: MessageItemProps[]
+  chatUsers: User[]
 }
 
 class Store extends EventBus {
@@ -46,7 +33,10 @@ class Store extends EventBus {
     return this.state
   }
 
-  public set(path: string, value: Partial<StateType>) {
+  public set<K extends keyof StateType>(
+    path: K,
+    value: StateType[K]
+  ) {
     set(this.state, path, value)
     this.emit(StoreEvents.UPDATED)
   }

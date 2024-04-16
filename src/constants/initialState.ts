@@ -4,11 +4,13 @@ export const initialState = {
     avatar: '',
     email: '',
     login: '',
-    firstName: '',
-    secondName: '',
-    displayName: '',
+    first_name: '',
+    second_name: '',
+    display_name: '',
     phone: '',
   },
   chats: [],
   selectedChat: 0,
+  messages: [],
+  chatUsers: []
 }

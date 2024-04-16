@@ -3,16 +3,16 @@ export type User = {
   avatar: string
   email: string
   login: string
-  firstName: string
-  secondName: string
-  displayName: string
+  first_name: string
+  second_name: string
+  display_name: string
   phone: string
 }
 
 export type Chat = {
   id: number
   title: string
-  avatar: string
+  avatar: string | null
   unread_count: number
   created_by: number
   last_message: {
@@ -21,6 +21,17 @@ export type Chat = {
     time: string
     user: User
   }
+}
+
+export type Message = {
+  chat_id: number
+  content: string
+  file: null
+  id: number
+  is_read: boolean
+  time: string
+  type: "message"
+  user_id: number
 }
 
 export type EditPasswordData = {

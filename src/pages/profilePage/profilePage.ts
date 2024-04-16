@@ -8,7 +8,7 @@ import { UserController } from '@/controllers/UserController.ts'
 import Block from '@/core/Block'
 import store from '@/core/Store.ts'
 import router from '@/router.ts'
-import { withUserAvatar, withUserdata } from '@/utils/connect.ts'
+import connect from '@/utils/connect.ts'
 import './profilePage.css'
 
 // language=hbs
@@ -116,10 +116,12 @@ const logoutBtnHandler = () => {
   })
 }
 
-const connectedProfilePage = withUserdata(ProfilePage)
-const connectedAvatar = withUserAvatar(Avatar)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(ProfilePage)
+export const withUserAvatar = connect((state) => ({
+  src: state.userdata.avatar,
+}))(Avatar)
 
-export const profilePage = new connectedProfilePage({
+export const profilePage = new withUserdata({
   userdata: store.getState().userdata,
   backBtn: new Button({
     label: '<i class="lni lni-arrow-left"></i>',
@@ -130,9 +132,10 @@ export const profilePage = new connectedProfilePage({
       },
     },
   }),
-  avatar: new connectedAvatar({
+  avatar: new withUserAvatar({
     src: store.getState().userdata.avatar,
     alt: 'avatar',
+    canChange: true,
     events: {
       click: avatarUploadHandler,
     },

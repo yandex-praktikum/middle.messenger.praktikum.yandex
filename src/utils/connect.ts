@@ -26,10 +26,3 @@ export default function connect<P extends object>(
   }
 }
 
-export const withUserdata = connect((state) => ({ userdata: state.userdata }))
-export const withUserAvatar = connect((state) => ({
-  src: state.userdata.avatar,
-}))
-export const withChats = connect((state) => ({
-  chats: state.chats,
-}))

@@ -12,6 +12,14 @@ export class ChatService {
     return HTTPTransport.get(`${this.baseURL}`, {})
   }
 
+  getChatUsers(chatId: number) {
+    return HTTPTransport.get(`${this.baseURL}/${chatId}/users`, {})
+  }
+
+  getToken(chatId: number) {
+    return HTTPTransport.post(`${this.baseURL}/token/${chatId}`, {})
+  }
+
   createChat(title: string) {
     return HTTPTransport.post(`${this.baseURL}`, {
       body: { title },

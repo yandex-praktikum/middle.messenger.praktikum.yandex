@@ -18,7 +18,7 @@ type InputValidation = {
 
 type InputProps = {
   name: string
-  type: string
+  type: 'text' | 'password' | 'submit'
   label: string
   value?: string
   placeholder?: string

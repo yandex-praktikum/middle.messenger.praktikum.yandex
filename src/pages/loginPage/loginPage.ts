@@ -7,8 +7,8 @@ import { AuthController } from '@/controllers/AuthController.ts'
 import Block, { Props } from '@/core/Block'
 import router from '@/router.ts'
 import { RegisterData } from '@/services/AuthService.ts'
-import { withUserdata } from '@/utils/connect.ts'
 import './loginPage.css'
+import connect from '@/utils/connect.ts'
 
 // language=hbs
 const loginPageTemplate = `
@@ -55,7 +55,8 @@ const submitHandler = (e: Event) => {
       if (resp instanceof XMLHttpRequest && resp.status === 200) {
         router.go(routes.messenger)
       } else {
-        alert('kek')
+        loginForm.showInputError('login', 'Неверные данные')
+        loginForm.showInputError('password', 'Неверные данные')
       }
     })
   }
@@ -99,9 +100,9 @@ const loginForm = new Form({
   }),
 })
 
-const connectedLoginPage = withUserdata(LoginPage)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(LoginPage)
 
-export const loginPage = new connectedLoginPage({
+export const loginPage = new withUserdata({
   loginForm: loginForm,
   registerLink: new Link({
     to: routes.register,

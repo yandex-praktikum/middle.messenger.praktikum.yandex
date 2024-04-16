@@ -28,6 +28,7 @@
     color: var(--color-gray);
     font-weight: 400;
     font-size: 12px;
+    place-self: center center;
   }
 
   &__message {
@@ -37,7 +38,21 @@
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
+  }
+
+  &__unreaded {
+    width: 20px;
+    height: 20px;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    background: var(--color-blue);
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 12px;
   }
 }

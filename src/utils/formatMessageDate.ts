@@ -5,7 +5,6 @@ export default (date: string) => {
   const offset = now - messageDate
 
   let options: Intl.DateTimeFormatOptions
-  console.log(offset)
 
   if (offset < 24) {
     options = {

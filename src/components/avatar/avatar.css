@@ -7,11 +7,11 @@
   height: 130px;
   overflow: hidden;
   border-radius: 50%;
-  cursor: pointer;
 
   &__text {
     display: none;
     position: absolute;
+    cursor: pointer;
   }
 
   &__img {
@@ -19,18 +19,24 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    background: var(--hover-bg);
   }
 
   &:hover {
-    &__text {
+    .avatar__text {
       background: var(--hover-bg);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+
+      span {
+        font-size: 18px;
+        text-align: center;
+      }
     }
 
-    &__img {
+    .avatar__img {
       width: 100%;
       height: 100%;
       object-fit: cover;

@@ -7,8 +7,8 @@ import { AuthController } from '@/controllers/AuthController.ts'
 import Block from '@/core/Block'
 import router from '@/router.ts'
 import { RegisterData } from '@/services/AuthService.ts'
-import { withUserdata } from '@/utils/connect.ts'
 import './registerPage.css'
+import connect from '@/utils/connect.ts'
 
 // language=hbs
 const registerPageTemplate = `
@@ -146,9 +146,9 @@ const registerForm = new Form({
   }),
 })
 
-const connectedRegisterPage = withUserdata(RegisterPage)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(RegisterPage)
 
-export const registerPage = new connectedRegisterPage({
+export const registerPage = new withUserdata({
   registerForm: registerForm,
   loginLink: new Link({
     to: routes.login,

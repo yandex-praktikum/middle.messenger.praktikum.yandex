@@ -5,9 +5,11 @@ import './avatar.css'
 const avatarTemplate = `
   <div class="avatar {{ className }}">
     <img class="avatar__img" src="{{src}}" alt="{{alt}}">
-    <div class="avatar__text">
-      <span>Сменить аватар</span>
-    </div>
+    {{#if canChange}}
+      <div class="avatar__text">
+        <span>Поменять аватар</span>
+      </div>
+    {{/if}}
   </div>
 `
 
@@ -16,20 +18,16 @@ type AvatarProps = {
   alt: string
   size?: string
   className?: string
+  canChange?: boolean
 } & Props
 
 export default class Avatar extends Block {
   constructor(props: AvatarProps) {
     super(props)
-    const element = this.element as HTMLElement
-
-    if (props.src === '') {
-      const img = element.querySelector('img')
-      if (img) {
-        img.src =
-          'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
-      }
+    if (!this.props.canChange) {
+      this.props.canChange = false
     }
+    const element = this.element as HTMLElement
 
     if (props.size) {
       element.style.width = props.size
@@ -38,6 +36,13 @@ export default class Avatar extends Block {
       element.style.width = '130px'
       element.style.height = '130px'
     }
+  }
+
+  componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
+    if (!newProps.src) {
+      newProps.src = 'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
+    }
+    return super.componentDidUpdate(oldProps, newProps)
   }
 
   render() {
