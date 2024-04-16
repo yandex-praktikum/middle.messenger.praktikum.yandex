@@ -33,10 +33,7 @@ class Store extends EventBus {
     return this.state
   }
 
-  public set<K extends keyof StateType>(
-    path: K,
-    value: StateType[K]
-  ) {
+  public set<K extends keyof StateType>(path: K, value: StateType[K]) {
     set(this.state, path, value)
     this.emit(StoreEvents.UPDATED)
   }

@@ -13,12 +13,12 @@ export default (date: string) => {
     }
   } else if (offset < 168) {
     options = {
-      weekday: 'short'
+      weekday: 'short',
     }
   } else {
     options = {
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     }
   }
 

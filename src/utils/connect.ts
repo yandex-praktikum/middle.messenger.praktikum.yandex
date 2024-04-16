@@ -25,4 +25,3 @@ export default function connect<P extends object>(
     }
   }
 }
-

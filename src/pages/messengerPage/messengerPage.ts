@@ -62,7 +62,7 @@ export class MessengerPage extends Block {
       type: 'text',
       label: 'Название чата',
       placeholder: 'Название...',
-      name: 'create-chat'
+      name: 'create-chat',
     })
     const btn = new Button({
       label: 'Создать чат',
@@ -71,15 +71,15 @@ export class MessengerPage extends Block {
         click: () => {
           chatController.createChat(input.getValue())
           this.modal.close()
-        }
-      }
+        },
+      },
     })
 
     content.appendChild(input.element)
     content.appendChild(btn.element)
 
-    this.modal.setContent('Создать чат', content);
-    this.modal.open();
+    this.modal.setContent('Создать чат', content)
+    this.modal.open()
   }
 
   createChatItems(chats: Chat[]) {

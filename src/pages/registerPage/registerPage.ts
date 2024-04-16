@@ -146,7 +146,9 @@ const registerForm = new Form({
   }),
 })
 
-const withUserdata = connect((state) => ({ userdata: state.userdata }))(RegisterPage)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(
+  RegisterPage
+)
 
 export const registerPage = new withUserdata({
   registerForm: registerForm,

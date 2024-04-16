@@ -100,7 +100,9 @@ const loginForm = new Form({
   }),
 })
 
-const withUserdata = connect((state) => ({ userdata: state.userdata }))(LoginPage)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(
+  LoginPage
+)
 
 export const loginPage = new withUserdata({
   loginForm: loginForm,

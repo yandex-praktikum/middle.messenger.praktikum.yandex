@@ -29,7 +29,10 @@ export class AuthController {
       })
       .then((resp) => {
         if (resp.status === 200) {
-          store.set('userdata', { ...store.getState().userdata, id: resp.response })
+          store.set('userdata', {
+            ...store.getState().userdata,
+            id: resp.response,
+          })
         }
         return resp
       })

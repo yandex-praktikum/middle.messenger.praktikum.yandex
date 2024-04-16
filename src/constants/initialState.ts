@@ -12,5 +12,5 @@ export const initialState = {
   chats: [],
   selectedChat: 0,
   messages: [],
-  chatUsers: []
+  chatUsers: [],
 }

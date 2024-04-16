@@ -40,7 +40,8 @@ export default class Avatar extends Block {
 
   componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
     if (!newProps.src) {
-      newProps.src = 'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
+      newProps.src =
+        'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
     }
     return super.componentDidUpdate(oldProps, newProps)
   }

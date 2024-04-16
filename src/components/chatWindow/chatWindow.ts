@@ -162,7 +162,6 @@ export class ChatWindow extends Block {
   showDeleteUserModal() {
     const content = document.createElement('div')
     content.className = 'users'
-
     ;(this.props.chatUsers as User[]).map((user: User) => {
       const userBlock = document.createElement('div')
       const userLogin = document.createElement('span')

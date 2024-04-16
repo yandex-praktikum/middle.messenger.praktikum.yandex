@@ -116,7 +116,9 @@ const logoutBtnHandler = () => {
   })
 }
 
-const withUserdata = connect((state) => ({ userdata: state.userdata }))(ProfilePage)
+const withUserdata = connect((state) => ({ userdata: state.userdata }))(
+  ProfilePage
+)
 export const withUserAvatar = connect((state) => ({
   src: state.userdata.avatar,
 }))(Avatar)
