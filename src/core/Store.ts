@@ -24,6 +24,7 @@ export type StateType = {
   selectedChat: number
   messages: MessageItemProps[]
   chatUsers: User[]
+  currentChat: Chat | null
 }
 
 class Store extends EventBus {

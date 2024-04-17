@@ -44,6 +44,11 @@ export default class Input extends Block {
     this._validation = props.validation
   }
 
+  componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
+    this._inputElement.setProps(newProps)
+    return super.componentDidUpdate(oldProps, newProps)
+  }
+
   get name() {
     return this._name
   }

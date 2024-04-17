@@ -9,7 +9,7 @@ type HTTPMethod = (url: string, options: Options) => Promise<XMLHttpRequest>
 
 export type Options = {
   method?: keyof typeof METHODS
-  body?: Record<string, number | number[] | string> | FormData
+  body?: Record<string, number | number[] | string | FormData> | FormData
   headers?: Record<string, string>
   timeout?: number
 }

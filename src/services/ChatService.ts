@@ -32,6 +32,12 @@ export class ChatService {
     })
   }
 
+  uploadChatAvatar(data: FormData) {
+    return HTTPTransport.put(`${this.baseURL}/avatar`, {
+      body: data,
+    })
+  }
+
   addUserToChat(data: ChatUsersRequest) {
     return HTTPTransport.put(`${this.baseURL}/users`, {
       body: data,

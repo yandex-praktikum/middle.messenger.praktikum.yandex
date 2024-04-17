@@ -16,6 +16,10 @@ export class ChatController {
 
   public async getToken(chatId: number) {
     return chatService.getToken(chatId).then((resp) => {
+      const currentChat = store
+        .getState()
+        .chats.filter((chat) => chat.id === store.getState().selectedChat)[0]
+      store.set('currentChat', currentChat)
       return JSON.parse(resp.response)
     })
   }
@@ -30,6 +34,16 @@ export class ChatController {
     return chatService.createChat(title).then(() => {
       this.getChats()
     })
+  }
+
+  public async deleteChat(chatId: number) {
+    return chatService.deleteChat(chatId).then(() => {
+      this.getChats()
+    })
+  }
+
+  public async uploadChatAvatar(data: FormData) {
+    return chatService.uploadChatAvatar(data)
   }
 
   public async addUserToChat(data: ChatUsersRequest) {

@@ -8,6 +8,7 @@ import { UserController } from '@/controllers/UserController.ts'
 import Block from '@/core/Block'
 import router from '@/router.ts'
 import '../profilePage/profilePage.css'
+import connect from '@/utils/connect.ts'
 
 const EditUserdataPageTemplate = `
   <div class="profile">
@@ -50,13 +51,32 @@ const submitHandler = (e: Event) => {
   }
 }
 
+const emailInputWithUserdata = connect((state) => ({ value: state.userdata.email }))(
+  Input
+)
+const loginInputWithUserdata = connect((state) => ({ value: state.userdata.login }))(
+  Input
+)
+const firstNameInputWithUserdata = connect((state) => ({ value: state.userdata.first_name }))(
+  Input
+)
+const secondNameInputWithUserdata = connect((state) => ({ value: state.userdata.second_name }))(
+  Input
+)
+const displayNameInputWithUserdata = connect((state) => ({ value: state.userdata.display_name }))(
+  Input
+)
+const phoneNameInputWithUserdata = connect((state) => ({ value: state.userdata.phone }))(
+  Input
+)
+
 const editUserdataForm = new Form({
   className: 'edit-userdata dialog-form',
   events: {
     submit: submitHandler,
   },
   inputs: [
-    new Input({
+    new emailInputWithUserdata({
       type: 'text',
       name: 'email',
       label: 'Почта',
@@ -66,7 +86,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат почты',
       },
     }),
-    new Input({
+    new loginInputWithUserdata({
       type: 'text',
       name: 'login',
       label: 'Логин',
@@ -76,7 +96,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат логина',
       },
     }),
-    new Input({
+    new firstNameInputWithUserdata({
       type: 'text',
       name: 'first_name',
       label: 'Имя',
@@ -86,7 +106,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат имени',
       },
     }),
-    new Input({
+    new secondNameInputWithUserdata({
       type: 'text',
       name: 'second_name',
       label: 'Фамилия',
@@ -96,7 +116,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат фамилии',
       },
     }),
-    new Input({
+    new displayNameInputWithUserdata({
       type: 'text',
       name: 'display_name',
       label: 'Имя в чате',
@@ -106,7 +126,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат фамилии',
       },
     }),
-    new Input({
+    new phoneNameInputWithUserdata({
       type: 'text',
       name: 'phone',
       label: 'Телефон',

@@ -26,6 +26,7 @@ const ChatTemplate: string = `
           <div class="chat-menu__actions">
             {{{ addUserBtn }}}
             {{{ deleteUserBtn }}}
+            {{{ deleteChatBtn }}}
           </div>
         </div>
       </div>
@@ -59,12 +60,14 @@ export class ChatWindow extends Block {
   private socket: WebSocket | null = null
   private chat: Chat | null = null
   private modal: Modal
+  private isChatAdmin: boolean = false
 
   constructor(props: ChatWindowProps) {
     super(props)
+
     this.modal = new Modal()
     this.children.addUserBtn = new Button({
-      label: '<i class="lni lni-menu"></i>Добавить пользователя',
+      label: '<i class="lni lni-plus"></i>Добавить пользователя',
       className: 'chat-menu__action',
       withId: true,
       events: {
@@ -74,12 +77,96 @@ export class ChatWindow extends Block {
       },
     })
     this.children.deleteUserBtn = new Button({
-      label: '<i class="lni lni-menu"></i>Удалить пользователя',
+      label: '<i class="lni lni-trash-can"></i>Удалить пользователя',
       className: 'chat-menu__action',
       withId: true,
       events: {
         click: () => {
           this.showDeleteUserModal()
+        },
+      },
+    })
+    this.children.deleteChatBtn = new Button({
+      label: '<i class="lni lni-close"></i>Удалить чат',
+      className: 'chat-menu__action',
+      withId: true,
+      events: {
+        click: () => {
+          if (this.chat) {
+            chatController.deleteChat(this.chat.id)
+          }
+        },
+      },
+    })
+
+    this.isChatAdmin = this.checkUserIsChatAdmin()
+  }
+
+  checkUserIsChatAdmin() {
+    if (this.props.chatUsers && Array.isArray(this.props.chatUsers)) {
+      const user = this.props.chatUsers.filter((user: User) => {
+        return user.id === store.getState().userdata.id
+      })[0]
+
+      const element = this.children.deleteChatBtn.element as HTMLElement
+
+      if (user && user.role !== 'admin') {
+        element.style.display = 'none'
+      } else {
+        element.style.display = 'flex'
+      }
+
+      return user && user.role === 'admin'
+    } else {
+      return false
+    }
+  }
+
+  uploadChatAvatarHandler(isChatAdmin: boolean) {
+    if (!isChatAdmin) {
+      return
+    }
+
+    const fileInput = document.createElement('input')
+    fileInput.type = 'file'
+
+    fileInput.onchange = async (e: Event) => {
+      if (
+        e.currentTarget instanceof HTMLInputElement &&
+        e.currentTarget.files
+      ) {
+        const formData = new FormData()
+
+        formData.append('avatar', e.currentTarget.files[0])
+        formData.append('chatId', `${store.getState().selectedChat}`)
+
+        chatController.uploadChatAvatar(formData).then(() => {
+          chatController.getChats().then(() => {
+            this.chat = store
+              .getState()
+              .chats.filter((chat) => chat.id === this.props.selectedChat)[0]
+
+            if (this.chat) {
+              this.setProps({ currentChat: { ...this.chat, src: this.chat.avatar } })
+            }
+          })
+        })
+      }
+    }
+
+    fileInput.click()
+  }
+
+  updateChatAvatar(chat: Chat) {
+    this.children.avatar = new Avatar({
+      src: chat.avatar ? getResourceURL(chat.avatar) : '',
+      alt: chat.avatar ? (this.props.title as string) : '',
+      size: '40px',
+      withId: true,
+      canChange: this.isChatAdmin,
+      events: {
+        click: () => {
+          this.uploadChatAvatarHandler(this.isChatAdmin)
         },
       },
     })
@@ -97,13 +184,9 @@ export class ChatWindow extends Block {
         this.chat = store
           .getState()
           .chats.filter((chat) => chat.id === this.props.selectedChat)[0]
+
         this.props.title = this.chat.title
-        this.children.avatar = new Avatar({
-          src: this.chat.avatar ? getResourceURL(this.chat.avatar) : '',
-          alt: this.chat.avatar ? (this.props.title as string) : '',
-          size: '40px',
-          withId: true,
-        })
+        this.updateChatAvatar(this.chat)
 
         this.children.messageInput = new Input({
           type: 'text',
@@ -177,7 +260,6 @@ export class ChatWindow extends Block {
           users: [user.id],
           chatId: Number(this.props.selectedChat),
         })
-        console.log(store.getState().chatUsers)
         this.closeModal()
       })
 
@@ -216,6 +298,11 @@ export class ChatWindow extends Block {
     }
 
     this.blockArrays.messages = this.showMessages(store.getState().messages)
+    this.isChatAdmin = this.checkUserIsChatAdmin()
+
+    if (newProps.currentChat) {
+      this.updateChatAvatar(newProps.currentChat as Chat)
+    }
 
     return super.componentDidUpdate(oldProps, newProps)
   }
@@ -229,4 +316,5 @@ export const chatWindow = connect((state) => ({
   selectedChat: state.selectedChat,
   messages: state.messages,
   chatUsers: state.chatUsers,
+  currentChat: state.currentChat,
 }))(ChatWindow)

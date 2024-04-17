@@ -23,7 +23,12 @@ type AvatarProps = {
 
 export default class Avatar extends Block {
   constructor(props: AvatarProps) {
+    if (!props.src) {
+      props.src = 'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
+    }
+
     super(props)
+
     if (!this.props.canChange) {
       this.props.canChange = false
     }
