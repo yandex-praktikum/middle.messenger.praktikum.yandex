@@ -34,27 +34,24 @@ export default async (userId: number, chatId: number) => {
 
   socket.addEventListener('message', (event) => {
     try {
-      const data = JSON.parse(event.data)
+      const data: MessageItemProps = JSON.parse(event.data)
 
       if (Array.isArray(data)) {
-        store.set('messages', JSON.parse(event.data))
+        store.set('messages', data)
       }
       if (data.type === 'message') {
         const messages = store.getState().messages
-        const message: MessageItemProps = JSON.parse(event.data)
 
-        message.time = new Date().toISOString()
+        data.time = new Date().toISOString()
 
-        store.set('messages', [message, ...messages])
-      }
-      if (data.type === 'user connected') {
+        store.set('messages', [data, ...messages])
+      } else if (data.type === 'user connected') {
         const messages = store.getState().messages
-        const message: MessageItemProps = JSON.parse(event.data)
 
-        message.time = new Date().toISOString()
-        message.content = `Юзер с id: ${message.content} присоединился к чату`
+        data.time = new Date().toISOString()
+        data.content = `Юзер с id: ${data.content} присоединился к чату`
 
-        store.set('messages', [message, ...messages])
+        store.set('messages', [data, ...messages])
       }
     } catch (error) {
       throw new Error('Невалидные данные сообщений')

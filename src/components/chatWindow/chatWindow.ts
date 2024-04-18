@@ -175,6 +175,7 @@ export class ChatWindow extends Block {
       size: '40px',
       withId: true,
       canChange: this.isChatAdmin,
+      changeContent: `<i class="lni lni-image"></i>`,
       events: {
         click: () => {
           this.uploadChatAvatarHandler(this.isChatAdmin)

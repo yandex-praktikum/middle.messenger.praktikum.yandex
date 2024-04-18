@@ -7,7 +7,7 @@ const avatarTemplate = `
     <img class="avatar__img" src="{{src}}" alt="{{alt}}">
     {{#if canChange}}
       <div class="avatar__text">
-        <span>Поменять аватар</span>
+        <span>{{{ changeContent }}}</span>
       </div>
     {{/if}}
   </div>
@@ -19,6 +19,7 @@ type AvatarProps = {
   size?: string
   className?: string
   canChange?: boolean
+  changeContent?: string
 } & Props
 
 export default class Avatar extends Block {
@@ -33,6 +34,10 @@ export default class Avatar extends Block {
     if (!this.props.canChange) {
       this.props.canChange = false
     }
+    if (!this.props.changeContent) {
+      this.props.changeContent = 'Поменять аватар'
+    }
+
     const element = this.element as HTMLElement
 
     if (props.size) {
@@ -42,14 +47,6 @@ export default class Avatar extends Block {
       element.style.width = '130px'
       element.style.height = '130px'
     }
-  }
-
-  componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
-    if (!newProps.src) {
-      newProps.src =
-        'https://i2.wp.com/vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png?fit=512%2C512&ssl=1'
-    }
-    return super.componentDidUpdate(oldProps, newProps)
   }
 
   render() {
