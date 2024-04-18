@@ -1,0 +1,44 @@
+.message {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px auto;
+  grid-auto-rows: 16px auto;
+  gap: 4px 12px;
+  padding: 2px 12px 12px;
+  width: calc(50% - 40px);
+  border-radius: 10px;
+  background: var(--message-bg);
+
+  &_my {
+    background: var(--blue-bg);
+    align-self: flex-end;
+  }
+
+  &__nickname {
+    padding: 4px 0 0;
+    position: relative;
+    grid-column: 1/3;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__avatar {
+    position: relative;
+  }
+
+  &__text {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  &__date {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    color: var(--color-gray);
+    font-weight: 400;
+    font-size: 12px;
+    place-self: end end;
+  }
+}
