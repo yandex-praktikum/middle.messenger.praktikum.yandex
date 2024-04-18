@@ -5,7 +5,8 @@ import { routes } from '@/constants/routes.ts'
 import { User } from '@/constants/types'
 import { ValidationsMap } from '@/constants/validations'
 import { UserController } from '@/controllers/UserController.ts'
-import Block from '@/core/Block'
+import Block, { Props } from '@/core/Block'
+import store from '@/core/Store.ts'
 import router from '@/router.ts'
 import '../profilePage/profilePage.css'
 import connect from '@/utils/connect.ts'
@@ -32,6 +33,13 @@ class EditUserdataPage extends Block {
     super(props)
   }
 
+  componentDidUpdate(oldProps?: Props, newProps?: Partial<Props>): boolean {
+    editUserdataForm.setValues(
+      store.getState().userdata as Omit<User, 'id' | 'avatar'>
+    )
+    return super.componentDidUpdate(oldProps, newProps)
+  }
+
   render() {
     return this.compile(EditUserdataPageTemplate, this.props)
   }
@@ -51,32 +59,13 @@ const submitHandler = (e: Event) => {
   }
 }
 
-const emailInputWithUserdata = connect((state) => ({ value: state.userdata.email }))(
-  Input
-)
-const loginInputWithUserdata = connect((state) => ({ value: state.userdata.login }))(
-  Input
-)
-const firstNameInputWithUserdata = connect((state) => ({ value: state.userdata.first_name }))(
-  Input
-)
-const secondNameInputWithUserdata = connect((state) => ({ value: state.userdata.second_name }))(
-  Input
-)
-const displayNameInputWithUserdata = connect((state) => ({ value: state.userdata.display_name }))(
-  Input
-)
-const phoneNameInputWithUserdata = connect((state) => ({ value: state.userdata.phone }))(
-  Input
-)
-
 const editUserdataForm = new Form({
   className: 'edit-userdata dialog-form',
   events: {
     submit: submitHandler,
   },
   inputs: [
-    new emailInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'email',
       label: 'Почта',
@@ -86,7 +75,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат почты',
       },
     }),
-    new loginInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'login',
       label: 'Логин',
@@ -96,7 +85,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат логина',
       },
     }),
-    new firstNameInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'first_name',
       label: 'Имя',
@@ -106,7 +95,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат имени',
       },
     }),
-    new secondNameInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'second_name',
       label: 'Фамилия',
@@ -116,7 +105,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат фамилии',
       },
     }),
-    new displayNameInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'display_name',
       label: 'Имя в чате',
@@ -126,7 +115,7 @@ const editUserdataForm = new Form({
         errorText: 'Неверный формат фамилии',
       },
     }),
-    new phoneNameInputWithUserdata({
+    new Input({
       type: 'text',
       name: 'phone',
       label: 'Телефон',
@@ -146,7 +135,11 @@ const editUserdataForm = new Form({
   }),
 })
 
-export const editUserdataPage = new EditUserdataPage({
+const pageWithUserdata = connect((state) => ({ userdata: state.userdata }))(
+  EditUserdataPage
+)
+
+export const editUserdataPage = new pageWithUserdata({
   backBtn: new Button({
     label: '<i class="lni lni-arrow-left"></i>',
     className: 'back__btn',

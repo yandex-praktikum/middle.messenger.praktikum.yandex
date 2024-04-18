@@ -33,27 +33,31 @@ export default async (userId: number, chatId: number) => {
   }, 10000)
 
   socket.addEventListener('message', (event) => {
-    const data = JSON.parse(event.data)
+    try {
+      const data = JSON.parse(event.data)
 
-    if (Array.isArray(data)) {
-      store.set('messages', JSON.parse(event.data))
-    }
-    if (data.type === 'message') {
-      const messages = store.getState().messages
-      const message: MessageItemProps = JSON.parse(event.data)
+      if (Array.isArray(data)) {
+        store.set('messages', JSON.parse(event.data))
+      }
+      if (data.type === 'message') {
+        const messages = store.getState().messages
+        const message: MessageItemProps = JSON.parse(event.data)
 
-      message.time = new Date().toISOString()
+        message.time = new Date().toISOString()
 
-      store.set('messages', [message, ...messages])
-    }
-    if (data.type === 'user connected') {
-      const messages = store.getState().messages
-      const message: MessageItemProps = JSON.parse(event.data)
+        store.set('messages', [message, ...messages])
+      }
+      if (data.type === 'user connected') {
+        const messages = store.getState().messages
+        const message: MessageItemProps = JSON.parse(event.data)
 
-      message.time = new Date().toISOString()
-      message.content = `Юзер с id: ${message.content} присоединился к чату`
+        message.time = new Date().toISOString()
+        message.content = `Юзер с id: ${message.content} присоединился к чату`
 
-      store.set('messages', [message, ...messages])
+        store.set('messages', [message, ...messages])
+      }
+    } catch (error) {
+      throw new Error('Невалидные данные сообщений')
     }
   })
 

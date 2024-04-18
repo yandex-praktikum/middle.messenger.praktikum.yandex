@@ -20,8 +20,8 @@ type InputProps = {
   name: string
   type: 'text' | 'password' | 'submit'
   label: string
-  value?: string
   placeholder?: string
+  value?: string
   className?: string
   classNameInput?: string
   validation?: InputValidation
@@ -45,7 +45,14 @@ export default class Input extends Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
-    this._inputElement.setProps(newProps)
+    if (this._inputElement.getValue()) {
+      this._inputElement.setProps({
+        ...newProps,
+        value: this._inputElement.getValue(),
+      })
+    } else {
+      this._inputElement.setProps(newProps)
+    }
     return super.componentDidUpdate(oldProps, newProps)
   }
 
@@ -55,6 +62,10 @@ export default class Input extends Block {
 
   getValue() {
     return this._inputElement.getValue()
+  }
+
+  setValue(value: string) {
+    this._inputElement.setValue(value)
   }
 
   validate() {
@@ -77,13 +88,14 @@ const inputFieldTemplate: string = `
            name="{{name}}"
            type="{{type}}"
            placeholder="{{placeholder}}"
-           value="{{value}}" />
+           value="{{value}}"
+    />
 `
 
 class InputField extends Block {
   _validation?: InputValidation
 
-  constructor(props: Partial<InputProps>) {
+  constructor(props: Omit<InputProps, 'label' | 'className'>) {
     super({
       ...props,
       events: {
@@ -101,6 +113,11 @@ class InputField extends Block {
   getValue() {
     const element = this.element as HTMLInputElement
     return element.value
+  }
+
+  setValue(value: string) {
+    const element = this.element as HTMLInputElement
+    element.value = value
   }
 
   toggleErrorClass() {

@@ -6,15 +6,15 @@ const authService = new AuthService()
 
 export class AuthController {
   public async signin(data: LoginData) {
-    try {
-      return await authService.signin({
+    return await authService
+      .signin({
         login: data.login,
         password: data.password,
       })
-    } catch (error) {
-      console.log(error)
-      return error
-    }
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
   }
 
   public async signup(data: RegisterData) {
@@ -62,8 +62,14 @@ export class AuthController {
   }
 
   public async logout() {
-    return authService.logout().then((resp) => {
-      return resp
-    })
+    return authService
+      .logout()
+      .then((resp) => {
+        return resp
+      })
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
   }
 }

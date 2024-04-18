@@ -42,9 +42,7 @@ const ChatTemplate: string = `
           <i class="lni lni-paperclip"></i>
         </button>
         {{{ messageInput }}}
-        <button class="button-icon send-btn">
-          <i class="lni lni-arrow-left"></i>
-        </button>
+        {{{ sendMessageBtn }}}
       </div>
     {{/if}}
   </div>
@@ -99,6 +97,17 @@ export class ChatWindow extends Block {
       },
     })
 
+    this.children.sendMessageBtn = new Button({
+      label: '<i class="lni lni-arrow-left"></i>',
+      className: 'button-icon send-btn',
+      withId: true,
+      events: {
+        click: () => {
+          this.sendMessage()
+        },
+      },
+    })
+
     this.isChatAdmin = this.checkUserIsChatAdmin()
   }
 
@@ -147,7 +156,9 @@ export class ChatWindow extends Block {
               .chats.filter((chat) => chat.id === this.props.selectedChat)[0]
 
             if (this.chat) {
-              this.setProps({ currentChat: { ...this.chat, src: this.chat.avatar } })
+              this.setProps({
+                currentChat: { ...this.chat, src: this.chat.avatar },
+              })
             }
           })
         })
@@ -170,6 +181,15 @@ export class ChatWindow extends Block {
         },
       },
     })
+  }
+
+  sendMessage() {
+    const input = (this.children.messageInput as Input)._inputElement
+    const message = { content: input.getValue(), type: 'message' }
+    if (input.getValue().length && input.element instanceof HTMLInputElement) {
+      this.socket?.send(JSON.stringify(message))
+      input.element.value = ''
+    }
   }
 
   createSocket() {
@@ -203,6 +223,9 @@ export class ChatWindow extends Block {
                 event.key === 'Enter'
               ) {
                 const message = { content: event.target.value, type: 'message' }
+                if (!message.content.length) {
+                  return
+                }
                 this.socket?.send(JSON.stringify(message))
                 event.target.value = ''
               }

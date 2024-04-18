@@ -7,9 +7,10 @@
     "node": ">=18.14.0"
   },
   "scripts": {
+    "clean": "rm -rf dist",
     "start": "tsc && vite build && node src/server.js",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run clean && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

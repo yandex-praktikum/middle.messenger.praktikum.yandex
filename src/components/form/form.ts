@@ -50,7 +50,17 @@ export default class Form extends Block {
     }
   }
 
+  setValues(inputsValues: { [inputName: string]: string }) {
+    Object.entries(inputsValues).forEach(([key, value]) => {
+      const targetInput = this.inputs.filter((input) => input.name === key)[0]
+      if (targetInput) {
+        targetInput.setValue(value)
+      }
+    })
+  }
+
   render() {
+    console.log('render form')
     return this.compile(FormTemplate, this.props)
   }
 }

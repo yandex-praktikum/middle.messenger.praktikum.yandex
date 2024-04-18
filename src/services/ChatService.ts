@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/constants/api.ts'
 import HTTPTransport from '@/core/HTTPTransport.ts'
 
 export type ChatUsersRequest = {
@@ -6,46 +7,46 @@ export type ChatUsersRequest = {
 }
 
 export class ChatService {
-  baseURL: string = 'https://ya-praktikum.tech/api/v2/chats'
+  chatsURL: string = `${BASE_URL}/chats`
 
   getChats() {
-    return HTTPTransport.get(`${this.baseURL}`, {})
+    return HTTPTransport.get(`${this.chatsURL}`, {})
   }
 
   getChatUsers(chatId: number) {
-    return HTTPTransport.get(`${this.baseURL}/${chatId}/users`, {})
+    return HTTPTransport.get(`${this.chatsURL}/${chatId}/users`, {})
   }
 
   getToken(chatId: number) {
-    return HTTPTransport.post(`${this.baseURL}/token/${chatId}`, {})
+    return HTTPTransport.post(`${this.chatsURL}/token/${chatId}`, {})
   }
 
   createChat(title: string) {
-    return HTTPTransport.post(`${this.baseURL}`, {
+    return HTTPTransport.post(`${this.chatsURL}`, {
       body: { title },
     })
   }
 
   deleteChat(chatId: number) {
-    return HTTPTransport.delete(`${this.baseURL}`, {
+    return HTTPTransport.delete(`${this.chatsURL}`, {
       body: { chatId },
     })
   }
 
   uploadChatAvatar(data: FormData) {
-    return HTTPTransport.put(`${this.baseURL}/avatar`, {
+    return HTTPTransport.put(`${this.chatsURL}/avatar`, {
       body: data,
     })
   }
 
   addUserToChat(data: ChatUsersRequest) {
-    return HTTPTransport.put(`${this.baseURL}/users`, {
+    return HTTPTransport.put(`${this.chatsURL}/users`, {
       body: data,
     })
   }
 
   deleteUserFromChat(data: ChatUsersRequest) {
-    return HTTPTransport.delete(`${this.baseURL}/users`, {
+    return HTTPTransport.delete(`${this.chatsURL}/users`, {
       body: data,
     })
   }

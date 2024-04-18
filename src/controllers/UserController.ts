@@ -12,16 +12,25 @@ export class UserController {
       .editProfile(userdata)
       .then((resp) => {
         store.set('userdata', resp.response)
+        authController.getUser()
+        return resp
       })
       .catch((error) => {
+        console.log(error)
         return error
       })
   }
 
   public async editAvatar(formData: FormData) {
-    userService.editAvatar(formData).then(() => {
-      authController.getUser()
-    })
+    userService
+      .editAvatar(formData)
+      .then(() => {
+        authController.getUser()
+      })
+      .catch((error) => {
+        console.log(error)
+        return error
+      })
   }
 
   public async editPassword(data: EditPasswordData) {
@@ -31,6 +40,7 @@ export class UserController {
         return resp
       })
       .catch((error) => {
+        console.log(error)
         return error
       })
   }
