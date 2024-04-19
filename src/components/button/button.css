@@ -6,10 +6,12 @@
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
+  font-size: 13px;
 }
 
 .button-icon {
   background: none;
   border: none;
   outline: none;
+  width: auto;
 }

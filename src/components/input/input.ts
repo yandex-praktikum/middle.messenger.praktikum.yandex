@@ -1,13 +1,13 @@
-import Block, { Props } from '../../core/Block'
+import Block, { Props } from '@/core/Block'
 import './input.css'
 
 // language=hbs
 const inputTemplate: string = `
-  <label class="label" for="{{name}}">
-    <span>{{ label }}</span>
-    {{{ input }}}
-    <span class="error">{{ errorText }}</span>
-  </label>
+    <label class="label {{className}}" for="{{name}}">
+        <span>{{ label }}</span>
+        {{{ input }}}
+        <span class="error">{{ errorText }}</span>
+    </label>
 `
 
 type InputValidation = {
@@ -18,16 +18,19 @@ type InputValidation = {
 
 type InputProps = {
   name: string
-  type: string
+  type: 'text' | 'password' | 'submit'
   label: string
   placeholder?: string
+  value?: string
   className?: string
+  classNameInput?: string
   validation?: InputValidation
 } & Props
 
 export default class Input extends Block {
   _name: string
   _inputElement: InputField
+  _validation: InputValidation | undefined
 
   constructor(props: InputProps) {
     const input = new InputField({ ...props })
@@ -38,6 +41,19 @@ export default class Input extends Block {
     input.props._parentBlock = this
     this._name = props.name
     this._inputElement = input
+    this._validation = props.validation
+  }
+
+  componentDidUpdate(oldProps: Props, newProps: Partial<Props>): boolean {
+    if (this._inputElement.getValue()) {
+      this._inputElement.setProps({
+        ...newProps,
+        value: this._inputElement.getValue(),
+      })
+    } else {
+      this._inputElement.setProps(newProps)
+    }
+    return super.componentDidUpdate(oldProps, newProps)
   }
 
   get name() {
@@ -48,8 +64,16 @@ export default class Input extends Block {
     return this._inputElement.getValue()
   }
 
+  setValue(value: string) {
+    this._inputElement.setValue(value)
+  }
+
   validate() {
     return this._inputElement.validate()
+  }
+
+  showError(error: string) {
+    this.props.errorText = error
   }
 
   render() {
@@ -59,13 +83,19 @@ export default class Input extends Block {
 
 // language=hbs
 const inputFieldTemplate: string = `
-  <input class="input" id="{{name}}" name="{{name}}" type="{{type}}" placeholder="{{placeholder}}" />
+    <input class="input {{classNameInput}}"
+           id="{{name}}"
+           name="{{name}}"
+           type="{{type}}"
+           placeholder="{{placeholder}}"
+           value="{{value}}"
+    />
 `
 
 class InputField extends Block {
   _validation?: InputValidation
 
-  constructor(props: Partial<InputProps>) {
+  constructor(props: Omit<InputProps, 'label' | 'className'>) {
     super({
       ...props,
       events: {
@@ -83,6 +113,11 @@ class InputField extends Block {
   getValue() {
     const element = this.element as HTMLInputElement
     return element.value
+  }
+
+  setValue(value: string) {
+    const element = this.element as HTMLInputElement
+    element.value = value
   }
 
   toggleErrorClass() {

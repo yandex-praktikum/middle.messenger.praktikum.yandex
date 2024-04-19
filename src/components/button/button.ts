@@ -1,8 +1,8 @@
-import Block, { Props } from '../../core/Block'
+import Block, { Props } from '@/core/Block'
 import './button.css'
 
 // language=hbs
-const buttonTemplate: string = `<button class="button {{ className }}">{{ label }}</button>`
+const buttonTemplate: string = `<button class="{{ className }}">{{{ label }}}</button>`
 
 type ButtonProps = {
   label: string

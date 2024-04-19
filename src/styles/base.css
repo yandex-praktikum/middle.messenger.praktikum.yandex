@@ -57,3 +57,29 @@ h4 {
   width: 100%;
   padding-bottom: 16px;
 }
+
+.modal-content {
+  .users {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .user {
+      display: flex;
+      align-items: center;
+
+      &__login {
+        flex-grow: 1;
+      }
+
+      &__delete-btn {
+        margin: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+  }
+}

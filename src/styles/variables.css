@@ -11,8 +11,9 @@
   --sidebar-bg: #fbfbfb;
   --message-bg: #f8f8f8;
   --blue-bg: #e4edfd;
+  --hover-bg: #ccc8;
   --border: #eaeaea;
-  --box-shadow: 0 0 3px 3px var(--color1);
+  --box-shadow: 0 0 3px 3px var(--hover-bg);
   --border-radius: 8px;
   --font-family: 'Inter', sans-serif;
 }

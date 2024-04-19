@@ -95,6 +95,10 @@
       &__link {
         cursor: pointer;
         font-weight: 500;
+        outline: none;
+        border: none;
+        background: none;
+        padding: 0;
 
         &_blue {
           color: var(--color-blue);

@@ -19,11 +19,12 @@ export type PropsAndChildren = {
 
 export type BlockArrays = Record<string, Block[]>
 
-export default abstract class Block {
+export default class Block {
   private static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
+    FLOW_CWU: 'flow:component-will-unmount',
     FLOW_RENDER: 'flow:render',
   }
 
@@ -34,7 +35,7 @@ export default abstract class Block {
   children: Children
   blockArrays: BlockArrays
 
-  protected constructor(propsAndChildren: PropsAndChildren = {}) {
+  public constructor(propsAndChildren: PropsAndChildren = {}) {
     const eventBus = new EventBus()
     this.eventBus = () => eventBus
     const { children, props, blockArrays } =
@@ -57,6 +58,7 @@ export default abstract class Block {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
+    eventBus.on(Block.EVENTS.FLOW_CWU, this.componentWillUnmount.bind(this))
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
@@ -74,16 +76,14 @@ export default abstract class Block {
   }
 
   private _componentDidMount() {
-    this.componentDidMount(this.props)
+    this.componentDidMount()
 
     Object.values(this.children).forEach((child) => {
       child.dispatchComponentDidMount()
     })
   }
 
-  componentDidMount(oldProps: Props) {
-    return oldProps
-  }
+  componentDidMount() {}
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM)
@@ -100,6 +100,8 @@ export default abstract class Block {
     return true
   }
 
+  componentWillUnmount() {}
+
   get element() {
     if (!this._element) {
       throw new Error('Нет элемента')
@@ -107,7 +109,7 @@ export default abstract class Block {
     return this._element
   }
 
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: Partial<Props>) => {
     if (!nextProps) {
       return
     }
@@ -125,7 +127,9 @@ export default abstract class Block {
     this.addEvents()
   }
 
-  abstract render(): Element
+  render(): Element {
+    return document.createElement('div')
+  }
 
   compile(template: string, props: Props) {
     const propsAndStubs = { ...props }

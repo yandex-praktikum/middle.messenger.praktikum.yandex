@@ -1,13 +1,47 @@
 .avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 130px;
   height: 130px;
   overflow: hidden;
   border-radius: 50%;
+
+  &__text {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+  }
 
   &__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    background: var(--hover-bg);
+  }
+
+  &:hover {
+    .avatar__text {
+      background: var(--hover-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+
+      span {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+
+    .avatar__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 }
