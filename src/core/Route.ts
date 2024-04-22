@@ -1,4 +1,4 @@
-import { renderDOM } from '../utils'
+import renderDOM from '../utils/renderDOM.ts'
 import Block from './Block.ts'
 import { BlockChild } from './Router.ts'
 

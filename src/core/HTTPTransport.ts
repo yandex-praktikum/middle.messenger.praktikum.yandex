@@ -14,7 +14,7 @@ export type Options = {
   timeout?: number
 }
 
-function queryStringify(data: { [index: string]: unknown }) {
+export function queryStringify(data: { [index: string]: unknown }) {
   const keysArr = Object.keys(data)
   const queryArr: string[] = []
 

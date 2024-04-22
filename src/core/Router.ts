@@ -1,4 +1,4 @@
-import { routes } from '@/constants/routes.ts'
+import { routes } from '../constants/routes.ts'
 import Block from './Block.ts'
 import { Route } from './Route.ts'
 

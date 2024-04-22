@@ -1,6 +1,6 @@
 import { MessageItemProps } from '@/components/message/message.ts'
-import { initialState } from '@/constants/initialState.ts'
 import { Chat, User } from '@/constants/types.ts'
+import { initialState } from '../constants/initialState.ts'
 import EventBus from './EventBus.ts'
 
 export enum StoreEvents {
