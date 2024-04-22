@@ -1,6 +1,7 @@
 # Тренировочный проект мессенджера.
 
 Использовался сборщик Vite, Typescript, линтеры Eslint и Stylelint, шаблонизатор Handlebars
+Для тестов используюся библиотеки Mocha, Chai, Sinon и jsdom/jsdom-global
 
 ### Макеты приложения
 
@@ -39,4 +40,5 @@
 | npm run start | сборка и запуск сервера Express   |
 | npm run dev   | запуск dev сервера для разработки |
 | npm run build | запуск сборки проекта             |
+| npm test      | запуск тестов                     |
 

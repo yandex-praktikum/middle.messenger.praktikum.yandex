@@ -1,6 +1,4 @@
-import 'jsdom-global/register.js'
 import { expect } from 'chai'
-import jsdomGlobal from 'jsdom-global'
 import sinon from 'sinon'
 import Block from './Block.ts'
 import Router from './Router.ts'
@@ -14,11 +12,6 @@ class TestBlock extends Block {
 const testBlock = new TestBlock({})
 
 describe('Router', function () {
-  const defaultHtml =
-    '<!doctype html><html><head><meta charset="utf-8">' +
-    '</head><body><div id="app"></div></body></html>'
-  jsdomGlobal(defaultHtml)
-
   beforeEach(function () {
     this.router = new Router('#app')
   })

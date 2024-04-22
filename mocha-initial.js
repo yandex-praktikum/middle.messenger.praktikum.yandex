@@ -9,4 +9,4 @@ global.window = window;
 global.document = window.document;
 global.DocumentFragment = window.DocumentFragment;
 global.HTMLElement = window.document.HTMLElement;
-global.XMLHttpRequest = Sinon.useFakeXMLHttpRequest()
+global.XMLHttpRequest = Sinon.useFakeXMLHttpRequest();
