@@ -7,7 +7,7 @@ import { HTTPTransport, Options } from './HTTPTransport'
 
 describe('HTTPTransport', () => {
   let xhr: SinonFakeXMLHttpRequestStatic
-  let instance: HTTPTransport
+  const instance: HTTPTransport = new HTTPTransport()
   let requests: SinonFakeXMLHttpRequest[] = []
 
   beforeEach(() => {
@@ -15,7 +15,6 @@ describe('HTTPTransport', () => {
     xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
       requests.push(request)
     }
-    instance = new HTTPTransport()
   })
 
   afterEach(() => {
