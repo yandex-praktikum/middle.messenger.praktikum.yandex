@@ -15,7 +15,7 @@
     "lint:ts": "eslint . --ext .ts,.js",
     "lint:css": "stylelint \"**/*.css\"",
     "test": "mocha",
-    "prepare": "husky",
+    "prepare": "husky install",
     "pre-commit": "npm run lint:ts && npm run lint:css && npm run test"
   },
   "husky": {
