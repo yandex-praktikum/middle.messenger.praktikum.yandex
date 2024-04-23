@@ -1,0 +1,7 @@
+.error {
+  flex-direction: column;
+
+  &__description {
+    padding-bottom: 30px;
+  }
+}

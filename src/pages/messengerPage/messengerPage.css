@@ -1,0 +1,42 @@
+.messenger {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  height: 100%;
+
+  .sidebar {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    scrollbar-width: thin;
+    box-sizing: border-box;
+
+    &__top-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 22px;
+      padding: 14px 10px;
+
+      .back-btn {
+        color: var(--color-gray);
+      }
+    }
+
+    .create-chat-btn {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 40px;
+      height: 40px;
+      padding: 12px;
+      border-radius: 50%;
+      border: none;
+      background: var(--color-blue);
+      color: var(--color-white);
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
