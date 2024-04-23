@@ -3,11 +3,11 @@ import Sinon, {
   SinonFakeXMLHttpRequest,
   SinonFakeXMLHttpRequestStatic,
 } from 'sinon'
-import { HTTPTransport, Options } from './HTTPTransport'
+import { HTTPTransport } from './HTTPTransport'
 
 describe('HTTPTransport', () => {
   let xhr: SinonFakeXMLHttpRequestStatic
-  const instance: HTTPTransport = new HTTPTransport()
+  let instance: HTTPTransport
   let requests: SinonFakeXMLHttpRequest[] = []
 
   beforeEach(() => {
@@ -15,6 +15,7 @@ describe('HTTPTransport', () => {
     xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
       requests.push(request)
     }
+    instance = new HTTPTransport()
   })
 
   afterEach(() => {
@@ -34,14 +35,14 @@ describe('HTTPTransport', () => {
   })
 
   it('Должен отправлять запрос с телом', () => {
-    const options: Options = { body: { user: 'test' } }
+    const options = { body: { user: 'test' } }
     instance.post('/auth/signin', options)
     const [request] = requests
     expect(request.requestBody).to.eq(JSON.stringify(options.body))
   })
 
   it('Должен быть заголовок content-type', () => {
-    const options: Options = { body: { user: 'test' } }
+    const options = { body: { user: 'test' } }
     instance.post('/auth/signin', options)
     const [request] = requests
     expect(request.requestHeaders['Content-Type']).to.include(
