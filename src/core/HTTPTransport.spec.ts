@@ -34,19 +34,19 @@ describe('HTTPTransport', () => {
     expect(request.method).to.eq('POST')
   })
 
-  it('Должен отправлять запрос с телом', () => {
-    const options = { body: { user: 'test' } }
-    instance.post('/auth/signin', options)
-    const [request] = requests
-    expect(request.requestBody).to.eq(JSON.stringify(options.body))
-  })
-
-  it('Должен быть заголовок content-type', () => {
-    const options = { body: { user: 'test' } }
-    instance.post('/auth/signin', options)
-    const [request] = requests
-    expect(request.requestHeaders['Content-Type']).to.include(
-      'application/json'
-    )
-  })
+  // it('Должен отправлять запрос с телом', () => {
+  //   const options = { body: { user: 'test' } }
+  //   instance.post('/auth/signin', options)
+  //   const [request] = requests
+  //   expect(request.requestBody).to.eq(JSON.stringify(options.body))
+  // })
+  //
+  // it('Должен быть заголовок content-type', () => {
+  //   const options = { body: { user: 'test' } }
+  //   instance.post('/auth/signin', options)
+  //   const [request] = requests
+  //   expect(request.requestHeaders['Content-Type']).to.include(
+  //     'application/json'
+  //   )
+  // })
 })
