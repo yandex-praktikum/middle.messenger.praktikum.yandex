@@ -12,13 +12,11 @@
     "dev": "vite",
     "build": "npm run clean && tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .ts,.js && stylelint \"**/*.css\"",
-    "test": "mocha"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint"
-    }
+    "lint:ts": "eslint . --ext .ts,.js",
+    "lint:css": "stylelint \"**/*.css\"",
+    "test": "mocha",
+    "prepare": "husky",
+    "pre-commit": "npm run lint:ts && npm run lint:css && npm run test"
   },
   "dependencies": {
     "@types/express": "^4.17.21",
