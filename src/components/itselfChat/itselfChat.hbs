@@ -1,0 +1,17 @@
+<div class = 'itselfChat'>
+    {{#if chat}}
+        <div class = 'nameItselfChat'>
+            {{> ChatName name = 'User2' ava = '' }}
+        </div>
+        <div class = 'historyChat'>
+            {{> ChatingHistory }}
+        </div>
+        <div class = 'sendItselfChat'>
+            {{> AddMessage }}
+        </div>
+    {{else}} 
+        <div class = 'emptyChat'>
+            <p>Выберите чат</p>
+        </div>
+    {{/if}}
+</div>

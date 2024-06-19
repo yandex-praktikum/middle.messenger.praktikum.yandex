@@ -1,0 +1,22 @@
+<main class = "registrationPage">
+    <div class="titleRegistrationPage">
+        {{> Title title = 'Регистрация' ClassName = "registration" }}
+    </div>
+    <form class="formRegisrationPage"> 
+        <div class="listInput">
+            {{> LabelInput title = 'Почта' name = 'email'}}
+            {{> LabelInput title = 'Логин' name = 'login' }}
+            {{> LabelInput title = 'Имя' name = 'first_name' }}
+            {{> LabelInput title = 'Фамилия' name = 'second_name' }}
+            {{> LabelInput title = 'Телефон' name = 'phone' }}
+            {{> LabelInput title = 'Пароль' name = 'password' type = 'password' }}
+            {{> LabelInput title = 'Пароль (ещё раз)' name = 'passwordRepeat' type = 'password' }}
+        </div>
+        <div class = 'btnRegistrationPage'>
+            {{> Button text = 'Зарегистрироваться' page = 'profile'}}
+        </div>
+    </form>
+    <div class = 'linkRegistrationPage'>
+        {{> Link text = 'войти' page = 'chats' }}
+    </div>
+</main>

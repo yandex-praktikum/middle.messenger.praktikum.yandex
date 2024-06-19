@@ -1,0 +1,53 @@
+@import '../../assets/variables.scss';
+
+.chatItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: $brd-color-item;
+    .avaChatItem {
+        .notAva {
+            width: 50px;
+            height: 50px;
+            color: $white-color;
+            border-radius: 50%;
+            background-color: $btn-bccolor;
+            font-size: $font-size-small;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .nameChatItem {
+        width: 100%;
+        padding: 0 20px;
+        p {
+            margin: 0;
+        }
+        .lastMessage {
+            font-size: $font-size-small;
+        }
+    }
+    .infoLastMessage {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: $font-size-small;
+        .unreadMessage {
+            background-color: $link-color;
+            color: $white-color;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+.active {
+    background-color: $active-chat;
+}

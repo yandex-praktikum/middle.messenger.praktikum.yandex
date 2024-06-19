@@ -1,0 +1,13 @@
+@import '../../assets/variables';
+
+.button {
+    padding: 10px 50px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: $btn-bccolor;
+    color: $white-color;
+    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
+}

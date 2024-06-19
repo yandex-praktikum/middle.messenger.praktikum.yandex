@@ -1,0 +1,40 @@
+@import '../../assets/variables.scss';
+
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 340px;
+    min-height: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: $box-shadow;
+    border: $brd-color;
+    border-radius: 12px;
+}
+
+.titleLoginPage {
+    display: flex;
+    text-align: center;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.formLoginPage {
+    flex: 1 2 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btnLoginPage {
+    display: flex;
+    justify-content: center;
+}
+
+.linkLoginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

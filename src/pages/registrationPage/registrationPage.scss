@@ -1,0 +1,40 @@
+@import '../../assets/variables.scss';
+
+.registrationPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 340px;
+    min-height: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: $box-shadow;
+    border: $brd-color;
+    border-radius: 12px;
+}
+
+.titleRegistrationPage {
+    display: flex;
+    text-align: center;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.formRegisrationPage {
+    flex: 1 2 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btnRegistrationPage {
+    display: flex;
+    justify-content: center;
+}
+
+.linkRegistrationPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

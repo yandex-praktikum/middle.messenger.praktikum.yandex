@@ -1,0 +1,43 @@
+@import '../../assets/variables.scss';
+
+.profilePage {
+    margin: 0 auto;
+    padding: 30px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.avaProfilePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fotoProfilePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border: $brd-color;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.nameProfilePage {
+    text-align: center;
+}
+
+.controlProfile {
+    margin:40px 0;
+}
+
+.btnProfile {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
