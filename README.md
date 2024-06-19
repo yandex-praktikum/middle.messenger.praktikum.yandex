@@ -14,3 +14,4 @@ https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0
 
 Проект выложен на Netlify:
 
+https://stalwart-melomakarona-3865aa.netlify.app/
