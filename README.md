@@ -10,7 +10,7 @@ https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0
 
 - `npm install` — установка стабильной версии,
 - `npm run dev` — запуск версии для разработчика,
-- `npm run build` — сборка стабильной версии.
+- `npm run start` — сборка стабильной версии.
 
 Проект выложен на Netlify:
 
