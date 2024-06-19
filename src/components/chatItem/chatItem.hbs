@@ -1,0 +1,23 @@
+<div class = 'chatItem {{#if className }}{{className}}{{/if}}'>
+    <div class = 'avaChatItem'>
+        {{#if ava}}
+            <div class="ava">
+                <img src={{ava}} alt="">    
+            </div>
+        {{else}}
+            <div class = 'notAva'>фото</div>
+        {{/if}}
+    </div>
+    <div class = "nameChatItem">
+        <div>
+            <p>{{name}}</p>
+        </div>
+        <div class="lastMessage">
+            <p>{{lastMesage}}</p>
+        </div>
+    </div>
+    <div class = 'infoLastMessage'>
+        <div>{{timeLastMessage}}</div>
+        <div class = 'unreadMessage'>{{unreadMessage}}</div>
+    </div>
+</div>

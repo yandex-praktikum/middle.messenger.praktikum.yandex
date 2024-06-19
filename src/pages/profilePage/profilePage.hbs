@@ -1,0 +1,31 @@
+<main class = "profilePage">
+    <div class="avaProfilePage">
+        <div class = "fotoProfilePage">
+            {{#if avatar}}
+            <div>
+                <img class = "avatar" src={{avatar}} alt="avatar">
+            </div>
+            {{else}}
+            <div class = "noAvatar">нет фото</div>
+            {{/if}}
+        </div>
+        <div class = "nameProfilePage">
+            {{> Title title = "Lelik"}}
+        </div>
+    </div>
+    <div class = 'infoProfile'>
+        {{> InfoLine label = "Почта" info = "baranov.sys@gmail.com"}}
+        {{> InfoLine label = "Логин" info = "Baranov"}}
+        {{> InfoLine label = "Имя" info = "Алесей"}}
+        {{> InfoLine label = "Фамилия" info = "Баранов"}}
+        {{> InfoLine label = "Имя в чате" info = "Lelik"}}
+        {{> InfoLine label = "Телефон" info = "+375 00 000 000 00" className = 'lastLine'}}
+    </div>
+    <div class="controlProfile">
+        {{> InfoLine linkText = "Изменить данные" page = 'page404' }}
+        {{> InfoLine linkText = "Изменить пароль" page = 'page502' }}
+        <div class="btnProfile">
+            {{> Button text = "Выйти" page = 'login'}}
+        </div>
+    </div>
+</main>

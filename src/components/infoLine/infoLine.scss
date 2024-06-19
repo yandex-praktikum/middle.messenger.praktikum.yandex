@@ -1,0 +1,22 @@
+@import '../../assets/variables.scss';
+
+.lineInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $brd-color;
+    .labelLineInfo {
+        color: $label-color;
+    }
+    .infoLineInfo {
+        color: $info_color;
+    }
+    .linkLineInfo {
+        margin: 5px 0;
+    }   
+}
+
+.lastLine{
+    border-bottom: none;
+}

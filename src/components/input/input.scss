@@ -1,0 +1,8 @@
+@import '../../assets/variables.scss';
+
+.input {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid $link-color;
+}

@@ -1,0 +1,32 @@
+@import '../../assets/variables.scss';
+
+.messageItem {
+    border: $brd-color-chats;
+    max-width: 60%;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    margin: 10px 0;
+    .imgMessageItem {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    .textMessageItem {
+        padding: 2px 10px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        p {
+            font-size: $font-size-default;
+        }
+    }
+    .timeMessageItem {
+        display: flex;
+        justify-content: end;
+        span {
+            font-size: $font-size-small;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div class = "lineInfo {{#if className}}{{className}}{{/if}}">
+    {{#if label}}
+        <div class="labelLineInfo">
+            {{label}}
+        </div>
+        <div class = "infoLineInfo">
+            {{info}}
+        </div>
+    {{else}}
+        {{> Link class = "linkLineInfo" text = linkText page = page }}
+    {{/if}}
+</div>

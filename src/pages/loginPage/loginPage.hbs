@@ -1,0 +1,17 @@
+<main class = "loginPage">
+    <div class="titleLoginPage">
+        {{> Title title = 'Вход'}}
+    </div>
+    <form class="formLoginPage"> 
+        <div class="listInput">
+            {{> LabelInput title = 'Логин' name = 'login'}}
+            {{> LabelInput title = 'Пароль' name = 'password' type = 'password'}}
+        </div>
+        <div class = 'btnLoginPage'>
+            {{> Button text = 'Авторизоваться' page = 'chats'}}
+        </div>
+    </form>
+    <div class = 'linkLoginPage'>
+        {{> Link text = 'Нет аккаунта?' page = 'registration'}}
+    </div>
+</main>

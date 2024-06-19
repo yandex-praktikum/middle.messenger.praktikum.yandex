@@ -1,0 +1,38 @@
+@import '../../assets/variables.scss';
+
+.chatName {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+    border-bottom: $brd-color-chats;
+    padding: 5px 0;
+    .logoChatName {
+        grid-area: 1/1/2/2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .notAva {
+            width: 45px;
+            height: 45px;
+            background-color: $link-color;
+            border-radius: 50%;
+            p {
+                text-align: center;
+                font-size: $font-size-small;
+                color: $white-color
+            }
+        }
+    }
+    .nameChatName {
+        grid-area: 1/2/2/10;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    .controlChatName {
+        grid-area: 1/10/2/11;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
