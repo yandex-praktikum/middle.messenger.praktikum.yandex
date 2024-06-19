@@ -7,7 +7,7 @@ export default defineConfig ({
         viteStaticCopy({
             targets: [
                 {
-                    src: path.resolve(__dirname, './static/vite.svg' ),
+                    src: path.resolve(__dirname, './public/vite.svg' ),
                     dest: './'
                 }
             ]
