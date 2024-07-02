@@ -1,0 +1,21 @@
+{
+  "name": "chat",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "sass": "^1.77.6",
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}
