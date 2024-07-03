@@ -1,0 +1,12 @@
+{{#> Dialog }}
+    <form class="login-page">
+        <div class="login-page__content">
+            {{> PageTitle title="Вход" }}
+            {{> InputField className="login-page__input" title="Логин" name="login" }}
+            {{> InputField className="login-page__input" title="Пароль" name="password" type="password" }}
+        </div>
+        <div class="login-page__footer">
+            {{> Button text="Авторизоваться" page="chat" }}
+        </div>
+    </form>
+{{/ Dialog }}

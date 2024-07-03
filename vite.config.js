@@ -1,24 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { createHtmlPlugin } from 'vite-plugin-html';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
 
-export default {
-  plugins: [
-    react(),
-    createHtmlPlugin({
-      minify: true,
-      inject: {
-        data: {
-          title: 'My Messenger'
-        },
-      },
-    }),
-  ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "src/styles/global.scss";`
-      }
-    }
-  }
-};
+export default defineConfig({
+    root: resolve(__dirname, 'src'),
+    build: {
+        outDir: resolve(__dirname, 'dist'),
+    },
+});
