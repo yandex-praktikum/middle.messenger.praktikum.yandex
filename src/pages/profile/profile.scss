@@ -10,6 +10,18 @@
     flex: 1;
   }
 
+  &__avatar-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+
   &__input {
     margin-top: 8px;
   }
