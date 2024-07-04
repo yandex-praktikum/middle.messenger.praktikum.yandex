@@ -8,6 +8,7 @@ const pages = {
     'register': [ Pages.RegisterPage ],
     'profile': [ Pages.ProfilePage ],
     '404': [ Pages.NotFoundPage ],
+    '5xx': [ Pages.ErrorPage ]
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
