@@ -1,0 +1,31 @@
+@import '../../assets/variables';
+
+.profile-page {
+  width: 600px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+  }
+
+  &__input {
+    margin-top: 8px;
+  }
+
+  &__link {
+    height: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: normal;
+    font: 500 13px / 13px Inter, Segoe UI, Roboto, Helvetica Neue, sans-sans;
+  
+    
+  }
+
+  &__red {
+    color: $text-red;
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../assets/variables';
+
+.input-with-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    border-bottom: none;
+  }
+
+  div .input__element {
+    border-bottom: none;
+    width: auto;
+  }
+
+  &__text {
+    font: $font-regular;
+    color: $text-color;
+  }
+  
+  &__hr {
+    opacity: 0.3;
+    border-bottom: 1px $text-light-grey-color ;
+    margin-top: 0;
+  }
+}
+
+

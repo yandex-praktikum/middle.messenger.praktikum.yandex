@@ -1,0 +1,26 @@
+{{#> Interface }}
+<form class="profile-page">
+    <div class="profile-page__content">
+        {{> PageTitle title="Иван" }}
+        {{> InputWithLabel className="profile-page__input" title="Почта" name="email" text="Почта" placeholder="pochta@yandex.ru" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> InputWithLabel className="profile-page__input" title="Логин" name="login" text="Логин" placeholder="ivanivanov" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> InputWithLabel className="profile-page__input" title="Имя" name="firstname" text="Имя" placeholder="Иван" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> InputWithLabel className="profile-page__input" title="Фамилия" name="secondname" text="Фамилия" placeholder="Иванов" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> InputWithLabel className="profile-page__input" title="Имя в чате" name="display_name" text="Имя в чате" placeholder="Иван" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> InputWithLabel className="profile-page__input" title="Телефон" name="phone" text="Телефон" placeholder="+7 (909) 967 30 30" }}
+    </div>
+    <div class="profile-page__footer">
+        {{> Link className="profile-page__link" text="Изменить данные" page="register" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> Link className="profile-page__link" text="Изменить пароль" page="register" }}
+        {{> Hr className="profile-page__hr" }}
+        {{> Link className="profile-page__link profile-page__red" text="Выйти" page="login" color="red" }}
+        {{> Hr className="profile-page__hr" }}
+    </div>
+</form>
+{{/ Interface }}

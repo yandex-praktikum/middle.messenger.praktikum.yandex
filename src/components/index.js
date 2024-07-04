@@ -6,3 +6,6 @@ export { Input } from './input';
 export { InputField } from './input-field';
 export { Link } from './link';
 export { PageTitle } from './page-title';
+export { InputWithLabel } from './input-with-label';
+export { Interface } from './interface';
+export { Hr } from './hr';
