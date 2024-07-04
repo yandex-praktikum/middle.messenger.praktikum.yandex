@@ -1,0 +1,24 @@
+@import '../../assets/variables';
+
+.not-found-page {
+  width: 600px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font: $font-large;
+  }
+
+  &__subtitle {
+    font: $font-title;
+  }
+}

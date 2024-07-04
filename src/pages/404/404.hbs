@@ -1,4 +1,9 @@
-<div class="container">
-    <h1>404 - Page Not Found</h1>
-    <a href="/" onclick="event.preventDefault(); history.pushState(null, '', '/'); renderRoute('/');">Go to Home</a>
+{{#> Interface }}
+<div class="not-found-page">
+    <div class="not-found-page__content">
+        <h1 class="not-found-page__title">404</h1>
+        <h5 class="not-found-page__subtitle">Не туда попали</h5>
+        {{> Link text="назад к чатам" page="login"}}
+    </div>
 </div>
+{{/ Interface }}
