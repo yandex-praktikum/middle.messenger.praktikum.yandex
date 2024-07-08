@@ -1,0 +1,27 @@
+@import url('normalize.scss');
+
+// @import url(pages/signin/signin.scss);
+
+@font-face {
+    font-family: Inter;
+    src: url('/assets/fonts/Inter-Regular.ttf')
+}
+
+* {
+    font-family: 'Inter';
+}
+
+a {
+    text-decoration: none;
+}
+
+.link-list {
+    padding: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
