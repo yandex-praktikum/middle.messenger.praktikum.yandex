@@ -17,5 +17,8 @@
     "lodash-es": "^4.17.21",
     "sass": "^1.77.6",
     "vite-plugin-handlebars": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
