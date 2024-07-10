@@ -16,6 +16,9 @@ export default defineConfig({
                 main: resolve(root, 'index.html'),
                 registration: resolve(root, 'registration.html'),
                 serverError: resolve(root, 'serverError.html'),
+                notFound: resolve(root, 'notFound.html'),
+                chatSelect: resolve(root, 'chatSelect.html'),
+                chat: resolve(root, 'chat.html')
             }
         }
     }

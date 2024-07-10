@@ -4,7 +4,7 @@ export function Button({ text }: { text: string }) {
     return (
         `
         <Button class=${s.button} >
-        ${text}
+            ${text}
         </Button>
         `
     );

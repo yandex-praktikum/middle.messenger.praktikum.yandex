@@ -1,0 +1,59 @@
+.label {
+    display: flex;
+
+    position: relative;
+    width: 100%;
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+
+        background-image: url('../../../public/svg/searchIcon.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 42%;
+
+        transition: .2s;
+    }
+
+    &__input {
+        outline: none;
+        border: none;
+
+        background-color: #EFEFEF;
+
+        border-radius: 5px;
+
+        padding: 6px 10px;
+        padding-left: 34px;
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+
+        width: 100%;
+
+        &::placeholder {
+            text-align: center;
+        }
+
+        &:focus+.label__icon {
+            left: 10px;
+        }
+
+        &:focus {
+            &::placeholder {
+                color: transparent;
+            }
+        }
+
+        &:not(:placeholder-shown)+.label__icon {
+            left: 10px;
+        }
+    }
+}

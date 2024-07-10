@@ -1,0 +1,158 @@
+.chat {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 10px;
+    padding-right: 30px;
+
+    height: 100%;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding-bottom: 10px;
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    &__img {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+    }
+
+    &__title {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 13px;
+        color: #1E1E1E;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        width: 25px;
+        height: 25px;
+
+        border-radius: 50%;
+
+        transition: .3s;
+
+        outline: none;
+        background-color: transparent;
+        border: none;
+
+        &:hover {
+            background-color: #F5F5F5;
+        }
+    }
+
+    &__content {
+        display: block;
+
+        height: 100%;
+
+        border-top: 1px solid #EAEAEA;
+        border-bottom: 1px solid #EAEAEA;
+
+        overflow-y: scroll;
+
+        &_left {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        &_right {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            text-align: -webkit-right;
+        }
+    }
+
+    &__date {
+        display: flex;
+        justify-content: center;
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #999999;
+
+        margin-bottom: 30px;
+    }
+
+    &__text {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 15px;
+        color: #1E1E1E;
+
+        white-space: break-spaces;
+
+        display: flex;
+        align-items: flex-end;
+
+        width: 100%;
+        max-width: 402px;
+
+        padding: 11px;
+        border-radius: 12px;
+
+        &__time {
+            font-size: 9px;
+            font-weight: 500;
+            line-height: 9px;
+            color: #999999;
+        }
+
+        &_left {
+            border-top-left-radius: 0px;
+
+            background-color: #F8F8F8;
+        }
+
+        &_right {
+            border-bottom-right-radius: 0px;
+            background-color: #E4EDFD;
+
+            width: fit-content;
+
+            display: flex;
+            column-gap: 14px;
+
+            span {
+                color: #3369F3;
+
+                font-size: 9px;
+                line-height: 9px;
+
+                display: flex;
+                align-items: flex-end;
+                column-gap: 4px;
+            }
+        }
+
+        &_check::before {
+            content: '';
+            display: inline-block;
+
+            width: 9px;
+            height: 5px;
+
+            background-image: url('../../../public/svg/checkDialog.svg');
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+    }
+}
