@@ -15,6 +15,7 @@ export default defineConfig({
             input: {
                 main: resolve(root, 'index.html'),
                 registration: resolve(root, 'registration.html'),
+                serverError: resolve(root, 'serverError.html'),
             }
         }
     }
