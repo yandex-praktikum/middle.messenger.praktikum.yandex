@@ -1,0 +1,28 @@
+.layout {
+    display: flex;
+    column-gap: 10px;
+
+    width: 100%;
+    height: 100vh;
+    max-height: 1080px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-color: #FBFBFB;
+
+        width: 100%;
+        max-width: 64px;
+
+        rotate: 180deg;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
