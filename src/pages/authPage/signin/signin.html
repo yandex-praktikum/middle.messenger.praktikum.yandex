@@ -1,21 +1,24 @@
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../auth-page.scss"/>
-        <title>{{title}}</title>
-    </head>
-    <body>
-        <main class="auth-page">
-            <div class="auth-block">
-                <p class="auth-block__title">{{headTitle}}</p>
-                <div class="auth-block__input-container">
-                    {{#each field}}
-                        {{> input name=name label=label type=type}}
-                    {{/each}}
-                </div>
-                {{> authButtonsBlock/authButtonsBlock title='Зарегестрироваться' linkTitle='Войти' href='#'}}
-            </div>
-        </main>
-    </body>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='stylesheet' href='../auth-page.scss'/>
+    <title>{{title}}</title>
+</head>
+<body>
+<main class='auth-page'>
+    <div class='auth-block'>
+        <p class='auth-block__title'>{{headTitle}}</p>
+        <form class='auth-block__input-container'>
+            {{#each field}}
+            {{> input name=name label=label type=type}}
+            {{/each}}
+        </form>
+        <div class='auth-block__buttons'>
+            {{> authButtonsBlock/authButtonsBlock title='Зарегистрироваться'}}
+            {{> authButtonsBlock/linkRedirect linkTitle='Войти' href='#'}}
+        </div>
+    </div>
+</main>
+</body>
 </html>

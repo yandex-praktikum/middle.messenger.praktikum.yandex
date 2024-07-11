@@ -20,24 +20,19 @@
     <div class='profile__container'>
         <div class='profile__card'>
             <img
-                class='profile__no-avatar'
                 alt='стандартный аватар'
+                class='profile__no-avatar'
                 src='../../assets/icons/no-avatar.png'
             />
-            <span>
-                Имя
-            </span>
         </div>
-        <div class='profile__input-container'>
+        <form class='profile__input-container'>
             {{#each profileInputs}}
             {{> profileInput/profileInput name=name label=label type=type value=value}}
             {{/each}}
+        </form>
+        <div class='profile__submit'>
+            {{> authButtonsBlock/authButtonsBlock title='Сохранить'}}
         </div>
-        <nav class='profile__manage'>
-            {{#each links}}
-            {{> profileLink/profileLink class=[class] text=text href=href }}
-            {{/each}}
-        </nav>
     </div>
 </main>
 </body>

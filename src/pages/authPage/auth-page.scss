@@ -1,5 +1,6 @@
-@import url(../../style.scss);
+@import url(../../styles/style.scss);
 @import url(../../components/authButtonsBlock/auth-buttons-block.scss);
+@import url(../../components/authInput/input-auth.scss);
 
 .auth-page {
     height: 100%;
@@ -15,7 +16,7 @@
     border: 1px solid #ffffff;
     border-radius: 12px;
     min-height: 450px;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
     display: grid;
     grid-template-rows: min-content 1fr min-content;
 
@@ -31,19 +32,13 @@
         flex-direction: column;
         gap: 15px;
     }
-}
 
-// TODO вынести отсюда
-.control {
-    display: flex;
-    flex-direction: column;
-
-    &__title {
-        font-size: 12px;
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin-top: 20px;
     }
 
-    &__input {
-        border: none;
-        border-bottom: 1px solid #3369f3;
-    }
 }
