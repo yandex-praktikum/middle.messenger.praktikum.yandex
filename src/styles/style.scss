@@ -1,0 +1,38 @@
+@import url(normalize.scss);
+@import url(constants.scss);
+
+@font-face {
+    font-family: Inter;
+    src: url('../assets/fonts/Inter-Regular.ttf')
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: unset;
+    padding: unset;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    margin: unset;
+}
+
+.link-list {
+    padding: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}

@@ -1,0 +1,13 @@
+.control {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-size: 12px;
+    }
+
+    &__input {
+        border: none;
+        border-bottom: 1px solid var(--color-blue);
+    }
+}

@@ -1,0 +1,74 @@
+@import url(../../styles/style.scss);
+@import url(../../components/profileInput/profile-input.scss);
+@import url(../../components/profileLink/profile-link.scss);
+@import url(../../components/authButtonsBlock/auth-buttons-block.scss);
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 13px;
+
+    &__back-button {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        background: var(--color-white-panel);
+        width: 60px;
+        border-right: 1px solid var(--color-light-grey);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__no-avatar {
+        width: 120px;
+        color: var(--color-dirty-white);
+    }
+
+    &__back-icon {
+        width: 30px;
+    }
+
+    &__container {
+        width: 510px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+    }
+
+    &__input-container {
+        width: 100%;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+
+        label:last-child {
+            border: none;
+        }
+    }
+
+    &__manage {
+        width: 100%;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+
+        a:last-child {
+            border: none;
+        }
+    }
+
+    &__submit {
+        width: 280px;
+    }
+}

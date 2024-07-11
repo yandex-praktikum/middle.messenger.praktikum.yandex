@@ -1,0 +1,26 @@
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    &__code {
+        font-size: 40px;
+    }
+
+    &__text {
+        font-size: 20px;
+    }
+
+    &__link {
+        font-size: 11px;
+        margin-top: 60px;
+    }
+}

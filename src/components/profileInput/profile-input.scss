@@ -1,0 +1,19 @@
+.profile-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid var(--color-light-grey);
+    padding-bottom: 13px;
+
+    &__input {
+        border: none;
+        color: var(--color-grey);
+        text-align: end;
+        width: 300px;
+
+        &:focus {
+            text-align: start;
+        }
+    }
+}

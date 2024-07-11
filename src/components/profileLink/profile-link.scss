@@ -1,0 +1,9 @@
+.profile-link {
+    color: var(--color-blue);
+    border-bottom: 1px solid var(--color-light-grey);
+    padding-bottom: 13px;
+
+    &_assertive {
+        color: var(--color-red);
+    }
+}

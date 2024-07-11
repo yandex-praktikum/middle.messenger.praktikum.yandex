@@ -1,0 +1,51 @@
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='stylesheet' href='chat.scss'/>
+    <title>{{title}}</title>
+</head>
+<body>
+<main class='chat'>
+    <div class='chat__contacts-panel'>
+        <div class='chat__contacts-top-panel'>
+            <div class='chat__contacts-profile'>
+                <a href='#'>
+                    Профиль >
+                </a>
+            </div>
+            <input
+                class='chat__contacts-search'
+                type='text'
+                placeholder='Поиск'
+            >
+        </div>
+        <ul class='chat__contacts'>
+            {{#each chatContacts}}
+            {{> chatUser/chatUser}}
+            {{/each}}
+        </ul>
+    </div>
+
+    <div class='chat__dialog'>
+        <div class='chat__dialog-top-panel'>
+            <div class='chat__dialog-contact'>
+                <img src='../../assets/icons/no-chat-user-avatar.png' alt='аватар юзера'>
+                <span>
+                    Ваня
+                </span>
+            </div>
+        </div>
+        <div class='dialog'>
+            {{#each messages}}
+            {{> message/message class=class}}
+            {{/each}}
+        </div>
+        <div class='chat__dialog-bottom-panel'>
+            <input class='chat__input' placeholder='Сообщение'>
+        </div>
+    </div>
+</main>
+</body>
+</html>

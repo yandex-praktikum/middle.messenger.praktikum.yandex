@@ -1,0 +1,25 @@
+.user {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--color-light-grey);
+    border-top: 1px solid var(--color-light-grey);
+    padding: 10px 0;
+
+    &__avatar {
+        width: 47px;
+        margin: unset;
+    }
+
+    &__name {
+        font-size: 13px;
+    }
+
+    &__text {
+        font-size: 12px;
+        margin: unset;
+    }
+
+    &__time {
+        font-size: 9px;
+    }
+}
