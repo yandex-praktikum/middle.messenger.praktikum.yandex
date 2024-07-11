@@ -1,20 +1,13 @@
-//.buttons-container {
-//    display: flex;
-//    flex-direction: column;
-//    gap: 10px;
-//    align-items: center;
-//    margin-top: 20px;
+.redirect-link {
+    color: var(--color-blue);
+    font-size: 11px;
+}
 
-
-    .redirect-link {
-        color: #3369F3;
-        font-size: 11px;
-    }
-    .button__submit {
-        height: 37px;
-        background-color: #3369F3;
-        width: 100%;
-        border: none;
-        border-radius: 8px;
-        color: #ffffff;
-    }
+.button__submit {
+    height: 37px;
+    background-color: var(--color-blue);
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+}

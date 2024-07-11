@@ -2,7 +2,6 @@
 @import url(../../components/profileInput/profile-input.scss);
 @import url(../../components/profileLink/profile-link.scss);
 @import url(../../components/authButtonsBlock/auth-buttons-block.scss);
-//@import url(../../styles/constants.scss);
 
 .profile {
     display: flex;
@@ -15,7 +14,7 @@
         position: absolute;
         height: 100%;
         left: 0;
-        background: #fbfbfb;
+        background: var(--color-white-panel);
         width: 60px;
         border-right: 1px solid var(--color-light-grey);
         display: flex;
@@ -32,7 +31,7 @@
 
     &__no-avatar {
         width: 120px;
-        color: #efefef;
+        color: var(--color-dirty-white);
     }
 
     &__back-icon {

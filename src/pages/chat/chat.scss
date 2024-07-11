@@ -10,8 +10,8 @@
     overflow: hidden;
 
     &__contacts-panel {
-        background: #fbfbfb;
-        border-right: 1px solid #eaeaea;
+        background: var(--color-white-panel);
+        border-right: 1px solid var(--color-light-grey);
         padding: 0 16px 8px;
         overflow: auto;
         min-width: 400px;
@@ -23,7 +23,6 @@
         top: 0;
         background: #fbfbfb;
         padding-bottom: 20px;
-
     }
 
     &__contacts-profile {
@@ -32,12 +31,12 @@
 
         a {
             font-size: 12px;
-            color: #999999;
+            color: var(--color-grey);
         }
     }
 
     &__contacts-search {
-        background-color: #efefef;
+        background-color: var(--color-dirty-white);
         border: none;
         border-radius: 6px;
         height: 32px;
@@ -57,8 +56,8 @@
     &__user {
         display: flex;
         gap: 10px;
-        border-bottom: 1px solid #eaeaea;
-        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid var(--color-light-grey);
+        border-top: 1px solid var(--color-light-grey);
         padding: 10px 0;
     }
 
@@ -92,12 +91,11 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        //display: grid;
     }
 
     &__dialog-top-panel {
         height: 54px;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid var(--color-light-grey);
         position: sticky;
         top: 0;
         display: grid;
@@ -115,7 +113,7 @@
     }
 
     &__dialog-bottom-panel {
-        border-top: 1px solid #eaeaea;
+        border-top: 1px solid var(--color-light-grey);
         position: sticky;
         bottom: 0;
         height: 54px;
@@ -127,7 +125,7 @@
     &__input {
         width: 100%;
         border-radius: 30px;
-        background-color: #efefef;
+        background-color: var(--color-dirty-white);
         border: none;
         height: 32px;
         padding: 10px;
@@ -143,7 +141,7 @@
     gap: 20px;
 
     &__message {
-        background: #f8f8f8;
+        background: var(--color-close-to-white);
         padding: 20px;
         border-radius: 0 10px 10px 10px;
         max-width: 350px;
@@ -152,7 +150,7 @@
         &_mine {
             align-self: flex-end;
             border-radius: 10px 0 10px 10px;
-            background: #e4edfd;
+            background: var(--color-light-blue);
         }
     }
 
