@@ -1,0 +1,54 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    padding: 11px 0px;
+
+    &__more {
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+    &__input {
+        width: 100%;
+
+        background-color: #EFEFEF;
+        border-radius: 30px;
+        border: none;
+
+        padding: 10px 30px;
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+
+        outline: none;
+    }
+
+    &__submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 28px;
+        height: 28px;
+
+        border-radius: 50%;
+
+        border: none;
+        cursor: pointer;
+
+        background-color: #3369F3;
+    }
+}

@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    max-width: 1920px;
+    min-width: 320px;
+    height: 100vh;
+
+    margin: 0 auto;
+}

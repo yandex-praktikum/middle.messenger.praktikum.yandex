@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    &__title {
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 13px;
+        color: #1E1E1E;
+    }
+
+    &__input {
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 13px;
+        text-align: right;
+
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+}

@@ -1,0 +1,50 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+
+    &__header {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        row-gap: 23px;
+
+        width: 100%;
+    }
+
+    &__link {
+        width: fit-content;
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+        color: #999999;
+        text-decoration: none;
+
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+
+        &::after {
+            content: '';
+            display: inline-block;
+
+            width: 8px;
+            height: 12px;
+
+            background-image: url('../../../public/svg/arrowRight.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__li {
+        list-style-type: none;
+    }
+}

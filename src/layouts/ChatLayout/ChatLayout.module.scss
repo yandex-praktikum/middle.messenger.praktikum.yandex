@@ -1,0 +1,24 @@
+.layout {
+    display: flex;
+    column-gap: 20px;
+
+    width: 100%;
+    height: 100vh;
+    max-height: 1080px;
+
+    &__menu {
+        width: 100%;
+        max-width: 310px;
+
+        flex-shrink: 0;
+
+        overflow-y: scroll;
+
+        background-color: #FBFBFB;
+        padding: 21px 10px 0px 10px;
+    }
+
+    &__content {
+        width: 100%;
+    }
+}
