@@ -35,10 +35,17 @@
         flex-direction: column;
         row-gap: 10px;
 
-        div:last-of-type {
+        li:last-of-type {
             border-bottom: 0px;
             padding-bottom: 0px;
         }
+    }
+
+    &__li {
+        list-style-type: none;
+
+        padding-bottom: 10px;
+        border-bottom: 1px solid #EAEAEA;
     }
 
     &__links {
@@ -51,6 +58,10 @@
         display: flex;
 
         border-bottom: 1px solid #EAEAEA;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
     }
 
     &__link {

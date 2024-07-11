@@ -6,7 +6,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = Profile()
 export function Profile() {
     return (
         `
-        ${ProfileLayout(ProfileInfo({ isChange: false }))}
+        <main>
+            ${ProfileLayout(ProfileInfo({ isChange: false }))}
+        </main>
         `
     );
 }

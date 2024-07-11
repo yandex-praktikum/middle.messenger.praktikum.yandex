@@ -5,10 +5,12 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = ServerError()
 export function ServerError() {
     return (
         `
-        ${ErrorLayout({
+        <main>
+            ${ErrorLayout({
             title: '404',
             text: 'Не туда попали'
         })}
+        </main>
         `
     )
 }

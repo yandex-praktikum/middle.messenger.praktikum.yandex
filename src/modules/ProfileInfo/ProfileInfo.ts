@@ -7,7 +7,7 @@ import s from './ProfileInfo.module.scss'
 export function ProfileInfo({ isChange = false }: { isChange?: boolean }) {
     return (
         `
-        <div class=${s.profile}>
+        <form class=${s.profile}>
             <div class=${s.profile__avatar}>
                 <label>
                     <img src=${avatar} alt='Фотография' class=${s.profile__img} />
@@ -15,19 +15,21 @@ export function ProfileInfo({ isChange = false }: { isChange?: boolean }) {
                 </label>
                 <p class=${s.profile__title}>Иван</p>
             </div>
-            <div class=${s.profile__list}>
-                ${ProfileData.map((profile: ProfileDataType) => InputProfile({ ...profile, isDisable: !isChange })).join('')}
-            </div>
+            <ul class=${s.profile__list}>
+                    ${ProfileData.map((profile: ProfileDataType) => `<li class=${s.profile__li}>${InputProfile({ ...profile, isDisable: !isChange })}</li>`).join('')}
+            </ul>
             ${!isChange ? `
-               <div class=${s.profile__links}>
-                    <div class=${s.profile__block}>
+               <ul class=${s.profile__links}>
+                    <li class=${s.profile__block}>
                         <a class=${s.profile__link} href='/changeProfile'>Изменить данные</a>
-                    </div>
-                    <div class=${s.profile__block}>
+                    </li>
+                    <li class=${s.profile__block}>
                         <a class=${s.profile__link} href='/changePassword'>Изменить пароль</a>
-                    </div>
-                    <button name='exit' class=${s.profile__exit}>Выход</button>
-                </div>
+                    </li>
+                    <li class=${s.profile__block}>
+                        <button name='exit' class=${s.profile__exit}>Выход</button>
+                    </li>
+                </ul>
                 `
             : `
                 <div class=${s.profile__save}>
@@ -35,7 +37,7 @@ export function ProfileInfo({ isChange = false }: { isChange?: boolean }) {
                 </div>
              `
         }
-        </div>
+        </form>
         `
     );
 }

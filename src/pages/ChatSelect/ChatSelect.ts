@@ -6,11 +6,15 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = ChatSelect()
 export function ChatSelect() {
     return (
         `
-        ${ChatLayout(
-            `<div class=${s.select}>
+        <main>
+            ${ChatLayout(
+            `
+                <div class=${s.select}>
                 <p class=${s.select__text}>Выберите чат чтобы отправить сообщение</p>
-            </div>`
+                </div>
+            `
         )}
+        </main>
         `
     )
 }

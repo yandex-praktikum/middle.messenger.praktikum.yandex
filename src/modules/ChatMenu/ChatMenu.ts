@@ -5,15 +5,15 @@ import s from './ChatMenu.module.scss'
 export function ChatMenu() {
     return (
         `
-        <div class=${s.menu}>
+        <nav class=${s.menu}>
             <div class=${s.menu__header}>
                 <a href='/profile' class=${s.menu__link}>Профиль</a>
                 ${Search()}
             </div>
-            <div class=${s.menu__list}>
-                ${Dialogs.map(dialog => Dialog({ ...dialog })).join('')}
-            </div>
-        </div>
+            <ul class=${s.menu__list}>
+                ${Dialogs.map(dialog => `<li class=${s.menu__li}>${Dialog({ ...dialog })}</li>`).join('')}
+            </ul>
+        </nav>
             `
     );
 }

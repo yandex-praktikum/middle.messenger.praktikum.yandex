@@ -6,7 +6,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = ChangeProfile()
 export function ChangeProfile() {
     return (
         `
-        ${ProfileLayout(ProfileInfo({ isChange: true }))}
+        <main>
+            ${ProfileLayout(ProfileInfo({ isChange: true }))}
+        </main>
         `
     );
 }

@@ -5,7 +5,7 @@ import { ChatSubmit } from '../../components';
 export function ChatView() {
     return (
         `
-        <div class=${s.chat}>
+        <form class=${s.chat}>
             <div class=${s.chat__header}>
                 <div class=${s.chat__info}>
                     <img src=${avatar} alt='Аватар' class=${s.chat__img} />
@@ -33,7 +33,7 @@ export function ChatView() {
             </div>
 
             ${ChatSubmit()}
-        </div>
+        </form>
         `
     );
 }

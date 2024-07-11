@@ -6,7 +6,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = Registration()
 export function Registration() {
     return (
         `
-        ${FormLayout({
+        <main>
+            ${FormLayout({
             title: 'Регистрация',
             inputs: `
                 ${Input({ title: 'Почта', type: 'email', name: 'email' })}
@@ -21,6 +22,7 @@ export function Registration() {
             button: `${Button({ text: 'Зарегистрироваться' })}`,
             link: `${Link({ text: 'Войти?', href: '/' })}`
         })}
+        </main>
         `
     )
 }
