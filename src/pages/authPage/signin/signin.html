@@ -11,7 +11,7 @@
         <p class='auth-block__title'>{{headTitle}}</p>
         <form class='auth-block__input-container'>
             {{#each field}}
-            {{> input name=name label=label type=type}}
+            {{> authInput/authInput name=name label=label type=type}}
             {{/each}}
         </form>
         <div class='auth-block__buttons'>

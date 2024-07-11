@@ -9,11 +9,11 @@
 <main class='auth-page'>
     <div class='auth-block'>
         <p class='auth-block__title'>{{headTitle}}</p>
-        <div class='auth-block__input-container'>
+        <form class='auth-block__input-container'>
             {{#each field}}
-                {{> input name=name label=label type=type}}
+                {{> authInput/authInput name=name label=label type=type}}
             {{/each}}
-        </div>
+        </form>
         <div class='auth-block__buttons'>
             {{> authButtonsBlock/authButtonsBlock title='Авторизоваться'}}
             {{> authButtonsBlock/linkRedirect linkTitle='Нет аккаунта?' href='#'}}
