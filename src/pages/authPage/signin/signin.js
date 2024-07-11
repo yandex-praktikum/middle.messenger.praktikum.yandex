@@ -4,10 +4,10 @@ export const signinData = {
     field: [
         { name: 'email', label: 'Почта', type: 'text' },
         { name: 'login', label: 'Логин', type: 'text' },
-        { name: 'name', label: 'Имя', type: 'text' },
-        { name: 'lastName', label: 'Фамилия', type: 'text' },
-        { name: 'phoneNumber', label: 'Телефон', type: 'text' },
+        { name: 'first_name', label: 'Имя', type: 'text' },
+        { name: 'last_name', label: 'Фамилия', type: 'text' },
+        { name: 'phone', label: 'Телефон', type: 'text' },
         { name: 'password', label: 'Пароль', type: 'password' },
-        { name: 'passwordRepeat', label: 'Пароль (еще раз)', type: 'password' },
+        { name: 'password', label: 'Пароль (еще раз)', type: 'password' },
     ],
 }

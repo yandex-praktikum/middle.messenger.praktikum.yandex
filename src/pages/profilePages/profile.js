@@ -3,8 +3,8 @@ const profileInputs = [
     {label: 'Логин', name: 'login', type: 'text', value: 'ivanIvanov'},
     {label: 'Имя', name: 'first_name', type: 'text', value: 'Иван'},
     {label: 'Фамилия', name: 'second_name', type: 'text', value: 'Иванов'},
-    {label: 'Имя в чате', name: 'second_name', type: 'text', value: 'Иван'},
-    {label: 'Телефон', name: 'second_name', type: 'text', value: '89099999999'},
+    {label: 'Имя в чате', name: 'display_name', type: 'text', value: 'Иван'},
+    {label: 'Телефон', name: 'phone', type: 'text', value: '89099999999'},
 ]
 
 const passwordInputs = [

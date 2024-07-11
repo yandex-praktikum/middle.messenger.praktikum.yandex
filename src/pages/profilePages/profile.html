@@ -28,11 +28,11 @@
                 Имя
             </span>
         </div>
-        <div class='profile__input-container'>
+        <form class='profile__input-container'>
             {{#each profileInputs}}
             {{> profileInput/profileInput name=name label=label type=type value=value}}
             {{/each}}
-        </div>
+        </form>
         <nav class='profile__manage'>
             {{#each links}}
             {{> profileLink/profileLink class=[class] text=text href=href }}

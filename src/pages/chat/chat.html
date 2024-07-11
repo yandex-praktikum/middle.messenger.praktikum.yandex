@@ -21,11 +21,11 @@
                 placeholder='Поиск'
             >
         </div>
-        <div class='chat__contacts'>
+        <ul class='chat__contacts'>
             {{#each chatContacts}}
             {{> chatUser/chatUser}}
             {{/each}}
-        </div>
+        </ul>
     </div>
 
     <div class='chat__dialog'>

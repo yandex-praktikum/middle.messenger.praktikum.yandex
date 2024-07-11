@@ -26,12 +26,12 @@ export default defineConfig({
     server: {
         port: 4000,
     },
+    preview: {
+        port: 3000
+    },
     plugins: [
         handlebars({
-            partialDirectory: [
-                resolve(__dirname, 'src/partials'),
-                resolve(__dirname, 'src/components'),
-            ],
+            partialDirectory: [resolve(__dirname, 'src/components'),],
             context(pagePath) {
                 return pageData[pagePath]
             },
