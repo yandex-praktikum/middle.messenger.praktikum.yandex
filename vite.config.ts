@@ -18,7 +18,10 @@ export default defineConfig({
                 serverError: resolve(root, 'serverError.html'),
                 notFound: resolve(root, 'notFound.html'),
                 chatSelect: resolve(root, 'chatSelect.html'),
-                chat: resolve(root, 'chat.html')
+                chat: resolve(root, 'chat.html'),
+                profile: resolve(root, 'profile.html'),
+                changeProfile: resolve(root, 'changeProfile.html'),
+                changePassword: resolve(root, 'changePassword.html'),
             }
         }
     }
