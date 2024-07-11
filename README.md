@@ -12,10 +12,10 @@ git clone <ссылка на репозиторй>
 - Ссылка на Netlify: https://jocular-yeot-005aff.netlify.app
 
 ### Страницы
-- Авторизация - '/',
-- Регистрация - '/registration',
-- Чат (Не выбранный) - '/chatSelect',
-- Чат (выбранный) - '/chat',
-- Профиль - '/profile',
-- Редактирование профиля - '/changeProfile',
-- Редактирование пароля - '/changePassword'
+- Авторизация - http://localhost:3000,
+- Регистрация - http://localhost:3000/registration,
+- Чат (Не выбранный) - http://localhost:3000/chatSelect,
+- Чат (выбранный) - http://localhost:3000/chat,
+- Профиль - http://localhost:3000/profile,
+- Редактирование профиля - http://localhost:3000/changeProfile,
+- Редактирование пароля - http://localhost:3000/changePassword
