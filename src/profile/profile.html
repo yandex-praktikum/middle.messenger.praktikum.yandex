@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../normalize.css" />
+    <link rel="stylesheet" href="./profile.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <!-- <div class="avatar"><span class="avatar__image"></span></div> -->
+        {{> avatar }}
+        <div class="name">Иван</div>
+        <div class="container__data">
+          {{> ProfileData label="Почта" description="pochta@yandex.ru" }} {{>
+          ProfileData label="Логин" description="ivanivanov" }} {{> ProfileData
+          label="Имя" description="Иван" }} {{> ProfileData label="Фамилия"
+          description="Иванов" }} {{> ProfileData label="Имя в чате"
+          description="Иван" }} {{> ProfileData label="Телефон" description="+7
+          (909) 967 30 30" }}
+        </div>
+        <div class="container__link">
+          {{> profileLink URL="../changeData/changeData.html" label="Изменить
+          данный" }} {{> profileLink URL="../changePassword/changePassword.html"
+          label="Изменить пароль" }}
+          <a href="../index.html" class="exit">Выйти</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

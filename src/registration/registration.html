@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../normalize.css" />
+    <link rel="stylesheet" href="./registration.css" />
+  </head>
+  <body>
+    <div class="registration__container">
+      <div class="registration__content">
+        {{> H2 title="Регистрация"}}
+        <form action="" class="registration__form">
+          {{> label for="email" description="Почта"}} {{> input type="email"
+          id="email" name="email"}} {{> label for="login" description="Логин"}}
+          {{> input type="text" id="login" name="login"}} {{> label
+          for="first_name" description="Имя"}} {{> input type="text"
+          id="first_name" name="first_name"}} {{> label for="second_name"
+          description="Фамилия"}} {{> input type="text" id="second_name"
+          name="second_name"}} {{> label for="phone" description="Телефон"}} {{>
+          input type="tel" id="phone" name="phone"}} {{> label for="password"
+          description="Пароль"}} {{> input type="password" id="password"
+          name="password"}} {{> label for="PasswordRepeat" description="Пароль
+          (ещё раз)"}} {{> input type="password" id="PasswordRepeat"
+          name="password"}} {{> button title="Зарегестрироваться"}}
+        </form>
+        {{> link URL="../entrance/entrance.html" label="Войти"}}
+      </div>
+    </div>
+  </body>
+</html>

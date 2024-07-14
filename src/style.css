@@ -1,0 +1,12 @@
+.container {
+  font-size: 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+a {
+  font-size: 30px;
+  text-decoration: none;
+}

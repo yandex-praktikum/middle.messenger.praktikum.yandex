@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../normalize.css" />
+    <link rel="stylesheet" href="./changeData.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        {{> avatar }}
+        <form class="form" action="">
+          {{> formSection for="email" type="email" id="email" name="email"
+          description="Почта"}} {{> formSection for="login" type="text"
+          id="login" name="login" description="Логин"}} {{> formSection
+          for="first_name" type="text" id="first_name" name="first_name"
+          description="Имя"}} {{> formSection for="second_name" type="text"
+          id="second_name" name="second_name" description="Фамилия"}} {{>
+          formSection for="display_name" type="text" id="display_name"
+          name="display_name" description="Имя в чате"}} {{> formSection
+          for="tel" type="tel" id="tel" name="phone" description="Телефон"}} {{>
+          profileButton title="Сохранить"}}
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

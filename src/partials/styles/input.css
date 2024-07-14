@@ -1,0 +1,15 @@
+.entrance__input {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  padding-bottom: 7px;
+  color: #1e1e1e;
+  border: 0px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #3369f3;
+}
+
+.entrance__input:focus {
+  outline: 0;
+  outline-offset: 0;
+}

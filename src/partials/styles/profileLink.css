@@ -1,0 +1,9 @@
+.link {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+  text-decoration: none;
+  color: #3369f3;
+}

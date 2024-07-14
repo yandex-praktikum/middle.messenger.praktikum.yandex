@@ -1,0 +1,10 @@
+.entrance__link {
+  display: block;
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  color: #3369f3;
+  text-align: center;
+  text-decoration: none;
+}

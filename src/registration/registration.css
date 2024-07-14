@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.registration__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 670px;
+}
+
+.registration__content {
+  width: 370px;
+  padding: 50px 30px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+}
+
+.registration__form {
+  display: flex;
+  flex-direction: column;
+}
