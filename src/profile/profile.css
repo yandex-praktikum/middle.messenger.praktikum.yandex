@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  width: 510px;
+}
+
+.name {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #1e1e1e;
+  margin-bottom: 60px;
+}
+
+.container__link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.exit {
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: none;
+  line-height: 13px;
+  color: #ff0000;
+}

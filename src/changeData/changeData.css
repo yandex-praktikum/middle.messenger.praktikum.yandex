@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  width: 510px;
+}
+
+.form {
+  width: 510px;
+  margin-top: 97px;
+}
+
+.input:focus {
+  outline: 0;
+}

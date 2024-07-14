@@ -1,0 +1,22 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #1e1e1e;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #999999;
+}

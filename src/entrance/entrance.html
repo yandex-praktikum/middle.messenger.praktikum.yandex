@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../normalize.css" />
+    <link rel="stylesheet" href="./entrance.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div class="entrance__container">
+      <div class="entrance__content">
+        {{> H2 title="Вход"}}
+        <form action="" class="entrance__form">
+          {{> label for="text" description="Логин"}} {{> input type="text"
+          id="text" name="login"}} {{> label for="password"
+          description="Пароль"}} {{> input type="password" id="password"
+          name="password"}}
+          <!-- <button type="submit" class="entrance__button">Войти</button> -->
+          {{> button title="Авторизоваться"}}
+        </form>
+        <!-- <a href="../registration/registration.html" class="entrance__link"
+          >Нет аккаунта?</a
+        > -->
+        {{> link URL="../registration/registration.html" label="Нет аккаунта?"}}
+      </div>
+    </div>
+  </body>
+</html>

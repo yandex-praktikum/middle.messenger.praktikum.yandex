@@ -1,0 +1,16 @@
+.avatar {
+  width: 130px;
+  margin: 0 auto;
+  padding: 45px;
+  background-color: #efefef;
+  border-radius: 50%;
+}
+
+.avatar__image {
+  display: inline-block;
+  background-image: url('../../avatar.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+}
