@@ -1,0 +1,61 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <div class="page-wrapper profile-page__wrapper">
+        <div class="profile-page__layout main-layout">
+            <div class="main-layout__content">
+                <div class="main-layout__header">
+                    <nav class="profile-page__navigation profile-navigation">
+                        <a href="/pages/profile/index.html" class="profile-navigation__link">
+                            <svg class="svg-icon" style="width: 10px; height: 10px;">
+                                <use xlink:href="/assets/icons.svg#arrow-left"></use>
+                            </svg>
+                            Вернуться
+                        </a>
+                    </nav>
+                </div>
+                <div class="user-profile">
+                    <div class="user-profile__header">
+                        {{> change-avatar
+                            classList="user-profile__avatar"
+                            image=userAvatar
+                            label="Поменять аватар"
+                        }}
+                    </div>
+                    <div class="user-profile__form">
+                        <form action="/" class="change-data-form">
+                            {{> form-group 
+                                label="Старый пароль"
+                                id="oldPassword"
+                                name="oldPassword"
+                                placeholder="Введите старый пароль"
+                            }}
+                            {{> form-group 
+                                label="Новый пароль"
+                                id="oldPassword"
+                                name="oldPassword"
+                                placeholder="Введите старый пароль"
+                            }}
+                            {{> form-group 
+                                label="Повторите новый пароль"
+                                id="newPasswordRepeat"
+                                name="newPasswordRepeat"
+                                placeholder="Повторите новый пароль"
+                            }}
+                            <div class="form-actions change-data-form__actions">
+                                {{>button type="submit" style="primary" caption="Сохранить"}}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.sign-up-page{
+    &__wrapper {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.sign-up-form {
+    max-width: 100%;
+    padding: 60px 80px;
+    background-color: #fff;
+    border-radius: 4px;
+    
+    &__title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__fields {
+        max-width: 100%;
+        width: 370px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}

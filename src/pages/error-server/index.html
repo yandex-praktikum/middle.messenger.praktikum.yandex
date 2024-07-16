@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <div class="page-wrapper error-page__wrapper">
+        {{> error-message
+            classList="error-page__message"
+            title="500"
+            text="Мы уже фиксим"
+            errorLink="/pages/messenger/index.html"
+            errorLinkTitle="Назад к чатам"
+        }}
+    </div>
+</body>
+</html>

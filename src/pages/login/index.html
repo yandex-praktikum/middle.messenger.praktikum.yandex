@@ -1,0 +1,38 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <div class="page-wrapper login-page__wrapper">
+        <form class="login-page__form login-form">
+            <div class="login-form__title">{{ title }}</div>
+            <div class="login-form__fields">
+                {{> form-group 
+                    label="Логин" 
+                    id="login" 
+                    name="login" 
+                    placeholder="Введите логин" 
+                    prompt="Не забудьте свой логин"
+                }}
+                {{> form-group 
+                    label="Пароль" 
+                    type="password"
+                    id="password" 
+                    name="password" 
+                    placeholder="Введите пароль" 
+                    prompt="Введен не правильный пароль"
+                    hasError=true
+                }}
+                <div class="form-actions">
+                    {{> button caption="Вход" style="primary" type="submit"}}
+                    {{> button caption="Зарегестрироваться" style="outline" href="/pages/sign-up/index.html"}}
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

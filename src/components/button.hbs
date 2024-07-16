@@ -1,0 +1,15 @@
+{{#if href}}
+    <a
+        href="{{href}}"
+        class="button {{#if style}}button--{{style}}{{else}}button--primary{{/if}}"
+    >
+        {{ caption }}
+    </a>
+{{else}}
+    <button
+        type="{{#if type}}{{type}}{{else}}button{{/if}}" 
+        class="button {{#if style}}button--{{style}}{{else}}button--primary{{/if}}"
+    >
+        {{caption}}
+    </button>
+{{/if}}

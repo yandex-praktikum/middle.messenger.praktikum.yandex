@@ -1,0 +1,60 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <div class="page-wrapper profile-page__wrapper">
+        <div class="profile-page__layout main-layout">
+            <div class="main-layout__content">
+                <div class="main-layout__header">
+                    <nav class="profile-page__navigation profile-navigation">
+                        <a href="/pages/messenger/index.html" class="profile-navigation__link">
+                            <svg class="svg-icon" style="width: 10px; height: 10px;">
+                                <use xlink:href="/assets/icons.svg#arrow-left"></use>
+                            </svg>
+                            Вернуться
+                        </a>
+                    </nav>
+                </div>
+                <div class="user-profile">
+                    <div class="user-profile__header">
+                        {{> change-avatar
+                            classList="user-profile__avatar"
+                            image=userAvatar
+                            label="Поменять аватар"
+                        }}
+                        <div class="user-profile__title">{{userName}}</div>
+                    </div>
+                    <div class="user-profile__info">
+                        <ul class="info-table">
+                            {{#each userInfoFields}}
+                                <li class="info-table__item info-item">
+                                    <span class="info-item__label">{{label}}</span>
+                                    <span class="info-item__value">{{value}}</span>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="user-profile__actions">
+                        <div class="info-table info-table--actions">
+                            <li class="info-table__item info-item">
+                                <a href="/pages/profile-change-data/index.html" class="info-item__link">Изменить данные</a>
+                            </li>
+                            <li class="info-table__item info-item">
+                                <a href="/pages/profile-change-password/index.html" class="info-item__link">Изменить пароль</a>
+                            </li>
+                            <li class="info-table__item info-item">
+                                <a href="/logout" class="info-item__link info-item__link--logout">Выйти</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

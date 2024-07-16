@@ -1,0 +1,33 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./main.js"></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="main-layout">
+            <div class="main-layout__content main-page__content">
+                <div class="work-card">
+                    <h1 class="work-card__title">
+                        {{title}}
+                    </h1>
+
+                    <span>Список страниц проекта:</span>
+                    <ul class="work-card__links pages-list">
+                        {{#each links}}
+                            <li class="pages-list__item">
+                                <a class="pages-list__link" href="{{link}}">
+                                    {{title}}
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

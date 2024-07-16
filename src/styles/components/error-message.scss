@@ -1,0 +1,22 @@
+.error-message {
+    text-align: center;
+
+    &__title {
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 60px;
+    }
+
+    &__link {
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #0078D2;
+    }
+}
