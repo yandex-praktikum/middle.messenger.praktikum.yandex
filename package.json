@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview --port 3000",
-    "start": "npm run build && npm run preview"
+    "start": "vite build && vite preview --port 3000"
   },
   "devDependencies": {
     "sass": "^1.77.8",
