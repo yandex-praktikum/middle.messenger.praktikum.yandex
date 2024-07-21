@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+}
+.chat-list {
+    width: 30%;
+    background-color: #FF8DFA1C;;
+    padding: 20px;
+}
+.chat-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+.chat-list li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.chat-area {
+    flex: 1;
+    padding: 20px;
+}
+.chat-messages {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 500px;
+    overflow-y: scroll;
+    max-height: 1000px;
+}
+
+.message-input input{
+    margin-top: 20px;
+    width: 85%;
+}
+
+.message-right {
+    text-align: right;
+}
+
+.button-my-profile {
+    background-color: rgba(115, 7, 110, 0.22);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.button-logout {
+    border: none;
+    color: orangered;
+    background-color: transparent;
+    outline: none;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.button-logout:hover {
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.button-my-profile:hover {
+    background-color: rgba(115, 7, 110, 0.42);
+}
