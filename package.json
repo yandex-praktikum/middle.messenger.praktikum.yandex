@@ -1,0 +1,25 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "0.0.1",
+  "description": "...",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite serve --force -d --open",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tscb": "tsc --build"
+  },
+  "author": "....",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "vite": "^4.3.9"
+  },
+  "engines": {
+    "node": ">14"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7"
+  }
+}
