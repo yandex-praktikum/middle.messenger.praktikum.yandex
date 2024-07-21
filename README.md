@@ -1,6 +1,6 @@
 Ссылка на прототип figma: https://www.figma.com/design/F5NmkPDmRPTTkbAbJBtaw2/Untitled?node-id=0-1&t=NXkSl2uVgKzYQ4x3-0 
 
-Netlify: Ссылка на прототип figma: https://www.figma.com/design/F5NmkPDmRPTTkbAbJBtaw2/Untitled?node-id=0-1&t=NXkSl2uVgKzYQ4x3-0 
+Netlify: https://club-messenger.netlify.app
 
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
 
