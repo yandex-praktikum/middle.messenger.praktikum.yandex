@@ -6,7 +6,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "vite --port 3000",
-    "start": "npm run build && vite --port 3000",
+    "start": "npm run build && vite preview --port 3000",
     "build": "vite build",
     "preview": "vite preview",
     "tscb": "tsc --build"
