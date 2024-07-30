@@ -12,7 +12,9 @@ const Error404: React.FC = () => {
     // }, []);
 
     const html = error404Template({});
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+    return <div className='error'>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+    </div>;
 };
 
 export default Error404;

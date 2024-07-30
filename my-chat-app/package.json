@@ -11,7 +11,10 @@
     "start": "vite"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "express": "^4.19.2",
     "handlebars": "^4.7.8",
+    "postcss-nested": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",

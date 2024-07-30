@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import handlebars from 'vite-plugin-handlebars';
-import raw from 'vite-plugin-raw';
-import path from 'path';
+// import handlebars from 'vite-plugin-handlebars';
+// import raw from 'vite-plugin-raw';
+// import path from 'path';
 
 export default defineConfig({
   plugins: [
