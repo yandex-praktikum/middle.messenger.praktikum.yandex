@@ -8,7 +8,6 @@ const pages = {
   'login': [Pages.LoginPage, { test: '12345' }],
   'nav': [Pages.NavigatePage],
   'signup': [Pages.SignupPage],
-  'list': [Pages.ListPages],
   'chatmy': [Pages.ChatMy],
   'page404': [Pages.Page404],
   'page500': [Pages.Page500],
