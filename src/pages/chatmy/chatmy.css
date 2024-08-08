@@ -14,19 +14,20 @@ body {
   background-color: silver;
 } */
 
-.button {
+/* .button {
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
     transition: background-color ease 0.2s;
   }
-  
-  .button:hover,
+   */
+
+/*   .button:hover,
   button:focus {
     background-color: #4cceea;
     border-radius: 50%;
-  }
+  } */
   
   .button_id_submit {
     border-radius: 50%;
