@@ -1,0 +1,69 @@
+@import '../../style.scss';
+
+.main {
+    display: flex;
+    width: 510px;
+    margin-left: 74px;
+    height: 100%;
+    flex-direction: column;
+
+    &__avatar {
+        display: flex;
+        align-self: center;
+        margin-top: 41px;
+
+        & img {
+            width: 130px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__name {
+        display: flex;
+        align-self: center;
+        margin-top: 21px;
+    }
+
+    &__info {
+        margin-top: 21px;
+        width: inherit;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        margin-top: 69px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &-accept {
+            color: $blue;
+            border-bottom: 1px solid $devider;
+        }
+
+        &-reject {
+            color: $red;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $devider;
+            }
+        }
+    }
+}
+
+.action {
+    padding-bottom: 10px;
+
+    &:not(:first-child) {
+        padding-top: 10px;
+    }
+}
+
+.avatar {
+    display: none;
+}

@@ -1,0 +1,41 @@
+@import '../../style.scss';
+
+.selected {
+    background-color: $blueChatMessage;
+}
+
+.profile {
+    display: flex;
+    height: 77px;
+    border-bottom: 1px solid $devider;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $blueChatMessage;
+    }
+
+    &__image {
+        flex: 0;
+        padding-left: 9px;
+        padding-top: 15px;
+    }
+
+    &__info {
+        flex: 1;
+        padding-left: 10px;
+        padding-top: 15px;
+
+        &-name {
+            color: $firstName;
+        }
+        
+        &-login {
+            color: $gray;
+        }
+    }
+
+    &__arrow {
+        align-content: center;
+        padding-right: 11px;
+    }
+}

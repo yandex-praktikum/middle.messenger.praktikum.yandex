@@ -1,0 +1,64 @@
+@import '../../style.scss';
+
+.profiles {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    &__sidebar {
+        width: 30%;
+        background-color: $sideBar;
+        border-right: 1px solid $devider;
+        box-sizing: border-box;
+    
+        &__header {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            background-color: #ffffff;
+            border-bottom: 1px solid $devider;
+            padding-left: 10px;
+
+            &-text {
+                color: $blue;
+                margin-left: 5px;
+                cursor: pointer;
+            }
+
+            &-icon {
+                cursor: pointer;
+            }
+        }
+    
+        &__list {
+            list-style: none;
+            padding: 0;
+    
+            &-item {
+                padding: 1rem;
+                border-bottom: 1px solid $devider;
+                cursor: pointer;
+                transition: background-color 0.3s;
+    
+                &:hover {
+                    background-color: #eaeaea;
+                }
+            }
+        }
+
+        &__add {
+            padding-left: 10px;
+            padding-top: 10px;
+            font-size: 16px;
+            color: $blue;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__info {
+        width: 100%;
+    }
+}
