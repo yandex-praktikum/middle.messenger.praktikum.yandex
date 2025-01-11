@@ -1,0 +1,35 @@
+@import "../../style.scss";
+
+.signin {
+    display: flex;
+    height: 100vh;
+
+    &__container {
+        width: 303px;
+        height: 575px;
+        background-color: $sideBar;
+        margin: auto;
+        border-radius: 5%;
+
+        footer {
+            margin-top: 312px;
+        }
+    }
+
+    &__title {
+        justify-self: center;
+        margin-top: 30px;
+
+        &__text {
+            font-size: 16px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 269px;
+        justify-self: center;
+        margin-top: 55px;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="profiles">
+    <aside class="profiles__sidebar">
+        <div class="profiles__sidebar__header" id="profiles__sidebar__header">
+            <div class="profiles__sidebar__header-icon">
+                <img src="/img/back.svg" alt="Назад">
+            </div>
+            <div class="profiles__sidebar__header-text">
+                <span>Назад</span>
+            </div>
+        </div>
+        <div class="profiles__sidebar__list" id="profiles__sidebar__list">
+            {{#each profiles}}
+                {{> ProfileSelected this}}
+            {{/each}}
+        </div>
+        <div class="profiles__sidebar__add">
+            <span>Добавить профиль</span>
+        </div>
+    </aside>
+
+    <main class="profiles__info">
+        {{#if profile}}
+            {{> ProfileInfo profile}}
+            {{else}}
+                <span>Не выбран</span>
+        {{/if}}
+    </main>
+</div>

@@ -1,0 +1,16 @@
+<div class="signup">
+    <div class="signup__container">
+        <header class="signup__title">
+            <span class="signup__title__text">{{ title }}</span>
+        </header>
+        <main class="signup__form">
+            {{#each inputs}}
+                {{> Input this}}
+            {{/each}}
+        </main>
+        <p class="error__message" id="error__message"></p>
+        <footer>
+            {{> Footer footer }}
+        </footer>
+    </div>
+</div>
