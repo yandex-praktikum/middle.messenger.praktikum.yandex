@@ -1,0 +1,39 @@
+/* .input{
+    caret-color: red;
+    font:
+      16px "Helvetica",
+      "Arial",
+      "sans-serif";
+
+} */
+
+.input {
+    /* background-color: transparent;*/
+    /* background: transparent; */
+    /* border-bottom: 4px solid #3369F3;
+    border: none;
+    color: inherit;
+    outline: none; */
+    outline: none;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    border-bottom: 1px solid #3369F3;
+    color: brown;
+    /* cursor:pointer; */
+};
+
+.input .text-field__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem .75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .15s ease-in-out, transform .15s ease-in-out;
+}

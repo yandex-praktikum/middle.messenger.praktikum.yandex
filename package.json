@@ -1,0 +1,22 @@
+{
+  "name": "ya-pr-sp1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "lodash": "^4.17.21",
+    "lodash-webpack-plugin": "^0.11.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "handles": "^0.1.1"
+  }
+}

@@ -1,0 +1,62 @@
+.avatar {
+    border-radius: 50%;
+    position: relative;
+    border: none;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #b8bbc8;
+}
+
+.avatar_larger {
+    width: 43px;
+    height: 43px;
+}
+
+.avatar_online:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #4cceea;
+    border: 2px solid #eff0f5;
+    border-radius: 50%;
+}
+
+.avatar__wrap {
+    border-radius: 50%;
+    text-decoration: none;
+    display: inherit;
+    color: #fff;
+}
+
+.avatar__img {
+    border-radius: 50%;
+}
+
+.counter {
+    line-height: 11px;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+}
+
+.chatbox__row {
+    display: block;
+}
+
+.chatbox__row_fullheight {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.chatbox__content {
+    height: 100%;
+}

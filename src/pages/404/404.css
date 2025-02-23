@@ -1,0 +1,16 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.copy-container {
+    text-align: center;
+}
+
+.center-xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}

@@ -1,0 +1,40 @@
+:root {
+    --main-color: #3369F3;
+}
+.button{
+    /* display: block;
+    text-align: center;
+    width: 280px;
+    height: 37px;
+    background: #3369F3;  
+    border-radius: 8px; */
+    
+    display: block;
+    background-color: initial;
+    border: none;
+    border-radius: 8px;
+    font-weight: 100;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button__primary{
+    background-color: var(--main-color);
+    color: white;
+}
+
+.button__link{
+    color: var(--main-color);
+    font-size: 12px;
+}
+
+.button__form_active{
+    background-color: var(--main-color);
+    color: white;
+}
+
+.button__form_passiv{
+    color: var(--main-color);
+    font-size: 12px;
+}
