@@ -1,0 +1,19 @@
+.main-layout {
+    display: flex;
+    // flex-wrap: wrap;
+    height: 100%;
+
+    // &__header {
+    //     flex: 1 1 auto;
+    //     width: 100%;
+    // }
+
+    &__sidebar {
+        flex: 1 0 auto;
+        max-width: 310px;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+    }
+}

@@ -1,0 +1,42 @@
+.main-page {
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+    }
+}
+
+.work-card {
+    background-color: #fff;
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
+    padding: 60px;
+    border-radius: 10px;
+
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 24px;
+    }
+
+    &__links {
+        margin: 12px 0;
+    }
+}
+
+.pages-list {
+    padding-left: 20px;
+    list-style: disc;
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__link {
+        color: rgb(0, 160, 227);
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,139 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon"/>
+    <title>{{title}}</title>
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+
+    <div class="page-wrapper messenger-page__wrapper">
+        <div class="messenger__layout main-layout">
+            <div class="main-layout__sidebar">
+                <div class="chats">
+                    <div class="chats__header">
+                        <div class="chats__title">
+                            <span>{{title}}</span>
+                            <a href="/pages/profile/index.html">
+                                Профиль
+                                <svg class="svg-icon" style="height: 10px;">
+                                    <use xlink:href="/assets/icons.svg#arrow-right"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        {{> search-chats}}
+                    </div>
+                    <div class="chats__list">
+                        {{#each chatsList}}
+                            {{> chat-item
+                                image=image
+                                chatName=chatName
+                                messagePreview=messagePreview
+                                date=date
+                                unreadMessages=unreadMessages
+                                isActive=isActive
+                            }}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class="main-layout__content">
+                <!-- Сообщение если не выбран ни один чат -->
+                <div class="messenger-chat" style="display: none;">
+                    <div class="messenger-chat__unselected">
+                        <span>Выберите чат чтобы отправить сообщение</span>
+                    </div>
+                </div>
+
+                <div class="messenger-chat">
+                    <div class="messenger-chat__header">
+                        <div class="chat-info">
+                            <div class="chat-info__image">
+                                {{> avatar 
+                                    classList="chat-info__user-logo" 
+                                    image="https://site.iskandarov.kz/storage/uploads/2024/07/15/1_uid_669513da9d174.png"
+                                }}
+                            </div>
+                            <div class="chat-info__title">
+                                Андрей
+                            </div>
+                            <div class="chat-info__more">
+                                <button class="chat-info__more-btn">
+                                    <svg class="svg-icon" style="height: 16px;">
+                                        <use xlink:href="/assets/icons.svg#more-btn"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="messenger-chat__history">
+                        <div class="chat-history">
+                            <div class="chat-history__date-badge">19 июня</div>
+                            <div class="chat-history__message user-message user-message--left">
+                                Привет! Смотри, тут всплыл интересный кусок лунной космической истории — 
+                                НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на 
+                                Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, 
+                                все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой 
+                                забрали только кассеты с пленкой.
+                                <br>
+                                <br>
+                                Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они 
+                                так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали 
+                                на аукционе за 45000 евро.
+                            </div>
+                            <div class="chat-history__message user-message user-message--left">
+                                <img src="https://site.iskandarov.kz/storage/uploads/2024/07/15/message-image_uid_669513daaa702.jpg"/>
+                            </div>
+                            <div class="chat-history__message user-message user-message--right">
+                                Огонь 🔥🔥
+                            </div>
+                        </div>
+                    </div>
+                    <div class="messenger-chat__footer">
+                        <form action="/" class="messenger-form">
+                            <div class="messenger-form__source">
+                                <div class="source-dropdown">
+                                    <div class="source-dropdown__item">
+                                        <svg class="svg-icon" style="height: 18px;">
+                                            <use xlink:href="/assets/icons.svg#source-image"></use>
+                                        </svg>
+                                        <span>Фото или Видео</span>                                            
+                                    </div>
+                                    <div class="source-dropdown__item">
+                                        <svg class="svg-icon" style="height: 18px;">
+                                            <use xlink:href="/assets/icons.svg#source-file"></use>
+                                        </svg>
+                                        <span>Файл</span>                                            
+                                    </div>
+                                    <div class="source-dropdown__item">
+                                        <svg class="svg-icon" style="height: 18px;">
+                                            <use xlink:href="/assets/icons.svg#source-location"></use>
+                                        </svg>
+                                        <span>Локация</span>                                            
+                                    </div>
+                                </div>
+                                <button class="messenger-source-btn">
+                                    <svg class="messenger-source-btn__icon svg-icon" style="height: 32px;">
+                                        <use xlink:href="/assets/icons.svg#source-btn"></use>
+                                    </svg>                                   
+                                </button>
+                            </div>
+                            <div class="messenger-form__text">
+                                <textarea name="message" class="messenger-text-field" placeholder="Сообщение"></textarea>
+                            </div>
+                            <div class="messenger-form__send">
+                                <button type="submit" class="messenger-send-btn">
+                                    <svg class="svg-icon" style="width: 13px; height: 12px">
+                                        <use xlink:href="/assets/icons.svg#send-btn"></use>
+                                    </svg>                                 
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

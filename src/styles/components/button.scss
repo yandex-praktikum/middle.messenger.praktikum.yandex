@@ -1,0 +1,54 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-family: 'Inter';
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+    color: #fff;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    background-color: #6B7A80;
+    border: 1px solid #6B7A80;
+    border-radius: 8px;
+    outline: none !important;
+    box-shadow: none !important;
+
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    &--primary {
+        border-color: rgba(0, 160, 227, 1);
+        background-color: rgba(0, 160, 227, 1);
+        color: #fff;
+
+        &:hover {
+            border-color: rgb(1, 133, 189);
+            background-color: rgb(1, 133, 189);
+        }
+    }
+    
+    &--outline {
+        border-color: rgba(0, 160, 227, 1);
+        background-color: #fff;
+        color: rgba(0, 160, 227, 1);
+
+        &:hover {
+            border-color: rgba(0, 160, 227, 1);
+            background-color: rgba(0, 160, 227, 1);
+            color: #fff;
+        }
+    }
+}

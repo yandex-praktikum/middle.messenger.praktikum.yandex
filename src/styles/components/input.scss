@@ -1,0 +1,12 @@
+.input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 68, 107, 0.28);
+    outline: none;
+
+    &--error {
+        border-color: #EB3333;
+    }
+}
